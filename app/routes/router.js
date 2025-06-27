@@ -23,7 +23,7 @@ router.get("/cadastro", (req, res)=>{
             "email": "",
             "senha": "",
             "confirmar-senha": ""}, 
-        "retorno":null }
+        "retorno":null},
     )
 })
 

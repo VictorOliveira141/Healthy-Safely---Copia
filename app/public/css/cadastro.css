@@ -5,6 +5,7 @@
 }
 
 /*Inicio do Header*/
+
 .banner{
     width: 100%;
     height: 120vh;
@@ -12,6 +13,7 @@
     background-size: cover;
     background-position: center;
  }
+
 .navbar{
     width: 100%;
     height: 5%;
@@ -20,12 +22,14 @@
     
     background-color: rgba(4, 141, 113, 0.8);
  }
+
 .logo{
     transform: translateY(-20%);
     margin-left: 7%;
     cursor: pointer;
    
  }
+
 .serviço{
     color: white;
     font-size: 19px;
@@ -35,6 +39,7 @@
 /*Término do Header*/
  
 /*Inicio do main*/
+
 .quadrado{
     background-color: rgb(241, 234, 234); 
     border-radius: 8px; 
@@ -47,18 +52,32 @@
     left: 50%;
     transform: translate(-50%, -20%); 
 }
-.digitaremail, .digitarnome, .digitarsenha{
+
+.cadastro{
+    font-size: smaller;
+    text-align: end;
+    margin-bottom: 10px;
+}
+
+input{
     width: 100%;
     padding: 10px;
     margin-top: 10px;
     border: 1px solid gray;
     border-radius: 4px;
 }
-.cadastro{
-    font-size: smaller;
-    text-align: end;
-    margin-bottom: 10px;
+
+.erro {
+    border: 2px solid red;
 }
+
+span.msgErro {
+    color: red;
+    font-size: 0.9em;
+    margin-left: 10px;
+    }
+    
+
 button{
     width: 100%; 
     padding: 10px;
@@ -70,9 +89,11 @@ button{
     font-size: 16px;
     cursor: pointer;
 }
+
 button:hover { 
     
     background-color: rgba(18, 94, 77, 0.9);
 }
+
 /*fim do Main*/
  
