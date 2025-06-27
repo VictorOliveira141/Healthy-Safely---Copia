@@ -1,11 +1,11 @@
-html>
+<html>
     <head>
         <title>Cadastro</title>
         <link rel="stylesheet" href="../css/cadastro.css">
     </head>
 
     <body>
-
+    <!--Validação(cadastro)-->
     <%
     let erroValidacao =  {
         "nome": "", 
@@ -45,6 +45,7 @@ html>
         });
     }
     %>
+    <!--Fim da Validação(cadastro)-->
 
     <form action="/cadastro" method="POST" class="quadrado">
         <h1>Cadastro</h1>
@@ -62,7 +63,7 @@ html>
             </article>
             <br>
             <article>
-                <label for="????">Data de Nascimento:</label> <!--Isso nao interessa por enquanto-->
+                <label for="????">Data de Nascimento:</label> <!--Isso não interessa por enquanto-->
                 <input type="date" id="??" name="??">
             </article>
             <br>
@@ -84,7 +85,3 @@ html>
     </form>
 </body>
 </html>
-
-
-
-<!---teste-->
