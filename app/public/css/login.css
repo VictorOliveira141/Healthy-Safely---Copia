@@ -59,6 +59,26 @@
     text-align: end;
     margin-bottom: 10px;
 }
+
+input{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+
+
+.erro {
+    border: 2px solid red;
+}
+
+span.msgErro {
+    color: red;
+    font-size: 0.9em;
+    margin-left: 10px;
+    }
+
 button{
     width: 100%; 
     padding: 10px;
