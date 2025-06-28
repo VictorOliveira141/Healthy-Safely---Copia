@@ -4,39 +4,39 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="../css/login.css">
         <link rel="icon" href="../imagem/logo 3.png" type="image/x-icon">
-        <script type="text/javascript" src="js/login.js"></script>
     </head>
     <body>
+
         <div class="banner"><!--Essa DIV faz com que fique uma imagem no fundo do site-->
-            <!--Header-->
+
             <header>
                 <article class="navbar">
                     <a href="/safely" class="logo"><img src="../imagem/logo 4.png" height="100px" width="120px" class="logo"></a>
                     <h3 class="serviço">Para utilizar os serviços do nosso site é necessário login ou cadastro!</h3>
                 </article>
             </header>
-            <!--Header-->
-
-            <!--Main-->
+           
             <main>
-                <form onsubmit="verificarUsuario(event);" class="quadrado">
+                <form action="/login" method="post" class="quadrado">
                     <article>
                         <h1>Login</h1>
                         <br>
                         <label for="usuarioDigitado">Endereço de email</label>
-                        <input type="text" id="usuarioDigitado" name="usuarioDigitado" class="digitarusuario">
+                        <input type="text" id="usuarioDigitado" name="usuarioDigitado" class="digitarusuario <%= erro ? 'erro' : '' %>">
                     </article>
                     <br>
                     <article>
                         <label for="senhaDigitada">Senha</label>
-                        <input type="password" id="senhaDigitada" name="senhaDigitada" class="digitarsenha">
+                        <input type="password" id="senhaDigitada" name="senhaDigitada" class="digitarsenha <%= erro ? 'erro' : '' %>">
                     </article>
+                    <% if (erro) { %><span class="msgErro"><%= erro %></span> <% } %>
+                    
                     <br>
                     <h4 class="cadastro">Não possui uma conta? <a href="/cadastro">Crie uma conta</a></h4>
                     <button type="submit" id="btnClique">Acessar</button>
                 </form>
             </main>
-             <!--Main-->
+
         </div><!--Essa DIV faz com que fique uma imagem no fundo do site-->
     </body>
 </html>
