@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 
+const usuarios = []
+
 /*Criação de rotas*/
 router.get("/", (req, res)=>{
     res.render("pages/safely");
@@ -12,7 +14,9 @@ router.get("/safely", (req, res)=>{
 })
 
 router.get("/login", (req, res)=>{
-    res.render("pages/login");
+    res.render("pages/login",
+        { erro: null }
+    );
 })
 
 router.get("/cadastro", (req, res)=>{
@@ -60,9 +64,29 @@ router.post("/cadastro",
                 "retorno":null}
             );
         }
-    res.redirect("/login");
+        
+        usuarios.push({
+            email: req.body.email,
+            senha: req.body.senha
+        });
+        
+        res.redirect("/login");
     }
 )
+
+router.post("/login", (req, res) => {
+    const { usuarioDigitado, senhaDigitada } = req.body;
+
+    const usuarioEncontrado = usuarios.find(u =>
+        u.email === usuarioDigitado && u.senha === senhaDigitada
+    );
+
+    if (usuarioEncontrado) {
+        res.redirect("/tela-inicial");
+    } else {
+        return res.render("pages/login", { erro: "*Não reconhecemos estas credenciais. Tente novamente." });
+    }
+});
 
 /*Fim*/
 
