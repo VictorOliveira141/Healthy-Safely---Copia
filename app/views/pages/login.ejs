@@ -7,6 +7,15 @@
     </head>
     <body>
 
+        <% if (sucesso === true) { %>
+        <script>
+        setTimeout(() => {
+            window.location.href = "/tela-inicial";}, 3000);
+            </script>
+            <% } %>
+
+        
+
         <div class="banner"><!--Essa DIV faz com que fique uma imagem no fundo do site-->
 
             <header>
@@ -35,6 +44,14 @@
                     <h4 class="cadastro">Não possui uma conta? <a href="/cadastro">Crie uma conta</a></h4>
                     <button type="submit" id="btnClique">Acessar</button>
                 </form>
+
+                <% if (sucesso) { %>
+                    <nav class="sucesso-mensagem">
+                        <i class="bi bi-hand-thumbs-up-fill"></i>
+                        <div>Login realizado com sucesso! Redirecionando...</div>
+                        <article class="barra"><div class="barra-progresso"></div></article>
+                    </nav>
+                <%} %>
             </main>
 
         </div><!--Essa DIV faz com que fique uma imagem no fundo do site-->

@@ -15,7 +15,10 @@ router.get("/safely", (req, res)=>{
 
 router.get("/login", (req, res)=>{
     res.render("pages/login",
-        { erro: null }
+        { erro: null,
+          sucesso: false,
+        
+        }
     );
 })
 
@@ -82,11 +85,16 @@ router.post("/login", (req, res) => {
     );
 
     if (usuarioEncontrado) {
-        res.redirect("/tela-inicial");
+        return res.render("pages/login", {erro:null, sucesso: true});
     } else {
-        return res.render("pages/login", { erro: "*Não reconhecemos estas credenciais. Tente novamente." });
+        return res.render("pages/login", { 
+            erro: "*Não reconhecemos estas credenciais. Tente novamente.", 
+            sucesso: false,
+         });
     }
 });
+
+
 
 /*Fim*/
 
