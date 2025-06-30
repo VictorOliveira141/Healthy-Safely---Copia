@@ -93,5 +93,38 @@ button{
 button:hover {
     background-color: rgba(18, 94, 77, 0.9);
 }
+
+
+
+
+.sucesso-mensagem {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sucesso-mensagem i{
+    font-size:60px;
+    color: green
+}
+
+.barra{
+    width: 300px;
+    height: 10px;
+    background: #ddd;
+    border-radius: 5px;
+    margin: 10px auto;
+    overflow: hidden
+}
+
+.barra-progresso{
+    height:100%;
+    width: 0%;
+    background: green;
+    animation: carregar 3s linear forwards;
+}
+
+@keyframes carregar{
+    to {width:100%}
+}
  /*fim do Main*/
  
