@@ -53,9 +53,10 @@
     transform: translate(-50%, -20%); 
 }
 
-.cadastro{
+.login{
     font-size: smaller;
     text-align: end;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 

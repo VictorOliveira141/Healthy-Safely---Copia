@@ -13,31 +13,26 @@
         "senha": "",
         "confirmar-senha": ""
     };
-
     let msgErro =  {
         "nome": "", 
         "email": "",
         "senha": "",
         "confirmar-senha": ""
     };
-
     if (erros) {
         erros.errors.forEach(function(erro) {
             if (erro.path == "nome") {
                 erroValidacao.nome = "erro";
                 msgErro.nome = erro.msg;
             }
-
             if (erro.path == "email") {
                 erroValidacao.email = "erro";
                 msgErro.email = erro.msg;
             }
-
             if (erro.path == "senha") {
                 erroValidacao.senha = "erro";
                 msgErro.senha = erro.msg;
             }
-
             if (erro.path == "confirmar-senha") {
                 erroValidacao["confirmar-senha"] = "erro";
                 msgErro["confirmar-senha"] = erro.msg;
@@ -63,7 +58,7 @@
             </article>
             <br>
             <article>
-                <label for="????">Data de Nascimento:</label> <!--Isso não interessa por enquanto-->
+                <label for="????">Data de Nascimento:</label>
                 <input type="date" id="??" name="??">
             </article>
             <br>
@@ -79,9 +74,9 @@
                 <span class="msgErro"><%= msgErro["confirmar-senha"] %></span>
             </article>
                     
-            <h4 class="cadastro">Já possui uma conta? Faça seu <a href="/login">login</a></h4>
+            <h4 class="login">Já possui uma conta? Faça seu <a href="/login">login</a></h4>
             
-            <button type="submit" id="btnClique">Acessar</button>
+            <button type="submit" id="btnClique">Juntar-se</button>
     </form>
 </body>
-</html> adadda
+</html>
