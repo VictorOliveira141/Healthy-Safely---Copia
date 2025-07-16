@@ -46,21 +46,44 @@
   left: 50%;
   transform: translate(-50%, -20%);
 }
-.profile-pic1 {
+
+
+.file-container i{
+  font-size: 200px;
+  color: gray;
+  z-index: 1;
+}
+.file-container input{
+  background-color: white;
+}
+.fotodeperfil{
   position: relative;
-  width: 100%;
+  font-size: 100px;
+  margin-bottom: 20px;
+  color: black;
+  border: 2px dashed black;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+  cursor: pointer;
+  overflow: hidden;
 }
-.profile-pic2 {
-  width: 100px;
-  height: 100px;
-  background: url("../imagem/perfil.png") 0.1px / cover;
+.fotodeperfil img{
   border-radius: 50%;
-  border: 3px solid white;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
 }
+#fileupload{
+  display: none
+}
+
+
 .login {
   font-size: smaller;
   text-align: end;
