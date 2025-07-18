@@ -47,55 +47,42 @@
   transform: translate(-50%, -20%);
 }
 
-
-.file-container i{
-  font-size: 200px;
-  color: gray;
-  z-index: 1;
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(9, 47, 39, 1);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 16px;
+  cursor: pointer;
 }
-.file-container input{
-  background-color: white;
-}
-.fotodeperfil{
-  position: relative;
-  font-size: 100px;
-  margin-bottom: 20px;
-  color: black;
-  border: 2px dashed black;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
+button div {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  cursor: pointer;
-  overflow: hidden;
+  gap: 10px;
 }
-.fotodeperfil img{
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
+.googleimg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
-#fileupload{
-  display: none
+button:hover {
+  background-color: rgba(18, 94, 77, 0.9);
 }
 
-
-.login {
-  font-size: smaller;
-  text-align: end;
-  margin-top: 5px;
-  margin-bottom: 10px;
+.formulario {
+  margin-top: 25px;
 }
 input {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
   border: 1px solid gray;
-  border-radius: 4px;
+  border-radius: 25px;
 }
 .erro {
   border: 2px solid red;
@@ -105,19 +92,10 @@ span.msgErro {
   font-size: 0.9em;
   margin-left: 10px;
 }
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: rgba(9, 47, 39, 1);
-  color: white;
-  border: none;
-  border-radius: 4px;
-  overflow: hidden;
-  font-size: 16px;
-  cursor: pointer;
+.login {
+  font-size: smaller;
+  text-align: end;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-button:hover {
-  background-color: rgba(18, 94, 77, 0.9);
-}
-
 /*fim do Main*/
