@@ -44,12 +44,17 @@ router.post(
 
   body("nome")
     .trim()
+    .notEmpty().withMessage("*Campo obrigatório!")
+    .bail()
     .isLength({ min: 3, max: 50 })
     .withMessage("*O Nome de usuário deve conter entre 3 e 50 caracteres!")
     .matches(/^[A-Za-zÀ-ú\s]+$/)
     .withMessage("*O nome deve conter apenas letras!"),
 
-  body("email").isEmail().withMessage("*Endereço de email inválido!"),
+  body("email")
+  .notEmpty().withMessage("*Campo obrigatório!")
+  .bail()
+  .isEmail().withMessage("*Endereço de email inválido!"),
 
   body("data")
     .notEmpty()
@@ -70,6 +75,9 @@ router.post(
     }),
 
   body("senha")
+  .notEmpty()
+  .withMessage("*Campo obrigatório!")
+  .bail()
     .isStrongPassword( { 
       minLowercase: 1, 
       minUppercase: 1, 
