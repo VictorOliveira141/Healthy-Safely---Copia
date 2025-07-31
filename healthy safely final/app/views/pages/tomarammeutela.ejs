@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Safely</title>
+    <link rel="stylesheet" href="../css/tomarammeutela.css">
+</head>
+
+<body>
+    <%- include('../partials/header.ejs') %>
+ <section class="carousel-container">
+  <section class="carousel-slide active">
+    <img src="../imagem/bannerzaodeacessoo.png" alt="Banner de Acesso Healthy Safely" />
+  </section>
+  <section class="carousel-slide">
+    <img src="../imagem/1x/bannerprogresso.png" alt="Banner de Progresso Healthy Safely" />
+  </section>
+  <button class="carousel-btn prev" aria-label="Anterior">&#10094;</button>
+  <button class="carousel-btn next" aria-label="Próximo">&#10095;</button>
+  <nav class="carousel-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+  </nav>
+</section>
+
+<script>
+let i=0,s=document.querySelectorAll('.carousel-slide'),d=document.querySelectorAll('.dot');
+function show(n){s.forEach((e,j)=>e.classList.toggle('active',j==n));d.forEach((e,j)=>e.classList.toggle('active',j==n));i=n;}
+document.querySelector('.next').onclick=_=>show((i+1)%s.length);
+document.querySelector('.prev').onclick=_=>show((i-1+s.length)%s.length);
+d.forEach((e,j)=>e.onclick=_=>show(j));
+setInterval(()=>show((i+1)%s.length),5000);
+</script>
+
+ <%- include('../partials/footer.ejs') %>
+    
+</body> 

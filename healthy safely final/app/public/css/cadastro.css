@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #092520;
+}
+
+main {
+  background-color: #092520;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Adiciona espaço para o footer */
+  padding-bottom: 60px;
+}
+
+.quadrado {
+  background-color: rgb(241, 234, 234);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px gray;
+  padding: 20px;
+  max-width: 340px; /* Diminuído */
+  width: 90vw;
+  min-width: 0;
+  /* Removido position: absolute e transform */
+  /* position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  height: 70%; */
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: rgba(9, 47, 39, 1);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ...demais estilos inalterados... */
+
+@media (max-width: 900px) {
+  .quadrado {
+    max-width: 95vw;
+    padding: 14px;
+    margin: 30px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .quadrado {
+    padding: 8px;
+    font-size: 13px;
+    margin: 10px auto;
+  }
+  button {
+    font-size: 13px;
+  }
+}
+
+button div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.googleimg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+button:hover {
+  background-color: rgba(18, 94, 77, 0.9);
+}
+
+.formulario {
+  margin-top: 25px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid gray;
+  border-radius: 25px;
+}
+
+.erro {
+  border: 2px solid red;
+}
+
+span.msgErro {
+  color: red;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+.login {
+  font-size: smaller;
+  text-align: end;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 900px) {
+  .banner {
+    height: 80vh;
+  }
+  .quadrado {
+    max-width: 95vw;
+    height: auto;
+    padding: 14px;
+    position: static;
+    transform: none;
+    margin: 30px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    height: 40vh;
+    min-height: 200px;
+    background-position: center top;
+  }
+  .quadrado {
+    padding: 8px;
+    font-size: 13px;
+    margin: 10px auto;
+  }
+  button {
+    font-size: 13px;
+  }
+}
