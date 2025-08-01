@@ -84,7 +84,7 @@ router.post(
       minNumbers: 1, 
       minSymbols: 1
     })
-    .withMessage("*Sua senha não é forte suficiente."),
+    .withMessage("*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!"),
 
   body("confirmar-senha")
     .notEmpty()
