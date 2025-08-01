@@ -44,7 +44,7 @@
               name="email"
               placeholder="example123@gmail.com"
               value="<%= valores.email %>"
-              class="<%= erroValidacao.email %>"
+              class="<%= erroValidacao.email || sucessoValidacao.email %>"
             />
             <span class="msgErro"><%= msgErro.email %></span>
           </section>
@@ -73,6 +73,11 @@
               class="<%= erroValidacao.senha %>"
             />
             <span class="msgErro"><%= msgErro.senha %></span>
+            <br>
+            <label> Sua senha deve conter: <br>
+              ✔ uma letra maiúscula <BR>
+              ✔ um número <bR>
+              ✔ um caractere especial</label>
           </section>
 
           <br />
