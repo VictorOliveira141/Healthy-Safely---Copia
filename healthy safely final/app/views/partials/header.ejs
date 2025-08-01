@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="/css/header.css">
  <header class="header">
         <section class="header-geral">
             <nav >
@@ -41,9 +41,38 @@
                 </section>
                 <a href="/login" class="header-link">ENTRAR</a>
                 <span class="header-divider">|</span>
-                <a href="/cadastro" class="header-link">CADASTRAR-SE</a>
+                <div id="cadastroModal" class="header-link" style="cursor: pointer;">CADASTRO</div>
+                
+                <div id="modalCadastro" class="modal hidden">
+                    <div class="modal-content">
+                        <button id="closeCadastroModal" class="close-btn">&times;</button>
+                        <h2>Escolha o tipo de cadastro</h2>
+                        <div class="opcoes-cadastro">
+                            <a href="/cadastroCliente" class="btn-cadastro">Usuário 1</a>
+                            <a href="/cadastroColaborador" class="btn-cadastro">Usuário 2</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                const openBtn = document.getElementById("cadastroModal");
+                const modal = document.getElementById("modalCadastro");
+                const closeBtn = document.getElementById("closeCadastroModal");
+                openBtn.addEventListener("click", () => {
+                    modal.classList.remove("hidden");
+                });
+                closeBtn.addEventListener("click", () => {
+                    modal.classList.add("hidden");
+                });
+
+                window.addEventListener("click", (e) => {
+                    if (e.target === modal) {
+                        modal.classList.add("hidden");
+                    }
+                    });
+                    </script>
+                    </section>
+                </section>
             </section>
-        </section>
-        </section>
-    </header>
+        </header>
 

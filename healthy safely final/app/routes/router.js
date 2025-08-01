@@ -17,8 +17,8 @@ router.get("/login", (req, res) => {
   res.render("pages/login", { erro: null, sucesso: false });
 });
 
-router.get("/cadastro", (req, res) => {
-  res.render("pages/cadastro", {
+router.get("/cadastroCliente", (req, res) => {
+  res.render("pages/cadastroCliente", {
     erros: null,
     valores: {
       nome: "",
@@ -40,7 +40,7 @@ router.get("/tela-inicial", (req, res) => {
 
 /*Criação de validações*/
 router.post(
-  "/cadastro",
+  "/cadastroCliente",
 
   body("nome")
     .trim()
@@ -107,7 +107,7 @@ router.post(
       msgErro[erro.path] = erro.msg;
   });
 
-  return res.render("pages/cadastro", {
+  return res.render("pages/cadastroCliente", {
     erros: errors,
     valores: req.body,
     retorno: null,
