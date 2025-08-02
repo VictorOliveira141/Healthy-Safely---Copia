@@ -3,38 +3,48 @@
   padding: 0;
   font-family: sans-serif;
 }
-
 body {
   background-color: #092520;
 }
-
 main {
-  background-color: #092520;
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  /* Adiciona espaço para o footer */
-  padding-bottom: 60px;
+  min-height: 100vh;
+  flex-direction: row;
 }
 
+/* LADO ESQUERDO */
+.lado-esquerdo {
+  width: 50%;
+  background-color: #ffffff;
+}
+
+/* LADO DIREITO */
+.lado-direito {
+  width: 50%;
+  background-color: #092520;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+  width: 100%;
+  padding: 20px;
+}
 .quadrado {
   background-color: rgb(241, 234, 234);
   border-radius: 8px;
   box-shadow: 0 4px 8px gray;
   padding: 20px;
-  max-width: 340px; /* Diminuído */
-  width: 90vw;
-  min-width: 0;
-  /* Removido position: absolute e transform */
-  /* position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -20%);
-  height: 70%; */
+  max-width: 340px;
+  width: 90%;
+  margin: 0 auto;
 }
 
-.google, .juntar {
+/* BOTÕES */
+.google,
+.juntar {
   width: 100%;
   margin-top: 15px;
   padding: 10px;
@@ -42,53 +52,32 @@ main {
   color: white;
   border: none;
   border-radius: 12px;
-  overflow: hidden;
   font-size: 16px;
   cursor: pointer;
-}
-
-/* ...demais estilos inalterados... */
-
-@media (max-width: 900px) {
-  .quadrado {
-    max-width: 95vw;
-    padding: 14px;
-    margin: 30px auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .quadrado {
-    padding: 8px;
-    font-size: 13px;
-    margin: 10px auto;
-  }
-  button {
-    font-size: 13px;
-  }
-}
-
-.google, .juntar div {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 }
+button:hover {
+  background-color: rgba(18, 94, 77, 0.9);
+}
 
+/* IMAGEM GOOGLE */
 .googleimg {
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
 
-button:hover {
-  background-color: rgba(18, 94, 77, 0.9);
-}
-
+/* FORMULÁRIO INTERNO */
 .formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 500px;
   margin-top: 25px;
 }
-
 input {
   width: 100%;
   padding: 10px;
@@ -96,17 +85,14 @@ input {
   border: 1px solid gray;
   border-radius: 25px;
 }
-
 .erro {
   border: 2px solid red;
 }
-
 span.msgErro {
   color: red;
   font-size: 0.9em;
   margin-left: 10px;
 }
-
 .login {
   font-size: smaller;
   text-align: end;
@@ -114,33 +100,41 @@ span.msgErro {
   margin-bottom: 10px;
 }
 
-/* --- RESPONSIVIDADE --- */
+/* RESPONSIVIDADE */
 @media (max-width: 900px) {
+  main {
+    flex-direction: column;
+  }
+
+  .lado-esquerdo,
+  .lado-direito {
+    width: 100%;
+  }
+
+  .quadrado {
+    max-width: 95vw;
+    padding: 14px;
+    margin: 30px auto;
+  }
+
   .banner {
     height: 80vh;
   }
-  .quadrado {
-    max-width: 95vw;
-    height: auto;
-    padding: 14px;
-    position: static;
-    transform: none;
-    margin: 30px auto;
-  }
 }
-
 @media (max-width: 600px) {
-  .banner {
-    height: 40vh;
-    min-height: 200px;
-    background-position: center top;
-  }
   .quadrado {
     padding: 8px;
     font-size: 13px;
     margin: 10px auto;
   }
+
   button {
     font-size: 13px;
+  }
+
+  .banner {
+    height: 40vh;
+    min-height: 200px;
+    background-position: center top;
   }
 }
