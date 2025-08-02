@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/modal.css">
+
  <header class="header">
         <section class="header-geral">
             <nav >
@@ -35,6 +37,8 @@
            <a href="/tomarammeutela"> <img src="../imagem/1x/logozeko.png" alt="Logo Healthy Safely" height="77px" width="auto",></a>
            
             </section>
+
+            <!--Modal do cadastro-->
             <section class="header-ladodireito">
                 <section class="user-icon">
                     <img src="../imagem/iconezada.png" alt="User Icon" height="50px" width="50px">
@@ -43,17 +47,19 @@
                 <span class="header-divider">|</span>
                 <div id="cadastroModal" class="header-link" style="cursor: pointer;">CADASTRO</div>
                 
-                <div id="modalCadastro" class="modal hidden">
-                    <div class="modal-content">
+                <section id="modalCadastro" class="modal hidden">
+                    <article class="modal-content">
                         <button id="closeCadastroModal" class="close-btn">&times;</button>
                         <h2>Escolha o tipo de cadastro</h2>
                         <div class="opcoes-cadastro">
-                            <a href="/cadastroCliente" class="btn-cadastro">Usuário 1</a>
-                            <a href="/cadastroColaborador" class="btn-cadastro">Usuário 2</a>
+                            <a href="/cadastroCliente" class="btn-cadastro">Como cliente</a>
+                            <a href="/cadastroColaborador" class="btn-cadastro">Como colaborador</a>
                         </div>
-                    </div>
-                </div>
+                    </article>
+                </section>
+                <!---->
                 
+                <!--Script para abrir o modal-->
                 <script>
                 const openBtn = document.getElementById("cadastroModal");
                 const modal = document.getElementById("modalCadastro");
@@ -70,9 +76,10 @@
                         modal.classList.add("hidden");
                     }
                     });
-                    </script>
-                    </section>
-                </section>
+                </script>
+                <!---->
             </section>
-        </header>
+        </section>
+    </section>
+</header>
 

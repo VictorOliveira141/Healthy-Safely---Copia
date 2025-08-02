@@ -33,6 +33,23 @@ router.get("/cadastroCliente", (req, res) => {
   });
 });
 
+router.get("/cadastroColaborador", (req, res) => {
+  res.render("pages/cadastroColaborador", {
+    erros: null,
+    valores: {
+      nome: "",
+      email: "",
+      data: "",
+      senha: "",
+      "confirmar-senha": "",
+    },
+    retorno: null,
+    erroValidacao: {},
+    msgErro: {}
+  });
+});
+
+
 router.get("/tela-inicial", (req, res) => {
   res.render("pages/tomarammeutela");
 });
