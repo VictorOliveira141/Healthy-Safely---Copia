@@ -10,8 +10,7 @@
   </head>
 
   <body>
-
-     <%- include('../partials/header.ejs') %>
+    <%- include('../partials/header.ejs') %>
     <!--Script de encaminhamento depois de 3 segundo para a proxima pagina caso login esteja correto-->
     <% if (sucesso === true) { %>
     <script>
@@ -22,49 +21,55 @@
     <% } %>
     <!---->
 
-      <main>
-        <nav class="conteudo">
-          <form action="/login" method="post" class="quadrado">
-            <article>
-              <h1>Login</h1>
-              <br />
-              <label for="usuarioDigitado">Endereço de email</label>
-              <input
-                type="text"
-                id="usuarioDigitado"
-                name="usuarioDigitado"
-                class="digitarusuario <%= erro ? 'erro' : '' %>"
-              />
-            </article>
-            <br />
-            <article>
-              <label for="senhaDigitada">Senha</label>
-              <input
-                type="password"
-                id="senhaDigitada"
-                name="senhaDigitada"
-                class="digitarsenha <%= erro ? 'erro' : '' %>"
-              />
-            </article>
-            <% if (erro) { %><span class="msgErro"><%= erro %></span> <% } %>
+    <main>
+      <!-- Lado esquerdo-->
+      <section class="lado-esquerdo"></section>
 
+      <!-- Lado direito com formulário -->
+      <section class="lado-direito">
+        <form action="/login" method="post" class="quadrado">
+          <article>
+            <h1>Login</h1>
             <br />
-            <button type="submit" id="btnClique" class="acessar">Acessar</button>
-            <h4 class="cadastro">
-              Não possui uma conta? <a href="/cadastroCliente">Crie uma conta</a>
-            </h4>
-          </form>
+            <label for="usuarioDigitado">Endereço de email</label>
+            <input
+              type="text"
+              id="usuarioDigitado"
+              name="usuarioDigitado"
+              class="digitarusuario <%= erro ? 'erro' : '' %>"
+            />
+          </article>
+          <br />
+          <article>
+            <label for="senhaDigitada">Senha</label>
+            <input
+              type="password"
+              id="senhaDigitada"
+              name="senhaDigitada"
+              class="digitarsenha <%= erro ? 'erro' : '' %>"
+            />
+          </article>
+          <% if (erro) { %><span class="msgErro"><%= erro %></span> <% } %>
 
-          <% if (sucesso) { %>
-          <nav class="sucesso-mensagem">
-            <i class="bi bi-hand-thumbs-up-fill"></i>
-            <section>Login realizado com sucesso! Redirecionando...</section>
-            <article class="barra"><section class="barra-progresso"></section></article>
-          </nav>
-          <%} %>
+          <br />
+          <button type="submit" id="btnClique" class="acessar">Acessar</button>
+          <h4 class="cadastro">
+            Não possui uma conta?
+            <a href="#" onclick="abrirModalCadastro()">Crie uma conta</a>
+          </h4>
+        </form>
+
+        <% if (sucesso) { %>
+        <nav class="sucesso-mensagem">
+          <i class="bi bi-hand-thumbs-up-fill"></i>
+          <section>Login realizado com sucesso! Redirecionando...</section>
+          <article class="barra">
+            <section class="barra-progresso"></section>
+          </article>
         </nav>
-      </main>
-    </article>
+        <%} %>
+      </section>
+    </main>
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

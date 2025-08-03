@@ -66,16 +66,24 @@
                 const closeBtn = document.getElementById("closeCadastroModal");
                 openBtn.addEventListener("click", () => {
                     modal.classList.remove("hidden");
+                    document.body.style.overflow = "hidden";
                 });
                 closeBtn.addEventListener("click", () => {
                     modal.classList.add("hidden");
+                    document.body.style.overflow = ""; 
                 });
 
                 window.addEventListener("click", (e) => {
                     if (e.target === modal) {
                         modal.classList.add("hidden");
+                        document.body.style.overflow = ""; 
                     }
                     });
+
+                function abrirModalCadastro() {
+                    modal.classList.remove("hidden");
+                    document.body.style.overflow = "hidden";  /*Essa função faz com que a pagina abra em qualquer lugar*/
+                }
                 </script>
                 <!---->
             </section>
