@@ -87,16 +87,21 @@
               </section>
 
               <section>
-                <label for="confirmar-senha">Confirmar senha:</label>
-                <input type="password" id="confirmar-senha"
-                name="confirmar-senha" placeholder="Confirme sua senha"
-                value="<%= valores["confirmar-senha"] %>" class="<%=
-                erroValidacao["confirmar-senha"] %>" />
-                <span class="msgErro"><%= msgErro["confirmar-senha"] %></span>
+                <label for="confirmarSenha">Confirmar senha:</label>
+                <input
+                  type="password"
+                  id="confirmarSenha"
+                  name="confirmarSenha"
+                  placeholder="Confirme sua senha"
+                  value="<%= valores.confirmarSenha %>"
+                  class="<%= erroValidacao.confirmarSenha %>"
+                />
+                <span class="msgErro"><%= msgErro.confirmarSenha %></span>
               </section>
 
               <h1 class="login">
-                Já possui uma conta? Faça seu <a href="/login">login</a>
+                Já possui uma conta? Faça seu <a href="/login">login</a> ou
+                torne-se um <a href="/cadastroColaborador">colaborador</a>
               </h1>
 
               <button type="submit" id="btnClique" class="juntar">
@@ -106,7 +111,6 @@
           </form>
         </article>
       </section>
-      <!-- Fim lado direito com formulário -->
     </main>
 
     <%- include('../partials/footer.ejs') %>

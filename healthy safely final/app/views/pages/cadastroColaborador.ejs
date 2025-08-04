@@ -46,38 +46,93 @@
             id="formFarmacia"
             class="quadrado"
             method="POST"
-            action="/cadastroColaborador/farmacia"
+            action="/cadastroFarmacia"
           >
             <h3>Dados da Farmácia</h3>
             <input
               type="text"
-              name="nome_farmacia"
+              name="nomeFarmacia"
               placeholder="Nome da farmácia"
-              required
+              value="<%= valoresFarmacia.nomeFarmacia %>"
+              class="<%= erroValidacaoFarmacia.nomeFarmacia %>"
             />
-            <input type="text" name="cnpj" placeholder="CNPJ" required />
+            <span class="msgErro"><%= msgErroFarmacia.nomeFarmacia %></span>
+
+            <input
+              type="text"
+              name="CNPJ"
+              placeholder="CNPJ"
+              value="<%= valoresFarmacia.CNPJ %>"
+              class="<%= erroValidacaoFarmacia.CNPJ %>"
+            />
+            <span class="msgErro"><%= msgErroFarmacia.CNPJ %></span>
+
             <input
               type="text"
               name="responsavel"
               placeholder="Responsável"
-              required
+              value="<%= valoresFarmacia.responsavel %>"
+              class="<%= erroValidacaoFarmacia.responsavel %>"
             />
-            <input type="text" name="cidade" placeholder="Cidade" required />
-            <input type="text" name="estado" placeholder="Estado" required />
+            <span class="msgErro"><%= msgErroFarmacia.responsavel %></span>
+
             <input
-              type="url"
-              name="instagram"
-              placeholder="Instagram ou site"
+              type="text"
+              name="cidade"
+              placeholder="Cidade (Ex: São Paulo)"
+              value="<%= valoresFarmacia.cidade %>"
+              class="<%= erroValidacaoFarmacia.cidade %>"
             />
-            <input type="email" name="email" placeholder="E-mail" required />
-            <input type="password" name="senha" placeholder="Senha" required />
+            <span class="msgErro"><%= msgErroFarmacia.cidade %></span>
+
+            <input
+              type="text"
+              name="estado"
+              placeholder="Estado (Ex: SP, RJ, MG)"
+              value="<%= valoresFarmacia.estado %>"
+              class="<%= erroValidacaoFarmacia.estado %>"
+            />
+            <span class="msgErro"><%= msgErroFarmacia.estado %></span>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              value="<%= valoresFarmacia.email %>"
+              class="<%= erroValidacaoFarmacia.email %>"
+            />
+            <span class="msgErro"><%= msgErroFarmacia.email %></span>
+
             <input
               type="password"
-              name="confirmarsenha"
-              placeholder="Confirmar Senha"
-              required
+              name="senha"
+              placeholder="Senha"
+              value="<%= valoresFarmacia.senha %>"
+              class="<%= erroValidacaoFarmacia.senha %>"
             />
+            <span class="msgErro"><%= msgErroFarmacia.senha %></span>
 
+            <br />
+            <label>
+              Sua senha deve conter: <br />
+              ✔ uma letra maiúscula <br />
+              ✔ um número <br />
+              ✔ um caractere especial
+            </label>
+
+            <input
+              type="password"
+              name="confirmarSenha"
+              placeholder="Confirmar Senha"
+              value="<%= valoresFarmacia.confirmarSenha %>"
+              class="<%= erroValidacaoFarmacia.confirmarSenha %>"
+            />
+            <span class="msgErro"><%= msgErroFarmacia.confirmarSenha %></span>
+
+            <h1 class="login">
+              Já possui uma conta? Faça seu <a href="/login">login</a> ou
+              torne-se um <a href="/cadastroCliente">cliente</a>
+            </h1>
             <button type="submit" class="cadastrar-profissional">
               Cadastrar Farmácia
             </button>
@@ -88,46 +143,105 @@
             id="formProfissional"
             class="quadrado hidden"
             method="POST"
-            action="/cadastroColaborador/profissional"
+            action="/cadastroProfissional"
           >
             <h3>Dados do Profissional</h3>
             <input
               type="text"
               name="nome"
               placeholder="Nome completo"
-              required
+              value="<%= valoresProfissional.nome %>"
+              class="<%= erroValidacaoProfissional.nome %>"
             />
+            <span class="msgErro"><%= msgErroProfissional.nome %></span>
+            <br />
 
-            <select name="profissao" required>
+            <select
+              name="profissao"
+              class="<%= erroValidacaoProfissional.profissao %>"
+            >
               <option value="">Profissão</option>
-              <option value="medico">Médico</option>
-              <option value="nutricionista">Nutricionista</option>
-              <option value="educador">Educador Físico</option>
-              <option value="outro">Outro</option>
+              <option
+                value="medico <%= valoresProfissional.profissao === 'medico' ? 'selected' : '' %>"
+              >
+                Médico
+              </option>
+              <option
+                value="nutricionista <%= valoresProfissional.profissao === 'nutricionista' ? 'selected' : '' %>"
+              >
+                Nutricionista
+              </option>
+              <option
+                value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
+              >
+                Educador Físico
+              </option>
+              <option
+                value="outro <%= valoresProfissional.profissao === 'outro' ? 'selected' : '' %>"
+              >
+                Outro
+              </option>
             </select>
+            <span class="msgErro"><%= msgErroProfissional.profissao %></span>
+
             <input
               type="text"
-              name="registro"
+              name="CREF"
               placeholder="CRM / CRN / CREF"
-              required
+              value="<%= valoresProfissional.CREF %>"
+              class="<%= erroValidacaoProfissional.CREF %>"
             />
+            <span class="msgErro"><%= msgErroProfissional.CREF %></span>
+
             <input
               type="text"
               name="especialidade"
               placeholder="Especialidade (opcional)"
+              value="<%= valoresProfissional.especialidade %>"
             />
-            <br />
-            <select name="atende_online">
-              <option value="sim">Atende online</option>
-              <option value="nao">Não atende online</option>
-            </select>
+
             <input
               type="tel"
               name="whatsapp"
               placeholder="WhatsApp profissional"
+              value="<%= valoresProfissional.whatsapp %>"
+              class="<%= erroValidacaoProfissional.whatsapp %>"
             />
-            <input type="email" name="email" placeholder="E-mail" required />
-            <input type="password" name="senha" placeholder="Senha" required />
+            <span class="msgErro"><%= msgErroProfissional.whatsapp %></span>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              value="<%= valoresProfissional.email %>"
+              class="<%= erroValidacaoProfissional.email %>"
+            />
+            <span class="msgErro"><%= msgErroProfissional.email %></span>
+
+            <input
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              value="<%= valoresProfissional.senha %>"
+              class="<%= erroValidacaoProfissional.senha %>"
+            />
+            <span class="msgErro"><%= msgErroProfissional.senha %></span>
+
+            <input
+              type="password"
+              name="confirmarSenha"
+              placeholder="Confirmar Senha"
+              value="<%= valoresProfissional.confirmarSenha %>"
+              class="<%= erroValidacaoProfissional.confirmarSenha %>"
+            />
+            <span class="msgErro"
+              ><%= msgErroProfissional.confirmarSenha %></span
+            >
+
+            <h1 class="login">
+              Já possui uma conta? Faça seu <a href="/login">login</a> ou
+              torne-se um <a href="/cadastroCliente">cliente</a>
+            </h1>
             <button type="submit" class="cadastrar-profissional">
               Cadastrar Profissional
             </button>
@@ -136,7 +250,10 @@
       </section>
     </main>
 
+    <!-- Script para controle de formulário ativo -->
     <script>
+      const formularioAtivo =
+        "<%= typeof formularioAtivo !== 'undefined' ? formularioAtivo : 'farmacia' %>";
       function mostrarFormulario(tipo) {
         const formFarmacia = document.getElementById("formFarmacia");
         const formProfissional = document.getElementById("formProfissional");
@@ -156,6 +273,7 @@
           btnFarmacia.classList.remove("ativo");
         }
       }
+      mostrarFormulario(formularioAtivo);
     </script>
 
     <%- include('../partials/footer.ejs') %>

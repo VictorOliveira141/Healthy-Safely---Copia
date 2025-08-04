@@ -36,6 +36,8 @@
               type="text"
               id="usuarioDigitado"
               name="usuarioDigitado"
+              placeholder="Digite seu email"
+              value="<%= valores?.usuarioDigitado || '' %>"
               class="digitarusuario <%= erro ? 'erro' : '' %>"
             />
           </article>
@@ -46,17 +48,20 @@
               type="password"
               id="senhaDigitada"
               name="senhaDigitada"
+              placeholder="Digite sua senha"
+              value="<%= valores?.senhaDigitada || '' %>"
               class="digitarsenha <%= erro ? 'erro' : '' %>"
             />
           </article>
           <% if (erro) { %><span class="msgErro"><%= erro %></span> <% } %>
 
-          <br />
-          <button type="submit" id="btnClique" class="acessar">Acessar</button>
           <h4 class="cadastro">
             Não possui uma conta?
             <a href="#" onclick="abrirModalCadastro()">Crie uma conta</a>
           </h4>
+
+          <br />
+          <button type="submit" id="btnClique" class="acessar">Acessar</button>
         </form>
 
         <% if (sucesso) { %>
