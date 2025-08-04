@@ -1,5 +1,5 @@
 html, body {
-  background: #013220 !important; /* verde escuro do footer */
+  background: #cee6dd !important; /* verde escuro do footer */
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -74,18 +74,28 @@ main {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(20,60,40,0.7);
+  background: #00b86b;
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  font-size: 28px;
+  width: 48px;
+  height: 48px;
+  font-size: 32px;
   cursor: pointer;
   z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.carousel-btn.prev { left: 12px; }
-.carousel-btn.next { right: 12px; }
+.carousel-btn:hover {
+  background: #00995c;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+.carousel-btn.prev { left: 24px; }
+.carousel-btn.next { right: 24px; }
+
 .carousel-dots {
   text-align: center;
   position: absolute;
@@ -170,4 +180,76 @@ main {
 
 .btn-cadastro:hover {
   background: #318f75;
+}
+
+.banner-ofertas img {
+    width: 80%;
+    height: 300px;
+   
+    display: block;
+    margin: 30px auto 10px auto;
+}
+.validade {
+    text-align: center;
+    color: #122a27;
+    margin-bottom: 30px;
+    font-size: 1.3em;
+}
+.produtos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 0 40px;
+}
+.produto {
+    background: #174d3c;
+    border-radius: 12px;
+    padding: 20px;
+    width: 220px;
+    box-shadow: 0 2px 8px #0002;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.produto img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+.produto h3 {
+    font-size: 1.1em;
+    margin: 10px 0 5px 0;
+}
+.estrelas {
+    color: #ffe600;
+    font-size: 1.2em;
+    margin-bottom: 8px;
+}
+.preco {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: #cee6dd;
+}
+.desconto {
+    color: #b6ff00;
+    font-weight: bold;
+    margin-left: 8px;
+}
+button {
+    background: #00b86b;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 8px;
+}
+button:hover {
+    background: #00995c;
+}
+
+h3 {
+  color: #cee6dd;
 }
