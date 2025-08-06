@@ -172,7 +172,7 @@ body {
 
 
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 1024px) {
+@media (max-width: 800px) {
   .header-geral {
     padding: 18px 16px 14px 16px;
   }
@@ -186,7 +186,7 @@ body {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 400px) {
   .header-geral {
     flex-direction: column;
     align-items: flex-start;
