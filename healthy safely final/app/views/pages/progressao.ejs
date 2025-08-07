@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gráfico Simples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    .grafico-container {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      height: 240px; /* Altura total do gráfico */
+      border-left: 1px solid #333;
+      border-bottom: 1px solid #333;
+      max-width: 700px;
+      margin-bottom: 20px;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    /* Linhas horizontais */
+    .linha {
+      position: absolute;
+      width: 100%;
+      border-top: 1px dashed #ccc;
+      color: #666;
+      font-size: 12px;
+      left: 0;
+      padding-left: 5px;
+    }
+
+    /* Posiciona as linhas por altura */
+    .linha[data-h="12"] { bottom: 100%; }
+    .linha[data-h="10"] { bottom: 83.33%; }
+    .linha[data-h="8"]  { bottom: 66.66%; }
+    .linha[data-h="6"]  { bottom: 50%; }
+    .linha[data-h="4"]  { bottom: 33.33%; }
+    .linha[data-h="2"]  { bottom: 16.66%; }
+    .linha[data-h="0"]  { bottom: 0; }
+
+    /* Barras */
+    .barra {
+      width: 60px;
+      background: #4caf50;
+      border-radius: 4px 4px 0 0;
+      margin-left: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      transition: height 0.3s ease;
+      cursor: default;
+    }
+
+    .valor {
+      width: 100%;
+      background-color: #4caf50;
+      border-radius: 4px 4px 0 0;
+      transition: height 0.3s ease;
+    }
+
+    .label {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .input-area {
+      max-width: 700px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input[type="number"] {
+      width: 120px;
+      padding: 8px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      outline-offset: 2px;
+      outline-color: #4caf50;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+      background-color: #4caf50;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #3a9d3a;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Gráfico de Horas - Progressão</h2>
+
+  <div class="grafico-container" id="grafico">
+    <div class="linha" data-h="12">12h</div>
+    <div class="linha" data-h="10">10h</div>
+    <div class="linha" data-h="8">8h</div>
+    <div class="linha" data-h="6">6h</div>
+    <div class="linha" data-h="4">4h</div>
+    <div class="linha" data-h="2">2h</div>
+    <div class="linha" data-h="0">0h</div>
+  </div>
+
+  <div class="input-area">
+    <input type="number" id="inputHoras" min="0" max="12" step="0.1" placeholder="Digite horas (0-12)" />
+    <button onclick="adicionarBarra()">Adicionar</button>
+  </div>
+
+  <script>
+    const grafico = document.getElementById("grafico");
+    const MAX_BARRAS = 6;
+
+    function adicionarBarra() {
+      const input = document.getElementById("inputHoras");
+      const valor = parseFloat(input.value);
+
+      if (isNaN(valor) || valor < 0 || valor > 12) {
+        alert("Digite um valor entre 0 e 12 horas!");
+        return;
+      }
+
+      // Calcula altura em px proporcional ao valor (240px é 12h)
+      const alturaTotal = 240;
+      const alturaBarra = (valor / 12) * alturaTotal;
+
+      // Formata data (incrementa 1 dia da última barra)
+      let ultimaData = null;
+      if (grafico.querySelector(".barra:last-child .label")) {
+        ultimaData = grafico.querySelector(".barra:last-child .label").textContent;
+      }
+
+      let novaData;
+      if (!ultimaData) {
+        novaData = new Date();
+      } else {
+        const [dia, mes] = ultimaData.split("/").map(Number);
+        const anoAtual = new Date().getFullYear();
+        novaData = new Date(anoAtual, mes - 1, dia + 1);
+      }
+
+      const diaFormat = String(novaData.getDate()).padStart(2, "0");
+      const mesFormat = String(novaData.getMonth() + 1).padStart(2, "0");
+      const dataFormatada = `${diaFormat}/${mesFormat}`;
+
+      // Remove barra mais antiga se já tem 7
+      const barras = grafico.querySelectorAll(".barra");
+      if (barras.length >= MAX_BARRAS) {
+        barras[0].remove();
+      }
+
+      // Cria a barra
+      const barra = document.createElement("div");
+      barra.classList.add("barra");
+      barra.style.height = alturaBarra + "px";
+
+      // Label dentro da barra, embaixo
+      const label = document.createElement("span");
+      label.classList.add("label");
+      label.textContent = dataFormatada;
+
+      barra.appendChild(label);
+      grafico.appendChild(barra);
+
+      input.value = "";
+      input.focus();
+    }
+  </script>
+
+</body>
+</html>

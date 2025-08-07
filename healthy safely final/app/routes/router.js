@@ -14,6 +14,10 @@ router.get("/tomarammeutela", (req, res) => {
   res.render("pages/tomarammeutela");
 });
 
+router.get("/progressao", (req, res) => {
+  res.render("pages/progressao");
+});
+
 router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
