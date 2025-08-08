@@ -179,6 +179,15 @@ body {
   box-sizing: border-box;
 }
 
+.barraPesquisa{
+  justify-content: center;
+  background: #17594A;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .search-icon {
   margin-right: 12px;
   display: flex;
