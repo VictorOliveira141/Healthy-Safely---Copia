@@ -1,12 +1,79 @@
 footer {
-  background-color: #013220;
+  background-color: #17594a;
   color: white;
-  text-align: center;
-  padding: 20px 0;
-  width: 100%;
+  padding: 20px 40px;
   font-family: Arial, sans-serif;
-  top: 40px;
-  margin: 0;
-  
 }
 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Lado direito: logo + botão + redes sociais */
+.footer-logo {
+  max-height: 100px;
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.FaleConosco {
+  background-color: rgba(9, 47, 39, 1);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s;
+}
+.FaleConosco:hover {
+  background-color: #b2cfc3;
+}
+
+/* Ícones das redes sociais */
+.footer-social {
+  display: flex;
+  gap: 10px;
+  font-size: 22px;
+}
+.footer-social a {
+  color: white;
+  transition: color 0.3s;
+}
+.footer-social a:hover {
+  color: #b2cfc3;
+}
+
+/* Lado esquerdo: links institucionais */
+.footer-links {
+  margin-top: 50px;
+  margin-right: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  max-width: 50%;
+}
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+.footer-divider {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Texto final */
+.footer-text {
+  margin-top: 15px;
+  font-size: 13px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+}
