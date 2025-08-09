@@ -1,97 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthy Safely</title>
-    <link rel="stylesheet" href="../css/tomarammeutela.css" />
-  </head>
-
-  <body>
+    <link rel="stylesheet" href="../css/tomarammeutela.css">
+</head>
+<body>
     <%- include('../partials/header.ejs') %>
-    <section class="carousel-container">
-      <section class="carousel-slide active">
-        <img
-          class="banneracesso"
-          src="../imagem/bannerzaodeacessoo.PNG"
-          alt="Banner de Acesso Healthy Safely"
-        />
-      </section>
-      <section class="carousel-slide">
-        <img
-          class="bannerprogresso"
-          src="../imagem/1x/bannerprogresso.png"
-          alt="Banner de Progresso Healthy Safely"
-        />
-      </section>
-      <section class="botao">
-        <article class="carousel-btn prev" aria-label="Anterior">
-          &#10094;
-        </article>
-        <article class="carousel-btn next" aria-label="Próximo">
-          &#10095;
-        </article>
-      </section>
 
-      <nav class="carousel-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-      </nav>
+    <!-- Carrossel de banners -->
+    <section class="carousel-container">
+        <section class="carousel-slide active">
+            <img class="banneracesso" src="../imagem/bannerzaodeacessoo.PNG" alt="Banner de Acesso Healthy Safely" />
+        </section>
+        <section class="carousel-slide">
+            <img class="bannerprogresso" src="../imagem/1x/bannerprogresso.png" alt="Banner de Progresso Healthy Safely" />
+        </section>
+        <section class="botao">
+            <article class="carousel-btn prev" aria-label="Anterior">&#10094;</article>
+            <article class="carousel-btn next" aria-label="Próximo">&#10095;</article>
+        </section>
+        <nav class="carousel-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+        </nav>
     </section>
 
     <script>
-      let i = 0,
-        s = document.querySelectorAll(".carousel-slide"),
-        d = document.querySelectorAll(".dot");
-      function show(n) {
-        s.forEach((e, j) => e.classList.toggle("active", j == n));
-        d.forEach((e, j) => e.classList.toggle("active", j == n));
-        i = n;
-      }
-      document.querySelector(".next").onclick = (_) => show((i + 1) % s.length);
-      document.querySelector(".prev").onclick = (_) =>
-        show((i - 1 + s.length) % s.length);
-      d.forEach((e, j) => (e.onclick = (_) => show(j)));
-      setInterval(() => show((i + 1) % s.length), 5000);
+    let i=0,s=document.querySelectorAll('.carousel-slide'),d=document.querySelectorAll('.dot');
+    function show(n){s.forEach((e,j)=>e.classList.toggle('active',j==n));d.forEach((e,j)=>e.classList.toggle('active',j==n));i=n;}
+    document.querySelector('.next').onclick=_=>show((i+1)%s.length);
+    document.querySelector('.prev').onclick=_=>show((i-1+s.length)%s.length);
+    d.forEach((e,j)=>e.onclick=_=>show(j));
+    setInterval(()=>show((i+1)%s.length),5000);
     </script>
 
-    <div class="banner-ofertas">
-      <img src="../imagem/confira.png" alt="Ofertas do Dia" />
-    </div>
-    <h2 class="validade">VÁLIDAS ATÉ HOJE!</h2>
-    <div class="produtos">
-      <div class="produto">
-        <img src="../imagem/omega3.png" alt="Ômega 3" />
-        <h3>Ômega 3 - 120 Cápsulas</h3>
-        <div class="estrelas">★★★★★</div>
-        <div class="preco">R$48,90 <span class="desconto">25% OFF</span></div>
-        <button>Comprar</button>
-      </div>
-      <div class="produto">
-        <img src="../imagem/whey.png" alt="whey protein" />
-        <h3>
-          Whey Protein Concentrado Pouch Integral Medica - 900g sabor baunilha
-        </h3>
-        <div class="estrelas">★★★★☆</div>
-        <div class="preco">R$95,50 <span class="desconto">12% OFF</span></div>
-        <button>Comprar</button>
-      </div>
-      <div class="produto">
-        <img src="../img/cimegripe.png" alt="Cimegripe" />
-        <h3>Cimegripe - 40 Cápsulas</h3>
-        <div class="estrelas">★★★★★</div>
-        <div class="preco">R$22,00 <span class="desconto">30% OFF</span></div>
-        <button>Comprar</button>
-      </div>
-      <div class="produto">
-        <img src="../img/vitamina_neo.png" alt="Vitamina NEO" />
-        <h3>Vitamina NEO Químico - 90 Cápsulas</h3>
-        <div class="estrelas">★★★★☆</div>
-        <div class="preco">R$34,45 <span class="desconto">21% OFF</span></div>
-        <button>Comprar</button>
-      </div>
-    </div>
+    <!-- Banner de ofertas -->
+    <figure class="banner-ofertas">
+        <img src="../imagem/confira.png" alt="Ofertas do Dia" class="bannerof" />
+    </figure>
 
+    <!-- Slider de produtos -->
+    <section class="slider-ml">
+        <button class="btn ml-prev" id="btn-prev">&#10094;</button>
+        <section class="slides-ml-wrapper">
+            <section class="slides-ml" id="slides-ml">
+                <article class="produto-ml">
+                    <img src="../imagem/omega3.png" alt="Ômega 3" />
+                    <h3>Ômega 3</h3>
+                    <p class="preco">R$ 39,99</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="../imagem/whey.png" alt="Whey protein" />
+                    <h3>Whey protein</h3>
+                    <p class="preco">R$ 99,90</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="../imagem/inalador.png" alt="Inalador" />
+                    <h3>Inalador</h3>
+                    <p class="preco">R$ 299,99</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="../imagem/vitaminac.png" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                     <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+            </section>
+        </section>
+        <button class="btn ml-next" id="btn-next">&#10095;</button>
+    </section>
+
+    <script>
+    const slides = document.getElementById('slides-ml');
+    const prevBtn = document.getElementById('btn-prev');
+    const nextBtn = document.getElementById('btn-next');
+    const produtoWidth = 260; // 240px card + 20px gap
+    let posicao = 0;
+
+    prevBtn.addEventListener('click', () => {
+        posicao += produtoWidth;
+        if (posicao > 0) {
+            posicao = -(produtoWidth * (slides.children.length - 4));
+        }
+        slides.style.transform = `translateX(${posicao}px)`;
+    });
+
+    nextBtn.addEventListener('click', () => {
+        posicao -= produtoWidth;
+        const limite = -(produtoWidth * (slides.children.length - 4));
+        if (posicao < limite) {
+            posicao = 0;
+        }
+        slides.style.transform = `translateX(${posicao}px)`;
+    });
+    </script>
+    
+  <section class="footer">
     <%- include('../partials/footer.ejs') %>
-  </body>
-</html>
+    </section>
