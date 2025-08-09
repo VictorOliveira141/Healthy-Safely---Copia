@@ -18,6 +18,10 @@ router.get("/progressao", (req, res) => {
   res.render("pages/progressao");
 });
 
+router.get("/tarefas", (req, res) => {
+  res.render("pages/tarefas");
+});
+
 router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
