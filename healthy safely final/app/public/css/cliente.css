@@ -95,7 +95,6 @@ main {
 /* LADO DIREITO */
 .lado-direito {
   width: 50%;
-
   display: flex;
   align-items: center;
   justify-content: flex-start; /* alinha ao topo */
@@ -151,7 +150,7 @@ button:hover {
   flex-direction: column;
   gap: 10px;
   max-width: 500px;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 input {
   width: 100%;
