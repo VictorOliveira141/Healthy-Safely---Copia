@@ -10,21 +10,94 @@ main {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url("../imagem/correndo.jpg"); /* Imagem de fundo */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  align-items: flex-start;
 }
 
 /* LADO ESQUERDO */
 .lado-esquerdo {
   width: 50%;
-  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 200px 20px 20px 20px;
 }
-
+.lado-esquerdo h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: rgb(241, 234, 234);
+}
+.lado-esquerdo p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  color: rgb(241, 234, 234);
+}
+.beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+.beneficios li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  color: rgb(241, 234, 234);
+}
+.depoimentos {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgb(241, 234, 234);
+}
+.depoimentos blockquote {
+  margin-bottom: 12px;
+  border-left: 4px solid #2d7a4b;
+  padding-left: 10px;
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+  max-width: 500px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+.slide {
+  display: none;
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: rgb(241, 234, 234);
+}
+.slide.ativo {
+  display: block;
+  animation: fade 0.5s ease-in-out;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 /* LADO DIREITO */
 .lado-direito {
   width: 50%;
-  background-color: #092520;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* alinha ao topo */
+  padding-top: 60px;
 }
 
 /* CONTAINER PRINCIPAL */
@@ -40,6 +113,7 @@ main {
   max-width: 340px;
   width: 90%;
   margin: 0 auto;
+  margin-top: 120px;
 }
 
 /* FORMULARIO INTERNO */
@@ -117,20 +191,21 @@ button:hover {
 }
 
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 700px) {
-  .conteudo {
-    height: auto;
-    padding: 15px 0;
+@media (max-width: 768px) {
+  main {
+    background-position: 25% 80%;
   }
-  .quadrado,
-  .sucesso-mensagem {
-    max-width: 95vw;
-    margin: 10px auto;
-    padding: 16px;
+
+
+  .lado-esquerdo {
+    display: none;
   }
-  .barra {
-    width: 90vw;
-    min-width: 100px;
+  .lado-direito {
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center; /* centraliza verticalmente */
   }
 }
 
@@ -144,3 +219,5 @@ button:hover {
     font-size: 13px;
   }
 }
+
+

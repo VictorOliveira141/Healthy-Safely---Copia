@@ -10,24 +10,30 @@ main {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
+    url("../imagem/consulta.jpg"); /* Imagem de fundo */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  align-items: flex-start;
 }
 
 /* LADO ESQUERDO */
 .lado-esquerdo {
   width: 50%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)),
-    url("../imagem/fundodosite.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 100px 20px 20px 20px;
 }
 .lado-esquerdo h2 {
   font-size: 3rem;
   margin-bottom: 10px;
-  color: #1c7569;
+  color: #28a745;
 }
 .lado-esquerdo p {
   font-size: 1.5rem;
@@ -61,12 +67,11 @@ main {
 /* LADO DIREITO */
 .lado-direito {
   width: 50%;
-  background-color: #092520;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* alinha ao topo */
+  padding-top: 60px;
 }
-
 /* CABECALHO DO FORMULÁRIO */
 .cabecalho-form {
   text-align: center;
@@ -173,31 +178,20 @@ span.msgErro {
 }
 
 /* --- RESPONSIVIDADE --- */
-@media (max-width: 900px) {
-  .banner {
-    height: 80vh;
+@media (max-width: 768px) {
+  main {
+    background-position: 25% 80%;
   }
-  .quadrado {
-    max-width: 95vw;
-    height: auto;
-    padding: 14px;
-    position: static;
-    transform: none;
-    margin: 30px auto;
+
+
+  .lado-esquerdo {
+    display: none;
   }
-}
-@media (max-width: 600px) {
-  .banner {
-    height: 40vh;
-    min-height: 200px;
-    background-position: center top;
-  }
-  .quadrado {
-    padding: 8px;
-    font-size: 13px;
-    margin: 10px auto;
-  }
-  button {
-    font-size: 13px;
+  .lado-direito {
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center; /* centraliza verticalmente */
   }
 }
