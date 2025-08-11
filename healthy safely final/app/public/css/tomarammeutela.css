@@ -1,9 +1,10 @@
 html, body {
-  background: #cee6dd !important; 
+  background: #f2f5f2 !important; 
   min-height: 100vh;
   margin: 0;
   padding: 0;
 }
+
 main {
   background: transparent;
 }
@@ -63,7 +64,7 @@ main {
   display: block;
 }
 .carousel-slide img {
-  width: 950px;
+  width: 1300px;
  height: 350;
   object-fit: contain;
   border-radius: 18px;
@@ -81,8 +82,8 @@ main {
   
 }
 
-.carousel-btn.prev {left: 170px; }
-.carousel-btn.next { right: 170px; }
+.carousel-btn.prev {left: 20px; }
+.carousel-btn.next { right: 20px; }
 
 .carousel-dots {
   text-align: center;

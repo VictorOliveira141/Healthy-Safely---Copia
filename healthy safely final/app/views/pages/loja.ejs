@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/loja.css">
+    <title>Loja</title>
+</head>
+<body>
+
+    <section class="partial">
+    <%- include('../partials/header.ejs') %>
+    </section>
+
+    <section class="bannerdalojainicial">
+        <img src="imagem/bannerdaloja.svg" alt="loja" class="bannerloja"> </section>
+
+         <article class="cuponsdispo">
+                <button class="cupomdispo">
+                    <h3 class="ltn_cupomdispo"> CUPONS DISPONIVEIS</h3>
+                </button>
+            </article>
+
+        <section class="cupons">
+        
+            <article class="60">
+                <img src="../imagem/60.svg" alt="descontão" class="desconto">
+            </article>
+             <article class="15">
+                <img src="../imagem/cupom.png" alt="descontão" class="desconto">
+            </article>
+             <article class="fretefull">
+                <img src="../imagem/chegaraohoje.svg" alt="descontão" class="desconto">
+            </article>
+        </section>
+
+           <article class="produtosdisponiveis">
+                <button class="produtekos">
+                    <h3 class="ltn_prodisponivel"> PRODUTOS EM DESTAQUE</h3>
+                </button>
+            </article>
+
+             <section class="slider-ml">
+        <button class="btn ml-prev" id="btn-prev">&#10094;</button>
+        <section class="slides-ml-wrapper">
+            <section class="slides-ml" id="slides-ml">
+                <article class="produto-ml">
+                    <img src="../imagem/omega3.png" alt="Ômega 3" />
+                    <h3>Ômega 3</h3>
+                    <p class="preco">R$ 39,99</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="../imagem/whey.png" alt="Whey protein" />
+                    <h3>Whey protein</h3>
+                    <p class="preco">R$ 99,90</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="../imagem/inalador.png" alt="Inalador" />
+                    <h3>Inalador</h3>
+                    <p class="preco">R$ 299,99</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="../imagem/vitaminac.png" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                     <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+                <article class="produto-ml">
+                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
+                    <h3>Vitamina C</h3>
+                    <p class="preco">R$ 39,00</p>
+                    <button class="btn-comprar">Comprar</button>
+                </article>
+            </section>
+        </section>
+        <button class="btn ml-next" id="btn-next">&#10095;</button>
+    </section>
+
+    <script>
+    const slides = document.getElementById('slides-ml');
+    const prevBtn = document.getElementById('btn-prev');
+    const nextBtn = document.getElementById('btn-next');
+    const produtoWidth = 260; // 240px card + 20px gap
+    let posicao = 0;
+
+    prevBtn.addEventListener('click', () => {
+        posicao += produtoWidth;
+        if (posicao > 0) {
+            posicao = -(produtoWidth * (slides.children.length - 4));
+        }
+        slides.style.transform = `translateX(${posicao}px)`;
+    });
+
+    nextBtn.addEventListener('click', () => {
+        posicao -= produtoWidth;
+        const limite = -(produtoWidth * (slides.children.length - 4));
+        if (posicao < limite) {
+            posicao = 0;
+        }
+        slides.style.transform = `translateX(${posicao}px)`;
+    });
+    </script>
+    
+  <section class="footer">
+    <%- include('../partials/footer.ejs') %>
+    </section>
+
+
+
+
+
+   
+    
+</body>
+</html>
+
+
+
+
+

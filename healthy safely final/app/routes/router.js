@@ -22,6 +22,10 @@ router.get("/tarefas", (req, res) => {
   res.render("pages/tarefas");
 });
 
+router.get("/loja", (req, res) => {
+  res.render("pages/loja");
+});
+
 router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
