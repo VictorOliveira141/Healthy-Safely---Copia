@@ -15,7 +15,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 40px 18px 40px;
+  padding: 24px;
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -119,9 +119,13 @@ body {
   width: auto;
   display: flex;
   align-items: center;
-  margin-left: -400px;
-  margin-top: 22px;
-  top: 22px;
+  margin: 0; /* antes tinha margin-left: -400px */
+  margin-left: 50px;
+}
+
+/* Removida a antiga .posição-logo com margem negativa */
+.posição-logo {
+  margin: 0;
 }
 
 .header-ladodireito {
@@ -138,14 +142,9 @@ body {
   margin-left: 0;
 }
 
-.posição-logo {
-  margin-left: -400px;
-}
-
 .user-icon svg {
   width: 56px;
   height: 56px;
-  margin-right: 30px;
 }
 
 .header-link {
@@ -207,4 +206,41 @@ body {
 .search-input::placeholder {
   color: #d8e6e1;
   font-weight: 00;
+}
+
+@media (max-width: 811px) {
+  .header-divider {
+    display: none;
+  }
+  .user-icon {
+    display: none;
+  }
+  .header-ladodireito {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 558px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  .header-ladodireito {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+  }
+  .search-input::placeholder {
+    color: #d8e6e1;
+    font-weight: 00;
+    font-size: 17px;
+  }
 }

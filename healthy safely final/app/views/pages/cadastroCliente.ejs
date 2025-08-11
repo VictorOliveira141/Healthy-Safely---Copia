@@ -8,8 +8,10 @@
     />
   </head>
 
+
   <body>
     <%- include('../partials/header.ejs') %>
+
 
     <main>
       <!-- Lado esquerdo-->
@@ -19,12 +21,14 @@
           Cadastre-se e aproveite todos os benefícios que preparamos para você.
         </p>
 
+
         <ul class="beneficios">
           <li>✅ Compras mais rápidas</li>
           <li>✅ Descontos exclusivos</li>
           <li>✅ Histórico de pedidos</li>
           <li>✅ Promoções antecipadas</li>
         </ul>
+
 
         <!-- Slider automático -->
         <div class="slider">
@@ -47,8 +51,10 @@
         </div>
       </section>
 
+
       <script src="../js/carrossel.js"></script>
       <!-- Fim lado esquerdo-->
+
 
       <!-- Lado direito com formulário -->
       <section class="lado-direito">
@@ -61,6 +67,7 @@
                 <span>Continue com Google</span>
               </section>
             </button>
+
 
             <article class="formulario">
               <h2>Dados de acesso</h2>
@@ -76,6 +83,7 @@
                 <span class="msgErro"><%= msgErro.nome %></span>
               </article>
 
+
               <section>
                 <input
                   type="text"
@@ -87,6 +95,7 @@
                 />
                 <span class="msgErro"><%= msgErro.email %></span>
               </section>
+
 
               <article>
                 <label for="data">Data de Nascimento:</label>
@@ -100,6 +109,7 @@
                 <span class="msgErro"><%= msgErro.data %></span>
               </article>
 
+
               <section>
                 <input
                   type="password"
@@ -111,6 +121,7 @@
                 />
                 <span class="msgErro"><%= msgErro.senha %></span>
 
+
                 <br />
                 <label>
                   Sua senha deve conter: <br />
@@ -119,6 +130,7 @@
                   ✔ um caractere especial
                 </label>
               </section>
+
 
               <section>
                 <label for="confirmarSenha">Confirmar senha:</label>
@@ -133,10 +145,12 @@
                 <span class="msgErro"><%= msgErro.confirmarSenha %></span>
               </section>
 
+
               <h1 class="login">
                 Já possui uma conta? Faça seu <a href="/login">login</a> ou
                 torne-se um <a href="/cadastroColaborador">colaborador</a>
               </h1>
+
 
               <button type="submit" id="btnClique" class="juntar">
                 Juntar-se
@@ -146,6 +160,7 @@
         </article>
       </section>
     </main>
+
 
     <%- include('../partials/footer.ejs') %>
   </body>

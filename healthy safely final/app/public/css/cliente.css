@@ -18,6 +18,7 @@ main {
   align-items: flex-start;
 }
 
+
 /* LADO ESQUERDO */
 .lado-esquerdo {
   width: 50%;
@@ -92,6 +93,7 @@ main {
   }
 }
 
+
 /* LADO DIREITO */
 .lado-direito {
   width: 50%;
@@ -100,6 +102,7 @@ main {
   justify-content: flex-start; /* alinha ao topo */
   padding-top: 60px;
 }
+
 
 /* CONTAINER PRINCIPAL */
 .container {
@@ -115,6 +118,7 @@ main {
   width: 90%;
   margin: 0 auto;
 }
+
 
 /* BOTÕES */
 .google,
@@ -137,12 +141,14 @@ button:hover {
   background-color: rgba(18, 94, 77, 0.9);
 }
 
+
 /* IMAGEM GOOGLE */
 .googleimg {
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
+
 
 /* FORMULÁRIO INTERNO */
 .formulario {
@@ -172,4 +178,24 @@ span.msgErro {
   text-align: end;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  main {
+    background-position: 25% 80%;
+  }
+
+
+  .lado-esquerdo {
+    display: none;
+  }
+  .lado-direito {
+    width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center; /* centraliza verticalmente */
+  }
 }
