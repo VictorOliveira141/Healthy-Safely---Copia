@@ -3,6 +3,7 @@ footer {
   color: white;
   padding: 20px 40px;
   font-family: Arial, sans-serif;
+  margin-top: 20px;
 }
 .footer-content {
   display: flex;
