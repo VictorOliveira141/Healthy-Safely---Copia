@@ -1,0 +1,28 @@
+html , body {
+    background-color: #065747 !important;
+}
+
+
+.tarefa-container{
+    background-color: #0E3931;
+    width: 45%;
+    height: 700px;
+    margin-left: 25%;
+    margin-top: 20px ;
+    gap: 20px;
+   }
+
+.lua img {
+    margin-top: 30px;
+    margin-left: 10%;
+}
+.tarefa-container h3 {
+   font-size: x-large;
+   color: white;
+   text-align: center;
+   font-size: 2em;
+   margin-top: -55px;
+ 
+   
+}
+

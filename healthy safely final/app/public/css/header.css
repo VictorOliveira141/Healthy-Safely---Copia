@@ -120,7 +120,7 @@ body {
   display: flex;
   align-items: center;
   margin: 0; /* antes tinha margin-left: -400px */
-  margin-left: 50px;
+  margin-right: 100px;
 }
 
 /* Removida a antiga .posição-logo com margem negativa */

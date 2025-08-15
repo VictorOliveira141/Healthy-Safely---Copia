@@ -25,6 +25,9 @@ router.get("/tarefas", (req, res) => {
 router.get("/loja", (req, res) => {
   res.render("pages/loja");
 });
+router.get("/sono", (req, res) => {
+  res.render("pages/sono");
+});
 
 router.get("/login", (req, res) => {
   res.render("pages/login", {
