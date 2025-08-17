@@ -14,31 +14,36 @@
     <main>
       <!-- Lado esquerdo-->
       <section class="lado-esquerdo">
-       <h2>Junte-se à nossa rede de colaboradores!</h2>
-  <p>
-    Seja um parceiro da nossa farmácia e aproveite vantagens exclusivas para impulsionar seus negócios.
-  </p>
+        <h2>Junte-se à nossa rede de colaboradores!</h2>
+        <p>
+          Seja um parceiro da nossa farmácia e aproveite vantagens exclusivas
+          para impulsionar seus negócios.
+        </p>
 
-  <div class="beneficios">
-    <h3>🏪 Para Farmácias</h3>
-    <ul>
-      <li>✅ Exposição dos seus produtos para milhares de clientes</li>
-      <li>✅ Gestão simples de estoque e pedidos</li>
-      <li>✅ Campanhas de marketing gratuitas</li>
-      <li>✅ Relatórios de vendas e desempenho</li>
-    </ul>
-  </div>
+        <div class="beneficios">
+          <h3>🏪 Para Farmácias</h3>
+          <ul>
+            <li>✅ Exposição dos seus produtos para milhares de clientes</li>
+            <li>✅ Gestão simples de estoque e pedidos</li>
+            <li>✅ Campanhas de marketing gratuitas</li>
+            <li>✅ Relatórios de vendas e desempenho</li>
+          </ul>
+        </div>
 
-  <div class="beneficios">
-    <h3>💊 Para Profissionais de Saúde</h3>
-    <ul>
-      <li>✅ Agenda online para consultas e atendimentos</li>
-      <li>✅ Divulgação do seu perfil profissional</li>
-      <li>✅ Acesso a preços especiais em produtos</li>
-      <li>✅ Suporte exclusivo para atendimento aos clientes</li>
-    </ul>
-  </div>
-</section>
+        <div class="beneficios">
+          <h3>💊 Para Profissionais de Saúde</h3>
+          <ul>
+            <li>✅ Agenda online para consultas e atendimentos</li>
+            <li>✅ Divulgação do seu perfil profissional</li>
+            <li>✅ Acesso a preços especiais em produtos</li>
+            <li>✅ Suporte exclusivo para atendimento aos clientes</li>
+          </ul>
+        </div>
+      </section>
+
+      <!--Logo mobile quando tiver 650px-->
+      <section class="logo-mobile">
+        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
       </section>
 
       <!-- Lado direito com formulário -->
@@ -75,68 +80,77 @@
             action="/cadastroFarmacia"
           >
             <h3>Dados da Farmácia</h3>
-            <input
-              type="text"
-              name="nomeFarmacia"
-              placeholder="Nome da farmácia"
-              value="<%= valoresFarmacia.nomeFarmacia %>"
-              class="<%= erroValidacaoFarmacia.nomeFarmacia %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.nomeFarmacia %></span>
+            <article class="input-icon">
+              <i class="bi bi-building"></i>
+              <input
+                type="text"
+                name="nomeFarmacia"
+                placeholder="Nome da farmácia"
+                value="<%= valoresFarmacia.nomeFarmacia %>"
+                class="<%= erroValidacaoFarmacia.nomeFarmacia %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.nomeFarmacia %></span>
+            </article>
 
-            <input
-              type="text"
-              name="CNPJ"
-              placeholder="CNPJ"
-              value="<%= valoresFarmacia.CNPJ %>"
-              class="<%= erroValidacaoFarmacia.CNPJ %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.CNPJ %></span>
+            <article class="input-icon">
+              <i class="bi bi-card-text"></i>
+              <input
+                type="text"
+                name="CNPJ"
+                placeholder="CNPJ"
+                value="<%= valoresFarmacia.CNPJ %>"
+                class="<%= erroValidacaoFarmacia.CNPJ %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.CNPJ %></span>
+            </article>
 
-            <input
-              type="text"
-              name="responsavel"
-              placeholder="Responsável"
-              value="<%= valoresFarmacia.responsavel %>"
-              class="<%= erroValidacaoFarmacia.responsavel %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.responsavel %></span>
+            <article class="input-icon">
+              <i class="bi bi-geo-alt"></i>
+              <input
+                type="text"
+                name="responsavel"
+                placeholder="Responsável"
+                value="<%= valoresFarmacia.responsavel %>"
+                class="<%= erroValidacaoFarmacia.responsavel %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.responsavel %></span>
+            </article>
 
-            <input
-              type="text"
-              name="cidade"
-              placeholder="Cidade (Ex: São Paulo)"
-              value="<%= valoresFarmacia.cidade %>"
-              class="<%= erroValidacaoFarmacia.cidade %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.cidade %></span>
+            <article class="input-icon">
+              <i class="bi bi-geo-alt"></i>
+              <input
+                type="text"
+                name="cidade"
+                placeholder="Cidade (Ex: São Paulo)"
+                value="<%= valoresFarmacia.cidade %>"
+                class="<%= erroValidacaoFarmacia.cidade %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.cidade %></span>
+            </article>
 
-            <input
-              type="text"
-              name="estado"
-              placeholder="Estado (Ex: SP, RJ, MG)"
-              value="<%= valoresFarmacia.estado %>"
-              class="<%= erroValidacaoFarmacia.estado %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.estado %></span>
+            <article class="input-icon">
+              <i class="bi bi-map"></i>
+              <input
+                type="text"
+                name="estado"
+                placeholder="Estado (Ex: SP, RJ, MG)"
+                value="<%= valoresFarmacia.estado %>"
+                class="<%= erroValidacaoFarmacia.estado %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.estado %></span>
+            </article>
 
-            <input
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              value="<%= valoresFarmacia.email %>"
-              class="<%= erroValidacaoFarmacia.email %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.email %></span>
-
-            <input
-              type="password"
-              name="senha"
-              placeholder="Senha"
-              value="<%= valoresFarmacia.senha %>"
-              class="<%= erroValidacaoFarmacia.senha %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.senha %></span>
+            <article class="input-icon">
+              <i class="bi bi-envelope"></i>
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                value="<%= valoresFarmacia.email %>"
+                class="<%= erroValidacaoFarmacia.email %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.email %></span>
+            </article>
 
             <br />
             <label>
@@ -145,20 +159,37 @@
               ✔ um número <br />
               ✔ um caractere especial
             </label>
+            <br />
 
-            <input
-              type="password"
-              name="confirmarSenha"
-              placeholder="Confirmar Senha"
-              value="<%= valoresFarmacia.confirmarSenha %>"
-              class="<%= erroValidacaoFarmacia.confirmarSenha %>"
-            />
-            <span class="msgErro"><%= msgErroFarmacia.confirmarSenha %></span>
+            <article class="input-icon">
+              <i class="bi bi-lock"></i>
+              <input
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                value="<%= valoresFarmacia.senha %>"
+                class="<%= erroValidacaoFarmacia.senha %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.senha %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-shield-lock"></i>
+              <input
+                type="password"
+                name="confirmarSenha"
+                placeholder="Confirmar Senha"
+                value="<%= valoresFarmacia.confirmarSenha %>"
+                class="<%= erroValidacaoFarmacia.confirmarSenha %>"
+              />
+              <span class="msgErro"><%= msgErroFarmacia.confirmarSenha %></span>
+            </article>
 
             <h1 class="login">
               Já possui uma conta? Faça seu <a href="/login">login</a> ou
               torne-se um <a href="/cadastroCliente">cliente</a>
             </h1>
+
             <button type="submit" class="cadastrar-profissional">
               Cadastrar Farmácia
             </button>
@@ -172,102 +203,126 @@
             action="/cadastroProfissional"
           >
             <h3>Dados do Profissional</h3>
-            <input
-              type="text"
-              name="nome"
-              placeholder="Nome completo"
-              value="<%= valoresProfissional.nome %>"
-              class="<%= erroValidacaoProfissional.nome %>"
-            />
-            <span class="msgErro"><%= msgErroProfissional.nome %></span>
-            <br />
+            <article class="input-icon">
+              <i class="bi bi-person"></i>
+              <input
+                type="text"
+                name="nome"
+                placeholder="Nome completo"
+                value="<%= valoresProfissional.nome %>"
+                class="<%= erroValidacaoProfissional.nome %>"
+              />
+              <span class="msgErro"><%= msgErroProfissional.nome %></span>
+              <br />
+            </article>
 
-            <select
-              name="profissao"
-              class="<%= erroValidacaoProfissional.profissao %>"
-            >
-              <option value="">Profissão</option>
-              <option
-                value="medico <%= valoresProfissional.profissao === 'medico' ? 'selected' : '' %>"
+            <article class="input-icon">
+              <select
+                name="profissao"
+                class="<%= erroValidacaoProfissional.profissao %>"
               >
-                Médico
-              </option>
-              <option
-                value="nutricionista <%= valoresProfissional.profissao === 'nutricionista' ? 'selected' : '' %>"
+                <option value="">Profissão</option>
+                <option
+                  value="medico <%= valoresProfissional.profissao === 'medico' ? 'selected' : '' %>"
+                >
+                  Médico
+                </option>
+                <option
+                  value="nutricionista <%= valoresProfissional.profissao === 'nutricionista' ? 'selected' : '' %>"
+                >
+                  Nutricionista
+                </option>
+                <option
+                  value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
+                >
+                  Educador Físico
+                </option>
+                <option
+                  value="outro <%= valoresProfissional.profissao === 'outro' ? 'selected' : '' %>"
+                >
+                  Outro
+                </option>
+              </select>
+              <i class="bi bi-caret-down-fill seta-baixo"></i>
+              <span class="msgErro"><%= msgErroProfissional.profissao %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-clipboard-check"></i>
+              <input
+                type="text"
+                name="CREF"
+                placeholder="CRM / CRN / CREF"
+                value="<%= valoresProfissional.CREF %>"
+                class="<%= erroValidacaoProfissional.CREF %>"
+              />
+              <span class="msgErro"><%= msgErroProfissional.CREF %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-briefcase"></i>
+              <input
+                type="text"
+                name="especialidade"
+                placeholder="Especialidade (opcional)"
+                value="<%= valoresProfissional.especialidade %>"
+              />
+            </article>
+            <article class="input-icon">
+              <i class="bi bi-whatsapp"></i>
+              <input
+                type="tel"
+                name="whatsapp"
+                placeholder="WhatsApp profissional"
+                value="<%= valoresProfissional.whatsapp %>"
+                class="<%= erroValidacaoProfissional.whatsapp %>"
+              />
+              <span class="msgErro"><%= msgErroProfissional.whatsapp %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-envelope"></i>
+              <input
+                type="email"
+                name="email"
+                placeholder="E-mail"
+                value="<%= valoresProfissional.email %>"
+                class="<%= erroValidacaoProfissional.email %>"
+              />
+              <span class="msgErro"><%= msgErroProfissional.email %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-lock"></i>
+              <input
+                type="password"
+                name="senha"
+                placeholder="Senha"
+                value="<%= valoresProfissional.senha %>"
+                class="<%= erroValidacaoProfissional.senha %>"
+              />
+              <span class="msgErro"><%= msgErroProfissional.senha %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-shield-lock"></i>
+              <input
+                type="password"
+                name="confirmarSenha"
+                placeholder="Confirmar Senha"
+                value="<%= valoresProfissional.confirmarSenha %>"
+                class="<%= erroValidacaoProfissional.confirmarSenha %>"
+              />
+              <span class="msgErro"
+                ><%= msgErroProfissional.confirmarSenha %></span
               >
-                Nutricionista
-              </option>
-              <option
-                value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
-              >
-                Educador Físico
-              </option>
-              <option
-                value="outro <%= valoresProfissional.profissao === 'outro' ? 'selected' : '' %>"
-              >
-                Outro
-              </option>
-            </select>
-            <span class="msgErro"><%= msgErroProfissional.profissao %></span>
-
-            <input
-              type="text"
-              name="CREF"
-              placeholder="CRM / CRN / CREF"
-              value="<%= valoresProfissional.CREF %>"
-              class="<%= erroValidacaoProfissional.CREF %>"
-            />
-            <span class="msgErro"><%= msgErroProfissional.CREF %></span>
-
-            <input
-              type="text"
-              name="especialidade"
-              placeholder="Especialidade (opcional)"
-              value="<%= valoresProfissional.especialidade %>"
-            />
-
-            <input
-              type="tel"
-              name="whatsapp"
-              placeholder="WhatsApp profissional"
-              value="<%= valoresProfissional.whatsapp %>"
-              class="<%= erroValidacaoProfissional.whatsapp %>"
-            />
-            <span class="msgErro"><%= msgErroProfissional.whatsapp %></span>
-
-            <input
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              value="<%= valoresProfissional.email %>"
-              class="<%= erroValidacaoProfissional.email %>"
-            />
-            <span class="msgErro"><%= msgErroProfissional.email %></span>
-
-            <input
-              type="password"
-              name="senha"
-              placeholder="Senha"
-              value="<%= valoresProfissional.senha %>"
-              class="<%= erroValidacaoProfissional.senha %>"
-            />
-            <span class="msgErro"><%= msgErroProfissional.senha %></span>
-
-            <input
-              type="password"
-              name="confirmarSenha"
-              placeholder="Confirmar Senha"
-              value="<%= valoresProfissional.confirmarSenha %>"
-              class="<%= erroValidacaoProfissional.confirmarSenha %>"
-            />
-            <span class="msgErro"
-              ><%= msgErroProfissional.confirmarSenha %></span
-            >
+            </article>
 
             <h1 class="login">
               Já possui uma conta? Faça seu <a href="/login">login</a> ou
               torne-se um <a href="/cadastroCliente">cliente</a>
             </h1>
+
             <button type="submit" class="cadastrar-profissional">
               Cadastrar Profissional
             </button>
