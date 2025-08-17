@@ -1,34 +1,23 @@
 <html>
   <head>
-    <title>Healthy safely</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
+    <title>Login</title>
     <link rel="stylesheet" href="../css/login.css" />
-    <link rel="icon" href="../imagem/logo 3.png" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <%- include('../partials/header.ejs') %>
-    <!--Script de encaminhamento depois de 3 segundo para a proxima pagina caso login esteja correto-->
-    <% if (sucesso === true) { %>
-    <script>
-      setTimeout(() => {
-        window.location.href = "/tela-inicial";
-      }, 1500);
-    </script>
-    <% } %>
-    <!---->
 
     <main>
-      <!--Lado esquerdo-->
+      <!-- Lado esquerdo -->
       <section class="lado-esquerdo">
         <h2>Sua saúde começa aqui!🍏</h2>
         <p>
           Cadastre-se e aproveite todos os benefícios que preparamos para você.
         </p>
-
 
         <ul class="beneficios">
           <li>✅ Compras mais rápidas</li>
@@ -36,7 +25,6 @@
           <li>✅ Histórico de pedidos</li>
           <li>✅ Promoções antecipadas</li>
         </ul>
-
 
         <!-- Slider automático -->
         <div class="slider">
@@ -59,60 +47,79 @@
         </div>
       </section>
 
-
       <script src="../js/carrossel.js"></script>
-      <!-- Fim lado esquerdo-->
+      <!-- Fim lado esquerdo -->
+
+      <section class="logo-mobile">
+        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
+      </section>
 
       <!-- Lado direito com formulário -->
       <section class="lado-direito">
-        <form action="/login" method="post" class="quadrado">
-          <article>
-            <h1>Login</h1>
-            <br />
-            <label for="usuarioDigitado">Endereço de email</label>
-            <input
-              type="text"
-              id="usuarioDigitado"
-              name="usuarioDigitado"
-              placeholder="Digite seu email"
-              value="<%= valores?.usuarioDigitado || '' %>"
-              class="digitarusuario <%= erro ? 'erro' : '' %>"
-            />
-          </article>
-          <br />
-          <article>
-            <label for="senhaDigitada">Senha</label>
-            <input
-              type="password"
-              id="senhaDigitada"
-              name="senhaDigitada"
-              placeholder="Digite sua senha"
-              value="<%= valores?.senhaDigitada || '' %>"
-              class="digitarsenha <%= erro ? 'erro' : '' %>"
-            />
-          </article>
-          <% if (erro) { %><span class="msgErro"><%= erro %></span> <% } %>
+        <article class="container">
+          <form action="/login" method="POST" class="quadrado">
+            <h1 class="novoUsuario">LOGIN</h1>
+            <button type="submit" id="btnClique" class="google">
+              <section>
+                <img src="../imagem/google.png" class="googleimg" />
+                <span>Continue com Google</span>
+              </section>
+            </button>
 
-          <h4 class="cadastro">
-            Não possui uma conta?
-            <a href="#" onclick="abrirModalCadastro()">Crie uma conta</a>
-          </h4>
+            <article class="formulario">
+              <h2>Dados de acesso</h2>
 
-          <br />
-          <button type="submit" id="btnClique" class="acessar">Acessar</button>
-        </form>
+              <article class="input-icon">
+                <i class="bi bi-envelope"></i>
+                <input
+                  type="text"
+                  id="usuarioDigitado"
+                  name="usuarioDigitado"
+                  placeholder="Digite seu email"
+                  value="<%= valores?.usuarioDigitado || '' %>"
+                  class="<%= erro ? 'erro' : '' %>"
+                />
+                <% if (erro) { %>
+                <span class="msgErro"><%= erro %></span>
+                <% } %>
+              </article>
 
-        <% if (sucesso) { %>
-        <nav class="sucesso-mensagem">
-          <i class="bi bi-hand-thumbs-up-fill"></i>
-          <section>Login realizado com sucesso! Redirecionando...</section>
-          <article class="barra">
-            <section class="barra-progresso"></section>
-          </article>
-        </nav>
-        <%} %>
+              <article class="input-icon">
+                <i class="bi bi-lock"></i>
+                <input
+                  type="password"
+                  id="senhaDigitada"
+                  name="senhaDigitada"
+                  placeholder="Digite sua senha"
+                  value="<%= valores?.senhaDigitada || '' %>"
+                  class="<%= erro ? 'erro' : '' %>"
+                />
+              </article>
+
+              <h1 class="login">
+                Ainda não possui uma conta?
+                <a href="/cadastroCliente">Cadastre-se</a> já!
+              </h1>
+
+              <button type="submit" id="btnClique" class="juntar">
+                Acessar
+              </button>
+            </article>
+          </form>
+
+          <% if (sucesso) { %>
+          <nav class="sucesso-mensagem">
+            <i class="bi bi-hand-thumbs-up-fill"></i>
+            <section>Login realizado com sucesso! Redirecionando...</section>
+            <article class="barra">
+              <section class="barra-progresso"></section>
+            </article>
+          </nav>
+          <% } %>
+        </article>
       </section>
     </main>
+
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

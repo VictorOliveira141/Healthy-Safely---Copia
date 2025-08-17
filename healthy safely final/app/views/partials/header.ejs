@@ -1,120 +1,82 @@
 <link rel="stylesheet" href="/css/header.css" />
-<link rel="stylesheet" href="/css/modal.css" />
-
 
 <header class="header">
-  <section class="header-geral">
-    <nav>
-      <section id="menuToggle">
-        <input type="checkbox" />
+  <div class="header-geral">
+    <!-- Menu Hamburger Esquerdo -->
+    <div class="menu-toggle-wrapper">
+      <input type="checkbox" id="menuToggle" />
+      <label for="menuToggle" class="hamburger">
         <span></span>
         <span></span>
         <span></span>
+      </label>
 
-
-        <ul id="menu">
-          <a href="loja">
-            <li>Loja</li>
-          </a>
-          <a href="tarefas">
-            <li>Tarefas</li>
-          </a>
-          <a href="progressao">
-            <li>Progressão</li>
-          </a>
-          <a href="#">
-            <li>Configuração</li>
-          </a>
-          <a href="#">
-            <li>Sobre</li>
-          </a>
-          <a href="http://www.w3schools.com">
-            <li>Mostrar mais</li>
-          </a>
+      <nav id="menu">
+        <ul>
+          <li><a href="loja">Loja</a></li>
+          <li><a href="tarefas">Tarefas</a></li>
+          <li><a href="progressao">Progressão</a></li>
+          <li><a href="#">Configuração</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="http://www.w3schools.com">Mostrar mais</a></li>
         </ul>
-      </section>
-    </nav>
+        <label for="menuToggle" class="close-menu">&times;</label>
+      </nav>
+    </div>
 
+    <!-- Logo -->
+    <a href="/tomarammeutela" class="logo">
+      <img
+        src="../imagem/1x/logozeko.png"
+        class="logo1"
+        alt="Logo Healthy Safely"
+      />
+    </a>
 
-    <section class="header-ladoesquerdo">
-      <a href="/tomarammeutela">
-        <img
-          src="../imagem/1x/logozeko.png"
-          alt="Logo Healthy Safely"
-          class="logo"
-        />
-      </a>
-    </section>
-    <!--Modal do cadastro-->
-    <section class="header-ladodireito">
-      <section class="user-icon">
-        <img
-          src="../imagem/iconezada.png"
-          alt="User Icon"
-          height="50px"
-          width="50px"
-        />
-      </section>
-      <a href="/login" class="header-link">ENTRAR</a>
+    <!-- Menu Direito para Desktop -->
+    <div class="header-ladodireito menu-desktop">
+      <div class="user-icon">
+        <img src="../imagem/user.png" alt="User Icon" height="50" width="50" />
+      </div>
+      <a href="/login">ENTRAR</a>
       <span class="header-divider">|</span>
-      <div id="cadastroModal" class="header-link" style="cursor: pointer">
+      <div class="header-link abrir-cadastro" style="cursor: pointer">
         CADASTRAR
       </div>
+    </div>
 
+    <!-- Menu Mobile para <= 650px -->
+    <div class="menu-mobile">
+      <div class="user-icon" id="perfilMenuToggle">
+        <img src="../imagem/user.png" alt="User Icon" height="50" width="50" />
+      </div>
+      <div id="perfilMenu" class="perfil-menu hidden">
+        <a href="/login" class="header-link abrir-cadastro">ENTRAR</a>
+        <div class="header-link abrir-cadastro" style="cursor: pointer">
+          CADASTRAR
+        </div>
+      </div>
+    </div>
 
-      <section id="modalCadastro" class="modal hidden">
-        <article class="modal-content">
-          <button id="closeCadastroModal" class="close-btn">&times;</button>
-          <h2>Escolha o tipo de cadastro</h2>
-          <div class="opcoes-cadastro">
-            <a href="/cadastroCliente" class="btn-cadastro">Como cliente</a>
-            <a href="/cadastroColaborador" class="btn-cadastro"
-              >Como colaborador</a
-            >
-          </div>
-        </article>
-      </section>
-      <!---->
-
-
-      <!--Script para abrir o modal-->
-      <script>
-        const openBtn = document.getElementById("cadastroModal");
-        const modal = document.getElementById("modalCadastro");
-        const closeBtn = document.getElementById("closeCadastroModal");
-        openBtn.addEventListener("click", () => {
-          modal.classList.remove("hidden");
-          document.body.style.overflow = "hidden";
-        });
-        closeBtn.addEventListener("click", () => {
-          modal.classList.add("hidden");
-          document.body.style.overflow = "";
-        });
-
-
-        window.addEventListener("click", (e) => {
-          if (e.target === modal) {
-            modal.classList.add("hidden");
-            document.body.style.overflow = "";
-          }
-        });
-
-
-        function abrirModalCadastro() {
-          modal.classList.remove("hidden");
-          document.body.style.overflow =
-            "hidden"; /*Essa função faz com que a pagina abra em qualquer lugar*/
-        }
-      </script>
-      <!---->
-    </section>
-  </section>
+    <!-- Modal de Cadastro -->
+    <div id="modalCadastro" class="modal hidden">
+      <div class="modal-content">
+        <button id="closeCadastroModal" class="close-btn">&times;</button>
+        <h2>Escolha o tipo de cadastro</h2>
+        <div class="opcoes-cadastro">
+          <a href="/cadastroCliente" class="btn-cadastro">Como cliente</a>
+          <a href="/cadastroColaborador" class="btn-cadastro"
+            >Como colaborador</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 
-
 <!-- Search Bar -->
-<section class="search-bar">
-  <section class="barraPesquisa">
+<div class="search-bar">
+  <div class="barraPesquisa">
     <span class="search-icon">
       <svg width="28" height="28" viewBox="0 0 36 36" fill="none">
         <circle cx="16" cy="16" r="12" stroke="#fff" stroke-width="3" />
@@ -130,8 +92,46 @@
       </svg>
     </span>
     <input type="text" class="search-input" placeholder="Busque o que deseja" />
-  </section>
-</section>
+  </div>
+</div>
 
+<script>
+  // Modal de cadastro
+  const abrirBtns = document.querySelectorAll(".abrir-cadastro");
+  const modal = document.getElementById("modalCadastro");
+  const closeBtn = document.getElementById("closeCadastroModal");
 
+  abrirBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    });
+  });
 
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+    document.body.style.overflow = "";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Dropdown menu mobile
+  const perfilToggle = document.getElementById("perfilMenuToggle");
+  const perfilMenu = document.getElementById("perfilMenu");
+
+  perfilToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    perfilMenu.classList.toggle("hidden");
+  });
+
+  window.addEventListener("click", (e) => {
+    if (!perfilToggle.contains(e.target) && !perfilMenu.contains(e.target)) {
+      perfilMenu.classList.add("hidden");
+    }
+  });
+</script>

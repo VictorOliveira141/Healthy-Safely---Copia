@@ -1,4 +1,6 @@
 footer {
+  width: auto;
+  border-top: solid 3px rgb(5, 34, 5);
   background-color: #17594a;
   color: white;
   padding: 20px 40px;
@@ -31,7 +33,7 @@ article {
   border: none;
   padding: 8px 14px;
   border-radius: 12px;
-  font-size: 15px;
+  font-size: 18px;
   cursor: pointer;
   margin-bottom: 15px;
   transition: background-color 0.3s;
@@ -42,7 +44,7 @@ article {
 .footer-social {
   display: flex;
   gap: 10px;
-  font-size: 22px;
+  font-size: 30px;
 }
 .footer-social a {
   color: white;
@@ -57,7 +59,7 @@ article {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  font-size: 14px;
+  font-size: 18px;
   max-width: 50%;
   margin-left: 0;
 }
@@ -71,15 +73,23 @@ article {
 .footer-divider {
   color: rgba(255, 255, 255, 0.5);
 }
-.footer-text {
-  margin-top: 15px;
-  font-size: 13px;
+.footer-bottom {
+  margin-top: 30px;
+  font-size: 17px;
   text-align: center;
   color: rgba(255, 255, 255, 0.8);
 }
+.footer-bottom p {
+  margin-top: 5px;
+}
 
-/* Responsivo */
-@media (max-width: 500px) {
+/* Responsividade */
+
+/*Tablets,IPADS */
+@media (max-width: 800px) {
+  footer {
+    width: 100%;
+  }
   .footer-content {
     flex-direction: column;
     align-items: center;
@@ -91,12 +101,28 @@ article {
     padding: 0;
   }
   .footer-logo {
-    width: 55%;
     margin: 20px 0;
   }
   .footer-links {
     justify-content: center;
     max-width: 100%;
     margin-left: 0;
+  }
+}
+
+/*Celulares */
+@media (max-width: 600px) {
+  .FaleConosco {
+    font-size: 25px;
+  }
+  .footer-social a {
+    margin-top: 10px;
+    font-size: 35px;
+  }
+  .footer-links {
+    font-size: 20px;
+  }
+  .footer-bottom {
+    font-size: 16px;
   }
 }
