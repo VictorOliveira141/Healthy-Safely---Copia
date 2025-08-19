@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/privacidade.css" />
+    <title>Loja</title>
+  </head>
+</html>
+<body>
+  <%- include('../partials/header.ejs') %>
+
+  <main class="container">
+    <!-- Coluna lateral -->
+    <aside class="sidebar">
+      <ul>
+        <li class="active" data-target="duvidas">Dúvidas</li>
+        <li data-target="suporte">Suporte</li>
+        <li data-target="privacidade">Política de Privacidade</li>
+        <li data-target="sobre">Sobre Nós</li>
+        <li data-target="acessibilidade">Acessibilidade</li>
+      </ul>
+    </aside>
+
+    <!-- Conteudos ao clicar -->
+    <section class="content">
+      <div id="duvidas" class="content-box active">
+        <h2>Dúvidas</h2>
+        <p>Como comprar? Aqui explicamos como realizar a compra...</p>
+      </div>
+
+      <div id="suporte" class="content-box">
+        <h2>Suporte</h2>
+        <p>Entre em contato com nossa equipe de suporte.</p>
+      </div>
+
+      <div id="privacidade" class="content-box">
+        <h1>Política de Privacidade</h1>
+        <p>Veja como tratamos seus dados e garantimos sua privacidade.</p>
+        <p>
+          Coleta de Dados: Coletamos apenas as informações necessárias para
+          personalizar sua experiência, como nome, e-mail e preferências de
+          saúde.
+        </p>
+        <p>
+          Uso dos Dados: Utilizamos os dados para fornecer recomendações
+          personalizadas e melhorar nossos serviços. Nunca vendemos suas
+          informações a terceiros.
+        </p>
+        <p>
+          Segurança: Utilizamos tecnologia de criptografia para garantir que
+          seus dados estejam seguros.
+        </p>
+        <p>
+          Consentimento: Os usuários podem controlar quais informações
+          compartilham e solicitar a exclusão de seus dados a qualquer momento.
+          Nosso compromisso é garantir que seus dados estejam protegidos e que
+          você tenha controle sobre suas informações.
+        </p>
+        <h1>Avisos importantes</h1>
+        <p>
+          Os nossos sites são direcionados a maiores de 18 (dezoito) anos. Ao se
+          cadastrar na Plataforma de E-commerce, você declara ser maior de 18
+          (dezoito) anos. Caso você seja menor de 18 (dezoito) anos, você não
+          poderá se cadastrar na Plataforma, pois não coletamos dados, nem mesmo
+          para registro de menores.
+        </p>
+      </div>
+
+      <div id="sobre" class="content-box">
+        <h2>Sobre Nós</h2>
+        <p>
+          O Healthy Safely é uma plataforma dedicada a melhorar a saúde e
+          bem-estar dos usuários por meio da Inteligência Artificial.
+        </p>
+        <p>
+          Nossa missão é fornecer orientações personalizadas em áreas essenciais
+          como alimentação, exercícios físicos, sono, e saúde mental, com foco
+          em condições específicas como diabetes, hipertensão, e obesidade.
+        </p>
+        <p>
+          Além disso, oferecemos suporte para recuperação e reabilitação, com
+          vídeos e instruções de exercícios fisioterapêuticos.
+        </p>
+        <p>
+          Nossa plataforma também conta com gamificação, incentivando hábitos
+          saudáveis com recompensas, e uma iniciativa de doação de remédios,
+          promovendo solidariedade e acesso a recursos essenciais.
+        </p>
+        <p>
+          Nosso objetivo é tornar o cuidado com a saúde mais acessível, eficaz e
+          comunitário, transformando a forma como as pessoas se cuidam.
+        </p>
+      </div>
+
+      <div id="acessibilidade" class="content-box">
+        <h2>Acessibilidade</h2>
+        <p>
+          No Healthy Safely, priorizamos a acessibilidade para garantir que
+          todos os usuários possam aproveitar nossa plataforma. Implementamos
+          recursos como:
+        </p>
+        <li>
+          Interface Simples e Intuitiva: Navegação fácil para todos, incluindo
+          pessoas com pouca experiência digital.
+        </li>
+        <li>
+          Compatibilidade com Leitores de Tela: Facilita o uso por pessoas com
+          deficiência visual.
+        </li>
+        <li>
+          Vídeos com Legendas: Para apoiar usuários com deficiência auditiva.
+        </li>
+        <li>Tamanhos de Fonte Ajustáveis: Para uma leitura confortável.</li>
+
+        <p>
+          Nosso objetivo é criar uma experiência inclusiva, assegurando que
+          todos tenham acesso às ferramentas de saúde e bem-estar oferecidas.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const menuItems = document.querySelectorAll(".sidebar li");
+    const contentBoxes = document.querySelectorAll(".content-box");
+
+    menuItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        menuItems.forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
+
+        contentBoxes.forEach((box) => box.classList.remove("active"));
+
+        const targetId = item.getAttribute("data-target");
+        document.getElementById(targetId).classList.add("active");
+      });
+    });
+  </script>
+  <%- include('../partials/footer.ejs')%>
+</body>
+<!-- Coleta
+de Dados: Coletamos apenas as informações necessárias para personalizar sua
+experiência, como nome, e-mail e preferências de saúde. Uso dos Dados:
+Utilizamos os dados para fornecer recomendações personalizadas e melhorar nossos
+serviços. Nunca vendemos suas informações a terceiros. Segurança: Utilizamos
+tecnologia de criptografia para garantir que seus dados estejam seguros.
+Consentimento: Os usuários podem controlar quais informações compartilham e
+solicitar a exclusão de seus dados a qualquer momento. Nosso compromisso é
+garantir que seus dados estejam protegidos e que você tenha controle sobre suas
+informações. -->

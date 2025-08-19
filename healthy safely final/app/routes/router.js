@@ -93,6 +93,10 @@ router.get("/tela-inicial", (req, res) => {
   res.render("pages/tomarammeutela");
 });
 
+router.get("/informacoes", (req, res) => {
+  res.render("pages/informacoes");
+});
+
 /* CADASTRO SENDO CLIENTE */
 router.post(
   "/cadastroCliente",
