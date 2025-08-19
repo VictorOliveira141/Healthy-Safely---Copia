@@ -28,6 +28,15 @@ router.get("/loja", (req, res) => {
 router.get("/sono", (req, res) => {
   res.render("pages/sono");
 });
+router.get("/alimentacao", (req, res) => {
+  res.render("pages/alimentacao");
+});
+router.get("/saudemen", (req, res) => {
+  res.render("pages/saudemen");
+});
+router.get("/atividadefis", (req, res) => {
+  res.render("pages/atividadefis");
+});
 
 router.get("/login", (req, res) => {
   res.render("pages/login", {
