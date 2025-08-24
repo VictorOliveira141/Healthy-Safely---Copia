@@ -9,25 +9,35 @@
   <body>
     <%- include('../partials/header.ejs') %>
 
-    <main>
+    <main class="container">
+      <!--TOPO-->
       <section class="topo">
-        <h1>Progressão de Horas</h1>
-        <p>Adicione valores e veja sua evolução diária!</p>
+        <h1>Progressão</h1>
+        <p>Adicione valores para ver sua evolução diária!</p>
       </section>
 
-      <!-- Gráfico 1 -->
+      <!-- Gráfico 1: Sono -->
       <section class="grafico-horas" data-grafico="graficoSono">
-        <h2>Regulagem de sono (horas):</h2>
-        <div class="grafico-container" id="graficoHoras" data-max="12">
+        <article class="titulo-info">
+          <i class="bi bi-info-circle"></i>
+          <h2>
+            Regulagem de sono (horas): De 0 à 12 horas, quantas horas
+            (aproximada) você dormiu hoje?
+          </h2>
+        </article>
+        <br /><br />
+
+        <article class="grafico-container" id="graficoHoras" data-max="12">
           <div class="linha" data-h="12"><span>12h</span></div>
           <div class="linha" data-h="10"><span>10h</span></div>
-          <div class="linha" data-h="8"><span>8h</span></div>
+          <div class="linha recomendada" data-h="8"><span>8h</span></div>
           <div class="linha" data-h="6"><span>6h</span></div>
           <div class="linha" data-h="4"><span>4h</span></div>
           <div class="linha" data-h="2"><span>2h</span></div>
           <div class="linha" data-h="0"><span>0h</span></div>
-        </div>
-        <div class="input-area">
+        </article>
+
+        <article class="input-area">
           <input
             type="number"
             min="0"
@@ -36,15 +46,21 @@
             placeholder="Digite horas (0-12)"
           />
           <button class="btn-adicionar">Adicionar</button>
-        </div>
+        </article>
       </section>
 
-      <!-- Gráfico 2 -->
+      <!-- Gráfico 2: Saúde Mental -->
       <section class="grafico-horas" data-grafico="graficoMental">
-        <h2>Saúde mental de 1 a 10:</h2>
+        <article class="titulo-info">
+          <i class="bi bi-info-circle"></i>
+          <h2>
+            Saúde Mental: De 0 à 10, o quão satisfeito(feliz) você com o dia de
+            hoje?
+          </h2>
+        </article>
         <div class="grafico-container" id="graficoMental" data-max="10">
           <div class="linha" data-h="10"><span>10</span></div>
-          <div class="linha" data-h="8"><span>8</span></div>
+          <div class="linha recomendada" data-h="8"><span>8</span></div>
           <div class="linha" data-h="6"><span>6</span></div>
           <div class="linha" data-h="4"><span>4</span></div>
           <div class="linha" data-h="2"><span>2</span></div>
@@ -54,43 +70,51 @@
           <input
             type="number"
             min="0"
-            max="12"
+            max="10"
             step="0.1"
-            placeholder="Digite horas (0-12)"
+            placeholder="Digite (0-10)"
           />
           <button class="btn-adicionar">Adicionar</button>
         </div>
       </section>
 
-      <!-- Gráfico 3 -->
+      <!-- Gráfico 3: Exercícios -->
       <section class="grafico-horas" data-grafico="graficoExercicios">
-        <h2>Atividade fisica (min)</h2>
-        <div class="grafico-container" id="graficoExercicios" data-max="12">
-          <div class="linha" data-h="12"><span>+180min</span></div>
-          <div class="linha" data-h="10"><span>180min</span></div>
-          <div class="linha" data-h="8"><span>150min</span></div>
-          <div class="linha" data-h="6"><span>120min</span></div>
-          <div class="linha" data-h="4"><span>90min</span></div>
-          <div class="linha" data-h="2"><span>60min</span></div>
+        <article class="titulo-info">
+          <i class="bi bi-info-circle"></i>
+          <h2>
+            Atividade Física: Quantos minutos você praticou de atividade física
+            hoje?
+          </h2>
+        </article>
+        <br /><br />
+
+        <div class="grafico-container" id="graficoExercicios" data-max="150">
+          <div class="linha" data-h="10"><span>150min</span></div>
+          <div class="linha" data-h="8"><span>120min</span></div>
+          <div class="linha" data-h="6"><span>90min</span></div>
+          <div class="linha" data-h="4"><span>60min</span></div>
+          <div class="linha recomendada" data-h="2"><span>30min</span></div>
           <div class="linha" data-h="0"><span>0min</span></div>
         </div>
+
         <div class="input-area">
           <input
             type="number"
             min="0"
-            max="12"
-            step="0.1"
-            placeholder="Digite horas (0-12)"
+            max="150"
+            step="1"
+            placeholder="Digite min"
           />
           <button class="btn-adicionar">Adicionar</button>
         </div>
       </section>
 
-      <!-- Orientaçoes dos profissionais-->
+      <!-- Orientações dos profissionais -->
       <section class="orientacao">
         <button
           class="btn-orientacao"
-          onclick="window.location.href='/orientacao'"
+          onclick="window.location.href='/orientacoes'"
         >
           Ver orientações de profissionais
           <p>sobre seu desenvolvimento</p>

@@ -106,6 +106,10 @@ router.get("/informacoes", (req, res) => {
   res.render("pages/informacoes");
 });
 
+router.get("/orientacoes", (req, res) => {
+  res.render("pages/orientacoes");
+});
+
 /* CADASTRO SENDO CLIENTE */
 router.post(
   "/cadastroCliente",

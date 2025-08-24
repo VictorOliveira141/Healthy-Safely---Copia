@@ -1,0 +1,250 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+  display: grid;
+  grid-template-columns: minmax(200px, 450px) 1fr;
+  gap: 20px;
+  padding: 20px;
+  min-height: 75vh;
+  background: #d9d9d9;
+  box-sizing: border-box;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: #0c4f43;
+  border-radius: 10px;
+  padding: 15px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar li {
+  padding: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  background: #145c4f;
+  color: #fff;
+  transition: 0.3s;
+}
+.sidebar li:hover {
+  background: #1b6e5a;
+}
+.sidebar li.active {
+  color: white;
+  font-weight: bold;
+}
+
+/* CONTEÚDO DE DENTRO DO CHAT */
+.content {
+  background: #0c4f43;
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 400px;
+  box-sizing: border-box;
+}
+.content-box {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+}
+.content-box.active {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* TOPO DO CHAT (INFORMAÇÕES DO ESPECIALISTA) */
+.especialista {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 10px;
+}
+.especialista img {
+  border-radius: 50%;
+}
+.especialista > div.info {
+  display: flex;
+  flex-direction: column;
+}
+.especialista h1 {
+  margin: 0;
+  font-size: 16px;
+}
+.especialista h2 {
+  margin: 2px 0 8px 0;
+  font-size: 12px;
+  color: gray;
+}
+.especialista .footer-info h1 {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* MENSAGENS */
+.mensagens {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 0;
+  flex: 1;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* MENSAGEM DO ESPECIALISTA */
+.especialista-mensagem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.especialista-mensagem .info {
+  background: #145c4f;
+  color: white;
+  padding: 10px 15px 20px 15px;
+  border-radius: 10px;
+  max-width: 60%;
+  position: relative;
+  word-wrap: break-word; /* evita quebrar layout */
+}
+.especialista-mensagem .info .hora {
+  font-size: 12px;
+  color: #ddd;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+/* MENSAGEM DO USUÁRIO */
+.usuario-mensagem {
+  display: flex;
+  justify-content: flex-end;
+}
+.usuario-mensagem .info {
+  background: #2d8f6f;
+  color: white;
+  padding: 10px 15px 20px 15px;
+  border-radius: 10px;
+  max-width: 60%;
+  position: relative;
+  word-wrap: break-word;
+}
+.usuario-mensagem .info .hora {
+  font-size: 12px;
+  color: #ddd;
+  position: absolute;
+  bottom: 2px;
+  right: 8px;
+}
+
+/* CAMPO DE DIGITAÇÃO */
+.chat-input {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* sempre no fim do chat */
+}
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+.chat-input button {
+  background-color: #145c4f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* BOTÃO DE SAIR DO CHAT, DESATIVADO NAS TELAS MAIORES */
+.sair-chat {
+  display: none;
+}
+/* O CONTENT NÃO FICA DESATIVADO NAS TELAS MAIORES */
+.content:not(:has(.content-box.active)) {
+  display: none;
+}
+
+/*  RESPONSIVIDADE  */
+@media (max-width: 1100px) {
+  .container {
+    grid-template-columns: minmax(150px, 250px) 1fr;
+  }
+  .usuario-mensagem .info,
+  .especialista-mensagem .info {
+    max-width: 90%; /* mensagens ocupam mais espaço */
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), #297767;
+    /*Background igual ao restante das outras páginas quando estao com 800px*/
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    grid-template-columns: 1fr; /* sidebar em cima do chat */
+    gap: 15px;
+  }
+  .sair-chat {
+    display: flex;
+    background-color: #0c4f43;
+    font-size: 25px;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .container.hide-sidebar .sidebar {
+    display: none;
+  }
+  .container.hide-sidebar .content {
+    grid-column: 1 / -1;
+  }
+  .sidebar {
+    margin-bottom: 15px;
+  }
+  .mensagens {
+    max-height: 300px; /* limite menor para telas pequenas */
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .chat-input input {
+    padding: 8px;
+  }
+  .chat-input button {
+    padding: 8px 15px;
+  }
+}

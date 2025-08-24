@@ -68,7 +68,7 @@ function criarGrafico(idGrafico, maxBarras, valorMaximo, alturaMaxima) {
 criarGrafico("graficoHoras", 6, 12, 255);
 
 // Gráfico de Escala 1–10
-criarGrafico("graficoMental", 6, 10, 255);
+criarGrafico("graficoMental", 6, 10, 220);
 
-// Gráfico de Minutos (0–180)
-criarGrafico("graficoExercicios", 6, 180, 255);
+// Gráfico de Minutos (0–150)
+criarGrafico("graficoExercicios", 6, 150, 215);

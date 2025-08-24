@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/orientacoes.css" />
+    <title>Chat</title>
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+
+    <main class="container">
+      <!-- Coluna lateral -->
+      <aside class="sidebar">
+        <h1>Chat</h1>
+        <br />
+        <ul>
+          <li class="active" data-target="especialista1">
+            <article class="especialista">
+              <img src="../imagem/psicologa.png" />
+              <section class="info">
+                <h1>DRA.ALICE (PSICOLOGA)</h1>
+                <h2>07/10/2024</h2>
+                <section class="footer-info">
+                  <h1>Meus parabéns pela sua progressão, você...</h1>
+                </section>
+              </section>
+            </article>
+          </li>
+
+          <li data-target="especialista2">
+            <article class="especialista">
+              <img src="../imagem/ortopedista.png" />
+              <section class="info">
+                <h1>DR.ALISON (ORTOPEDISTA)</h1>
+                <h2>30/09/2024</h2>
+                <section class="footer-info">
+                  <h1>Olá! bom, o seu progresso por enquanto está...</h1>
+                </section>
+              </section>
+            </article>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Conteúdos ao clicar -->
+      <section class="content">
+        <!--ESPECIALISTA 1-->
+        <section id="especialista1" class="content-box active">
+          <article class="especialista">
+            <!--Botão de sair do chat quando tiver 500px-->
+            <button class="sair-chat"><i class="bi bi-arrow-left"></i></button>
+            <img src="../imagem/psicologa.png" />
+            <section class="info">
+              <h1>DRA.Alice (PSICOLOGA)</h1>
+              <h1>🟢On-line</h1>
+            </section>
+          </article>
+
+          <section class="mensagens">
+            <article class="especialista-mensagem">
+              <img src="../imagem/psicologa.png" />
+              <section class="info">
+                <p>
+                  Meus parabéns pela sua progressão! Você concluiu todas as
+                  tarefas sobre saúde mental e respondeu muito bem as nossas
+                  consultas on-line. Espero contar com você no próximo desafio!
+                  <span class="hora">10:35</span>
+                </p>
+              </section>
+            </article>
+
+            <article class="usuario-mensagem">
+              <section class="info">
+                <p>Muito obrigado, Dra. Alice! Foi um prazer participar.</p>
+                <span class="hora">10:37</span>
+              </section>
+            </article>
+          </section>
+
+          <!-- Digitar mensagem -->
+          <section class="chat-input">
+            <input type="text" placeholder="Digite uma mensagem..." />
+            <button type="button">
+              <i class="bi bi-send"></i>
+            </button>
+          </section>
+        </section>
+
+        <!--ESPECIALISTA 2-->
+        <section id="especialista2" class="content-box">
+          <article class="especialista">
+            <!--Botão de sair do chat quando tiver 500px-->
+            <button class="sair-chat"><i class="bi bi-arrow-left"></i></button>
+            <img src="../imagem/ortopedista.png" />
+            <section class="info">
+              <h1>DR.Alison (ORTOPEDISTA)</h1>
+              <h1>⚫Off-line</h1>
+            </section>
+          </article>
+
+          <section class="mensagens">
+            <article class="especialista-mensagem">
+              <img src="../imagem/ortopedista.png" />
+              <section class="info">
+                <p>
+                  Olá! Bom, o seu progresso, por enquanto, está satisfatório,
+                  mas será necessário algumas melhorias, como cumprir os
+                  exercícios passados em nossa consulta presencial, pois eu não
+                  recebi a confirmação de todos os exercícios feitos do
+                  tornozelo direito. De 15 exercícios, recebi apenas 10. Boa
+                  recuperação!
+                  <span class="hora">10:35</span>
+                </p>
+              </section>
+            </article>
+
+            <article class="usuario-mensagem">
+              <section class="info">
+                <p>
+                  Obrigado, DR. Alison, acabei fazendo apenas 10 exercicios pois
+                  tinha alguns compromissos. Na próxima irei completar todos!
+                </p>
+                <span class="hora">10:37</span>
+              </section>
+            </article>
+          </section>
+
+          <!-- Digitar mensagem -->
+          <section class="chat-input">
+            <input type="text" placeholder="Digite uma mensagem..." />
+            <button type="button">
+              <i class="bi bi-send"></i>
+            </button>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      // ==================== SELEÇÃO DE ELEMENTOS ====================
+      const container = document.querySelector(".container");
+      const menuItems = document.querySelectorAll(".sidebar li");
+      const contentBoxes = document.querySelectorAll(".content-box");
+      const sairBotoes = document.querySelectorAll(".sair-chat");
+      const chatInputs = document.querySelectorAll(".chat-input");
+
+      // ==================== FUNÇÃO PARA CHECAR CHAT ATIVO ====================
+      function checkActiveChat() {
+        const anyActive = document.querySelector(".content-box.active");
+        if (!anyActive) {
+          container.classList.add("no-chat");
+        } else {
+          container.classList.remove("no-chat");
+        }
+      }
+
+      // ==================== DESATIVA TODOS OS CHATS EM TELAS PEQUENAS ====================
+      function desativarChatsPequenaTela() {
+        if (window.innerWidth <= 650) {
+          contentBoxes.forEach((box) => box.classList.remove("active"));
+          menuItems.forEach((item) => item.classList.remove("active"));
+          container.classList.remove("hide-sidebar");
+          checkActiveChat();
+        }
+      }
+
+      desativarChatsPequenaTela();
+      window.addEventListener("resize", desativarChatsPequenaTela);
+
+      // ==================== TROCA DE CONVERSAS ====================
+      menuItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          menuItems.forEach((i) => i.classList.remove("active"));
+          item.classList.add("active");
+
+          contentBoxes.forEach((box) => box.classList.remove("active"));
+          const targetId = item.getAttribute("data-target");
+          document.getElementById(targetId).classList.add("active");
+
+          if (window.innerWidth <= 800) {
+            container.classList.add("hide-sidebar");
+          }
+          checkActiveChat();
+        });
+      });
+
+      // ==================== BOTÃO SAIR DO CHAT ====================
+      sairBotoes.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const contentBox = btn.closest(".content-box");
+          contentBox.classList.remove("active");
+
+          if (window.innerWidth <= 800) {
+            container.classList.remove("hide-sidebar");
+          }
+
+          menuItems.forEach((i) => i.classList.remove("active"));
+          checkActiveChat();
+        });
+      });
+
+      // ==================== ENVIO DE MENSAGENS ====================
+      chatInputs.forEach((inputBox, index) => {
+        const input = inputBox.querySelector("input");
+        const button = inputBox.querySelector("button");
+        const mensagens = contentBoxes[index].querySelector(".mensagens");
+
+        button.addEventListener("click", () => {
+          if (input.value.trim() === "") return;
+
+          const msgArticle = document.createElement("article");
+          msgArticle.classList.add("usuario-mensagem");
+
+          const infoSection = document.createElement("section");
+          infoSection.classList.add("info");
+
+          const p = document.createElement("p");
+          p.textContent = input.value;
+
+          const span = document.createElement("span");
+          span.classList.add("hora");
+          const now = new Date();
+          span.textContent = `${now.getHours()}:${now
+            .getMinutes()
+            .toString()
+            .padStart(2, "0")}`;
+
+          infoSection.appendChild(p);
+          infoSection.appendChild(span);
+          msgArticle.appendChild(infoSection);
+          mensagens.appendChild(msgArticle);
+          mensagens.scrollTop = mensagens.scrollHeight;
+
+          input.value = "";
+        });
+      });
+    </script>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
