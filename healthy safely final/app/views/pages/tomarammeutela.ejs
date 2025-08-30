@@ -1,129 +1,361 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Healthy Safely</title>
-    <link rel="stylesheet" href="../css/tomarammeutela.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/tomarammeutela.css" />
+  </head>
+  <body>
     <%- include('../partials/header.ejs') %>
 
-    <!-- Carrossel de banners -->
-    <section class="carousel-container">
-        <section class="carousel-slide active">
-            <img class="banneracesso" src="../imagem/bannerzaodeacessoo.PNG" alt="Banner de Acesso Healthy Safely" />
-        </section>
-        <section class="carousel-slide">
-            <img class="bannerprogresso" src="../imagem/1x/bannerprogresso.png" alt="Banner de Progresso Healthy Safely" />
-        </section>
-        <section class="botao">
-            <article class="carousel-btn prev" aria-label="Anterior">&#10094;</article>
-            <article class="carousel-btn next" aria-label="Próximo">&#10095;</article>
-        </section>
-        <nav class="carousel-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-        </nav>
-    </section>
-
-    <script>
-    let i=0,s=document.querySelectorAll('.carousel-slide'),d=document.querySelectorAll('.dot');
-    function show(n){s.forEach((e,j)=>e.classList.toggle('active',j==n));d.forEach((e,j)=>e.classList.toggle('active',j==n));i=n;}
-    document.querySelector('.next').onclick=_=>show((i+1)%s.length);
-    document.querySelector('.prev').onclick=_=>show((i-1+s.length)%s.length);
-    d.forEach((e,j)=>e.onclick=_=>show(j));
-    setInterval(()=>show((i+1)%s.length),5000);
-    </script>
-
-    <!-- Banner de ofertas -->
-    <figure class="banner-ofertas">
-        <img src="../imagem/confira.png" alt="Ofertas do Dia" class="bannerof" />
-    </figure>
-
-    <!-- Slider de produtos -->
-    <section class="slider-ml">
-        <button class="btn ml-prev" id="btn-prev">&#10094;</button>
-        <section class="slides-ml-wrapper">
-            <section class="slides-ml" id="slides-ml">
-                <article class="produto-ml">
-                    <img src="../imagem/omega3.png" alt="Ômega 3" />
-                    <h3>Ômega 3</h3>
-                    <p class="preco">R$ 39,99</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
-                <article class="produto-ml">
-                    <img src="../imagem/whey.png" alt="Whey protein" />
-                    <h3>Whey protein</h3>
-                    <p class="preco">R$ 99,90</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
-                <article class="produto-ml">
-                    <img src="../imagem/inalador.png" alt="Inalador" />
-                    <h3>Inalador</h3>
-                    <p class="preco">R$ 299,99</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
-                <article class="produto-ml">
-                    <img src="../imagem/vitaminac.png" alt="Vitamina C" />
-                    <h3>Vitamina C</h3>
-                     <p class="preco">R$ 39,00</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
-                <article class="produto-ml">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
-                    <h3>Vitamina C</h3>
-                    <p class="preco">R$ 39,00</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
-                <article class="produto-ml">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
-                    <h3>Vitamina C</h3>
-                    <p class="preco">R$ 39,00</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
-                <article class="produto-ml">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
-                    <h3>Vitamina C</h3>
-                    <p class="preco">R$ 39,00</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
-                <article class="produto-ml">
-                    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_925452-MLB47981656244_102021-F.webp" alt="Vitamina C" />
-                    <h3>Vitamina C</h3>
-                    <p class="preco">R$ 39,00</p>
-                    <button class="btn-comprar">Comprar</button>
-                </article>
+    <main>
+      <section class="main-fundo">
+        <section class="main-container">
+          <!-- Carrossel grande à esquerda -->
+          <section class="main-content">
+            <section class="carrossel">
+              <article class="carrossel-slide active">
+                <img src="../imagem/bannerzaodeacessoo.PNG" alt="Banner 1" />
+              </article>
+              <article class="carrossel-slide">
+                <img src="../imagem/1x/bannerprogresso.png" alt="Banner 2" />
+              </article>
+              <button class="botao-prev">&#10094;</button>
+              <button class="botao-next">&#10095;</button>
             </section>
+          </section>
+
+          <!-- Coluna lateral com duas divs -->
+          <aside class="side-content">
+            <article class="side-item">
+              <img
+                src="../imagem/confira.png"
+                alt="Ofertas do Dia"
+                class="bannerof"
+              />
+            </article>
+            <article class="side-item">
+              <img
+                src="../imagem/confira.png"
+                alt="Ofertas do Dia"
+                class="bannerof"
+              />
+            </article>
+          </aside>
         </section>
-        <button class="btn ml-next" id="btn-next">&#10095;</button>
-    </section>
 
-    <script>
-    const slides = document.getElementById('slides-ml');
-    const prevBtn = document.getElementById('btn-prev');
-    const nextBtn = document.getElementById('btn-next');
-    const produtoWidth = 260; // 240px card + 20px gap
-    let posicao = 0;
+        <nav class="botoes-servicos">
+          <a href="/loja"
+            ><section><i class="bi bi-shop"></i><span>Loja</span></section></a
+          >
+          <a href="#"
+            ><section>
+              <i class="bi bi-fire"></i> <span>Healthy Points</span>
+            </section>
+          </a>
+          <a href="#">
+            <section><i class="bi bi-heart"></i><span>Doações</span></section>
+          </a>
 
-    prevBtn.addEventListener('click', () => {
-        posicao += produtoWidth;
-        if (posicao > 0) {
-            posicao = -(produtoWidth * (slides.children.length - 4));
-        }
-        slides.style.transform = `translateX(${posicao}px)`;
-    });
+          <a href="/tarefas">
+            <section>
+              <i class="bi bi-check2-square"></i><span>Tarefas</span>
+            </section>
+          </a>
 
-    nextBtn.addEventListener('click', () => {
-        posicao -= produtoWidth;
-        const limite = -(produtoWidth * (slides.children.length - 4));
-        if (posicao < limite) {
-            posicao = 0;
-        }
-        slides.style.transform = `translateX(${posicao}px)`;
-    });
-    </script>
-    
-  <section class="footer">
+          <a href="#">
+            <section>
+              <i class="bi bi-headset"></i><span>Atendimento Online</span>
+            </section>
+          </a>
+        </nav>
+      </section>
+
+      <!-- CENTRO DO MAIN (Slider de produtos) -->
+      <section class="main-centro ofertas">
+        <h1>Ofertas de hoje</h1>
+        <!-- Slider para desktop -->
+        <section class="slider">
+          <button class="btn ml-prev" id="btn-prev">&#10094;</button>
+          <section class="slides-wrapper">
+            <section class="slides" id="slides">
+              <!-- itens (OFERTAS) -->
+              <article class="produtos">
+                <img src="../imagem/omega3.png" alt="Ômega 3" />
+                <h3>Ômega 3</h3>
+                <p class="preco">R$ 39,99</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <article class="produtos">
+                <img src="../imagem/inalador.png" alt="Inalador" />
+                <h3>Inalador</h3>
+                <p class="preco">R$ 299,99</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <article class="produtos">
+                <img src="../imagem/inalador.png" alt="Inalador" />
+                <h3>Inalador</h3>
+                <p class="preco">R$ 299,99</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <article class="produtos">
+                <img src="../imagem/omega3.png" alt="Vitamina C" />
+                <h3>Vitamina C</h3>
+                <p class="preco">R$ 39,00</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <article class="produtos">
+                <img src="../imagem/omega3.png" alt="Vitamina C" />
+                <h3>Vitamina C</h3>
+                <p class="preco">R$ 39,00</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <article class="produtos">
+                <img src="../imagem/omega3.png" alt="Vitamina C" />
+                <h3>Vitamina C</h3>
+                <p class="preco">R$ 39,00</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <article class="produtos">
+                <img src="../imagem/omega3.png" alt="Vitamina C" />
+                <h3>Vitamina C</h3>
+                <p class="preco">R$ 39,00</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <article class="produtos">
+                <img src="../imagem/omega3.png" alt="Vitamina C" />
+                <h3>Vitamina C</h3>
+                <p class="preco">R$ 39,00</p>
+                <button class="btn-comprar">Comprar</button>
+              </article>
+              <!---->
+            </section>
+          </section>
+          <button class="btn ml-next" id="btn-next">&#10095;</button>
+        </section>
+        <!-- Grid para mobile -->
+        <section class="ofertas-grid">
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/inalador.png" alt="Inalador" />
+            <h3>Inalador</h3>
+            <p class="preco">R$ 299,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/inalador.png" alt="Inalador" />
+            <h3>Inalador</h3>
+            <p class="preco">R$ 299,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Vitamina C" />
+            <h3>Vitamina C</h3>
+            <p class="preco">R$ 39,00</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Vitamina C" />
+            <h3>Vitamina C</h3>
+            <p class="preco">R$ 39,00</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Vitamina C" />
+            <h3>Vitamina C</h3>
+            <p class="preco">R$ 39,00</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Vitamina C" />
+            <h3>Vitamina C</h3>
+            <p class="preco">R$ 39,00</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Vitamina C" />
+            <h3>Vitamina C</h3>
+            <p class="preco">R$ 39,00</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+        </section>
+      </section>
+
+      <!-- BANNER TERCIARIO -->
+      <section class="banner-section">
+        <div class="banner"></div>
+      </section>
+
+      <!-- CATEGORIAS DE PRODUTOS (enviam para os respectivos tipos de produtos)-->
+      <section class="main-centro categorias">
+        <h1>Categorias</h1>
+        <nav class="botoes-categorias">
+          <section>
+            <img src="../imagem/image 46.svg" alt="Vitamina C" /><span
+              >Esportes & Perfomance</span
+            >
+          </section>
+          <section>
+            <img src="../imagem/image 47.svg" alt="Vitamina C" />
+            <span>Beleza & Cuidados especiais</span>
+          </section>
+          <section>
+            <img src="../imagem/image 48.svg" alt="Vitamina C" /><span
+              >Suplementos & Vitaminas</span
+            >
+          </section>
+          <section>
+            <img src="../imagem/image 49.svg" alt="Vitamina C" /><span
+              >Sáude & Prevenção</span
+            >
+          </section>
+          <section>
+            <img src="../imagem/image 49.svg" alt="Vitamina C" /><span
+              >Sáude & Prevenção</span
+            >
+          </section>
+          <section>
+            <img src="../imagem/image 49.svg" alt="Vitamina C" /><span
+              >Sáude & Prevenção</span
+            >
+          </section>
+        </nav>
+      </section>
+
+      <!-- PRODUTOS (DESTAQUE)-->
+      <section class="main-centro destaques">
+        <h1>Destaques para você</h1>
+        <section class="produtos-destaque">
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+          <article class="produtos">
+            <img src="../imagem/omega3.png" alt="Ômega 3" />
+            <h3>Ômega 3</h3>
+            <p class="preco">R$ 39,99</p>
+            <button class="btn-comprar">Comprar</button>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <!--FOOTER-->
     <%- include('../partials/footer.ejs') %>
-    </section>
+    <!---->
+
+    <!--SCRIPT DO CARROSSEL PRINCIPAL-->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slides = document.querySelectorAll(".carrossel-slide");
+        const prevBtn = document.querySelector(".botao-prev");
+        const nextBtn = document.querySelector(".botao-next");
+        let slideIndex = 0;
+
+        function showSlide(n) {
+          slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === n);
+          });
+          slideIndex = n;
+        }
+
+        prevBtn.addEventListener("click", () => {
+          let nextIndex =
+            slideIndex - 1 < 0 ? slides.length - 1 : slideIndex - 1;
+          showSlide(nextIndex);
+        });
+
+        nextBtn.addEventListener("click", () => {
+          let nextIndex = (slideIndex + 1) % slides.length;
+          showSlide(nextIndex);
+        });
+
+        // Troca automática a cada 5s
+        setInterval(() => {
+          let nextIndex = (slideIndex + 1) % slides.length;
+          showSlide(nextIndex);
+        }, 5000);
+      });
+    </script>
+
+    <!--SCRIPT DOS SLIDERS-->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const slidesWrapper = document.querySelector(".slides-wrapper");
+        const slides = document.querySelector(".slides");
+        const prevBtn = document.querySelector(".ml-prev");
+        const nextBtn = document.querySelector(".ml-next");
+        const produtoWidth = 260; // largura do card + gap
+        let currentIndex = 0;
+
+        function updateSlide() {
+          slides.style.transform = `translateX(${
+            -currentIndex * produtoWidth
+          }px)`;
+        }
+
+        nextBtn.addEventListener("click", () => {
+          if (
+            currentIndex <
+            slides.children.length -
+              Math.floor(slidesWrapper.offsetWidth / produtoWidth)
+          ) {
+            currentIndex++;
+            updateSlide();
+          }
+        });
+
+        prevBtn.addEventListener("click", () => {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateSlide();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
