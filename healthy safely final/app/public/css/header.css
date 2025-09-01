@@ -205,6 +205,13 @@ body {
   font-weight: 500;
 }
 
+.search-bar i {
+  color: #fff;
+  font-size: 34px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
 /* MODAL do CADASTRO */
 .modal {
   display: flex;
@@ -291,7 +298,7 @@ body {
     gap: 0;
   }
   .menu-desktop {
-    display: none; /*Menu de pc fica invisivel*/
+    display: none; /*Menu PROFILE de pc fica invisivel*/
   }
   .menu-mobile {
     display: flex; /*Menu mobile fica aparecendo*/
