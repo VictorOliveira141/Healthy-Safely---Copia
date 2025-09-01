@@ -1,7 +1,7 @@
 /* RESET */
 html,
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), #297767 !important;
+  background: white !important;
   min-height: 100vh;
   margin: 0;
   padding: 0;

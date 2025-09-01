@@ -1,87 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/sono.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/sono.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
     <title>Sono</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('../partials/header.ejs') %>
 
     <section class="geral">
-        <section class="tarefa-container">
-            <section class="tarefa-topo">
-                <article class="lua">
-                    <img src="../imagem/lua.png" class="lua-img" alt="Lua">
-                </article>
-                <h3>SONO DE QUALIDADE</h3>
-            </section>
-            
-            <section class="tarefa-texto">
-                DURMA PELO MENOS ENTRE 8 A 9 HORAS POR UMA SEMANA E ESCREVA OS RESULTADOS.<br>
-                ALGUM PROFISSIONAL IRÁ ATENDER SEU RELATÓRIO
-            </section>
-            
-            <section class="tarefa-bottom">
-                <section class="tarefa-porcentagem">
-                    <span>0% CONCLUÍDA</span>
-                </section>
-                <section class="tarefa-botao-area">
-                    <button class="tarefa-botao"></button>
-                    <p class="tarefa-botao-texto">
-                        CLIQUE AQUI QUANDO FOR<br>DORMIR OU ACORDAR
-                    </p>
-                </section>
-            </section>
+      <section class="tarefa-container">
+        <section class="tarefa-topo">
+          <article class="lua">
+            <img src="../imagem/lua.png" class="lua-img" alt="Lua" />
+          </article>
+          <h3>SONO DE QUALIDADE</h3>
         </section>
+
+        <section class="tarefa-texto">
+          DURMA PELO MENOS ENTRE 8 A 9 HORAS POR UMA SEMANA E ESCREVA OS
+          RESULTADOS.<br />
+          ALGUM PROFISSIONAL IRÁ ATENDER SEU RELATÓRIO
+        </section>
+
+        <section class="tarefa-bottom">
+          <section class="tarefa-porcentagem">
+            <span>0% CONCLUÍDA</span>
+          </section>
+          <section class="tarefa-botao-area">
+            <button class="tarefa-botao"></button>
+            <p class="tarefa-botao-texto">
+              CLIQUE AQUI QUANDO FOR<br />DORMIR OU ACORDAR
+            </p>
+          </section>
+        </section>
+      </section>
     </section>
 
     <main class="tarefassas">
-        <section class="suastarefas">
-            <h1 class="st">SUAS TAREFAS</h1>
-        </section>
+      <section class="suastarefas">
+        <h1 class="st">SUAS TAREFAS</h1>
+      </section>
     </main>
 
     <section class="tarefas-container">
-        <section class="blocodetarefas">
-            <section class="iconestarefas">
-                <article class="sono">
-                    <a href="sono">
-                        <img src="../imagem/sono.png" alt="tarefinhas" class="tarefão">
-                        <h3 class="ltn_saude">SONO</h3>
-                    </a>
-                </article>
-                <article class="saudemental">
-                    <a href="saudemen">
-                        <img src="../imagem/saudemental.png" alt="tarefinhas" class="tarefão">
-                        <h3 class="ltn_saude">SAUDE MENTAL</h3>
-                    </a>
-                </article>
-                <article class="atividadefisica">
-                    <a href="atividadefis">
-                        <img src="../imagem/atf.png" alt="tarefinhas" class="tarefão">
-                        <h3 class="ltn_saude">ATIVIDADE FÍSICA</h3>
-                    </a>
-                </article>
-                <article class="alimenacao">
-                    <a href="alimentacao">
-                        <img src="../imagem/alimentacao.png" alt="tarefinhas" class="tarefão">
-                        <h3 class="ltn_saude">ALIMENTAÇÃO</h3>
-                    </a>
-                </article>
-            </section>
-            <article class="outros">
-                <a href="#">
-                    <img src="../imagem/outros.png" alt="tarefinhas" class="tarefão">
-                    <h3 class="ltn_saude">OUTROS</h3>
-                </a>
-            </article>
+      <section class="blocodetarefas">
+        <section class="iconestarefas">
+          <article class="sono">
+            <a href="sono">
+              <img src="../imagem/sono.png" alt="tarefinhas" class="tarefão" />
+              <h3 class="ltn_saude">SONO</h3>
+            </a>
+          </article>
+          <article class="saudemental">
+            <a href="saudemen">
+              <img
+                src="../imagem/saudemental.png"
+                alt="tarefinhas"
+                class="tarefão"
+              />
+              <h3 class="ltn_saude">SAUDE MENTAL</h3>
+            </a>
+          </article>
+          <article class="atividadefisica">
+            <a href="atividadefis">
+              <img src="../imagem/atf.png" alt="tarefinhas" class="tarefão" />
+              <h3 class="ltn_saude">ATIVIDADE FÍSICA</h3>
+            </a>
+          </article>
+          <article class="alimenacao">
+            <a href="alimentacao">
+              <img
+                src="../imagem/alimentacao.png"
+                alt="tarefinhas"
+                class="tarefão"
+              />
+              <h3 class="ltn_saude">ALIMENTAÇÃO</h3>
+            </a>
+          </article>
         </section>
+        <article class="outros">
+          <a href="#">
+            <img src="../imagem/outros.png" alt="tarefinhas" class="tarefão" />
+            <h3 class="ltn_saude">OUTROS</h3>
+          </a>
+        </article>
+      </section>
     </section>
 
-    <footer class="footer">
-        <%- include('../partials/footer.ejs') %>
-    </footer>
-</body>
+    <footer class="footer"><%- include('../partials/footer.ejs') %></footer>
+  </body>
 </html>

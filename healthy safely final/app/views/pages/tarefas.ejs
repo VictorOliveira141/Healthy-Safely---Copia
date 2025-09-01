@@ -1,46 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tarefas</title>
-    <link rel="stylesheet" href="../css/tarefas.css">
-</head>
-<body>
-     <%- include('../partials/header.ejs') %>
+    <link rel="stylesheet" href="../css/tarefas.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
 
-     <section class="bannerdetarefa">
-        <img src="../imagem/tarefa.png" alt="tarefasbanner" class="confiratarefas">
-     </section>
-     <main class="tarefassas">
-        <section class="suastarefas">
+    <section class="bannerdetarefa">
+      <img
+        src="../imagem/tarefa.png"
+        alt="tarefasbanner"
+        class="confiratarefas"
+      />
+    </section>
+    <main class="tarefassas">
+      <section class="suastarefas">
         <h1 class="st">SUAS TAREFAS</h1>
-        </section>
-     </main>
-      <section class="tarefas-container">
-         <section class="blocodetarefas">
-          <section class="iconestarefas">
-            <article class="sono">
-            <a href="sono"><img src="../imagem/sono.png" alt="tarefinhas" class="tarefão"> <h3 class="ltn_saude">SONO</h3> </a>
-            </article>
-            <article class="saudemental">
-             <a href="saudemen"><img src="../imagem/saudemental.png" alt="tarefinhas" class="tarefão"> <h3 class="ltn_saude">SAUDE MENTAL</h3></a>
-            </article>
-            <article class="atividadefisica">
-             <a href="atividadefis"><img src="../imagem/atf.png" alt="tarefinhas" class="tarefão"> <h3 class="ltn_saude">ATIVIDADE FISÍCA</h3></a>
-            </article>
-            <article class="alimenacao">
-            <a href="alimentacao"> <img src="../imagem/alimentacao.png" alt="tarefinhas" class="tarefão"> <a href="#"></a><h3 class="ltn_saude">ALIMENTAÇÃO</h3></a>
-            </article>
-            </section>
-            <article class="outros">
-            <a href="#"><img src="../imagem/outros.png" alt="tarefinhas" class="tarefão"> <h3 class="ltn_saude">OUTROS</h3></a>
-            </article>
-         </section>
       </section>
-        <section class="footer">
-       <%- include('../partials/footer.ejs') %>
-       </section>
-
-</body>
+    </main>
+    <section class="tarefas-container">
+      <section class="blocodetarefas">
+        <section class="iconestarefas">
+          <article class="sono">
+            <a href="sono"
+              ><img src="../imagem/sono.png" alt="tarefinhas" class="tarefão" />
+              <h3 class="ltn_saude">SONO</h3>
+            </a>
+          </article>
+          <article class="saudemental">
+            <a href="saudemen"
+              ><img
+                src="../imagem/saudemental.png"
+                alt="tarefinhas"
+                class="tarefão"
+              />
+              <h3 class="ltn_saude">SAUDE MENTAL</h3></a
+            >
+          </article>
+          <article class="atividadefisica">
+            <a href="atividadefis"
+              ><img src="../imagem/atf.png" alt="tarefinhas" class="tarefão" />
+              <h3 class="ltn_saude">ATIVIDADE FISÍCA</h3></a
+            >
+          </article>
+          <article class="alimenacao">
+            <a href="alimentacao">
+              <img
+                src="../imagem/alimentacao.png"
+                alt="tarefinhas"
+                class="tarefão"
+              />
+              <a href="#"></a>
+              <h3 class="ltn_saude">ALIMENTAÇÃO</h3></a
+            >
+          </article>
+        </section>
+        <article class="outros">
+          <a href="#"
+            ><img src="../imagem/outros.png" alt="tarefinhas" class="tarefão" />
+            <h3 class="ltn_saude">OUTROS</h3></a
+          >
+        </article>
+      </section>
+    </section>
+    <section class="footer"><%- include('../partials/footer.ejs') %></section>
+  </body>
 </html>
