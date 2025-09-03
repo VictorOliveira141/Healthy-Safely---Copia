@@ -1,20 +1,21 @@
-<link rel="stylesheet" href="../css/footer.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/css/footer.css" />
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
 />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<footer>
-  <section class="footer-content">
-    <article>
+<footer class="footer">
+  <section class="footer-grid">
+    <!-- Coluna 1 -->
+    <article class="footer-col">
       <img
         src="../imagem/1x/logozeko.png"
         alt="Logo Healthy Safely"
         class="footer-logo"
       />
 
-      <button class="FaleConosco" onclick="location.href='#'">
+      <button class="footer-btn" onclick="location.href='#'">
         Fale Conosco
       </button>
 
@@ -26,21 +27,32 @@
       </div>
     </article>
 
-    <div class="footer-links">
-      <a href="/informacoes">Dúvidas</a>
-      <span class="footer-divider">|</span>
-      <a href="informacoes">Política de Privacidade</a>
-      <span class="footer-divider">|</span>
-      <a href="informacoes">Termos de uso</a>
-      <span class="footer-divider">|</span>
-      <a href="informacoes">Acessibilidade</a>
-      <span class="footer-divider">|</span>
-      <a href="informacoes">Contato</a>
-      <span class="footer-divider">|</span>
-      <a href="informacoes">Sobre nós</a>
-    </div>
+    <!-- Coluna 2 -->
+    <section class="footer-duas-colunas">
+      <article class="footer-col">
+        <h2>Serviços</h2>
+        <ul>
+          <li><a href="/informacoes">Atendimento Online</a></li>
+          <li><a href="/informacoes">Suporte</a></li>
+        </ul>
+      </article>
+
+      <!-- Coluna 3 -->
+      <article class="footer-col">
+        <h2>Sobre o site</h2>
+        <ul>
+          <li><a href="/informacoes">Dúvidas</a></li>
+          <li><a href="/informacoes">Política de Privacidade</a></li>
+          <li><a href="/informacoes">Termos de uso</a></li>
+          <li><a href="/informacoes">Acessibilidade</a></li>
+          <li><a href="/informacoes">Contato</a></li>
+          <li><a href="/informacoes">Sobre nós</a></li>
+        </ul>
+      </article>
+    </section>
   </section>
 
+  <!-- Rodapé inferior -->
   <section class="footer-bottom">
     <p>Todos os direitos reservados</p>
     <p>©2025 Healthy Safely - Saúde e bem-estar</p>
