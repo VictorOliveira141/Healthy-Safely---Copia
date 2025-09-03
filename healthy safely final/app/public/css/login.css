@@ -142,10 +142,10 @@ main {
   gap: 10px;
 }
 .juntar:hover {
-  background-color: #8ca700;
+  background-color: rgb(14, 75, 62);
 }
 button:hover {
-  background-color: #8ca700;
+  background-color: rgb(14, 75, 62);
 }
 .googleimg {
   width: 20px;
@@ -172,9 +172,7 @@ input {
   border: 1px solid gray;
   border-radius: 25px;
 }
-.erro {
-  border: 2px solid red;
-}
+
 span.msgErro {
   color: red;
   font-size: 0.9em;
@@ -203,12 +201,20 @@ article i {
   border-color: red;
   box-shadow: 0 0 5px #e74c3c;
 }
-
-.input-icon input.certo {
-  border-color: #2ecc71;
-  box-shadow: 0 0 5px #2ecc71;
+.ver-senha-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 /* RESPONSIVO */
 @media (max-width: 800px) {
   main {

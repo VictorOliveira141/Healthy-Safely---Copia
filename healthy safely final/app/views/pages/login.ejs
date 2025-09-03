@@ -82,9 +82,6 @@
                   value="<%= valores?.usuarioDigitado || '' %>"
                   class="<%= erro ? 'erro' : '' %>"
                 />
-                <% if (erro) { %>
-                <span class="msgErro"><%= erro %></span>
-                <% } %>
               </article>
 
               <article class="input-icon">
@@ -98,6 +95,10 @@
                   class="<%= erro ? 'erro' : '' %>"
                 />
               </article>
+
+              <% if (erro) { %>
+              <span class="msgErro"><%= erro %></span>
+              <% } %>
 
               <h1 class="login">
                 Ainda não possui uma conta?

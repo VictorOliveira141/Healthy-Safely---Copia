@@ -452,11 +452,7 @@ router.post("/login", (req, res) => {
   );
 
   if (usuarioEncontrado) {
-    return res.render("pages/login", {
-      erro: null,
-      sucesso: true,
-      valores: {},
-    });
+    return res.render("pages/tomarammeutela");
   } else {
     return res.render("pages/login", {
       erro: "*Não reconhecemos estas credenciais. Tente novamente.",

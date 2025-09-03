@@ -185,15 +185,24 @@ input {
   padding: 10px;
   margin-top: 10px;
   border: 1px solid gray;
-  border-radius: 25px;
 }
-.erro {
-  border: 2px solid red;
+.input-icon input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  transition: all 0.3s ease;
 }
+
 span.msgErro {
   color: red;
   font-size: 0.9em;
   margin-left: 10px;
+}
+.input-icon input.erro {
+  border-color: red;
+  box-shadow: 0 0 5px #e74c3c;
 }
 .login {
   font-size: smaller;
@@ -399,5 +408,20 @@ article i {
     text-decoration: underline;
     color: #8ca700;
     cursor: pointer;
+  }
+  /* Chrome, Edge, Safari */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* força fundo transparente */
+    -webkit-text-fill-color: white !important; /* cor do texto */
+    transition: background-color 5000s ease-in-out 0s; /* evita piscar */
+  }
+
+  /* Firefox */
+  input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px transparent inset !important;
+    -moz-text-fill-color: white !important;
   }
 }
