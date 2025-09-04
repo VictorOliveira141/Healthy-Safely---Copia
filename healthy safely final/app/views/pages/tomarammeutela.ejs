@@ -47,6 +47,7 @@
           </aside>
         </section>
 
+        <!-- BOTOES DE SERVIÇOS -->
         <nav class="botoes-servicos">
           <a href="/loja"
             ><section><i class="bi bi-shop"></i><span>Loja</span></section></a
@@ -66,6 +67,12 @@
             </section>
           </a>
 
+          <a href="/progressao">
+            <section>
+              <i class="bi bi-graph-up"></i><span>Progressão</span>
+            </section>
+          </a>
+
           <a href="#">
             <section>
               <i class="bi bi-headset"></i><span>Atendimento Online</span>
@@ -78,114 +85,180 @@
       <section class="main-centro ofertas">
         <h1>Ofertas de hoje</h1>
         <!-- Slider para desktop -->
-        <section class="slider">
-          <button class="btn ml-prev" id="btn-prev">&#10094;</button>
-          <section class="slides-wrapper">
-            <section class="slides" id="slides">
-              <!-- itens (OFERTAS) -->
-              <article class="produtos">
-                <img src="../imagem/omega3.png" alt="Ômega 3" />
-                <h3>Ômega 3</h3>
-                <p class="preco">R$ 39,99</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <article class="produtos">
-                <img src="../imagem/inalador.png" alt="Inalador" />
-                <h3>Inalador</h3>
-                <p class="preco">R$ 299,99</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <article class="produtos">
-                <img src="../imagem/inalador.png" alt="Inalador" />
-                <h3>Inalador</h3>
-                <p class="preco">R$ 299,99</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <article class="produtos">
-                <img src="../imagem/omega3.png" alt="Vitamina C" />
-                <h3>Vitamina C</h3>
-                <p class="preco">R$ 39,00</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <article class="produtos">
-                <img src="../imagem/omega3.png" alt="Vitamina C" />
-                <h3>Vitamina C</h3>
-                <p class="preco">R$ 39,00</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <article class="produtos">
-                <img src="../imagem/omega3.png" alt="Vitamina C" />
-                <h3>Vitamina C</h3>
-                <p class="preco">R$ 39,00</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <article class="produtos">
-                <img src="../imagem/omega3.png" alt="Vitamina C" />
-                <h3>Vitamina C</h3>
-                <p class="preco">R$ 39,00</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <article class="produtos">
-                <img src="../imagem/omega3.png" alt="Vitamina C" />
-                <h3>Vitamina C</h3>
-                <p class="preco">R$ 39,00</p>
-                <button class="btn-comprar">Comprar</button>
-              </article>
-              <!---->
+        <section>
+          <section class="slider">
+            <button class="btn ml-prev" id="btn-prev">&#10094;</button>
+            <section class="slides-wrapper">
+              <section class="slides" id="slides">
+                <!-- itens (OFERTAS) -->
+
+                <!-- Produto 1-->
+                <article class="produtos">
+                  <img src="../imagem/omega3.png" alt="Ômega 3 Sundown" />
+                  <h3>Sundown Ômega 3 1000mg</h3>
+                  <article class="produto-info">
+                    <article class="avaliacao">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                      <i class="bi bi-star"></i>
+                    </article>
+                    <div class="unidades-vendidas">500+ vendidos</div>
+                  </article>
+
+                  <article class="colaborador">
+                    <span class="nome-colaborador">Saúde e Vida</span>
+                    <i class="bi bi-patch-check-fill"></i>
+                  </article>
+
+                  <article class="preco-container">
+                    <span class="preco-antigo">R$ 49,99</span>
+                    <span class="desconto">-20%</span>
+                  </article>
+                  <span class="preco">R$ 26,99</span>
+
+                  <button class="btn-comprar">
+                    Comprar<i class="bi bi-basket"></i>
+                  </button>
+                </article>
+
+                <!-- Produto 2-->
+                <article class="produtos">
+                  <img src="../imagem/inalador.png" alt="Inalador G-TECH" />
+                  <h3>Inalador Nebulizador G-TECH</h3>
+
+                  <article class="produto-info">
+                    <article class="avaliacao">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                      <i class="bi bi-star"></i>
+                    </article>
+                    <div class="unidades-vendidas">1000+ vendidos</div>
+                  </article>
+
+                  <article class="colaborador">
+                    <span class="nome-colaborador">G-TECH</span>
+                    <i class="bi bi-patch-check-fill"></i>
+                  </article>
+
+                  <article class="preco-container">
+                    <span class="preco-antigo">R$ 79,99</span>
+                    <span class="desconto">-40%</span>
+                  </article>
+                  <span class="preco">R$ 31,99</span>
+
+                  <button class="btn-comprar">
+                    Comprar<i class="bi bi-basket"></i>
+                  </button>
+                </article>
+
+                <!-- Produto 3-->
+                <article class="produtos">
+                  <img src="../imagem/vitaminaC.png" alt="Vitamina C Equaliv" />
+                  <h3>Vitamina C 1G com 10 comprimidos</h3>
+
+                  <article class="produto-info">
+                    <article class="avaliacao">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                      <i class="bi bi-star"></i>
+                    </article>
+                    <div class="unidades-vendidas">200+ vendidos</div>
+                  </article>
+
+                  <article class="colaborador">
+                    <span class="nome-colaborador">Equaliv</span>
+                    <i class="bi bi-patch-check-fill"></i>
+                  </article>
+
+                  <article class="preco-container">
+                    <span class="preco-antigo">R$ 19,99</span>
+                    <span class="desconto">-25%</span>
+                  </article>
+                  <span class="preco">R$ 14,99</span>
+
+                  <button class="btn-comprar">
+                    Comprar<i class="bi bi-basket"></i>
+                  </button>
+                </article>
+
+                <!-- Produto 4-->
+                <article class="produtos">
+                  <img
+                    src="../imagem/whey.png"
+                    alt="Whey Protein IntegralMedica"
+                  />
+                  <h3>Whey Protein Refil (900g)</h3>
+
+                  <article class="produto-info">
+                    <article class="avaliacao">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                      <i class="bi bi-star"></i>
+                    </article>
+                    <div class="unidades-vendidas">3000+ vendidos</div>
+                  </article>
+
+                  <article class="colaborador">
+                    <span class="nome-colaborador">IntegralMedica</span>
+                    <i class="bi bi-patch-check-fill"></i>
+                  </article>
+
+                  <article class="preco-container">
+                    <span class="preco-antigo">R$ 59,99</span>
+                    <span class="desconto">-30%</span>
+                  </article>
+                  <span class="preco">R$ 41,99</span>
+
+                  <button class="btn-comprar">
+                    Comprar<i class="bi bi-basket"></i>
+                  </button>
+                </article>
+
+                <!-- Produto 5-->
+                <article class="produtos">
+                  <img src="../imagem/inalador.png" alt="Inalador" />
+                  <h3>Inalador Nebulizador G-TECH</h3>
+
+                  <article class="produto-info">
+                    <article class="avaliacao">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                      <i class="bi bi-star"></i>
+                    </article>
+                    <div class="unidades-vendidas">1000+ vendidos</div>
+                  </article>
+
+                  <article class="colaborador">
+                    <span class="nome-colaborador">G-TECH</span>
+                    <i class="bi bi-patch-check-fill"></i>
+                  </article>
+
+                  <article class="preco-container">
+                    <span class="preco-antigo">R$ 79,99</span>
+                    <span class="desconto">-40%</span>
+                  </article>
+                  <span class="preco">R$ 31,99</span>
+
+                  <button class="btn-comprar">
+                    Comprar<i class="bi bi-basket"></i>
+                  </button>
+                </article>
+
+                <!---->
+              </section>
             </section>
+            <button class="btn ml-next" id="btn-next">&#10095;</button>
           </section>
-          <button class="btn ml-next" id="btn-next">&#10095;</button>
-        </section>
-        <!-- Grid para mobile -->
-        <section class="ofertas-grid">
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/inalador.png" alt="Inalador" />
-            <h3>Inalador</h3>
-            <p class="preco">R$ 299,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/inalador.png" alt="Inalador" />
-            <h3>Inalador</h3>
-            <p class="preco">R$ 299,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Vitamina C" />
-            <h3>Vitamina C</h3>
-            <p class="preco">R$ 39,00</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Vitamina C" />
-            <h3>Vitamina C</h3>
-            <p class="preco">R$ 39,00</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Vitamina C" />
-            <h3>Vitamina C</h3>
-            <p class="preco">R$ 39,00</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Vitamina C" />
-            <h3>Vitamina C</h3>
-            <p class="preco">R$ 39,00</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Vitamina C" />
-            <h3>Vitamina C</h3>
-            <p class="preco">R$ 39,00</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
         </section>
       </section>
 
@@ -199,32 +272,33 @@
         <h1>Categorias</h1>
         <nav class="botoes-categorias">
           <section>
-            <img src="../imagem/image 46.svg" alt="Vitamina C" /><span
+            <img src="../imagem/futebol.svg" alt="Esportes & Perfomance" /><span
               >Esportes & Perfomance</span
             >
           </section>
           <section>
-            <img src="../imagem/image 47.svg" alt="Vitamina C" />
+            <img src="../imagem/beleza.svg" alt="Beleza & Cuidados especiais" />
             <span>Beleza & Cuidados especiais</span>
           </section>
           <section>
-            <img src="../imagem/image 48.svg" alt="Vitamina C" /><span
-              >Suplementos & Vitaminas</span
+            <img
+              src="../imagem/suplemento.svg"
+              alt="Suplementos & Vitaminas"
+            /><span>Suplementos & Vitaminas</span>
+          </section>
+          <section>
+            <img src="../imagem/bebe.svg" alt="Bebês & Crianças" /><span
+              >Bebês & Crianças</span
             >
           </section>
           <section>
-            <img src="../imagem/image 49.svg" alt="Vitamina C" /><span
+            <img src="../imagem/prevencao.svg" alt="VSáude & Prevenção" /><span
               >Sáude & Prevenção</span
             >
           </section>
           <section>
-            <img src="../imagem/image 49.svg" alt="Vitamina C" /><span
-              >Sáude & Prevenção</span
-            >
-          </section>
-          <section>
-            <img src="../imagem/image 49.svg" alt="Vitamina C" /><span
-              >Sáude & Prevenção</span
+            <img src="../imagem/higiene.svg" alt="Higiene" /><span
+              >Higiene</span
             >
           </section>
         </nav>
@@ -233,56 +307,60 @@
       <!-- PRODUTOS (DESTAQUE)-->
       <section class="main-centro destaques">
         <h1>Destaques para você</h1>
-        <section class="produtos-destaque">
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-          <article class="produtos">
-            <img src="../imagem/omega3.png" alt="Ômega 3" />
-            <h3>Ômega 3</h3>
-            <p class="preco">R$ 39,99</p>
-            <button class="btn-comprar">Comprar</button>
-          </article>
-        </section>
+        <section class="produtos-destaque" id="produtos-destaque"></section>
+        <!-- Script para ficar repetindo o mesmo article só para nao ficar copiando e colando article-->
+        <script>
+          const produtos = [
+            {
+              img: "../imagem/omega3.png",
+              alt: "Ômega 3 Sundown",
+              titulo: "Sundown Ômega 3 1000mg",
+              estrelas: 3.5, // pode ser usado para lógica de estrelas
+              vendidos: "500+ vendidos",
+              colaborador: "Saúde e Vida",
+              preco: "R$ 26,99",
+            },
+            // Você pode adicionar outros produtos aqui
+          ];
+
+          const container = document.getElementById("produtos-destaque");
+
+          // Quantas vezes quer repetir
+          const repetir = 7;
+
+          for (let i = 0; i < repetir; i++) {
+            const produto = produtos[0]; // sempre o mesmo
+            const article = document.createElement("article");
+            article.classList.add("produtos");
+
+            article.innerHTML = `
+              <img src="${produto.img}" alt="${produto.alt}" />
+              <h3>${produto.titulo}</h3>
+             <article class="produto-info">
+                  <article class="avaliacao">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    <i class="bi bi-star"></i>
+                  </article>
+               <div class="unidades-vendidas">${produto.vendidos}</div>
+             </article>
+
+             <article class="colaborador">
+               <span class="nome-colaborador">${produto.colaborador}</span>
+               <i class="bi bi-patch-check-fill"></i>
+             </article>
+
+             <span class="preco">${produto.preco}</span>
+
+             <button class="btn-comprar">
+               Comprar<i class="bi bi-basket"></i>
+             </button>
+    `;
+            container.appendChild(article);
+          }
+        </script>
       </section>
     </main>
 
@@ -327,35 +405,67 @@
     <!--SCRIPT DOS SLIDERS-->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const slidesWrapper = document.querySelector(".slides-wrapper");
-        const slides = document.querySelector(".slides");
+        const wrapper = document.querySelector(".slides-wrapper");
+        const track = document.querySelector(".slides");
         const prevBtn = document.querySelector(".ml-prev");
         const nextBtn = document.querySelector(".ml-next");
-        const produtoWidth = 260; // largura do card + gap
-        let currentIndex = 0;
 
-        function updateSlide() {
-          slides.style.transform = `translateX(${
-            -currentIndex * produtoWidth
-          }px)`;
+        // Não roda no mobile (você já usa o grid)
+        const isMobile = window.matchMedia("(max-width: 650px)").matches;
+        if (!wrapper || !track || isMobile) return;
+
+        // Corrige o bug de alinhamento sem mudar classes (evita cortar os 2 primeiros)
+        wrapper.style.justifyContent = "flex-start";
+
+        let gap = 0,
+          itemW = 0,
+          step = 0,
+          perView = 1,
+          current = 0;
+
+        function medir() {
+          const primeiro = track.querySelector(".produtos");
+          if (!primeiro) return;
+
+          const st = getComputedStyle(track);
+          gap = parseFloat(st.columnGap || st.gap) || 0; // gap do flex
+          itemW = primeiro.getBoundingClientRect().width; // largura do card
+          step = Math.round(itemW + gap); // 1 passo = card + gap
+
+          const ww = wrapper.clientWidth;
+          // +gap para desconsiderar o "gap final" que não existe após o último visível
+          perView = Math.max(1, Math.floor((ww + gap) / step));
         }
 
-        nextBtn.addEventListener("click", () => {
-          if (
-            currentIndex <
-            slides.children.length -
-              Math.floor(slidesWrapper.offsetWidth / produtoWidth)
-          ) {
-            currentIndex++;
-            updateSlide();
-          }
-        });
+        function maxIndex() {
+          return Math.max(0, track.children.length - perView);
+        }
 
-        prevBtn.addEventListener("click", () => {
-          if (currentIndex > 0) {
-            currentIndex--;
-            updateSlide();
-          }
+        function atualizarBotoes() {
+          if (prevBtn) prevBtn.disabled = current <= 0;
+          if (nextBtn) nextBtn.disabled = current >= maxIndex();
+        }
+
+        function irPara(i) {
+          current = Math.max(0, Math.min(i, maxIndex()));
+          track.style.transform = `translateX(${-current * step}px)`;
+          atualizarBotoes();
+        }
+
+        // Inicializa
+        medir();
+        irPara(0);
+
+        nextBtn?.addEventListener("click", () => irPara(current + 1));
+        prevBtn?.addEventListener("click", () => irPara(current - 1));
+
+        // Recalcula ao redimensionar (desktop)
+        window.addEventListener("resize", () => {
+          if (window.matchMedia("(max-width: 650px)").matches) return;
+          const wasMax = maxIndex();
+          medir();
+          if (current > maxIndex()) current = maxIndex();
+          irPara(current);
         });
       });
     </script>
