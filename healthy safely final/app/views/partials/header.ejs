@@ -36,7 +36,9 @@
     <!-- Menu Direito para Desktop -->
     <div class="header-ladodireito menu-desktop">
       <div class="user-icon">
-        <img src="../imagem/user.png" alt="User Icon" height="50" width="50" />
+        <a href="/perfil"
+          ><img src="../imagem/user.png" alt="User Icon" height="50" width="50"
+        /></a>
       </div>
       <a href="/login">ENTRAR</a>
       <span class="header-divider">|</span>
@@ -57,22 +59,20 @@
         </div>
       </div>
     </div>
-
-    <!-- Modal de Cadastro -->
-    <div id="modalCadastro" class="modal hidden">
-      <div class="modal-content">
-        <button id="closeCadastroModal" class="close-btn">&times;</button>
-        <h2>Escolha o tipo de cadastro</h2>
-        <div class="opcoes-cadastro">
-          <a href="/cadastroCliente" class="btn-cadastro">Como cliente</a>
-          <a href="/cadastroColaborador" class="btn-cadastro"
-            >Como colaborador</a
-          >
-        </div>
-      </div>
-    </div>
   </div>
 </header>
+
+<!-- Modal de Cadastro Exclusivo do Header -->
+<div id="headerModalCadastro" class="modal header-modal hidden">
+  <div class="modal-content">
+    <button id="headerCloseCadastroModal" class="close-btn">&times;</button>
+    <h2>Escolha o tipo de cadastro</h2>
+    <div class="opcoes-cadastro">
+      <a href="/cadastroCliente" class="btn-cadastro">Como cliente</a>
+      <a href="/cadastroColaborador" class="btn-cadastro">Como colaborador</a>
+    </div>
+  </div>
+</div>
 
 <!-- Search Bar -->
 <div class="search-bar">
@@ -97,26 +97,26 @@
 </div>
 
 <script>
-  // Modal de cadastro
-  const abrirBtns = document.querySelectorAll(".abrir-cadastro");
-  const modal = document.getElementById("modalCadastro");
-  const closeBtn = document.getElementById("closeCadastroModal");
+  // Modal de cadastro exclusivo do Header
+  const headerAbrirBtns = document.querySelectorAll(".header .abrir-cadastro");
+  const headerModal = document.getElementById("headerModalCadastro");
+  const headerCloseBtn = document.getElementById("headerCloseCadastroModal");
 
-  abrirBtns.forEach((btn) => {
+  headerAbrirBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      modal.classList.remove("hidden");
+      headerModal.classList.remove("hidden");
       document.body.style.overflow = "hidden";
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
+  headerCloseBtn.addEventListener("click", () => {
+    headerModal.classList.add("hidden");
     document.body.style.overflow = "";
   });
 
   window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.add("hidden");
+    if (e.target === headerModal) {
+      headerModal.classList.add("hidden");
       document.body.style.overflow = "";
     }
   });

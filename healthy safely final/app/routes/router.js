@@ -9,19 +9,15 @@ var { validarCNPJ } = require("../helpers/validacaoPersonalizada");
 router.get("/", (req, res) => {
   res.render("pages/tomarammeutela");
 });
-
 router.get("/tomarammeutela", (req, res) => {
   res.render("pages/tomarammeutela");
 });
-
 router.get("/progressao", (req, res) => {
   res.render("pages/progressao");
 });
-
 router.get("/tarefas", (req, res) => {
   res.render("pages/tarefas");
 });
-
 router.get("/loja", (req, res) => {
   res.render("pages/loja");
 });
@@ -36,6 +32,18 @@ router.get("/saudemen", (req, res) => {
 });
 router.get("/atividadefis", (req, res) => {
   res.render("pages/atividadefis");
+});
+router.get("/tela-inicial", (req, res) => {
+  res.render("pages/tomarammeutela");
+});
+router.get("/informacoes", (req, res) => {
+  res.render("pages/informacoes");
+});
+router.get("/orientacoes", (req, res) => {
+  res.render("pages/orientacoes");
+});
+router.get("/perfil", (req, res) => {
+  res.render("pages/perfil");
 });
 
 router.get("/login", (req, res) => {
@@ -96,18 +104,6 @@ router.get("/cadastroColaborador", (req, res) => {
 
     retorno: null,
   });
-});
-
-router.get("/tela-inicial", (req, res) => {
-  res.render("pages/tomarammeutela");
-});
-
-router.get("/informacoes", (req, res) => {
-  res.render("pages/informacoes");
-});
-
-router.get("/orientacoes", (req, res) => {
-  res.render("pages/orientacoes");
 });
 
 /* CADASTRO SENDO CLIENTE */
