@@ -72,7 +72,7 @@
             <article class="formulario">
               <h2>Dados de acesso</h2>
               <article class="input-icon">
-                <i class="bi bi-person"></i>
+                <i class="bi bi-person icones-gerais"></i>
                 <input
                   type="text"
                   id="nome"
@@ -85,7 +85,7 @@
               </article>
 
               <article class="input-icon">
-                <i class="bi bi-envelope"></i>
+                <i class="bi bi-envelope icones-gerais"></i>
                 <input
                   type="text"
                   id="email"
@@ -98,7 +98,7 @@
               </article>
 
               <article class="input-icon">
-                <i class="bi bi-calendar"></i>
+                <i class="bi bi-calendar icones-gerais"></i>
                 <input
                   type="date"
                   id="data"
@@ -119,7 +119,7 @@
               <br />
 
               <article class="input-icon">
-                <i class="bi bi-lock"></i>
+                <i class="bi bi-lock icones-gerais"></i>
                 <input
                   type="password"
                   id="senha"
@@ -128,11 +128,15 @@
                   value="<%= valores.senha %>"
                   class="<%= erroValidacao.senha %>"
                 />
+                <i
+                  class="bi bi-eye-slash-fill olhofechado"
+                  onclick="mostrarSenha('senha', this)"
+                ></i>
                 <span class="msgErro"><%= msgErro.senha %></span>
               </article>
 
               <article class="input-icon">
-                <i class="bi bi-shield-lock"></i>
+                <i class="bi bi-shield-lock icones-gerais"></i>
                 <input
                   type="password"
                   id="confirmarSenha"
@@ -141,6 +145,10 @@
                   value="<%= valores.confirmarSenha %>"
                   class="<%= erroValidacao.confirmarSenha %>"
                 />
+                <i
+                  class="bi bi-eye-slash-fill olhofechado"
+                  onclick="mostrarSenha('confirmarSenha', this)"
+                ></i>
                 <span class="msgErro"><%= msgErro.confirmarSenha %></span>
               </article>
 
@@ -157,6 +165,8 @@
         </article>
       </section>
     </main>
+
+    <script src="../js/ver-senha.js"></script>
 
     <%- include('../partials/footer.ejs') %>
   </body>

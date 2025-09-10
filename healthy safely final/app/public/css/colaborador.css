@@ -272,6 +272,29 @@ article i {
   color: #888;
 }
 
+.icones-gerais {
+  display: none;
+}
+.input-icon {
+  position: relative;
+}
+.olhofechado {
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  top: 60%;
+  transform: translateY(-40%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* RESPONSIVO */
 @media (max-width: 800px) {
   main {
@@ -333,8 +356,11 @@ article i {
     color: white;
     margin-bottom: 20px;
   }
-  article i {
+  .icones-gerais {
     display: flex;
+  }
+  .olhofechado {
+    top: 55%;
   }
   .input-icon {
     position: relative;
@@ -342,8 +368,12 @@ article i {
     margin-bottom: 20px;
   }
   .input-icon i {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+  }
+  .input-icon .icones-gerais {
     position: absolute;
-    left: 10px;
+    left: 2%;
     top: 50%;
     transform: translateY(-50%);
     color: rgba(255, 255, 255, 0.8);

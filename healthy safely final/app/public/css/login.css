@@ -23,6 +23,7 @@ main {
   justify-content: space-between;
   width: 100%;
   overflow-x: hidden;
+  padding-bottom: 20vh;
 }
 
 /* LOGO MOBILE ESCONDIDA NO DESKTOP */
@@ -39,6 +40,7 @@ main {
   align-items: center;
   text-align: center;
   padding: 0 20px;
+  margin-top: 50px;
 }
 .lado-esquerdo h2 {
   font-size: 3rem;
@@ -184,8 +186,28 @@ span.msgErro {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-article i {
+
+.icones-gerais {
   display: none;
+}
+.input-icon {
+  position: relative;
+}
+.olhofechado {
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 5%;
+  top: 60%;
+  transform: translateY(-40%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-icon input {
@@ -201,20 +223,6 @@ article i {
   border-color: red;
   box-shadow: 0 0 5px #e74c3c;
 }
-.ver-senha-btn {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 /* RESPONSIVO */
 @media (max-width: 800px) {
   main {
@@ -226,9 +234,12 @@ article i {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), #297767;
     padding-bottom: 20vh;
   }
+  /* LADO ESQUERDO (DESATIVADO) */
   .lado-esquerdo {
     display: none;
   }
+
+  /* LOGO MOBILE (ATIVADA) */
   .logo-mobile {
     display: flex;
     justify-content: center;
@@ -242,6 +253,8 @@ article i {
     display: block;
     margin: 0 auto;
   }
+
+  /* LADO DIREITO (CENTRALIZADO) */
   .lado-direito {
     width: 100%;
     margin: 0;
@@ -277,9 +290,12 @@ article i {
     margin-bottom: 20px;
   }
 
-  /* Inputs com ícones */
-  article i {
+  /* INPUTS COM ICONES */
+  .icones-gerais {
     display: flex;
+  }
+  .olhofechado {
+    top: 55%;
   }
   .input-icon {
     position: relative;
@@ -287,8 +303,12 @@ article i {
     margin-bottom: 20px;
   }
   .input-icon i {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+  }
+  .input-icon .icones-gerais {
     position: absolute;
-    left: 10px;
+    left: 2%;
     top: 50%;
     transform: translateY(-50%);
     color: rgba(255, 255, 255, 0.8);
@@ -324,6 +344,7 @@ article i {
     color: #8ca700;
     cursor: pointer;
   }
+
   /* Chrome, Edge, Safari */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

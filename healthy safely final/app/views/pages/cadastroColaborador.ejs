@@ -84,7 +84,7 @@
           >
             <h3>Dados da Farmácia</h3>
             <article class="input-icon">
-              <i class="bi bi-building"></i>
+              <i class="bi bi-building icones-gerais"></i>
               <input
                 type="text"
                 name="nomeFarmacia"
@@ -96,7 +96,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-card-text"></i>
+              <i class="bi bi-card-text icones-gerais"></i>
               <input
                 type="text"
                 name="CNPJ"
@@ -108,7 +108,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-geo-alt"></i>
+              <i class="bi bi-geo-alt icones-gerais"></i>
               <input
                 type="text"
                 name="responsavel"
@@ -120,7 +120,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-geo-alt"></i>
+              <i class="bi bi-geo-alt icones-gerais"></i>
               <input
                 type="text"
                 name="cidade"
@@ -132,7 +132,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-map"></i>
+              <i class="bi bi-map icones-gerais"></i>
               <input
                 type="text"
                 name="estado"
@@ -144,7 +144,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-envelope"></i>
+              <i class="bi bi-envelope icones-gerais"></i>
               <input
                 type="email"
                 name="email"
@@ -165,26 +165,36 @@
             <br />
 
             <article class="input-icon">
-              <i class="bi bi-lock"></i>
+              <i class="bi bi-lock icones-gerais"></i>
               <input
                 type="password"
+                id="senha2"
                 name="senha"
                 placeholder="Senha"
                 value="<%= valoresFarmacia.senha %>"
                 class="<%= erroValidacaoFarmacia.senha %>"
               />
+              <i
+                class="bi bi-eye-slash-fill olhofechado"
+                onclick="mostrarSenha('senha2', this)"
+              ></i>
               <span class="msgErro"><%= msgErroFarmacia.senha %></span>
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-shield-lock"></i>
+              <i class="bi bi-shield-lock icones-gerais"></i>
               <input
                 type="password"
+                id="confirmarSenha2"
                 name="confirmarSenha"
                 placeholder="Confirmar Senha"
                 value="<%= valoresFarmacia.confirmarSenha %>"
                 class="<%= erroValidacaoFarmacia.confirmarSenha %>"
               />
+              <i
+                class="bi bi-eye-slash-fill olhofechado"
+                onclick="mostrarSenha('confirmarSenha2', this)"
+              ></i>
               <span class="msgErro"><%= msgErroFarmacia.confirmarSenha %></span>
             </article>
 
@@ -207,7 +217,7 @@
           >
             <h3>Dados do Profissional</h3>
             <article class="input-icon">
-              <i class="bi bi-person"></i>
+              <i class="bi bi-person icones-gerais"></i>
               <input
                 type="text"
                 name="nome"
@@ -251,7 +261,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-clipboard-check"></i>
+              <i class="bi bi-clipboard-check icones-gerais"></i>
               <input
                 type="text"
                 name="CREF"
@@ -263,7 +273,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-briefcase"></i>
+              <i class="bi bi-briefcase icones-gerais"></i>
               <input
                 type="text"
                 name="especialidade"
@@ -272,7 +282,7 @@
               />
             </article>
             <article class="input-icon">
-              <i class="bi bi-whatsapp"></i>
+              <i class="bi bi-whatsapp icones-gerais"></i>
               <input
                 type="tel"
                 name="whatsapp"
@@ -284,7 +294,7 @@
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-envelope"></i>
+              <i class="bi bi-envelope icones-gerais"></i>
               <input
                 type="email"
                 name="email"
@@ -305,26 +315,36 @@
             <br />
 
             <article class="input-icon">
-              <i class="bi bi-lock"></i>
+              <i class="bi bi-lock icones-gerais"></i>
               <input
                 type="password"
+                id="senha"
                 name="senha"
                 placeholder="Senha"
                 value="<%= valoresProfissional.senha %>"
                 class="<%= erroValidacaoProfissional.senha %>"
               />
+              <i
+                class="bi bi-eye-slash-fill olhofechado"
+                onclick="mostrarSenha('senha', this)"
+              ></i>
               <span class="msgErro"><%= msgErroProfissional.senha %></span>
             </article>
 
             <article class="input-icon">
-              <i class="bi bi-shield-lock"></i>
+              <i class="bi bi-shield-lock icones-gerais"></i>
               <input
                 type="password"
+                id="confirmarSenha"
                 name="confirmarSenha"
                 placeholder="Confirmar Senha"
                 value="<%= valoresProfissional.confirmarSenha %>"
                 class="<%= erroValidacaoProfissional.confirmarSenha %>"
               />
+              <i
+                class="bi bi-eye-slash-fill olhofechado"
+                onclick="mostrarSenha('confirmarSenha', this)"
+              ></i>
               <span class="msgErro"
                 ><%= msgErroProfissional.confirmarSenha %></span
               >
@@ -342,6 +362,8 @@
         </article>
       </section>
     </main>
+
+    <script src="../js/ver-senha.js"></script>
 
     <!-- Script para controle de formulário ativo -->
     <script>

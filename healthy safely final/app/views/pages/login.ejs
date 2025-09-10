@@ -73,7 +73,7 @@
               <h2>Dados de acesso</h2>
 
               <article class="input-icon">
-                <i class="bi bi-envelope"></i>
+                <i class="bi bi-envelope icones-gerais"></i>
                 <input
                   type="text"
                   id="usuarioDigitado"
@@ -85,7 +85,7 @@
               </article>
 
               <article class="input-icon">
-                <i class="bi bi-lock"></i>
+                <i class="bi bi-lock icones-gerais"></i>
                 <input
                   type="password"
                   id="senhaDigitada"
@@ -94,6 +94,10 @@
                   value="<%= valores?.senhaDigitada || '' %>"
                   class="<%= erro ? 'erro' : '' %>"
                 />
+                <i
+                  class="bi bi-eye-slash-fill olhofechado"
+                  onclick="mostrarSenha('senhaDigitada', this)"
+                ></i>
               </article>
 
               <% if (erro) { %>
@@ -110,19 +114,11 @@
               </button>
             </article>
           </form>
-
-          <% if (sucesso) { %>
-          <nav class="sucesso-mensagem">
-            <i class="bi bi-hand-thumbs-up-fill"></i>
-            <section>Login realizado com sucesso! Redirecionando...</section>
-            <article class="barra">
-              <section class="barra-progresso"></section>
-            </article>
-          </nav>
-          <% } %>
         </article>
       </section>
     </main>
+
+    <script src="../js/ver-senha.js"></script>
 
     <%- include('../partials/footer.ejs') %>
   </body>
