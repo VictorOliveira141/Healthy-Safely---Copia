@@ -369,38 +369,65 @@
     <!---->
 
     <!--SCRIPT DO CARROSSEL PRINCIPAL-->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const slides = document.querySelectorAll(".carrossel-slide");
-        const prevBtn = document.querySelector(".botao-prev");
-        const nextBtn = document.querySelector(".botao-next");
-        let slideIndex = 0;
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".carrossel-slide");
+  const prevBtn = document.querySelector(".botao-prev");
+  const nextBtn = document.querySelector(".botao-next");
+  let slideIndex = 0;
+  let isAnimating = false;
 
-        function showSlide(n) {
-          slides.forEach((slide, i) => {
-            slide.classList.toggle("active", i === n);
-          });
-          slideIndex = n;
-        }
+  function showSlide(nextIndex) {
+    if (isAnimating || nextIndex === slideIndex) return;
+    isAnimating = true;
 
-        prevBtn.addEventListener("click", () => {
-          let nextIndex =
-            slideIndex - 1 < 0 ? slides.length - 1 : slideIndex - 1;
-          showSlide(nextIndex);
-        });
+    const currentSlide = slides[slideIndex];
+    const nextSlide = slides[nextIndex];
 
-        nextBtn.addEventListener("click", () => {
-          let nextIndex = (slideIndex + 1) % slides.length;
-          showSlide(nextIndex);
-        });
+    // Garante que a próxima imagem está carregada
+    const img = nextSlide.querySelector("img");
+    if (!img.complete) {
+      img.onload = () => showSlide(nextIndex);
+      return;
+    }
 
-        // Troca automática a cada 5s
-        setInterval(() => {
-          let nextIndex = (slideIndex + 1) % slides.length;
-          showSlide(nextIndex);
-        }, 5000);
-      });
-    </script>
+    // Prepara próximo slide
+    nextSlide.style.transform = "translateX(100%)";
+    nextSlide.classList.add("active");
+
+    // Força o browser a registrar a posição antes da animação
+    requestAnimationFrame(() => {
+      currentSlide.style.transform = "translateX(-100%)";
+      nextSlide.style.transform = "translateX(0)";
+    });
+
+    // Após animação ajusta classes
+    setTimeout(() => {
+      currentSlide.classList.remove("active");
+      currentSlide.style.transform = "";
+      nextSlide.style.transform = "";
+      slideIndex = nextIndex;
+      isAnimating = false;
+    }, 600); // duração do transition no CSS
+  }
+
+  prevBtn.addEventListener("click", () => {
+    let nextIndex = slideIndex - 1 < 0 ? slides.length - 1 : slideIndex - 1;
+    showSlide(nextIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    let nextIndex = (slideIndex + 1) % slides.length;
+    showSlide(nextIndex);
+  });
+
+  // Troca automática a cada 5s
+  setInterval(() => {
+    let nextIndex = (slideIndex + 1) % slides.length;
+    showSlide(nextIndex);
+  }, 5000);
+});
+</script>
 
     <!--SCRIPT DOS SLIDERS-->
     <script>

@@ -207,4 +207,20 @@ hover .cupons img  {
   margin-top: 40px;
 }
 
+.carrossel {
+  position: relative;
+  overflow: hidden;
+}
 
+.carrossel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+}
+
+.carrossel-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
