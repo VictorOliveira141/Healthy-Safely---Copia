@@ -1,7 +1,7 @@
 /* ================= RESET ================= */
 html,
 body {
-  background-color: #014638 !important;
+  background-color: white !important;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
 
 /* ================= TOPO DO MAIN ================= */
 .main-fundo {
-  background-color: #014638;
+  background-color: white;
   padding: 10px 0;
 }
 
@@ -405,4 +405,5 @@ body {
 
   /* SLIDER COMO GRID */
   .main-centro .slides { display: grid !important; grid-template-columns: repeat(2, 1fr); gap: 10px; transform: none !important; }
+
 }
