@@ -207,4 +207,52 @@ hover .cupons img  {
   margin-top: 40px;
 }
 
+.categorias {
+  margin: 50px auto;
+  text-align: center;
+}
+
+.categorias h2 {
+  font-size: 24px;
+  color: #064e3b; /* verde escuro */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.categorias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.categoria {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.categoria:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.categoria img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.categoria p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #064e3b;
+}
 
