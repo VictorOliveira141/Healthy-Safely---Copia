@@ -19,7 +19,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 170px;
 }
 
 .bannerloja{
@@ -256,3 +256,9 @@ hover .cupons img  {
   color: #064e3b;
 }
 
+.bannersemana {
+  width: 80%;
+  height: auto;
+  border-radius: 15px;
+  margin-top: -70px;
+}
