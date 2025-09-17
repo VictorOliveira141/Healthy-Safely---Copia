@@ -45,6 +45,9 @@ router.get("/orientacoes", (req, res) => {
 router.get("/perfil", (req, res) => {
   res.render("pages/perfil");
 });
+router.get("/doacao", (req, res) => {
+  res.render("pages/doacao");
+});
 
 router.get("/login", (req, res) => {
   res.render("pages/login", {

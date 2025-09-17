@@ -56,6 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <h1>Você não tem nenhum cupom no momento. Visite <a href="#">cupons</a> e resgate!</h1>
           </div>
         `,
+    doacoes: `
+          <div class="topo-modal"><h2>Meus pedidos</h2></div>
+          <div class="centro-modal">
+            <h1>Você não fez nenhuma doação até o momento. Faça já a sua primeira <a href="/doação">doação</a>!</h1>
+          </div>
+    `,
     pagamentos: `
           <div class="topo-modal"><h2>Pagamentos</h2></div>
           <div class="centro-modal">
