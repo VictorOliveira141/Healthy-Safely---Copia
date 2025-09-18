@@ -262,3 +262,33 @@ hover .cupons img  {
   border-radius: 15px;
   margin-top: -70px;
 }
+
+.categorias-esporte {
+  padding: 2rem;
+  text-align: center;
+}
+
+
+
+
+.lista-categorias {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+
+
+.item-categoria img {
+  width: 270px;
+  height: auto;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease; /* animação suave */
+}
+
+.item-categoria img:hover {
+  transform: scale(1.08); /* aumenta 8% */
+}
+
+

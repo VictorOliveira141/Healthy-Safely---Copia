@@ -635,3 +635,153 @@ body {
     text-align: center;
   }
 }
+
+.secao-online {
+  padding: 3rem 0;
+  background: #fff;
+}
+
+.cabecalho-secao {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cabecalho-secao h2 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.cabecalho-secao p {
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.grade-servicos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.cartao-servico {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s;
+}
+
+.cartao-servico:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.topo-servico {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.icone-servico {
+  font-size: 2rem;
+}
+
+.selo-online {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.cartao-servico h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.cartao-servico > p {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.info-servico {
+  margin-bottom: 1rem;
+}
+
+.linha-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.linha-info span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+
+.disponibilidade {
+  font-size: 0.875rem;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.rodape-servico {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.valor {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #16a34a;
+}
+
+.por-consulta {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-left: 0.25rem;
+}
+
+.botao-agendar {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.botao-agendar:hover {
+  background: #15803d;
+}
+
+.img-agende {
+  display: block;
+  margin: 20px auto;
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.h2dasugestao {
+  font-size: 2rem;
+  color: #288d7a;
+  margin-bottom: 1rem;
+  text-align: center;
+  
+}
