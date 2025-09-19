@@ -323,3 +323,13 @@ body {
     display: none; /* esconde apenas links marcados como desktop */
   }
 }
+
+.points img {
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease; /* animação suave */
+  margin-top: 5px;
+}
+
+.points img:hover {
+  transform: scale(1.08); /* aumenta 8% */
+}
