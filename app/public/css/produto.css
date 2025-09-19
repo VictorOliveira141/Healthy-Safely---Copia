@@ -1,0 +1,239 @@
+/* RESET */
+html,
+body {
+  background: yellow !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container-topo {
+  background-color: #014638;
+  max-width: 1300px;
+  margin: 40px auto;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.coluna-lateral {
+  width: 200px;
+}
+.imagem-lateral {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.imagem-lateral img {
+  border: solid 2px black;
+}
+
+.coluna-maior {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+}
+.coluna-maior img {
+  border: solid 2px black;
+}
+
+.coluna-info {
+  width: 700px;
+}
+.produto-info {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+.compartilhar {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+.preços {
+  padding: 5px;
+  border-radius: 10px;
+  max-width: 300px;
+}
+
+.preço-antigo {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 18px;
+  margin: 0;
+}
+
+.preço-novo {
+  color: white;
+  font-size: 29px;
+  margin: 0;
+}
+
+.preço-cartao {
+  color: #555;
+  font-size: 15px;
+}
+
+.adicionar-carrinho {
+}
+
+.input-carrinho {
+  max-width: 100px;
+}
+
+.calcular-frete {
+  padding: 15px;
+}
+
+.adicionar-carrinho input {
+  width: 60px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.adicionar-carrinho .mais,
+.adicionar-carrinho .menos {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.adicionar {
+  color: white;
+  background: #00796b;
+  border: none;
+  border-radius: 6px;
+  margin-top: 5px;
+  padding: 8px 18px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.adicionar-carrinho button:hover {
+  background-color: #e0e0e0;
+}
+
+.input-com-icone {
+  position: relative;
+  display: inline-block;
+}
+
+.input-com-icone input {
+  padding-left: 35px; /* espaço para o ícone */
+  height: 20px;
+  font-size: 16px;
+}
+
+.input-com-icone i {
+  position: absolute;
+  left: 10px; /* distância da borda esquerda */
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  pointer-events: none; /* evita que o clique vá no ícone */
+  font-size: 18px;
+}
+
+.calcular {
+  background: #00796b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  margin-top: 5px;
+  padding: 8px 18px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+
+
+.container-centro{
+  background-color: #014638;
+  max-width: 1300px;
+  margin: 40px auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: baseline;
+}
+
+.container-centro h1{
+  margin-left: 10px;
+}
+.container-centro p{
+  max-width: 95%;
+  margin-left: 30px;
+  font-size: 1.3rem;
+}
+
+.container-avaliacao{
+  background-color: #014638;
+  max-width: 1300px;
+  margin: 40px auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: baseline;
+}
+
+.avaliacao{
+  margin-left: 30px;
+}
+
+.avaliacao h1{
+  margin:0;
+  font-size: 3rem;
+}
+
+.avaliacao i {
+  margin: 0;
+  color: #ffd700;
+  font-size: 40px;
+}
+.avaliacao p{
+  color: rgb(223, 213, 213);
+}
+
+.container-comentarios{
+  background-color: #014638;
+  max-width: 1300px;
+  margin: 40px auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: baseline;
+
+}
+.container-comentarios h1{
+  margin-left: 40px;
+}
+
+.comentarios{
+  display: flex;
+  flex-direction: row;
+}
+
+.avaliacao2 i {
+ 
+  color:#ffd700;
+  font-size: 30px;
+} 

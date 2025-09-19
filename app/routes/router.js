@@ -48,6 +48,9 @@ router.get("/perfil", (req, res) => {
 router.get("/doacao", (req, res) => {
   res.render("pages/doacao");
 });
+router.get("/produto", (req, res) => {
+  res.render("pages/produto");
+});
 
 router.get("/login", (req, res) => {
   res.render("pages/login", {
