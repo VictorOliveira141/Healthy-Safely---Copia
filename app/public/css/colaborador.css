@@ -11,7 +11,7 @@ body {
 }
 
 /* MAIN */
-main {
+.main {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
@@ -297,7 +297,7 @@ article i {
 
 /* RESPONSIVO */
 @media (max-width: 800px) {
-  main {
+  .main {
     flex-direction: column;
     width: 100%;
     max-width: 100vw;

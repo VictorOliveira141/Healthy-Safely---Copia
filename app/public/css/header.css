@@ -1,107 +1,36 @@
-/* Reset básico */
-body {
+/* ================= RESET ============= */
+* {
   margin: 0;
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #fff;
-  color: #fff;
+  padding: 0;
+  box-sizing: border-box;
 }
-.header {
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ================= HEADER GERAL =============== */
+header {
   background: #0c4f43;
-  border-bottom: 1px solid #145c4f;
+  color: #fff;
   width: 100%;
 }
-.header-geral {
+
+/* ================= HEADER CONTAINER =============== */
+.header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
-  position: relative;
+  flex-wrap: wrap;
+  padding: 10px 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 10px;
 }
 
-/* LOGO */
-.logo img {
-  height: 70px;
-  width: auto;
-  display: block;
-}
-
-/* USER AREA */
-.header-ladodireito {
+/* =========== MENU HAMBURGUER ================ */
+.menu-toggle-wrapper {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-.header-ladodireito a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 18px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.header-ladodireito a:hover {
-  color: #b2cfc3;
-}
-
-.user-icon img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.header-link {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 18px;
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.header-link:hover {
-  color: #b2cfc3;
-}
-
-.header-divider {
-  font-size: 20px;
-}
-
-/* Dropdown do perfil quando tiver 650px */
-.perfil-menu {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background: #0c2727;
-  border: 1px solid #145c4f;
-  border-radius: 6px;
-  flex-direction: column;
-  width: 150px;
-  padding: 10px;
-  z-index: 1500;
-}
-.perfil-menu a,
-.perfil-menu .menu-link {
-  color: #fff;
-  text-decoration: none;
-  padding: 8px 10px;
-  display: block;
-  font-weight: 500;
-  cursor: pointer;
-}
-.perfil-menu a:hover,
-.perfil-menu .menu-link:hover {
-  background: #145c4f;
-}
-.perfil-menu.hidden {
-  display: none;
-}
-.perfil-menu:not(.hidden) {
-  display: flex;
-  flex-direction: column;
-}
-
-/* MENU HAMBURGUER */
-.menu-toggle-wrapper {
   position: relative;
   z-index: 1002;
 }
@@ -109,13 +38,12 @@ body {
   display: none;
 }
 .hamburger {
-  display: flex;
+  display: none; /* só aparece em mobile */
   flex-direction: column;
   justify-content: space-between;
   width: 35px;
   height: 25px;
   cursor: pointer;
-  z-index: 1002;
 }
 .hamburger span {
   display: block;
@@ -124,32 +52,31 @@ body {
   border-radius: 2px;
   transition: all 0.3s ease;
 }
-#menuToggle:checked + .hamburger span:nth-child(1) {
+/* Transformação do hamburger */
+#menuToggle:checked + label .hamburger span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-#menuToggle:checked + .hamburger span:nth-child(2) {
+#menuToggle:checked + label .hamburger span:nth-child(2) {
   opacity: 0;
 }
-#menuToggle:checked + .hamburger span:nth-child(3) {
+#menuToggle:checked + label .hamburger span:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
 }
-
+/* MENU LATERAL MOBILE */
 #menu {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -260px;
   width: 260px;
-  height: 100vh;
+  height: 100%;
   background: #0c2727;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
   padding-top: 80px;
+  transition: left 0.3s ease;
+  z-index: 1000;
 }
 #menu ul {
   list-style: none;
   padding: 0 20px;
-  margin: 0;
 }
 #menu li {
   margin: 20px 0;
@@ -164,7 +91,6 @@ body {
 #menu a:hover {
   color: #8ca700;
 }
-
 .close-menu {
   position: absolute;
   top: 10px;
@@ -175,54 +101,155 @@ body {
   z-index: 1003;
 }
 #menuToggle:checked ~ #menu {
-  transform: translateX(0);
+  left: 0;
 }
 
-/* BARRA de pesquisa */
-.search-bar {
-  background: #17594a;
-  padding: 12px 24px;
+/* ========== LOGO ============= */
+.header-logo img {
+  height: 90px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
 }
-.barraPesquisa {
+
+/* =========== SEARCH BAR (desktop) =========== */
+.search-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-.search-input {
-  flex: 1;
+  gap: 10px;
+  border-radius: 30px;
+  padding: 6px 12px;
+  flex: 1 1 auto;
+  min-width: 150px;
   max-width: 600px;
   background: #83a49a;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 24px;
-  font-size: 18px;
-  color: #fff;
-  outline: none;
 }
-.search-input::placeholder {
+.search-bar input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding: 8px 12px;
+  color: #fff;
+  background: transparent;
+  border-radius: 20px;
+}
+.search-bar input::placeholder {
   color: #d8e6e1;
-  font-weight: 500;
 }
 
-.search-bar i {
+/* =========== Ícones de pontos ====== */
+.user-points img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.user-points img:hover {
+  transform: scale(1.1);
+}
+
+/* ============ ACTIONS (CARRINHO + PERFIL) ========== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 30px;
+  flex-shrink: 0;
+}
+.action-btn {
   color: #fff;
-  font-size: 34px;
+  font-size: 28px;
+  text-decoration: none;
   cursor: pointer;
   transition: color 0.2s;
 }
+.action-btn:hover {
+  color: #b2cfc3;
+}
 
-/* MODAL do CADASTRO */
+/* ============ PERFIL ============= */
+.user-menu {
+  position: relative;
+}
+.user-menu i {
+  cursor: pointer;
+  font-size: 30px;
+}
+.perfil-dropdown {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: #0c2727;
+  border: 1px solid #145c4f;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  width: 160px;
+  padding: 10px;
+  z-index: 1000;
+}
+.perfil-dropdown a,
+.perfil-dropdown button {
+  background: none;
+  border: none;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.perfil-dropdown a:hover,
+.perfil-dropdown button:hover {
+  background: #145c4f;
+}
+.perfil-dropdown.hidden {
+  display: none;
+}
+
+/* =============== NAV PRINCIPAL ===========*/
+.header-nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 12px;
+  background: #17594a;
+  flex-wrap: wrap;
+}
+.header-nav a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 25px;
+  position: relative;
+}
+.header-nav a::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: #fff;
+  transition: width 0.3s;
+  margin-top: 4px;
+}
+.header-nav a:hover {
+  color: #d8e6e1;
+}
+.header-nav a:hover::after {
+  width: 100%;
+}
+
+/* =========== MODAL CADASTRO ============ */
 .modal {
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   z-index: 2000;
-  left: 0;
   top: 0;
-  width: 100%;
+  left: 0;
   height: 100%;
+  width: 100%;
   background: rgba(12, 12, 12, 0.7);
 }
 .modal.hidden {
@@ -238,98 +265,177 @@ body {
   text-align: center;
   position: relative;
 }
-.modal-content h2 {
-  margin-bottom: 20px;
-}
-.opcoes-cadastro {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 .btn-cadastro {
   display: block;
+  margin: 10px 0;
   padding: 12px;
-  border-radius: 8px;
   background: #0c4f43;
   color: #fff;
-  font-weight: bold;
+  border-radius: 6px;
   text-decoration: none;
+  font-weight: bold;
   transition: background 0.2s;
 }
 .btn-cadastro:hover {
   background: #145c4f;
 }
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 28px;
-  color: #333;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
 
-.menu-desktop {
-  display: flex; /*Menu de pc fica aparecendo*/
+/* =========== SEARCH BAR MOBILE ========= */
+.fundo {
+  display: none;
+  background: #17594a;
+  padding: 12px 24px;
 }
-.menu-mobile {
-  display: none; /*Menu de mobile fica invisivel*/
+.search-bar2 {
+  display: none; /* Escondida por padrão */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  padding: 6px 12px;
+  background: #83a49a;
+  margin: 0; /* remove qualquer espaço extra */
+}
+.search-bar2 input {
+  flex: 1 1 auto;
+  max-width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+.search-bar2 input::placeholder {
+  color: #d8e6e1;
 }
 
 /* ================= RESPONSIVIDADE ================= */
-@media (max-width: 800px) {
-  .header-geral {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+/*  DESKTOP MÉDIO (≤1024px) */
+@media (max-width: 1024px) {
+  .header-logo img {
+    height: 70px;
   }
-  .header-ladodireito {
-    flex-direction: row;
-    gap: 12px;
+  .search-bar {
+    max-width: 500px;
   }
-  .search-input {
+  .search-bar input {
     font-size: 16px;
   }
+  .header-actions {
+    font-size: 24px;
+    gap: 10px;
+  }
+  .user-points img,
+  .user-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .header-nav a {
+    font-size: 20px;
+    gap: 15px;
+  }
 }
 
+/*  TABLET / LARGE MOBILE (≤800px) */
+@media (max-width: 800px) {
+  .header-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .search-bar {
+    flex: 1 1 200px;
+    max-width: 300px;
+  }
+  .search-bar input {
+    font-size: 15px;
+  }
+  .header-actions {
+    font-size: 22px;
+    gap: 6px;
+  }
+  .user-points img,
+  .user-icon {
+    width: 35px;
+    height: 35px;
+  }
+  .header-nav a {
+    font-size: 18px;
+    gap: 12px;
+  }
+}
+
+/* MOBILE INTERMEDIÁRIO (≤650px) */
 @media (max-width: 650px) {
-  .header-ladodireito {
-    gap: 0;
+  .header-container {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start; /* itens à esquerda */
+    gap: 8px;
   }
-  .menu-desktop {
-    display: none; /*Menu PROFILE de pc fica invisivel*/
-  }
-  .menu-mobile {
-    display: flex; /*Menu mobile fica aparecendo*/
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  .perfil-menu {
+  .hamburger {
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background: #0c2727;
-    border-radius: 6px;
-    padding: 10px;
+    order: 1;
   }
-  .perfil-menu.hidden {
+  .header-logo {
+    order: 2;
+  }
+  .search-bar {
     display: none;
   }
-  .header-ladodireito .header-link.desktop-only,
-  .header-ladodireito .header-divider.desktop-only {
-    display: none; /* esconde apenas links marcados como desktop */
+  .header-actions {
+    order: 3;
+    display: flex;
+    gap: 10px;
+    margin-left: auto; /* empurra os ícones para a direita */
+  }
+  /* Nav escondido até abrir o menu */
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #17594a;
+    padding: 8px 0;
+  }
+  .header-nav.show {
+    display: flex;
+  }
+  /* Mostra barra de pesquisa mobile */
+  .fundo {
+    display: block;
+  }
+  .search-bar2 {
+    display: flex;
   }
 }
 
-.points img {
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease; /* animação suave */
-  margin-top: 5px;
-}
-
-.points img:hover {
-  transform: scale(1.08); /* aumenta 8% */
+/*  MOBILE PEQUENO (≤400px) */
+@media (max-width: 400px) {
+  .header-logo img {
+    height: 50px;
+  }
+  .header-actions {
+    font-size: 18px;
+    gap: 4px;
+  }
+  .user-points img,
+  .user-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .search-bar2 input {
+    font-size: 14px;
+  }
 }

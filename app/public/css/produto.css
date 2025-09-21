@@ -581,17 +581,3 @@ body {
     font-size: 0.9rem;
   }
 }
-
-/* Até 400px - celulares muito pequenos */
-@media (max-width: 400px) {
-  .product-main-image img {
-    width: 200px;
-    height: 200px;
-  }
-  .produtos-destaque {
-    grid-template-columns: 1fr;
-  }
-  .review p {
-    font-size: 14px;
-  }
-}

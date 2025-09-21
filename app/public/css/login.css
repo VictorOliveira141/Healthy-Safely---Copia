@@ -10,7 +10,7 @@ body {
   overflow-x: hidden; /* impede scroll horizontal */
 }
 
-main {
+.main {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
@@ -225,7 +225,7 @@ span.msgErro {
 }
 /* RESPONSIVO */
 @media (max-width: 800px) {
-  main {
+  .main {
     flex-direction: column;
     width: 100%;
     max-width: 100vw;
