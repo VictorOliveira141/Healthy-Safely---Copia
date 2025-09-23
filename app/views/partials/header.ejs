@@ -2,8 +2,8 @@
 
 <header>
   <section class="header-container">
-    <!-- MENU HAMBURGUER ESCONDIDO (aparece apartir de 650px) -->
-    <div class="menu-toggle-wrapper">
+    <!-- MENU HAMBURGUER ESCONDIDO (aparece a partir de 650px) -->
+    <section class="menu-toggle-wrapper">
       <input type="checkbox" id="menuToggle" />
       <label for="menuToggle" class="hamburger">
         <span></span>
@@ -22,7 +22,7 @@
         </ul>
         <label for="menuToggle" class="close-menu">&times;</label>
       </nav>
-    </div>
+    </section>
     <!-- FIM MENU HAMBURGUER -->
 
     <!-- LOGO -->
@@ -49,7 +49,7 @@
       </label>
       <input type="text" id="headerSearch" placeholder="Busque o que deseja" />
     </form>
-    <!-- FIM BARRA DE PESQUISA PRIMARIA -->
+    <!-- FIM BARRA DE PESQUISA PRIMÁRIA -->
 
     <!-- AÇÕES DO USUÁRIO -->
     <nav class="header-actions" aria-label="Ações do usuário">
@@ -57,24 +57,24 @@
         <img src="../imagem/a.png" alt="Seus pontos" />
       </span>
 
-      <div class="user-menu">
+      <section class="user-menu">
         <a href="/carrinho" class="action-btn" aria-label="Carrinho de compras">
           <i class="bi bi-cart"></i>
         </a>
 
         <i class="bi bi-person-circle" id="perfilMenuToggle"></i>
 
-        <div id="perfilMenu" class="perfil-dropdown hidden" role="menu">
+        <section id="perfilMenu" class="perfil-dropdown hidden" role="menu">
           <a href="/login" role="menuitem">Entrar</a>
           <button class="abrir-cadastro" role="menuitem">Cadastrar</button>
-        </div>
-      </div>
+        </section>
+      </section>
     </nav>
-    <!-- FIM AÇÕES DO USUARIO -->
+    <!-- FIM AÇÕES DO USUÁRIO -->
   </section>
   <!-- FIM HEADER CONTAINER-->
 
-  <!-- SUBMENU DE FUNCIONALIDADES (some apartir de 650px) -->
+  <!-- SUBMENU DE FUNCIONALIDADES (some a partir de 650px) -->
   <nav class="header-nav" id="mobileNav" aria-label="Navegação principal">
     <a href="/loja">Loja</a>
     <a href="/tarefas">Tarefas</a>
@@ -85,7 +85,7 @@
   <!-- FIM SUBMENU -->
 </header>
 
-<!-- BARRA DE PESQUISA SEGUNDARIA (aparece quando tela for menor que 650px)-->
+<!-- BARRA DE PESQUISA SECUNDÁRIA (aparece quando tela for menor que 650px)-->
 <main class="fundo">
   <section class="search-bar2" role="search">
     <label class="search-icon" for="mobileSearch">
@@ -105,28 +105,27 @@
     <input type="text" id="mobileSearch" placeholder="Busque o que deseja" />
   </section>
 </main>
-<!-- FIM BARRA DE PESQUISA SEGUNDARIA-->
+<!-- FIM BARRA DE PESQUISA SECUNDÁRIA-->
 
 <!-- MODAL DE CADASTRO -->
-<div
+<section
   id="headerModalCadastro"
   class="modal hidden"
   role="dialog"
   aria-modal="true"
   aria-labelledby="modalCadastroTitle"
 >
-  <div class="modal-content">
+  <section class="modal-content">
     <button id="headerCloseCadastroModal" class="close-btn" aria-label="Fechar">
       &times;
     </button>
     <h2 id="modalCadastroTitle">Escolha o tipo de cadastro</h2>
-    <div class="opcoes-cadastro">
+    <section class="opcoes-cadastro">
       <a href="/cadastroCliente" class="btn-cadastro">Como cliente</a>
       <a href="/cadastroColaborador" class="btn-cadastro">Como colaborador</a>
-    </div>
-  </div>
-</div>
+    </section>
+  </section>
+</section>
 
 <!--SCRIPT DO MODAL CADASTRAR-->
 <script src="../js/modal-header.js"></script>
-<!---->
