@@ -57,17 +57,49 @@
         <img src="../imagem/a.png" alt="Seus pontos" />
       </span>
 
+      <!-- MENU CARRINHO LATERAL -->
       <div class="user-menu">
-        <a href="/carrinho" class="action-btn" aria-label="Carrinho de compras">
+        <a
+          href="javascript:void(0);"
+          class="action-btn"
+          aria-label="Carrinho de compras"
+          onclick="openCartMenu()"
+        >
           <i class="bi bi-cart"></i>
         </a>
+      </div>
 
-        <i class="bi bi-person-circle" id="perfilMenuToggle"></i>
-
-        <div id="perfilMenu" class="perfil-dropdown hidden" role="menu">
-          <a href="/login" role="menuitem">Entrar</a>
-          <button class="abrir-cadastro" role="menuitem">Cadastrar</button>
+      <!-- Menu Lateral (Carrinho) -->
+      <!-- Menu Lateral (Carrinho) -->
+      <div id="cartSidebar" class="cart-sidebar">
+        <!-- Cabeçalho -->
+        <div class="cart-header">
+          <h2>Carrinho de Compras</h2>
+          <button class="close-btn" onclick="closeCartMenu()">&times;</button>
         </div>
+
+        <!-- Conteúdo -->
+        <div class="cart-sidebar-content">
+          <ul id="cartItems"></ul>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="cart-footer">
+          <div class="total">
+            <span>Total:</span>
+            <span id="cartTotal">R$ 0,00</span>
+          </div>
+          <button>Finalizar Compra</button>
+        </div>
+      </div>
+      <!-- FIM DO MENU CARRINHO LATERAL-->
+
+      <i class="bi bi-person-circle" id="perfilMenuToggle"></i>
+
+      <div id="perfilMenu" class="perfil-dropdown hidden" role="menu">
+        <a href="/login" role="menuitem">Entrar</a>
+        <button class="abrir-cadastro" role="menuitem">Cadastrar</button>
+        <a href="/perfil" role="menuitem">Conta</a>
       </div>
     </nav>
     <!-- FIM AÇÕES DO USUARIO -->
@@ -130,3 +162,13 @@
 <!--SCRIPT DO MODAL CADASTRAR-->
 <script src="../js/modal-header.js"></script>
 <!---->
+
+<script>
+  function openCartMenu() {
+    document.getElementById("cartSidebar").classList.add("open");
+  }
+
+  function closeCartMenu() {
+    document.getElementById("cartSidebar").classList.remove("open");
+  }
+</script>

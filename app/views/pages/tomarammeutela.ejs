@@ -89,6 +89,7 @@
             <section class="slides-wrapper">
               <section class="slides" id="slides">
                 <!-- Produtos -->
+                 <a href="/produto">
                 <article class="produtos">
                   <img src="../imagem/omega3.png" alt="Ômega 3 Sundown" />
                   <h3>Sundown Ômega 3 1000mg</h3>
@@ -111,13 +112,12 @@
                     <span class="desconto">-20%</span>
                   </article>
                   <span class="preco">R$ 26,99</span>
-                  <button
-                    class="btn-comprar"
-                    onclick="window.location.href='/produto'"
-                  >
+                  </a>
+                  <button class="btn-comprar" onclick="addToCart(this)">
                     Comprar <i class="bi bi-basket"></i>
                   </button>
                 </article>
+              
 
                 <!-- Produto 2 -->
                 <article class="produtos">
@@ -142,7 +142,7 @@
                     <span class="desconto">-40%</span>
                   </article>
                   <span class="preco">R$ 31,99</span>
-                  <button class="btn-comprar">
+                  <button class="btn-comprar" onclick="addToCart(this)">
                     Comprar <i class="bi bi-basket"></i>
                   </button>
                 </article>
@@ -425,5 +425,7 @@
         });
       });
     </script>
+
+    <script src="../js/cart-product.js"></script>
   </body>
 </html>

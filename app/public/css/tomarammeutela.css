@@ -223,6 +223,9 @@ body {
 }
 
 /* ESTILO DOS PRODUTOS */
+a {
+  text-decoration: none;
+}
 .produtos {
   display: flex;
   flex-direction: column;
