@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthy Safely</title>
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="../css/perfil-content.css" />
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main>
+      <section class="container">
+        <!-- PERFIL -->
+        <%- include('../partials/perfil-info') %>
+
+        <!-- IDENTIDADE -->
+        <section aria-labelledby="titulo-identidade">
+          <h2 class="titulo-identidade" id="titulo-identidade">
+            Informações de Identidade
+          </h2>
+
+          <dl class="info-modal">
+            <div>
+              <dt><i class="bi bi-person"></i> Nome Completo:</dt>
+              <dd></dd>
+            </div>
+            <div>
+              <dt><i class="bi bi-person-badge"></i> Nome de Usuário:</dt>
+              <dd></dd>
+            </div>
+            <div>
+              <dt><i class="bi bi-envelope"></i> Email:</dt>
+              <dd></dd>
+            </div>
+            <div>
+              <dt><i class="bi bi-telephone"></i> Telefone:</dt>
+              <dd></dd>
+            </div>
+            <div>
+              <dt><i class="bi bi-file-text"></i> CPF:</dt>
+              <dd></dd>
+            </div>
+            <div>
+              <dt><i class="bi bi-calendar"></i> Data de Nascimento:</dt>
+              <dd></dd>
+            </div>
+            <div>
+              <dt><i class="bi bi-gender-male"></i> Gênero:</dt>
+              <dd></dd>
+            </div>
+          </dl>
+
+          <div class="acoes-identidade">
+            <button type="button" class="salvar">Redefinir senha</button>
+            <button
+              type="submit"
+              class="salvar"
+              onclick="window.location.href=`/perfil`"
+            >
+              Salvar Alterações
+            </button>
+            <button
+              type="reset"
+              class="cancelar"
+              onclick="window.location.href=`/perfil`"
+            >
+              Cancelar
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

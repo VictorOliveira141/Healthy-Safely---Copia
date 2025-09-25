@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthy Safely</title>
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="../css/perfil-content.css" />
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main>
+      <section class="container">
+        <!-- PERFIL -->
+        <%- include('../partials/perfil-info') %>
+
+        <!-- IDENTIDADE -->
+        <section aria-labelledby="titulo-identidade">
+          <h2 class="titulo-identidade" id="titulo-identidade">
+            Minhas consultas
+          </h2>
+
+          <div class="centro-modal">
+            <h1>
+              Você não tem nenhuma consulta online no momento. Deseja
+              <a href="#">marcar</a> uma?
+            </h1>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

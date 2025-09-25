@@ -1,0 +1,110 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.container {
+  color: black;
+  max-width: 1000px;
+  margin: 20px auto;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* PERFIL */
+.perfil {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid #ccc;
+}
+.perfil h1 {
+  font-size: 2rem;
+}
+.foto-perfil img {
+  background: #ccc;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+.seguidores {
+  display: flex;
+  gap: 10px;
+}
+.icones-editar {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+.icones-editar i {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* HEALTHY POINTS */
+.healthy-points {
+  padding: 20px;
+  text-align: center;
+}
+.healthy-points h1 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.healthy-points h2 img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.titulo-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.titulo-info i,
+.titulo-info a {
+  font-size: 20px;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  cursor: pointer;
+  color: #007bff;
+}
+.titulo-info a {
+  margin-bottom: 15px;
+}
+
+/* BOTOES DE ACESSO */
+.botoes-acesso {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 20px;
+  border-top: 2px solid #ccc;
+}
+.botoes-acesso h1 {
+  grid-column: span 2;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.botoes-acesso button {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+  padding: 0 20px;
+  background: #0c4f43;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.botoes-acesso .sair {
+  color: red;
+}

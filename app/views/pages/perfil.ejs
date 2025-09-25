@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Healthy Safely</title>
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="../css/perfil.css" />
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
@@ -12,27 +13,10 @@
     <%- include('../partials/menu-inferior.ejs') %>
     <main>
       <section class="container">
-        <header class="perfil">
-          <article class="foto-perfil">
-            <img src="../imagem/user.png" alt="Foto de perfil" />
-          </article>
-          <article class="info-perfil">
-            <h1>Nome de Usuário</h1>
-            <article class="seguidores">
-              <p>0 seguidores</p>
-              <p>0 seguindo</p>
-            </article>
-          </article>
+        <!--PERFIL DO USUARIO-->
+        <%- include('../partials/perfil-info') %>
 
-          <article class="icones-editar">
-            <i class="bi bi-gear"></i>
-            <i
-              class="bi bi-pencil-fill open-modal"
-              data-content="identidade"
-            ></i>
-          </article>
-        </header>
-
+        <!--HEALTHY POINTS-->
         <section>
           <section class="healthy-points">
             <h1 class="titulo-info">
@@ -56,363 +40,63 @@
           </section>
         </section>
 
+        <!--BOTÕES DE ACESSO NA CONTA-->
         <nav class="botoes-acesso">
           <h1>Gerenciar conta</h1>
-          <button class="open-modal" data-content="identidade">
-            <!--O data-content é a identificação de cada um dos botoes para abrir o modal correspondente-->
+
+          <!-- MINHA IDENTIDADE-->
+          <button onclick="window.location.href=`/minhaidentidade`">
             <i class="bi bi-key"></i>
             Informações de Identidade
           </button>
-          <button class="open-modal" data-content="consultas">
+
+          <!-- MINHAS CONSULTAS-->
+          <button onclick="window.location.href=`/minhasconsultas`">
             <i class="bi bi-calendar-check"></i> Minhas consultas
           </button>
 
-          <button class="open-modal" data-content="pedidos">
+          <!-- MEUS PEDIDOS -->
+          <button onclick="window.location.href=`/meuspedidos`">
             <i class="bi bi-box-seam"></i>Meus pedidos
           </button>
-          <button class="open-modal" data-content="favoritos">
+
+          <!-- MEUS FAVORITOS-->
+          <button onclick="window.location.href=`/meusfavoritos`">
             <i class="bi bi-heart-fill"></i>Meus favoritos
           </button>
-          <button class="open-modal" data-content="cupons">
+
+          <!-- MEUS CUPONS-->
+          <button onclick="window.location.href=`/meuscupons`">
             <i class="bi bi-ticket-perforated"></i>Meus cupons
           </button>
 
-          <button class="open-modal" data-content="doacoes">
+          <!-- MINHAS DOAÇÕES -->
+          <button onclick="window.location.href=`/minhasdoacoes`">
             <i class="bi bi-heart"></i> Minhas doações
           </button>
 
-          <button class="open-modal" data-content="pagamentos">
+          <!-- MEUS PAGAMENTOS-->
+          <button onclick="window.location.href=`/meuspagamentos`">
             <i class="bi bi-credit-card"></i><span>Pagamentos</span>
           </button>
 
-          <button class="open-modal" data-content="endereços">
-            <i class="bi bi-geo-alt"></i><span>Endereços</span>
-          </button>
-
-          <button class="open-modal" data-content="suporte">
+          <!-- SUPORTE-->
+          <button onclick="window.location.href=`/suporte`">
             <i class="bi bi-life-preserver"></i><span>Suporte</span>
           </button>
-          <button class="open-modal" data-content="sair">
+
+          <!-- SAIR DA CONTA-->
+          <button onclick="window.location.href=`/#`">
             <i class="bi bi-box-arrow-right"></i
             ><span class="sair">Mudar de conta / Sair</span>
           </button>
         </nav>
+        <!--FIM DOS BOTOES DE ACESSO-->
       </section>
-
-      <!-- Modal -->
-      <dialog id="euModal" class="eu-modal">
-        <article class="modal-content">
-          <button class="close">&times;</button>
-          <section id="euModalBody">
-            <!-- O conteúdo de cada um dos botões vai mudar aqui com o script eu-modal -->
-          </section>
-        </article>
-      </dialog>
     </main>
 
     <!--FOOTER-->
     <%- include('../partials/footer.ejs') %>
     <!---->
-
-    <script src="../js/eu-modal.js"></script>
-
-    <style>
-      /* RESET */
-      * {
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-        box-sizing: border-box;
-      }
-      .container {
-        color: black;
-        max-width: 1000px;
-        margin: 20px auto;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-      }
-
-      /* PERFIL */
-      .perfil {
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        border-bottom: solid 2px #ccc;
-      }
-      .perfil h1 {
-        font-size: 2rem;
-      }
-      .foto-perfil img {
-        background-color: #ccc;
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 20px;
-      }
-      .seguidores {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-      }
-      .icones-editar {
-        margin-left: auto;
-        display: flex;
-        gap: 10px;
-      }
-      .icones-editar i {
-        font-size: 20px;
-        cursor: pointer;
-      }
-
-      /* HEALTHY POINTS */
-      .healthy-points {
-        padding: 20px;
-        text-align: center;
-      }
-      .healthy-points h1 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-      }
-      .healthy-points h2 img {
-        vertical-align: middle;
-        margin-right: 5px;
-      }
-      .titulo-info {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-      }
-      .titulo-info i {
-        font-size: 20px;
-        margin-bottom: 4px;
-        cursor: pointer;
-        color: #007bff;
-      }
-      .titulo-info a {
-        margin-bottom: 15px;
-        margin-left: 5px;
-        cursor: pointer;
-        color: #007bff;
-      }
-
-      /* BOTOES DE ACESSO */
-      .botoes-acesso {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 colunas iguais */
-        gap: 10px; /* espaço entre linhas e colunas */
-
-        padding: 20px;
-        border-top: solid 2px #ccc;
-      }
-      .botoes-acesso h1 {
-        grid-column: span 2;
-        width: 100%;
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-      }
-      .botoes-acesso button {
-        width: 100%; /* ocupa toda a célula */
-        height: 60px; /* altura fixa */
-        display: flex;
-        align-items: center; /* centraliza verticalmente */
-        gap: 10px; /* espaço entre ícone e texto */
-        justify-content: flex-start; /* alinha tudo à esquerda */
-        padding: 0 20px;
-        background-color: #0c4f43;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-      .botoes-acesso .sair {
-        color: red;
-      }
-
-      /* MODAL */
-      #euModal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        justify-content: center;
-        align-items: center;
-        overflow: auto;
-        z-index: 1000;
-      }
-
-      #euModal .modal-content {
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 600px;
-        max-height: 80%;
-        overflow-y: auto;
-        position: relative;
-      }
-      @keyframes aparecer {
-        from {
-          transform: translateY(-40px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      /* TOPO DENTRO DO MODAL */
-      .topo-modal {
-        background-color: #0c4f43;
-        color: white;
-        padding: 15px;
-        border-radius: 8px 8px 0 0;
-        margin: -20px -20px 20px -20px;
-        text-align: center;
-      }
-      .topo-modal h2 {
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: 600;
-      }
-
-      /* FECHAR MODAL */
-      .close {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 22px;
-        cursor: pointer;
-        color: #0c4f43;
-        transition: color 0.2s;
-      }
-      .close:hover {
-        color: #000;
-      }
-
-      /* FOTO E EDITAR DENTRO DO MODAL (informações de identidade) */
-      .foto-editar {
-        position: relative;
-        display: inline-block;
-      }
-      .modal-img {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid #fff;
-      }
-      .icone-editar-foto {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        background: #0c4f43;
-        color: white;
-        border-radius: 50%;
-        padding: 6px;
-        font-size: 16px;
-        cursor: pointer;
-        border: 2px solid #fff;
-        transition: background 0.3s;
-      }
-      .icone-editar-foto:hover {
-        background: #00594c;
-      }
-
-      /* INFO DENTRO DO MODAL (informações de identidade) */
-      .info-modal {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .info-modal div {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 8px 12px;
-        border-bottom: 1px solid #eee;
-      }
-      .info-modal i {
-        color: #0c4f43;
-        font-size: 18px;
-      }
-      .info-content button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #0c4f43;
-        color: #fff;
-        font-weight: bold;
-        border: none;
-        border-radius: 8px;
-        width: 200px;
-        cursor: pointer;
-        font-size: 0.8rem;
-        transition: background-color 0.3s, transform 0.2s;
-      }
-      .info-content button:hover {
-        background-color: #00594c;
-        transform: translateY(-2px);
-      }
-      .info-content button:active {
-        background-color: #004036;
-        transform: translateY(0);
-      }
-
-      /* CENTRO DO MODAL (restante dos outros modais sem conteudo) */
-      .centro-modal a {
-        color: #0c4f43;
-        cursor: pointer;
-        text-decoration: none;
-        font-weight: bold;
-        transition: 0.3s;
-      }
-      .centro-modal a:hover {
-        text-decoration: underline;
-        color: #00594c;
-      }
-
-      /* BOTÕES DE SAIR DENTRO DO MODAL (mudar de conta / sair ) */
-      .sair-modal {
-        text-align: center;
-        padding: 20px;
-      }
-      .sair-modal h1 {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-      }
-      .botoes-sair {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-      }
-      .botoes-sair button {
-        padding: 8px 16px;
-        border: none;
-        border-radius: 6px;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-      .botoes-sair .nao {
-        background-color: #ccc;
-      }
-      .botoes-sair .nao:hover {
-        background-color: #999;
-      }
-      .botoes-sair .sim {
-        background-color: #0c4f43;
-        color: #fff;
-      }
-      .botoes-sair .sim:hover {
-        background-color: #07503b;
-      }
-    </style>
   </body>
 </html>

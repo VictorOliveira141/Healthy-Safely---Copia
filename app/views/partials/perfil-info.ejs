@@ -1,0 +1,57 @@
+<header class="perfil">
+  <figure class="foto-perfil">
+    <img src="../imagem/user.png" alt="Foto de perfil do usuário" />
+  </figure>
+
+  <div class="info-perfil">
+    <h1>Nome de Usuário</h1>
+    <p class="seguidores">
+      <span>0 seguidores</span> • <span>0 seguindo</span>
+    </p>
+  </div>
+
+  <article class="icones-editar">
+    <i class="bi bi-gear"></i>
+    <i class="bi bi-pencil-fill open-modal" data-content="identidade"></i>
+  </article>
+</header>
+
+<style>
+  /* PERFIL */
+  .perfil {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: solid 2px #ccc;
+  }
+  .perfil h1 {
+    font-size: 2rem;
+  }
+  .foto-perfil img {
+    background-color: #ccc;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  .seguidores {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .icones-editar {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+  }
+  .icones-editar i {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .foto-editar {
+    position: relative;
+    display: inline-block;
+  }
+</style>

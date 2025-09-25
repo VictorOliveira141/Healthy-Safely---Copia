@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 
-const usuarios = [];
+const usuarios = []; /* array que armazena os usuarios*/
 var { validarCNPJ } = require("../helpers/validacaoPersonalizada");
 
-/* ROTAS DAS PÁGINAS */
+/* ==================== ROTAS DAS PÁGINAS ===================== */
 router.get("/", (req, res) => {
   res.render("pages/tomarammeutela");
 });
@@ -42,9 +42,6 @@ router.get("/informacoes", (req, res) => {
 router.get("/orientacoes", (req, res) => {
   res.render("pages/orientacoes");
 });
-router.get("/perfil", (req, res) => {
-  res.render("pages/perfil");
-});
 router.get("/doacao", (req, res) => {
   res.render("pages/doacao");
 });
@@ -52,6 +49,36 @@ router.get("/produto", (req, res) => {
   res.render("pages/produto");
 });
 
+/*  ===================== ROTAS COMPOSTAS POR OUTRAS ROTAS  ===================== */
+router.get("/perfil", (req, res) => {
+  res.render("pages/perfil");
+});
+router.get("/minhaidentidade", (req, res) => {
+  res.render("pages/minhaidentidade");
+});
+router.get("/minhasconsultas", (req, res) => {
+  res.render("pages/minhasconsultas");
+});
+router.get("/meuspedidos", (req, res) => {
+  res.render("pages/meuspedidos");
+});
+router.get("/meusfavoritos", (req, res) => {
+  res.render("pages/meusfavoritos");
+});
+router.get("/meuscupons", (req, res) => {
+  res.render("pages/meuscupons");
+});
+router.get("/minhasdoacoes", (req, res) => {
+  res.render("pages/minhasdoacoes");
+});
+router.get("/meuspagamentos", (req, res) => {
+  res.render("pages/meuspagamentos");
+});
+router.get("/suporte", (req, res) => {
+  res.render("pages/suporte");
+});
+
+/*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
 router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
@@ -62,7 +89,6 @@ router.get("/login", (req, res) => {
     sucesso: false,
   });
 });
-
 router.get("/cadastroCliente", (req, res) => {
   res.render("pages/cadastroCliente", {
     erros: null,
@@ -78,7 +104,6 @@ router.get("/cadastroCliente", (req, res) => {
     msgErro: {},
   });
 });
-
 router.get("/cadastroColaborador", (req, res) => {
   res.render("pages/cadastroColaborador", {
     // Farmácia
@@ -111,6 +136,8 @@ router.get("/cadastroColaborador", (req, res) => {
     retorno: null,
   });
 });
+
+/* ===================== ROUTER POST(VALIDAÇÕES) ===================== */
 
 /* CADASTRO SENDO CLIENTE */
 router.post(
