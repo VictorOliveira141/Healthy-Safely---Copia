@@ -11,7 +11,6 @@ body{
     margin: 0;
     padding: 0;
 }
-
 .bannerdalojainicial {
     background-size: cover;
     height: 300px;
@@ -291,4 +290,139 @@ hover .cupons img  {
   transform: scale(1.08); /* aumenta 8% */
 }
 
+
+@media (max-width: 800px) {
+   .bannerdalojainicial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.bannerloja{
+    width: 800px;
+    height: 700px;
+}
+.cupons {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+   
+  
+}
+
+.desconto {
+   width: 250px;
+}
+
+.lista-categorias img {
+  width: 140px;
+  margin-top: -70px;
+}
+.bannersemana{
+  width: 650px;
+}
+}
+
+@media (max-width: 600px) {
+   .bannerdalojainicial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.bannerloja{
+    width: 600px;
+    height: 800px;
+}
+.cupons {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+   
+  
+}
+
+.desconto {
+   width: 170px;
+}
+
+.slider-ml {
+  width: 600px;
+}
+
+.lista-categorias img {
+  width: 100px;
+ 
+}
+.bannersemana{
+  width: 500px;
+  margin-top: 15px;
+}
+
+.semanadoconsumas {
+  margin-top: -100px;
+}
+
+.produto-ml {
+  width: 80px;
+}
+
+.categorias {
+  margin-top: -20pxs;
+}
+
+}
+
+@media (max-width: 400px) {
+   .bannerdalojainicial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.bannerloja{
+    width: 400px;
+    height: 800px;
+}
+.cupons {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+   
+  
+}
+
+.desconto {
+   width: 100px;
+}
+
+.slider-ml {
+  width: 400px;
+}
+
+.lista-categorias img {
+  width: 80px;
+ 
+}
+.bannersemana{
+  width: 300px;
+  margin-top: 15px;
+}
+
+.semanadoconsumas {
+  margin-top: -100px;
+}
+
+.produto-ml {
+  width: 80px;
+}
+
+.categorias {
+  margin-top: -20px;
+}
+
+}
 

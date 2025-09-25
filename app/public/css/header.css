@@ -562,6 +562,10 @@ header {
   color: #0c4f43;
 }
 
+.header-actions {
+  margin-right: 100px;
+}
+
 /* Ações (+ – Remover) */
 .acoes {
   display: flex;
@@ -690,6 +694,7 @@ header {
   }
   .header-actions {
     font-size: 20px;
+    margin-right: 70px;
     /* ajustando gap para telas menores */
     gap: 8px;
   }
@@ -784,6 +789,7 @@ header {
   }
   .search-bar2 {
     padding: 6px 16px;
+    height: 40px;
   }
   .search-bar2 input {
     font-size: 14px;
