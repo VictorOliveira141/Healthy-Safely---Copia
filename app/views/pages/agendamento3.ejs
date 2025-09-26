@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agendar consulta</title>
+    <link rel="stylesheet" href="../css/agendamento.css" />
+  </head>
+
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
+    <main>
+      <section class="card">
+        <h2 class="titulo">Agendar consulta</h2>
+
+        <!-- Barra de progresso -->
+        <div class="progresso">
+          <span class="ativo"></span>
+          <span class="ativo"></span>
+          <span class="ativo"></span>
+          <span></span>
+        </div>
+
+        <h2>Especialistas disponíveis</h2>
+
+        <!-- Lista de Especialistas -->
+        <div class="lista-medicos">
+          <div class="card-medico">
+            <div class="info">
+              <div class="icone">
+                <img
+                  src="../imagem/ortopedista.png"
+                  width="40px"
+                  height="40px"
+                />
+              </div>
+              <div>
+                <h3>DR. ALISON (Nutricionista)</h3>
+                <p>Horário: 16:00 P.M — 04/04/2048</p>
+              </div>
+            </div>
+            <button class="btn-agendar">Agendar</button>
+          </div>
+
+          <div class="card-medico">
+            <div class="info">
+              <div class="icone">
+                <img
+                  src="../imagem/ortopedista.png"
+                  width="40px"
+                  height="40px"
+                />
+              </div>
+              <div>
+                <h3>DR. DANIEL (Nutricionista)</h3>
+                <p>Horário: 9:00 A.M — 20/04/2048</p>
+              </div>
+            </div>
+            <button class="btn-agendar">Agendar</button>
+          </div>
+
+          <div class="card-medico">
+            <div class="info">
+              <div class="icone">
+                <img
+                  src="../imagem/ortopedista.png"
+                  width="40px"
+                  height="40px"
+                />
+              </div>
+              <div>
+                <h3>DR. MAURICIO (Nutricionista)</h3>
+                <p>Horário: 13:00 P.M — 04/04/2048</p>
+              </div>
+            </div>
+            <button class="btn-agendar">Agendar</button>
+          </div>
+        </div>
+
+        <article class="voltar-avancar">
+          <button
+            class="avancar"
+            onclick="window.location.href=`/agendamento2`"
+          >
+            voltar
+          </button>
+          <button
+            class="avancar"
+            onclick="window.location.href=`/agendamento4`"
+          >
+            Avançar
+          </button>
+        </article>
+      </section>
+    </main>
+
+    <!--FOOTER-->
+    <%- include('../partials/footer.ejs') %>
+    <!---->
+  </body>
+</html>

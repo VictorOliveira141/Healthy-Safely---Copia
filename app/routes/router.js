@@ -48,7 +48,18 @@ router.get("/doacao", (req, res) => {
 router.get("/produto", (req, res) => {
   res.render("pages/produto");
 });
-
+router.get("/agendamento1", (req, res) => {
+  res.render("pages/agendamento1");
+});
+router.get("/agendamento2", (req, res) => {
+  res.render("pages/agendamento2");
+});
+router.get("/agendamento3", (req, res) => {
+  res.render("pages/agendamento3");
+});
+router.get("/agendamento4", (req, res) => {
+  res.render("pages/agendamento4");
+});
 /*  ===================== ROTAS COMPOSTAS POR OUTRAS ROTAS  ===================== */
 router.get("/perfil", (req, res) => {
   res.render("pages/perfil");
