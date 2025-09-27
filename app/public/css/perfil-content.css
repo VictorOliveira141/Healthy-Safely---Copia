@@ -70,7 +70,7 @@
   transform: translateY(0);
 }
 
-.centro-modal{
+.centro-modal {
   display: flex;
   justify-content: center;
 }
@@ -113,4 +113,102 @@
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
+}
+
+.consulta-escolhida {
+  border-radius: 8px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 20px 0;
+}
+.consulta-escolhida .info {
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* empurra preço para direita */
+  gap: 12px;
+}
+.consulta-escolhida .icone img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.consulta-escolhida .detalhes {
+  flex: 1;
+}
+.consulta-escolhida h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: black;
+}
+.consulta-escolhida h3 span {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: black;
+}
+.consulta-escolhida .horario {
+  font-size: 0.95rem;
+  color: black;
+}
+.consulta-escolhida .preco {
+  text-align: right;
+  min-width: 120px;
+}
+.consulta-escolhida .valor {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0c4f43;
+  background-color: #ffeb3b;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.consulta-escolhida .parcelado {
+  font-size: 0.85rem;
+  color: black;
+}
+.finalizada-chat {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.andamento {
+  background-color: #008000;
+  transition: background 0.3s;
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.finalizada {
+  background-color: red;
+  transition: background 0.3s;
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.chat {
+  background-color: #8ca700;
+  transition: background 0.3s;
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s;
 }

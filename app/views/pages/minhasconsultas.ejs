@@ -13,7 +13,6 @@
     <%- include('../partials/menu-inferior.ejs') %>
 
     <main>
-      
       <section class="container">
         <a href="/perfil"><button class="voltar">< Voltar</button></a>
         <!-- PERFIL -->
@@ -25,11 +24,69 @@
             Minhas consultas
           </h2>
 
-          <div class="centro-modal">
-            <h2>
-              Você não tem nenhuma consulta online no momento. Deseja
-              <a href="#">agendar</a> uma?
-            </h2>
+          <div class="consulta-escolhida">
+            <div class="info">
+              <!-- Ícone -->
+              <div class="icone">
+                <img
+                  src="../imagem/ortopedista.png"
+                  width="50"
+                  height="50"
+                  alt="Ícone especialista"
+                />
+              </div>
+
+              <!-- Dados do médico -->
+              <div class="detalhes">
+                <h3>Dr. Alison <span>(Nutricionista)</span></h3>
+                <p class="horario">Horário: 16h00 — 04/04/2048</p>
+              </div>
+
+              <!-- Preço -->
+              <div class="preco">
+                <p class="valor">R$ 100,00</p>
+                <p class="parcelado">ou 2x de <strong>R$ 49,99</strong></p>
+              </div>
+            </div>
+            <div class="finalizada-chat">
+              <button class="andamento">em andamento</button>
+              <button
+                class="chat"
+                onclick="window.location.href=`/orientacoes`"
+              >
+                chat
+              </button>
+            </div>
+          </div>
+
+          <div class="consulta-escolhida">
+            <div class="info">
+              <!-- Ícone -->
+              <div class="icone">
+                <img
+                  src="../imagem/ortopedista.png"
+                  width="50"
+                  height="50"
+                  alt="Ícone especialista"
+                />
+              </div>
+
+              <!-- Dados do médico -->
+              <div class="detalhes">
+                <h3>Dr. Mauricio <span>(Nutricionista)</span></h3>
+                <p class="horario">Horário: 16h00 — 04/04/2048</p>
+              </div>
+
+              <!-- Preço -->
+              <div class="preco">
+                <p class="valor">R$ 100,00</p>
+                <p class="parcelado">ou 2x de <strong>R$ 49,99</strong></p>
+              </div>
+            </div>
+            <div class="finalizada-chat">
+              <button class="finalizada">finalizada</button>
+              <button class="chat">chat</button>
+            </div>
           </div>
         </section>
       </section>

@@ -1,4 +1,4 @@
-/* RESET */
+/* ================= RESET ================= */
 html,
 body {
   background: white !important;
@@ -7,7 +7,12 @@ body {
   padding: 0;
 }
 
-/* TOPO DO MAIN */
+html {
+  scroll-behavior: smooth;
+  /*isso faz que quando clique no botao de "voltar ao topo" tenha uma transição suave*/
+}
+
+/* ================= TOPO DO MAIN ================= */
 .main-fundo {
   background-color: white;
   padding-top: 10px;
@@ -32,7 +37,7 @@ body {
   height: 255px; /* altura do conteúdo */
 }
 
-/* CARROSSEL */
+/* ================= CARROSSEL ================= */
 .carrossel {
   width: 100%;
   height: 100%; /* o conteudo ocupa a div toda */
@@ -81,7 +86,7 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* BANNERS SEGUNDARIOS */
+/* ================= BANNERS SEGUNDARIOS ================= */
 .side-content {
   display: flex;
   flex-direction: column;
@@ -105,7 +110,7 @@ body {
   display: block;
 }
 
-/* BOTOES DE SERVIÇOS */
+/* ================= BOTOES DE SERVIÇOS ================= */
 .botoes-servicos {
   display: flex;
   gap: 55px; /* espaço entre os quadrados */
@@ -144,7 +149,7 @@ body {
   text-decoration: none; /* remove o sublinhado dos links */
 }
 
-/* CENTRO DO MAIN */
+/* ================= CENTRO DO MAIN =================*/
 .main-centro {
   margin: 20px auto; /* centraliza horizontalmente */
   background-color: white;
@@ -169,7 +174,7 @@ body {
   white-space: nowrap;
 }
 
-/* LINHAS DO TITULO DOS SLIDERS */
+/* ================= LINHAS DO TITULO DOS SLIDERS ================= */
 .main-centro h1::before {
   content: "";
   width: 70px; /* Tamanho da primeira linha (esquerda) */
@@ -191,7 +196,7 @@ body {
   );
 }
 
-/* SLIDERS */
+/* ================= SLIDERS ================= */
 .main-centro .slider {
   display: flex;
   justify-content: center; /* centraliza o conjunto do slider */
@@ -221,8 +226,56 @@ body {
 .main-centro .btn.ml-next {
   flex: 0 0 auto;
 }
+.btn.ml-prev,
+.btn.ml-next {
+  background: #03201c;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.btn.ml-prev:hover,
+.btn.ml-next:hover {
+  background: #0c4f43;
+}
+.slides {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 1, 0.4, 1); /* Animação ao deslizar */
+  gap: 20px;
+}
+.produtos.ver-mais {
+  display: flex;
+  justify-content: center;
+}
+.btn-circular {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #0c4f43; /* verde escuro */
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn-circular:hover {
+  background: #096e5a; /* tom mais claro no hover */
+  transform: scale(1.1);
+}
 
-/* ESTILO DOS PRODUTOS */
+/* ================= ESTILO DOS PRODUTOS ================= */
 a {
   text-decoration: none;
 }
@@ -304,33 +357,8 @@ a {
   margin-top: 10px;
   display: inline-block; /* ou inline */
 }
-.slides {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 1, 0.4, 1); /* Animação ao deslizar */
-  gap: 20px;
-}
 
 /* botoes */
-.btn.ml-prev,
-.btn.ml-next {
-  background: #03201c;
-  color: #fff;
-  border: none;
-  font-size: 2rem;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-  z-index: 2;
-}
-.btn.ml-prev:hover,
-.btn.ml-next:hover {
-  background: #0c4f43;
-}
 .btn-comprar {
   background: #00796b;
   color: #fff;
@@ -348,30 +376,8 @@ a {
 .btn-comprar:hover {
   background: #00594c;
 }
-/* BANNER TERCIARIO */
-.banner-section {
-  margin: 20px auto; /* centraliza horizontalmente */
-  background-color: transparent;
-  display: flex;
-  justify-content: center; /* centraliza a imagem do banner */
-  align-items: center;
-  padding: 16px;
-  border-radius: 10px;
-  max-width: 1200px; /* largura máxima */
-  width: 90%;
-}
-.banner-section .banner {
-  width: 100%;
-  height: 40vw;
-  max-height: 350px;
-  background-image: url("../imagem/Group 154 (2).svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: block;
-}
 
-/* CATEGORIAS */
+/* ================= CATEGORIAS ================= */
 .botoes-categorias {
   display: flex;
   flex-wrap: wrap;
@@ -407,7 +413,7 @@ a {
   color: #333;
 }
 
-/* PRODUTOS DESTAQUE */
+/* ================= PRODUTOS DESTAQUE ================= */
 .produtos-destaque {
   padding: 20px;
 }
@@ -420,6 +426,177 @@ a {
   gap: 20px;
 }
 
+/* ================= CONSULTAS "RAPIDAS" ================= */
+.img-agende {
+  display: block;
+  margin: 20px auto;
+  max-width: 90%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.secao-online {
+  padding: 20px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cabecalho-secao {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.cabecalho-secao h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #00594c; /* mesmo tom usado no main-centro */
+  margin-bottom: 10px;
+}
+.cabecalho-secao p {
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 15px;
+}
+.grade-servicos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+}
+.cartao-servico {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* mesmo estilo dos produtos */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cartao-servico:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.topo-servico {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.icone-servico {
+  font-size: 32px;
+  color: #00594c;
+}
+.selo-online {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.cartao-servico h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #20413b;
+}
+.cartao-servico > p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.linha-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+.disponibilidade {
+  font-size: 13px;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.rodape-servico {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+.valor {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0c4f43;
+}
+.por-consulta {
+  color: #777;
+  font-size: 13px;
+  margin-left: 4px;
+}
+.botao-agendar {
+  background: #00796b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.botao-agendar:hover {
+  background: #00594c;
+}
+
+/* ================= VOLTAR AO TOPO ================= */
+.voltar-topo {
+  margin: 20px auto; /* centraliza horizontalmente */
+  cursor: pointer;
+  color: #00594c;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 16px;
+  border-radius: 10px;
+  max-width: 1200px; /* largura máxima */
+  width: 90%;
+}
+.voltar-topo h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* espaço entre texto e linhas */
+  margin: 0 0 18px 0;
+  font-size: 30px;
+  font-weight: 600;
+  color: #00594c;
+  white-space: nowrap;
+}
+.voltar-topo h1::before {
+  content: "";
+  width: 50%; /* Tamanho da primeira linha (esquerda) */
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.08)
+  );
+}
+.voltar-topo h1::after {
+  content: "";
+  width: 50%; /* Tamanho da segunda linha (direita) */
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.08)
+  );
+}
+
+/* ================= FOOTER ================= */
 .footer {
   margin-top: 40px;
 }
@@ -445,8 +622,6 @@ a {
     object-fit: contain;
   }
 }
-
-/* Imagem pantene some */
 @media (max-width: 800px) {
   .banner-section {
     display: none;
@@ -455,7 +630,7 @@ a {
 }
 
 /* conteudo para mobile */
-@media (max-width: 650px) {
+@media (max-width: 768px) {
   /* Layout de 1 coluna */
   .main-container {
     grid-template-columns: 1fr;
@@ -637,152 +812,4 @@ a {
     flex-wrap: wrap;
     text-align: center;
   }
-}
-
-.secao-online {
-  padding: 3rem 0;
-  background: #fff;
-}
-
-.cabecalho-secao {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.cabecalho-secao h2 {
-  font-size: 2rem;
-  color: #1f2937;
-  margin-bottom: 1rem;
-}
-
-.cabecalho-secao p {
-  color: #6b7280;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.grade-servicos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.cartao-servico {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: box-shadow 0.2s;
-}
-
-.cartao-servico:hover {
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.topo-servico {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.icone-servico {
-  font-size: 2rem;
-}
-
-.selo-online {
-  background: #dcfce7;
-  color: #16a34a;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-.cartao-servico h3 {
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-  color: #1f2937;
-}
-
-.cartao-servico > p {
-  color: #6b7280;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-}
-
-.info-servico {
-  margin-bottom: 1rem;
-}
-
-.linha-info {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.875rem;
-  color: #6b7280;
-  margin-bottom: 0.5rem;
-}
-
-.linha-info span {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.disponibilidade {
-  font-size: 0.875rem;
-  color: #16a34a;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.rodape-servico {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.valor {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #16a34a;
-}
-
-.por-consulta {
-  color: #6b7280;
-  font-size: 0.875rem;
-  margin-left: 0.25rem;
-}
-
-.botao-agendar {
-  background: #16a34a;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background-color 0.2s;
-}
-
-.botao-agendar:hover {
-  background: #15803d;
-}
-
-.img-agende {
-  display: block;
-  margin: 20px auto;
-  max-width: 90%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.h2dasugestao {
-  font-size: 2rem;
-  color: #288d7a;
-  margin-bottom: 1rem;
-  text-align: center;
 }

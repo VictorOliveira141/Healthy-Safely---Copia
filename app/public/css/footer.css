@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 /* CONTAINER PRINCIPAL */
-footer {
+.footer {
   background: #17594a;
   color: white;
   padding: 40px 20px 20px;
