@@ -6,17 +6,19 @@
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), #297767;
 }
 main {
   display: flex;
   justify-content: center;
   padding: 30px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), #297767;
 }
 
 /* =============== CARD(geral) =============== */
 .card {
   background-color: #0c4f43;
+  border-radius: 10px;
   color: white;
   padding: 20px;
   width: 1000px;
@@ -143,7 +145,17 @@ h4 {
   gap: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
+.card-medico .valor {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #0c4f43;
+  display: inline;
+  background-color: yellow;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
 .card-medico .info {
+  cursor: pointer;
   color: white;
   display: flex;
   align-items: center;
@@ -192,7 +204,48 @@ h4 {
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between; /* empurra preço para direita */
   gap: 12px;
+}
+.consulta-escolhida .icone img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.consulta-escolhida .detalhes {
+  flex: 1;
+}
+.consulta-escolhida h3 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  color: #fff;
+}
+.consulta-escolhida h3 span {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: white;
+}
+.consulta-escolhida .horario {
+  font-size: 0.95rem;
+  color: white;
+}
+.consulta-escolhida .preco {
+  text-align: right;
+  min-width: 120px;
+}
+.consulta-escolhida .valor {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0c4f43;
+  background-color: #ffeb3b;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+.consulta-escolhida .parcelado {
+  font-size: 0.85rem;
+  color: white;
 }
 
 /* Botão finalizar */
@@ -232,4 +285,17 @@ h4 {
 }
 .avancar:hover {
   background-color: #145c4b;
+}
+
+/* responsividade */
+@media (max-width: 650px) {
+  .titulo {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  .especialidades .botao {
+    font-size: 1rem;
+  }
 }

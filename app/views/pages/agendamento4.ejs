@@ -24,24 +24,33 @@
           <span class="ativo"></span>
         </div>
 
-        <h2>Confirmação do agendamento</h2>
+        <h4>Confirmação do agendamento</h4>
 
         <!-- Consulta escolhida -->
         <div class="consulta-escolhida">
           <div class="info">
+            <!-- Ícone -->
             <div class="icone">
-              <img src="../imagem/ortopedista.png" width="40px" height="40px" />
+              <img
+                src="../imagem/ortopedista.png"
+                width="50"
+                height="50"
+                alt="Ícone especialista"
+              />
             </div>
-            <div>
-              <h3>DR. ALISON (Nutricionista)</h3>
-              <p>Horário: 16:00 P.M — 04/04/2048</p>
+
+            <!-- Dados do médico -->
+            <div class="detalhes">
+              <h3>Dr. Alison <span>(Nutricionista)</span></h3>
+              <p class="horario">Horário: 16h00 — 04/04/2048</p>
+            </div>
+
+            <!-- Preço -->
+            <div class="preco">
+              <p class="valor">R$ 100,00</p>
+              <p class="parcelado">ou 2x de <strong>R$ 49,99</strong></p>
             </div>
           </div>
-        </div>
-
-        <div class="confirmacao">
-          <h3>Quase lá!</h3>
-          <p>Deseja marcar esta consulta?</p>
         </div>
 
         <article class="voltar-avancar">
@@ -55,7 +64,7 @@
             class="finalizar"
             onclick="window.location.href=`/minhasconsultas`"
           >
-            finalizar agendamento
+            Ir para pagamento
           </button>
         </article>
       </section>
