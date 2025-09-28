@@ -1,22 +1,30 @@
 <html>
   <head>
     <title>Cadastro</title>
-    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/cliente.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
     />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <!-- SCRIPT PARA VALIDAÇÃO FRONT-END -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/validacao-front-end.js"></script>
+    <!---->
+    <!--SCRIPT PARA VER A SENHA -->
+    <script src="../js/ver-senha.js"></script>
+    <!---->
   </head>
 
   <body>
+    <!--HEADER-->
     <%- include('../partials/header.ejs') %>
     <!---->
-    <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="main">
       <!-- Lado esquerdo-->
       <section class="lado-esquerdo">
+        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
         <h2>Sua saúde começa aqui!🍏</h2>
         <p>
           Cadastre-se e aproveite todos os benefícios que preparamos para você.
@@ -49,7 +57,6 @@
           </div>
         </div>
       </section>
-
       <script src="../js/carrossel.js"></script>
       <!-- Fim lado esquerdo-->
 
@@ -59,115 +66,129 @@
 
       <!-- Lado direito com formulário -->
       <section class="lado-direito">
-        <article class="container">
-          <form action="/cadastroCliente" method="POST" class="quadrado">
-            <h1 class="novoUsuario">NOVO USUÁRIO</h1>
-            <button type="submit" id="btnClique" class="google">
-              <section>
-                <img src="../imagem/google.png" class="googleimg" />
-                <span>Continue com Google</span>
-              </section>
-            </button>
+        <form action="/cadastroCliente" method="POST" class="quadrado">
+          <h1 class="novoUsuario">NOVO USUÁRIO</h1>
+          <button type="submit" id="btnClique" class="google">
+            <section>
+              <img src="../imagem/google.png" class="googleimg" />
+              <span>Continue com Google</span>
+            </section>
+          </button>
 
-            <article class="formulario">
-              <h2>Dados de acesso</h2>
-              <article class="input-icon">
-                <i class="bi bi-person icones-gerais"></i>
-                <input
-                  type="text"
-                  id="nome"
-                  name="nome"
-                  placeholder="Digite seu nome"
-                  value="<%= valores.nome %>"
-                  class="<%= erroValidacao.nome %>"
-                />
-                <span class="msgErro"><%= msgErro.nome %></span>
-              </article>
-
-              <article class="input-icon">
-                <i class="bi bi-envelope icones-gerais"></i>
-                <input
-                  type="text"
-                  id="email"
-                  name="email"
-                  placeholder="Digite seu e-mail"
-                  value="<%= valores.email %>"
-                  class="<%= erroValidacao.email %>"
-                />
-                <span class="msgErro"><%= msgErro.email %></span>
-              </article>
-
-              <article class="input-icon">
-                <i class="bi bi-calendar icones-gerais"></i>
-                <input
-                  type="date"
-                  id="data"
-                  name="data"
-                  value="<%= valores.data %>"
-                  class="<%= erroValidacao.data %>"
-                />
-                <span class="msgErro"><%= msgErro.data %></span>
-              </article>
-
-              <br />
-              <label class="senhaInfo">
-                Sua senha deve conter: <br />
-                ✔ uma letra maiúscula <br />
-                ✔ um número <br />
-                ✔ um caractere especial
-              </label>
-              <br />
-
-              <article class="input-icon">
-                <i class="bi bi-lock icones-gerais"></i>
-                <input
-                  type="password"
-                  id="senha"
-                  name="senha"
-                  placeholder="Digite sua senha"
-                  value="<%= valores.senha %>"
-                  class="<%= erroValidacao.senha %>"
-                />
-                <i
-                  class="bi bi-eye-slash-fill olhofechado"
-                  onclick="mostrarSenha('senha', this)"
-                ></i>
-                <span class="msgErro"><%= msgErro.senha %></span>
-              </article>
-
-              <article class="input-icon">
-                <i class="bi bi-shield-lock icones-gerais"></i>
-                <input
-                  type="password"
-                  id="confirmarSenha"
-                  name="confirmarSenha"
-                  placeholder="Confirme sua senha"
-                  value="<%= valores.confirmarSenha %>"
-                  class="<%= erroValidacao.confirmarSenha %>"
-                />
-                <i
-                  class="bi bi-eye-slash-fill olhofechado"
-                  onclick="mostrarSenha('confirmarSenha', this)"
-                ></i>
-                <span class="msgErro"><%= msgErro.confirmarSenha %></span>
-              </article>
-
-              <h1 class="login">
-                Já possui uma conta? Faça seu <a href="/login">login</a> ou
-                torne-se um <a href="/cadastroColaborador">colaborador</a>
-              </h1>
-
-              <button type="submit" id="btnClique" class="juntar">
-                Juntar-se
-              </button>
+          <article class="formulario">
+            <h2>Dados de acesso</h2>
+            <article class="input-icon">
+              <i class="bi bi-person icones-gerais"></i>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite seu nome completo"
+                value="<%= valores.nome %>"
+                class="<%= erroValidacao.nome %>"
+              />
+              <span class="msgErro"><%= msgErro.nome %></span>
             </article>
-          </form>
-        </article>
+
+            <article class="input-icon">
+              <i class="bi bi-person-badge icones-gerais"></i>
+
+              <input
+                type="text"
+                id="nomeusuario"
+                name="nomeusuario"
+                placeholder="Crie um nome de usuário"
+                value="<%= valores.nomeusuario %>"
+                class="<%= erroValidacao.nomeusuario %>"
+                oninput="validarNomeUsuario()"
+              />
+
+              <span class="msgErro" id="msgNomeUsuario"
+                ><%= msgErro.nomeusuario %></span
+              >
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-envelope icones-gerais"></i>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                value="<%= valores.email %>"
+                class="<%= erroValidacao.email %>"
+              />
+              <span class="msgErro"><%= msgErro.email %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-calendar icones-gerais"></i>
+              <input
+                type="date"
+                id="data"
+                name="data"
+                value="<%= valores.data %>"
+                class="<%= erroValidacao.data %>"
+              />
+              <span class="msgErro"><%= msgErro.data %></span>
+            </article>
+
+            <label class="senhaInfo">
+              Sua senha deve conter: <br />
+              ✔ uma letra maiúscula <br />
+              ✔ um número <br />
+              ✔ um caractere especial
+            </label>
+
+            <article class="input-icon">
+              <i class="bi bi-lock icones-gerais"></i>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Digite sua senha"
+                value="<%= valores.senha %>"
+                class="<%= erroValidacao.senha %>"
+              />
+              <i
+                class="bi bi-eye-slash-fill olhofechado"
+                onclick="mostrarSenha('senha', this)"
+              ></i>
+              <span class="msgErro"><%= msgErro.senha %></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-shield-lock icones-gerais"></i>
+              <input
+                type="password"
+                id="confirmarSenha"
+                name="confirmarSenha"
+                placeholder="Confirme sua senha"
+                value="<%= valores.confirmarSenha %>"
+                class="<%= erroValidacao.confirmarSenha %>"
+              />
+              <i
+                class="bi bi-eye-slash-fill olhofechado"
+                onclick="mostrarSenha('confirmarSenha', this)"
+              ></i>
+              <span class="msgErro"><%= msgErro.confirmarSenha %></span>
+            </article>
+
+            <h1 class="login">
+              Já possui uma conta? Faça seu <a href="/login">login</a> ou
+              torne-se um <a href="/cadastroColaborador">colaborador</a>
+            </h1>
+
+            <button type="submit" id="btnClique" class="juntar">
+              Juntar-se
+            </button>
+          </article>
+        </form>
       </section>
     </main>
 
-    <script src="../js/ver-senha.js"></script>
-
+    <!--FOOTER-->
     <%- include('../partials/footer.ejs') %>
+    <!---->
   </body>
 </html>

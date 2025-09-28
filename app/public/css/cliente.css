@@ -1,3 +1,4 @@
+/* ================== RESET ================== */
 * {
   margin: 0;
   padding: 0;
@@ -6,36 +7,38 @@
 }
 body {
   background-color: #092520;
-  overflow-x: hidden; /* impede scroll horizontal */
+  overflow-x: hidden;
+  color: white;
 }
-main {
+
+/* ================== MAIN ================== */
+.main {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
-    url("../imagem/correndo.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), #297767;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  overflow-x: hidden;
+  padding-bottom: 20vh;
 }
 
-/* LOGO MOBILE ESCONDIDA NO DESKTOP */
+/* ================== LOGO MOBILE CENTRALIZADA ================== */
 .logo-mobile {
   display: none;
 }
-
-/* LADO ESQUERDO */
+/* ================== LADO ESQUERDO (DESKTOP) ================== */
 .lado-esquerdo {
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center; /* centraliza verticalmente */
   align-items: center;
   text-align: center;
-  padding: 200px 20px 20px 20px;
+  padding: 0 20px;
 }
 .lado-esquerdo h2 {
   font-size: 3rem;
@@ -57,16 +60,6 @@ main {
   gap: 8px;
   font-size: 1.2rem;
   color: rgb(241, 234, 234);
-}
-.depoimentos {
-  font-style: italic;
-  font-size: 0.9rem;
-  color: rgb(241, 234, 234);
-}
-.depoimentos blockquote {
-  margin-bottom: 12px;
-  border-left: 4px solid #2d7a4b;
-  padding-left: 10px;
 }
 .slider {
   position: relative;
@@ -96,41 +89,104 @@ main {
   }
 }
 
-/* LADO DIREITO */
+/* ================== LADO DIREITO(DESKTOP) ================== */
 .lado-direito {
   width: 50%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 60px;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 60px;
 }
 
-/* CONTAINER PRINCIPAL */
-.container {
-  width: 100%;
-  padding: 20px;
-  max-width: 100%;
-}
+/* ================== FORMULARIO ================== */
 .quadrado {
-  background-color: rgb(241, 234, 234);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px gray;
   padding: 20px;
-  max-width: 340px;
-  width: 90%;
+  max-width: 450px;
+  width: 100%;
   margin: 0 auto;
+  color: white;
 }
-.quadrado > .novoUsuario {
-  font-size: 1.8rem;
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* espaçamento uniforme entre inputs */
+  width: 100%;
+  margin-top: 30px;
+}
+.formulario h2 {
+  margin-bottom: 10px;
+  color: white;
+}
+.senhaInfo {
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 5px;
 }
 
-/* BOTÕES */
+/* ================== INPUTS COM ICONES ================== */
+.input-icon {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0;
+}
+.input-icon input {
+  width: 100%;
+  padding: 8px 0 8px 35px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+.input-icon input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+}
+.input-icon .icones-gerais {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-100%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  pointer-events: none;
+}
+.input-icon .olhofechado {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-100%);
+  cursor: pointer;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ================== ERROS ================== */
+.input-icon input.error {
+  border-color: #e74c3c;
+}
+.input-icon input.success {
+  border-color: #2ecc71;
+}
+.msgErro {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+  min-height: 1rem;
+}
+
+/* ================== BOTÕES ================== */
 .google,
 .juntar {
   width: 100%;
   margin-top: 15px;
   padding: 10px;
-  background-color: rgba(9, 47, 39, 1);
+  background-color: #0c4f43;
   color: white;
   border: none;
   border-radius: 12px;
@@ -141,61 +197,51 @@ main {
   justify-content: center;
   gap: 10px;
 }
-.juntar:hover {
-  background-color: #8ca700;
-}
-button:hover {
-  background-color: #8ca700;
-}
 .googleimg {
   width: 20px;
   height: 20px;
   object-fit: contain;
 }
-
-/* FORMULÁRIO INTERNO */
-form {
-  color: black;
-}
-.formulario {
-  display: flex;
-  color: black;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 500px;
-  margin-top: 10px;
+.google:hover,
+.juntar:hover {
+  background-color: #0f7461;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid gray;
-  border-radius: 25px;
-}
-.erro {
-  border: 2px solid red;
-}
-span.msgErro {
-  color: red;
-  font-size: 0.9em;
-  margin-left: 10px;
-}
+/* ================== LINKS ================== */
 .login {
-  font-size: smaller;
-  text-align: end;
+  font-size: 14px;
   margin-top: 10px;
-  margin-bottom: 10px;
+  text-align: end;
 }
-article i {
-  display: none;
+.login a {
+  text-decoration: underline;
+  color: #8ca700;
 }
 
-/* RESPONSIVO */
+/* ================== DATE INPUT ================== */
+input[type="date"] {
+  color: rgba(255, 255, 255, 0.7);
+  background: none;
+}
 
-/* telas pequenas */
+/* ================== AUTOFILL ================== */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -moz-text-fill-color: white !important;
+}
+
+/* ================== RESPONSIVO ================== */
 @media (max-width: 800px) {
-  main {
+  .main {
     flex-direction: column;
     width: 100%;
     max-width: 100vw;
@@ -204,9 +250,12 @@ article i {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), #297767;
     padding-bottom: 20vh;
   }
+  /* LADO ESQUERDO (DESATIVADO) */
   .lado-esquerdo {
     display: none;
   }
+
+  /* LOGO MOBILE (ATIVADA) */
   .logo-mobile {
     display: flex;
     justify-content: center;
@@ -220,6 +269,8 @@ article i {
     display: block;
     margin: 0 auto;
   }
+
+  /* LADO DIREITO (CENTRALIZADO) */
   .lado-direito {
     width: 100%;
     margin: 0;
@@ -255,20 +306,27 @@ article i {
     margin-bottom: 20px;
   }
 
-  /* Inputs com ícones */
-  article i {
+  /* INPUTS COM ICONES */
+  .icones-gerais {
     display: flex;
+  }
+  .olhofechado {
+    top: 55%;
   }
   .input-icon {
     position: relative;
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* menor espaçamento entre inputs */
   }
   .input-icon i {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+  }
+  .input-icon .icones-gerais {
     position: absolute;
-    left: 10px;
+    left: 2%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-100%);
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.2rem;
     pointer-events: none;

@@ -7,16 +7,22 @@
       rel="stylesheet"
     />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <!-- SCRIPT PARA VALIDAÇÃO FRONT-END -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/validacao-front-end.js"></script>
+    <!---->
+    <!--SCRIPT PARA VER A SENHA -->
+    <script src="../js/ver-senha.js"></script>
+    <!---->
   </head>
 
   <body>
     <%- include('../partials/header.ejs') %>
-    <!---->
-    <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="main">
       <!-- Lado esquerdo -->
       <section class="lado-esquerdo">
+        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
         <h2>Sua saúde começa aqui!🍏</h2>
         <p>
           Cadastre-se e aproveite todos os benefícios que preparamos para você.
@@ -49,9 +55,8 @@
           </div>
         </div>
       </section>
-
       <script src="../js/carrossel.js"></script>
-      <!-- Fim lado esquerdo -->
+      <!-- Fim lado esquerdo-->
 
       <section class="logo-mobile">
         <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
@@ -59,66 +64,60 @@
 
       <!-- Lado direito com formulário -->
       <section class="lado-direito">
-        <article class="container">
-          <form action="/login" method="POST" class="quadrado">
-            <h1 class="novoUsuario">LOGIN</h1>
-            <button type="submit" id="btnClique" class="google">
-              <section>
-                <img src="../imagem/google.png" class="googleimg" />
-                <span>Continue com Google</span>
-              </section>
-            </button>
+        <form action="/login" method="POST" class="quadrado">
+          <h1 class="novoUsuario">LOGIN</h1>
+          <button type="submit" id="btnClique" class="google">
+            <section>
+              <img src="../imagem/google.png" class="googleimg" />
+              <span>Continue com Google</span>
+            </section>
+          </button>
 
-            <article class="formulario">
-              <h2>Dados de acesso</h2>
+          <article class="formulario">
+            <h2>Dados de acesso</h2>
 
-              <article class="input-icon">
-                <i class="bi bi-envelope icones-gerais"></i>
-                <input
-                  type="text"
-                  id="usuarioDigitado"
-                  name="usuarioDigitado"
-                  placeholder="Digite seu email"
-                  value="<%= valores?.usuarioDigitado || '' %>"
-                  class="<%= erro ? 'erro' : '' %>"
-                />
-              </article>
-
-              <article class="input-icon">
-                <i class="bi bi-lock icones-gerais"></i>
-                <input
-                  type="password"
-                  id="senhaDigitada"
-                  name="senhaDigitada"
-                  placeholder="Digite sua senha"
-                  value="<%= valores?.senhaDigitada || '' %>"
-                  class="<%= erro ? 'erro' : '' %>"
-                />
-                <i
-                  class="bi bi-eye-slash-fill olhofechado"
-                  onclick="mostrarSenha('senhaDigitada', this)"
-                ></i>
-              </article>
-
-              <% if (erro) { %>
-              <span class="msgErro"><%= erro %></span>
-              <% } %>
-
-              <h1 class="login">
-                Ainda não possui uma conta?
-                <a href="/cadastroCliente">Cadastre-se</a> já!
-              </h1>
-
-              <button type="submit" id="btnClique" class="juntar">
-                Acessar
-              </button>
+            <article class="input-icon">
+              <i class="bi bi-envelope icones-gerais"></i>
+              <input
+                type="text"
+                id="usuarioDigitado"
+                name="usuarioDigitado"
+                placeholder="Digite seu email"
+                value="<%= valores?.usuarioDigitado || '' %>"
+                class="<%= erro ? 'erro' : '' %>"
+              />
             </article>
-          </form>
-        </article>
+
+            <article class="input-icon">
+              <i class="bi bi-lock icones-gerais"></i>
+              <input
+                type="password"
+                id="senhaDigitada"
+                name="senhaDigitada"
+                placeholder="Digite sua senha"
+                value="<%= valores?.senhaDigitada || '' %>"
+                class="<%= erro ? 'erro' : '' %>"
+              />
+              <i
+                class="bi bi-eye-slash-fill olhofechado"
+                onclick="mostrarSenha('senhaDigitada', this)"
+              ></i>
+            </article>
+
+            <% if (erro) { %>
+            <span class="msgErro"><%= erro %></span>
+            <% } %>
+
+            <h1 class="login">
+              Ainda não possui uma conta?
+              <a href="/cadastroCliente">Cadastre-se</a> já!
+            </h1>
+
+            <button type="submit" id="btnClique" class="juntar">Acessar</button>
+          </article>
+        </form>
       </section>
     </main>
-
-    <script src="../js/ver-senha.js"></script>
 
     <%- include('../partials/footer.ejs') %>
   </body>
