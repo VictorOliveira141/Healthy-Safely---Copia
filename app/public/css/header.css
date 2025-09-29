@@ -426,7 +426,6 @@ body {
   display: none;
   background: linear-gradient(135deg, #17594a 0%, #145c4f 100%);
   padding: 16px 24px;
-  border-radius: 0 0 24px 24px;
 }
 .search-bar2 {
   display: none;
