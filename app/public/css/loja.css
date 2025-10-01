@@ -256,7 +256,7 @@ hover .cupons img  {
 }
 
 .bannersemana {
-  width: 80%;
+  width: 68%;
   height: auto;
   border-radius: 15px;
   margin-top: -70px;
@@ -273,7 +273,7 @@ hover .cupons img  {
 .lista-categorias {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 5.2rem;
   flex-wrap: wrap;
 }
 
