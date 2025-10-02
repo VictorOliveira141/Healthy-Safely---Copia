@@ -7,16 +7,24 @@
       rel="stylesheet"
     />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <!-- SCRIPT PARA VALIDAÇÃO FRONT-END -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/validacao-front-end.js"></script>
+    <!---->
+    <!--SCRIPT PARA VER A SENHA -->
+    <script src="../js/ver-senha.js"></script>
+    <!---->
   </head>
 
   <body>
+    <!--HEADER-->
     <%- include('../partials/header.ejs') %>
     <!---->
-    <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="main">
       <!-- Lado esquerdo-->
       <section class="lado-esquerdo">
+        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
         <h2>Junte-se à nossa rede de colaboradores!</h2>
         <p>
           Seja um parceiro da nossa farmácia e aproveite vantagens exclusivas
@@ -96,6 +104,22 @@
             </article>
 
             <article class="input-icon">
+              <i class="bi bi-person-badge icones-gerais"></i>
+
+              <input
+                type="text"
+                id="nomeusuario"
+                name="nomeusuario"
+                placeholder="Crie um nome de usuário"
+                value=""
+                class="%>"
+                oninput="validarNomeUsuario()"
+              />
+
+              <span class="msgErro" id="msgNomeUsuario"></span>
+            </article>
+
+            <article class="input-icon">
               <i class="bi bi-card-text icones-gerais"></i>
               <input
                 type="text"
@@ -155,13 +179,13 @@
               <span class="msgErro"><%= msgErroFarmacia.email %></span>
             </article>
 
-            <br />
             <label class="senhaInfo">
               Sua senha deve conter: <br />
               ✔ uma letra maiúscula <br />
               ✔ um número <br />
               ✔ um caractere especial
             </label>
+            <br />
             <br />
 
             <article class="input-icon">
@@ -230,33 +254,57 @@
             </article>
 
             <article class="input-icon">
+              <i class="bi bi-person-badge icones-gerais"></i>
+
+              <input
+                type="text"
+                id="nomeusuario"
+                name="nomeusuario"
+                placeholder="Crie um nome de usuário"
+                value=""
+                class="%>"
+                oninput="validarNomeUsuario()"
+              />
+
+              <span class="msgErro" id="msgNomeUsuario"></span>
+            </article>
+
+            <article class="input-icon">
+              <i class="bi bi-caret-down-fill seta-baixo"></i>
               <select
                 name="profissao"
                 class="<%= erroValidacaoProfissional.profissao %>"
               >
-                <option value="">Profissão</option>
+                <option value="">Selecione sua profissão</option>
                 <option
                   value="medico <%= valoresProfissional.profissao === 'medico' ? 'selected' : '' %>"
                 >
-                  Médico
+                  Psicólogo
                 </option>
                 <option
                   value="nutricionista <%= valoresProfissional.profissao === 'nutricionista' ? 'selected' : '' %>"
                 >
-                  Nutricionista
+                  Cardiologista
                 </option>
                 <option
                   value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
                 >
-                  Educador Físico
+                  Nutricionista
                 </option>
+
                 <option
-                  value="outro <%= valoresProfissional.profissao === 'outro' ? 'selected' : '' %>"
+                  value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
                 >
-                  Outro
+                  Fonoaudiologo
+                </option>
+
+                <option
+                  value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
+                >
+                  Dermatologia
                 </option>
               </select>
-              <i class="bi bi-caret-down-fill seta-baixo"></i>
+
               <span class="msgErro"><%= msgErroProfissional.profissao %></span>
             </article>
 
@@ -272,15 +320,6 @@
               <span class="msgErro"><%= msgErroProfissional.CREF %></span>
             </article>
 
-            <article class="input-icon">
-              <i class="bi bi-briefcase icones-gerais"></i>
-              <input
-                type="text"
-                name="especialidade"
-                placeholder="Especialidade (opcional)"
-                value="<%= valoresProfissional.especialidade %>"
-              />
-            </article>
             <article class="input-icon">
               <i class="bi bi-whatsapp icones-gerais"></i>
               <input
@@ -305,13 +344,13 @@
               <span class="msgErro"><%= msgErroProfissional.email %></span>
             </article>
 
-            <br />
             <label class="senhaInfo">
               Sua senha deve conter: <br />
               ✔ uma letra maiúscula <br />
               ✔ um número <br />
               ✔ um caractere especial
             </label>
+            <br />
             <br />
 
             <article class="input-icon">
@@ -363,8 +402,6 @@
       </section>
     </main>
 
-    <script src="../js/ver-senha.js"></script>
-
     <!-- Script para controle de formulário ativo -->
     <script>
       const formularioAtivo =
@@ -391,6 +428,8 @@
       mostrarFormulario(formularioAtivo);
     </script>
 
+    <!--- FOOTER --->
     <%- include('../partials/footer.ejs') %>
+    <!---->
   </body>
 </html>

@@ -186,7 +186,7 @@ body {
   width: 100%;
   margin-top: 15px;
   padding: 10px;
-  background-color: #0c4f43;
+  background-color: #0f7461;
   color: white;
   border: none;
   border-radius: 12px;
@@ -204,7 +204,7 @@ body {
 }
 .google:hover,
 .juntar:hover {
-  background-color: #0f7461;
+  background-color: #0e6857;
 }
 
 /* ================== LINKS ================== */

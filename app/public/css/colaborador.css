@@ -1,4 +1,4 @@
-/* RESET E ESTILOS BASE */
+/* ================== RESET ================== */
 * {
   margin: 0;
   padding: 0;
@@ -7,80 +7,97 @@
 }
 body {
   background-color: #092520;
-  overflow-x: hidden; /* impede scroll horizontal */
+  overflow-x: hidden;
+  color: white;
 }
 
-/* MAIN */
+/* ================== MAIN ================== */
 .main {
   display: flex;
   min-height: 100vh;
   flex-direction: row;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)),
-    url("../imagem/consulta.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)), #297767;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  overflow-x: hidden;
+  padding-bottom: 20vh;
 }
 
-/* LOGO MOBILE ESCONDIDA NO DESKTOP */
+/* ================== LOGO MOBILE CENTRALIZADA ================== */
 .logo-mobile {
   display: none;
 }
 
-/* LADO ESQUERDO */
+/* ================== LADO ESQUERDO ================== */
 .lado-esquerdo {
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start; /* centraliza verticalmente */
   align-items: center;
   text-align: center;
-  padding: 100px 20px 20px 20px;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 .lado-esquerdo h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 10px;
-  color: #28a745;
+  color: rgb(241, 234, 234);
 }
 .lado-esquerdo p {
   font-size: 1.5rem;
   margin: 20px 0;
-  color: white;
+  color: rgb(241, 234, 234);
 }
 .beneficios {
   list-style: none;
-  padding: 0;
-  margin: 20px 0 0 0;
+  margin-top: 20px;
 }
 .beneficios li {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 1.2rem;
-  color: white;
-}
-.beneficios h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: #28a745;
-  font-weight: 600;
+  color: rgb(241, 234, 234);
 }
 
-/* LADO DIREITO */
+/* ================== LADO DIREITO(DESKTOP) ================== */
 .lado-direito {
   width: 50%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 60px;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 60px;
 }
 
-/* CABEÇALHO FORMULÁRIO */
+/* ================== FORMULARIO ================== */
+.quadrado {
+  padding: 20px;
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+}
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* espaçamento uniforme entre inputs */
+  width: 100%;
+  margin-top: 30px;
+}
+.formulario h2 {
+  margin-bottom: 10px;
+  color: white;
+}
+.senhaInfo {
+  font-size: 0.9rem;
+  color: white;
+  margin-bottom: 5px;
+}
+
+/* ================== CABEÇALHO FORMULÁRIO ================== */
 .cabecalho-form {
   text-align: center;
   margin-bottom: 10px;
@@ -95,26 +112,24 @@ body {
   color: white;
 }
 
-/* CONTAINER PRINCIPAL */
+/* ================== CONTAINER PRINCIPAL ================== */
 .container {
   width: 100%;
   padding: 20px;
   max-width: 100%;
 }
 .quadrado {
-  background-color: rgb(241, 234, 234);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px gray;
   padding: 20px;
-  max-width: 340px;
-  width: 90%;
+  max-width: 450px;
+  width: 100%;
   margin: 0 auto;
+  color: white;
 }
 .quadrado > .novoUsuario {
   font-size: 1.8rem;
 }
 
-/* SELETOR DE CADASTRO */
+/* ================== SELETOR DE CADASTRO ================== */
 .hidden {
   display: none;
 }
@@ -133,20 +148,20 @@ body {
   transition: 0.3s;
 }
 .seletor-cadastro button.ativo {
-  background-color: #28a745;
+  background-color: #0f7461;
   color: white;
   font-weight: bold;
-  border-color: #1e7e34;
+  border: none;
 }
 
-/* BOTÕES */
+/*==================  BOTÕES ==================  */
 .google,
 .juntar,
 .cadastrar-profissional {
   width: 100%;
   margin-top: 15px;
   padding: 10px;
-  background-color: rgba(9, 47, 39, 1);
+  background-color: #0f7461;
   color: white;
   border: none;
   border-radius: 12px;
@@ -160,7 +175,8 @@ body {
 .juntar:hover,
 button:hover,
 .cadastrar-profissional:hover {
-  background-color: #8ca700;
+  background-color: #0e6857;
+  color: white;
 }
 .googleimg {
   width: 20px;
@@ -168,134 +184,120 @@ button:hover,
   object-fit: contain;
 }
 
-/* FORMULÁRIO INTERNO */
-form {
-  color: black;
-}
-.formulario {
-  display: flex;
-  color: black;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 500px;
-  margin-top: 25px;
-}
-input {
+/* ================== INPUTS COM ICONES ================== */
+.input-icon {
+  position: relative;
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  border: 1px solid gray;
+  margin-bottom: 0;
 }
 .input-icon input {
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 6px;
-  outline: none;
   width: 100%;
+  padding: 8px 0 8px 35px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  border-radius: 0;
   transition: all 0.3s ease;
 }
-
-span.msgErro {
-  color: red;
-  font-size: 0.9em;
-  margin-left: 10px;
+.input-icon input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
 }
-.input-icon input.erro {
-  border-color: red;
-  box-shadow: 0 0 5px #e74c3c;
+.input-icon .icones-gerais {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-120%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  pointer-events: none;
 }
-.login {
-  font-size: smaller;
-  text-align: end;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-article i {
-  display: none;
-}
-
-/* DEPOIMENTOS E SLIDER (ESPECÍFICO COLABORADOR) */
-.depoimentos {
-  font-style: italic;
-  font-size: 0.9rem;
-  color: rgb(241, 234, 234);
-}
-.depoimentos blockquote {
-  margin-bottom: 12px;
-  border-left: 4px solid #2d7a4b;
-  padding-left: 10px;
-}
-.slider {
-  position: relative;
-  overflow: hidden;
-  max-width: 500px;
-  text-align: center;
-  padding: 20px;
-  margin-top: 50px;
-}
-.slide {
-  display: none;
-  font-style: italic;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  color: rgb(241, 234, 234);
-}
-.slide.ativo {
-  display: block;
-  animation: fade 0.5s ease-in-out;
-}
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.input-icon .olhofechado {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-100%);
+  cursor: pointer;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .input-icon select {
   width: 100%;
-  padding: 10px 36px 10px 12px;
-  border: 1px solid gray;
-  border-radius: 25px;
-  appearance: none;
-  background: #fff;
+  padding: 8px 30px 8px 35px; /* espaço esquerda e direita para ícones */
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+  background: none;
+  color: #fff;
   font-size: 16px;
+  outline: none;
+  appearance: none; /* remove seta padrão */
+  cursor: pointer;
+}
+.input-icon select option {
+  background-color: rgba(
+    9,
+    37,
+    32,
+    1
+  ); /*tom escuro do fundo de select do mobile */
+  color: #fff;
 }
 
 .input-icon .seta-baixo {
   position: absolute;
-  right: 12px;
+  right: 5px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
+  color: rgba(255, 255, 255, 0.7);
   pointer-events: none;
-  color: #888;
+  font-size: 16px;
 }
 
-.icones-gerais {
-  display: none;
+/* ================== ERROS ================== */
+.input-icon input.error {
+  border-color: #e74c3c;
 }
-.input-icon {
-  position: relative;
+.input-icon input.success {
+  border-color: #2ecc71;
 }
-.olhofechado {
-  font-size: 30px;
-  cursor: pointer;
-  position: absolute;
-  right: 5%;
-  top: 60%;
-  transform: translateY(-40%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  color: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.msgErro {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: block;
+  min-height: 1rem;
+}
+.login {
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: end;
+}
+.login a {
+  text-decoration: underline;
+  color: #8ca700;
 }
 
-/* RESPONSIVO */
+/* Chrome, Edge, Safari */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* força fundo transparente */
+  -webkit-text-fill-color: white !important; /* cor do texto */
+  transition: background-color 5000s ease-in-out 0s; /* evita piscar */
+}
+
+/* Firefox */
+input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -moz-text-fill-color: white !important;
+}
+
+/* ================== RESPONSIVO ================== */
 @media (max-width: 800px) {
   .main {
     flex-direction: column;
@@ -375,7 +377,7 @@ article i {
     position: absolute;
     left: 2%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-100%);
     color: rgba(255, 255, 255, 0.8);
     font-size: 1.2rem;
     pointer-events: none;
@@ -438,20 +440,5 @@ article i {
     text-decoration: underline;
     color: #8ca700;
     cursor: pointer;
-  }
-  /* Chrome, Edge, Safari */
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important; /* força fundo transparente */
-    -webkit-text-fill-color: white !important; /* cor do texto */
-    transition: background-color 5000s ease-in-out 0s; /* evita piscar */
-  }
-
-  /* Firefox */
-  input:-moz-autofill {
-    box-shadow: 0 0 0px 1000px transparent inset !important;
-    -moz-text-fill-color: white !important;
   }
 }
