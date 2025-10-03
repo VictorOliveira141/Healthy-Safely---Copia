@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
+const verificarAutenticacao = require('../public/js/autenticacao');
 
 const usuarios = []; /* array que armazena os usuarios*/
 var { validarCNPJ } = require("../helpers/validacaoPersonalizada");
@@ -15,22 +16,22 @@ router.get("/tomarammeutela", (req, res) => {
 router.get("/progressao", (req, res) => {
   res.render("pages/progressao");
 });
-router.get("/tarefas", (req, res) => {
+router.get("/tarefas", verificarAutenticacao, (req, res) => {
   res.render("pages/tarefas");
 });
 router.get("/loja", (req, res) => {
   res.render("pages/loja");
 });
-router.get("/sono", (req, res) => {
+router.get("/sono",verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
 });
-router.get("/alimentacao", (req, res) => {
+router.get("/alimentacao",verificarAutenticacao, (req, res) => {
   res.render("pages/alimentacao");
 });
-router.get("/saudemen", (req, res) => {
+router.get("/saudemen", verificarAutenticacao, (req, res) => {
   res.render("pages/saudemen");
 });
-router.get("/atividadefis", (req, res) => {
+router.get("/atividadefis", verificarAutenticacao, (req, res) => {
   res.render("pages/atividadefis");
 });
 router.get("/tela-inicial", (req, res) => {
@@ -39,53 +40,53 @@ router.get("/tela-inicial", (req, res) => {
 router.get("/informacoes", (req, res) => {
   res.render("pages/informacoes");
 });
-router.get("/orientacoes", (req, res) => {
+router.get("/orientacoes", verificarAutenticacao, (req, res) => {
   res.render("pages/orientacoes");
 });
-router.get("/doacao", (req, res) => {
+router.get("/doacao", verificarAutenticacao, (req, res) => {
   res.render("pages/doacao");
 });
-router.get("/produto", (req, res) => {
+router.get("/produto",  (req, res) => {
   res.render("pages/produto");
 });
-router.get("/agendamento1", (req, res) => {
+router.get("/agendamento1", verificarAutenticacao, (req, res) => {
   res.render("pages/agendamento1");
 });
-router.get("/agendamento2", (req, res) => {
+router.get("/agendamento2", verificarAutenticacao, (req, res) => {
   res.render("pages/agendamento2");
 });
-router.get("/agendamento3", (req, res) => {
+router.get("/agendamento3", verificarAutenticacao, (req, res) => {
   res.render("pages/agendamento3");
 });
-router.get("/agendamento4", (req, res) => {
+router.get("/agendamento4", verificarAutenticacao, (req, res) => {
   res.render("pages/agendamento4");
 });
 /*  ===================== ROTAS COMPOSTAS POR OUTRAS ROTAS  ===================== */
-router.get("/perfil", (req, res) => {
+router.get("/perfil", verificarAutenticacao, (req, res) => {
   res.render("pages/perfil");
 });
-router.get("/minhaidentidade", (req, res) => {
+router.get("/minhaidentidade", verificarAutenticacao, (req, res) => {
   res.render("pages/minhaidentidade");
 });
-router.get("/minhasconsultas", (req, res) => {
+router.get("/minhasconsultas", verificarAutenticacao, (req, res) => {
   res.render("pages/minhasconsultas");
 });
-router.get("/meuspedidos", (req, res) => {
+router.get("/meuspedidos", verificarAutenticacao, (req, res) => {
   res.render("pages/meuspedidos");
 });
-router.get("/meusfavoritos", (req, res) => {
+router.get("/meusfavoritos", verificarAutenticacao, (req, res) => {
   res.render("pages/meusfavoritos");
 });
-router.get("/meuscupons", (req, res) => {
+router.get("/meuscupons",  verificarAutenticacao, (req, res) => {
   res.render("pages/meuscupons");
 });
-router.get("/minhasdoacoes", (req, res) => {
+router.get("/minhasdoacoes", verificarAutenticacao, (req, res) => {
   res.render("pages/minhasdoacoes");
 });
-router.get("/meuspagamentos", (req, res) => {
+router.get("/meuspagamentos", verificarAutenticacao, (req, res) => {
   res.render("pages/meuspagamentos");
 });
-router.get("/suporte", (req, res) => {
+router.get("/suporte", verificarAutenticacao, (req, res) => {
   res.render("pages/suporte");
 });
 
@@ -492,7 +493,8 @@ router.post("/login", (req, res) => {
   );
 
   if (usuarioEncontrado) {
-    return res.render("pages/tomarammeutela");
+    req.session.usuario = usuarioEncontrado; // <-- salva usuário na sessão
+    return res.redirect("/perfil"); // ou qualquer rota protegida
   } else {
     return res.render("pages/login", {
       erro: "*Não reconhecemos estas credenciais. Tente novamente.",
