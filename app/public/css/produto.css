@@ -11,6 +11,20 @@ body {
   min-height: 100vh;
   color: #000;
 }
+html {
+  scroll-behavior: smooth;
+  /*isso faz que quando clique no botao de "voltar ao topo" tenha uma transição suave*/
+}
+
+.botao-prev {
+  background: none;
+  color: #0c4f43;
+  border: none;
+  font-size: 1.5rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
 
 /* ================== PRODUTO PRINCIPAL ============== */
 .product-container {
@@ -242,6 +256,117 @@ body {
   line-height: 1.5;
 }
 
+/* ================== AVALIAÇÕES ==================*/
+.product-reviews {
+  max-width: 1300px;
+  margin: 0 auto 40px;
+  padding: 20px;
+  border-top: 2px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* NOTA GERAL E RESUMO */
+.overall-rating {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.overall-rating h2 {
+  font-size: 40px;
+  color: #014638;
+}
+.overall-rating .stars i {
+  color: #ffd700;
+  margin-right: 2px;
+  font-size: 20px;
+}
+
+/* BOTOES DE NOTA(TUDO, 5 estrelas, 4 estrelas....) */
+.rating-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.rating-score {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+.rating-score button {
+  background-color: white;
+  border: 2px solid #00594c;
+  padding: 10px;
+  color: #555;
+  cursor: pointer;
+}
+.rating-score button.active {
+  background-color: #00594c;
+  color: white;
+}
+.rating-score button i {
+  color: #1da1f2;
+}
+
+/* AVALIAÇÕES RECENTES */
+.recent-reviews h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #014638;
+}
+.review {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 15px 0;
+  display: flex;
+  gap: 15px;
+}
+.review:last-child {
+  border-bottom: none;
+}
+.review img {
+  background-color: gray;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.review-content {
+  flex: 1;
+}
+.review header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.review header h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+.review header time {
+  font-size: 14px;
+  color: #777;
+}
+.review-rating i {
+  color: #ffd700;
+  font-size: 15px;
+}
+.review p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.5;
+}
+.product-thumbnails.hidden {
+  display: none;
+}
+
 /* ================== PRODUTOS RELACIONADOS ==================*/
 .produtos-destaque {
   display: grid;
@@ -258,6 +383,7 @@ body {
   padding: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s;
+  cursor: pointer;
 }
 .produtos:hover {
   transform: translateY(-4px);
@@ -364,80 +490,51 @@ body {
   );
 }
 
-/* ================== AVALIAÇÕES ==================*/
-.product-reviews {
-  max-width: 1300px;
-  margin: 0 auto 40px;
-  padding: 20px;
-  border-top: 2px solid #ddd;
+/* ================= VOLTAR AO TOPO ================= */
+.voltar-topo {
+  margin: 20px auto; /* centraliza horizontalmente */
+  cursor: pointer;
+  color: #00594c;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  align-items: stretch;
+  padding: 16px;
+  border-radius: 10px;
+  max-width: 1200px; /* largura máxima */
+  width: 90%;
 }
-.overall-rating {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.voltar-topo a {
+  text-decoration: none;
 }
-.overall-rating h2 {
-  font-size: 40px;
-  color: #014638;
-}
-.overall-rating .stars i {
-  color: #ffd700;
-  margin-right: 2px;
-  font-size: 20px;
-}
-.recent-reviews h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
-  color: #014638;
-}
-.review {
-  border-bottom: 1px solid #e0e0e0;
-  padding: 15px 0;
-  display: flex;
-  gap: 15px;
-}
-.review:last-child {
-  border-bottom: none;
-}
-.review img {
-  background-color: gray;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-.review-content {
-  flex: 1;
-}
-.review header {
+.voltar-topo h1 {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 5px;
+  gap: 12px; /* espaço entre texto e linhas */
+  margin: 0 0 18px 0;
+  font-size: 30px;
+  font-weight: 600;
+  color: #00594c;
+  white-space: nowrap;
 }
-.review header h3 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
+.voltar-topo h1::before {
+  content: "";
+  width: 50%; /* Tamanho da primeira linha (esquerda) */
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.08)
+  );
 }
-.review header time {
-  font-size: 14px;
-  color: #777;
-}
-.review-rating i {
-  color: #ffd700;
-  font-size: 15px;
-}
-.review p {
-  font-size: 16px;
-  color: #444;
-  line-height: 1.5;
-}
-.product-thumbnails.hidden {
-  display: none;
+.voltar-topo h1::after {
+  content: "";
+  width: 50%; /* Tamanho da segunda linha (direita) */
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.08)
+  );
 }
 
 /* ================== RESPONSIVO ==================*/
@@ -551,6 +648,26 @@ body {
 
 /* Até 576px - celulares médios */
 @media (max-width: 576px) {
+  .rating-score {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px;
+    font-size: 14px;
+    padding: 6px 0;
+  }
+  .rating-score button {
+    font-size: 12px;
+    padding: 5px 8px;
+    min-width: unset;
+    margin-bottom: 0;
+    border-width: 1.5px;
+  }
+  .rating-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .product-title {
     font-size: 22px;
   }
@@ -568,9 +685,7 @@ body {
   .btn-add,
   .btn-calculate,
   .btn-comprar {
-    width: 100%;
     font-size: 16px;
-    padding: 12px;
     text-align: center;
   }
   .produtos-destaque {
