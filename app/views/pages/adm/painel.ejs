@@ -1,0 +1,30 @@
+<%- include("../../partials/header") %>
+
+<div class="admin-container">
+  <aside class="admin-sidebar">
+    <a href="/adm/adicionarproduto">Adicionar Produto</a>
+    <a href="/adm/editarproduto">Editar Produto</a>
+    <a href="/adm/painel">Gerenciar Pedidos</a>
+    <a href="/adm/logout">Sair</a>
+  </aside>
+
+  <main class="admin-main">
+    <h1>Painel Administrativo</h1>
+    <p>Bem-vindo, <%= colaborador.nome %>!</p>
+
+    <div class="produtos-destaque">
+      <% if (produtos.length === 0) { %>
+      <p>Nenhum produto cadastrado ainda.</p>
+      <% } else { %> <% produtos.forEach(produto => { %>
+      <div class="produtos">
+        <h3><%= produto.nome %></h3>
+        <p class="preco">R$ <%= produto.preco %></p>
+        <p><%= produto.descricao %></p>
+      </div>
+      <% }) %> <% } %>
+    </div>
+  </main>
+</div>
+
+<%- include("../../partials/footer") %>
+<link rel="stylesheet" href="/css/adm.css" />

@@ -5,7 +5,9 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
-
+a {
+  text-decoration: none;
+}
 .container {
   color: black;
   max-width: 1000px;

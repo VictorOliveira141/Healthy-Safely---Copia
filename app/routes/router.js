@@ -1,34 +1,54 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
-const verificarAutenticacao = require('../public/js/autenticacao');
+const verificarAutenticacao = require("../public/js/autenticacao");
 
 const usuarios = []; /* array que armazena os usuarios*/
 var { validarCNPJ } = require("../helpers/validacaoPersonalizada");
 
-/* ==================== ROTAS DAS PÁGINAS ===================== */
+/* ROTA PARA DESLOGAR O USUÁRIO */
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/login");
+  });
+});
+
+/* ==================== ROTAS PÚBLICAS(NÃO PRECISA DE LOGIN) ===================== */
 router.get("/", (req, res) => {
   res.render("pages/tomarammeutela");
 });
 router.get("/tomarammeutela", (req, res) => {
   res.render("pages/tomarammeutela");
 });
-router.get("/progressao", (req, res) => {
+router.get("/loja", (req, res) => {
+  res.render("pages/loja");
+});
+router.get("/produto", (req, res) => {
+  res.render("pages/produto");
+});
+router.get("/shoes", (req, res) => {
+  res.render("pages/shoes");
+});
+router.get("/tela-inicial", (req, res) => {
+  res.render("pages/tomarammeutela");
+});
+router.get("/informacoes", (req, res) => {
+  res.render("pages/informacoes");
+});
+
+/*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
+router.get("/progressao", verificarAutenticacao, (req, res) => {
   res.render("pages/progressao");
 });
 router.get("/tarefas", verificarAutenticacao, (req, res) => {
   res.render("pages/tarefas");
 });
-router.get("/loja", (req, res) => {
-  res.render("pages/loja");
-});
-router.get("/shoes", (req, res) => {
-  res.render("pages/shoes");
-});
-router.get("/sono",verificarAutenticacao, (req, res) => {
+
+// TAREFAS
+router.get("/sono", verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
 });
-router.get("/alimentacao",verificarAutenticacao, (req, res) => {
+router.get("/alimentacao", verificarAutenticacao, (req, res) => {
   res.render("pages/alimentacao");
 });
 router.get("/saudemen", verificarAutenticacao, (req, res) => {
@@ -37,21 +57,16 @@ router.get("/saudemen", verificarAutenticacao, (req, res) => {
 router.get("/atividadefis", verificarAutenticacao, (req, res) => {
   res.render("pages/atividadefis");
 });
-router.get("/tela-inicial", (req, res) => {
-  res.render("pages/tomarammeutela");
-});
-router.get("/informacoes", (req, res) => {
-  res.render("pages/informacoes");
-});
+
+// ORIENTAÇÕES E DOAÇÃO
 router.get("/orientacoes", verificarAutenticacao, (req, res) => {
   res.render("pages/orientacoes");
 });
 router.get("/doacao", verificarAutenticacao, (req, res) => {
   res.render("pages/doacao");
 });
-router.get("/produto",  (req, res) => {
-  res.render("pages/produto");
-});
+
+// AGENDAMENTO DE CONSULTA
 router.get("/agendamento1", verificarAutenticacao, (req, res) => {
   res.render("pages/agendamento1");
 });
@@ -64,7 +79,8 @@ router.get("/agendamento3", verificarAutenticacao, (req, res) => {
 router.get("/agendamento4", verificarAutenticacao, (req, res) => {
   res.render("pages/agendamento4");
 });
-/*  ===================== ROTAS COMPOSTAS POR OUTRAS ROTAS  ===================== */
+
+// PERFIL DO USUÁRIO
 router.get("/perfil", verificarAutenticacao, (req, res) => {
   res.render("pages/perfil");
 });
@@ -80,7 +96,7 @@ router.get("/meuspedidos", verificarAutenticacao, (req, res) => {
 router.get("/meusfavoritos", verificarAutenticacao, (req, res) => {
   res.render("pages/meusfavoritos");
 });
-router.get("/meuscupons",  verificarAutenticacao, (req, res) => {
+router.get("/meuscupons", verificarAutenticacao, (req, res) => {
   res.render("pages/meuscupons");
 });
 router.get("/minhasdoacoes", verificarAutenticacao, (req, res) => {
@@ -94,6 +110,8 @@ router.get("/suporte", verificarAutenticacao, (req, res) => {
 });
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
+
+//LOGIN
 router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
@@ -104,6 +122,8 @@ router.get("/login", (req, res) => {
     sucesso: false,
   });
 });
+
+//CADASTRO CLIENTE
 router.get("/cadastroCliente", (req, res) => {
   res.render("pages/cadastroCliente", {
     erros: null,
@@ -119,6 +139,8 @@ router.get("/cadastroCliente", (req, res) => {
     msgErro: {},
   });
 });
+
+//CADASTRO COLABORADOR (FARMÁCIA OU PROFISSIONAL)
 router.get("/cadastroColaborador", (req, res) => {
   res.render("pages/cadastroColaborador", {
     // Farmácia
@@ -154,7 +176,7 @@ router.get("/cadastroColaborador", (req, res) => {
 
 /* ===================== ROUTER POST(VALIDAÇÕES) ===================== */
 
-/* CADASTRO SENDO CLIENTE */
+//CADASTRO SENDO CLIENTE
 router.post(
   "/cadastroCliente",
   body("nome")
@@ -237,13 +259,14 @@ router.post(
     usuarios.push({
       email: req.body.email,
       senha: req.body.senha,
+      tipo: "cliente",
     });
 
     res.redirect("/login");
   }
 );
 
-/* CADASTRO SENDO FARMÁCIA */
+//CADASTRO SENDO FARMÁCIA
 router.post(
   "/cadastroFarmacia",
   body("nomeFarmacia")
@@ -359,12 +382,13 @@ router.post(
     usuarios.push({
       email: req.body.email,
       senha: req.body.senha,
+      tipo: "farmacia",
     });
     res.redirect("/login");
   }
 );
 
-/* CADASTRO SENDO PROFISSIONAL */
+//CADASTRO SENDO PROFISSIONAL
 router.post(
   "/cadastroProfissional",
 
@@ -481,13 +505,14 @@ router.post(
     usuarios.push({
       email: req.body.email,
       senha: req.body.senha,
+      tipo: "profissional",
     });
 
     res.redirect("/login");
   }
 );
 
-/* LOGIN */
+//LOGIN SENDO CLIENTE OU COLABORADOR
 router.post("/login", (req, res) => {
   const { usuarioDigitado, senhaDigitada } = req.body;
 
@@ -496,17 +521,18 @@ router.post("/login", (req, res) => {
   );
 
   if (usuarioEncontrado) {
-    req.session.usuario = usuarioEncontrado; // <-- salva usuário na sessão
-    return res.redirect("/perfil"); // ou qualquer rota protegida
-  } else {
-    return res.render("pages/login", {
-      erro: "*Não reconhecemos estas credenciais. Tente novamente.",
-      sucesso: false,
-      valores: {
-        usuarioDigitado: usuarioDigitado,
-        senhaDigitada: senhaDigitada,
-      },
-    });
+    req.session.usuario = usuarioEncontrado;
+
+    if (
+      usuarioEncontrado.tipo === "farmacia" ||
+      usuarioEncontrado.tipo === "profissional"
+    ) {
+      // colaborador → vai pro painel admin
+      return res.redirect("/adm/adicionarproduto");
+    } else {
+      // cliente → vai pro perfil normal
+      return res.redirect("/perfil");
+    }
   }
 });
 

@@ -1,0 +1,39 @@
+<%- include("../../partials/header") %>
+
+<div class="admin-container">
+  <aside class="admin-sidebar">
+    <a href="/adm/adicionarproduto">Adicionar Produto</a>
+    <a href="/adm/editarproduto">Editar Produto</a>
+    <a href="/adm/painel">Gerenciar Pedidos</a>
+    <a href="/adm/logout">Sair</a>
+  </aside>
+
+  <main class="admin-main">
+    <h1>Adicionar Produto</h1>
+
+    <div class="formulario-produto">
+      <label for="nome">Nome do Produto</label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        placeholder="Digite o nome do produto"
+      />
+
+      <label for="preco">Preço</label>
+      <input type="text" id="preco" name="preco" placeholder="R$ 0,00" />
+
+      <label for="descricao">Descrição</label>
+      <textarea
+        id="descricao"
+        name="descricao"
+        placeholder="Descrição do produto"
+      ></textarea>
+
+      <button type="button" class="btn-comprar">Adicionar Produto</button>
+    </div>
+  </main>
+</div>
+
+<%- include("../../partials/footer") %>
+<link rel="stylesheet" href="/css/adm.css" />
