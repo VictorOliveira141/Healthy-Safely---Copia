@@ -125,8 +125,10 @@
                 type="text"
                 name="CNPJ"
                 placeholder="CNPJ"
+                maxlength="18"
                 value="<%= valoresFarmacia.CNPJ %>"
                 class="<%= erroValidacaoFarmacia.CNPJ %>"
+                oninput="mascaraCNPJ(this)"
               />
               <span class="msgErro"><%= msgErroFarmacia.CNPJ %></span>
             </article>
