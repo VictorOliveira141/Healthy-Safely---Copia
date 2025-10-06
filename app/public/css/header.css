@@ -218,7 +218,7 @@ body {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* ============ ACTIONS (CARRINHO + PERFIL) ========== */
+/* ============ ACTIONS (CARRINHO + PERFIL + NOTIFICAÇÕES) ========== */
 .header-actions {
   display: flex;
   align-items: center;
@@ -246,13 +246,13 @@ body {
   transform: translateY(-2px);
 }
 
-/* ============ PERFIL ============= */
+/* ============ PERFIL E NOTIFICAÇÕES ============= */
 .user-menu {
   position: relative;
 }
 .user-menu i {
   cursor: pointer;
-  /* reduzindo tamanho do ícone de perfil */
+  /* reduzindo tamanho do ícone */
   font-size: 22px;
   /* reduzindo padding */
   padding: 8px;
@@ -264,7 +264,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* Adicionando estilos para o dropdown do perfil */
+/* Estilos para o dropdown do perfil */
 .perfil-dropdown {
   position: absolute;
   top: 100%;
@@ -307,6 +307,74 @@ body {
   color: #8ca700;
   background-color: rgba(140, 167, 0, 0.1);
   transform: translateX(4px);
+}
+
+/* Estilos para o dropdown de notificações */
+.notification-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: linear-gradient(135deg, #0c2727 0%, #0a1f1f 100%);
+  border-radius: 16px;
+  padding: 12px;
+  min-width: 250px;
+  max-width: 350px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.notification-dropdown.hidden {
+  display: none;
+}
+
+.notification-dropdown h3 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-dropdown li {
+  color: #b2cfc3;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 14px;
+}
+
+.notification-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.notification-dropdown a {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  margin-top: 10px;
+  color: #8ca700;
+  text-decoration: none;
+  border: none;
+  background: rgba(140, 167, 0, 0.1);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.notification-dropdown a:hover {
+  background-color: rgba(140, 167, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 /* =============== NAV PRINCIPAL ===========*/

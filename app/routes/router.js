@@ -22,6 +22,9 @@ router.get("/tarefas", verificarAutenticacao, (req, res) => {
 router.get("/loja", (req, res) => {
   res.render("pages/loja");
 });
+router.get("/shoes", (req, res) => {
+  res.render("pages/shoes");
+});
 router.get("/sono",verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
 });
