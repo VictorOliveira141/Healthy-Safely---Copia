@@ -1,0 +1,361 @@
+/* ================= RESET ================= */
+html,
+body {
+  background: white !important;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* ================= LOJA INFO ================= */
+a {
+  text-decoration: none;
+}
+.loja-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #00594c;
+}
+.loja-info span {
+  margin: 0 15px;
+}
+.logo-loja {
+  height: 60px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.loja-info a {
+  color: #00594c;
+  text-decoration: none;
+  font-weight: bold;
+}
+.loja-info a:hover {
+  text-decoration: underline;
+}
+.loja-info i {
+  margin-right: 6px;
+  color: #00594c;
+}
+
+/* ================= MAIN ================= */
+.main-fundo {
+  background-color: #fff;
+  padding: 10px 0;
+}
+.main-centro {
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #00594c;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 1200px;
+  width: 90%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.main-centro h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  font-size: 30px;
+  font-weight: 600;
+  color: #00594c;
+  white-space: nowrap;
+}
+.main-centro h1::before,
+.main-centro h1::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.08)
+  );
+}
+.main-centro h1::before {
+  width: 70px;
+}
+.main-centro h1::after {
+  flex: 1 1 auto;
+}
+
+/* ================= BOTOES DE SERVICOS ================= */
+.botoes-servicos {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0;
+}
+.botoes-servicos div {
+  width: 80px;
+  height: 90px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+.botoes-servicos div:hover {
+  background-color: #e3f0ec;
+  transform: translateY(-3px);
+}
+.botoes-servicos i {
+  font-size: 35px;
+  color: #00594c;
+  margin-bottom: 6px;
+}
+.botoes-servicos span {
+  font-size: 17px;
+  color: #00594c;
+  font-weight: 500;
+}
+.botoes-servicos a {
+  text-decoration: none;
+}
+
+/* ================= SLIDER ================= */
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.slides-wrapper {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  width: 1040px;
+  max-width: 90vw;
+  padding: 0;
+}
+.slides {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s cubic-bezier(0.4, 1, 0.4, 1);
+}
+.produtos.ver-mais {
+  display: flex;
+  justify-content: center;
+}
+.btn-circular {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #0c4f43;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+.btn-circular:hover {
+  background: #096e5a;
+  transform: scale(1.1);
+}
+
+/* ================= PRODUTOS ================= */
+.produtos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+  flex: 0 0 220px;
+}
+.produtos:hover {
+  transform: translateY(-4px);
+}
+.produtos img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 12px;
+}
+.produtos h3 {
+  font-size: 1.1rem;
+  margin: 8px 0 4px;
+  color: #20413b;
+  min-height: 40px;
+}
+.produto-info {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+  min-height: 20px;
+}
+.avaliacao i {
+  color: #ffd700;
+  font-size: 14px;
+  margin-right: 2px;
+}
+.unidades-vendidas {
+  font-size: 12px;
+  color: #555;
+}
+.preco-antigo {
+  text-decoration: line-through;
+  font-weight: bold;
+  color: #888;
+  font-size: 15px;
+}
+.desconto {
+  background-color: yellow;
+  color: #0c4f43;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.preco {
+  color: #0d201d;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.btn-comprar {
+  background: #00796b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  margin-top: 5px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.btn-comprar i {
+  margin-left: 8px;
+}
+.btn-comprar:hover {
+  background: #00594c;
+}
+
+/* ================= VOLTAR AO TOPO ================= */
+.voltar-topo {
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 10px;
+  max-width: 1200px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  cursor: pointer;
+}
+.voltar-topo h1 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  font-size: 30px;
+  font-weight: 600;
+  color: #00594c;
+  white-space: nowrap;
+}
+.voltar-topo h1::before,
+.voltar-topo h1::after {
+  content: "";
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.08)
+  );
+}
+.voltar-topo h1::before {
+  width: 50%;
+}
+.voltar-topo h1::after {
+  width: 50%;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 768px) {
+  .main-centro {
+    width: 95%;
+    padding: 12px;
+  }
+  .main-centro h1 {
+    font-size: 24px;
+    gap: 8px;
+  }
+  .slides-wrapper {
+    width: 100%;
+    padding: 0;
+  }
+  .botoes-servicos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    max-width: 300px;
+    margin: 20px auto;
+  }
+  .botoes-servicos div {
+    width: 100%;
+    height: 80px;
+    padding: 8px;
+  }
+  .botoes-servicos i {
+    font-size: 28px;
+  }
+  .botoes-servicos span {
+    font-size: 14px;
+  }
+}
+@media (max-width: 650px) {
+  .main-centro .slides-wrapper {
+    overflow: visible;
+  }
+  .main-centro .slides {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    transform: none !important;
+    margin: 0 auto;
+  }
+  .produtos {
+    flex: unset !important;
+    width: 100%;
+    margin: 0;
+    padding: 12px;
+  }
+  .produtos img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px;
+  }
+  .produtos h3 {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+  .produto-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn.ml-prev,
+  .btn.ml-next {
+    display: none;
+  }
+}

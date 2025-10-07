@@ -146,6 +146,7 @@ router.get("/cadastroColaborador", (req, res) => {
     // Farmácia
     valoresFarmacia: {
       nomeFarmacia: "",
+      nomeusuario: "",
       CNPJ: "",
       responsavel: "",
       cidade: "",
@@ -160,6 +161,7 @@ router.get("/cadastroColaborador", (req, res) => {
     // Profissional
     valoresProfissional: {
       nome: "",
+      nomeusuario: "",
       profissao: "",
       CREF: "",
       especialidade: "",
@@ -381,6 +383,7 @@ router.post(
     // os dados do usuario sao puxados para o array usuarios
     usuarios.push({
       email: req.body.email,
+      nomeusuario: req.body.nomeusuario,
       senha: req.body.senha,
       tipo: "farmacia",
     });
@@ -504,6 +507,7 @@ router.post(
     // os dados do usuario sao puxados para o array usuarios
     usuarios.push({
       email: req.body.email,
+      nomeusuario: req.body.nomeusuario,
       senha: req.body.senha,
       tipo: "profissional",
     });
@@ -516,8 +520,11 @@ router.post(
 router.post("/login", (req, res) => {
   const { usuarioDigitado, senhaDigitada } = req.body;
 
+  // Permitir login tanto por email quanto por nome de usuário
   const usuarioEncontrado = usuarios.find(
-    (u) => u.email === usuarioDigitado && u.senha === senhaDigitada
+    (u) =>
+      (u.email === usuarioDigitado || u.nomeusuario === usuarioDigitado) &&
+      u.senha === senhaDigitada
   );
 
   if (usuarioEncontrado) {
@@ -528,10 +535,10 @@ router.post("/login", (req, res) => {
       usuarioEncontrado.tipo === "profissional"
     ) {
       // colaborador → vai pro painel admin
-      return res.redirect("/adm/adicionarproduto");
+      return res.redirect("/home");
     } else {
       // cliente → vai pro perfil normal
-      return res.redirect("/perfil");
+      return res.redirect("/tomarammeutela");
     }
   }
 });

@@ -1,0 +1,47 @@
+/* ================= SIDEBAR ================= */
+.admin-sidebar {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 0 0 220px;
+}
+.admin-sidebar a {
+  text-decoration: none;
+  color: #00594c;
+  font-weight: 500;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.admin-sidebar a.active,
+.admin-sidebar a:hover {
+  background-color: #e3f0ec;
+  transform: translateX(4px);
+}
+
+.admin-sidebar .botoes-sidebar:hover {
+  background-color: #e3f0ec;
+  transform: translateX(4px);
+}
+.admin-sidebar .botoes-sidebar.voltar {
+  background: none;
+  color: #0c4f43;
+  border: none;
+  font-size: 1.5rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.admin-sidebar .botao-prev {
+  background: none;
+  color: #0c4f43;
+  border: none;
+  font-size: 1.5rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}

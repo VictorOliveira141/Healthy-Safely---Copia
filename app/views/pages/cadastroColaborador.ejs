@@ -103,20 +103,18 @@
               <span class="msgErro"><%= msgErroFarmacia.nomeFarmacia %></span>
             </article>
 
-            <article class="input-icon">
+             <article class="input-icon">
               <i class="bi bi-person-badge icones-gerais"></i>
-
               <input
                 type="text"
                 id="nomeusuario"
                 name="nomeusuario"
                 placeholder="Crie um nome de usuário"
-                value=""
-                class="%>"
+                value="<%= valoresFarmacia.nomeusuario %>"
+                class="<%= erroValidacaoFarmacia.nomeusuario %>"
                 oninput="validarNomeUsuario()"
               />
-
-              <span class="msgErro" id="msgNomeUsuario"></span>
+              <span class="msgErro"><%= msgErroFarmacia.nomeusuario %></span>
             </article>
 
             <article class="input-icon">
@@ -257,18 +255,16 @@
 
             <article class="input-icon">
               <i class="bi bi-person-badge icones-gerais"></i>
-
               <input
                 type="text"
                 id="nomeusuario"
                 name="nomeusuario"
                 placeholder="Crie um nome de usuário"
-                value=""
-                class="%>"
+                value="<%= valoresFarmacia.nomeusuario %>"
+                class="<%= erroValidacaoFarmacia.nomeusuario %>"
                 oninput="validarNomeUsuario()"
               />
-
-              <span class="msgErro" id="msgNomeUsuario"></span>
+              <span class="msgErro"><%= msgErroFarmacia.nomeusuario %></span>
             </article>
 
             <article class="input-icon">

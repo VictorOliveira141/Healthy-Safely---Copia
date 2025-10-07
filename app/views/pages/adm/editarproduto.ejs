@@ -1,33 +1,52 @@
-<%- include("../../partials/header") %>
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sua Loja | Healthy Safely</title>
+    <link rel="stylesheet" href="/css/adm/editarproduto.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+  </head>
 
-<div class="admin-container">
-  <aside class="admin-sidebar">
-    <a href="/adm/adicionarproduto">Adicionar Produto</a>
-    <a href="/adm/editarproduto">Editar Produto</a>
-    <a href="/adm/painel">Gerenciar Pedidos</a>
-    <a href="/adm/logout">Sair</a>
-  </aside>
+  <body>
+    <%- include("../../partials/header") %>
+    <!---->
+    <%- include('../../partials/menu-inferior.ejs') %>
 
-  <main class="admin-main">
-    <h1>Editar Produtos</h1>
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <%- include('../../partials/adm/sidebar-loja.ejs') %>
+      <!-- Main -->
+      <main class="admin-main">
+        <h1>Editar Produtos</h1>
 
-    <div class="produtos-destaque">
-      <% if (produtos.length === 0) { %>
-      <p>Nenhum produto cadastrado ainda.</p>
-      <% } else { %> <% produtos.forEach(produto => { %>
-      <div class="produtos">
-        <h3><%= produto.nome %></h3>
-        <p class="preco">R$ <%= produto.preco %></p>
-        <p><%= produto.descricao %></p>
-        <div class="acoes-produto">
-          <button type="button" class="btn-comprar">Editar</button>
-          <button type="button" class="btn-comprar">Excluir</button>
-        </div>
-      </div>
-      <% }) %> <% } %>
+        <!-- Lista de produtos -->
+        <section class="produtos-destaque">
+          <article class="produto-card">
+            <img
+              src="/imagem/whey.png"
+              alt="Whey Protein"
+              class="produto-img"
+            />
+            <h2 class="produto-nome">Whey Protein</h2>
+
+            <div class="preco-container">
+              <p class="produto-preco-original">R$ 89,99</p>
+              <p class="produto-preco">R$ 71,99</p>
+              <span class="desconto">20%</span>
+            </div>
+
+            <div class="produto-acoes">
+              <button class="btn-editar">Editar</button>
+              <button class="btn-excluir">Excluir</button>
+            </div>
+          </article>
+        </section>
+      </main>
     </div>
-  </main>
-</div>
 
-<%- include("../../partials/footer") %>
-<link rel="stylesheet" href="/css/adm.css" />
+    <!--FOOTER-->
+    <%- include("../../partials/footer") %>
+    <!---->
+  </body>
+</html>

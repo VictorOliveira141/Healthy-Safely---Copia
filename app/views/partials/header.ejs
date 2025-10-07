@@ -13,13 +13,16 @@
 
       <nav id="menu" aria-label="Menu principal">
         <ul>
-          <li><a href="loja">Loja</a></li>
-          <li><a href="tarefas">Tarefas</a></li>
-          <li><a href="doacao">Doação</a></li>
-          <li><a href="progressao">Progressão</a></li>
-          <li><a href="#">Atendimento Online</a></li>
-          <li><a href="http://www.w3schools.com">Mostrar mais</a></li>
+          <li><a href="/loja">Loja</a></li>
+          <li><a href="/tarefas">Tarefas</a></li>
+          <li><a href="/doacao">Doação</a></li>
+          <li><a href="/agendamento1">Atendimento Online</a></li>
+          <% if (usuario && usuario.tipo === "farmacia") { %>
+          <li><a href="/adm/home2">Minha loja</a></li>
+
+          <% } %>
         </ul>
+
         <label for="menuToggle" class="close-menu">&times;</label>
       </nav>
     </section>
@@ -53,9 +56,9 @@
 
     <!-- AÇÕES DO USUÁRIO -->
     <nav class="header-actions" aria-label="Ações do usuário">
-      <span class="user-points">
+      <!--<span class="user-points">
         <img src="/imagem/a.png" alt="Seus pontos" />
-      </span>
+      </span>-->
 
       <!-- MENU CARRINHO LATERAL -->
       <div class="user-menu">
@@ -96,7 +99,11 @@
       <!-- ÍCONE DE SININHO E MODAL DE NOTIFICAÇÕES -->
       <div class="user-menu">
         <i class="bi bi-bell" id="notificationMenuToggle"></i>
-        <section id="notificationMenu" class="notification-dropdown hidden" role="menu">
+        <section
+          id="notificationMenu"
+          class="notification-dropdown hidden"
+          role="menu"
+        >
           <h3>Notificações</h3>
           <ul id="notificationList">
             <li>Nenhuma notificação nova.</li>
@@ -182,20 +189,24 @@
 
 <!-- SCRIPT PARA O MODAL DE NOTIFICAÇÕES -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const notificationMenuToggle = document.getElementById('notificationMenuToggle');
-    const notificationMenu = document.getElementById('notificationMenu');
+  document.addEventListener("DOMContentLoaded", function () {
+    const notificationMenuToggle = document.getElementById(
+      "notificationMenuToggle"
+    );
+    const notificationMenu = document.getElementById("notificationMenu");
 
-    notificationMenuToggle.addEventListener('click', function() {
-      notificationMenu.classList.toggle('hidden');
+    notificationMenuToggle.addEventListener("click", function () {
+      notificationMenu.classList.toggle("hidden");
     });
 
     // Fechar o modal se clicar fora dele
-    document.addEventListener('click', function(event) {
-      if (!notificationMenu.contains(event.target) && !notificationMenuToggle.contains(event.target)) {
-        notificationMenu.classList.add('hidden');
+    document.addEventListener("click", function (event) {
+      if (
+        !notificationMenu.contains(event.target) &&
+        !notificationMenuToggle.contains(event.target)
+      ) {
+        notificationMenu.classList.add("hidden");
       }
     });
   });
 </script>
-

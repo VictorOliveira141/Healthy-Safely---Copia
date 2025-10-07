@@ -1,0 +1,102 @@
+/* ================= RESET ================= */
+body.admin-body {
+  background-color: #f9f9f9;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* ================= CONTAINER PRINCIPAL ================= */
+.admin-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ================= MAIN ADMIN ================= */
+.admin-main {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ================= FORMULÁRIO ================= */
+.formulario-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.formulario-produto .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.formulario-produto label {
+  font-weight: 600;
+  color: #20413b;
+}
+.formulario-produto input,
+.formulario-produto select,
+.formulario-produto textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.formulario-produto input:focus,
+.formulario-produto select:focus,
+.formulario-produto textarea:focus {
+  border-color: #00594c;
+  outline: none;
+}
+.formulario-produto textarea {
+  resize: vertical;
+}
+.formulario-produto button {
+  width: max-content;
+  padding: 10px 20px;
+  background-color: #00594c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.formulario-produto button:hover {
+  background-color: #0c4f43;
+  transform: translateY(-2px);
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 1024px) {
+  .admin-container {
+    padding: 0 10px;
+  }
+}
+@media (max-width: 768px) {
+  .admin-container {
+    flex-direction: column;
+  }
+  .admin-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px;
+    border-radius: 0;
+  }
+  .admin-main {
+    margin-top: 10px;
+  }
+}
