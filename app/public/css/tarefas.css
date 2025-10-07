@@ -48,8 +48,11 @@ h1 {
 }
 
 .bannerdetarefa {
-    margin-top: 30px;
-}
+    margin-top: 70px ;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;}
     
 .confiratarefas {
     width: 70%;
@@ -149,4 +152,214 @@ hover .outros img {
 
 .footer {
     margin-top: 45px;
+}
+
+.placar {
+  background: #1b2c24;
+  color: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 340px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 65%;
+  height: auto;
+}
+
+.placar h2 {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.tabela table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #d8d6d6;
+  color: #0c5431;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+thead {
+  background: #0c5431;
+  color: #fff;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th:last-child, td:last-child {
+  text-align: right;
+}
+
+tbody tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.rodape-pontos {
+  margin-top: 12px;
+  background: #005b3f;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.moeda {
+  width: 22px;
+  height: 22px;
+  animation: flutuar 2.5s infinite ease-in-out;
+}
+
+@keyframes flutuar {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.numero-total {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 800px) {
+  .bannerdetarefa {
+    width: 98%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .confiratarefas,
+  .suastarefas,
+  .blocodetarefas {
+    width: 98%;
+    padding: 8px;
+  }
+  .placar {
+    width: 90%;
+    padding: 12px;
+  }
+   .iconestarefas img {
+    width: 80px;
+    height: 80px;
+  }
+  .outros img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bannerdetarefa {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .confiratarefas,
+  .suastarefas,
+  .blocodetarefas {
+    width: 100%;
+    padding: 5px;
+    font-size: 0.95em;
+  }
+  .placar {
+    width: 98%;
+    padding: 8px;
+    font-size: 0.95em;
+  }
+  .st {
+    font-size: 1.3em;
+  }
+   .iconestarefas img {
+    width: 60px;
+    height: 60px;
+  }
+  .outros img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .bannerdetarefa {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  .confiratarefas,
+  .suastarefas,
+  .blocodetarefas {
+    width: 100%;
+    padding: 2px;
+    font-size: 0.85em;
+  }
+  .placar {
+    width: 100%;
+    padding: 4px;
+    font-size: 0.85em;
+  }
+  .st {
+    font-size: 1em;
+  }
+  .tarefa button {
+    padding: 6px 10px;
+    font-size: 0.9em;
+  }
+
+  .iconestarefas img {
+    width: 40px;
+    height: 40px;
+  }
+  .outros img {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 800px) {
+  h1, .st {
+    font-size: 1.7em;
+  }
+  .ltn_saude {
+    font-size: 1em;
+  }
+  .suastarefas, .blocodetarefas {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 600px) {
+  h1, .st {
+    font-size: 1.3em;
+  }
+  .ltn_saude {
+    font-size: 0.95em;
+  }
+  .suastarefas, .blocodetarefas {
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 400px) {
+  h1, .st {
+    font-size: 1em;
+  }
+  .ltn_saude {
+    font-size: 0.85em;
+  }
+  .suastarefas, .blocodetarefas {
+    font-size: 0.85em;
+  }
 }
