@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil da Loja | Healthy Safely</title>
+    <link rel="stylesheet" href="/css/adm/paginaloja.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+  </head>
+
+  <body>
+    <!-- Header e menu inferior -->
+    <%- include("../../partials/header") %> <%-
+    include("../../partials/menu-inferior.ejs") %>
+
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <%- include("../../partials/adm/sidebar-loja.ejs") %>
+
+      <!-- Main -->
+      <main class="admin-main">
+        <h1>Perfil da Sua Loja</h1>
+
+        <section class="perfil-loja">
+          <form class="form-loja">
+            <!-- Logo da loja -->
+            <div class="logo-container">
+              <img
+                id="previewLogo"
+                src="../imagem/sem-logo.png"
+                alt="Logo da loja"
+              />
+              <label for="logo" class="btn-upload">Alterar logo</label>
+              <input
+                type="file"
+                id="logo"
+                name="logo"
+                accept="image/*"
+                hidden
+              />
+            </div>
+
+            <!-- Informações da loja -->
+            <article class="info-loja">
+              <label>Nome da Loja</label>
+              <input
+                type="text"
+                name="nomeLoja"
+                placeholder="Digite o nome da loja"
+              />
+
+              <label>Descrição</label>
+              <textarea
+                name="descricao"
+                rows="4"
+                placeholder="Fale um pouco sobre sua loja..."
+              ></textarea>
+
+              <label>Endereço</label>
+              <input
+                type="text"
+                name="endereco"
+                placeholder="Rua, número, bairro, cidade"
+              />
+
+              <label>Telefone</label>
+              <input
+                type="text"
+                name="telefone"
+                placeholder="(00) 00000-0000"
+              />
+
+              <button type="submit" class="btn-salvar">
+                Salvar Alterações
+              </button>
+            </article>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <%- include("../../partials/footer") %>
+
+    <script>
+      // Pré-visualização da logo
+      document.getElementById("logo").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (ev) {
+            document.getElementById("previewLogo").src = ev.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+  </body>
+</html>

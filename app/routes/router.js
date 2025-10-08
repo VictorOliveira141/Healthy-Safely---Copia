@@ -58,10 +58,7 @@ router.get("/atividadefis", verificarAutenticacao, (req, res) => {
   res.render("pages/atividadefis");
 });
 
-// ORIENTAÇÕES E DOAÇÃO
-router.get("/orientacoes", verificarAutenticacao, (req, res) => {
-  res.render("pages/orientacoes");
-});
+// DOAÇÃO
 router.get("/doacao", verificarAutenticacao, (req, res) => {
   res.render("pages/doacao");
 });
@@ -535,7 +532,7 @@ router.post("/login", (req, res) => {
       usuarioEncontrado.tipo === "profissional"
     ) {
       // colaborador → vai pro painel admin
-      return res.redirect("/home");
+      return res.redirect("adm/home2");
     } else {
       // cliente → vai pro perfil normal
       return res.redirect("/tomarammeutela");

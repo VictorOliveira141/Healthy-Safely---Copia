@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vendas | Healthy Safely</title>
+    <link rel="stylesheet" href="/css/adm/vendas.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+  </head>
+
+  <body class="admin-body">
+    <%- include("../../partials/header") %>
+    <!---->
+    <%- include('../../partials/menu-inferior.ejs') %>
+
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <%- include('../../partials/adm/sidebar-loja.ejs') %>
+
+      <!-- Main -->
+      <main class="admin-main">
+        <h1>Vendas deste mês</h1>
+
+        <!-- Resumo de vendas -->
+        <section class="vendas-resumo">
+          <div class="venda-card">
+            <h2>Total de Vendas</h2>
+            <p>2</p>
+          </div>
+          <div class="venda-card">
+            <h2>Faturamento</h2>
+            <p>R$ 0</p>
+          </div>
+          <div class="venda-card">
+            <h2>Pedidos Pendentes</h2>
+            <p>1</p>
+          </div>
+          <div class="venda-card">
+            <h2>Pedidos Concluídos</h2>
+            <p>1</p>
+          </div>
+        </section>
+
+        <!-- Tabela de vendas -->
+        <section class="vendas-tabela">
+          <table>
+            <thead>
+              <tr>
+                <th>ID Pedido</th>
+                <th>Cliente</th>
+                <th>Produtos</th>
+                <th>Valor Total</th>
+                <th>Status</th>
+                <th>Data</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#001</td>
+                <td>Kauã Mauricio</td>
+                <td>2x Whey Protein, 1x Creatina</td>
+                <td>R$ 250,00</td>
+                <td class="status-pendente">Pendente</td>
+                <td>07/10/2025</td>
+                <td>
+                  <button class="btn-detalhes">Detalhes</button>
+                  <button class="btn-atualizar">Atualizar Status</button>
+                </td>
+              </tr>
+              <tr>
+                <td>#002</td>
+                <td>Daniel Renovato</td>
+                <td>1x Ômega 3(120 capsulas)</td>
+                <td>R$ 26,99</td>
+                <td class="status-concluido">Concluído</td>
+                <td>06/10/2025</td>
+                <td>
+                  <button class="btn-detalhes">Detalhes</button>
+                  <button class="btn-atualizar">Atualizar Status</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <!--FOOTER-->
+    <%- include("../../partials/footer") %>
+    <!---->
+  </body>
+</html>

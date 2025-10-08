@@ -1,3 +1,4 @@
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -10,69 +11,82 @@ body {
   overflow-x: hidden;
 }
 
-/* CONTAINER PRINCIPAL */
-.container {
-  display: grid;
-  grid-template-columns: minmax(200px, 450px) 1fr;
+/* ================= CONTAINER PRINCIPAL ================= */
+.admin-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  display: flex;
   gap: 20px;
-  padding: 20px;
-  min-height: 75vh;
-  background: #d9d9d9;
-  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
-/* SIDEBAR */
+/* ================= MAIN ================= */
+.admin-main {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.admin-main h1 {
+  margin-bottom: 20px;
+}
+
+/* ================= SIDEBAR(usuarios que querem tirar duvidas) ================= */
 .sidebar {
-  background: #0c4f43;
   border-radius: 10px;
   padding: 15px;
 }
 .sidebar ul {
+  color: white;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 .sidebar li {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 12px;
   margin-bottom: 10px;
   cursor: pointer;
   border-radius: 6px;
-  background: #145c4f;
   color: #fff;
   transition: 0.3s;
-}
-.sidebar li:hover {
-  background: #1b6e5a;
 }
 .sidebar li.active {
   color: white;
   font-weight: bold;
 }
 
-/* CONTEÚDO DE DENTRO DO CHAT */
+/* ================= CONTEÚDO DE DENTRO DO CHAT ================= */
 .content {
-  background: #0c4f43;
   padding: 20px;
   border-radius: 10px;
   color: #fff;
   display: flex;
+
   flex-direction: column;
-  height: 100%;
+  height: 800px;
   min-height: 400px;
   box-sizing: border-box;
 }
 .content-box {
   display: none;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto; /* <-- garanta que ocupa todo o espaço vertical */
+  min-height: 0; /* <-- importante para flexbox funcionar corretamente */
 }
 .content-box.active {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
-/* TOPO DO CHAT (INFORMAÇÕES DO ESPECIALISTA) */
+/* ================= TOPO DO CHAT (INFORMAÇÕES DO ESPECIALISTA) ================= */
 .especialista {
   display: flex;
   align-items: center;
@@ -81,7 +95,11 @@ body {
   padding-bottom: 10px;
 }
 .especialista img {
+  background-color: gray;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
+  object-fit: cover;
 }
 .especialista > div.info {
   display: flex;
@@ -101,22 +119,29 @@ body {
   margin: 0;
 }
 
-/* MENSAGENS */
+/* ================= MENSAGENS ================= */
 .mensagens {
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding: 10px 0;
-  flex: 1;
+  flex: 1 1 auto; /* <-- ocupa todo o espaço disponível */
   overflow-y: auto;
   box-sizing: border-box;
+  min-height: 0; /* <-- importante para flexbox */
 }
-
-/* MENSAGEM DO ESPECIALISTA */
+/* ================= MENSAGEM DO ESPECIALISTA ================= */
 .especialista-mensagem {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+}
+.especialista-mensagem img {
+  background-color: gray;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .especialista-mensagem .info {
   background: #145c4f;
@@ -135,7 +160,7 @@ body {
   right: 10px;
 }
 
-/* MENSAGEM DO USUÁRIO */
+/* ================= MENSAGEM DO USUÁRIO ================= */
 .usuario-mensagem {
   display: flex;
   justify-content: flex-end;
@@ -157,15 +182,16 @@ body {
   right: 8px;
 }
 
-/* CAMPO DE DIGITAÇÃO */
+/* ================= CAMPO DE DIGITAÇÃO ================= */
 .chat-input {
   display: flex;
   gap: 10px;
-  margin-top: auto; /* sempre no fim do chat */
+  margin-top: auto; /* <-- garante que fica no final */
 }
 .chat-input input {
   flex: 1;
   padding: 10px;
+  background-color: #f1f1f1;
   border-radius: 20px;
   border: none;
   outline: none;
@@ -179,13 +205,16 @@ body {
   cursor: pointer;
 }
 
-/* BOTÃO DE SAIR DO CHAT, DESATIVADO NAS TELAS MAIORES */
+/* ================= BOTÃO DE SAIR DO CHAT ================= */
 .sair-chat {
-  display: none;
-}
-/* O CONTENT NÃO FICA DESATIVADO NAS TELAS MAIORES */
-.content:not(:has(.content-box.active)) {
-  display: none;
+  display: flex;
+  font-size: 25px;
+  background: none;
+  color: #0c4f43;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 /*  RESPONSIVIDADE  */
@@ -211,16 +240,7 @@ body {
     grid-template-columns: 1fr; /* sidebar em cima do chat */
     gap: 15px;
   }
-  .sair-chat {
-    display: flex;
-    background-color: #0c4f43;
-    font-size: 25px;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+
   .container.hide-sidebar .sidebar {
     display: none;
   }

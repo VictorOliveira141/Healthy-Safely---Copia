@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerenciar Pedidos | Healthy Safely</title>
+    <link rel="stylesheet" href="/css/adm/gerenciarpedidos.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+  </head>
+
+  <body>
+    <%- include("../../partials/header") %>
+    <!---->
+    <%- include('../../partials/menu-inferior.ejs') %>
+
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <%- include('../../partials/adm/sidebar-loja.ejs') %>
+
+      <!-- Main -->
+      <main class="admin-main">
+        <h1>Gerenciar Pedidos</h1>
+
+        <!-- Lista de pedidos -->
+        <section class="pedidos-destaque">
+          <article class="pedido-card">
+            <div class="pedido-info">
+              <h2>Pedido #001</h2>
+              <p><strong>Cliente:</strong> Kauã Mauricio</p>
+              <p><strong>Data:</strong> 07/10/2025</p>
+              <p><strong>Total:</strong> R$ 159,90</p>
+              <p>
+                <strong>Status:</strong>
+                <span class="status pendente">Pendente</span>
+              </p>
+            </div>
+            <div class="pedido-acoes">
+              <button class="btn-ver">Visualizar</button>
+              <button class="btn-status">Alterar Status</button>
+            </div>
+          </article>
+
+          <article class="pedido-card">
+            <div class="pedido-info">
+              <h2>Pedido #002</h2>
+              <p><strong>Cliente:</strong> Daniel Renovato</p>
+              <p><strong>Data:</strong> 06/10/2025</p>
+              <p><strong>Total:</strong> R$ 89,99</p>
+              <p>
+                <strong>Status:</strong>
+                <span class="status entregue">Entregue</span>
+              </p>
+            </div>
+            <div class="pedido-acoes">
+              <button class="btn-ver">Visualizar</button>
+              <button class="btn-status">Alterar Status</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <!--FOOTER-->
+    <%- include("../../partials/footer") %>
+    <!---->
+  </body>
+</html>

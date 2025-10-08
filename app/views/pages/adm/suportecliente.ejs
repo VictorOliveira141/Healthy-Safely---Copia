@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suporte ao Cliente | Healthy Safely</title>
+    <link rel="stylesheet" href="/css/adm/suportecliente.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <%- include("../../partials/header") %>
+
+    <!-- MENU INFERIOR -->
+    <%- include("../../partials/menu-inferior.ejs") %>
+
+    <div class="admin-container">
+      <!-- SIDEBAR ADMIN -->
+      <%- include("../../partials/adm/sidebar-loja.ejs") %>
+
+      <!-- CONTEÚDO PRINCIPAL -->
+      <main class="admin-main">
+        <h1>Suporte ao Cliente</h1>
+
+        <section class="suporte-container">
+          <!-- LISTA DE ESPECIALISTAS -->
+          <aside class="sidebar">
+            <ul>
+              <li class="active" data-target="especialista1">
+                <article class="especialista">
+                  <img src="../imagem/ranielnerd.png" alt="daniel" />
+                  <section class="info">
+                    <h1>Daniel Renovato</h1>
+                    <h2>04/05/25</h2>
+                    <footer class="footer-info">
+                      <h1>Com licença chefe, comprei o produto mas...</h1>
+                    </footer>
+                  </section>
+                </article>
+              </li>
+
+              <li data-target="especialista2">
+                <article class="especialista">
+                  <img src="../imagem/mathmvb.jpg" alt="Ortopedista Alison" />
+                  <section class="info">
+                    <h1>Matheus Vieira</h1>
+                    <h2>04/05/25</h2>
+                    <footer class="footer-info">
+                      <h1>Bom Dia! Estou com um problema, o produto...</h1>
+                    </footer>
+                  </section>
+                </article>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- ÁREA DE CONTEÚDO DOS CHATS -->
+          <section class="content">
+            <!-- CHAT 1 -->
+            <section id="especialista1" class="content-box">
+              <article class="especialista">
+                <button class="sair-chat">
+                  <i class="bi bi-arrow-left"></i>
+                </button>
+                <img src="../imagem/ranielnerd.png" alt="daniel" />
+                <section class="info">
+                  <h1>Daniel Renovato</h1>
+                  <h1>🟢 On-line</h1>
+                </section>
+              </article>
+
+              <section class="mensagens">
+                <article class="especialista-mensagem">
+                  <img src="../imagem/ranielnerd.png" alt="daniel" />
+                  <section class="info">
+                    <p>
+                      Com licença chefe, comprei o produto mas ele veio com um
+                      cheiro um pouco diferente do habitual. Gostaria de saber
+                      se isso é normal ou se pode ter ocorrido algum problema no
+                      armazenamento.
+                      <span class="hora">10:35</span>
+                    </p>
+                  </section>
+                </article>
+
+                <article class="usuario-mensagem"></article>
+              </section>
+
+              <section class="chat-input">
+                <input type="text" placeholder="Digite uma mensagem..." />
+                <button type="button">
+                  <i class="bi bi-send"></i>
+                </button>
+              </section>
+            </section>
+
+            <!-- CHAT 2 -->
+            <section id="especialista2" class="content-box">
+              <article class="especialista">
+                <button class="sair-chat">
+                  <i class="bi bi-arrow-left"></i>
+                </button>
+                <img src="../imagem/mathmvb.jpg" alt="Ortopedista Alison" />
+                <section class="info">
+                  <h1>Matheus Vieira</h1>
+                  <h1>⚫ Off-line</h1>
+                </section>
+              </article>
+
+              <section class="mensagens">
+                <article class="especialista-mensagem">
+                  <img src="../imagem/mathmvb.jpg" alt="Ortopedista Alison" />
+                  <section class="info">
+                    <p>
+                      Bom dia! Estou com um problema, o produto que recebi veio
+                      com a embalagem amassada e parte do conteúdo vazou.
+                      Poderiam me ajudar com a troca ou reembolso?
+                      <span class="hora">10:35</span>
+                    </p>
+                  </section>
+                </article>
+
+                <article class="usuario-mensagem"></article>
+              </section>
+
+              <section class="chat-input">
+                <input type="text" placeholder="Digite uma mensagem..." />
+                <button type="button">
+                  <i class="bi bi-send"></i>
+                </button>
+              </section>
+            </section>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <!-- FOOTER -->
+    <%- include("../../partials/footer") %>
+
+    <!-- SCRIPT -->
+    <script>
+      const sidebar = document.querySelector(".sidebar");
+      const menuItems = document.querySelectorAll(".sidebar li");
+      const contentBoxes = document.querySelectorAll(".content-box");
+      const sairBotoes = document.querySelectorAll(".sair-chat");
+      const chatInputs = document.querySelectorAll(".chat-input");
+
+      // ==================== TROCA DE CONVERSAS ====================
+      menuItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          // Desativa todos
+          menuItems.forEach((i) => i.classList.remove("active"));
+          contentBoxes.forEach((box) => box.classList.remove("active"));
+
+          // Ativa o selecionado
+          item.classList.add("active");
+          const targetId = item.getAttribute("data-target");
+          document.getElementById(targetId).classList.add("active");
+
+          // Esconde a lista de especialistas e mostra o chat
+          sidebar.style.display = "none";
+          document.querySelector(".content").style.display = "block";
+        });
+      });
+
+      // ==================== BOTÃO SAIR DO CHAT ====================
+      sairBotoes.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          contentBoxes.forEach((box) => box.classList.remove("active"));
+          menuItems.forEach((i) => i.classList.remove("active"));
+
+          // Mostra a lista de especialistas novamente
+          sidebar.style.display = "block";
+          document.querySelector(".content").style.display = "none";
+        });
+      });
+
+      // ==================== ENVIO DE MENSAGENS ====================
+      chatInputs.forEach((inputBox, index) => {
+        const input = inputBox.querySelector("input");
+        const button = inputBox.querySelector("button");
+        const mensagens = contentBoxes[index].querySelector(".mensagens");
+
+        button.addEventListener("click", () => {
+          if (input.value.trim() === "") return;
+
+          const msgArticle = document.createElement("article");
+          msgArticle.classList.add("usuario-mensagem");
+
+          const infoSection = document.createElement("section");
+          infoSection.classList.add("info");
+
+          const p = document.createElement("p");
+          p.textContent = input.value;
+
+          const span = document.createElement("span");
+          span.classList.add("hora");
+          const now = new Date();
+          span.textContent = `${now.getHours()}:${now
+            .getMinutes()
+            .toString()
+            .padStart(2, "0")}`;
+
+          infoSection.appendChild(p);
+          infoSection.appendChild(span);
+          msgArticle.appendChild(infoSection);
+          mensagens.appendChild(msgArticle);
+          mensagens.scrollTop = mensagens.scrollHeight;
+
+          input.value = "";
+        });
+      });
+
+      // Esconde o chat ao carregar
+      document.querySelector(".content").style.display = "none";
+    </script>
+  </body>
+</html>

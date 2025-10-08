@@ -16,11 +16,8 @@
           <li><a href="/loja">Loja</a></li>
           <li><a href="/tarefas">Tarefas</a></li>
           <li><a href="/doacao">Doação</a></li>
-          <li><a href="/agendamento1">Atendimento Online</a></li>
-          <% if (usuario && usuario.tipo === "farmacia") { %>
-          <li><a href="/adm/home2">Minha loja</a></li>
-
-          <% } %>
+          <li><a href="/agendamento1">Atendimento Online</a></li> 
+          <li><a href="/adm/home2">Minha loja</a></li>         
         </ul>
 
         <label for="menuToggle" class="close-menu">&times;</label>
@@ -131,10 +128,15 @@
   <!-- SUBMENU DE FUNCIONALIDADES (some a partir de 650px) -->
   <nav class="header-nav" id="mobileNav" aria-label="Navegação principal">
     <a href="/loja">Loja</a>
+    <% if (usuario && usuario.tipo === "farmacia") { %>
+            <a href="/adm/home2">Minha Loja</a>
+            <% } %>
     <a href="/tarefas">Tarefas</a>
     <a href="/progressao">Progressão</a>
     <a href="/doacao">Doação</a>
     <a href="/agendamento1">Atendimento Online</a>
+    
+  
   </nav>
   <!-- FIM SUBMENU -->
 </header>
