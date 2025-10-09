@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perfil da Loja | Healthy Safely</title>
+    <title>Perfil da sua Loja | Healthy Safely</title>
     <link rel="stylesheet" href="/css/adm/paginaloja.css" />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
   </head>
 
   <body>
-    <!-- Header e menu inferior -->
-    <%- include("../../partials/header") %> <%-
-    include("../../partials/menu-inferior.ejs") %>
+    <%- include("../../partials/header") %>
+    <!---->
+    <%- include("../../partials/menu-inferior.ejs") %>
 
     <div class="admin-container">
       <!-- Sidebar -->
@@ -19,7 +19,7 @@
 
       <!-- Main -->
       <main class="admin-main">
-        <h1>Perfil da Sua Loja</h1>
+        <h1>Perfil da sua Loja</h1>
 
         <section class="perfil-loja">
           <form class="form-loja">
@@ -27,7 +27,7 @@
             <div class="logo-container">
               <img
                 id="previewLogo"
-                src="../imagem/sem-logo.png"
+                src="../imagem/atf.png"
                 alt="Logo da loja"
               />
               <label for="logo" class="btn-upload">Alterar logo</label>
@@ -79,7 +79,9 @@
       </main>
     </div>
 
+    <!--FOOTER-->
     <%- include("../../partials/footer") %>
+    <!---->
 
     <script>
       // Pré-visualização da logo

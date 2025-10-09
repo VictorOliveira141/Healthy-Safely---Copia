@@ -70,11 +70,14 @@ router.get("/avaliacoes", verificarColaborador, (req, res) => {
     mensagem: null,
   });
 });
-router.get("/suportecliente", verificarColaborador, (req, res) => {
+
+/* Rota de suporte ao cliente desativada para essa banca final
+router.get("/suportecliente", (req, res) => {
   res.render("pages/adm/suportecliente", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
+*/
 
 module.exports = router;

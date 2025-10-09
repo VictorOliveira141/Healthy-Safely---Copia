@@ -3,138 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | Healthy Safely</title>
-    <link rel="stylesheet" href="../css/adm/home2.css" />
+    <title>Sua Loja | Healthy Safely</title>
+    <link rel="stylesheet" href="/css/adm/home2.css" />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
   </head>
-  <body id="topo">
-    <%- include('../../partials/header.ejs') %>
-    <!---->
-    <%- include('../../partials/menu-inferior.ejs') %>
 
-    <main>
-      <!-- Seção com informações da loja -->
-      <section class="main-fundo">
-        <section class="loja-info">
+  <body class="admin-body">
+    <%- include('../../partials/header.ejs') %> <%-
+    include('../../partials/menu-inferior.ejs') %>
+
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <%- include('../../partials/adm/sidebar-loja.ejs') %>
+
+      <!-- Main -->
+      <main class="admin-main">
+        <!-- Cabeçalho da loja -->
+        <section class="loja-header">
           <img src="../imagem/atf.png" alt="Logo da Loja" class="logo-loja" />
-          <article class="dados-loja">
+          <div class="dados-loja">
             <h1>Farmácia Viva Bem</h1>
             <p>Suplementos, vitaminas e produtos naturais 💊💚</p>
             <p class="localizacao">
               <i class="bi bi-geo-alt-fill"></i> Barueri - SP
             </p>
+          </div>
+          <article class="icones-editar">
+            <button
+              class="btn-editar-loja"
+              onclick="window.location.href='/adm/paginaloja'"
+            >
+              <i class="bi bi-gear"></i>
+            </button>
           </article>
         </section>
 
-        <!-- Botões de ação do colaborador -->
-        <nav class="botoes-servicos">
-          <!--ADICIONAR PRODUTOS-->
-          <a href="/adm/adicionarproduto">
-            <div>
-              <i class="bi bi-plus-circle"></i><span>Adicionar Produto</span>
-            </div>
-          </a>
+        <!-- Produtos da loja -->
+        <section class="produtos-loja">
+          <h2>Produtos Cadastrados</h2>
 
-          <!--EDITAR PRODUTO-->
-          <a href="/adm/editarproduto">
-            <div><i class="bi bi-box-seam"></i><span>Meus Produtos</span></div>
-          </a>
+          <% if (produtos && produtos.length > 0) { %>
+          <div class="lista-produtos">
+            <% produtos.forEach(produto => { %>
+            <article class="produto-card">
+              <img src="<%= produto.imagem %>" alt="<%= produto.nome %>" />
+              <h3><%= produto.nome %></h3>
 
-          <!-- VENDAS -->
-          <a href="/adm/vendas">
-            <div><i class="bi bi-bar-chart"></i><span>Minhas Vendas</span></div>
-          </a>
-
-          <!-- AVALIAÇÕES -->
-          <a href="/adm/avaliacoes">
-            <div><i class="bi bi-chat-dots"></i><span>Avaliações</span></div>
-          </a>
-
-          <!-- SUPORTE -->
-          <a href="/orientacoes">
-            <div><i class="bi bi-headset"></i><span>Suporte</span></div>
-          </a>
-
-          <!-- CONFIGURAÇÕES -->
-          <a href="/adm/configuracoes">
-            <div><i class="bi bi-gear"></i><span>Configurações</span></div>
-          </a>
-        </nav>
-      </section>
-
-      <!-- Seção de produtos da loja -->
-      <section class="main-centro ofertas">
-        <h1>Produtos da sua loja</h1>
-        <section class="slider">
-          <section class="slides-wrapper">
-            <section class="slides" id="slides">
-              <!---->
-              <% if (produtos && produtos.length > 0) { %> <%
-              produtos.forEach(produto => { %>
-
-              <article class="produtos">
-                <img src="<%= produto.imagem %>" alt="<%= produto.nome %>" />
-                <h3><%= produto.nome %></h3>
-                <article class="produto-info">
-                  <article class="avaliacao">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                    <i class="bi bi-star"></i>
-                  </article>
-                  <div class="unidades-vendidas">
-                    <%= produto.vendidos %> vendidos
-                  </div>
-                </article>
-
-                <article class="preco-container">
+              <div class="produto-info">
+                <p><strong><%= produto.vendidos %></strong> vendidos</p>
+                <p class="preco">
                   <span class="preco-antigo"><%= produto.precoAntigo %></span>
+                  <span class="preco-novo"><%= produto.preco %></span>
                   <span class="desconto"><%= produto.desconto %></span>
-                </article>
-                <span class="preco"><%= produto.preco %></span>
+                </p>
+              </div>
 
-                <button
-                  class="btn-comprar"
-                  onclick="window.location.href=`/adm/editarproduto`"
-                >
-                  Editar <i class="bi bi-pencil"></i>
-                </button>
-              </article>
-              <% }) %> <% } else { %>
-              <article class="sem-produtos">
-                <p>Você ainda não cadastrou nenhum produto 😔</p>
-                <button
-                  onclick="window.location.href='/colaborador/novo-produto'"
-                  class="btn-comprar"
-                >
-                  Adicionar agora <i class="bi bi-plus-circle"></i>
-                </button>
-              </article>
-              <% } %>
+              <button
+                class="btn-editar"
+                onclick="window.location.href='/adm/editarproduto'"
+              >
+                Editar <i class="bi bi-pencil"></i>
+              </button>
+            </article>
 
-              <article class="produtos ver-mais">
-                <h2>Adicionar novo Produto</h2>
-                <button
-                  class="btn-circular"
-                  onclick="window.location.href=`/adm/adicionarproduto`"
-                >
-                  +
-                </button>
-              </article>
-              <!---->
-            </section>
-          </section>
+            <article class="produto-card">
+              <img src="<%= produto.imagem %>" alt="<%= produto.nome %>" />
+              <h3><%= produto.nome %></h3>
+
+              <div class="produto-info">
+                <p><strong><%= produto.vendidos %></strong> vendidos</p>
+                <p class="preco">
+                  <span class="preco-antigo"><%= produto.precoAntigo %></span>
+                  <span class="preco-novo"><%= produto.preco %></span>
+                  <span class="desconto"><%= produto.desconto %></span>
+                </p>
+              </div>
+
+              <button
+                class="btn-editar"
+                onclick="window.location.href='/adm/editarproduto'"
+              >
+                Editar <i class="bi bi-pencil"></i>
+              </button>
+            </article>
+            <% }) %>
+          </div>
+          <% } else { %>
+          <div class="sem-produtos">
+            <p>Você ainda não cadastrou nenhum produto 😔</p>
+            <button
+              class="btn-adicionar"
+              onclick="window.location.href='/adm/adicionarproduto'"
+            >
+              Adicionar agora <i class="bi bi-plus-circle"></i>
+            </button>
+          </div>
+          <% } %>
         </section>
-      </section>
+      </main>
+    </div>
 
-      <section class="voltar-topo">
-        <a href="#topo"><h1>Voltar ao topo</h1></a>
-      </section>
-    </main>
-
-    <!--FOOTER-->
     <%- include('../../partials/footer.ejs') %>
-    <!--FOOTER-->
   </body>
 </html>
