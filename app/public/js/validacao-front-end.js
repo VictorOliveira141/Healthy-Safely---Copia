@@ -1,13 +1,19 @@
 $(document).ready(function () {
   // Máscara para CNPJ
-  window.mascaraCNPJ = function(input) {
+  window.mascaraCNPJ = function (input) {
     let value = input.value.replace(/\D/g, "");
     value = value.replace(/^([\d]{2})([\d])/, "$1.$2");
     value = value.replace(/^([\d]{2})\.([\d]{3})([\d])/, "$1.$2.$3");
-    value = value.replace(/^([\d]{2})\.([\d]{3})\.([\d]{3})([\d])/, "$1.$2.$3/$4");
-    value = value.replace(/^([\d]{2})\.([\d]{3})\.([\d]{3})\/([\d]{4})([\d]{1,2})/, "$1.$2.$3/$4-$5");
+    value = value.replace(
+      /^([\d]{2})\.([\d]{3})\.([\d]{3})([\d])/,
+      "$1.$2.$3/$4"
+    );
+    value = value.replace(
+      /^([\d]{2})\.([\d]{3})\.([\d]{3})\/([\d]{4})([\d]{1,2})/,
+      "$1.$2.$3/$4-$5"
+    );
     input.value = value;
-  }
+  };
   // ======= Validação em blur Cliente =======
   $("#nome").on("blur", validateNome);
   $("#nomeusuario").on("blur", validateNomeUsuario);
@@ -256,7 +262,10 @@ $(document).ready(function () {
       return false;
     } else {
       // Formata o CNPJ: 12.345.678/0001-95
-      const cnpjFormatado = cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+      const cnpjFormatado = cnpj.replace(
+        /(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+        "$1.$2.$3/$4-$5"
+      );
       $("#formFarmacia input[name='CNPJ']").val(cnpjFormatado);
       showSuccess("#formFarmacia input[name='CNPJ']");
       return true;

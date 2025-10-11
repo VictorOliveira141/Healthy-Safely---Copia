@@ -281,11 +281,12 @@ body {
   z-index: 1000;
   margin-top: 8px;
 }
-
+.perfil-dropdown li {
+  list-style: none;
+}
 .perfil-dropdown.hidden {
   display: none;
 }
-
 .perfil-dropdown a,
 .perfil-dropdown button {
   display: block;
@@ -303,7 +304,6 @@ body {
   transition: all 0.3s ease;
   text-align: left;
 }
-
 .perfil-dropdown a:hover,
 .perfil-dropdown button:hover {
   color: #8ca700;
@@ -581,7 +581,23 @@ body {
   flex-direction: column;
   gap: 15px;
 }
-
+.cart-sem-login {
+  display: flex;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+.cart-sem-login h1 {
+  font-size: 18px;
+}
+.cart-sem-login a {
+  color: #8ca700;
+  font-weight: bold;
+  text-decoration: underline;
+}
 /* Lista de produtos */
 .cart-sidebar ul {
   list-style: none;

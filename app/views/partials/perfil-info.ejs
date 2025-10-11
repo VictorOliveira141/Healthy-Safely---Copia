@@ -4,16 +4,11 @@
   </figure>
 
   <div class="info-perfil">
-    <h1>Nome de Usuário</h1>
+    <h1><%= usuario.nomeusuario || usuario.responsavel %></h1>
     <p class="seguidores">
       <span>0 seguidores</span> • <span>0 seguindo</span>
     </p>
   </div>
-
-  <article class="icones-editar">
-    <i class="bi bi-gear"></i>
-    <i class="bi bi-pencil-fill open-modal" data-content="identidade"></i>
-  </article>
 </header>
 
 <style>

@@ -12,6 +12,12 @@ app.use(
   })
 );
 
+// 🔗 Torna o usuário logado disponível em todas as views EJS
+app.use((req, res, next) => {
+  res.locals.usuario = req.session.usuario || null;
+  next();
+});
+
 // 🧩 Configuração para receber dados de formulários
 app.use(express.urlencoded({ extended: true }));
 
@@ -25,13 +31,10 @@ app.set("views", "./app/views");
 // 📦 Importação das rotas
 const rotaPrincipal = require("./app/routes/router");
 const rotaAdm = require("./app/routes/router-adm");
-app.use((req, res, next) => {
-  res.locals.usuario = req.session.usuario || null;
-  next();
-});
+
 // 🧭 Uso das rotas
-app.use("/", rotaPrincipal); // rotas principais (login, cadastro, etc)
-app.use("/adm", rotaAdm); // rotas do painel administrativo
+app.use("/", rotaPrincipal);
+app.use("/adm", rotaAdm);
 
 // 🚀 Inicialização do servidor
 app.listen(porta, () => {

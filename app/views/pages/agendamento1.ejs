@@ -29,18 +29,27 @@
           <div class="icone">
             <img src="../imagem/user.png" alt="Foto de perfil do usuário" />
           </div>
-          <span class="nome">Maria Luiza C. D.</span>
+          <span class="nome"
+            ><% if(usuario.tipo === "cliente") {%> <%= usuario.nome %> <%}
+            <!---->
+            else if(usuario.tipo === "profissional"){ %> <%=
+            usuario.nomeProfissional %> <% }
+            <!---->
+            else if(usuario.tipo === "farmacia"){ %> <%= usuario.responsavel %>
+            <% } %></span
+          >
         </div>
 
         <!-- Contato -->
         <div class="contato">
           <p>
             <strong>Email:</strong>
-            <a href="mailto:maria123@gmail.com">maria123@gmail.com</a>
+            <a href="mailto:maria123@gmail.com"><%= usuario.email %></a>
             <i class="bi bi-pencil-fill open-modal"></i>
           </p>
           <p>
-            <strong>Telefone:</strong> (11) 99999-9999
+            <strong>Telefone:</strong> <%= usuario.telefone || "Não informado"
+            %>
             <i class="bi bi-pencil-fill open-modal"></i>
           </p>
         </div>

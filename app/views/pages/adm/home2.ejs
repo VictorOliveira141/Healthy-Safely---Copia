@@ -9,8 +9,9 @@
   </head>
 
   <body class="admin-body">
-    <%- include('../../partials/header.ejs') %> <%-
-    include('../../partials/menu-inferior.ejs') %>
+    <%- include('../../partials/header.ejs') %>
+    <!---->
+    <%- include('../../partials/menu-inferior.ejs') %>
 
     <div class="admin-container">
       <!-- Sidebar -->
@@ -22,8 +23,8 @@
         <section class="loja-header">
           <img src="../imagem/atf.png" alt="Logo da Loja" class="logo-loja" />
           <div class="dados-loja">
-            <h1>Farmácia Viva Bem</h1>
-            <p>Suplementos, vitaminas e produtos naturais 💊💚</p>
+            <h1><%= usuario.nomeFarmacia %></h1>
+            <p>Sem descrição</p>
             <p class="localizacao">
               <i class="bi bi-geo-alt-fill"></i> Barueri - SP
             </p>

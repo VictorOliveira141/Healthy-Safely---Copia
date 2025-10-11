@@ -126,6 +126,7 @@ router.get("/cadastroCliente", (req, res) => {
     erros: null,
     valores: {
       nome: "",
+      nomeusuario: "",
       email: "",
       data: "",
       senha: "",
@@ -149,6 +150,7 @@ router.get("/cadastroColaborador", (req, res) => {
       cidade: "",
       estado: "",
       email: "",
+      data: "",
       senha: "",
       confirmarSenha: "",
     },
@@ -161,8 +163,8 @@ router.get("/cadastroColaborador", (req, res) => {
       nomeusuario: "",
       profissao: "",
       CREF: "",
-      especialidade: "",
-      whatsapp: "",
+      email: "",
+      data: "",
       senha: "",
       confirmarSenha: "",
     },
@@ -256,8 +258,12 @@ router.post(
 
     // os dados do usuario sao puxados para o array usuarios
     usuarios.push({
+      nome: req.body.nome,
+      nomeusuario: req.body.nomeusuario,
       email: req.body.email,
+      data: req.body.data,
       senha: req.body.senha,
+
       tipo: "cliente",
     });
 
@@ -365,10 +371,11 @@ router.post(
         // manter área profissional intacta
         valoresProfissional: {
           nome: "",
+          nomeusuario: "",
           profissao: "",
           CREF: "",
-          especialidade: "",
-          whatsapp: "",
+          email: "",
+          data: "",
           senha: "",
         },
         erroValidacaoProfissional: {},
@@ -379,8 +386,14 @@ router.post(
     }
     // os dados do usuario sao puxados para o array usuarios
     usuarios.push({
-      email: req.body.email,
+      nomeFarmacia: req.body.nomeFarmacia,
       nomeusuario: req.body.nomeusuario,
+      cnpj: req.body.CNPJ,
+      responsavel: req.body.responsavel,
+      cidade: req.body.cidade,
+      estado: req.body.estado,
+      email: req.body.email,
+      data: req.body.data,
       senha: req.body.senha,
       tipo: "farmacia",
     });
@@ -427,13 +440,6 @@ router.post(
     .bail()
     .isLength({ min: 3, max: 50 })
     .withMessage("*A especialidade deve conter entre 3 e 50 caracteres!"),
-
-  body("whatsapp")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .matches(/^\d{11}$/)
-    .withMessage("*O WhatsApp deve conter exatamente 11 dígitos!"),
 
   body("email")
     .notEmpty()
@@ -488,6 +494,7 @@ router.post(
 
         valoresFarmacia: {
           nomeFarmacia: "",
+          nomeusuario: "",
           CNPJ: "",
           responsavel: "",
           cidade: "",
@@ -503,6 +510,9 @@ router.post(
     }
     // os dados do usuario sao puxados para o array usuarios
     usuarios.push({
+      nome: req.body.nome,
+      profissao: req.body.profissao,
+      CREF: req.body.CREF,
       email: req.body.email,
       nomeusuario: req.body.nomeusuario,
       senha: req.body.senha,

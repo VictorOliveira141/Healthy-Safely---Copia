@@ -13,23 +13,51 @@
 
       <nav id="menu" aria-label="Menu principal">
         <ul>
-          <li><a href="/loja">Loja</a></li>
-          <li><a href="/tarefas">Tarefas</a></li>
-          <li><a href="/doacao">Doação</a></li>
-          <li><a href="/agendamento1">Atendimento Online</a></li> 
-          <li><a href="/adm/home2">Minha loja</a></li>         
+          <li>
+            <a href="/loja"><i class="bi bi-shop"></i> Loja</a>
+          </li>
+          <li>
+            <a href="/tarefas"><i class="bi bi-check2-square"></i> Tarefas</a>
+          </li>
+          <li>
+            <a href="/doacao"><i class="bi bi-heart"></i> Doação</a>
+          </li>
+          <li>
+            <a href="/agendamento1"
+              ><i class="bi bi-calendar-check"></i> Atendimento Online</a
+            >
+          </li>
+
+          <% if (usuario && usuario.tipo === "farmacia") { %>
+          <li>
+            <a href="/adm/home2"
+              ><i class="bi bi-shop-window"></i> Minha Loja</a
+            >
+          </li>
+          <% } %> <% if (usuario && usuario.tipo === "profissional") { %>
+          <li>
+            <a href="/agenda"
+              ><i class="bi bi-calendar-week"></i> Minha Agenda</a
+            >
+          </li>
+          <% } %>
+
+          <li>
+            <a href="/#"><i class="bi bi-envelope"></i> Contato</a>
+          </li>
+          <li>
+            <a href="/#"><i class="bi bi-info-circle"></i> Sobre</a>
+          </li>
         </ul>
 
         <label for="menuToggle" class="close-menu">&times;</label>
       </nav>
     </section>
-    <!-- FIM MENU HAMBURGUER -->
 
     <!-- LOGO -->
     <a href="/tomarammeutela" class="header-logo">
       <img src="/imagem/1x/logozeko.png" alt="Healthy Safely" />
     </a>
-    <!-- FIM LOGO -->
 
     <!-- BARRA DE PESQUISA PRIMÁRIA (some quando tela for menor que 650px) -->
     <form class="search-bar" role="search">
@@ -49,15 +77,10 @@
       </label>
       <input type="text" id="headerSearch" placeholder="Busque o que deseja" />
     </form>
-    <!-- FIM BARRA DE PESQUISA PRIMÁRIA -->
 
     <!-- AÇÕES DO USUÁRIO -->
     <nav class="header-actions" aria-label="Ações do usuário">
-      <!--<span class="user-points">
-        <img src="/imagem/a.png" alt="Seus pontos" />
-      </span>-->
-
-      <!-- MENU CARRINHO LATERAL -->
+      <!-- MENU CARRINHO LATERAL(fechado) -->
       <div class="user-menu">
         <a
           href="javascript:void(0);"
@@ -69,20 +92,28 @@
         </a>
       </div>
 
-      <!-- Menu Lateral (Carrinho) -->
+      <!-- MENU CARRINHO LATERAL(ABERTO) -->
       <div id="cartSidebar" class="cart-sidebar">
-        <!-- Cabeçalho -->
         <div class="cart-header">
           <h2>Carrinho de Compras</h2>
           <button class="close-btn" onclick="closeCartMenu()">&times;</button>
         </div>
 
-        <!-- Conteúdo -->
         <div class="cart-sidebar-content">
+          <% if (usuario && usuario.tipo === "cliente" || usuario &&
+          usuario.tipo === "farmacia" || usuario && usuario.tipo ===
+          "profissional" ) { %>
           <ul id="cartItems"></ul>
+          <% } else{%>
+          <div class="cart-sem-login">
+            <h1>
+              É necessário fazer <a href="/login">login</a> para adicionar algum
+              produto ao carrinho.
+            </h1>
+          </div>
+          <%} %>
         </div>
 
-        <!-- Rodapé -->
         <div class="cart-footer">
           <div class="total">
             <span>Total:</span>
@@ -91,7 +122,6 @@
           <button>Finalizar Compra</button>
         </div>
       </div>
-      <!-- FIM DO MENU CARRINHO LATERAL-->
 
       <!-- ÍCONE DE SININHO E MODAL DE NOTIFICAÇÕES -->
       <div class="user-menu">
@@ -108,15 +138,29 @@
           <a href="#" role="menuitem">Ver todas as notificações</a>
         </section>
       </div>
-      <!-- FIM ÍCONE DE SININHO E MODAL DE NOTIFICAÇÕES -->
 
       <!-- PERFIL -->
       <div class="user-menu">
         <i class="bi bi-person-circle" id="perfilMenuToggle"></i>
         <section id="perfilMenu" class="perfil-dropdown hidden" role="menu">
+          <% if (usuario) { %>
+          <li><a href="/perfil">Minha conta</a></li>
+          <li><a href="/meus-pedidos">Meus pedidos</a></li>
+          <li><a href="/favoritos">Favoritos</a></li>
+          <% if (usuario.tipo === "farmacia") { %>
+          <li><a href="/adm/home2">Gerenciar loja</a></li>
+          <li><a href="/adm/vendas">Minhas vendas</a></li>
+          <% } else if (usuario.tipo === "profissional") { %>
+          <li><a href="/agenda">Minha agenda</a></li>
+          <li><a href="/consultas">Consultas</a></li>
+          <% } %>
+
+          <li><hr /></li>
+          <li><a href="/logout" class="logout-btn">Sair</a></li>
+          <% } else { %>
           <a href="/login" role="menuitem">Entrar</a>
           <button class="abrir-cadastro" role="menuitem">Cadastrar</button>
-          <a href="/perfil" role="menuitem">Conta</a>
+          <% } %>
         </section>
       </div>
       <!-- FIM PERFIL -->
@@ -129,14 +173,12 @@
   <nav class="header-nav" id="mobileNav" aria-label="Navegação principal">
     <a href="/loja">Loja</a>
     <% if (usuario && usuario.tipo === "farmacia") { %>
-            <a href="/adm/home2">Minha Loja</a>
-            <% } %>
+    <a href="/adm/home2">Minha Loja</a>
+    <% } %>
     <a href="/tarefas">Tarefas</a>
     <a href="/progressao">Progressão</a>
     <a href="/doacao">Doação</a>
     <a href="/agendamento1">Atendimento Online</a>
-    
-  
   </nav>
   <!-- FIM SUBMENU -->
 </header>
@@ -178,7 +220,9 @@
     <h2 id="modalCadastroTitle">Escolha o tipo de cadastro</h2>
     <section class="opcoes-cadastro">
       <a href="/cadastroCliente" class="btn-cadastro">Como cliente</a>
-      <a href="/cadastroColaborador" class="btn-cadastro">Como colaborador</a>
+      <a href="/cadastroColaborador" class="btn-cadastro"
+        >Como um Colaborador</a
+      >
     </section>
   </section>
 </section>
