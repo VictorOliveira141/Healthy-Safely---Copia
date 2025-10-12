@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avaliações | Área Profissional</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <%- include("../../partials/header") %> <%-
+    include('../../partials/menu-inferior.ejs') %>
+
+    <div class="admin-container">
+      <!-- SIDEBAR -->
+      <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+
+      <!-- MAIN -->
+      <main class="admin-main">
+        <!-- CABEÇALHO PROFISSIONAL -->
+        <section class="profissional-header">
+          <img src="" alt="Foto do Profissional" class="foto-profissional" />
+          <div class="dados-profissional">
+            <h1>VITAO</h1>
+            <p></p>
+            <span class="especialidade"></span>
+          </div>
+
+          <div class="icones-editar">
+            <button class="btn-editar-perfil" title="Editar perfil">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <a href="/logout" class="btn-editar-perfil" title="Sair">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </div>
+        </section>
+
+        <!-- AVALIAÇÕES -->
+        <section class="avaliacoes-section">
+          <h2>Avaliações dos Pacientes</h2>
+
+          <div class="lista-avaliacoes">
+            <div class="avaliacao-card">
+              <div class="avaliacao-header">
+                <h3></h3>
+                <span class="nota">⭐ </span>
+              </div>
+              <p class="comentario"></p>
+              <p class="data"></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <%- include("../../partials/footer") %>
+
+    <style>
+      /* ================= RESET ================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* ================= CONTAINER ================= */
+      .admin-container {
+        display: flex;
+        gap: 20px;
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+        flex-wrap: nowrap;
+      }
+
+      /* ================= SIDEBAR ================= */
+      .admin-sidebar {
+        flex: 0 0 220px;
+        background-color: #e3f0ec;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .admin-sidebar .sidebar-item {
+        text-decoration: none;
+        color: #00594c;
+        font-weight: 600;
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: background 0.2s;
+      }
+
+      .admin-sidebar .sidebar-item i {
+        font-size: 18px;
+      }
+      .admin-sidebar .sidebar-item:hover,
+      .admin-sidebar .sidebar-item.active {
+        background-color: #c8f0e4;
+      }
+
+      /* ================= MAIN ================= */
+      .admin-main {
+        flex: 1;
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* ================= CABEÇALHO PROFISSIONAL ================= */
+      .profissional-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        background-color: #e3f0ec;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .foto-profissional {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+        background: #fff;
+      }
+
+      .dados-profissional h1 {
+        font-size: 22px;
+        color: #00594c;
+      }
+      .dados-profissional p {
+        color: #333;
+      }
+      .especialidade {
+        font-size: 14px;
+        color: #00796b;
+      }
+
+      .icones-editar {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+      }
+      .btn-editar-perfil {
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .btn-editar-perfil i {
+        font-size: 22px;
+        color: #00594c;
+      }
+      .btn-editar-perfil:hover {
+        transform: scale(1.1);
+      }
+
+      /* ================= AVALIAÇÕES ================= */
+      .avaliacoes-section h2 {
+        font-size: 20px;
+        color: #20413b;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .lista-avaliacoes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .avaliacao-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .avaliacao-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .avaliacao-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .avaliacao-header h3 {
+        font-size: 18px;
+        color: #00594c;
+      }
+      .nota {
+        font-weight: 600;
+        color: #00796b;
+      }
+
+      .comentario {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .data {
+        font-size: 13px;
+        color: #888;
+        text-align: right;
+      }
+
+      .sem-avaliacoes {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f2f9f7;
+        border-radius: 12px;
+      }
+
+      .sem-avaliacoes p {
+        color: #333;
+      }
+
+      /* ================= RESPONSIVIDADE ================= */
+      @media (max-width: 768px) {
+        .admin-container {
+          flex-direction: column;
+        }
+        .admin-sidebar {
+          flex-direction: row;
+          justify-content: space-around;
+          padding: 10px;
+          border-radius: 8px;
+          box-shadow: none;
+        }
+        .admin-sidebar .sidebar-item {
+          padding: 6px 10px;
+          font-size: 13px;
+        }
+
+        .lista-avaliacoes {
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        .foto-profissional {
+          width: 60px;
+          height: 60px;
+        }
+        .dados-profissional h1 {
+          font-size: 16px;
+        }
+        .especialidade {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pacientes | Área Profissional</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <%- include("../../partials/header") %> <%-
+    include('../../partials/menu-inferior.ejs') %>
+
+    <div class="admin-container">
+      <!-- SIDEBAR -->
+      <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+
+      <!-- MAIN -->
+      <main class="admin-main">
+        <!-- CABEÇALHO PROFISSIONAL -->
+        <section class="profissional-header">
+          <img src="" alt="Foto do Profissional" class="foto-profissional" />
+          <div class="dados-profissional">
+            <h1>VITAO</h1>
+            <p></p>
+            <span class="especialidade"></span>
+          </div>
+
+          <div class="icones-editar">
+            <button class="btn-editar-perfil" title="Editar perfil">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <a href="/logout" class="btn-editar-perfil" title="Sair">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </div>
+        </section>
+
+        <!-- PACIENTES -->
+        <section class="pacientes-section">
+          <h2>Meus Pacientes</h2>
+
+          <div class="lista-pacientes">
+            <div class="paciente-card">
+              <img src=" alt="Paciente" />
+              <h3></h3>
+              <div class="paciente-info">
+                <p>
+                  <strong>Última consulta: </strong>
+                </p>
+                <p>
+                  <strong>Total consultas: </strong>
+                </p>
+              </div>
+              <button class="btn-ver">Ver histórico</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <%- include("../../partials/footer") %>
+
+    <style>
+      /* ================= RESET ================= */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      html,
+      body {
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      /* ================= CONTAINER ================= */
+      .admin-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: nowrap;
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 0 20px;
+      }
+
+      /* ================= SIDEBAR ================= */
+      .admin-sidebar {
+        flex: 0 0 220px;
+        background-color: #e3f0ec;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .admin-sidebar .sidebar-item {
+        text-decoration: none;
+        color: #00594c;
+        font-weight: 600;
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: background 0.2s;
+      }
+
+      .admin-sidebar .sidebar-item i {
+        font-size: 18px;
+      }
+
+      .admin-sidebar .sidebar-item:hover,
+      .admin-sidebar .sidebar-item.active {
+        background-color: #c8f0e4;
+      }
+
+      /* ================= MAIN ================= */
+      .admin-main {
+        flex: 1;
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* ================= CABEÇALHO PROFISSIONAL ================= */
+      .profissional-header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        background-color: #e3f0ec;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .foto-profissional {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #fff;
+        background-color: #fff;
+      }
+
+      .dados-profissional h1 {
+        font-size: 22px;
+        color: #00594c;
+      }
+
+      .dados-profissional p {
+        color: #333;
+      }
+
+      .especialidade {
+        font-size: 14px;
+        color: #00796b;
+      }
+
+      .icones-editar {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn-editar-perfil {
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .btn-editar-perfil i {
+        font-size: 22px;
+        color: #00594c;
+      }
+
+      .btn-editar-perfil:hover {
+        transform: scale(1.1);
+      }
+
+      /* ================= PACIENTES ================= */
+      .pacientes-section h2 {
+        font-size: 20px;
+        color: #20413b;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .lista-pacientes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .paciente-card {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .paciente-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .paciente-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 10px;
+      }
+
+      .paciente-card h3 {
+        font-size: 18px;
+        color: #00594c;
+        margin-bottom: 10px;
+      }
+
+      .paciente-info {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .btn-ver {
+        background-color: #00796b;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 14px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.2s;
+      }
+
+      .btn-ver:hover {
+        background-color: #00594c;
+      }
+
+      .sem-pacientes {
+        text-align: center;
+        padding: 40px 20px;
+        background-color: #f2f9f7;
+        border-radius: 12px;
+      }
+
+      .sem-pacientes p {
+        color: #333;
+      }
+
+      /* ================= RESPONSIVIDADE ================= */
+      @media (max-width: 768px) {
+        .admin-container {
+          flex-direction: column;
+        }
+
+        .admin-sidebar {
+          flex-direction: row;
+          justify-content: space-around;
+          padding: 10px;
+          border-radius: 8px;
+          box-shadow: none;
+        }
+
+        .admin-sidebar .sidebar-item {
+          padding: 6px 10px;
+          font-size: 13px;
+        }
+
+        .lista-pacientes {
+          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        }
+
+        .paciente-card img {
+          width: 60px;
+          height: 60px;
+        }
+
+        .btn-ver {
+          padding: 6px 10px;
+          font-size: 13px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .foto-profissional {
+          width: 60px;
+          height: 60px;
+        }
+
+        .dados-profissional h1 {
+          font-size: 16px;
+        }
+
+        .especialidade {
+          font-size: 13px;
+        }
+
+        .paciente-card img {
+          width: 50px;
+          height: 50px;
+        }
+
+        .btn-ver {
+          padding: 5px 8px;
+          font-size: 12px;
+        }
+      }
+    </style>
+  </body>
+</html>

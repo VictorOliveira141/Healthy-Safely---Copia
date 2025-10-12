@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sua Área Profissional | Healthy Safely</title>
+    <link rel="stylesheet" href="../css/adm/home3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include("../../partials/header") %>
+    <!---->
+    <%- include('../../partials/menu-inferior.ejs') %>
+
+    <div class="admin-container">
+      <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+      <!-- MAIN -->
+      <main class="admin-main">
+        <!-- CABEÇALHO PROFISSIONAL -->
+        <section class="profissional-header">
+          <img
+            src="../imagem/user.png"
+            alt="Logo da Loja"
+            class="foto-profissional"
+          />
+          <div class="dados-loja">
+            <h1>VICTOR HUGO</h1>
+            <!--NODE-->
+            <p>Sem descrição</p>
+          </div>
+          <article class="icones-editar">
+            <button
+              class="btn-editar-loja"
+              onclick="window.location.href='/adm/paginaloja'"
+            >
+              <i class="bi bi-gear"></i>
+            </button>
+          </article>
+        </section>
+
+        <!-- CONSULTAS RECENTES -->
+        <section class="consultas-section">
+          <h2>Consultas Recentes</h2>
+
+          <div class="lista-consultas">
+            <div class="consulta-card">
+              <img src="../imagem/ranielnerd.png" alt="Cliente" />
+              <h3>Daniel Renovato</h3>
+              <div class="consulta-info">
+                <p><strong>Data: 04/06</strong> <span class="data"></span></p>
+                <p><strong>Hora: 16:00</strong></p>
+              </div>
+              <button class="btn-ver">Ver detalhes</button>
+            </div>
+
+            <div class="consulta-card">
+              <img src="../imagem/mateusmidia.jpg" alt="Cliente" />
+              <h3>Mateus Felipe</h3>
+              <div class="consulta-info">
+                <p><strong>Data: 04/06</strong> <span class="data"></span></p>
+                <p><strong>Hora: 16:00</strong></p>
+              </div>
+              <button class="btn-ver">Ver detalhes</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <%- include("../../partials/footer") %>
+  </body>
+</html>
