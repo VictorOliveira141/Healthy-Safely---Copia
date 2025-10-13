@@ -71,3 +71,75 @@ h1, h2, h3 {
 		margin: 6px 0;
 	}
 }
+/* ...existing code... */
+
+/* Garante que blocos grandes fiquem responsivos */
+.blocodetarefas,
+.suastarefas {
+    max-width: 100vw;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 5px 2vw;
+}
+
+/* Ajusta imagens e ícones para telas pequenas */
+@media (max-width: 600px) {
+    .blocodetarefas,
+    .suastarefas {
+        width: 98vw;
+        padding: 5px 1vw;
+        font-size: 0.95em;
+    }
+    .iconestarefas img,
+    .outros img {
+        width: 60px;
+        height: 60px;
+    }
+    .tarefão {
+        width: 80px;
+    }
+}
+
+@media (max-width: 400px) {
+    .blocodetarefas,
+    .suastarefas {
+        width: 99vw;
+        padding: 2px 0.5vw;
+        font-size: 0.9em;
+    }
+    .iconestarefas img,
+    .outros img {
+        width: 40px;
+        height: 40px;
+    }
+    .tarefão {
+        width: 60px;
+    }
+}
+
+/* Corrige flex containers para quebrar em telas pequenas */
+@media (max-width: 600px) {
+    .iconestarefas,
+    .outros {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .tarefa-bottom {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+}
+
+/* Garante que o container principal ocupe toda a tela em mobile */
+@media (max-width: 600px) {
+    .tarefa-container {
+        min-width: unset;
+        width: 99vw;
+        height: auto;
+        margin: 0;
+    }
+}
+
+/* ...existing code... */

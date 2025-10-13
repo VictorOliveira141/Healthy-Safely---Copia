@@ -1,265 +1,237 @@
-@media (max-width: 600px) {
-    .tarefa-container {
-        padding: 10px;
-        min-width: 200px;
-        height: auto;
-    }
-    h3 {
-        font-size: 1.2em;
-    }
-    .tarefa-texto {
-        font-size: 1em;
-    }
+/* === Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (max-width: 400px) {
-    .tarefa-container {
-        padding: 4px;
-        font-size: 0.9em;
-    }
-    h3 {
-        font-size: 1em;
-    }
-    .tarefa-texto {
-        font-size: 0.9em;
-    }
-}
-html , body {
-    background-color: #014638 !important;
+html,
+body {
+  background-color: #014638;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  overflow-x: hidden;
 }
 
-.geral{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+/* === Estrutura Principal === */
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem 1rem 4rem;
 }
 
+/* === Card Principal === */
 .tarefa-container {
-    display: flex;
-    flex-direction: column;
-    background-color: #0E3931;
-    width: 45%;
-    min-width: 350px;
-    height: 700px;
-    margin: 0 auto;
-    padding: 40px 30px;
-   margin-top: 20px;
-}
-@media (max-width: 900px) {
-    .tarefa-container {
-        width: 90%;
-        height: auto;
-        padding: 20px 10px;
-    }
-    .tarefa-topo {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
-    }
-    h3 {
-        font-size: 2em;
-    }
-    .tarefa-texto {
-        font-size: 1.2em;
-        margin-bottom: 20px;
-    }
-}
-@media (max-width: 600px) {
-    .tarefa-container {
-        width: 98%;
-        min-width: 180px;
-        padding: 18px 6px;
-        border-radius: 10px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-    }
-    .tarefa-topo {
-        gap: 8px;
-    }
-    h3 {
-        font-size: 1.3em;
-        margin: 8px 0;
-    }
-    .tarefa-texto {
-        font-size: 1.1em;
-        margin-bottom: 16px;
-    }
-}
+  background-color: #0e3931;
+  border-radius: 16px;
+  padding: 2rem;
 
-@media (max-width: 400px) {
-    .tarefa-container {
-        padding: 10px 2px;
-        font-size: 1em;
-        border-radius: 8px;
-    }
-    h3 {
-        font-size: 1em;
-        margin: 6px 0;
-    }
-    .tarefa-texto {
-        font-size: 1em;
-        margin-bottom: 10px;
-    }
+  width: 67%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: center;
+}
+h3 {
+text-decoration: none;
 }
 
 .tarefa-topo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.lua img {
-    width: 80px;
-    height: 80px;
-    margin: 0;
+.lua-img {
+  width: 70px;
+  height: 70px;
 }
 
-h3 {
-    font-size: 2.5em;
-    color: white;
-    font-weight: bold;
-    margin: 0;
+.tarefa-container h3 {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .tarefa-texto {
-    color: #fff;
-    font-size: 1.8em;
-    text-align: left;
-    margin-bottom: 40px;
-    margin-top: 10px;
-    font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
+/* === Parte Inferior da Tarefa === */
 .tarefa-bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .tarefa-porcentagem {
-    color: #fff;
-    font-size: 2em;
-    font-weight: bold;
-    margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .tarefa-botao-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .tarefa-botao {
-    width: 80px;
-    height: 80px;
-    background-color: #065747;
-    border: none;
-    border-radius: 20px;
-    margin-bottom: 5px;
-    cursor: pointer;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(145deg, #046b56, #0b4b3b);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tarefa-botao:hover {
+  background: #0b5c4a;
+  transform: scale(1.05);
 }
 
 .tarefa-botao-texto {
-    color: #fff;
-    font-size: 1em;
-    text-align: center;
-    font-weight: bold;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* === Seção de Tarefas === */
+.tarefas-section {
+  background-color: #103b33;
+  border-radius: 18px;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.titulo-tarefas {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .tarefas-container {
-    display: flex;
-    justify-content: center;
-}
-
-.blocodetarefas {
-  background-color: #103b33;
-  width: 1000px;
-  padding: 5px 10px;
-   border-radius: 0px 0px 19px 19px;
-   height: 400px;
-  margin-top: 0px;
-}
-
-.tarefão {
-    width: 130px;
-    height: auto;
-    display: block;
-    
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-decoration: none;
 }
 
 .iconestarefas {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    gap: 20px;
-    padding: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  text-decoration: none;
 }
 
-hover .iconestarefas img {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-}
-
-.iconestarefas img:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-}
-
-.ltn_saude {
-    color: white;
-    font-size: 1.2em;
-    text-align: center;
-    margin-top: 10px;
-}
-a {
+.tarefa-item {
     text-decoration: none;
-    color: white;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.outros {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+.tarefa-item img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+.tarefa-item h3 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  text-decoration: none;
 }
 
-hover .outros img {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
-}
-.outros img {
-    width: 100px;
-    height: 100px;
-    cursor: pointer;
-}
-.outros img:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease;
+.tarefa-item:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  text-decoration: none;
 }
 
-.tarefassas{
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
-.suastarefas {
-    text-align: center;
-    background-color: #013220;
-    padding: 5px 10px;
-    width: 1000px;
-  
+/* === Responsividade === */
+@media (max-width: 900px) {
+  .tarefa-container h3 {
+    font-size: 1.8rem;
+  }
+
+  .tarefa-texto {
+    font-size: 1.1rem;
+  }
 }
 
-.st {
-    color: white;
-    font-size: 2em;
-    margin-top: 20px;
-    margin-bottom: 20px;
+@media (max-width: 600px) {
+  .tarefa-container {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .tarefa-topo {
+    flex-direction: column;
+  }
+
+  .tarefa-container h3 {
+    font-size: 1.5rem;
+  }
+
+  .tarefa-texto {
+    font-size: 1rem;
+  }
+
+  .tarefa-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tarefa-botao {
+    width: 70px;
+    height: 70px;
+  }
+
+  .iconestarefas {
+    gap: 1rem;
+  }
+
+  .tarefa-item img {
+    width: 70px;
+  }
 }
 
+@media (max-width: 400px) {
+  .tarefa-container h3 {
+    font-size: 1.3rem;
+  }
 
+  .tarefa-texto {
+    font-size: 0.9rem;
+  }
+
+  .tarefa-item img {
+    width: 60px;
+  }
+
+  .titulo-tarefas {
+    font-size: 1.5rem;
+  }
+}
+
+.tarefa-item h3,
+.tarefa-item h3 a {
+ color: white;
+  text-decoration: none;
+  cursor: default;
+}

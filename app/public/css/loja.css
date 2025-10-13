@@ -1,116 +1,86 @@
 html, body {
-  background: #f2f5f2 !important; 
+  background: #f2f5f2 !important;
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-body{
-    background-color: antiquewhite;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+body {
+  background-color: antiquewhite;
 }
+
+/* ---------- BANNERS ---------- */
 .bannerdalojainicial {
-    background-size: cover;
-    height: 300px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 170px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10rem;
 }
 
-.bannerloja{
-    width: 100%;
-    height: auto;
+.bannerloja,
+.bannersemana {
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  border-radius: 15px;
+}
+
+/* ---------- CUPONS ---------- */
+.cuponsdispo, .produtosdisponiveis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.cupomdispo, .produtekos {
+  width: 90%;
+  max-width: 400px;
+  border-radius: 19px;
+  background-color: #0C4F43;
+  padding: 0.8rem;
+}
+
+.ltn_cupomdispo, .ltn_prodisponivel {
+  color: white;
+  font-size: 1.2em;
+  text-align: center;
 }
 
 .cupons {
-    display: flex;
-    margin-top: 40px;
-    justify-content: center;
-    gap: 20px;
-  
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .desconto {
-   width: 400px;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  transition: transform 0.4s ease;
 }
 
-.cuponsdispo {
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.cupomdispo {
-    width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 19px;
-    background-color: #0C4F43;
-}
-
-.ltn_cupomdispo {
-    color: white;
-    font-size: 1.2em;
-    text-align: center;
-  
-    justify-content: center;
-}
-
-hover .cupons img  {
-    width: 100%;
-    height: 100%;
-    border-radius: 19px;
-    transition: transform 0.5s ease;
-}
 .cupons img:hover {
-    transform: scale(1.10);
+  transform: scale(1.08);
 }
 
-
-.produtosdisponiveis {
-   
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-}
-
-.produtekos {
-    width: 400px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    border-radius: 19px;
-    background-color: #0C4F43;
-}
-
-.ltn_prodisponivel {
-    color: white;
-    font-size: 1.2em;
-    text-align: center;
-  
-    justify-content: center;
-}
-
+/* ---------- SLIDER ---------- */
 .slider-ml {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 40px auto;
+  margin: 3rem auto;
   max-width: 1100px;
-  width: 100%;
-  gap: 10px;
+  width: 95%;
+  gap: 0.5rem;
+  position: relative;
 }
 
-.btn.ml-prev,
-.btn.ml-next {
+.btn.ml-prev, .btn.ml-next {
   background: #03201c;
   color: #fff;
   border: none;
@@ -123,22 +93,28 @@ hover .cupons img  {
   align-items: center;
   justify-content: center;
   transition: background 0.2s;
-  z-index: 2;
+  z-index: 5;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
-.btn.ml-prev:hover,
-.btn.ml-next:hover {
+
+.btn.ml-prev { left: -25px; }
+.btn.ml-next { right: -25px; }
+
+.btn.ml-prev:hover, .btn.ml-next:hover {
   background: #0C4F43;
 }
 
 .slides-ml-wrapper {
   overflow: hidden;
-  width: 1040px; /* 4 produtos de 260px cada */
-  max-width: 90vw;
+  width: 100%;
+  position: relative;
 }
 
 .slides-ml {
   display: flex;
-  transition: transform 0.5s cubic-bezier(.4,1,.4,1);
+  transition: transform 0.8s cubic-bezier(.45,1.25,.55,1);
   gap: 20px;
 }
 
@@ -147,31 +123,38 @@ hover .cupons img  {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   padding: 16px;
-  min-width: 240px;
-  max-width: 240px;
-  flex: 0 0 240px;
+  min-width: 220px;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0;
-  transition: box-shadow 0.2s;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
+
+.produto-ml:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
 .produto-ml img {
   width: 120px;
   height: 120px;
   object-fit: contain;
   margin-bottom: 12px;
 }
+
 .produto-ml h3 {
   font-size: 1.1rem;
   margin: 8px 0 4px 0;
   color: #20413b;
 }
+
 .produto-ml .preco {
   font-weight: bold;
   color: #0d201d;
   margin-bottom: 10px;
 }
+
 .btn-comprar {
   background: #0C4F43;
   color: #fff;
@@ -182,54 +165,58 @@ hover .cupons img  {
   font-weight: bold;
   transition: background 0.2s;
 }
+
 .btn-comprar:hover {
   background: #00594c;
 }
 
-.irparaloja {
-  text-align: center;
-  margin-top: 40px 40px 40px 40px;
+/* ---------- SLIDER - BOLINHAS ---------- */
+.slider-dots {
+  display: flex;
   justify-content: center;
+  margin-top: 1rem;
+  gap: 8px;
 }
 
-.botaozinhodaloja {
+.slider-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider-dots button.active {
   background: #0C4F43;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 18px;
-  text-decoration: none;
-  width: 400px;
 }
 
-.footer {
- 
-  margin-top: 40px;
-}
-
+/* ---------- CATEGORIAS ---------- */
 .categorias {
-  margin: 50px auto;
+  margin: 4rem auto;
   text-align: center;
+  width: 90%;
+  max-width: 1000px;
 }
 
 .categorias h2 {
-  font-size: 24px;
-  color: #064e3b; /* verde escuro */
-  margin-bottom: 20px;
+  font-size: 1.6rem;
+  color: #064e3b;
+  margin-bottom: 1rem;
   font-weight: bold;
 }
 
 .categorias-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.2rem;
 }
 
 .categoria {
   background: #fff;
   border-radius: 15px;
-  padding: 20px;
+  padding: 1.2rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
@@ -250,182 +237,63 @@ hover .cupons img  {
 }
 
 .categoria p {
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #064e3b;
 }
 
-.bannersemana {
-  width: 68%;
-  height: auto;
-  border-radius: 15px;
-  margin-top: -70px;
-}
-
+/* ---------- CATEGORIAS ESPORTE ---------- */
 .categorias-esporte {
-  padding: 2rem;
+  padding: 2rem 1rem;
   text-align: center;
 }
-
-
-
 
 .lista-categorias {
   display: flex;
   justify-content: center;
-  gap: 5.2rem;
   flex-wrap: wrap;
+  gap: 3rem;
 }
 
-
-
 .item-categoria img {
-  width: 270px;
+  width: 220px;
   height: auto;
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease; /* animação suave */
+  transition: transform 0.3s ease;
 }
 
 .item-categoria img:hover {
-  transform: scale(1.08); /* aumenta 8% */
+  transform: scale(1.08);
 }
 
-
-@media (max-width: 800px) {
-   .bannerdalojainicial {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
+/* ---------- RESPONSIVIDADE ---------- */
+@media (max-width: 1024px) {
+  .bannerdalojainicial { margin-top: 7rem; }
+  .bannerloja, .bannersemana { max-width: 90%; }
+  .produto-ml { min-width: 200px; }
 }
 
-.bannerloja{
-    width: 800px;
-    height: 700px;
-}
-.cupons {
-    display: flex;
-    margin-top: 40px;
-    justify-content: center;
-   
-  
+@media (max-width: 768px) {
+  .bannerloja, .bannersemana { max-width: 100%; }
+  .desconto { max-width: 240px; }
+  .slides-ml-wrapper { width: 95%; }
+  .lista-categorias { gap: 2rem; }
+  .item-categoria img { width: 160px; }
 }
 
-.desconto {
-   width: 250px;
+@media (max-width: 480px) {
+  .bannerdalojainicial { margin-top: 5rem; }
+  .bannerloja, .bannersemana { border-radius: 10px; }
+  .desconto { max-width: 160px; }
+  .produto-ml { min-width: 180px; }
+  .slides-ml-wrapper { width: 100%; }
+  .slider-ml { gap: 0.2rem; }
+  .item-categoria img { width: 120px; }
+  .categoria p { font-size: 1rem; }
+  .bannersemana {width:75%; height: 85px;}
 }
 
-.lista-categorias img {
-  width: 140px;
-  margin-top: -70px;
+@media (max-width: 360px) {
+  .produto-ml { min-width: 150px; }
+  .item-categoria img { width: 100px; }
+  .bannersemana { width: 95%; }
 }
-.bannersemana{
-  width: 650px;
-}
-}
-
-@media (max-width: 600px) {
-   .bannerdalojainicial {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5px;
-}
-
-.bannerloja{
-    width: 600px;
-    height: 800px;
-}
-.cupons {
-    display: flex;
-    margin-top: 40px;
-    justify-content: center;
-   
-  
-}
-
-.desconto {
-   width: 170px;
-}
-
-.slider-ml {
-  width: 600px;
-}
-
-.lista-categorias img {
-  width: 100px;
- 
-}
-.bannersemana{
-  width: 500px;
-  margin-top: 15px;
-}
-
-.semanadoconsumas {
-  margin-top: -100px;
-}
-
-.produto-ml {
-  width: 80px;
-}
-
-.categorias {
-  margin-top: -20pxs;
-}
-
-}
-
-@media (max-width: 400px) {
-   .bannerdalojainicial {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 5px;
-}
-
-.bannerloja{
-    width: 400px;
-    height: 900px;
-    margin-top: 50px;
-}
-.cupons {
-    display: flex;
-    margin-top: 40px;
-    justify-content: center;
-   
-   
-   
-  
-}
-
-.desconto {
-   width: 100px;
-}
-
-.slider-ml {
-  width: 400px;
-}
-
-.lista-categorias img {
-  width: 80px;
- 
-}
-.bannersemana{
-  width: 300px;
-  margin-top: 15px;
-}
-
-.semanadoconsumas {
-  margin-top: -100px;
-}
-
-.produto-ml {
-  width: 80px;
-}
-
-.categorias {
-  margin-top: -20px;
-}
-
-}
-

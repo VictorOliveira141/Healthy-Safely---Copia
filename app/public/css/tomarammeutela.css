@@ -5,27 +5,24 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-}
-
-html {
   scroll-behavior: smooth;
-  /*isso faz que quando clique no botao de "voltar ao topo" tenha uma transição suave*/
 }
 
 /* ================= TOPO DO MAIN ================= */
 .main-fundo {
   background-color: white;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
+
 .main-container {
   margin: 30px auto 0 auto;
   display: grid;
-  grid-template-columns: 1.8fr 1.3fr; /* aq da para ajustar o tamanho do GRID  */
+  grid-template-columns: 1.8fr 1.3fr;
   gap: 15px;
-  max-width: 1200px; /* aq o tamanho do grid principal (que ta com carrosel) */
+  max-width: 1200px;
   align-items: start;
 }
+
 .main-content {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -34,33 +31,38 @@ html {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 255px; /* altura do conteúdo */
+  min-height: 255px; /* ajustado para min-height */
 }
 
 /* ================= CARROSSEL ================= */
 .carrossel {
   width: 100%;
-  height: 100%; /* o conteudo ocupa a div toda */
+  height: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .carrossel-slide {
   display: none;
   width: 100%;
   height: 100%;
 }
+
 .carrossel-slide.active {
   display: block;
 }
+
 .carrossel-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* preenche a imagem sem deixar fundo branco */
+  object-fit: cover;
   display: block;
+  border-radius: 12px;
 }
+
 .botao-prev,
 .botao-next {
   position: absolute;
@@ -75,16 +77,12 @@ html {
   border-radius: 6px;
   z-index: 2;
 }
-.botao-prev {
-  left: 8px;
-}
-.botao-next {
-  right: 8px;
-}
+
+.botao-prev { left: 8px; }
+.botao-next { right: 8px; }
+
 .botao-prev:hover,
-.botao-next:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
+.botao-next:hover { background-color: rgba(0, 0, 0, 0.7); }
 
 /* ================= BANNERS SEGUNDARIOS ================= */
 .side-content {
@@ -93,6 +91,7 @@ html {
   gap: 15px;
   align-items: stretch;
 }
+
 .side-item {
   background-color: #ffffff;
   border-radius: 12px;
@@ -101,29 +100,32 @@ html {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 120px; /* altura menor comparado ao principal */
+  height: 120px;
 }
+
 .side-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ocupa toda a div */
+  object-fit: cover;
   display: block;
+  border-radius: 12px;
 }
 
 /* ================= BOTOES DE SERVIÇOS ================= */
 .botoes-servicos {
   display: flex;
-  gap: 55px; /* espaço entre os quadrados */
+  gap: 55px;
   justify-content: center;
   margin: 20px 0;
 }
+
 .botoes-servicos section {
   width: 80px;
   height: 90px;
   background-color: #f5f5f5;
   border-radius: 12px;
   display: flex;
-  flex-direction: column; /* ícone em cima, texto embaixo */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -131,27 +133,29 @@ html {
   cursor: pointer;
   text-align: center;
 }
+
 .botoes-servicos section:hover {
   background-color: #e3e3e3;
   transform: translateY(-3px);
 }
+
 .botoes-servicos i {
   font-size: 35px;
   color: #00594c;
-  margin-bottom: 6px; /* espaço entre ícone e texto */
+  margin-bottom: 6px;
 }
+
 .botoes-servicos span {
   font-size: 17px;
   color: #00594c;
   font-weight: 500;
 }
-.botoes-servicos a {
-  text-decoration: none; /* remove o sublinhado dos links */
-}
 
-/* ================= CENTRO DO MAIN =================*/
+.botoes-servicos a { text-decoration: none; }
+
+/* ================= CENTRO DO MAIN ================= */
 .main-centro {
-  margin: 20px auto; /* centraliza horizontalmente */
+  margin: 20px auto;
   background-color: white;
   color: #00594c;
   display: flex;
@@ -159,14 +163,15 @@ html {
   align-items: stretch;
   padding: 16px;
   border-radius: 10px;
-  max-width: 1200px; /* largura máxima */
+  max-width: 1200px;
   width: 90%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
 .main-centro h1 {
   display: flex;
   align-items: center;
-  gap: 12px; /* espaço entre texto e linhas */
+  gap: 12px;
   margin: 0 0 18px 0;
   font-size: 30px;
   font-weight: 600;
@@ -174,58 +179,41 @@ html {
   white-space: nowrap;
 }
 
-/* ================= LINHAS DO TITULO DOS SLIDERS ================= */
-.main-centro h1::before {
-  content: "";
-  width: 70px; /* Tamanho da primeira linha (esquerda) */
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.12),
-    rgba(0, 0, 0, 0.08)
-  );
-}
+.main-centro h1::before,
 .main-centro h1::after {
   content: "";
-  flex: 1 1 auto; /* Tamanho da segunda linha (direita) */
   height: 1px;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.12),
-    rgba(0, 0, 0, 0.08)
-  );
+  background: linear-gradient(to right, rgba(0,0,0,0.12), rgba(0,0,0,0.08));
 }
+
+.main-centro h1::before { width: 70px; }
+.main-centro h1::after { flex: 1 1 auto; }
 
 /* ================= SLIDERS ================= */
 .main-centro .slider {
   display: flex;
-  justify-content: center; /* centraliza o conjunto do slider */
+  justify-content: center;
   align-items: center;
   gap: 10px;
   margin: 0 auto;
   width: 100%;
 }
+
 .main-centro .slides-wrapper {
   overflow: hidden;
   display: flex;
-  justify-content: center; /* centraliza os slides */
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  width: 1040px; /* 4 produtos de 260px cada */
-  max-width: 90vw;
-}
-.main-centro .slides {
-  display: flex;
-  gap: 20px; /* espaço entre eles */
-  margin: 0;
+  max-width: 1040px;
   padding: 0;
 }
 
-/* Botões do slider */
-.main-centro .btn.ml-prev,
-.main-centro .btn.ml-next {
-  flex: 0 0 auto;
+.main-centro .slides {
+  display: flex;
+  gap: 20px;
+  transition: transform 0.5s cubic-bezier(0.4,1,0.4,1);
 }
+
 .btn.ml-prev,
 .btn.ml-next {
   background: #03201c;
@@ -242,43 +230,11 @@ html {
   transition: background 0.2s;
   z-index: 2;
 }
-.btn.ml-prev:hover,
-.btn.ml-next:hover {
-  background: #0c4f43;
-}
-.slides {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 1, 0.4, 1); /* Animação ao deslizar */
-  gap: 20px;
-}
-.produtos.ver-mais {
-  display: flex;
-  justify-content: center;
-}
-.btn-circular {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  background: #0c4f43; /* verde escuro */
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-.btn-circular:hover {
-  background: #096e5a; /* tom mais claro no hover */
-  transform: scale(1.1);
-}
 
-/* ================= ESTILO DOS PRODUTOS ================= */
-a {
-  text-decoration: none;
-}
+.btn.ml-prev:hover,
+.btn.ml-next:hover { background: #0c4f43; }
+
+/* ================= PRODUTOS ================= */
 .produtos {
   display: flex;
   flex-direction: column;
@@ -286,27 +242,27 @@ a {
   text-align: center;
   border-radius: 12px;
   padding: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: transform 0.2s;
-  flex: 0 0 220px; /* espaçamento entre produtos */
-  justify-content: flex-start;
+  flex: 0 0 220px;
 }
-.produtos:hover {
-  transform: translateY(-4px);
-}
+
+.produtos:hover { transform: translateY(-4px); }
+
 .produtos img {
   width: 100px;
   height: 100px;
   object-fit: contain;
   margin-bottom: 12px;
 }
+
 .produtos h3 {
   font-size: 1.1rem;
   margin: 8px 0 4px 0;
   color: #20413b;
   min-height: 40px;
 }
-/* INFORMAÇÕES DO PRODUTO */
+
 .produto-info {
   display: flex;
   flex-direction: row;
@@ -314,17 +270,11 @@ a {
   align-items: center;
   gap: 6px;
   margin-bottom: 6px;
-  min-height: 20px;
 }
-.avaliacao i {
-  color: #ffd700;
-  font-size: 14px;
-  margin-right: 2px;
-}
-.unidades-vendidas {
-  font-size: 12px;
-  color: #555;
-}
+
+.avaliacao i { color: #ffd700; font-size: 14px; margin-right: 2px; }
+.unidades-vendidas { font-size: 12px; color: #555; }
+
 .colaborador {
   display: flex;
   justify-content: center;
@@ -334,31 +284,13 @@ a {
   font-size: 13px;
   color: #333;
 }
-.colaborador i {
-  color: #1da1f2; /* azul verificado */
-  font-size: 16px;
-}
-.preco-antigo {
-  text-decoration: line-through;
-  font-weight: bold;
-  color: #888;
-  font-size: 15px;
-}
-.desconto {
-  background-color: yellow;
-  color: #0c4f43;
-  font-weight: bold;
-  font-size: 15px;
-}
-.preco {
-  color: #0d201d;
-  font-size: 18px;
-  font-weight: bold;
-  margin-top: 10px;
-  display: inline-block; /* ou inline */
-}
 
-/* botoes */
+.colaborador i { color: #1da1f2; font-size: 16px; }
+
+.preco-antigo { text-decoration: line-through; font-weight: bold; color: #888; font-size: 15px; }
+.desconto { background-color: yellow; color: #0c4f43; font-weight: bold; font-size: 15px; }
+.preco { color: #0d201d; font-size: 18px; font-weight: bold; margin-top: 10px; display: inline-block; }
+
 .btn-comprar {
   background: #00796b;
   color: #fff;
@@ -370,12 +302,9 @@ a {
   font-weight: bold;
   transition: background 0.2s;
 }
-.btn-comprar i {
-  margin-left: 8px;
-}
-.btn-comprar:hover {
-  background: #00594c;
-}
+
+.btn-comprar i { margin-left: 8px; }
+.btn-comprar:hover { background: #00594c; }
 
 /* ================= CATEGORIAS ================= */
 .botoes-categorias {
@@ -384,9 +313,10 @@ a {
   gap: 16px;
   justify-content: center;
 }
+
 .botoes-categorias section {
   display: flex;
-  flex-direction: column; /* imagem em cima, texto embaixo */
+  flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 12px;
@@ -396,17 +326,20 @@ a {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   width: 120px;
 }
+
 .botoes-categorias section:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
 .botoes-categorias section img {
   width: 90px;
   height: 90px;
   object-fit: cover;
   margin-bottom: 8px;
-  border-radius: 50%; /*  deixa a imagem redonda */
+  border-radius: 50%;
 }
+
 .botoes-categorias section span {
   font-size: 14px;
   font-weight: 600;
@@ -416,25 +349,12 @@ a {
 /* ================= PRODUTOS DESTAQUE ================= */
 .produtos-destaque {
   padding: 20px;
-}
-.produtos-destaque {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(180px, 1fr)
-  ); /* até 5 por linha */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
 }
 
-/* ================= CONSULTAS "RAPIDAS" ================= */
-.img-agende {
-  display: block;
-  margin: 20px auto;
-  width: 63%;
-  height: auto;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+/* ================= CONSULTAS ================= */
 .secao-online {
   padding: 20px;
   background: #fff;
@@ -442,22 +362,26 @@ a {
   flex-direction: column;
   align-items: center;
 }
+
 .cabecalho-secao {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .cabecalho-secao h2 {
   font-size: 28px;
   font-weight: 600;
-  color: #00594c; /* mesmo tom usado no main-centro */
+  color: #00594c;
   margin-bottom: 10px;
 }
+
 .cabecalho-secao p {
   color: #555;
   max-width: 600px;
   margin: 0 auto;
   font-size: 15px;
 }
+
 .grade-servicos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -466,30 +390,32 @@ a {
   max-width: 1200px;
   margin: 0 auto 20px auto;
 }
+
 .cartao-servico {
   background: #fff;
   border-radius: 12px;
   padding: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* mesmo estilo dos produtos */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 .cartao-servico:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
 }
+
 .topo-servico {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
 }
-.icone-servico {
-  font-size: 32px;
-  color: #00594c;
-}
+
+.icone-servico { font-size: 32px; color: #00594c; }
+
 .selo-online {
   background: #dcfce7;
   color: #16a34a;
@@ -498,16 +424,19 @@ a {
   font-size: 13px;
   font-weight: 500;
 }
+
 .cartao-servico h3 {
   font-size: 18px;
   margin-bottom: 6px;
   color: #20413b;
 }
+
 .cartao-servico > p {
   color: #666;
   font-size: 14px;
   margin-bottom: 10px;
 }
+
 .linha-info {
   display: flex;
   justify-content: space-between;
@@ -515,6 +444,7 @@ a {
   color: #666;
   margin-bottom: 8px;
 }
+
 .disponibilidade {
   font-size: 13px;
   color: #16a34a;
@@ -522,22 +452,26 @@ a {
   align-items: center;
   gap: 4px;
 }
+
 .rodape-servico {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: auto;
 }
+
 .valor {
   font-size: 20px;
   font-weight: bold;
   color: #0c4f43;
 }
+
 .por-consulta {
   color: #777;
   font-size: 13px;
   margin-left: 4px;
 }
+
 .botao-agendar {
   background: #00796b;
   color: #fff;
@@ -548,13 +482,12 @@ a {
   font-weight: bold;
   transition: background 0.2s;
 }
-.botao-agendar:hover {
-  background: #00594c;
-}
+
+.botao-agendar:hover { background: #00594c; }
 
 /* ================= VOLTAR AO TOPO ================= */
 .voltar-topo {
-  margin: 20px auto; /* centraliza horizontalmente */
+  margin: 20px auto;
   cursor: pointer;
   color: #00594c;
   display: flex;
@@ -562,254 +495,90 @@ a {
   align-items: stretch;
   padding: 16px;
   border-radius: 10px;
-  max-width: 1200px; /* largura máxima */
+  max-width: 1200px;
   width: 90%;
 }
+
 .voltar-topo h1 {
   display: flex;
   align-items: center;
-  gap: 12px; /* espaço entre texto e linhas */
+  gap: 12px;
   margin: 0 0 18px 0;
   font-size: 30px;
   font-weight: 600;
   color: #00594c;
   white-space: nowrap;
 }
-.voltar-topo h1::before {
-  content: "";
-  width: 50%; /* Tamanho da primeira linha (esquerda) */
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.12),
-    rgba(0, 0, 0, 0.08)
-  );
-}
+
+.voltar-topo h1::before,
 .voltar-topo h1::after {
   content: "";
-  width: 50%; /* Tamanho da segunda linha (direita) */
   height: 1px;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.12),
-    rgba(0, 0, 0, 0.08)
-  );
+  background: linear-gradient(to right, rgba(0,0,0,0.12), rgba(0,0,0,0.08));
 }
+
+.voltar-topo h1::before { width: 50%; }
+.voltar-topo h1::after { width: 50%; }
 
 /* ================= FOOTER ================= */
-.footer {
-  margin-top: 40px;
-}
+.footer { margin-top: 40px; }
 
-/* ============= RESPONSIVIDADE ============= */
-/* banners principais diminuem */
+/* ================= RESPONSIVIDADE ================= */
+
+/* ================= 1200px ================= */
 @media (max-width: 1200px) {
-  .main-container {
-    max-width: 90vw;
-    width: 100%;
-    margin: 20px auto 0 auto;
-    gap: 10px;
-  }
-  .main-content,
-  .side-item {
-    width: 100%;
-    height: auto;
-  }
-  .main-content img,
-  .side-item img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
+  .main-container { max-width: 90vw; width: 100%; gap: 10px; }
+  .main-content, .side-item { width: 100%; height: auto; }
+  .main-content img, .side-item img { width: 100%; height: auto; object-fit: contain; }
 }
+
+/* ================= 800px ================= */
 @media (max-width: 800px) {
-  .banner-section {
-    display: none;
-    padding: 0; /* remove espaço extra */
-  }
+  .banner-section { display: none; padding: 0; }
 }
 
-/* conteudo para mobile */
+/* ================= 768px ================= */
 @media (max-width: 768px) {
-  /* Layout de 1 coluna */
-  .main-container {
-    grid-template-columns: 1fr;
-    max-width: 100vw;
-    width: 100%;
-    margin: 10px auto 0 auto;
-    gap: 10px;
-  }
-  .main-content {
-    width: 100%;
-    height: auto;
-    min-height: 180px;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  .carrossel {
-    height: 180px;
-    min-height: 120px;
-  }
-  .carrossel-slide img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  .side-content {
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
-  }
-  .side-item {
-    height: 80px;
-    min-width: 0;
-    flex: 1;
-    padding: 0;
-  }
-  .side-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  /* botoes de servicos mobile */
+  .main-container { grid-template-columns: 1fr; margin: 10px auto; gap: 10px; }
+  .main-content { min-height: 180px; }
+  .carrossel { height: 180px; min-height: 120px; }
+  .carrossel-slide img { height: 100%; object-fit: cover; border-radius: 10px; }
+  
+  .side-content { flex-direction: row; gap: 10px; justify-content: center; }
+  .side-item { height: 80px; flex: 1; padding: 0; }
+  .side-item img { height: 100%; object-fit: cover; border-radius: 10px; }
+  
   .botoes-servicos {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto;
     gap: 20px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
     max-width: 300px;
     margin: 20px auto;
   }
-  .botoes-servicos section {
-    width: 100%;
-    height: 80px;
-    padding: 8px;
-    margin: 0;
-  }
-  .botoes-servicos i {
-    font-size: 28px;
-  }
-  .botoes-servicos span {
-    font-size: 14px;
-  }
-
-  /* centro do main mobile */
-  .main-centro {
-    width: 95%;
-    padding: 12px;
-  }
-  .main-centro h1 {
-    font-size: 24px;
-    gap: 8px;
-  }
-  .main-centro h1::before {
-    width: 50px;
-  }
-  .slides-wrapper {
-    width: 100%;
-    padding: 0;
-  }
-
-  .botoes-categorias {
-    justify-content: center;
-    gap: 12px;
-  }
-  .botoes-categorias section {
-    width: 100px;
-    padding: 8px;
-  }
-  .botoes-categorias section img {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 6px;
-  }
-  .botoes-categorias section span {
-    font-size: 12px;
-  }
-
-  .produtos-destaque {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(140px, 1fr)
-    ); /* até 4 por linha */
-    gap: 15px;
-    padding: 15px;
-  }
-  .produtos-destaque h1 {
-    display: block;
-    text-align: left;
-    gap: 0;
-  }
+  .botoes-servicos section { width: 100%; height: 80px; padding: 8px; }
+  .botoes-servicos i { font-size: 28px; }
+  .botoes-servicos span { font-size: 14px; }
+  
+  .main-centro { width: 95%; padding: 12px; }
+  .main-centro h1 { font-size: 24px; gap: 8px; }
+  .main-centro h1::before { width: 50px; }
+  
+  .slides-wrapper { width: 100%; padding: 0; }
+  .slides { gap: 15px; }
+  
+  .botoes-categorias section { width: 100px; padding: 8px; }
+  .botoes-categorias section img { width: 70px; height: 70px; margin-bottom: 6px; }
+  .botoes-categorias section span { font-size: 12px; }
+  .img-agende { width: 100%; height: auto;}
+  .produtos-destaque { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; padding: 15px; }
 }
 
+/* ================= 650px ================= */
 @media (max-width: 650px) {
-  .main-centro .slider {
-    justify-content: center;
-  }
-  .main-centro .slides-wrapper {
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0;
-    overflow: visible; /* permite mostrar todos os itens */
-  }
-  .main-centro .slides {
-    margin: 0 auto;
-    justify-content: center;
-    width: 100%;
-    display: grid !important; /* transforma o flex em grid */
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas */
-    gap: 10px; /* espaçamento entre produtos */
-    transform: none !important; /* remove transform do slider */
-  }
-  .produtos {
-    flex: unset !important; /* remove comportamento flex anterior */
-    width: 100%; /* ocupa toda a coluna */
-    margin: 0;
-    padding: 12px;
-    background: #fff;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  }
-  .produtos img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 8px;
-    object-fit: contain;
-  }
-  .produtos h3 {
-    font-size: 14px;
-    margin: 6px 0;
-  }
-  .produtos .preco {
-    font-size: 18px;
-    margin-bottom: 8px;
-  }
-  .btn.ml-prev,
-  .btn.ml-next {
-    display: none; /* esconde botões do slider */
-  }
-  .produto-info {
-    flex-direction: column;
-    align-items: center;
-  }
-  .avaliacao,
-  .unidades-vendidas,
-  .colaborador,
-  .preco-container {
-    justify-content: center;
-    flex-wrap: wrap;
-    text-align: center;
-  }
+  .main-centro .slides-wrapper { display: flex; justify-content: center; overflow: visible; }
+  .main-centro .slides { display: grid !important; grid-template-columns: repeat(2, 1fr); gap: 10px; transform: none !important; }
+  
+  .produtos { width: 100%; flex: unset; }
+  .img-agende { width: 100%; height: auto;}
 }
