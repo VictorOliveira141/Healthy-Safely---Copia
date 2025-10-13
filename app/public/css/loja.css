@@ -385,12 +385,15 @@ hover .cupons img  {
 
 .bannerloja{
     width: 400px;
-    height: 800px;
+    height: 900px;
+    margin-top: 50px;
 }
 .cupons {
     display: flex;
     margin-top: 40px;
     justify-content: center;
+   
+   
    
   
 }
