@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/categoria.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <title>Saúde & Prevenção - Healthy Safely</title>
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main class="categoria-container">
+      <section class="categoria-banner">
+        <h1 class="categoria-titulo">Saúde & Prevenção</h1>
+        <p class="categoria-subtitulo">
+          Produtos essenciais para cuidar da sua saúde e prevenir doenças
+        </p>
+      </section>
+
+      <section class="filtros-section">
+        <h2>Filtrar por:</h2>
+        <article class="filtros">
+          <button class="filtro-btn active">Todos</button>
+          <button class="filtro-btn">Medicamentos</button>
+          <button class="filtro-btn">Equipamentos</button>
+          <button class="filtro-btn">Primeiros Socorros</button>
+          <button class="filtro-btn">Monitoramento</button>
+        </article>
+      </section>
+
+      <section class="produtos-grid">
+        <article class="produto-card">
+          <img src="../imagem/inalador.png" alt="Inalador" class="produto-img" />
+          <h3 class="produto-nome">Inalador Nebulizador G-TECH</h3>
+          <p class="produto-descricao">Tratamento respiratório eficaz e silencioso</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 299,99</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Termometro" alt="Termômetro" class="produto-img" />
+          <h3 class="produto-nome">Termômetro Digital Infravermelho</h3>
+          <p class="produto-descricao">Medição rápida e precisa da temperatura</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 89,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Oximetro" alt="Oxímetro" class="produto-img" />
+          <h3 class="produto-nome">Oxímetro de Pulso Digital</h3>
+          <p class="produto-descricao">Monitora saturação de oxigênio e frequência cardíaca</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 79,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Medidor+Pressao" alt="Medidor de Pressão" class="produto-img" />
+          <h3 class="produto-nome">Medidor de Pressão Arterial Digital</h3>
+          <p class="produto-descricao">Monitoramento preciso da pressão arterial</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 149,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Glicosimetro" alt="Glicosímetro" class="produto-img" />
+          <h3 class="produto-nome">Glicosímetro com 50 tiras</h3>
+          <p class="produto-descricao">Medição rápida e precisa da glicose no sangue</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 119,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Kit+Primeiros+Socorros" alt="Kit Primeiros Socorros" class="produto-img" />
+          <h3 class="produto-nome">Kit Primeiros Socorros Completo</h3>
+          <p class="produto-descricao">Itens essenciais para emergências domésticas</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 69,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Mascara+N95" alt="Máscara N95" class="produto-img" />
+          <h3 class="produto-nome">Máscara N95 - Caixa com 20 unidades</h3>
+          <p class="produto-descricao">Proteção respiratória de alta eficiência</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 89,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Alcool+Gel" alt="Álcool Gel" class="produto-img" />
+          <h3 class="produto-nome">Álcool Gel 70% - 500ml</h3>
+          <p class="produto-descricao">Higienização eficaz das mãos</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 19,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <%- include('../partials/footer.ejs') %>
+    </footer>
+  </body>
+</html>
+

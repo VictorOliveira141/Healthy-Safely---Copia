@@ -1,145 +1,380 @@
-@media (max-width: 600px) {
-	.container {
-		padding: 6px;
-		border-radius: 0;
-	}
-	h1, h2, h3 {
-		font-size: 1em;
-	}
-}
-
-@media (max-width: 400px) {
-	.container {
-		padding: 2px;
-		font-size: 0.9em;
-	}
-	h1, h2, h3 {
-		font-size: 0.9em;
-	}
+/* Reset e configurações globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-	margin: 0;
-	padding: 0;
-	font-family: Arial, sans-serif;
-	background: #eafaf1;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  min-height: 100vh;
 }
 
-.container {
-	max-width: 900px;
-	margin: 0 auto;
-	padding: 20px;
-	background: #fff;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+.conteudo {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 80px;
 }
 
-h1, h2, h3 {
-	color: #014638;
+/* Container da tarefa principal */
+.tarefa-container {
+  background: linear-gradient(135deg, #1e3a1c 0%, #2d4a2b 100%);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
+.tarefa-topo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.atividade-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.tarefa-topo h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tarefa-texto {
+  color: white;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+
+.tarefa-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tarefa-porcentagem {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tarefa-botao-area {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.tarefa-botao {
+  background-color: #4a7c59;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 40px;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 124, 89, 0.4);
+}
+
+.tarefa-botao:hover {
+  background-color: #5a9c6a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 124, 89, 0.6);
+}
+
+.tarefa-botao:active {
+  transform: translateY(0);
+}
+
+/* Seção de tarefas */
+.tarefas-section {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tarefas-header {
+  background-color: #013220;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px 15px 0 0;
+}
+
+.titulo-tarefas {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tarefas-container {
+  background-color: #014638;
+  padding: 30px;
+  border-radius: 0 0 15px 15px;
+}
+
+.iconestarefas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.tarefa-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.tarefa-item:hover {
+  transform: translateY(-5px);
+}
+
+.tarefa-item a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.tarefa-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.tarefa-item img:hover {
+  transform: scale(1.1);
+}
+
+.tarefa-item h3 {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.outros {
+  display: flex;
+  justify-content: center;
+}
+
+.footer {
+  margin-top: 50px;
+}
+
+/* Responsividade - Telas médias (tablets) */
 @media (max-width: 900px) {
-	.container {
-		max-width: 100%;
-		padding: 10px;
-		box-shadow: none;
-	}
-	h1, h2, h3 {
-		font-size: 1.2em;
-	}
-}
-@media (max-width: 600px) {
-	.container {
-		padding: 12px;
-		border-radius: 8px;
-		box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-	}
-	h1, h2, h3 {
-		font-size: 1.1em;
-		margin: 8px 0;
-	}
+  .conteudo {
+    padding: 15px;
+    margin-top: 70px;
+  }
+
+  .tarefa-container {
+    max-width: 90%;
+    padding: 25px;
+  }
+
+  .tarefa-topo h3 {
+    font-size: 1.3rem;
+  }
+
+  .titulo-tarefas {
+    font-size: 1.7rem;
+  }
+
+  .tarefa-item img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .tarefa-item h3 {
+    font-size: 0.95rem;
+  }
 }
 
+/* Responsividade - Telas pequenas (mobile) */
+@media (max-width: 600px) {
+  .conteudo {
+    padding: 10px;
+    margin-top: 60px;
+  }
+
+  .tarefa-container {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .tarefa-topo {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .atividade-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tarefa-topo h3 {
+    font-size: 1.1rem;
+  }
+
+  .tarefa-texto {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .tarefa-botao-area {
+    justify-content: center;
+  }
+
+  .tarefa-botao {
+    padding: 10px 30px;
+    font-size: 0.9rem;
+  }
+
+  .tarefas-header {
+    padding: 15px;
+  }
+
+  .titulo-tarefas {
+    font-size: 1.4rem;
+  }
+
+  .tarefas-container {
+    padding: 20px 10px;
+  }
+
+  .iconestarefas {
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .tarefa-item img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tarefa-item h3 {
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsividade - Telas muito pequenas */
 @media (max-width: 400px) {
-	.container {
-		padding: 8px;
-		font-size: 1em;
-		border-radius: 6px;
-	}
-	h1, h2, h3 {
-		font-size: 1em;
-		margin: 6px 0;
-	}
-}
-/* ...existing code... */
+  .conteudo {
+    padding: 8px;
+    margin-top: 50px;
+  }
 
-/* Garante que blocos grandes fiquem responsivos */
-.blocodetarefas,
-.suastarefas {
-    max-width: 100vw;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    padding: 5px 2vw;
-}
+  .tarefa-container {
+    padding: 15px;
+    border-radius: 12px;
+  }
 
-/* Ajusta imagens e ícones para telas pequenas */
-@media (max-width: 600px) {
-    .blocodetarefas,
-    .suastarefas {
-        width: 98vw;
-        padding: 5px 1vw;
-        font-size: 0.95em;
-    }
-    .iconestarefas img,
-    .outros img {
-        width: 60px;
-        height: 60px;
-    }
-    .tarefão {
-        width: 80px;
-    }
-}
+  .atividade-img {
+    width: 40px;
+    height: 40px;
+  }
 
-@media (max-width: 400px) {
-    .blocodetarefas,
-    .suastarefas {
-        width: 99vw;
-        padding: 2px 0.5vw;
-        font-size: 0.9em;
-    }
-    .iconestarefas img,
-    .outros img {
-        width: 40px;
-        height: 40px;
-    }
-    .tarefão {
-        width: 60px;
-    }
+  .tarefa-topo h3 {
+    font-size: 1rem;
+  }
+
+  .tarefa-texto {
+    font-size: 0.8rem;
+  }
+
+  .tarefa-porcentagem {
+    font-size: 0.9rem;
+  }
+
+  .tarefa-botao {
+    padding: 8px 25px;
+    font-size: 0.85rem;
+  }
+
+  .titulo-tarefas {
+    font-size: 1.2rem;
+  }
+
+  .tarefas-container {
+    padding: 15px 8px;
+  }
+
+  .iconestarefas {
+    gap: 10px;
+  }
+
+  .tarefa-item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tarefa-item h3 {
+    font-size: 0.75rem;
+  }
 }
 
-/* Corrige flex containers para quebrar em telas pequenas */
-@media (max-width: 600px) {
-    .iconestarefas,
-    .outros {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-    .tarefa-bottom {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-    }
+/* Ajustes para telas grandes */
+@media (min-width: 1200px) {
+  .conteudo {
+    margin-top: 100px;
+  }
+
+  .tarefa-container {
+    max-width: 600px;
+    padding: 40px;
+  }
+
+  .tarefa-topo h3 {
+    font-size: 1.8rem;
+  }
+
+  .tarefa-texto {
+    font-size: 1rem;
+    line-height: 2;
+  }
+
+  .tarefa-botao {
+    padding: 15px 50px;
+    font-size: 1.1rem;
+  }
+
+  .titulo-tarefas {
+    font-size: 2.2rem;
+  }
+
+  .tarefa-item img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .tarefa-item h3 {
+    font-size: 1.1rem;
+  }
 }
 
-/* Garante que o container principal ocupe toda a tela em mobile */
-@media (max-width: 600px) {
-    .tarefa-container {
-        min-width: unset;
-        width: 99vw;
-        height: auto;
-        margin: 0;
-    }
-}
-
-/* ...existing code... */

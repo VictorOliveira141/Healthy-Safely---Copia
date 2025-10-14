@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/categoria.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <title>Esportes & Performance - Healthy Safely</title>
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main class="categoria-container">
+      <section class="categoria-banner">
+        <h1 class="categoria-titulo">Esportes & Performance</h1>
+        <p class="categoria-subtitulo">
+          Produtos para melhorar seu desempenho físico e alcançar seus objetivos
+        </p>
+      </section>
+
+      <section class="filtros-section">
+        <h2>Filtrar por:</h2>
+        <article class="filtros">
+          <button class="filtro-btn active">Todos</button>
+          <button class="filtro-btn">Suplementos</button>
+          <button class="filtro-btn">Equipamentos</button>
+          <button class="filtro-btn">Acessórios</button>
+          <button class="filtro-btn">Nutrição Esportiva</button>
+        </article>
+      </section>
+
+      <section class="produtos-grid">
+        <article class="produto-card">
+          <img src="../imagem/whey.png" alt="Whey Protein" class="produto-img" />
+          <h3 class="produto-nome">Whey Protein Concentrado 1kg</h3>
+          <p class="produto-descricao">Proteína de alta qualidade para ganho muscular</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 99,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="../imagem/omega3.png" alt="Ômega 3" class="produto-img" />
+          <h3 class="produto-nome">Ômega 3 1000mg</h3>
+          <p class="produto-descricao">Suplemento para saúde cardiovascular e articular</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 39,99</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Creatina" alt="Creatina" class="produto-img" />
+          <h3 class="produto-nome">Creatina Monohidratada 300g</h3>
+          <p class="produto-descricao">Aumento de força e massa muscular</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 59,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=BCAA" alt="BCAA" class="produto-img" />
+          <h3 class="produto-nome">BCAA 2:1:1 120 cápsulas</h3>
+          <p class="produto-descricao">Recuperação muscular e redução de fadiga</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 49,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Pre-Treino" alt="Pré-Treino" class="produto-img" />
+          <h3 class="produto-nome">Pré-Treino Energético 300g</h3>
+          <p class="produto-descricao">Energia e foco para treinos intensos</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 79,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Glutamina" alt="Glutamina" class="produto-img" />
+          <h3 class="produto-nome">Glutamina 300g</h3>
+          <p class="produto-descricao">Recuperação e fortalecimento do sistema imunológico</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 54,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Barra+Proteica" alt="Barra Proteica" class="produto-img" />
+          <h3 class="produto-nome">Barra de Proteína - Caixa com 12</h3>
+          <p class="produto-descricao">Snack proteico para qualquer hora do dia</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 69,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Coqueteleira" alt="Coqueteleira" class="produto-img" />
+          <h3 class="produto-nome">Coqueteleira SNAKER 600ml</h3>
+          <p class="produto-descricao">Coqueteleira com compartimento para suplementos</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 24,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <%- include('../partials/footer.ejs') %>
+    </footer>
+  </body>
+</html>
+

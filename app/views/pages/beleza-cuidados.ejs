@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/categoria.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <title>Beleza & Cuidados Especiais - Healthy Safely</title>
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main class="categoria-container">
+      <section class="categoria-banner">
+        <h1 class="categoria-titulo">Beleza & Cuidados Especiais</h1>
+        <p class="categoria-subtitulo">
+          Produtos para cuidar da sua pele, cabelo e bem-estar
+        </p>
+      </section>
+
+      <section class="filtros-section">
+        <h2>Filtrar por:</h2>
+        <article class="filtros">
+          <button class="filtro-btn active">Todos</button>
+          <button class="filtro-btn">Cuidados com a Pele</button>
+          <button class="filtro-btn">Cabelos</button>
+          <button class="filtro-btn">Maquiagem</button>
+          <button class="filtro-btn">Perfumaria</button>
+        </article>
+      </section>
+
+      <section class="produtos-grid">
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Protetor+Solar" alt="Protetor Solar" class="produto-img" />
+          <h3 class="produto-nome">Protetor Solar FPS 50+</h3>
+          <p class="produto-descricao">Proteção solar de amplo espectro para todos os tipos de pele</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 49,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Serum+Facial" alt="Sérum Facial" class="produto-img" />
+          <h3 class="produto-nome">Sérum Facial Vitamina C</h3>
+          <p class="produto-descricao">Ilumina e revitaliza a pele com antioxidantes</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 89,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Hidratante" alt="Hidratante Corporal" class="produto-img" />
+          <h3 class="produto-nome">Hidratante Corporal 400ml</h3>
+          <p class="produto-descricao">Hidratação intensa e duradoura para todo o corpo</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 39,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Shampoo" alt="Shampoo" class="produto-img" />
+          <h3 class="produto-nome">Shampoo Fortalecedor 400ml</h3>
+          <p class="produto-descricao">Fortalece e nutre os fios desde a raiz</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 34,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Condicionador" alt="Condicionador" class="produto-img" />
+          <h3 class="produto-nome">Condicionador Reparador 400ml</h3>
+          <p class="produto-descricao">Repara e hidrata cabelos danificados</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 34,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Mascara+Capilar" alt="Máscara Capilar" class="produto-img" />
+          <h3 class="produto-nome">Máscara Capilar Nutritiva 250g</h3>
+          <p class="produto-descricao">Tratamento intensivo para cabelos secos e opacos</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 44,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Sabonete+Facial" alt="Sabonete Facial" class="produto-img" />
+          <h3 class="produto-nome">Sabonete Facial Antiacne</h3>
+          <p class="produto-descricao">Limpeza profunda e controle de oleosidade</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 24,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+
+        <article class="produto-card">
+          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Oleo+Corporal" alt="Óleo Corporal" class="produto-img" />
+          <h3 class="produto-nome">Óleo Corporal Hidratante 200ml</h3>
+          <p class="produto-descricao">Nutrição profunda e brilho natural para a pele</p>
+          <article class="produto-info">
+            <span class="produto-preco">R$ 54,90</span>
+            <button class="btn-adicionar">Adicionar ao Carrinho</button>
+          </article>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <%- include('../partials/footer.ejs') %>
+    </footer>
+  </body>
+</html>
+

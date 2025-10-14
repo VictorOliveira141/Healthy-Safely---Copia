@@ -22,7 +22,11 @@ body {
   max-width: 1200px;
   align-items: start;
 }
-
+.img-agende{
+ width: 90%;
+ margin-left: 7%;
+ 
+}
 .main-content {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);

@@ -36,6 +36,26 @@ router.get("/informacoes", (req, res) => {
   res.render("pages/informacoes");
 });
 
+// CATEGORIAS DA LOJA
+router.get("/esportes-performance", (req, res) => {
+  res.render("pages/esportes-performance");
+});
+router.get("/beleza-cuidados", (req, res) => {
+  res.render("pages/beleza-cuidados");
+});
+router.get("/suplementos-vitaminas", (req, res) => {
+  res.render("pages/suplementos-vitaminas");
+});
+router.get("/bebes-criancas", (req, res) => {
+  res.render("pages/bebes-criancas");
+});
+router.get("/saude-prevencao", (req, res) => {
+  res.render("pages/saude-prevencao");
+});
+router.get("/higiene", (req, res) => {
+  res.render("pages/higiene");
+});
+
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
 router.get("/progressao", verificarAutenticacao, (req, res) => {
   res.render("pages/progressao");
