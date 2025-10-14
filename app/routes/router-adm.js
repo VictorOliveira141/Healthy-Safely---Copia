@@ -1,7 +1,29 @@
 const express = require("express");
 const router = express.Router();
 
-/* Simulação de produtos da loja do colaborador */
+/* ========== Middleware para verificar se o colaborador está logado ========== */
+function verificarFarmacia(req, res, next) {
+  if (
+    req.session &&
+    req.session.usuario &&
+    req.session.usuario.tipo === "farmacia"
+  ) {
+    return next();
+  }
+  return res.redirect("/cadastroColaborador");
+}
+function verificarProfissional(req, res, next) {
+  if (
+    req.session &&
+    req.session.usuario &&
+    req.session.usuario.tipo === "profissional"
+  ) {
+    return next();
+  }
+  return res.redirect("/cadastroColaborador");
+}
+
+// Simulação de um array de produtos
 let produtos = [
   {
     id: 1,
@@ -14,98 +36,85 @@ let produtos = [
   },
 ];
 
-/* Middleware para verificar se o colaborador está logado */
-function verificarColaborador(req, res, next) {
-  if (
-    req.session &&
-    req.session.usuario &&
-    req.session.usuario.tipo === "farmacia"
-  ) {
-    return next();
-  }
-  return res.redirect("/cadastroColaborador");
-}
-
-/* ========== ROTAS PRIVADAS (apenas colaborador/farmácia) ========== */
-router.get("/home2", (req, res) => {
-  res.render("pages/adm/home2", {
-    produtos, // ← aqui estão produtos que vão aparecer apartir do array PRODUTOS[]
+/* ========== ROTAS PRIVADAS (apenas colaborador/farmácia tem acesso) ========== */
+router.get("/home2", verificarFarmacia, (req, res) => {
+  res.render("pages/farmacia/home2", {
+    produtos,
   });
 });
-router.get("/paginaloja", (req, res) => {
-  res.render("pages/adm/paginaloja", {
+router.get("/paginaloja", verificarFarmacia, (req, res) => {
+  res.render("pages/farmacia/paginaloja", {
     colaborador: req.session.usuario,
-    produtos, // ← aqui estão produtos que vão aparecer apartir do array PRODUTOS[]
+    produtos,
     mensagem: null,
   });
 });
-router.get("/adicionarproduto", (req, res) => {
-  res.render("pages/adm/adicionarproduto", {
+router.get("/adicionarproduto", verificarFarmacia, (req, res) => {
+  res.render("pages/farmacia/adicionarproduto", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
-router.get("/editarproduto", (req, res) => {
-  res.render("pages/adm/editarproduto", {
+router.get("/editarproduto", verificarFarmacia, (req, res) => {
+  res.render("pages/farmacia/editarproduto", {
     colaborador: req.session.usuario,
-    produtos, // ← aqui estão produtos que vão aparecer apartir do array PRODUTOS[]
+    produtos,
     mensagem: null,
   });
 });
-router.get("/gerenciarpedidos", (req, res) => {
-  res.render("pages/adm/gerenciarpedidos", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-router.get("/vendas", (req, res) => {
-  res.render("pages/adm/vendas", {
+router.get("/gerenciarpedidos", verificarFarmacia, (req, res) => {
+  res.render("pages/farmacia/gerenciarpedidos", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
-router.get("/avaliacoes", (req, res) => {
-  res.render("pages/adm/avaliacoes", {
+router.get("/vendas", verificarFarmacia, (req, res) => {
+  res.render("pages/farmacia/vendas", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
-
+router.get("/avaliacoes", verificarFarmacia, (req, res) => {
+  res.render("pages/farmacia/avaliacoes", {
+    colaborador: req.session.usuario,
+    mensagem: null,
+  });
+});
 /* Rota de suporte ao cliente desativada para essa banca final
 router.get("/suportecliente", (req, res) => {
-  res.render("pages/adm/suportecliente", {
+  res.render("pages/farmacia/suportecliente", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
-*/
 
+/* ========== ROTAS PRIVADAS (apenas colaborador/profissional tem acesso) ========== */
 router.get("/home3", (req, res) => {
-  res.render("pages/adm/home3", {
+  res.render("pages/profissional/home3", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
 router.get("/agenda", (req, res) => {
-  res.render("pages/adm/agenda", {
+  res.render("pages/profissional/agenda", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
 router.get("/consultas", (req, res) => {
-  res.render("pages/adm/consultas", {
+  res.render("pages/profissional/consultas", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
 router.get("/pacientes", (req, res) => {
-  res.render("pages/adm/pacientes", {
+  res.render("pages/profissional/pacientes", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
 router.get("/avaliacoes2", (req, res) => {
-  res.render("pages/adm/avaliacoes2", {
+  res.render("pages/profissional/avaliacoes2", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
