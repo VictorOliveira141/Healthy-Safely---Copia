@@ -3,15 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pacientes | Área Profissional</title>
+    <title>Desempenho Profissional | Área Profissional</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
   </head>
   <body>
-    <%- include("../../partials/header") %> <%-
-    include('../../partials/menu-inferior.ejs') %>
+    <%- include("../../partials/header") %>
+    <!---->
+    <%- include('../../partials/menu-inferior.ejs') %>
 
     <div class="admin-container">
       <!-- SIDEBAR -->
@@ -20,42 +21,76 @@
       <!-- MAIN -->
       <main class="admin-main">
         <!-- CABEÇALHO PROFISSIONAL -->
-        <section class="profissional-header">
-          <img src="" alt="Foto do Profissional" class="foto-profissional" />
-          <div class="dados-profissional">
-            <h1>VITAO</h1>
-            <p></p>
-            <span class="especialidade"></span>
+        <h1>Painel Financeiro</h1>
+        <!-- RESUMO DE DESEMPENHO -->
+        <section class="resumo-desempenho">
+          <div class="card">
+            <h3><i class="fa-solid fa-money-bill-wave"></i> Ganhos Totais</h3>
+            <p class="valor">R$ 4.250,00</p>
           </div>
 
-          <div class="icones-editar">
-            <button class="btn-editar-perfil" title="Editar perfil">
-              <i class="fa-solid fa-pen-to-square"></i>
-            </button>
-            <a href="/logout" class="btn-editar-perfil" title="Sair">
-              <i class="fa-solid fa-right-from-bracket"></i>
-            </a>
+          <div class="card">
+            <h3><i class="fa-solid fa-user-check"></i> Pacientes Atendidos</h3>
+            <p class="valor">38</p>
+          </div>
+
+          <div class="card">
+            <h3>
+              <i class="fa-solid fa-calendar-check"></i> Consultas Realizadas
+            </h3>
+            <p class="valor">54</p>
+          </div>
+
+          <div class="card">
+            <h3><i class="fa-solid fa-clock"></i> Consultas Futuras</h3>
+            <p class="valor">7</p>
           </div>
         </section>
 
-        <!-- PACIENTES -->
-        <section class="pacientes-section">
-          <h2>Meus Pacientes</h2>
+        <!-- HISTÓRICO DE CONSULTAS -->
+        <section class="historico-section">
+          <h2>Histórico de Consultas Recentes</h2>
 
-          <div class="lista-pacientes">
-            <div class="paciente-card">
-              <img src=" alt="Paciente" />
-              <h3></h3>
-              <div class="paciente-info">
-                <p>
-                  <strong>Última consulta: </strong>
-                </p>
-                <p>
-                  <strong>Total consultas: </strong>
-                </p>
-              </div>
-              <button class="btn-ver">Ver histórico</button>
-            </div>
+          <div class="tabela-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Paciente</th>
+                  <th>Data</th>
+                  <th>Serviço</th>
+                  <th>Valor</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#003</td>
+                  <td>Kauã Mauricio</td>
+                  <td>12/10/2025</td>
+                  <td>Consulta de Retorno</td>
+                  <td>R$ 100,00</td>
+                  <td class="status-concluido">Concluído</td>
+                </tr>
+                <tr>
+                  <td>#002</td>
+                  <td>Daniel Renovato</td>
+                  <td>10/10/2025</td>
+                  <td>Consulta Nutricional</td>
+                  <td>R$ 120,00</td>
+                  <td class="status-concluido">Concluído</td>
+                </tr>
+
+                <tr>
+                  <td>#001</td>
+                  <td>Mateus Felipe</td>
+                  <td>16/10/2025</td>
+                  <td>Avaliação Física</td>
+                  <td>R$ 80,00</td>
+                  <td class="status-concluido">Concluído</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
       </main>
@@ -64,34 +99,31 @@
     <%- include("../../partials/footer") %>
 
     <style>
-      /* ================= RESET ================= */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: sans-serif;
+        font-family: "Segoe UI", sans-serif;
       }
 
       html,
       body {
         width: 100%;
         overflow-x: hidden;
+        background-color: #f9f9f9;
       }
 
-      /* ================= CONTAINER ================= */
       .admin-container {
         display: flex;
         gap: 20px;
-        flex-wrap: nowrap;
         max-width: 1200px;
         margin: 30px auto;
         padding: 0 20px;
       }
 
-      /* ================= MAIN ================= */
       .admin-main {
         flex: 1;
-        background-color: #fff;
+        background: #fff;
         border-radius: 12px;
         padding: 25px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -99,26 +131,30 @@
         flex-direction: column;
         gap: 30px;
       }
-
-      /* ================= CABEÇALHO PROFISSIONAL ================= */
+      .admin-main h1 {
+        font-size: 22px;
+        color: #00594c;
+        margin-bottom: 15px;
+      }
+      /* ===== CABEÇALHO ===== */
       .profissional-header {
         display: flex;
         align-items: center;
-        gap: 20px;
         flex-wrap: wrap;
-        background-color: #e3f0ec;
+        gap: 20px;
+        background: #e3f0ec;
         border-radius: 12px;
         padding: 20px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       }
 
       .foto-profissional {
+        background: #00594c;
         width: 90px;
         height: 90px;
         border-radius: 50%;
         object-fit: cover;
         border: 3px solid #fff;
-        background-color: #fff;
       }
 
       .dados-profissional h1 {
@@ -128,17 +164,18 @@
 
       .dados-profissional p {
         color: #333;
+        margin: 4px 0;
       }
 
       .especialidade {
-        font-size: 14px;
         color: #00796b;
+        font-size: 14px;
       }
 
       .icones-editar {
         margin-left: auto;
         display: flex;
-        gap: 10px;
+        gap: 12px;
       }
 
       .btn-editar-perfil {
@@ -157,136 +194,88 @@
         transform: scale(1.1);
       }
 
-      /* ================= PACIENTES ================= */
-      .pacientes-section h2 {
-        font-size: 20px;
-        color: #20413b;
-        margin-bottom: 15px;
-        text-align: center;
-      }
-
-      .lista-pacientes {
+      /* ===== RESUMO ===== */
+      .resumo-desempenho {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
       }
 
-      .paciente-card {
-        background-color: #fff;
+      .card {
+        background: #e3f0ec;
         border-radius: 12px;
-        padding: 15px;
+        padding: 20px;
         text-align: center;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        transition: transform 0.2s, box-shadow 0.2s;
-      }
-
-      .paciente-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      }
-
-      .paciente-card img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 10px;
-      }
-
-      .paciente-card h3 {
-        font-size: 18px;
         color: #00594c;
-        margin-bottom: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s;
       }
 
-      .paciente-info {
-        font-size: 14px;
-        color: #333;
-        margin-bottom: 10px;
+      .card:hover {
+        transform: translateY(-3px);
       }
 
-      .btn-ver {
-        background-color: #00796b;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        padding: 8px 14px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: background-color 0.2s;
+      .card h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
       }
 
-      .btn-ver:hover {
-        background-color: #00594c;
+      .card .valor {
+        font-size: 22px;
+        font-weight: 700;
       }
 
-      .sem-pacientes {
+      /* ===== TABELA ===== */
+      .historico-section h2 {
+        font-size: 20px;
+        color: #00594c;
         text-align: center;
-        padding: 40px 20px;
-        background-color: #f2f9f7;
-        border-radius: 12px;
+        margin-bottom: 15px;
       }
 
-      .sem-pacientes p {
-        color: #333;
+      .tabela-container {
+        overflow-x: auto;
       }
 
-      /* ================= RESPONSIVIDADE ================= */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background: #f2f9f7;
+        color: #00594c;
+        font-weight: 600;
+      }
+
+      tr:hover {
+        background: #f2f9f7;
+      }
+
+      .status-concluido {
+        color: #4caf50;
+        font-weight: 600;
+      }
+
+      .status-pendente {
+        color: #ff9800;
+        font-weight: 600;
+      }
+
       @media (max-width: 768px) {
         .admin-container {
           flex-direction: column;
         }
 
-        .admin-sidebar {
-          flex-direction: row;
-          justify-content: space-around;
-          padding: 10px;
-          border-radius: 8px;
-          box-shadow: none;
-        }
-
-        .admin-sidebar .sidebar-item {
-          padding: 6px 10px;
-          font-size: 13px;
-        }
-
-        .lista-pacientes {
-          grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        }
-
-        .paciente-card img {
-          width: 60px;
-          height: 60px;
-        }
-
-        .btn-ver {
-          padding: 6px 10px;
-          font-size: 13px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .foto-profissional {
-          width: 60px;
-          height: 60px;
-        }
-
-        .dados-profissional h1 {
-          font-size: 16px;
-        }
-
-        .especialidade {
-          font-size: 13px;
-        }
-
-        .paciente-card img {
-          width: 50px;
-          height: 50px;
-        }
-
-        .btn-ver {
-          padding: 5px 8px;
-          font-size: 12px;
+        .card .valor {
+          font-size: 18px;
         }
       }
     </style>

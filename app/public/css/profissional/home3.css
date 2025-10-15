@@ -44,7 +44,6 @@ body {
   padding: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
-
 .foto-profissional {
   background: #00594c;
   width: 90px;
@@ -53,7 +52,6 @@ body {
   object-fit: cover;
   border: 3px solid #ffffff;
 }
-
 .dados-profissional h1 {
   margin: 0;
   font-size: 22px;
@@ -63,27 +61,22 @@ body {
   margin: 5px 0;
   color: #333;
 }
-.especialidade {
-  font-size: 14px;
-  color: #00796b;
-}
-
 .icones-editar {
   margin-left: auto;
   display: flex;
   gap: 10px;
 }
-.btn-editar-perfil {
+.btn-editar-loja {
   background: none;
   border: none;
   cursor: pointer;
   transition: transform 0.2s;
 }
-.btn-editar-perfil i {
+.btn-editar-loja i {
   font-size: 22px;
   color: #00594c;
 }
-.btn-editar-perfil:hover {
+.btn-editar-loja:hover {
   transform: scale(1.1);
 }
 
@@ -193,15 +186,22 @@ body {
   color: #333;
   margin-bottom: 20px;
 }
-
+.concluida {
+  background-color: #00796b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
 /* ================= RESPONSIVIDADE ================= */
-
 /* --- Tablets (≤1024px) --- */
 @media (max-width: 1024px) {
   .admin-container {
     padding: 0 10px;
   }
-
   .profissional-header {
     flex-direction: column;
     align-items: center;
@@ -209,7 +209,6 @@ body {
     padding: 18px;
     gap: 12px;
   }
-
   .icones-editar {
     margin-left: 0;
     justify-content: center;
@@ -222,7 +221,6 @@ body {
     flex-direction: column;
     padding: 0 10px;
   }
-
   /* Cabeçalho do profissional */
   .profissional-header {
     flex-direction: column;
@@ -230,42 +228,34 @@ body {
     gap: 10px;
     padding: 15px;
   }
-
   .foto-profissional {
     width: 70px;
     height: 70px;
   }
-
   .dados-profissional h1 {
     font-size: 18px;
   }
-
   .dados-profissional p {
     font-size: 14px;
   }
-
   .especialidade {
     font-size: 13px;
   }
-
   .icones-editar i {
     font-size: 18px;
   }
-
   /* Ações rápidas */
   .acoes-rapidas h2 {
     text-align: center;
     font-size: 18px;
     margin-bottom: 10px;
   }
-
   .botoes-servicos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     justify-items: center;
   }
-
   .acao-card {
     flex: none;
     width: 100%;
@@ -274,7 +264,6 @@ body {
     font-size: 13px;
     border-radius: 10px;
   }
-
   .acao-card i {
     font-size: 22px;
     margin-bottom: 4px;
@@ -285,24 +274,19 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 12px;
   }
-
   .consulta-card {
     padding: 10px;
   }
-
   .consulta-card img {
     height: 60px;
     width: 60px;
   }
-
   .consulta-card h3 {
     font-size: 16px;
   }
-
   .consulta-info {
     font-size: 13px;
   }
-
   .btn-ver {
     padding: 6px 10px;
     font-size: 13px;
@@ -314,48 +298,38 @@ body {
   .admin-main {
     padding: 15px;
   }
-
   .profissional-header {
     gap: 8px;
     padding: 12px;
   }
-
   .foto-profissional {
     width: 60px;
     height: 60px;
   }
-
   .dados-profissional h1 {
     font-size: 16px;
   }
-
   .dados-profissional p {
     font-size: 13px;
   }
-
   .acoes-rapidas h2 {
     font-size: 16px;
   }
-
   .botoes-servicos {
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-
   .acao-card {
     padding: 10px 5px;
     font-size: 12px;
   }
-
   .acao-card i {
     font-size: 20px;
   }
-
   .consulta-card img {
     height: 50px;
     width: 50px;
   }
-
   .btn-ver {
     padding: 5px 8px;
     font-size: 12px;

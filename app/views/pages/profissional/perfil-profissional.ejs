@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil Profissional | Healthy Safely</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/css/profissional/perfil-profissional.css" />
+  </head>
+  <body>
+    <%- include("../../partials/header") %>
+    <!---->
+    <%- include("../../partials/menu-inferior.ejs") %>
+
+    <div class="admin-container">
+      <%- include("../../partials/adm/sidebar-profissional.ejs") %>
+
+      <main class="admin-main">
+        <section class="perfil-profissional">
+          <div class="foto-container">
+            <img src="../imagem/user.png" alt="Foto do Profissional" />
+            <div>
+              <h1>Victor Hugo</h1>
+              <p style="color: #20413b; margin-top: 4px">
+                Nutricionista Esportivo
+              </p>
+              <p style="color: #666">CRN: 12345-SP</p>
+            </div>
+          </div>
+
+          <div class="descricao-profissional">
+            <label>Descrição</label>
+            <textarea
+              name="descricao"
+              rows="4"
+              placeholder="Fale um pouco sobre sua experiência e especialidades..."
+            ></textarea>
+          </div>
+
+          <div class="info-profissional">
+            <label>Email</label>
+            <input
+              type="email"
+              value="victor.hugo@healthysafely.com"
+              readonly
+            />
+
+            <button class="btn-salvar">Salvar Alterações</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <%- include("../../partials/footer") %>
+  </body>
+</html>

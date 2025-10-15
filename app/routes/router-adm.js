@@ -89,31 +89,32 @@ router.get("/suportecliente", (req, res) => {
 });
 
 /* ========== ROTAS PRIVADAS (apenas colaborador/profissional tem acesso) ========== */
-router.get("/home3", (req, res) => {
+router.get("/home3", verificarProfissional, (req, res) => {
   res.render("pages/profissional/home3", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
-router.get("/agenda", (req, res) => {
+router.get("/perfil-profissional", verificarProfissional, (req, res) => {
+  res.render("pages/profissional/perfil-profissional", {
+    colaborador: req.session.usuario,
+    mensagem: null,
+  });
+});
+router.get("/agenda", verificarProfissional, (req, res) => {
   res.render("pages/profissional/agenda", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
-router.get("/consultas", (req, res) => {
-  res.render("pages/profissional/consultas", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-router.get("/pacientes", (req, res) => {
+
+router.get("/pacientes", verificarProfissional, (req, res) => {
   res.render("pages/profissional/pacientes", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
 });
-router.get("/avaliacoes2", (req, res) => {
+router.get("/avaliacoes2", verificarProfissional, (req, res) => {
   res.render("pages/profissional/avaliacoes2", {
     colaborador: req.session.usuario,
     mensagem: null,
