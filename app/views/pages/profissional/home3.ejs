@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sua Área Profissional | Healthy Safely</title>
     <link rel="stylesheet" href="../css/profissional/home3.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
   </head>
 
   <body>
@@ -29,8 +26,9 @@
           />
 
           <div class="dados-loja">
-            <h1>Victor Hugo</h1>
-            <p>Nutricionista</p>
+            <!--PEGA APENAS OS 2 PRIMEIROS NOMES-->
+            <h1><%= usuario.nome.split(' ').slice(0, 2).join(' ') %></h1>
+            <p><%= usuario.profissao %></p>
           </div>
 
           <article class="icones-editar">

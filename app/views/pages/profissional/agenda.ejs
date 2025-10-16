@@ -3,12 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agenda | Sua Área Profissional</title>
+    <title>Agenda | Área Profissional</title>
     <link rel="stylesheet" href="/css/profissional/agenda.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
   </head>
   <body>
     <%- include("../../partials/header") %>
@@ -24,6 +21,7 @@
         <!-- AGENDA / CONSULTAS -->
         <h1>Agenda</h1>
         <section class="consultas-section">
+          <h3>Hoje</h3>
           <div class="lista-consultas">
             <div class="consulta-card">
               <img src="../imagem/image copy 2.png" alt="Cliente" />
@@ -45,7 +43,7 @@
                 <p><strong>Hora: 11:30</strong></p>
                 <p><strong>Status: </strong>Concluída</p>
               </div>
-              <button class="btn-concluida">Concluída</button>
+              <button class="btn-bloquear">Bloquear horário</button>
               <button class="btn-ver">Ver detalhes</button>
             </div>
           </div>

@@ -202,19 +202,7 @@ body {
   .admin-container {
     padding: 0 10px;
   }
-  .profissional-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 18px;
-    gap: 12px;
-  }
-  .icones-editar {
-    margin-left: 0;
-    justify-content: center;
-  }
 }
-
 /* --- Celulares grandes (≤768px) --- */
 @media (max-width: 768px) {
   .admin-container {
@@ -222,12 +210,6 @@ body {
     padding: 0 10px;
   }
   /* Cabeçalho do profissional */
-  .profissional-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 15px;
-  }
   .foto-profissional {
     width: 70px;
     height: 70px;

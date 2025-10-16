@@ -34,11 +34,6 @@ body {
 }
 
 /* ================= PERFIL PROFISSIONAL ================= */
-.perfil-profissional {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
 /* FOTO E INFORMAÇÕES */
 .foto-container {
@@ -50,11 +45,12 @@ body {
   border-radius: 12px;
 }
 .foto-container img {
-  width: 100px;
-  height: 100px;
+  background: #00594c;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
   object-fit: cover;
-  border-radius: 12px;
-  border: 2px solid #ccc;
+  border: 3px solid #fff;
 }
 .foto-container h1 {
   font-size: 24px;
@@ -95,33 +91,6 @@ body {
   outline: none;
 }
 
-/* BOTÕES */
-.botoes-acoes {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-.botoes-acoes button {
-  background-color: #00796b;
-  color: #fff;
-  padding: 12px 22px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  transition: background-color 0.2s ease-in-out;
-}
-.botoes-acoes button:hover {
-  background-color: #00594c;
-}
-.botoes-acoes .sair {
-  background-color: #e53935;
-}
-.botoes-acoes .sair:hover {
-  background-color: #c62828;
-}
-
 label {
   font-weight: 600;
   color: #555;
@@ -141,14 +110,25 @@ textarea:focus {
   outline: none;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+.btn-salvar {
+  background-color: #0c4f43;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
 /* ================= RESPONSIVIDADE ================= */
 @media (max-width: 1024px) {
   .admin-container {
     padding: 0 10px;
-  }
-  .foto-container {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
 @media (max-width: 768px) {

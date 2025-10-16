@@ -274,31 +274,19 @@
                 class="<%= erroValidacaoProfissional.profissao %>"
               >
                 <option value="">Selecione sua profissão</option>
-                <option
-                  value="medico <%= valoresProfissional.profissao === 'medico' ? 'selected' : '' %>"
-                >
+                <option value="psicologo" <%= valoresProfissional.profissao === 'Psicologo' ? 'selected' : '' %>
                   Psicólogo
                 </option>
-                <option
-                  value="nutricionista <%= valoresProfissional.profissao === 'nutricionista' ? 'selected' : '' %>"
-                >
+                <option value="cardiologista" <%= valoresProfissional.profissao === 'Cardiologista' ? 'selected' : '' %>
                   Cardiologista
                 </option>
-                <option
-                  value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
-                >
+                <option value="nutricionista" <%= valoresProfissional.profissao === 'Nutricionista' ? 'selected' : '' %>
                   Nutricionista
                 </option>
-
-                <option
-                  value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
-                >
-                  Fonoaudiologo
+                <option value="fonoaudiologo" <%= valoresProfissional.profissao === 'Fonoaudiologo' ? 'selected' : '' %>
+                  Fonoaudiólogo
                 </option>
-
-                <option
-                  value="educador <%= valoresProfissional.profissao === 'educador' ? 'selected' : '' %>"
-                >
+                <option value="dermatologista" <%= valoresProfissional.profissao === 'Dermatologista' ? 'selected' : '' %>
                   Dermatologia
                 </option>
               </select>

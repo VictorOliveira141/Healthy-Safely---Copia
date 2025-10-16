@@ -108,8 +108,8 @@ router.get("/agenda", verificarProfissional, (req, res) => {
   });
 });
 
-router.get("/pacientes", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/pacientes", {
+router.get("/painel-financeiro", verificarProfissional, (req, res) => {
+  res.render("pages/profissional/painel-financeiro", {
     colaborador: req.session.usuario,
     mensagem: null,
   });

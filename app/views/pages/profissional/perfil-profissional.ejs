@@ -3,12 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perfil Profissional | Healthy Safely</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <title>Perfil Profissional | Área Profissional</title>
     <link rel="stylesheet" href="/css/profissional/perfil-profissional.css" />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
   </head>
   <body>
     <%- include("../../partials/header") %>
@@ -21,11 +18,15 @@
       <main class="admin-main">
         <section class="perfil-profissional">
           <div class="foto-container">
-            <img src="../imagem/user.png" alt="Foto do Profissional" />
+            <img
+              src="../imagem/user.png"
+              alt="Foto do Profissional"
+              class="foto-profissional"
+            />
             <div>
-              <h1>Victor Hugo</h1>
+              <h1><%= usuario.nome</h1>
               <p style="color: #20413b; margin-top: 4px">
-                Nutricionista Esportivo
+                <%= usuario.profissao
               </p>
               <p style="color: #666">CRN: 12345-SP</p>
             </div>
@@ -40,14 +41,7 @@
             ></textarea>
           </div>
 
-          <div class="info-profissional">
-            <label>Email</label>
-            <input
-              type="email"
-              value="victor.hugo@healthysafely.com"
-              readonly
-            />
-
+          <div class="btn-container">
             <button class="btn-salvar">Salvar Alterações</button>
           </div>
         </section>

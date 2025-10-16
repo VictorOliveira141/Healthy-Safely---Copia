@@ -454,13 +454,6 @@ router.post(
       return true;
     }),
 
-  body("especialidade")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("*A especialidade deve conter entre 3 e 50 caracteres!"),
-
   body("email")
     .notEmpty()
     .withMessage("*Campo obrigatório!")
@@ -557,13 +550,15 @@ router.post("/login", (req, res) => {
   if (usuarioEncontrado) {
     req.session.usuario = usuarioEncontrado;
 
-    if (
-      usuarioEncontrado.tipo === "farmacia" ||
-      usuarioEncontrado.tipo === "profissional"
-    ) {
-      // colaborador → vai pro painel admin
+    if (usuarioEncontrado.tipo === "farmacia") {
+      // colaborador farmacia → vai pro painel admin
       return res.redirect("adm/home2");
-    } else {
+    }
+    if (usuarioEncontrado.tipo === "profissional") {
+      // colaborador profissional → vai para o painel admin
+      return res.redirect("adm/home3");
+    }
+    {
       // cliente → vai pro perfil normal
       return res.redirect("/tomarammeutela");
     }
