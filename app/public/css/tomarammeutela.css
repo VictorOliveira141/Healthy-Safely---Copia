@@ -7,6 +7,9 @@ body {
   padding: 0;
   scroll-behavior: smooth;
 }
+body a {
+  text-decoration: none;
+}
 
 /* ================= TOPO DO MAIN ================= */
 .main-fundo {
@@ -488,6 +491,30 @@ body {
 }
 
 .botao-agendar:hover { background: #00594c; }
+
+.produtos.ver-mais {
+  display: flex;
+  justify-content: center;
+}
+.btn-circular {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: #0c4f43; /* verde escuro */
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn-circular:hover {
+  background: #096e5a; /* tom mais claro no hover */
+  transform: scale(1.1);
+}
 
 /* ================= VOLTAR AO TOPO ================= */
 .voltar-topo {

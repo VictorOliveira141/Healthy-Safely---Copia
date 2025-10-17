@@ -65,13 +65,13 @@ router.get("/tarefas", verificarAutenticacao, (req, res) => {
 });
 
 // PRODUTOS
-router.get("/produto2", verificarAutenticacao, (req, res) => {
+router.get("/produto2", (req, res) => {
   res.render("pages/produto2");});
-  router.get("/produto3", verificarAutenticacao, (req, res) => {
+  router.get("/produto3", (req, res) => {
   res.render("pages/produto3");});
-  router.get("/produto4", verificarAutenticacao, (req, res) => {
+  router.get("/produto4", (req, res) => {
   res.render("pages/produto4");});
-  router.get("/produto5", verificarAutenticacao, (req, res) => {
+  router.get("/produto5", (req, res) => {
   res.render("pages/produto5");});
 
 // TAREFAS
