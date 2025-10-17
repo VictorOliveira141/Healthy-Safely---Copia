@@ -36,8 +36,8 @@
           </li>
           <% } %> <% if (usuario && usuario.tipo === "profissional") { %>
           <li>
-            <a href="/agenda"
-              ><i class="bi bi-calendar-week"></i> Minha Agenda</a
+            <a href="/adm/home3"
+              ><i class="bi bi-calendar-week"></i> Painel Profissional</a
             >
           </li>
           <% } %>
@@ -46,7 +46,7 @@
             <a href="/#"><i class="bi bi-envelope"></i> Contato</a>
           </li>
           <li>
-            <a href="/#"><i class="bi bi-info-circle"></i> Sobre</a>
+            <a href="/informacoes"><i class="bi bi-info-circle"></i> Dúvidas</a>
           </li>
         </ul>
 
@@ -146,16 +146,17 @@
           <% if (usuario) { %>
           <li><a href="/perfil">Minha conta</a></li>
           <li><a href="/meus-pedidos">Meus pedidos</a></li>
-          <li><a href="/favoritos">Favoritos</a></li>
+          <li><a href="/meusfavoritos">Favoritos</a></li>
           <% if (usuario.tipo === "farmacia") { %>
           <li><a href="/adm/home2">Gerenciar loja</a></li>
           <li><a href="/adm/vendas">Minhas vendas</a></li>
           <% } else if (usuario.tipo === "profissional") { %>
-          <li><a href="/agenda">Minha agenda</a></li>
-          <li><a href="/consultas">Consultas</a></li>
+          <li><a href="/adm/agenda">Minha agenda</a></li>
+          <li><a href="/adm/consultas">Consultas</a></li>
           <% } %>
 
           <li><hr /></li>
+
           <li><a href="/logout" class="logout-btn">Sair</a></li>
           <% } else { %>
           <a href="/login" role="menuitem">Entrar</a>
@@ -172,9 +173,15 @@
   <!-- SUBMENU DE FUNCIONALIDADES (some a partir de 650px) -->
   <nav class="header-nav" id="mobileNav" aria-label="Navegação principal">
     <a href="/loja">Loja</a>
+
     <% if (usuario && usuario.tipo === "farmacia") { %>
     <a href="/adm/home2">Minha Loja</a>
     <% } %>
+    <!---->
+    <% if (usuario && usuario.tipo === "profissional") { %>
+    <a href="/adm/home3">Painel Profissional</a>
+    <% } %>
+
     <a href="/tarefas">Tarefas</a>
     <a href="/progressao">Progressão</a>
     <a href="/doacao">Doação</a>
