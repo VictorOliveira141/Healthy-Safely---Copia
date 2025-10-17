@@ -29,6 +29,15 @@ router.get("/produto", (req, res) => {
 router.get("/shoes", (req, res) => {
   res.render("pages/shoes");
 });
+router.get("/acessorios", (req, res) => {
+  res.render("pages/acessorios");
+});
+router.get("/equipa", (req, res) => {
+  res.render("pages/equipa");
+});
+router.get("/roupasesp", (req, res) => {
+  res.render("pages/roupasseps");
+});
 router.get("/tela-inicial", (req, res) => {
   res.render("pages/tomarammeutela");
 });

@@ -362,6 +362,10 @@ body a {
 }
 
 /* ================= CONSULTAS ================= */
+
+.img-agende {
+  width: 85%;
+}
 .secao-online {
   padding: 20px;
   background: #fff;
@@ -613,4 +617,16 @@ body a {
   
   .produtos { width: 100%; flex: unset; }
   .img-agende { width: 100%; height: auto;}
+}
+
+@media (max-width: 438px) {
+   .img-agende{
+    width: 85%;
+   }
+
+   /* esconder botões no breakpoint <= 438px */
+   .botao-prev,
+   .botao-next {
+     display: none !important;
+   }
 }
