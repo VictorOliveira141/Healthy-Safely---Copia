@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sundown Ômega 3</title>
+    <link rel="stylesheet" href="../css/produto.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+  </head>
+  <body id="topo">
+    <%- include('../partials/header.ejs') %>
+    <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main>
+      <!-- Seção principal do produto -->
+      <section class="product-container">
+        <a href="/tomarammeutela"
+          ><button class="botao-prev">&#10094;</button></a
+        >
+        <section class="product-section">
+          <!-- Coluna lateral com miniaturas -->
+          <aside class="product-thumbnails">
+            <figure><img src="../imagem/coqueteleira.png" alt="Produto 1" /></figure>
+            <figure><img src="../imagem/coqueteleira.png" alt="Produto 2" /></figure>
+            <figure><img src="../imagem/coqueteleira.png" alt="Produto 3" /></figure>
+          </aside>
+
+          <!-- Imagem principal -->
+          <figure class="product-main-image">
+            <img src="../imagem/coqueteleira.png" alt="Produto principal" />
+          </figure>
+
+          <!-- Informações do produto -->
+          <article class="product-info">
+            <button class="btn-share">
+              <i class="bi bi-share"></i> Compartilhar
+            </button>
+            <h2 class="product-title">Coqueteleira SNAKER 600ml</h2>
+            <div class="vendor-info">
+              <span>Vendido por:</span>
+              <address>
+                <img
+                  src="../imagem/saudeevida.png"
+                  alt="Saúde e Vida"
+                  width="25"
+                  height="25"
+                />
+                <span class="vendor-name">Saúde e Vida</span>
+                <i class="bi bi-patch-check-fill"></i>
+              </address>
+            </div>
+
+            <!-- Preços -->
+            <section class="product-prices">
+              <p class="old-price">R$ 29,99</p>
+              <span class="discount">-30%</span>
+              <h2 class="new-price">R$ 20,99 NO PIX</h2>
+            
+            </section>
+
+            <!-- Adicionar ao carrinho -->
+            <form class="add-to-cart">
+              <div class="quantity-control">
+                <button type="button" class="decrease">-</button>
+                <input
+                  type="number"
+                  id="quantity"
+                  name="quantity"
+                  min="1"
+                  value="1"
+                  required
+                />
+                <button type="button" class="increase">+</button>
+              </div>
+              <button type="submit" class="btn-add">
+                Adicionar ao carrinho
+              </button>
+            </form>
+
+            <!-- Calcular frete -->
+            <section class="shipping">
+              <h2>Calcular frete</h2>
+              <div class="shipping-input">
+                <input
+                  type="text"
+                  id="cep"
+                  name="cep"
+                  placeholder="Seu CEP"
+                  required
+                />
+                <i class="bi bi-truck"></i>
+              </div>
+              <button class="btn-calculate">Calcular</button>
+            </section>
+          </article>
+        </section>
+      </section>
+
+      <!-- Descrição e benefícios -->
+      <section class="product-container">
+        <section class="product-description">
+          <article>
+            <h2>Descrição:</h2>
+            <p>
+             A Coqueteleira Sneaker 600 ml é o acessório ideal para quem busca praticidade e estilo na hora de preparar
+              seus suplementos e bebidas. Com design moderno e ergonômico, ela foi desenvolvida para oferecer conforto no manuseio 
+              e vedação segura, evitando vazamentos. Possui capacidade de 600 ml, perfeita para o preparo de shakes, proteínas,
+               pré-treinos e sucos. Fabricada com material resistente e livre de BPA, garante durabilidade e segurança no uso diário, 
+               seja na academia, no trabalho ou em qualquer lugar.
+            </p>
+          </article>
+
+          <article>
+            <h2>Benefícios:</h2>
+            <p>
+            A Coqueteleira Sneaker 600 ml oferece praticidade e eficiência no preparo de suas bebidas, permitindo misturas homogêneas
+             e sem grumos. Seu sistema de vedação evita desperdícios e garante transporte seguro, ideal para quem está sempre em movimento.
+              Além disso, seu design moderno combina estilo e funcionalidade, tornando o momento de preparo do seu shake mais prático e 
+              agradável. Leve, resistente e fácil de limpar, é o companheiro perfeito para o seu dia a dia fitness.
+            </p>
+          </article>
+        </section>
+      </section>
+
+      <!-- Avaliações -->
+      <section class="product-container">
+        <!-- Nota geral -->
+        <article class="overall-rating">
+          <div class="rating-summary">
+            <div class="rating-score">
+              <h2>4.5/5</h2>
+            </div>
+            <div class="stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+            <p>Baseada em 6.262 avaliações</p>
+          </div>
+
+          <div class="rating-score">
+            <button class="botao active">Tudo</button>
+            <button class="botao">5 estrelas(2)</button>
+            <button class="botao">4 estrelas(1)</button>
+            <button class="botao">3 estrelas(0)</button>
+            <button class="botao">2 estrelas(0)</button>
+            <button class="botao">1 estrela(0)</button>
+            <button class="botao">Com midia(2)</button>
+          </div>
+        </article>
+
+        <!-- Comentários recentes -->
+        <section class="recent-reviews">
+          <h2>Avaliações recentes</h2>
+
+          <!--COMENTARIO 1-->
+          <article class="review">
+            <img src="../imagem/mateusmidia.jpg" alt="User Icon" />
+            <div class="review-content">
+              <header>
+                <h3>Mateus Felipe</h3>
+                <time datetime="2025-04-09">09/04/25</time>
+                <div class="review-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </header>
+              <p>
+                Ótimo produto, muito bonito e funcional!
+              </p>
+              <div class="review-media">
+                <img
+                  src="#"
+                  alt="Foto do produto recebido"
+                  style="max-width: 120px; border-radius: 8px; margin: 5px"
+                />
+                <img
+                  src="#"
+                  alt="Foto do produto recebido"
+                  style="max-width: 120px; border-radius: 8px; margin: 5px"
+                />
+              </div>
+            </div>
+          </article>
+
+          <!--COMENTARIO 2-->
+          <article class="review">
+            <img src="../imagem/ranielnerd.png" alt="User Icon" />
+            <div class="review-content">
+              <header>
+                <h3>Daniel Renovato</h3>
+                <time datetime="2025-08-12">12/08/25</time>
+                <div class="review-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+              </header>
+              <p>Qualidade é muito boa.</p>
+            </div>
+          </article>
+
+          <!--COMENTARIO 3-->
+          <article class="review">
+            <img src="../imagem/mathmvb.jpg" alt="User Icon" />
+            <div class="review-content">
+              <header>
+                <h3>Matheus Vieira</h3>
+                <time datetime="2025-05-04">04/05/25</time>
+                <div class="review-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+              </header>
+              <p>Gostei muito, mas passou um pouco da data prevista de entrega</p>
+              <div class="review-media">
+                <img
+                  src="#"
+                  alt="Foto do produto recebido"
+                  style="max-width: 120px; border-radius: 8px; margin: 5px"
+                />
+                <img
+                  src="#"
+                  alt="Foto do produto recebido"
+                  style="max-width: 120px; border-radius: 8px; margin: 5px"
+                />
+              </div>
+            </div>
+          </article>
+        </section>
+      </section>
+
+      <!-- Produtos relacionados-->
+      <section class="product-container">
+        <h1>Quem comprou também compra:</h1>
+        <section class="produtos-destaque" id="produtos-destaque"></section>
+        <script>
+          const produtos = [
+            {
+              img: "../imagem/coqueteleira.png",
+              alt: "Ômega 3 Sundown",
+              titulo: "Sundown Ômega 3 1000mg",
+              estrelas: 5,
+              vendidos: "500+ vendidos",
+              colaborador: "Saúde e Vida",
+              preco: "R$ 26,99",
+            },
+          ];
+          const container = document.getElementById("produtos-destaque");
+          const repetir = 4;
+          for (let i = 0; i < repetir; i++) {
+            const produto = produtos[0];
+            const article = document.createElement("article");
+            article.classList.add("produtos");
+            article.innerHTML = `
+              <img src="${produto.img}" alt="${produto.alt}" />
+              <h3>${produto.titulo}</h3>
+              <article class="produto-info">
+                <article class="avaliacao">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <i class="bi bi-star"></i>
+                </article>
+                <div class="unidades-vendidas">${produto.vendidos}</div>
+              </article>
+              <article class="colaborador">
+                <span class="nome-colaborador">${produto.colaborador}</span>
+                <i class="bi bi-patch-check-fill"></i>
+              </article>
+              <span class="preco">${produto.preco}</span>
+              <button class="btn-comprar">Comprar <i class="bi bi-basket"></i></button>
+            `;
+            container.appendChild(article);
+          }
+        </script>
+      </section>
+
+      <!-- Voltar ao topo -->
+      <section class="voltar-topo">
+        <a href="#topo"><h1>Voltar ao topo</h1></a>
+      </section>
+    </main>
+
+    <!--FOOTER-->
+    <%- include('../partials/footer.ejs') %>
+    <!---->
+
+    <!--SCRIPT PARA A "QUANTIDADE"-->
+    <script>
+      const decreaseBtn = document.querySelector(".decrease");
+      const increaseBtn = document.querySelector(".increase");
+      const quantityInput = document.getElementById("quantity");
+
+      decreaseBtn.addEventListener("click", () => {
+        let val = parseInt(quantityInput.value);
+        if (val > 1) quantityInput.value = val - 1;
+      });
+
+      increaseBtn.addEventListener("click", () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+      });
+    </script>
+
+    <!--SCRIPT PARA A "BOTOES DE NOTA(TUDO, 5 estrelas, 4 estrelas....)"-->
+    <script>
+      // Pega todos os botões
+      const botoes = document.querySelectorAll(".rating-score .botao");
+
+      botoes.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // remove a classe active de todos
+          botoes.forEach((b) => b.classList.remove("active"));
+          // adiciona no clicado
+          btn.classList.add("active");
+        });
+      });
+    </script>
+  </body>
+</html>

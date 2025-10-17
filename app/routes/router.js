@@ -64,6 +64,16 @@ router.get("/tarefas", verificarAutenticacao, (req, res) => {
   res.render("pages/tarefas");
 });
 
+// PRODUTOS
+router.get("/produto2", verificarAutenticacao, (req, res) => {
+  res.render("pages/produto2");});
+  router.get("/produto3", verificarAutenticacao, (req, res) => {
+  res.render("pages/produto3");});
+  router.get("/produto4", verificarAutenticacao, (req, res) => {
+  res.render("pages/produto4");});
+  router.get("/produto5", verificarAutenticacao, (req, res) => {
+  res.render("pages/produto5");});
+
 // TAREFAS
 router.get("/sono", verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
