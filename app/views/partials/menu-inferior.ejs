@@ -7,6 +7,12 @@
     <% if (usuario && usuario.tipo === "farmacia") { %>
     <a href="/adm/home2"><i class="bi bi-person"></i><span>Minha loja</span></a>
     <% } %>
+    <!---->
+    <% if (usuario && usuario.tipo === "profissional") { %>
+    <a href="/adm/home3"
+      ><i class="bi bi-person"></i><span>Profissional</span></a
+    >
+    <% } %>
     <a href="/tarefas"> <i class="bi bi-list-task"></i><span>Tarefas</span> </a>
     <a href="/agendamento1">
       <i class="bi bi-headset-vr"></i><span>Consultas</span>
