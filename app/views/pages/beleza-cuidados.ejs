@@ -9,11 +9,15 @@
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
+    <!---->
     <%- include('../partials/menu-inferior.ejs') %>
 
-    <main class="categoria-container">
+    <main class="categoria-container" id="topo">
       <section class="categoria-banner">
-       <img src="../imagem/bannerbeleza" alt="">
+        <h1 class="categoria-titulo">Beleza & Cuidados pessoais</h1>
+        <p class="categoria-subtitulo">
+          Cuidados com a pele / Cabelos / Maquiagem / Perfumaria
+        </p>
       </section>
 
       <section class="filtros-section">
@@ -29,9 +33,15 @@
 
       <section class="produtos-grid">
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Protetor+Solar" alt="Protetor Solar" class="produto-img" />
+          <img
+            src="../imagem/categoria/protetorsolar.svg"
+            alt="Protetor Solar"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Protetor Solar FPS 50+</h3>
-          <p class="produto-descricao">Proteção solar de amplo espectro para todos os tipos de pele</p>
+          <p class="produto-descricao">
+            Proteção solar de amplo espectro para todos os tipos de pele
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 49,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -39,9 +49,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Serum+Facial" alt="Sérum Facial" class="produto-img" />
+          <img
+            src="../imagem/categoria/serumfacial.svg"
+            alt="Sérum Facial"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Sérum Facial Vitamina C</h3>
-          <p class="produto-descricao">Ilumina e revitaliza a pele com antioxidantes</p>
+          <p class="produto-descricao">
+            Ilumina e revitaliza a pele com antioxidantes
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 89,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -49,9 +65,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Hidratante" alt="Hidratante Corporal" class="produto-img" />
+          <img
+            src="../imagem/categoria/hidratantecorporal.svg"
+            alt="Hidratante Corporal"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Hidratante Corporal 400ml</h3>
-          <p class="produto-descricao">Hidratação intensa e duradoura para todo o corpo</p>
+          <p class="produto-descricao">
+            Hidratação intensa e duradoura para todo o corpo
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 39,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -59,9 +81,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Shampoo" alt="Shampoo" class="produto-img" />
+          <img
+            src="../imagem/categoria/shampoo.svg"
+            alt="Shampoo"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Shampoo Fortalecedor 400ml</h3>
-          <p class="produto-descricao">Fortalece e nutre os fios desde a raiz</p>
+          <p class="produto-descricao">
+            Fortalece e nutre os fios desde a raiz
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 34,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -69,7 +97,11 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Condicionador" alt="Condicionador" class="produto-img" />
+          <img
+            src="../imagem/categoria/condicionador.svg"
+            alt="Condicionador"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Condicionador Reparador 400ml</h3>
           <p class="produto-descricao">Repara e hidrata cabelos danificados</p>
           <article class="produto-info">
@@ -79,9 +111,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Mascara+Capilar" alt="Máscara Capilar" class="produto-img" />
+          <img
+            src="../imagem/categoria/mascaracapilar.svg"
+            alt="Máscara Capilar"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Máscara Capilar Nutritiva 250g</h3>
-          <p class="produto-descricao">Tratamento intensivo para cabelos secos e opacos</p>
+          <p class="produto-descricao">
+            Tratamento intensivo para cabelos secos e opacos
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 44,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -89,9 +127,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Sabonete+Facial" alt="Sabonete Facial" class="produto-img" />
+          <img
+            src="../imagem/categoria/saboneteacne.svg"
+            alt="Sabonete Facial"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Sabonete Facial Antiacne</h3>
-          <p class="produto-descricao">Limpeza profunda e controle de oleosidade</p>
+          <p class="produto-descricao">
+            Limpeza profunda e controle de oleosidade
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 24,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -99,9 +143,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Oleo+Corporal" alt="Óleo Corporal" class="produto-img" />
+          <img
+            src="../imagem/categoria/oleocorporal.svg"
+            alt="Óleo Corporal"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Óleo Corporal Hidratante 200ml</h3>
-          <p class="produto-descricao">Nutrição profunda e brilho natural para a pele</p>
+          <p class="produto-descricao">
+            Nutrição profunda e brilho natural para a pele
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 54,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -110,9 +160,10 @@
       </section>
     </main>
 
-    <footer class="footer">
-      <%- include('../partials/footer.ejs') %>
-    </footer>
+    <section class="voltar-topo">
+      <a href="#topo"><h1>Voltar ao topo</h1></a>
+    </section>
+
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>
-
