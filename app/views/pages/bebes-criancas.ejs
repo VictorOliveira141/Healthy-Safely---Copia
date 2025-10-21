@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/categoria.css" />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
-    <title>Bebês & Crianças - Healthy Safely</title>
+    <title>Bebês & Crianças | Healthy Safely</title>
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
+    <!---->
     <%- include('../partials/menu-inferior.ejs') %>
 
-    <main class="categoria-container">
+    <main class="categoria-container" id="topo">
       <section class="categoria-banner">
-       <img src="../imagem/bannerbebeecri.png" alt="">
+        <h1 class="categoria-titulo">Bebês & Crianças</h1>
+        <p class="categoria-subtitulo">
+          Higiene / Alimentação / Cuidados / Vitaminas Infantis
+        </p>
       </section>
 
       <section class="filtros-section">
@@ -29,9 +33,15 @@
 
       <section class="produtos-grid">
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Fralda" alt="Fraldas" class="produto-img" />
+          <img
+            src="../imagem/categoria/fralda.svg"
+            alt="Fraldas"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Fraldas Descartáveis - Pacote com 48</h3>
-          <p class="produto-descricao">Proteção e conforto para o bebê durante todo o dia</p>
+          <p class="produto-descricao">
+            Proteção e conforto para o bebê durante todo o dia
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 59,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -39,9 +49,17 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Lenco+Umedecido" alt="Lenço Umedecido" class="produto-img" />
-          <h3 class="produto-nome">Lenço Umedecido - 3 pacotes com 48 unidades</h3>
-          <p class="produto-descricao">Limpeza suave e hidratação para a pele do bebê</p>
+          <img
+            src="../imagem/categoria/lenco.svg"
+            alt="Lenço Umedecido"
+            class="produto-img"
+          />
+          <h3 class="produto-nome">
+            Lenço Umedecido - 3 pacotes com 48 unidades
+          </h3>
+          <p class="produto-descricao">
+            Limpeza suave e hidratação para a pele do bebê
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 24,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -49,7 +67,11 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Shampoo+Infantil" alt="Shampoo Infantil" class="produto-img" />
+          <img
+            src="../imagem/categoria/shampoinfantil.svg"
+            alt="Shampoo Infantil"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Shampoo Infantil 400ml</h3>
           <p class="produto-descricao">Fórmula suave que não arde os olhos</p>
           <article class="produto-info">
@@ -59,9 +81,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Sabonete+Liquido" alt="Sabonete Líquido" class="produto-img" />
+          <img
+            src="../imagem/categoria/sabonete.svg"
+            alt="Sabonete Líquido"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Sabonete Líquido Infantil 250ml</h3>
-          <p class="produto-descricao">Limpeza delicada e hidratação para pele sensível</p>
+          <p class="produto-descricao">
+            Limpeza delicada e hidratação para pele sensível
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 16,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -69,9 +97,15 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Pomada+Assaduras" alt="Pomada para Assaduras" class="produto-img" />
+          <img
+            src="../imagem/categoria/pomada.svg"
+            alt="Pomada para Assaduras"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Pomada para Assaduras 100g</h3>
-          <p class="produto-descricao">Previne e trata assaduras com eficácia</p>
+          <p class="produto-descricao">
+            Previne e trata assaduras com eficácia
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 29,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
@@ -79,40 +113,27 @@
         </article>
 
         <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Vitamina+Infantil" alt="Vitamina Infantil" class="produto-img" />
+          <img
+            src="../imagem/categoria/vitaminainfantil.svg"
+            alt="Vitamina Infantil"
+            class="produto-img"
+          />
           <h3 class="produto-nome">Vitamina Infantil - 30 gomas</h3>
-          <p class="produto-descricao">Suplemento vitamínico em formato de gomas saborosas</p>
+          <p class="produto-descricao">
+            Suplemento vitamínico em formato de gomas saborosas
+          </p>
           <article class="produto-info">
             <span class="produto-preco">R$ 34,90</span>
-            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-          </article>
-        </article>
-
-        <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Protetor+Solar" alt="Protetor Solar Infantil" class="produto-img" />
-          <h3 class="produto-nome">Protetor Solar Infantil FPS 60</h3>
-          <p class="produto-descricao">Proteção solar especial para pele delicada</p>
-          <article class="produto-info">
-            <span class="produto-preco">R$ 44,90</span>
-            <button class="btn-adicionar">Adicionar ao Carrinho</button>
-          </article>
-        </article>
-
-        <article class="produto-card">
-          <img src="https://via.placeholder.com/250x250/0c4f43/ffffff?text=Repelente" alt="Repelente Infantil" class="produto-img" />
-          <h3 class="produto-nome">Repelente Infantil 100ml</h3>
-          <p class="produto-descricao">Proteção contra insetos com fórmula suave</p>
-          <article class="produto-info">
-            <span class="produto-preco">R$ 27,90</span>
             <button class="btn-adicionar">Adicionar ao Carrinho</button>
           </article>
         </article>
       </section>
     </main>
 
-    <footer class="footer">
-      <%- include('../partials/footer.ejs') %>
-    </footer>
+    <section class="voltar-topo">
+      <a href="#topo"><h1>Voltar ao topo</h1></a>
+    </section>
+
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>
-
