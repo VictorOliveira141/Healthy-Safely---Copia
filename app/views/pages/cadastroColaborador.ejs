@@ -274,21 +274,11 @@
                 class="<%= erroValidacaoProfissional.profissao %>"
               >
                 <option value="">Selecione sua profissão</option>
-                <option value="psicologo" <%= valoresProfissional.profissao === 'Psicologo' ? 'selected' : '' %>
-                  Psicólogo
-                </option>
-                <option value="cardiologista" <%= valoresProfissional.profissao === 'Cardiologista' ? 'selected' : '' %>
-                  Cardiologista
-                </option>
-                <option value="nutricionista" <%= valoresProfissional.profissao === 'Nutricionista' ? 'selected' : '' %>
-                  Nutricionista
-                </option>
-                <option value="fonoaudiologo" <%= valoresProfissional.profissao === 'Fonoaudiologo' ? 'selected' : '' %>
-                  Fonoaudiólogo
-                </option>
-                <option value="dermatologista" <%= valoresProfissional.profissao === 'Dermatologista' ? 'selected' : '' %>
-                  Dermatologia
-                </option>
+                <option value="psicologo" <%= valoresProfissional.profissao === 'Psicologo' ? 'selected' : '' %>>Psicólogo</option>
+                <option value="cardiologista" <%= valoresProfissional.profissao === 'Cardiologista' ? 'selected' : '' %>>Cardiologista</option>
+                <option value="nutricionista" <%= valoresProfissional.profissao === 'Nutricionista' ? 'selected' : '' %>>Nutricionista</option>
+                <option value="fonoaudiologo" <%= valoresProfissional.profissao === 'Fonoaudiologo' ? 'selected' : '' %>>Fonoaudiólogo</option>
+                <option value="dermatologista" <%= valoresProfissional.profissao === 'Dermatologista' ? 'selected' : '' %>>Dermatologista</option>
               </select>
 
               <span class="msgErro"><%= msgErroProfissional.profissao %></span>
