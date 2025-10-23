@@ -66,8 +66,11 @@ router.get("/higiene", (req, res) => {
 });
 
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
-router.get("/progressao", verificarAutenticacao, (req, res) => {
+router.get("/progressao", verificarAutenticacao,  (req, res) => {
   res.render("pages/progressao");
+});
+router.get("/orientacoes", verificarAutenticacao,  (req, res) => {
+  res.render("pages/orientacoes");
 });
 router.get("/tarefas", verificarAutenticacao, (req, res) => {
   res.render("pages/tarefas");
