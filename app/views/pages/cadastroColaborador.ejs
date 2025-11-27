@@ -1,19 +1,12 @@
 <html>
   <head>
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="../css/colaborador.css" />
+    <title>Healthy Safely | Cadastro Colaborador</title>
+    <link rel="stylesheet" href="../css/cadastro.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
     />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
-    <!-- SCRIPT PARA VALIDAÇÃO FRONT-END -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../js/validacao-front-end.js"></script>
-    <!---->
-    <!--SCRIPT PARA VER A SENHA -->
-    <script src="../js/ver-senha.js"></script>
-    <!---->
   </head>
 
   <body>
@@ -22,378 +15,168 @@
     <!---->
 
     <main class="main">
-      <!-- Lado esquerdo-->
-      <section class="lado-esquerdo">
-        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
-        <h2>Junte-se à nossa rede de colaboradores!</h2>
-        <p>
-          Seja um parceiro da nossa farmácia e aproveite vantagens exclusivas
-          para impulsionar seus negócios.
-        </p>
+      <article class="card" aria-labelledby="titulo-login">
+        <!-- Formulário -->
+        <section class="form-area">
+          <form action="/cadastroColaborador" method="POST" novalidate>
+            <h1 class="form-title">Cadastro de Colaborador</h1>
 
-        <div class="beneficios">
-          <h3>🏪 Para Farmácias</h3>
-          <ul>
-            <li>✅ Exposição dos seus produtos para milhares de clientes</li>
-            <li>✅ Gestão simples de estoque e pedidos</li>
-            <li>✅ Campanhas de marketing gratuitas</li>
-            <li>✅ Relatórios de vendas e desempenho</li>
-          </ul>
-        </div>
-
-        <div class="beneficios">
-          <h3>💊 Para Profissionais de Saúde</h3>
-          <ul>
-            <li>✅ Agenda online para consultas e atendimentos</li>
-            <li>✅ Divulgação do seu perfil profissional</li>
-            <li>✅ Acesso a preços especiais em produtos</li>
-            <li>✅ Suporte exclusivo para atendimento aos clientes</li>
-          </ul>
-        </div>
-      </section>
-
-      <!--Logo mobile quando tiver 650px-->
-      <section class="logo-mobile">
-        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
-      </section>
-
-      <!-- Lado direito com formulário -->
-      <section class="lado-direito">
-        <article class="container">
-          <div class="cabecalho-form">
-            <h1>Cadastro de Colaborador</h1>
-            <p>Escolha o tipo de colaborador que deseja cadastrar:</p>
-          </div>
-          <!-- Botões para escolher tipo de colaborador -->
-          <div class="seletor-cadastro">
-            <button
-              type="button"
-              id="btnFarmacia"
-              class="ativo"
-              onclick="mostrarFormulario('farmacia')"
+            <!-- Login via Google -->
+            <a
+              class="btn-google"
+              href="/auth/google"
+              role="button"
+              aria-label="Entrar com Google"
             >
-              Sou uma Farmácia
-            </button>
-            <button
-              type="button"
-              id="btnProfissional"
-              onclick="mostrarFormulario('profissional')"
-            >
-              Sou um Profissional
-            </button>
-          </div>
+              <i class="bi bi-google icone-google"></i>
+              <span>Continuar com Google</span>
+            </a>
 
-          <!-- Formulário para farmácia (visível por padrão) -->
-          <form
-            id="formFarmacia"
-            class="quadrado"
-            method="POST"
-            action="/cadastroFarmacia"
-          >
-            <h3>Dados da Farmácia</h3>
-            <article class="input-icon">
-              <i class="bi bi-building icones-gerais"></i>
-              <input
-                type="text"
-                name="nomeFarmacia"
-                placeholder="Nome da farmácia"
-                value="<%= valoresFarmacia.nomeFarmacia %>"
-                class="<%= erroValidacaoFarmacia.nomeFarmacia %>"
-              />
-              <span class="msgErro"><%= msgErroFarmacia.nomeFarmacia %></span>
+            <div class="or" aria-hidden="true">ou</div>
+
+            <!-- Nome do Responsável e Nome da Farmácia -->
+            <article class="inputs-duplos">
+              <div>
+                <label>Nome do Responsável</label>
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  placeholder="Digite seu Nome"
+                  value="<%= valores.nome %>"
+                  class="<%= erroValidacao.nome ? 'erro-input' : '' %>"
+                />
+                <span class="msg-erro"><%= msgErro.nome %></span>
+              </div>
+              <div>
+                <label>Nome da Farmácia</label>
+                <input
+                  id="nomeFarmacia"
+                  name="nomeFarmacia"
+                  type="text"
+                  placeholder="Nome da sua Farmácia"
+                  value="<%= valores.nomeFarmacia %>"
+                  class="<%= erroValidacao.nomeFarmacia ? 'erro-input' : '' %>"
+                />
+                <span class="msg-erro"><%= msgErro.nomeFarmacia %></span>
+              </div>
             </article>
 
-            <article class="input-icon">
-              <i class="bi bi-person-badge icones-gerais"></i>
-              <input
-                type="text"
-                id="nomeusuario"
-                name="nomeusuario"
-                placeholder="Crie um nome de usuário"
-                value="<%= valoresFarmacia.nomeusuario %>"
-                class="<%= erroValidacaoFarmacia.nomeusuario %>"
-                oninput="validarNomeUsuario()"
-              />
-              <span class="msgErro"><%= msgErroFarmacia.nomeusuario %></span>
+            <!-- Nome de usuário e E-mail -->
+            <article class="inputs-duplos">
+              <div>
+                <label>Nome de Usuário</label>
+                <input
+                  id="nomeusuario"
+                  name="nomeusuario"
+                  type="text"
+                  placeholder="Escolha um nome de usuário"
+                  value="<%= valores.nomeusuario %>"
+                  class="<%= erroValidacao.nomeusuario ? 'erro-input' : '' %>"
+                />
+                <span class="msg-erro"><%= msgErro.nomeusuario %></span>
+              </div>
+              <div>
+                <label>E-mail Profissional</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Digite seu E-mail"
+                  value="<%= valores.email %>"
+                  class="<%= erroValidacao.email ? 'erro-input' : '' %>"
+                />
+                <span class="msg-erro"><%= msgErro.email %></span>
+              </div>
             </article>
 
-            <article class="input-icon">
-              <i class="bi bi-card-text icones-gerais"></i>
+            <!-- CNPJ (sozinho) -->
+            <div>
+              <label>CNPJ</label>
               <input
-                type="text"
+                id="CNPJ"
                 name="CNPJ"
-                placeholder="CNPJ"
-                maxlength="18"
-                value="<%= valoresFarmacia.CNPJ %>"
-                class="<%= erroValidacaoFarmacia.CNPJ %>"
-                oninput="mascaraCNPJ(this)"
-              />
-              <span class="msgErro"><%= msgErroFarmacia.CNPJ %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-person icones-gerais"></i>
-              <input
                 type="text"
-                name="responsavel"
-                placeholder="Responsável"
-                value="<%= valoresFarmacia.responsavel %>"
-                class="<%= erroValidacaoFarmacia.responsavel %>"
+                placeholder="Digite o CNPJ"
+                value="<%= valores.CNPJ %>"
+                class="<%= erroValidacao.CNPJ ? 'erro-input' : '' %>"
               />
-              <span class="msgErro"><%= msgErroFarmacia.responsavel %></span>
+              <span class="msg-erro"><%= msgErro.CNPJ %></span>
+            </div>
+
+            <!-- Senha e Confirmar Senha -->
+            <article class="inputs-duplos">
+              <div>
+                <label>Senha</label>
+                <div class="campo-senha">
+                  <input
+                    id="senha"
+                    name="senha"
+                    type="password"
+                    placeholder="Crie uma Senha"
+                    value="<%= valores.senha %>"
+                    class="<%= erroValidacao.senha ? 'erro-input' : '' %>"
+                  />
+                  <button
+                    type="button"
+                    class="btn-olho"
+                    onclick="toggleSenha('senha')"
+                    aria-label="Mostrar senha"
+                  >
+                    <i class="bi bi-eye-slash-fill"></i>
+                  </button>
+                </div>
+                <span class="msg-erro"><%= msgErro.senha %></span>
+              </div>
+              <div>
+                <label>Confirmar Senha</label>
+                <div class="campo-senha">
+                  <input
+                    id="confirmarSenha"
+                    name="confirmarSenha"
+                    type="password"
+                    placeholder="Confirme sua Senha"
+                    value="<%= valores.confirmarSenha %>"
+                    class="<%= erroValidacao.confirmarSenha ? 'erro-input' : '' %>"
+                  />
+                  <button
+                    type="button"
+                    class="btn-olho"
+                    onclick="toggleSenha('confirmarSenha')"
+                    aria-label="Mostrar senha"
+                  >
+                    <i class="bi bi-eye-slash-fill"></i>
+                  </button>
+                </div>
+                <span class="msg-erro"><%= msgErro.confirmarSenha %></span>
+              </div>
             </article>
 
-            <article class="input-icon">
-              <i class="bi bi-geo-alt icones-gerais"></i>
-              <input
-                type="text"
-                name="cidade"
-                placeholder="Cidade (Ex: São Paulo)"
-                value="<%= valoresFarmacia.cidade %>"
-                class="<%= erroValidacaoFarmacia.cidade %>"
-              />
-              <span class="msgErro"><%= msgErroFarmacia.cidade %></span>
-            </article>
+            <div class="actions">
+              <button class="btn-primary" type="submit">Criar Conta</button>
+            </div>
 
-            <article class="input-icon">
-              <i class="bi bi-map icones-gerais"></i>
-              <input
-                type="text"
-                name="estado"
-                placeholder="Estado (Ex: SP, RJ, MG)"
-                value="<%= valoresFarmacia.estado %>"
-                class="<%= erroValidacaoFarmacia.estado %>"
-              />
-              <span class="msgErro"><%= msgErroFarmacia.estado %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-envelope icones-gerais"></i>
-              <input
-                type="email"
-                name="email"
-                placeholder="E-mail"
-                value="<%= valoresFarmacia.email %>"
-                class="<%= erroValidacaoFarmacia.email %>"
-              />
-              <span class="msgErro"><%= msgErroFarmacia.email %></span>
-            </article>
-
-            <label class="senhaInfo">
-              Sua senha deve conter: <br />
-              ✔ uma letra maiúscula <br />
-              ✔ um número <br />
-              ✔ um caractere especial
-            </label>
-            <br />
-            <br />
-
-            <article class="input-icon">
-              <i class="bi bi-lock icones-gerais"></i>
-              <input
-                type="password"
-                id="senha2"
-                name="senha"
-                placeholder="Senha"
-                value="<%= valoresFarmacia.senha %>"
-                class="<%= erroValidacaoFarmacia.senha %>"
-              />
-              <i
-                class="bi bi-eye-slash-fill olhofechado"
-                onclick="mostrarSenha('senha2', this)"
-              ></i>
-              <span class="msgErro"><%= msgErroFarmacia.senha %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-shield-lock icones-gerais"></i>
-              <input
-                type="password"
-                id="confirmarSenha2"
-                name="confirmarSenha"
-                placeholder="Confirmar Senha"
-                value="<%= valoresFarmacia.confirmarSenha %>"
-                class="<%= erroValidacaoFarmacia.confirmarSenha %>"
-              />
-              <i
-                class="bi bi-eye-slash-fill olhofechado"
-                onclick="mostrarSenha('confirmarSenha2', this)"
-              ></i>
-              <span class="msgErro"><%= msgErroFarmacia.confirmarSenha %></span>
-            </article>
-
-            <h1 class="login">
-              Já possui uma conta? Faça seu <a href="/login">login</a> ou
-              torne-se um <a href="/cadastroCliente">cliente</a>
-            </h1>
-
-            <button type="submit" class="cadastrar-profissional">
-              Cadastrar Farmácia
-            </button>
-          </form>
-
-          <!-- Formulário para profissional (invisível por padrão) -->
-          <form
-            id="formProfissional"
-            class="quadrado hidden"
-            method="POST"
-            action="/cadastroProfissional"
-          >
-            <h3>Dados do Profissional</h3>
-            <article class="input-icon">
-              <i class="bi bi-person icones-gerais"></i>
-              <input
-                type="text"
-                name="nome"
-                placeholder="Nome completo"
-                value="<%= valoresProfissional.nome %>"
-                class="<%= erroValidacaoProfissional.nome %>"
-              />
-              <span class="msgErro"><%= msgErroProfissional.nome %></span>
-              <br />
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-person-badge icones-gerais"></i>
-              <input
-                type="text"
-                id="nomeusuario"
-                name="nomeusuario"
-                placeholder="Crie um nome de usuário"
-                value="<%= valoresFarmacia.nomeusuario %>"
-                class="<%= erroValidacaoFarmacia.nomeusuario %>"
-                oninput="validarNomeUsuario()"
-              />
-              <span class="msgErro"><%= msgErroFarmacia.nomeusuario %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-caret-down-fill seta-baixo"></i>
-              <select
-                name="profissao"
-                class="<%= erroValidacaoProfissional.profissao %>"
+            <p class="small">
+              Quer se tornar um Cliente?
+              <a href="/cadastroCliente" class="link-cadastro"
+                >Cadastra-se como um cliente!</a
               >
-                <option value="">Selecione sua profissão</option>
-                <option value="psicologo" <%= valoresProfissional.profissao === 'Psicologo' ? 'selected' : '' %>>Psicólogo</option>
-                <option value="cardiologista" <%= valoresProfissional.profissao === 'Cardiologista' ? 'selected' : '' %>>Cardiologista</option>
-                <option value="nutricionista" <%= valoresProfissional.profissao === 'Nutricionista' ? 'selected' : '' %>>Nutricionista</option>
-                <option value="fonoaudiologo" <%= valoresProfissional.profissao === 'Fonoaudiologo' ? 'selected' : '' %>>Fonoaudiólogo</option>
-                <option value="dermatologista" <%= valoresProfissional.profissao === 'Dermatologista' ? 'selected' : '' %>>Dermatologista</option>
-              </select>
-
-              <span class="msgErro"><%= msgErroProfissional.profissao %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-clipboard-check icones-gerais"></i>
-              <input
-                type="text"
-                name="CREF"
-                placeholder="CRM / CRN / CREF"
-                value="<%= valoresProfissional.CREF %>"
-                class="<%= erroValidacaoProfissional.CREF %>"
-              />
-              <span class="msgErro"><%= msgErroProfissional.CREF %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-envelope icones-gerais"></i>
-              <input
-                type="email"
-                name="email"
-                placeholder="E-mail"
-                value="<%= valoresProfissional.email %>"
-                class="<%= erroValidacaoProfissional.email %>"
-              />
-              <span class="msgErro"><%= msgErroProfissional.email %></span>
-            </article>
-
-            <label class="senhaInfo">
-              Sua senha deve conter: <br />
-              ✔ uma letra maiúscula <br />
-              ✔ um número <br />
-              ✔ um caractere especial
-            </label>
-            <br />
-            <br />
-
-            <article class="input-icon">
-              <i class="bi bi-lock icones-gerais"></i>
-              <input
-                type="password"
-                id="senha"
-                name="senha"
-                placeholder="Senha"
-                value="<%= valoresProfissional.senha %>"
-                class="<%= erroValidacaoProfissional.senha %>"
-              />
-              <i
-                class="bi bi-eye-slash-fill olhofechado"
-                onclick="mostrarSenha('senha', this)"
-              ></i>
-              <span class="msgErro"><%= msgErroProfissional.senha %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-shield-lock icones-gerais"></i>
-              <input
-                type="password"
-                id="confirmarSenha"
-                name="confirmarSenha"
-                placeholder="Confirmar Senha"
-                value="<%= valoresProfissional.confirmarSenha %>"
-                class="<%= erroValidacaoProfissional.confirmarSenha %>"
-              />
-              <i
-                class="bi bi-eye-slash-fill olhofechado"
-                onclick="mostrarSenha('confirmarSenha', this)"
-              ></i>
-              <span class="msgErro"
-                ><%= msgErroProfissional.confirmarSenha %></span
-              >
-            </article>
-
-            <h1 class="login">
-              Já possui uma conta? Faça seu <a href="/login">login</a> ou
-              torne-se um <a href="/cadastroCliente">cliente</a>
-            </h1>
-
-            <button type="submit" class="cadastrar-profissional">
-              Cadastrar Profissional
-            </button>
+            </p>
+            <p class="small">
+              Já é colaborador?
+              <a href="/login" class="link-cadastro">Faça login.</a>
+            </p>
           </form>
-        </article>
-      </section>
+        </section>
+      </article>
     </main>
-
-    <!-- Script para controle de formulário ativo -->
-    <script>
-      const formularioAtivo =
-        "<%= typeof formularioAtivo !== 'undefined' ? formularioAtivo : 'farmacia' %>";
-      function mostrarFormulario(tipo) {
-        const formFarmacia = document.getElementById("formFarmacia");
-        const formProfissional = document.getElementById("formProfissional");
-
-        const btnFarmacia = document.getElementById("btnFarmacia");
-        const btnProfissional = document.getElementById("btnProfissional");
-
-        if (tipo === "farmacia") {
-          formFarmacia.classList.remove("hidden");
-          formProfissional.classList.add("hidden");
-          btnFarmacia.classList.add("ativo");
-          btnProfissional.classList.remove("ativo");
-        } else {
-          formProfissional.classList.remove("hidden");
-          formFarmacia.classList.add("hidden");
-          btnProfissional.classList.add("ativo");
-          btnFarmacia.classList.remove("ativo");
-        }
-      }
-      mostrarFormulario(formularioAtivo);
-    </script>
 
     <!--- FOOTER --->
     <%- include('../partials/footer.ejs') %>
     <!---->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/validacao-front-end.js"></script>
+    <script src="../js/ver-senha.js"></script>
   </body>
 </html>

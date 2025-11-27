@@ -1,0 +1,532 @@
+/* Importação de fonte mais moderna */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+/* =============== CORES E VARIÁVEIS GLOBAIS =============== */
+/* Definição de variáveis CSS para cores e estilos reutilizáveis EM TODO O SITE */
+:root {
+  --primary-color: #00a86b; /* Verde Saúde */
+  --secondary-color: #0c4f43; /* Verde Escuro Original */
+  --accent-color: #ff6b6b; /* Vermelho de Destaque */
+  --background-light: #f7f9fb;
+  --background-green: #eafaf1;
+  --text-dark: #2c3e50;
+  --text-light: #444;
+  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --white: #ffffff;
+  --muted: #64748b;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* =============== CONTAINERS PRINCIPAIS =============== */
+body {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: 32px;
+}
+.card {
+  width: 100%;
+  max-width: 800px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(255, 255, 255, 0.98)
+  );
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-subtle);
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+}
+
+/* =============== Formulario ===============*/
+.form-area {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+form {
+  width: 100%;
+  max-width: 650px;
+}
+.form-title {
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* =============== Botão de login com Google =============== */
+.btn-google {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: var(--white);
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-subtle);
+  transition: all 0.3s ease;
+}
+.btn-google:hover {
+  background-color: var(--background-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+.icone-google {
+  font-size: 20px;
+  color: #db4437;
+}
+.or {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 12px 0;
+}
+
+/* =============== inputs e labels =============== */
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+  margin-top: 15px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.inputs-duplos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.inputs-duplos > div {
+  margin-bottom: 0;
+}
+
+form > div {
+  margin-bottom: 16px;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--white);
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+/* Estado de foco para todos os inputs */
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+input[type="date"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
+}
+
+/* Estilo específico para input date */
+input[type="date"] {
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+/* Container do campo de senha com botão de olho */
+.campo-senha {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.campo-senha input {
+  width: 100%;
+  padding-right: 36px;
+}
+
+.btn-olho {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 16px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.btn-olho:hover {
+  color: var(--text-dark);
+}
+
+/* Mensagem de erro */
+.msg-erro {
+  color: var(--accent-color);
+  font-size: 13px;
+  margin-top: 6px;
+  display: block;
+  font-weight: 500;
+  animation: slideDown 0.2s ease;
+  min-height: 18px;
+}
+
+/* Esconde mensagem vazia */
+.msg-erro:empty {
+  display: none;
+  min-height: 0;
+  margin-top: 0;
+}
+
+/* Estilo para campos com erro */
+.erro-input {
+  border-color: var(--accent-color) !important;
+  background-color: rgba(255, 107, 107, 0.03) !important;
+}
+.erro-input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15) !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Estilo para campos com sucesso */
+.sucesso-input {
+  border-color: var(--primary-color) !important;
+  background-color: rgba(0, 168, 107, 0.02) !important;
+}
+.sucesso-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1) !important;
+}
+
+/* Animações */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Espaçamento entre grupos de campos */
+form > div {
+  margin-bottom: 12px;
+}
+
+.actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =============== Botões e links =============== */
+.btn-primary {
+  background: var(--accent-color);
+  color: var(--white);
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-subtle);
+  opacity: 0.95;
+}
+.link-muted {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+}
+.small {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.link-cadastro {
+  color: var(--accent-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* =============== RESPONSIVIDADE =============== */
+
+/* Breakpoint 800px - Promo desaparece e card fica coluna única */
+@media (max-width: 800px) {
+  .card {
+    grid-template-columns: 1fr !important;
+    max-width: 100% !important;
+  }
+
+  main {
+    padding: 12px;
+    min-height: calc(100vh - 200px);
+  }
+
+  .form-area {
+    padding: 24px;
+  }
+
+  .form-title {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .btn-google {
+    padding: 8px 10px;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .icone-google {
+    font-size: 18px;
+  }
+
+  .or {
+    font-size: 12px;
+    margin: 10px 0;
+  }
+
+  label {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+  input {
+    margin-bottom: 6px;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="date"] {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  form > div {
+    margin-bottom: 10px;
+  }
+
+  .inputs-duplos {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 10px;
+  }
+
+  .inputs-duplos > div {
+    margin-bottom: 10px;
+  }
+
+  .btn-primary {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .link-muted {
+    font-size: 12px;
+  }
+
+  .small {
+    font-size: 11px;
+    margin-top: 10px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+/* Tablets e telas médias (900px ou menos) */
+@media (max-width: 900px) {
+  .form-area {
+    padding: 28px;
+  }
+
+  .form-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .btn-google {
+    padding: 9px 12px;
+    font-size: 15px;
+  }
+
+  label {
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+  input {
+    margin-bottom: 6px;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="date"] {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    padding: 9px 14px;
+    font-size: 15px;
+  }
+
+  .link-muted {
+    font-size: 13px;
+  }
+
+  .small {
+    font-size: 12px;
+  }
+
+  .inputs-duplos {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .inputs-duplos > div {
+    margin-bottom: 0;
+  }
+}
+
+/* Celulares pequenos (480px ou menos) */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+
+  main {
+    padding: 12px;
+    min-height: calc(100vh - 180px);
+  }
+
+  .card {
+    border-radius: 8px;
+  }
+
+  .form-area {
+    padding: 20px;
+  }
+
+  form {
+    max-width: 100%;
+  }
+  .inputs-duplos {
+    grid-template-columns: 1fr;
+  }
+
+  .form-title {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .btn-google {
+    padding: 8px 10px;
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .icone-google {
+    font-size: 16px;
+  }
+
+  .or {
+    font-size: 11px;
+    margin: 8px 0;
+  }
+
+  label {
+    font-size: 10px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+  }
+  input {
+    margin-bottom: 6px;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="date"] {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  form > div {
+    margin-bottom: 14px;
+  }
+
+  .btn-primary {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .link-muted {
+    font-size: 11px;
+  }
+
+  .small {
+    font-size: 10px;
+    margin-top: 8px;
+  }
+
+  .subtitulo {
+    font-size: 12px;
+  }
+}

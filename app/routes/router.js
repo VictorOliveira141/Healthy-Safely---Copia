@@ -75,13 +75,17 @@ router.get("/tarefas", verificarAutenticacao, (req, res) => {
 
 // PRODUTOS
 router.get("/produto2", (req, res) => {
-  res.render("pages/produto2");});
-  router.get("/produto3", (req, res) => {
-  res.render("pages/produto3");});
-  router.get("/produto4", (req, res) => {
-  res.render("pages/produto4");});
-  router.get("/produto5", (req, res) => {
-  res.render("pages/produto5");});
+  res.render("pages/produto2");
+});
+router.get("/produto3", (req, res) => {
+  res.render("pages/produto3");
+});
+router.get("/produto4", (req, res) => {
+  res.render("pages/produto4");
+});
+router.get("/produto5", (req, res) => {
+  res.render("pages/produto5");
+});
 
 // TAREFAS
 router.get("/sono", verificarAutenticacao, (req, res) => {
@@ -152,9 +156,11 @@ router.get("/login", (req, res) => {
   res.render("pages/login", {
     erro: null,
     valores: {
-      usuarioDigitado: "",
-      senhaDigitada: "",
+      email: "",
+      senha: "",
     },
+    erroValidacao: {},
+    msgErro: {},
     sucesso: false,
   });
 });
@@ -164,10 +170,8 @@ router.get("/cadastroCliente", (req, res) => {
   res.render("pages/cadastroCliente", {
     erros: null,
     valores: {
-      nome: "",
       nomeusuario: "",
       email: "",
-      data: "",
       senha: "",
       confirmarSenha: "",
     },
@@ -177,39 +181,20 @@ router.get("/cadastroCliente", (req, res) => {
   });
 });
 
-//CADASTRO COLABORADOR (FARMÁCIA OU PROFISSIONAL)
+//CADASTRO COLABORADOR (FARMÁCIA)
 router.get("/cadastroColaborador", (req, res) => {
   res.render("pages/cadastroColaborador", {
-    // Farmácia
-    valoresFarmacia: {
+    valores: {
+      nome: "",
       nomeFarmacia: "",
       nomeusuario: "",
       CNPJ: "",
-      responsavel: "",
-      cidade: "",
-      estado: "",
       email: "",
-      data: "",
       senha: "",
       confirmarSenha: "",
     },
-    erroValidacaoFarmacia: {},
-    msgErroFarmacia: {},
-
-    // Profissional
-    valoresProfissional: {
-      nome: "",
-      nomeusuario: "",
-      profissao: "",
-      CREF: "",
-      email: "",
-      data: "",
-      senha: "",
-      confirmarSenha: "",
-    },
-    erroValidacaoProfissional: {},
-    msgErroProfissional: {},
-
+    erroValidacao: {},
+    msgErro: {},
     retorno: null,
   });
 });
@@ -235,21 +220,6 @@ router.post(
     .bail()
     .isEmail()
     .withMessage("*Endereço de email inválido!"),
-
-  body("data")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .custom((value) => {
-      const dataNascimento = new Date(value);
-      const hoje = new Date();
-      const idadeMinima = 14;
-      const idade = hoje.getFullYear() - dataNascimento.getFullYear();
-      const mes = hoje.getMonth() - dataNascimento.getMonth();
-      if (idade < idadeMinima || (idade === idadeMinima && mes < 0)) {
-        throw new Error(`*Você deve ter pelo menos ${idadeMinima} anos.`);
-      }
-      return true;
-    }),
 
   body("senha")
     .notEmpty()
@@ -300,7 +270,6 @@ router.post(
       nome: req.body.nome,
       nomeusuario: req.body.nomeusuario,
       email: req.body.email,
-      data: req.body.data,
       senha: req.body.senha,
 
       tipo: "cliente",
@@ -310,16 +279,34 @@ router.post(
   }
 );
 
-//CADASTRO SENDO FARMÁCIA
+//CADASTRO SENDO COLABORADOR (FARMÁCIA)
 router.post(
-  "/cadastroFarmacia",
+  "/cadastroColaborador",
+  body("nome")
+    .trim()
+    .notEmpty()
+    .withMessage("*Campo obrigatório!")
+    .bail()
+    .isLength({ min: 3, max: 50 })
+    .withMessage("*O Nome do Responsável deve conter entre 3 e 50 caracteres!")
+    .matches(/^[A-Za-zÀ-ú\s]+$/)
+    .withMessage("*O nome deve conter apenas letras!"),
+
   body("nomeFarmacia")
     .trim()
     .notEmpty()
     .withMessage("*Campo obrigatório!")
     .bail()
     .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome da farmácia deve conter entre 3 e 50 caracteres!"),
+    .withMessage("*O Nome da Farmácia deve conter entre 3 e 50 caracteres!"),
+
+  body("nomeusuario")
+    .trim()
+    .notEmpty()
+    .withMessage("*Campo obrigatório!")
+    .bail()
+    .isLength({ min: 3, max: 30 })
+    .withMessage("*O Nome de usuário deve conter entre 3 e 30 caracteres!"),
 
   body("CNPJ")
     .notEmpty()
@@ -336,29 +323,6 @@ router.post(
       return true;
     }),
 
-  body("responsavel")
-    .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome do responsável deve conter entre 3 e 50 caracteres!"),
-
-  body("cidade")
-    .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 2, max: 50 })
-    .withMessage("*A cidade deve conter entre 2 e 50 caracteres!"),
-
-  body("estado")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 2, max: 2 })
-    .withMessage("*O estado deve conter exatamente 2 caracteres!"),
-
   body("email")
     .notEmpty()
     .withMessage("*Campo obrigatório!")
@@ -394,161 +358,31 @@ router.post(
   function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      const erroValidacaoFarmacia = {};
-      const msgErroFarmacia = {};
+      const erroValidacao = {};
+      const msgErro = {};
 
       errors.array().forEach((erro) => {
-        erroValidacaoFarmacia[erro.path] = "erro";
-        msgErroFarmacia[erro.path] = erro.msg;
+        erroValidacao[erro.path] = "erro";
+        msgErro[erro.path] = erro.msg;
       });
 
       return res.render("pages/cadastroColaborador", {
-        valoresFarmacia: req.body,
-        erroValidacaoFarmacia,
-        msgErroFarmacia,
-
-        // manter área profissional intacta
-        valoresProfissional: {
-          nome: "",
-          nomeusuario: "",
-          profissao: "",
-          CREF: "",
-          email: "",
-          data: "",
-          senha: "",
-        },
-        erroValidacaoProfissional: {},
-        msgErroProfissional: {},
+        valores: req.body,
+        erroValidacao,
+        msgErro,
         retorno: null,
-        formularioAtivo: "farmacia",
       });
     }
-    // os dados do usuario sao puxados para o array usuarios
+
+    // Dados do usuário são adicionados ao array
     usuarios.push({
+      nome: req.body.nome,
       nomeFarmacia: req.body.nomeFarmacia,
       nomeusuario: req.body.nomeusuario,
       cnpj: req.body.CNPJ,
-      responsavel: req.body.responsavel,
-      cidade: req.body.cidade,
-      estado: req.body.estado,
       email: req.body.email,
-      data: req.body.data,
       senha: req.body.senha,
       tipo: "farmacia",
-    });
-    res.redirect("/login");
-  }
-);
-
-//CADASTRO SENDO PROFISSIONAL
-router.post(
-  "/cadastroProfissional",
-
-  body("nome")
-    .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome deve conter entre 3 e 50 caracteres!")
-    .matches(/^[A-Za-zÀ-ú\s]+$/)
-    .withMessage("*O nome deve conter apenas letras!"),
-
-  body("profissao")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("*A profissão deve conter entre 3 e 50 caracteres!"),
-
-  body("CREF")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .custom((value) => {
-      const apenasNumeros = value.replace(/[^\d]+/g, "");
-      if (apenasNumeros.length < 5 || apenasNumeros.length > 10) {
-        throw new Error("*O CREF deve conter entre 5 e 10 números!");
-      }
-      return true;
-    }),
-
-  body("email")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isEmail()
-    .withMessage("*Endereço de email inválido!"),
-
-  body("senha")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isStrongPassword({
-      minLowercase: 1,
-      minUppercase: 1,
-      minNumbers: 1,
-      minSymbols: 1,
-      minLength: 8,
-    })
-    .withMessage(
-      "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!"
-    ),
-
-  body("confirmarSenha")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .custom((value, { req }) => {
-      if (value !== req.body.senha) {
-        throw new Error("*As senhas não conferem!");
-      }
-      return true;
-    }),
-
-  function (req, res) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      const erroValidacaoProfissional = {};
-      const msgErroProfissional = {};
-
-      errors.array().forEach((erro) => {
-        erroValidacaoProfissional[erro.path] = "erro";
-        msgErroProfissional[erro.path] = erro.msg;
-      });
-
-      return res.render("pages/cadastroColaborador", {
-        valoresProfissional: req.body,
-        erroValidacaoProfissional,
-        msgErroProfissional,
-
-        erroValidacaoFarmacia: {},
-        msgErroFarmacia: {},
-
-        valoresFarmacia: {
-          nomeFarmacia: "",
-          nomeusuario: "",
-          CNPJ: "",
-          responsavel: "",
-          cidade: "",
-          estado: "",
-          email: "",
-          senha: "",
-          confirmarSenha: "",
-        },
-
-        retorno: null,
-        formularioAtivo: "profissional",
-      });
-    }
-    // os dados do usuario sao puxados para o array usuarios
-    usuarios.push({
-      nome: req.body.nome,
-      profissao: req.body.profissao,
-      CREF: req.body.CREF,
-      email: req.body.email,
-      nomeusuario: req.body.nomeusuario,
-      senha: req.body.senha,
-      tipo: "profissional",
     });
 
     res.redirect("/login");
@@ -572,12 +406,7 @@ router.post("/login", (req, res) => {
     if (usuarioEncontrado.tipo === "farmacia") {
       // colaborador farmacia → vai pro painel admin
       return res.redirect("adm/home2");
-    }
-    if (usuarioEncontrado.tipo === "profissional") {
-      // colaborador profissional → vai para o painel admin
-      return res.redirect("adm/home3");
-    }
-    {
+    } else {
       // cliente → vai pro perfil normal
       return res.redirect("/tomarammeutela");
     }

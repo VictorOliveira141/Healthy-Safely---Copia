@@ -1,7 +1,7 @@
 <html>
   <head>
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="../css/cliente.css" />
+    <title>Healthy Safely | Cadastro</title>
+    <link rel="stylesheet" href="../css/cadastro.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
@@ -15,169 +15,127 @@
     <!---->
 
     <main class="main">
-      <!-- Lado esquerdo-->
-      <section class="lado-esquerdo">
-        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
-        <h2>Sua saúde começa aqui!🍏</h2>
-        <p>
-          Cadastre-se e aproveite todos os benefícios que preparamos para você.
-        </p>
+      <article class="card" aria-labelledby="titulo-login">
+        <!-- Formulário -->
+        <section class="form-area">
+          <form action="/cadastroCliente" method="POST" novalidate>
+            <h1 class="form-title">Criar Conta</h1>
 
-        <ul class="beneficios">
-          <li>✅ Compras mais rápidas</li>
-          <li>✅ Descontos exclusivos</li>
-          <li>✅ Histórico de pedidos</li>
-          <li>✅ Promoções antecipadas</li>
-        </ul>
+            <!-- Login via Google (link para backend de OAuth) -->
+            <a
+              class="btn-google"
+              href="/auth/google"
+              role="button"
+              aria-label="Entrar com Google"
+            >
+              <i class="bi bi-google icone-google"></i>
+              <span>Continuar com Google</span>
+            </a>
 
-        <!-- Slider automático -->
-        <div class="slider">
-          <div class="slide ativo">
-            <blockquote>
-              “Sempre encontro o que preciso e com ótimo atendimento!” — Maria
-              S.
-            </blockquote>
-          </div>
-          <div class="slide">
-            <blockquote>
-              “Preços justos e entrega rápida. Recomendo muito!” — João P.
-            </blockquote>
-          </div>
-          <div class="slide">
-            <blockquote>
-              “Variedade incrível de produtos e promoções imperdíveis!” — Ana C.
-            </blockquote>
-          </div>
-        </div>
-      </section>
-      <script src="../js/carrossel.js"></script>
-      <!-- Fim lado esquerdo-->
+            <div class="or" aria-hidden="true">ou</div>
 
-      <section class="logo-mobile">
-        <img src="../imagem/Group 13.png" alt="Logo" class="logo" />
-      </section>
+            <!-- Nome -->
 
-      <!-- Lado direito com formulário -->
-      <section class="lado-direito">
-        <form action="/cadastroCliente" method="POST" class="quadrado">
-          <h1 class="novoUsuario">NOVO USUÁRIO</h1>
-          <button type="submit" id="btnClique" class="google">
-            <section>
-              <img src="../imagem/google.png" class="googleimg" />
-              <span>Continue com Google</span>
-            </section>
-          </button>
-
-          <article class="formulario">
-            <h2>Dados de acesso</h2>
-            <article class="input-icon">
-              <i class="bi bi-person icones-gerais"></i>
+            <div>
+              <label>Nome de Usuário</label>
               <input
-                type="text"
                 id="nome"
                 name="nome"
-                placeholder="Digite seu nome completo"
-                value="<%= valores.nome %>"
-                class="<%= erroValidacao.nome %>"
-              />
-              <span class="msgErro"><%= msgErro.nome %></span>
-            </article>
-
-            <article class="input-icon">
-              <i class="bi bi-person-badge icones-gerais"></i>
-
-              <input
                 type="text"
-                id="nomeusuario"
-                name="nomeusuario"
-                placeholder="Crie um nome de usuário"
-                value="<%= valores.nomeusuario %>"
-                class="<%= erroValidacao.nomeusuario %>"
-                oninput="validarNomeUsuario()"
+                placeholder="Crie um Nome de Usuário"
+                value="<%= valores ? valores.nome || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.nome ? 'erro-input' : '' %>"
               />
-
-              <span class="msgErro" id="msgNomeUsuario"
-                ><%= msgErro.nomeusuario %></span
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span
               >
-            </article>
+            </div>
 
-            <article class="input-icon">
-              <i class="bi bi-envelope icones-gerais"></i>
+            <!-- Email -->
+            <div>
+              <label>E-mail</label>
               <input
-                type="text"
                 id="email"
                 name="email"
-                placeholder="Digite seu e-mail"
-                value="<%= valores.email %>"
-                class="<%= erroValidacao.email %>"
+                type="email"
+                placeholder="Digite seu Endereço de E-mail"
+                value="<%= valores ? valores.email || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.email ? 'erro-input' : '' %>"
               />
-              <span class="msgErro"><%= msgErro.email %></span>
-            </article>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.email ? msgErro.email : '' %></span
+              >
+            </div>
 
-            <article class="input-icon">
-              <i class="bi bi-calendar icones-gerais"></i>
-              <input
-                type="date"
-                id="data"
-                name="data"
-                value="<%= valores.data %>"
-                class="<%= erroValidacao.data %>"
-              />
-              <span class="msgErro"><%= msgErro.data %></span>
-            </article>
+            <!-- Senha -->
+            <div>
+              <label>Senha</label>
+              <div class="campo-senha">
+                <input
+                  id="senha"
+                  name="senha"
+                  type="password"
+                  placeholder="Crie uma Senha"
+                  class="<%= erroValidacao && erroValidacao.senha ? 'erro-input' : '' %>"
+                />
+                <button
+                  type="button"
+                  class="btn-olho"
+                  onclick="toggleSenha('senha')"
+                  aria-label="Mostrar senha"
+                >
+                  <i class="bi bi-eye-slash-fill"></i>
+                </button>
+              </div>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span
+              >
+            </div>
 
-            <label class="senhaInfo">
-              Sua senha deve conter: <br />
-              ✔ uma letra maiúscula <br />
-              ✔ um número <br />
-              ✔ um caractere especial
-            </label>
+            <!-- Confirmar senha -->
+            <div>
+              <label>Confirmar senha</label>
+              <div class="campo-senha">
+                <input
+                  id="confirmarSenha"
+                  name="confirmarSenha"
+                  type="password"
+                  placeholder="Confirme sua Senha"
+                  class="<%= erroValidacao && erroValidacao.confirmarSenha ? 'erro-input' : '' %>"
+                />
+                <button
+                  type="button"
+                  class="btn-olho"
+                  onclick="toggleSenha('confirmarSenha')"
+                  aria-label="Mostrar senha"
+                >
+                  <i class="bi bi-eye-slash-fill"></i>
+                </button>
+              </div>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.confirmarSenha ? msgErro.confirmarSenha
+                : '' %></span
+              >
+            </div>
 
-            <article class="input-icon">
-              <i class="bi bi-lock icones-gerais"></i>
-              <input
-                type="password"
-                id="senha"
-                name="senha"
-                placeholder="Digite sua senha"
-                value="<%= valores.senha %>"
-                class="<%= erroValidacao.senha %>"
-              />
-              <i
-                class="bi bi-eye-slash-fill olhofechado"
-                onclick="mostrarSenha('senha', this)"
-              ></i>
-              <span class="msgErro"><%= msgErro.senha %></span>
-            </article>
+            <div class="actions">
+              <button class="btn-primary" type="submit">Criar Conta</button>
+            </div>
 
-            <article class="input-icon">
-              <i class="bi bi-shield-lock icones-gerais"></i>
-              <input
-                type="password"
-                id="confirmarSenha"
-                name="confirmarSenha"
-                placeholder="Confirme sua senha"
-                value="<%= valores.confirmarSenha %>"
-                class="<%= erroValidacao.confirmarSenha %>"
-              />
-              <i
-                class="bi bi-eye-slash-fill olhofechado"
-                onclick="mostrarSenha('confirmarSenha', this)"
-              ></i>
-              <span class="msgErro"><%= msgErro.confirmarSenha %></span>
-            </article>
+            <p class="small">
+              Quer se tornar um colaborador?
+              <a href="/cadastroColaborador" class="link-cadastro"
+                >Cadastra-se como um colaborador!</a
+              >
+            </p>
 
-            <h1 class="login">
-              Já possui uma conta? Faça seu <a href="/login">login</a> ou
-              torne-se um <a href="/cadastroColaborador">colaborador</a>
-            </h1>
-
-            <button type="submit" id="btnClique" class="juntar">
-              Juntar-se
-            </button>
-          </article>
-        </form>
-      </section>
+            <p class="small">
+              Já tem uma conta?
+              <a href="/login" class="link-cadastro">Faça login.</a>
+            </p>
+          </form>
+        </section>
+      </article>
     </main>
 
     <!--FOOTER-->

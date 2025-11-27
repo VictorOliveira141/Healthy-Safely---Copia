@@ -1,16 +1,17 @@
 /* =============== SCRIPT PARA CONSEGUIR VER A SENHA NOS FORMULARIOS ============ */
-function mostrarSenha(inputId, icone) {
-  const inputPass = document.getElementById(inputId);
+function toggleSenha(inputId) {
+  const input = document.getElementById(inputId);
+  const btnOlho = event.target.closest(".btn-olho");
+  const icone = btnOlho.querySelector("i");
 
-  if (inputPass.type === "password") {
-    inputPass.type = "text"; /*Transforma o input em texto*/
-    icone.classList.remove("bi-eye-slash-fill"); /*remove icone olho fechado*/
-    icone.classList.add("bi-eye-fill"); /*adiciona icone olho aberto*/
+  if (input.type === "password") {
+    input.type = "text";
+    icone.classList.remove("bi-eye-slash-fill");
+    icone.classList.add("bi-eye-fill");
   } else {
-    inputPass.type = "password";
-    icone.classList.remove("bi-eye-fill"); /*remove icone olho aberto*/
-    icone.classList.add(
-      "bi-eye-slash-fill"
-    ); /*adiciona icone olho fechado novamente*/
+    input.type = "password";
+    icone.classList.remove("bi-eye-fill");
+    icone.classList.add("bi-eye-slash-fill");
   }
 }
+/* ===================== FIM DO SCRIPT PARA VER A SENHA ======================= */
