@@ -391,26 +391,30 @@ router.post(
 
 //LOGIN SENDO CLIENTE OU COLABORADOR
 router.post("/login", (req, res) => {
-  const { usuarioDigitado, senhaDigitada } = req.body;
+  const { email, senha } = req.body; // <- altera aqui
 
-  // Permitir login tanto por email quanto por nome de usuário
   const usuarioEncontrado = usuarios.find(
-    (u) =>
-      (u.email === usuarioDigitado || u.nomeusuario === usuarioDigitado) &&
-      u.senha === senhaDigitada
+    (u) => (u.email === email || u.nomeusuario === email) && u.senha === senha
   );
 
   if (usuarioEncontrado) {
     req.session.usuario = usuarioEncontrado;
 
     if (usuarioEncontrado.tipo === "farmacia") {
-      // colaborador farmacia → vai pro painel admin
-      return res.redirect("adm/home2");
+      return res.redirect("/adm/home2");
     } else {
-      // cliente → vai pro perfil normal
       return res.redirect("/tomarammeutela");
     }
   }
+
+  // SE FALHAR:
+  return res.render("pages/login", {
+    erro: "Usuário ou senha incorretos!",
+    valores: { email },
+    erroValidacao: {},
+    msgErro: {},
+    sucesso: false,
+  });
 });
 
 module.exports = router;
