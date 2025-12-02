@@ -900,12 +900,23 @@ body {
 
 @media (max-width: 510px) {
   .header-logo img {
-    height: 55px;
+    height: 45px;
   }
   .user-menu i {
     font-size: 24px;
   }
   .header-actions {
     gap: 6px;
+  }
+}
+@media (max-width: 400px) {
+  .header-logo img {
+    height: 40px;
+  }
+  .user-menu i {
+    font-size: 20px;
+  }
+  .header-actions {
+    gap: 4px;
   }
 }
