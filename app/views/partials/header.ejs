@@ -181,10 +181,8 @@
 
       <div class="user-menu" aria-label="Area de Cadastrar/logar">
         <% if (usuario) { %> <% if (usuario) { %>
-        <div class="nome">
-          <i class="bi bi-person-circle logado" id="perfilMenuToggle"></i>
-          <h1>Olá,<%= usuario.nome.split(' ').slice(0, 2).join(' ') %>!</h1>
-        </div>
+
+        <i class="bi bi-person-circle logado" id="perfilMenuToggle"></i>
 
         <section id="perfilMenu" class="perfil-dropdown hidden" role="menu">
           <ul>
