@@ -106,7 +106,7 @@ form {
 }
 
 /* =============== inputs e labels =============== */
-label {
+.textos {
   display: block;
   font-size: 16px;
   margin-bottom: 2px;
@@ -337,7 +337,7 @@ form > div {
     margin: 10px 0;
   }
 
-  label {
+  .textos {
     font-size: 11px;
     margin-bottom: 3px;
   }
@@ -407,7 +407,7 @@ form > div {
     font-size: 15px;
   }
 
-  label {
+  .textos {
     font-size: 12px;
     margin-bottom: 3px;
   }
@@ -492,7 +492,7 @@ form > div {
     margin: 8px 0;
   }
 
-  label {
+  .textos {
     font-size: 15px;
     margin-bottom: 3px;
     margin-top: 3px;
