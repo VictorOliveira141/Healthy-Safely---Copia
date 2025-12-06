@@ -1,124 +1,149 @@
+/* Definição de variáveis CSS para cores e estilos reutilizáveis EM TODO O SITE */
+:root {
+  --primary-color: #fff; /* Branco (60% do site) */
+  --secondary-color: #0c4f43; /* Verde Escuro (30% do site)   */
+  --accent-color: #8ca700; /* Verde grama (10% do site) */
+  --background-light: #f7f9fb; /* Branco claro para Titulos */
+  --background-dark: #dde2e7; /* Branco escuro para textos */
+  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+}
 * {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   box-sizing: border-box;
 }
-/* CONTAINER PRINCIPAL */
+/* ============ CONTAINER PRINCIPAL ============ */
 .footer {
   background: #17594a;
   color: white;
-  padding: 40px 20px 20px;
+  padding: 40px 20px 50px;
   border-top: 4px solid #052205;
   font-family: Arial, sans-serif;
   margin-top: 25%;
 }
 
-/* GRID PRINCIPAL */
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  max-width: 1200px;
-  margin: auto;
+/* ============ CONTAINER DOS TEXTOS ============ */
+.footer-text {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
-
-/* wrapper para col2+col3 */
-.footer-duas-colunas {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* mantém lado a lado no desktop */
-  gap: 40px;
+.footer-text h1 {
+  font-size: 23px;
+  color: var(--background-light);
+  border-left: 4px solid var(--accent-color);
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 5px;
 }
-
-/* COLUNAS */
-.footer-col h2 {
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #b2cfc3;
-}
-.footer-col ul {
-  list-style: none;
-}
-.footer-col li {
+.footer-text p {
+  font-size: 15px;
+  color: var(--background-dark);
+  line-height: 1.5;
   margin-bottom: 10px;
 }
-.footer-col a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.footer-col a:hover {
-  color: #b2cfc3;
-}
 
-/* LOGO + BOTÃO + SOCIAL */
-.footer-logo {
-  max-height: 70px;
-  margin-bottom: 15px;
-}
-.footer-btn {
-  background: #093027;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 12px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background 0.3s;
-}
-.footer-btn:hover {
-  background: #b2cfc3;
-  color: #093027;
-}
-.footer-social {
+/* ============ CONTAINER DAS COLUNAS ============ */
+.footer-col {
   display: flex;
-  gap: 15px;
-  font-size: 26px;
+  gap: 120px;
 }
-.footer-social a {
-  color: white;
-  transition: color 0.3s;
+.footer-col h1 {
+  font-size: 15px;
+  color: var(--background-light);
+  border-left: 4px solid var(--accent-color);
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 5px;
 }
-.footer-social a:hover {
-  color: #b2cfc3;
+.footer-col p {
+  font-size: 13px;
+  color: var(--background-dark);
+  line-height: 1.5;
+  margin-left: 5px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+.footer-col p:hover {
+  color: var(--accent-color);
+}
+.footer-col .payments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 150px;
+}
+.footer-col img {
+  max-height: 30px;
+  width: auto;
+  margin-top: 10px;
 }
 
-/* RODAPÉ INFERIOR */
+/* ============ CONTAINER DO RODAPÉ ============ */
 .footer-bottom {
   text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 60px;
-}
-.footer-bottom p {
-  margin: 5px 0;
+  margin-top: 70px;
+  font-size: 18px;
+  color: var(--background-dark);
+  margin-bottom: 30px;
 }
 
-/* RESPONSIVIDADE */
-@media (max-width: 650px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    text-align: start;
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 1024px) {
+  .footer-text h1 {
+    font-size: 18px;
   }
   .footer-col {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    text-align: start;
+    gap: 80px;
+  }
+  .footer-col h1 {
+    font-size: 13px;
+  }
+  .footer-col p {
+    font-size: 11px;
+  }
+  .footer-col img {
+    max-height: 25px;
+  }
+  .footer-bottom {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .footer-text h1 {
+    font-size: 15px;
+  }
+  .footer-col {
     gap: 10px;
   }
-  .footer-col .footer-social {
-    justify-content: center;
+  .footer-col h1 {
+    font-size: 15px;
   }
-  .footer-duas-colunas {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
+  .footer-col p {
+    font-size: 13px;
   }
-  .footer-duas-colunas .footer-col {
-    flex: 1;
+  .footer-col img {
+    max-height: 20px;
+  }
+  .footer-bottom {
+    font-size: 14px;
+  }
+}
+@media (max-width: 510px) {
+  .footer-text h1 {
+    font-size: 15px;
+  }
+  .footer-col {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .footer-bottom {
+    font-size: 12px;
   }
 }
