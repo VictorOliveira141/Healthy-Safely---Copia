@@ -3,8 +3,8 @@
   --primary-color: #fff; /* Branco (60% do site) */
   --secondary-color: #0c4f43; /* Verde Escuro (30% do site)   */
   --accent-color: #8ca700; /* Verde grama (10% do site) */
-  --background-light: #f7f9fb;
-  --background-green: #eafaf1;
+  --background-light: #f7f9fb; /* Branco claro para Titulos */
+  --background-dark: #dde2e7; /* Branco escuro para textos */
   --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
   --border-radius: 12px;
@@ -286,7 +286,9 @@ body {
   background: var(--secondary-color);
   flex-wrap: wrap;
 }
-
+.header-nav2.farmacia {
+  gap: 150px;
+}
 .nav-spacer {
   display: flex;
   margin-left: 10%;
@@ -294,7 +296,7 @@ body {
 }
 
 .header-nav2 a {
-  color: var(--background-light);
+  color: var(--background-dark);
   font-weight: 500;
   text-decoration: none;
   font-size: 13px;
@@ -382,6 +384,10 @@ body {
 
   transition: all 0.3s ease;
 }
+.user-menu a {
+  text-decoration: none;
+  color: white;
+}
 
 .logar-cadastrar {
   display: flex;
@@ -420,6 +426,19 @@ body {
   font-weight: 500;
   margin: 0 8px;
   white-space: nowrap;
+}
+.user-menu i.notificacao {
+  display: none;
+}
+.header-welcome {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.header-welcome strong {
+  font-weight: 600;
 }
 
 /* Dropdown do Perfil */
@@ -842,9 +861,6 @@ body {
   .nav-spacer {
     margin-left: 5%;
   }
-  .user-menu:has(#notificationMenuToggle) {
-    display: none;
-  }
 }
 @media (max-width: 1024px) {
   .header-nav2 {
@@ -868,9 +884,10 @@ body {
   .hamburger {
     display: flex;
   }
-  .user-menu:has(#notificationMenuToggle) {
+  .user-menu i.notificacao {
     display: flex;
   }
+
   .fundo,
   .search-bar2 {
     display: flex;
@@ -899,14 +916,23 @@ body {
 }
 
 @media (max-width: 510px) {
+  .header-logo.farmacia img {
+    height: 60px;
+  }
   .header-logo img {
     height: 45px;
+  }
+  .user-menu.farmacia i {
+    font-size: 28px;
   }
   .user-menu i {
     font-size: 24px;
   }
   .header-actions {
     gap: 6px;
+  }
+  .header-welcome {
+    display: none;
   }
 }
 @media (max-width: 400px) {

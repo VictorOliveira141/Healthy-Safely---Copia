@@ -13,15 +13,14 @@
     <!--HEADER-->
     <%- include('../partials/header.ejs') %>
     <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="main">
       <article class="card" aria-labelledby="titulo-login">
-        <!-- Formulário -->
         <section class="form-area">
           <form action="/cadastroCliente" method="POST" novalidate>
             <h1 class="form-title">Criar Conta</h1>
 
-            <!-- Login via Google (link para backend de OAuth) -->
             <a
               class="btn-google"
               href="/auth/google"
@@ -33,11 +32,8 @@
             </a>
 
             <div class="or" aria-hidden="true">ou</div>
-
-            <!-- Nome -->
-
             <div>
-              <label class="textos">Nome de Usuário</label>
+              <label class="textos">Nome Completo</label>
               <input
                 id="nome"
                 name="nome"
@@ -49,9 +45,21 @@
               <span class="msg-erro"
                 ><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span
               >
+              <span class="msg-erro"><%= msgErro.nome %></span>
+            </div>
+            <div>
+              <label class="textos">Nome de Usuário</label>
+              <input
+                id="nomeusuario"
+                name="nomeusuario"
+                type="text"
+                placeholder="Escolha um nome de usuário"
+                value="<%= valores.nomeusuario %>"
+                class="<%= erroValidacao.nomeusuario ? 'erro-input' : '' %>"
+              />
+              <span class="msg-erro"><%= msgErro.nomeusuario %></span>
             </div>
 
-            <!-- Email -->
             <div>
               <label class="textos">E-mail</label>
               <input
@@ -67,7 +75,6 @@
               >
             </div>
 
-            <!-- Senha -->
             <div>
               <label class="textos">Senha</label>
               <div class="campo-senha">
@@ -92,7 +99,6 @@
               >
             </div>
 
-            <!-- Confirmar senha -->
             <div>
               <label class="textos">Confirmar senha</label>
               <div class="campo-senha">

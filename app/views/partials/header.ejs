@@ -1,17 +1,38 @@
 <link rel="stylesheet" href="/css/header.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<!-- HEADER TOP -->
 <article class="header">
-  <nav class="header-nav2" id="mobileNav" aria-label="Navegação principal">
+  <nav
+    class="header-nav2 <%= (usuario && usuario.tipo === 'farmacia') ? 'farmacia' : 'cliente' %>"
+    id="mobileNav"
+    aria-label="Navegação principal"
+  >
     <article class="nav-spacer">
+      <% if (usuario && usuario.tipo === "farmacia") { %>
+      <a href="/adm/home2">Minha loja</a>
+      <a href="/adm/adicionarproduto">Adicionar Produto</a>
+      <a href="/adm/gerenciarpedidos">Pedidos</a>
+      <a href="/adm/vendas">Vendas</a>
+      <a href="/adm/avaliacoes">Avaliações</a>
+      <% } else { %>
+
       <a href="/loja">Loja</a>
-      <a href="/#">Ofertas</a>
+      <a href="/#">Categorias</a>
       <a href="/meuscupons">Cupons</a>
       <a href="/meuspedidos">Meus Pedidos</a>
+      <% } %>
     </article>
 
     <article class="nav-spacer">
-      <a href="/#">Notificações</a>
+      <a
+        href="javascript:void(0);"
+        class="notification-toggle"
+        id="notificationMenuToggleDesktop"
+        aria-controls="notificationMenu"
+        aria-expanded="false"
+        >Notificações</a
+      >
       <a href="/#">Contato</a>
       <a href="/informacoes"> <i class="bi bi-info-circle"></i>Ajuda</a>
       <a href="/cadastroColaborador">Vender no Healthy Safely</a>
@@ -19,8 +40,10 @@
   </nav>
 </article>
 
+<!-- HEADER BOTTOM -->
 <article class="header">
   <section class="header-container">
+    <!-- MENU HAMBURGUER MOBILE -->
     <section class="menu-toggle-wrapper" aria-label="Menu Hamburguer">
       <input type="checkbox" id="menuToggle" />
       <label for="menuToggle" class="hamburger">
@@ -32,10 +55,36 @@
       <nav id="menu" aria-label="Conteúdo do menu Hamburguer">
         <h1>Menu</h1>
         <ul>
+          <% if (usuario && usuario.tipo === "farmacia") { %>
+          <li>
+            <a href="/adm/home2"><i class="bi bi-house"></i> Início</a>
+          </li>
+
+          <li>
+            <a href="/adm/adicionarproduto"
+              ><i class="bi bi-plus-circle"></i> Novo Produto</a
+            >
+          </li>
+          <li>
+            <a href="/adm/gerenciarpedidos"
+              ><i class="bi bi-truck"></i> <span>Pedidos</span></a
+            >
+          </li>
+          <li>
+            <a href="/adm/vendas"
+              ><i class="bi bi-graph-up-arrow"></i> Vendas</a
+            >
+          </li>
+          <li>
+            <a href="/adm/avaliacoes"
+              ><i class="bi bi-star-fill"></i> Avaliações</a
+            >
+          </li>
+
+          <% } else { %>
           <li>
             <a href="/"><i class="bi bi-house"></i> Início</a>
           </li>
-
           <li>
             <a href="/loja"><i class="bi bi-shop"></i> Loja</a>
           </li>
@@ -86,15 +135,22 @@
             <a href="/contato"><i class="bi bi-envelope"></i> Contato</a>
           </li>
         </ul>
+        <% } %>
 
         <label for="menuToggle" class="close-menu">&times;</label>
       </nav>
     </section>
 
-    <a href="/tomarammeutela" class="header-logo" aria-label="Logo">
+    <!-- LOGO -->
+    <a
+      href="/tomarammeutela"
+      class="header-logo <%= (usuario && usuario.tipo === 'farmacia') ? 'farmacia' : 'cliente' %>"
+      aria-label="Logo"
+    >
       <img src="/imagem/1x/logozeko.png" alt="Healthy Safely" />
     </a>
 
+    <!-- BARRA DE PESQUISA-->
     <form class="search-bar" role="search" aria-label="Barra de Pesquisa">
       <label class="search-icon" for="headerSearch">
         <svg width="15" height="15" viewBox="0 0 36 36" fill="none">
@@ -113,7 +169,10 @@
       <input type="text" id="headerSearch" placeholder="Busque o que deseja" />
     </form>
 
+    <!-- AÇÕES DO USUARIO -->
     <nav class="header-actions" aria-label="Ações do usuário">
+      <% if (!usuario || usuario.tipo === "cliente") { %>
+      <!-- CARRINHO DE COMPRAS FECHADO-->
       <div class="user-menu" aria-label="Carrinho de compras (Fechado)">
         <a
           href="javascript:void(0);"
@@ -125,6 +184,7 @@
         </a>
       </div>
 
+      <!-- CARRINHO DE COMPRAS ABERTO-->
       <div
         id="cartSidebar"
         class="cart-sidebar"
@@ -160,8 +220,19 @@
         </div>
       </div>
 
-      <div class="user-menu notificacao" aria-label="Menu de notificações">
-        <i class="bi bi-bell" id="notificationMenuToggle"></i>
+      <% } %>
+
+      <!-- MENU DE NOTIFICAÇÕES-->
+      <div
+        class="user-menu <%= (usuario && usuario.tipo === 'farmacia') ? 'farmacia' : 'cliente' %>"
+        aria-label="Menu de notificações"
+      >
+        <i
+          class="bi bi-bell notification-toggle notificacao"
+          id="notificationMenuToggleAction"
+          aria-controls="notificationMenu"
+          aria-expanded="false"
+        ></i>
         <section
           id="notificationMenu"
           class="notification-dropdown hidden"
@@ -171,7 +242,6 @@
           <ul id="notificationList">
             <% if (usuario) { %>
             <li>Nenhuma notificação nova.</li>
-            <a href="#" role="menuitem">Ver todas as notificações</a>
             <% } else { %>
             <li>Por favor, faça login para ver suas notificações.</li>
             <% } %>
@@ -179,38 +249,35 @@
         </section>
       </div>
 
-      <div class="user-menu" aria-label="Area de Cadastrar/logar">
-        <% if (usuario) { %> <% if (usuario) { %>
+      <!-- CADASTRAR/LOGAR -->
+      <div
+        class="user-menu <%= (usuario && usuario.tipo === 'farmacia') ? 'farmacia' : 'cliente' %>"
+      >
+        <% if (usuario) { %>
+        <a href="/perfil">
+          <i class="bi bi-person-circle logado"></i>
+        </a>
 
-        <i class="bi bi-person-circle logado" id="perfilMenuToggle"></i>
-
-        <section id="perfilMenu" class="perfil-dropdown hidden" role="menu">
-          <ul>
-            <li><a href="/perfil">Minha conta</a></li>
-            <li><a href="/meuspedidos">Meus pedidos</a></li>
-            <li><a href="/meusfavoritos">Favoritos</a></li>
-
-            <% if (usuario.tipo === "farmacia") { %>
-            <li><a href="/adm/home2">Gerenciar loja</a></li>
-            <li><a href="/adm/vendas">Minhas vendas</a></li>
-            <% } %>
-
-            <li><a href="/logout" class="logout-btn">Sair</a></li>
-          </ul>
-        </section>
+        <% if (usuario.tipo === "farmacia") { %>
+        <span class="header-welcome">
+          Olá, <strong><%= usuario.nome.split(' ')[0] %></strong> 👋
+        </span>
         <% } %> <% } else { %>
         <div class="logar-cadastrar">
-          <i class="bi bi-person-circle abrir-cadastro" id=""></i>
-          <a href="/login" role="menuitem">Entrar</a>
+          <a href="/login">
+            <i class="bi bi-person-circle"></i>
+          </a>
+          <a href="/login">Entrar</a>
           <span> | </span>
-          <button class="abrir-cadastro" role="menuitem">Cadastrar</button>
-          <% } %>
+          <a href="/cadastro">Cadastrar</a>
         </div>
+        <% } %>
       </div>
     </nav>
   </section>
 </article>
 
+<!-- BARRA DE PESQUISA MOBILE -->
 <article class="fundo">
   <section class="search-bar2" role="search">
     <label class="search-icon" for="mobileSearch">
@@ -231,6 +298,7 @@
   </section>
 </article>
 
+<!-- MODAL DE CADASTRO (aparece apenas ao clicar em "cadastrar")-->
 <section
   id="headerModalCadastro"
   class="modal hidden"
@@ -265,22 +333,66 @@
 <!-- SCRIPT PARA O MODAL DE NOTIFICAÇÕES -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const notificationMenuToggle = document.getElementById(
-      "notificationMenuToggle"
+    const notificationToggles = document.querySelectorAll(
+      ".notification-toggle"
     );
     const notificationMenu = document.getElementById("notificationMenu");
 
-    notificationMenuToggle.addEventListener("click", function () {
-      notificationMenu.classList.toggle("hidden");
+    if (!notificationMenu) return;
+
+    function setExpanded(state) {
+      notificationToggles.forEach(function (t) {
+        try {
+          t.setAttribute("aria-expanded", state);
+        } catch (e) {}
+      });
+    }
+
+    function toggleNotificationMenu(event) {
+      event && event.preventDefault();
+      const isHidden = notificationMenu.classList.contains("hidden");
+      if (isHidden) {
+        notificationMenu.classList.remove("hidden");
+        setExpanded("true");
+      } else {
+        notificationMenu.classList.add("hidden");
+        setExpanded("false");
+      }
+    }
+
+    notificationToggles.forEach(function (toggle) {
+      toggle.addEventListener("click", toggleNotificationMenu);
+      // allow keyboard activation when focused
+      toggle.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleNotificationMenu(e);
+        }
+      });
     });
 
-    // Fechar o modal se clicar fora dele
+    // Fechar o menu se clicar fora dele
     document.addEventListener("click", function (event) {
-      if (
-        !notificationMenu.contains(event.target) &&
-        !notificationMenuToggle.contains(event.target)
+      const target = event.target;
+      const clickedInsideMenu = notificationMenu.contains(target);
+      const clickedOnToggle = Array.from(notificationToggles).some(function (
+        t
       ) {
+        return t.contains(target);
+      });
+      if (!clickedInsideMenu && !clickedOnToggle) {
         notificationMenu.classList.add("hidden");
+        setExpanded("false");
+      }
+    });
+
+    // Fechar com Escape
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        if (!notificationMenu.classList.contains("hidden")) {
+          notificationMenu.classList.add("hidden");
+          setExpanded("false");
+        }
       }
     });
   });

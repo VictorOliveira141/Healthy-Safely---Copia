@@ -4,7 +4,7 @@
   </figure>
 
   <div class="info-perfil">
-    <h1><%= usuario.nomeusuario || usuario.responsavel %></h1>
+    <h1><%= usuario.nomeusuario %></h1>
     <p class="seguidores">
       <span>0 seguidores</span> • <span>0 seguindo</span>
     </p>
@@ -48,5 +48,10 @@
   .foto-editar {
     position: relative;
     display: inline-block;
+  }
+  @media (max-width: 510px) {
+    .perfil h1 {
+      font-size: 1.5rem;
+    }
   }
 </style>

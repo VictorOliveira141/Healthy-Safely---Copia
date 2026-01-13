@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Healthy Safely | Login</title>
-    <!-- Icones (opcional) -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
@@ -16,10 +15,10 @@
     <!--HEADER-->
     <%- include('../partials/header.ejs') %>
     <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
 
     <main>
       <article class="card" aria-labelledby="titulo-login">
-        <!-- Formulário -->
         <section class="form-area">
           <form
             action="/login"
@@ -29,7 +28,6 @@
           >
             <h1 id="titulo-login" class="form-title">Entrar na sua conta</h1>
 
-            <!-- Login via Google (link para backend de OAuth) -->
             <a
               class="btn-google"
               href="#"
@@ -42,7 +40,6 @@
 
             <div class="or" aria-hidden="true">ou</div>
 
-            <!-- Campos -->
             <div>
               <label class="textos" for="email"
                 >E-mail ou Nome de Usuário</label
@@ -104,8 +101,10 @@
 
             <div class="actions">
               <button class="btn-primary" type="submit">Entrar</button>
-              <a class="link-muted" href="/recuperar-senha">Esqueci a senha</a>
             </div>
+            <p class="small">
+              Esqueceu sua senha? <a class="link-muted" href="#"> Recupere!</a>
+            </p>
 
             <p class="small">
               Ainda não tem uma conta? Cadastra-se como um

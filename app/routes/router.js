@@ -170,6 +170,7 @@ router.get("/cadastroCliente", (req, res) => {
   res.render("pages/cadastroCliente", {
     erros: null,
     valores: {
+      nome: "",
       nomeusuario: "",
       email: "",
       senha: "",
@@ -186,7 +187,7 @@ router.get("/cadastroColaborador", (req, res) => {
   res.render("pages/cadastroColaborador", {
     valores: {
       nome: "",
-      nomeFarmacia: "",
+      nomefarmacia: "",
       nomeusuario: "",
       CNPJ: "",
       email: "",
@@ -377,7 +378,7 @@ router.post(
     // Dados do usuário são adicionados ao array
     usuarios.push({
       nome: req.body.nome,
-      nomeFarmacia: req.body.nomeFarmacia,
+      nomeFarmacia: req.body.nomefarmacia,
       nomeusuario: req.body.nomeusuario,
       cnpj: req.body.CNPJ,
       email: req.body.email,

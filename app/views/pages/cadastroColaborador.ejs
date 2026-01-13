@@ -13,15 +13,14 @@
     <!--HEADER-->
     <%- include('../partials/header.ejs') %>
     <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="main">
       <article class="card" aria-labelledby="titulo-login">
-        <!-- Formulário -->
         <section class="form-area">
           <form action="/cadastroColaborador" method="POST" novalidate>
             <h1 class="form-title">Cadastro de Colaborador</h1>
 
-            <!-- Login via Google -->
             <a
               class="btn-google"
               href="/auth/google"
@@ -34,7 +33,6 @@
 
             <div class="or" aria-hidden="true">ou</div>
 
-            <!-- Nome do Responsável e Nome da Farmácia -->
             <article class="inputs-duplos">
               <div>
                 <label class="textos">Nome do Responsável</label>
@@ -62,7 +60,6 @@
               </div>
             </article>
 
-            <!-- Nome de usuário e E-mail -->
             <article class="inputs-duplos">
               <div>
                 <label class="textos">Nome de Usuário</label>
@@ -90,7 +87,6 @@
               </div>
             </article>
 
-            <!-- CNPJ (sozinho) -->
             <div>
               <label class="textos">CNPJ</label>
               <input
@@ -104,7 +100,6 @@
               <span class="msg-erro"><%= msgErro.CNPJ %></span>
             </div>
 
-            <!-- Senha e Confirmar Senha -->
             <article class="inputs-duplos">
               <div>
                 <label class="textos">Senha</label>
