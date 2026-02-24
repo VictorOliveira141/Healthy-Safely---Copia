@@ -4,7 +4,15 @@ const { body, validationResult } = require("express-validator");
 const verificarAutenticacao = require("../public/js/autenticacao");
 
 const usuarios = []; /* array que armazena os usuarios*/
-var { validarCNPJ } = require("../helpers/validacaoPersonalizada");
+
+// Dados mockados para tarefas
+const tarefas = [
+  { id: 1, nome: "Beber água (2L)", pontos: 10, concluida: false },
+  { id: 2, nome: "Dormir bem (8h)", pontos: 15, concluida: true },
+  { id: 3, nome: "Fazer exercício físico", pontos: 20, concluida: false },
+  { id: 4, nome: "Comer frutas e vegetais", pontos: 10, concluida: true },
+  { id: 5, nome: "Meditar por 10 minutos", pontos: 15, concluida: false },
+];
 
 /* ROTA PARA DESLOGAR O USUÁRIO */
 router.get("/logout", (req, res) => {
@@ -20,71 +28,33 @@ router.get("/", (req, res) => {
 router.get("/tomarammeutela", (req, res) => {
   res.render("pages/tomarammeutela");
 });
-router.get("/loja", (req, res) => {
-  res.render("pages/loja");
-});
-router.get("/produto", (req, res) => {
-  res.render("pages/produto");
-});
-router.get("/shoes", (req, res) => {
-  res.render("pages/shoes");
-});
-router.get("/acessorios", (req, res) => {
-  res.render("pages/acessorios");
-});
-router.get("/equipa", (req, res) => {
-  res.render("pages/equipa");
-});
-router.get("/roupasesp", (req, res) => {
-  res.render("pages/roupasseps");
-});
 router.get("/tela-inicial", (req, res) => {
   res.render("pages/tomarammeutela");
-});
-router.get("/informacoes", (req, res) => {
-  res.render("pages/informacoes");
-});
-
-// CATEGORIAS DA LOJA
-router.get("/esportes-performance", (req, res) => {
-  res.render("pages/esportes-performance");
-});
-router.get("/beleza-cuidados", (req, res) => {
-  res.render("pages/beleza-cuidados");
-});
-router.get("/suplementos-vitaminas", (req, res) => {
-  res.render("pages/suplementos-vitaminas");
-});
-router.get("/bebes-criancas", (req, res) => {
-  res.render("pages/bebes-criancas");
-});
-router.get("/saude-prevencao", (req, res) => {
-  res.render("pages/saude-prevencao");
-});
-router.get("/higiene", (req, res) => {
-  res.render("pages/higiene");
 });
 
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
 router.get("/progressao", verificarAutenticacao, (req, res) => {
-  res.render("pages/progressao");
+  // Calcular pontos totais e progresso
+  const pontosTotais = tarefas.filter(t => t.concluida).reduce((sum, t) => sum + t.pontos, 0);
+  const tarefasConcluidas = tarefas.filter(t => t.concluida).length;
+  const progresso = (tarefasConcluidas / tarefas.length) * 100;
+  let medalha = "";
+  if (pontosTotais >= 700) medalha = "Avançado";
+  else if (pontosTotais >= 300) medalha = "Consistente";
+  else if (pontosTotais >= 100) medalha = "Iniciante";
+
+  res.render("pages/progressao", { pontosTotais, tarefasConcluidas, progresso, medalha });
 });
 router.get("/tarefas", verificarAutenticacao, (req, res) => {
-  res.render("pages/tarefas");
+  res.render("pages/tarefas", { tarefas });
 });
 
-// PRODUTOS
-router.get("/produto2", (req, res) => {
-  res.render("pages/produto2");
+router.get("/plano-premium", verificarAutenticacao, (req, res) => {
+  res.render("pages/plano-premium");
 });
-router.get("/produto3", (req, res) => {
-  res.render("pages/produto3");
-});
-router.get("/produto4", (req, res) => {
-  res.render("pages/produto4");
-});
-router.get("/produto5", (req, res) => {
-  res.render("pages/produto5");
+
+router.get("/plano-comum", verificarAutenticacao, (req, res) => {
+  res.render("pages/plano-comum");
 });
 
 // TAREFAS
@@ -101,52 +71,12 @@ router.get("/atividadefis", verificarAutenticacao, (req, res) => {
   res.render("pages/atividadefis");
 });
 
-// DOAÇÃO
-router.get("/doacao", verificarAutenticacao, (req, res) => {
-  res.render("pages/doacao");
-});
-
-// AGENDAMENTO DE CONSULTA
-router.get("/agendamento1", verificarAutenticacao, (req, res) => {
-  res.render("pages/agendamento1");
-});
-router.get("/agendamento2", verificarAutenticacao, (req, res) => {
-  res.render("pages/agendamento2");
-});
-router.get("/agendamento3", verificarAutenticacao, (req, res) => {
-  res.render("pages/agendamento3");
-});
-router.get("/agendamento4", verificarAutenticacao, (req, res) => {
-  res.render("pages/agendamento4");
-});
-
 // PERFIL DO USUÁRIO
 router.get("/perfil", verificarAutenticacao, (req, res) => {
   res.render("pages/perfil");
 });
 router.get("/minhaidentidade", verificarAutenticacao, (req, res) => {
   res.render("pages/minhaidentidade");
-});
-router.get("/minhasconsultas", verificarAutenticacao, (req, res) => {
-  res.render("pages/minhasconsultas");
-});
-router.get("/meuspedidos", verificarAutenticacao, (req, res) => {
-  res.render("pages/meuspedidos");
-});
-router.get("/meusfavoritos", verificarAutenticacao, (req, res) => {
-  res.render("pages/meusfavoritos");
-});
-router.get("/meuscupons", verificarAutenticacao, (req, res) => {
-  res.render("pages/meuscupons");
-});
-router.get("/minhasdoacoes", verificarAutenticacao, (req, res) => {
-  res.render("pages/minhasdoacoes");
-});
-router.get("/meuspagamentos", verificarAutenticacao, (req, res) => {
-  res.render("pages/meuspagamentos");
-});
-router.get("/suporte", verificarAutenticacao, (req, res) => {
-  res.render("pages/suporte");
 });
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
@@ -165,40 +95,40 @@ router.get("/login", (req, res) => {
   });
 });
 
-//CADASTRO CLIENTE
-router.get("/cadastroCliente", (req, res) => {
-  res.render("pages/cadastroCliente", {
-    erros: null,
-    valores: {
-      nome: "",
-      nomeusuario: "",
-      email: "",
-      senha: "",
-      confirmarSenha: "",
-    },
-    retorno: null,
+//CADASTRO
+router.get("/cadastro", (req, res) => {
+  res.render("pages/cadastro");
+});
+
+router.get("/cadastroColaborador", (req, res) => {
+  res.render("pages/cadastroColaborador", {
+    valores: {},
     erroValidacao: {},
     msgErro: {},
   });
 });
 
-//CADASTRO COLABORADOR (FARMÁCIA)
-router.get("/cadastroColaborador", (req, res) => {
-  res.render("pages/cadastroColaborador", {
-    valores: {
-      nome: "",
-      nomefarmacia: "",
-      nomeusuario: "",
-      CNPJ: "",
-      email: "",
-      senha: "",
-      confirmarSenha: "",
-    },
+router.get("/cadastroCliente", (req, res) => {
+  res.render("pages/cadastroCliente", {
+    valores: {},
     erroValidacao: {},
     msgErro: {},
-    retorno: null,
   });
 });
+
+router.get("/cadastroProfissional", (req, res) => {
+  res.render("pages/cadastroProfissional", {
+    valores: {},
+    erroValidacao: {},
+    msgErro: {},
+  });
+});
+
+// Rota pública para painel local (front-end-only) usado pelo demo localStorage
+router.get('/painel-local', (req, res) => {
+  res.render('pages/painel-local');
+});
+
 
 /* ===================== ROUTER POST(VALIDAÇÕES) ===================== */
 
@@ -280,49 +210,63 @@ router.post(
   }
 );
 
-//CADASTRO SENDO COLABORADOR (FARMÁCIA)
+//CADASTRO PROFISSIONAL
 router.post(
-  "/cadastroColaborador",
+  "/cadastroProfissional",
   body("nome")
     .trim()
     .notEmpty()
     .withMessage("*Campo obrigatório!")
     .bail()
     .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome do Responsável deve conter entre 3 e 50 caracteres!")
+    .withMessage("*O Nome deve conter entre 3 e 50 caracteres!")
     .matches(/^[A-Za-zÀ-ú\s]+$/)
     .withMessage("*O nome deve conter apenas letras!"),
 
-  body("nomeFarmacia")
+  body("especialidade")
     .trim()
     .notEmpty()
     .withMessage("*Campo obrigatório!")
     .bail()
     .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome da Farmácia deve conter entre 3 e 50 caracteres!"),
+    .withMessage("*A especialidade deve conter entre 3 e 50 caracteres!"),
 
-  body("nomeusuario")
+  body("cref")
     .trim()
     .notEmpty()
     .withMessage("*Campo obrigatório!")
     .bail()
-    .isLength({ min: 3, max: 30 })
-    .withMessage("*O Nome de usuário deve conter entre 3 e 30 caracteres!"),
+    .isLength({ min: 5, max: 20 })
+    .withMessage("*CREF inválido!"),
 
-  body("CNPJ")
+  body("areaAtuacao")
+    .notEmpty()
+    .withMessage("*Campo obrigatório!"),
+
+  body("tempoExperiencia")
+    .isInt({ min: 0 })
+    .withMessage("*Tempo de experiência deve ser um número positivo!"),
+
+  body("especialidades")
+    .trim()
     .notEmpty()
     .withMessage("*Campo obrigatório!")
     .bail()
-    .custom((value) => {
-      const apenasNumeros = value.replace(/[^\d]+/g, "");
-      if (apenasNumeros.length !== 14) {
-        throw new Error("*O CNPJ deve conter exatamente 14 números!");
-      }
-      if (!validarCNPJ(value)) {
-        throw new Error("*CNPJ inválido!");
-      }
-      return true;
-    }),
+    .isLength({ min: 3, max: 200 })
+    .withMessage("*Especialidades devem conter entre 3 e 200 caracteres!"),
+
+  body("bio")
+    .optional()
+    .isLength({ max: 500 })
+    .withMessage("*Bio deve ter no máximo 500 caracteres!"),
+
+  body("cidadeEstado")
+    .trim()
+    .notEmpty()
+    .withMessage("*Campo obrigatório!")
+    .bail()
+    .isLength({ min: 3, max: 100 })
+    .withMessage("*Cidade/Estado deve conter entre 3 e 100 caracteres!"),
 
   body("email")
     .notEmpty()
@@ -340,7 +284,6 @@ router.post(
       minUppercase: 1,
       minNumbers: 1,
       minSymbols: 1,
-      minLength: 8,
     })
     .withMessage(
       "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!"
@@ -367,7 +310,7 @@ router.post(
         msgErro[erro.path] = erro.msg;
       });
 
-      return res.render("pages/cadastroColaborador", {
+      return res.render("pages/cadastroProfissional", {
         valores: req.body,
         erroValidacao,
         msgErro,
@@ -378,21 +321,25 @@ router.post(
     // Dados do usuário são adicionados ao array
     usuarios.push({
       nome: req.body.nome,
-      nomeFarmacia: req.body.nomefarmacia,
-      nomeusuario: req.body.nomeusuario,
-      cnpj: req.body.CNPJ,
+      especialidade: req.body.especialidades,
+      cref: req.body.cref,
+      areaAtuacao: req.body.areaAtuacao,
+      tempoExperiencia: req.body.tempoExperiencia,
+      especialidades: req.body.especialidades,
+      bio: req.body.bio,
+      cidadeEstado: req.body.cidadeEstado,
       email: req.body.email,
       senha: req.body.senha,
-      tipo: "farmacia",
+      tipo: "profissional",
     });
 
     res.redirect("/login");
   }
 );
 
-//LOGIN SENDO CLIENTE OU COLABORADOR
+//LOGIN SENDO CLIENTE
 router.post("/login", (req, res) => {
-  const { email, senha } = req.body; // <- altera aqui
+  const { email, senha } = req.body;
 
   const usuarioEncontrado = usuarios.find(
     (u) => (u.email === email || u.nomeusuario === email) && u.senha === senha
@@ -400,12 +347,7 @@ router.post("/login", (req, res) => {
 
   if (usuarioEncontrado) {
     req.session.usuario = usuarioEncontrado;
-
-    if (usuarioEncontrado.tipo === "farmacia") {
-      return res.redirect("/adm/home2");
-    } else {
-      return res.redirect("/tomarammeutela");
-    }
+    return res.redirect("/tomarammeutela");
   }
 
   // SE FALHAR:

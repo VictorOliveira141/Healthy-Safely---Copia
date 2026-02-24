@@ -3,6 +3,7 @@ html, body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 
@@ -233,6 +234,55 @@ tbody tr:nth-child(even) {
 
 .numero-total {
   font-size: 1.1rem;
+}
+
+/* New styles for task list */
+.lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.tarefa-item {
+  background: linear-gradient(135deg, #1e3a1c 0%, #2d4a2b 100%);
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: white;
+}
+
+.tarefa-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.tarefa-item.concluida {
+  background: linear-gradient(135deg, #4a7c59 0%, #5a9c6a 100%);
+  opacity: 0.8;
+}
+
+.tarefa-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 15px;
+  accent-color: #4a7c59;
+}
+
+.tarefa-item span {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.pontos {
+  font-weight: bold;
+  color: #ffd700;
+  font-size: 1rem;
 }
 
 @media (max-width: 800px) {

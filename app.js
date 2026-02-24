@@ -30,13 +30,12 @@ app.set("views", "./app/views");
 
 // 📦 Importação das rotas
 const rotaPrincipal = require("./app/routes/router");
-const rotaAdm = require("./app/routes/router-adm");
 
 // 🧭 Uso das rotas
 app.use("/", rotaPrincipal);
-app.use("/adm", rotaAdm);
 
 // 🚀 Inicialização do servidor
 app.listen(porta, () => {
   console.log(`Servidor online 🔥\nhttp://localhost:${porta}`);
 });
+ 

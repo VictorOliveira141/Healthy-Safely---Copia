@@ -1,42 +1,8 @@
 <section class="menu-inferior">
   <nav>
-    <% if (usuario && usuario.tipo === "farmacia") { %>
-
-    <a href="/adm/home2">
-      <i class="bi bi-house-door-fill"></i>
-      <span>Inicio</span>
-    </a>
-
-    <a href="/adm/novo-produto">
-      <i class="bi bi-plus-circle"></i>
-      <span>Novo</span>
-    </a>
-
-    <a href="/adm/vendas">
-      <i class="bi bi-graph-up-arrow"></i>
-      <span>Vendas</span>
-    </a>
-
-    <a href="/adm/avaliacoes">
-      <i class="bi bi-star-fill"></i>
-      <span>Avaliações</span>
-    </a>
-
-    <% } else { %>
-
     <a href="/tomarammeutela">
       <i class="bi bi-house-door-fill"></i>
       <span>Início</span>
-    </a>
-
-    <a href="/#">
-      <i class="bi bi-grid"></i>
-      <span>Categorias</span>
-    </a>
-
-    <a href="/#">
-      <i class="bi bi-ticket-perforated"></i>
-      <span>Cupons</span>
     </a>
 
     <a href="/tarefas">
@@ -44,7 +10,15 @@
       <span>Tarefas</span>
     </a>
 
-    <% } %>
+    <a href="/progressao">
+      <i class="bi bi-bar-chart"></i>
+      <span>Progressão</span>
+    </a>
+
+    <a href="/perfil">
+      <i class="bi bi-person"></i>
+      <span>Perfil</span>
+    </a>
   </nav>
 </section>
 

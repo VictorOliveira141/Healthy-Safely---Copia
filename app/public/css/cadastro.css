@@ -128,7 +128,11 @@ form > div {
 input[type="email"],
 input[type="password"],
 input[type="text"],
-input[type="date"] {
+input[type="date"],
+input[type="number"],
+input[type="file"],
+select,
+textarea {
   width: 100%;
   padding: 14px 16px;
   border-radius: 10px;
@@ -143,7 +147,11 @@ input[type="date"] {
 input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus,
-input[type="date"]:focus {
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="file"]:focus,
+select:focus,
+textarea:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
 }
@@ -526,4 +534,26 @@ form > div {
   .subtitulo {
     font-size: 12px;
   }
+}
+
+/* Preview de imagem */
+.preview-container {
+  margin-top: 10px;
+  display: none;
+}
+
+.preview-container img {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 10px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+/* Títulos de seção */
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin: 20px 0 10px 0;
+  text-align: left;
 }

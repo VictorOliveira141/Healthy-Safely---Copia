@@ -16,116 +16,97 @@
       <!--TOPO-->
       <section class="topo">
         <h1>Progressão</h1>
-        <p>Adicione valores para ver sua evolução diária!</p>
+        <p>Veja seu progresso e conquistas!</p>
       </section>
 
-      <!-- Gráfico 1: Sono -->
-      <section class="grafico-horas" data-grafico="graficoSono">
-        <article class="titulo-info">
-          <i class="bi bi-info-circle"></i>
-          <h2>
-            Regulagem de sono (horas): De 0 à 12 horas, quantas horas
-            (aproximada) você dormiu hoje?
-          </h2>
+      <!-- Estatísticas -->
+      <section class="stats">
+        <article class="stat">
+          <h3>Pontos Totais</h3>
+          <p><%= pontosTotais %></p>
         </article>
-        <br /><br />
-
-        <article class="grafico-container" id="graficoHoras" data-max="12">
-          <div class="linha" data-h="12"><span>12h</span></div>
-          <div class="linha" data-h="10"><span>10h</span></div>
-          <div class="linha recomendada" data-h="8"><span>8h</span></div>
-          <div class="linha" data-h="6"><span>6h</span></div>
-          <div class="linha" data-h="4"><span>4h</span></div>
-          <div class="linha" data-h="2"><span>2h</span></div>
-          <div class="linha" data-h="0"><span>0h</span></div>
+        <article class="stat">
+          <h3>Tarefas Concluídas</h3>
+          <p><%= tarefasConcluidas %></p>
         </article>
-
-        <article class="input-area">
-          <input
-            type="number"
-            min="0"
-            max="12"
-            step="0.1"
-            placeholder="Digite horas (0-12)"
-          />
-          <button class="btn-adicionar">Adicionar</button>
+        <article class="stat">
+          <h3>Medalha Atual</h3>
+          <p><%= medalha %></p>
         </article>
       </section>
 
-      <!-- Gráfico 2: Saúde Mental -->
-      <section class="grafico-horas" data-grafico="graficoMental">
-        <article class="titulo-info">
-          <i class="bi bi-info-circle"></i>
-          <h2>
-            Saúde Mental: De 0 à 10, o quão satisfeito(feliz) você com o dia de
-            hoje?
-          </h2>
-        </article>
-        <div class="grafico-container" id="graficoMental" data-max="10">
-          <div class="linha" data-h="10"><span>10</span></div>
-          <div class="linha recomendada" data-h="8"><span>8</span></div>
-          <div class="linha" data-h="6"><span>6</span></div>
-          <div class="linha" data-h="4"><span>4</span></div>
-          <div class="linha" data-h="2"><span>2</span></div>
-          <div class="linha" data-h="0"><span>0</span></div>
-        </div>
-        <div class="input-area">
-          <input
-            type="number"
-            min="0"
-            max="10"
-            step="0.1"
-            placeholder="Digite (0-10)"
-          />
-          <button class="btn-adicionar">Adicionar</button>
-        </div>
+      <!-- Barra de Progresso -->
+      <section class="progress-section">
+        <h2>Progresso Geral</h2>
+        <section class="progress-bar">
+          <section class="progress-fill" style="width: <%= progresso %>%"></section>
+        </section>
+        <p><%= progresso %>% concluído</p>
       </section>
 
-      <!-- Gráfico 3: Exercícios -->
-      <section class="grafico-horas" data-grafico="graficoExercicios">
-        <article class="titulo-info">
-          <i class="bi bi-info-circle"></i>
-          <h2>
-            Atividade Física: Quantos minutos você praticou de atividade física
-            hoje?
-          </h2>
-        </article>
-        <br /><br />
-
-        <div class="grafico-container" id="graficoExercicios" data-max="150">
-          <div class="linha" data-h="10"><span>150min</span></div>
-          <div class="linha" data-h="8"><span>120min</span></div>
-          <div class="linha" data-h="6"><span>90min</span></div>
-          <div class="linha" data-h="4"><span>60min</span></div>
-          <div class="linha recomendada" data-h="2"><span>30min</span></div>
-          <div class="linha" data-h="0"><span>0min</span></div>
-        </div>
-
-        <div class="input-area">
-          <input
-            type="number"
-            min="0"
-            max="150"
-            step="1"
-            placeholder="Digite min"
-          />
-          <button class="btn-adicionar">Adicionar</button>
-        </div>
-      </section>
-
-      <!-- Orientações dos profissionais -->
-      <section class="orientacao">
-        <button
-          class="btn-orientacao"
-          onclick="window.location.href='/orientacoes'"
-        >
-          Ver orientações de profissionais
-          <p>sobre seu desenvolvimento</p>
-        </button>
+      <!-- Medalhas -->
+      <section class="medals">
+        <h2>Medalhas Conquistadas</h2>
+        <section class="medal-list">
+          <% if (pontosTotais >= 100) { %>
+            <article class="medal">🥉 Iniciante</article>
+          <% } %>
+          <% if (pontosTotais >= 300) { %>
+            <article class="medal">🥈 Consistente</article>
+          <% } %>
+          <% if (pontosTotais >= 700) { %>
+            <article class="medal">🥇 Avançado</article>
+          <% } %>
+        </section>
       </section>
     </main>
 
     <script src="../js/grafico.js"></script>
+    <script>
+      // Animate progress bar on load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateProgressFromStorage();
+      });
+      
+      function updateProgressFromStorage() {
+        let tarefas = JSON.parse(localStorage.getItem('tarefas')) || <%= JSON.stringify(tarefas) %>;
+        const pontosTotais = tarefas.filter(t => t.concluida).reduce((sum, t) => sum + t.pontos, 0);
+        const tarefasConcluidas = tarefas.filter(t => t.concluida).length;
+        const progresso = (tarefasConcluidas / tarefas.length) * 100;
+        
+        // Update stats
+        document.querySelector('.stat p').textContent = pontosTotais; // Assuming first stat is pontos
+        document.querySelectorAll('.stat p')[1].textContent = tarefasConcluidas; // Second stat
+        
+        // Update progress bar
+        const progressFill = document.querySelector('.progress-fill');
+        progressFill.style.width = '0%';
+        setTimeout(() => {
+          progressFill.style.width = progresso + '%';
+        }, 500);
+        document.querySelector('.progress-section p').textContent = Math.round(progresso) + '% concluído';
+        
+        // Update medal
+        let medalha = "";
+        if (pontosTotais >= 700) medalha = "🥇 Avançado";
+        else if (pontosTotais >= 300) medalha = "🥈 Consistente";
+        else if (pontosTotais >= 100) medalha = "🥉 Iniciante";
+        document.querySelectorAll('.stat p')[2].textContent = medalha;
+        
+        // Update medals list
+        const medalList = document.querySelector('.medal-list');
+        medalList.innerHTML = '';
+        if (pontosTotais >= 100) {
+          medalList.innerHTML += '<article class="medal">🥉 Iniciante</article>';
+        }
+        if (pontosTotais >= 300) {
+          medalList.innerHTML += '<article class="medal">🥈 Consistente</article>';
+        }
+        if (pontosTotais >= 700) {
+          medalList.innerHTML += '<article class="medal">🥇 Avançado</article>';
+        }
+      }
+    </script>
 
     <%- include('../partials/footer.ejs') %>
   </body>

@@ -38,9 +38,9 @@
               <span>Continuar com Google</span>
             </a>
 
-            <div class="or" aria-hidden="true">ou</div>
+            <section class="or" aria-hidden="true">ou</section>
 
-            <div>
+            <section>
               <label class="textos" for="email"
                 >E-mail ou Nome de Usuário</label
               >
@@ -56,11 +56,11 @@
               <span class="msg-erro"
                 ><%= msgErro && msgErro.email ? msgErro.email : '' %></span
               >
-            </div>
+            </section>
 
-            <div class="espaco-campo">
+            <section class="espaco-campo">
               <label class="textos" for="senha">Senha</label>
-              <div class="campo-senha">
+              <section class="campo-senha">
                 <input
                   id="senha"
                   name="senha"
@@ -77,14 +77,14 @@
                 >
                   <i class="bi bi-eye-slash-fill"></i>
                 </button>
-              </div>
+              </section>
               <span class="msg-erro"
                 ><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span
               >
-            </div>
+            </section>
 
             <% if (typeof erro !== 'undefined' && erro) { %>
-            <div
+            <section
               style="
                 color: #ff6b6b;
                 font-size: 13px;
@@ -96,12 +96,12 @@
               "
             >
               <%= erro %>
-            </div>
+            </section>
             <% } %>
 
-            <div class="actions">
+            <section class="actions">
               <button class="btn-primary" type="submit">Entrar</button>
-            </div>
+            </section>
             <p class="small">
               Esqueceu sua senha? <a class="link-muted" href="#"> Recupere!</a>
             </p>

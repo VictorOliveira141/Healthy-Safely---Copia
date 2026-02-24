@@ -4,24 +4,14 @@
 <!-- HEADER TOP -->
 <article class="header">
   <nav
-    class="header-nav2 <%= (usuario && usuario.tipo === 'farmacia') ? 'farmacia' : 'cliente' %>"
+    class="header-nav2 cliente"
     id="mobileNav"
     aria-label="Navegação principal"
   >
     <article class="nav-spacer">
-      <% if (usuario && usuario.tipo === "farmacia") { %>
-      <a href="/adm/home2">Minha loja</a>
-      <a href="/adm/adicionarproduto">Adicionar Produto</a>
-      <a href="/adm/gerenciarpedidos">Pedidos</a>
-      <a href="/adm/vendas">Vendas</a>
-      <a href="/adm/avaliacoes">Avaliações</a>
-      <% } else { %>
-
-      <a href="/loja">Loja</a>
-      <a href="/#">Categorias</a>
-      <a href="/meuscupons">Cupons</a>
-      <a href="/meuspedidos">Meus Pedidos</a>
-      <% } %>
+      <a href="/tarefas">Tarefas</a>
+      <a href="/progressao">Progressão</a>
+      <a href="/perfil">Perfil</a>
     </article>
 
     <article class="nav-spacer">
@@ -55,88 +45,19 @@
       <nav id="menu" aria-label="Conteúdo do menu Hamburguer">
         <h1>Menu</h1>
         <ul>
-          <% if (usuario && usuario.tipo === "farmacia") { %>
-          <li>
-            <a href="/adm/home2"><i class="bi bi-house"></i> Início</a>
-          </li>
-
-          <li>
-            <a href="/adm/adicionarproduto"
-              ><i class="bi bi-plus-circle"></i> Novo Produto</a
-            >
-          </li>
-          <li>
-            <a href="/adm/gerenciarpedidos"
-              ><i class="bi bi-truck"></i> <span>Pedidos</span></a
-            >
-          </li>
-          <li>
-            <a href="/adm/vendas"
-              ><i class="bi bi-graph-up-arrow"></i> Vendas</a
-            >
-          </li>
-          <li>
-            <a href="/adm/avaliacoes"
-              ><i class="bi bi-star-fill"></i> Avaliações</a
-            >
-          </li>
-
-          <% } else { %>
           <li>
             <a href="/"><i class="bi bi-house"></i> Início</a>
           </li>
           <li>
-            <a href="/loja"><i class="bi bi-shop"></i> Loja</a>
+            <a href="/tarefas"><i class="bi bi-check-circle"></i> Tarefas</a>
           </li>
-
           <li>
-            <a href="/esportes-performance">
-              <i class="bi bi-lightning-charge"></i> Esportes & Performance
-            </a>
+            <a href="/progressao"><i class="bi bi-bar-chart"></i> Progressão</a>
           </li>
-
           <li>
-            <a href="/beleza-cuidados">
-              <i class="bi bi-stars"></i> Beleza & Cuidados Especiais
-            </a>
-          </li>
-
-          <li>
-            <a href="/suplementos-vitaminas">
-              <i class="bi bi-capsule"></i> Suplementos & Vitaminas
-            </a>
-          </li>
-
-          <li>
-            <a href="/bebes-criancas">
-              <i class="bi bi-emoji-smile"></i> Bebês & Crianças
-            </a>
-          </li>
-
-          <li>
-            <a href="/saude-prevencao">
-              <i class="bi bi-heart-pulse"></i> Saúde & Prevenção
-            </a>
-          </li>
-
-          <li>
-            <a href="/higiene"><i class="bi bi-bandaid"></i> Higiene</a>
-          </li>
-
-          <li>
-            <a href="/meuscupons"><i class="bi bi-ticket"></i> Cupons</a>
-          </li>
-
-          <li>
-            <a href="/informacoes"><i class="bi bi-info-circle"></i> Ajuda</a>
-          </li>
-
-          <li>
-            <a href="/contato"><i class="bi bi-envelope"></i> Contato</a>
+            <a href="/perfil"><i class="bi bi-person"></i> Perfil</a>
           </li>
         </ul>
-        <% } %>
-
         <label for="menuToggle" class="close-menu">&times;</label>
       </nav>
     </section>
@@ -171,60 +92,9 @@
 
     <!-- AÇÕES DO USUARIO -->
     <nav class="header-actions" aria-label="Ações do usuário">
-      <% if (!usuario || usuario.tipo === "cliente") { %>
-      <!-- CARRINHO DE COMPRAS FECHADO-->
-      <div class="user-menu" aria-label="Carrinho de compras (Fechado)">
-        <a
-          href="javascript:void(0);"
-          class="action-btn"
-          aria-label="Carrinho de compras"
-          onclick="openCartMenu()"
-        >
-          <i class="bi bi-cart"></i>
-        </a>
-      </div>
-
-      <!-- CARRINHO DE COMPRAS ABERTO-->
-      <div
-        id="cartSidebar"
-        class="cart-sidebar"
-        aria-label="Carrinho de compras (aberto)"
-      >
-        <div class="cart-header">
-          <h2>Carrinho de Compras</h2>
-          <button class="close-btn" onclick="closeCartMenu()">&times;</button>
-        </div>
-
-        <div class="cart-sidebar-content">
-          <ul id="cartItems"></ul>
-          <div
-            id="emptyCartMessage"
-            class="empty-cart-message"
-            style="
-              display: none;
-              text-align: center;
-              padding: 20px;
-              color: #999;
-            "
-          >
-            Seu carrinho está vazio.
-          </div>
-        </div>
-
-        <div class="cart-footer">
-          <div class="total">
-            <span>Total:</span>
-            <span id="cartTotal">R$ 0,00</span>
-          </div>
-          <button>Finalizar Compra</button>
-        </div>
-      </div>
-
-      <% } %>
-
       <!-- MENU DE NOTIFICAÇÕES-->
-      <div
-        class="user-menu <%= (usuario && usuario.tipo === 'farmacia') ? 'farmacia' : 'cliente' %>"
+      <section
+        class="user-menu cliente"
         aria-label="Menu de notificações"
       >
         <i
@@ -247,12 +117,10 @@
             <% } %>
           </ul>
         </section>
-      </div>
+      </section>
 
       <!-- CADASTRAR/LOGAR -->
-      <div
-        class="user-menu <%= (usuario && usuario.tipo === 'farmacia') ? 'farmacia' : 'cliente' %>"
-      >
+      <section class="user-menu cliente">
         <% if (usuario) { %>
         <a href="/perfil">
           <i class="bi bi-person-circle logado"></i>
@@ -263,16 +131,16 @@
           Olá, <strong><%= usuario.nome.split(' ')[0] %></strong> 👋
         </span>
         <% } %> <% } else { %>
-        <div class="logar-cadastrar">
+        <section class="logar-cadastrar">
           <a href="/login">
             <i class="bi bi-person-circle"></i>
           </a>
           <a href="/login">Entrar</a>
           <span> | </span>
           <a href="/cadastro">Cadastrar</a>
-        </div>
+        </section>
         <% } %>
-      </div>
+      </section>
     </nav>
   </section>
 </article>
@@ -320,80 +188,11 @@
     <p class="titulo-cadastro">Cadastrar como:</p>
 
     <section class="opcoes-cadastro">
-      <a href="/cadastroCliente" class="btn-cadastro">Cliente</a>
-      <a href="/cadastroColaborador" class="btn-cadastro"> Colaborador </a>
+      <a href="/cadastroCliente" class="btn-cadastro">Usuário</a>
+      <a href="/cadastroProfissional" class="btn-cadastro">Profissional</a>
     </section>
   </section>
 </section>
 
 <!--SCRIPT DO MODAL CADASTRAR-->
 <script src="/js/modal-header.js"></script>
-<!--SCRIPT CARRINHO -->
-<script src="/js/cart-product.js"></script>
-<!-- SCRIPT PARA O MODAL DE NOTIFICAÇÕES -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const notificationToggles = document.querySelectorAll(
-      ".notification-toggle"
-    );
-    const notificationMenu = document.getElementById("notificationMenu");
-
-    if (!notificationMenu) return;
-
-    function setExpanded(state) {
-      notificationToggles.forEach(function (t) {
-        try {
-          t.setAttribute("aria-expanded", state);
-        } catch (e) {}
-      });
-    }
-
-    function toggleNotificationMenu(event) {
-      event && event.preventDefault();
-      const isHidden = notificationMenu.classList.contains("hidden");
-      if (isHidden) {
-        notificationMenu.classList.remove("hidden");
-        setExpanded("true");
-      } else {
-        notificationMenu.classList.add("hidden");
-        setExpanded("false");
-      }
-    }
-
-    notificationToggles.forEach(function (toggle) {
-      toggle.addEventListener("click", toggleNotificationMenu);
-      // allow keyboard activation when focused
-      toggle.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          toggleNotificationMenu(e);
-        }
-      });
-    });
-
-    // Fechar o menu se clicar fora dele
-    document.addEventListener("click", function (event) {
-      const target = event.target;
-      const clickedInsideMenu = notificationMenu.contains(target);
-      const clickedOnToggle = Array.from(notificationToggles).some(function (
-        t
-      ) {
-        return t.contains(target);
-      });
-      if (!clickedInsideMenu && !clickedOnToggle) {
-        notificationMenu.classList.add("hidden");
-        setExpanded("false");
-      }
-    });
-
-    // Fechar com Escape
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") {
-        if (!notificationMenu.classList.contains("hidden")) {
-          notificationMenu.classList.add("hidden");
-          setExpanded("false");
-        }
-      }
-    });
-  });
-</script>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Healthy Safely | Cadastro Profissional</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/cadastro.css" />
+    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+  </head>
+
+  <body>
+    <!--HEADER-->
+    <%- include('../partials/header.ejs') %>
+    <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main class="main">
+      <article class="card" aria-labelledby="titulo-cadastro">
+        <section class="form-area">
+          <form action="/cadastroProfissional" method="POST" novalidate>
+            <h1 id="titulo-cadastro" class="form-title">Cadastro de Profissional</h1>
+
+            <a
+              class="btn-google"
+              href="#"
+              role="button"
+              aria-label="Cadastrar com Google"
+            >
+              <i class="bi bi-google icone-google"></i>
+              <span>Continuar com Google</span>
+            </a>
+
+            <section class="or" aria-hidden="true">ou</section>
+
+            <p class="section-title">Informações Profissionais</p>
+
+            <div class="form-group">
+              <label for="nome" class="textos">Nome Completo</label>
+              <input
+                id="nome"
+                name="nome"
+                type="text"
+                placeholder="Digite seu nome completo"
+                value="<%= valores ? valores.nome || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.nome ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="textos">E-mail</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Digite seu endereço de e-mail"
+                value="<%= valores ? valores.email || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.email ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.email ? msgErro.email : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="cref" class="textos">CREF</label>
+              <input
+                id="cref"
+                name="cref"
+                type="text"
+                placeholder="Digite seu CREF"
+                value="<%= valores ? valores.cref || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.cref ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.cref ? msgErro.cref : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="areaAtuacao" class="textos">Área de atuação</label>
+              <select
+                id="areaAtuacao"
+                name="areaAtuacao"
+                class="<%= erroValidacao && erroValidacao.areaAtuacao ? 'erro-input' : '' %>"
+                required
+              >
+                <option value="">Selecione a área</option>
+                <option value="musculacao">Musculação</option>
+                <option value="funcional">Funcional</option>
+                <option value="reabilitacao">Reabilitação</option>
+                <option value="nutricao">Nutrição</option>
+                <option value="fisioterapia">Fisioterapia</option>
+                <option value="outros">Outros</option>
+              </select>
+              <span class="msg-erro"><%= msgErro && msgErro.areaAtuacao ? msgErro.areaAtuacao : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="tempoExperiencia" class="textos">Tempo de experiência (anos)</label>
+              <input
+                id="tempoExperiencia"
+                name="tempoExperiencia"
+                type="number"
+                placeholder="Ex: 5"
+                min="0"
+                value="<%= valores ? valores.tempoExperiencia || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.tempoExperiencia ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.tempoExperiencia ? msgErro.tempoExperiencia : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="especialidades" class="textos">Especialidades</label>
+              <input
+                id="especialidades"
+                name="especialidades"
+                type="text"
+                placeholder="Ex: Treinamento de força, Lesões esportivas"
+                value="<%= valores ? valores.especialidades || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.especialidades ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.especialidades ? msgErro.especialidades : '' %></span>
+            </div>
+
+            <p class="section-title">Perfil Profissional</p>
+
+            <div class="form-group">
+              <label for="fotoPerfil" class="textos">Foto de perfil</label>
+              <input
+                id="fotoPerfil"
+                name="fotoPerfil"
+                type="file"
+                accept="image/*"
+                class="<%= erroValidacao && erroValidacao.fotoPerfil ? 'erro-input' : '' %>"
+              />
+              <div id="preview" class="preview-container"></div>
+              <span class="msg-erro"><%= msgErro && msgErro.fotoPerfil ? msgErro.fotoPerfil : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="bio" class="textos">Bio</label>
+              <textarea
+                id="bio"
+                name="bio"
+                placeholder="Conte um pouco sobre você e sua experiência"
+                rows="4"
+                class="<%= erroValidacao && erroValidacao.bio ? 'erro-input' : '' %>"
+              ><%= valores ? valores.bio || '' : '' %></textarea>
+              <span class="msg-erro"><%= msgErro && msgErro.bio ? msgErro.bio : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="cidadeEstado" class="textos">Cidade/Estado</label>
+              <input
+                id="cidadeEstado"
+                name="cidadeEstado"
+                type="text"
+                placeholder="Ex: São Paulo/SP"
+                value="<%= valores ? valores.cidadeEstado || '' : '' %>"
+                class="<%= erroValidacao && erroValidacao.cidadeEstado ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.cidadeEstado ? msgErro.cidadeEstado : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="senha" class="textos">Senha</label>
+              <input
+                id="senha"
+                name="senha"
+                type="password"
+                placeholder="Crie uma senha"
+                class="<%= erroValidacao && erroValidacao.senha ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmarSenha" class="textos">Confirmar Senha</label>
+              <input
+                id="confirmarSenha"
+                name="confirmarSenha"
+                type="password"
+                placeholder="Confirme sua senha"
+                class="<%= erroValidacao && erroValidacao.confirmarSenha ? 'erro-input' : '' %>"
+                required
+              />
+              <span class="msg-erro"><%= msgErro && msgErro.confirmarSenha ? msgErro.confirmarSenha : '' %></span>
+            </div>
+
+            <div class="actions">
+              <button class="btn-primary" type="submit">Cadastrar</button>
+            </div>
+
+            <p class="small">
+              Já tem conta?
+              <a href="/login" class="link-cadastro">Faça login</a>
+            </p>
+          </form>
+        </section>
+      </article>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+    <!---->
+    <script>
+      // Preview da foto de perfil
+      document.getElementById('fotoPerfil').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById('preview');
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            preview.innerHTML = '<img src="' + e.target.result + '" alt="Preview">';
+            preview.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        } else {
+          preview.innerHTML = '';
+          preview.style.display = 'none';
+        }
+      });
+    </script>
+    <script src="/js/cadastro-save-local.js"></script>
+  </body>
+</html>

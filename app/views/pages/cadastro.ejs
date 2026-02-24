@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Healthy Safely | Cadastro</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/cadastro.css" />
+  </head>
+
+  <body>
+    <!--HEADER-->
+    <%- include('../partials/header.ejs') %>
+    <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main>
+      <article class="card" aria-labelledby="titulo-cadastro">
+        <section class="form-area">
+          <form id="form-cadastro" novalidate aria-labelledby="titulo-cadastro">
+            <h1 id="titulo-cadastro" class="form-title">Criar conta</h1>
+
+            <a
+              class="btn-google"
+              href="#"
+              role="button"
+              aria-label="Cadastrar com Google"
+            >
+              <i class="bi bi-google icone-google"></i>
+              <span>Continuar com Google</span>
+            </a>
+
+            <section class="or" aria-hidden="true">ou</section>
+
+            <section>
+              <label class="textos" for="tipo-conta">Tipo de conta</label>
+              <select id="tipo-conta" name="tipo-conta" class="select-input" required>
+                <option value="">Selecione o tipo de conta</option>
+                <option value="cliente">Usuário</option>
+                <option value="profissional">Profissional</option>
+              </select>
+            </section>
+
+            <section class="actions">
+              <button class="btn-primary" type="submit">Continuar</button>
+            </section>
+
+            <p class="small">
+              Já tem uma conta?
+              <a href="/login" class="link-cadastro">Faça login.</a>
+            </p>
+          </form>
+        </section>
+      </article>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+    <!---->
+
+    <script>
+      document.getElementById('form-cadastro').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const tipo = document.getElementById('tipo-conta').value;
+        if (tipo === 'cliente') {
+          window.location.href = '/cadastroCliente';
+        } else if (tipo === 'profissional') {
+          window.location.href = '/cadastroProfissional';
+        } else {
+          alert('Por favor, selecione o tipo de conta.');
+        }
+      });
+    </script>
+  </body>
+</html>

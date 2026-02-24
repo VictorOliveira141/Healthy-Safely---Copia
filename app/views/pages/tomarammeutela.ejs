@@ -23,6 +23,7 @@
           <section class="main-content">
             <section class="carrossel">
               <article class="carrossel-slide active">
+              
                 <img src="../imagem/bannerzaodeacessoo.PNG" alt="Banner 1" />
               </article>
               <article class="carrossel-slide">
@@ -51,328 +52,70 @@
             </article>
           </aside>
         </section>
+   <!-- TIPO DE CONTA -->
+      <section class="tpcnt">
+  <h2>ESCOLHA SEU TIPO DE CONTA</h2>
 
-        <!-- Botões de serviços -->
-        <nav class="botoes-servicos">
-          <a href="/loja"
-            ><section><i class="bi bi-shop"></i><span>Loja</span></section></a
-          >
+  <section class="tpcnt-container">
+    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../imagem/a (48).png" alt="Conta Profissional" class="tpcnt-img" />
+          <h3 class="tpcnt-title">Profissional</h3>
+        </div>
+        <div class="card-back">
+          <p>Conta para profissionais: Ideal para educadores físicos que desejam acompanhar alunos, criar treinos personalizados e 
+            monitorar a evolução em tempo real com ferramentas inteligentes.</p>
+          <button class="btn-criar" data-target="/cadastroProfissional">Criar conta</button>
+        </div>
+      </div>
+    </article>
 
-          <a href="/doacao"
-            ><section>
-              <i class="bi bi-heart"></i><span>Doação</span>
-            </section></a
-          >
-          <a href="/tarefas"
-            ><section>
-              <i class="bi bi-check2-square"></i><span>Tarefas</span>
-            </section></a
-          >
-          <a href="/progressao"
-            ><section>
-              <i class="bi bi-graph-up"></i><span>Progressão</span>
-            </section></a
-          >
-          <a href="/agendamento1"
-            ><section>
-              <i class="bi bi-headset"></i><span>Atendimento Online</span>
-            </section></a
-          >
-        </nav>
+    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="../imagem/a (49).png" alt="Conta usuário comum" class="tpcnt-img" />
+          <h3 class="tpcnt-title">Usuário</h3>
+        </div>
+        <div class="card-back">
+          <p>Conta para usuários: Perfeita para quem quer melhorar a saúde e o desempenho com acompanhamento profissional, acesso a treinos personalizados e controle da própria evolução.</p>
+          <button class="btn-criar" data-target="/cadastroCliente">Criar conta</button>
+        </div>
+      </div>
+    </article>
+  </section>
+</section>
+        
+        <!-- COMO FUNCIONA -->
+  <section class="steps">
+    <h2>Como o sistema funciona</h2>
+
+    <section class="steps-container">
+      <section class="step">
+        <i class="bi bi-person-plus-fill step-icon"></i>
+        <span>1</span>
+        <p>Crie sua conta</p>
       </section>
 
-      <!-- Ofertas -->
-      <section class="main-centro ofertas">
-        <h1>Ofertas de hoje</h1>
-        <section>
-          <section class="slider">
-            <button class="btn ml-prev" id="btn-prev">&#10094;</button>
-            <section class="slides-wrapper">
-              <section class="slides" id="slides">
-                <!-- Produto 1 -->
-                <article class="produtos">
-                  <a href="/produto">
-                    <img src="../imagem/omega3.png" alt="Ômega 3 Sundown" />
-                    <h3>Sundown Ômega 3 1000mg 30 comprimidos</h3>
-                    <article class="produto-info">
-                      <article class="avaliacao">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <i class="bi bi-star"></i>
-                      </article>
-                      <div class="unidades-vendidas">500+ vendidos</div>
-                    </article>
-                    <article class="colaborador">
-                      <span class="nome-colaborador">Saúde e Vida</span>
-                      <i class="bi bi-patch-check-fill"></i>
-                    </article>
-                    <article class="preco-container">
-                      <span class="preco-antigo">R$ 49,99</span>
-                      <span class="desconto">-20%</span>
-                    </article>
-                    <span class="preco">R$ 26,99</span>
-                  </a>
-                  <button class="btn-comprar" onclick="addToCart(this)">
-                    Comprar <i class="bi bi-basket"></i>
-                  </button>
-                </article>
-
-                <!-- Produto 2 -->
-                <article class="produtos">
-                  <a href="/produto2">
-                    <img src="../imagem/inalador.png" alt="Inalador G-TECH" />
-                    <h3>Inalador Nebulizador G-TECH</h3>
-                    <article class="produto-info">
-                      <article class="avaliacao">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <i class="bi bi-star"></i>
-                      </article>
-                      <div class="unidades-vendidas">1000+ vendidos</div>
-                    </article>
-                    <article class="colaborador">
-                      <span class="nome-colaborador">G-TECH</span>
-                      <i class="bi bi-patch-check-fill"></i>
-                    </article>
-                    <article class="preco-container">
-                      <span class="preco-antigo">R$ 79,99</span>
-                      <span class="desconto">-40%</span>
-                    </article>
-                    <span class="preco">R$ 31,99</span>
-                  </a>
-                  <button class="btn-comprar" onclick="addToCart(this)">
-                    Comprar <i class="bi bi-basket"></i>
-                  </button>
-                </article>
-
-                <!-- Produto 3 -->
-                <article class="produtos">
-                  <a href="/produto3">
-                    <img
-                      src="../imagem/vitaminac.png"
-                      alt="Vitamina C Equaliv"
-                    />
-                    <h3>Vitamina C 1G com 10 comprimidos</h3>
-                    <article class="produto-info">
-                      <article class="avaliacao">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <i class="bi bi-star"></i>
-                      </article>
-                      <div class="unidades-vendidas">200+ vendidos</div>
-                    </article>
-                    <article class="colaborador">
-                      <span class="nome-colaborador">Equaliv</span>
-                      <i class="bi bi-patch-check-fill"></i>
-                    </article>
-                    <article class="preco-container">
-                      <span class="preco-antigo">R$ 19,99</span>
-                      <span class="desconto">-25%</span>
-                    </article>
-                    <span class="preco">R$ 14,99</span>
-                  </a>
-                  <button class="btn-comprar" onclick="addToCart(this)">
-                    Comprar <i class="bi bi-basket"></i>
-                  </button>
-                </article>
-
-                <!-- Produto 4 -->
-                <article class="produtos">
-                  <a href="/produto4">
-                    <img src="../imagem/whey.png" alt="Whey Protein" />
-                    <h3>Whey Protein Concentrado refil 1kg</h3>
-                    <article class="produto-info">
-                      <article class="avaliacao">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <i class="bi bi-star"></i>
-                      </article>
-                      <div class="unidades-vendidas">200+ vendidos</div>
-                    </article>
-                    <article class="colaborador">
-                      <span class="nome-colaborador">Integralmedica</span>
-                      <i class="bi bi-patch-check-fill"></i>
-                    </article>
-                    <article class="preco-container">
-                      <span class="preco-antigo">R$ 77,45</span>
-                      <span class="desconto">-20%</span>
-                    </article>
-                    <span class="preco">R$ 61,99</span>
-                  </a>
-                  <button class="btn-comprar" onclick="addToCart(this)">
-                    Comprar <i class="bi bi-basket"></i>
-                  </button>
-                </article>
-
-                <!-- Produto 5 -->
-                <article class="produtos">
-                  <a href="/produto5">
-                    <img
-                      src="../imagem/coqueteleira.png"
-                      alt="Coqueteleira SNAKER"
-                    />
-                    <h3>Coqueteleira SNAKER 600ml</h3>
-                    <article class="produto-info">
-                      <article class="avaliacao">
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-fill"></i>
-                        <i class="bi bi-star-half"></i>
-                        <i class="bi bi-star"></i>
-                      </article>
-                      <div class="unidades-vendidas">2000+ vendidos</div>
-                    </article>
-                    <article class="colaborador">
-                      <span class="nome-colaborador">SNAKER</span>
-                      <i class="bi bi-patch-check-fill"></i>
-                    </article>
-                    <article class="preco-container">
-                      <span class="preco-antigo">R$ 29,99</span>
-                      <span class="desconto">-30%</span>
-                    </article>
-                    <span class="preco">R$ 20,99</span>
-                  </a>
-                  <button class="btn-comprar" onclick="addToCart(this)">
-                    Comprar <i class="bi bi-basket"></i>
-                  </button>
-                </article>
-
-                <!-- Ver mais-->
-                <article class="produtos ver-mais">
-                  <h2>Ver mais</h2>
-                  <button
-                    class="btn-circular"
-                    onclick="window.location.href=`/loja`"
-                  >
-                    +
-                  </button>
-                </article>
-              </section>
-            </section>
-            <button class="btn ml-next" id="btn-next">&#10095;</button>
-          </section>
-        </section>
+      <section class="step">
+        <i class="bi bi-people-fill step-icon"></i>
+        <span>2</span>
+        <p>Conecte-se com um profissional</p>
       </section>
 
-      <!-- Categorias de produtos -->
-      <section class="main-centro categorias">
-        <h1>Categorias</h1>
-        <nav class="botoes-categorias">
-          <section>
-            <a href="/esportes-performance">
-              <img
-                src="../imagem/futebol.svg"
-                alt="Esportes & Perfomance"
-              /><span>Esportes & Perfomance</span>
-            </a>
-          </section>
-          <section>
-            <a href="/beleza-cuidados">
-              <img
-                src="../imagem/beleza.svg"
-                alt="Beleza & Cuidados especiais"
-              /><span>Beleza & Cuidados especiais</span></a
-            >
-          </section>
-          <section>
-            <a href="/suplementos-vitaminas">
-              <img
-                src="../imagem/suplemento.svg"
-                alt="Suplementos & Vitaminas"
-              /><span>Suplementos & Vitaminas</span></a
-            >
-          </section>
-          <section>
-            <a href="/bebes-criancas">
-              <img src="../imagem/bebe.svg" alt="Bebês & Crianças" /><span
-                >Bebês & Crianças</span
-              ></a
-            >
-          </section>
-          <section>
-            <a href="/saude-prevencao">
-              <img src="../imagem/prevencao.svg" alt="Saúde & Prevenção" /><span
-                >Saúde & Prevenção</span
-              ></a
-            >
-          </section>
-          <section>
-            <a href="/higiene">
-              <img src="../imagem/higiene.svg" alt="Higiene" /><span
-                >Higiene</span
-              >
-            </a>
-          </section>
-        </nav>
+      <section class="step">
+        <i class="bi bi-graph-up-arrow step-icon"></i>
+        <span>3</span>
+        <p>Acompanhe sua evolução</p>
       </section>
+    </section>
+  </section>
 
-      <!-- Destaques -->
-      <section class="main-centro destaques">
-        <h1>Destaques para você</h1>
-        <section class="produtos-destaque" id="produtos-destaque"></section>
 
-        <!--Os produtos são gerados automaticamente-->
-        <script>
-          const produtos = [
-            {
-              img: "../imagem/omega3.png",
-              alt: "Ômega 3 Sundown",
-              titulo: "Sundown Ômega 3 1000mg",
-              estrelas: 3.5,
-              vendidos: "500+ vendidos",
-              colaborador: "Saúde e Vida",
-              preco: "R$ 26,99",
-            },
-          ];
-          const container = document.getElementById("produtos-destaque");
-          const repetir = 7;
-          for (let i = 0; i < repetir; i++) {
-            const produto = produtos[0];
-            const article = document.createElement("article");
-            article.classList.add("produtos");
-            article.innerHTML = `
-              <img src="${produto.img}" alt="${produto.alt}" />
-              <h3>${produto.titulo}</h3>
-              <article class="produto-info">
-                <article class="avaliacao">
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-half"></i>
-                  <i class="bi bi-star"></i>
-                </article>
-                <div class="unidades-vendidas">${produto.vendidos}</div>
-              </article>
-              <article class="colaborador">
-                <span class="nome-colaborador">${produto.colaborador}</span>
-                <i class="bi bi-patch-check-fill"></i>
-              </article>
-              <span class="preco">${produto.preco}</span>
-              <button class="btn-comprar">Comprar <i class="bi bi-basket"></i></button>
-            `;
-            container.appendChild(article);
-          }
-        </script>
-      </section>
-
-      <!-- IMAGEM Agende -->
-      <img
-        src="../imagem/agende.png"
-        alt="agende sua consulta"
-        class="img-agende"
-      />
 
       <!-- SUGETOES DE CONSULTAS -->
       <section class="main-centro">
-        <h1>Sugestões</h1>
+        <h1>Sugestões de Tarefas</h1>
 
         <!-- SUGESTÃO 1-->
         <section class="grade-servicos">
@@ -385,14 +128,14 @@
               </span>
             </header>
 
-            <h2>Fisioterapia Online</h2>
-            <p>Sessões de fisioterapia com exercícios personalizados</p>
+            <h2>Corra!</h2>
+            <p>Faça pequenas corris por dia por 2 semanas</p>
 
             <section class="info-servico">
               <ul class="linha-info">
                 <li>
                   <i class="fas fa-clock" aria-hidden="true"></i>
-                  <time datetime="PT50M">50 min</time>
+                  <time datetime="PT50M">15 min</time>
                 </li>
                 <li>
                   <i class="fas fa-star" aria-hidden="true"></i>
@@ -401,16 +144,16 @@
               </ul>
               <p class="disponibilidade">
                 <i class="fas fa-calendar" aria-hidden="true"></i>
-                Disponível: <time datetime="2025-09-27T14:00">Hoje às 14h</time>
+                Disponível: <time datetime="2025-09-27T14:00"></time>
               </p>
             </section>
 
             <footer class="rodape-servico">
               <p>
-                <strong class="valor">R$ 80</strong>
-                <span class="por-consulta">por consulta</span>
+                <strong class="valor">Faça Já!</strong>
+                <span class="por-consulta">começar</span>
               </p>
-              <button class="botao-agendar">Agendar</button>
+              <button class="botao-agendar">Iniciar</button>
             </footer>
           </article>
 
@@ -424,14 +167,14 @@
               </span>
             </header>
 
-            <h2>Consulta Nutricional</h2>
-            <p>Planejamento alimentar e acompanhamento nutricional</p>
+            <h2>Alimentação Saúdavel</h2>
+            <p>Planejamento alimentar da semana</p>
 
             <section class="info-servico">
               <ul class="linha-info">
                 <li>
                   <i class="fas fa-clock" aria-hidden="true"></i>
-                  <time datetime="PT45M">45 min</time>
+                  <time datetime="PT45M">1 sem</time>
                 </li>
                 <li>
                   <i class="fas fa-star" aria-hidden="true"></i>
@@ -440,16 +183,16 @@
               </ul>
               <p class="disponibilidade">
                 <i class="fas fa-calendar" aria-hidden="true"></i>
-                Disponível: <time datetime="2025-09-27T16:00">Hoje às 16h</time>
+                Disponível: <time datetime="2025-09-27T16:00"></time>
               </p>
             </section>
 
             <footer class="rodape-servico">
               <p>
-                <strong class="valor">R$ 120</strong>
-                <span class="por-consulta">por consulta</span>
+                <strong class="valor">Faça Já</strong>
+                <span class="por-consulta">começar</span>
               </p>
-              <button class="botao-agendar">Agendar</button>
+              <button class="botao-agendar">Iniciar</button>
             </footer>
           </article>
 
@@ -463,14 +206,14 @@
               </span>
             </header>
 
-            <h2>Consulta Psicológica</h2>
-            <p>Atendimento terapêutico para saúde emocional e bem-estar</p>
+            <h2>Familia Saúdavel</h2>
+            <p>Incentive sua familia a terem bons habitos</p>
 
             <section class="info-servico">
               <ul class="linha-info">
                 <li>
                   <i class="fas fa-clock" aria-hidden="true"></i>
-                  <time datetime="PT45M">1h</time>
+                  <time datetime="PT45M">2 sem</time>
                 </li>
                 <li>
                   <i class="fas fa-star" aria-hidden="true"></i>
@@ -479,21 +222,21 @@
               </ul>
               <p class="disponibilidade">
                 <i class="fas fa-calendar" aria-hidden="true"></i>
-                Disponível: <time datetime="2025-09-27T16:00">Hoje às 20h</time>
+                Disponível: <time datetime="2025-09-27T16:00"></time>
               </p>
             </section>
 
             <footer class="rodape-servico">
               <p>
-                <strong class="valor">R$ 100</strong>
-                <span class="por-consulta">por consulta</span>
+                <strong class="valor">Comece Já</strong>
+                <span class="por-consulta">começar</span>
               </p>
-              <button class="botao-agendar">Agendar</button>
+              <button class="botao-agendar">Iniciar</button>
             </footer>
           </article>
 
           <article class="produtos ver-mais">
-            <h2>Procurar por consultas</h2>
+            <h2>Procurar por tarefas</h2>
             <button
               class="btn-circular"
               onclick="window.location.href=`/agendamento1`"
@@ -512,5 +255,24 @@
     <!--FOOTER-->
     <%- include('../partials/footer.ejs') %>
     <!---->
+    <script>
+      // Flip card: toggle .is-flipped on click; button stops propagation and navigates
+      (function(){
+        const cards = document.querySelectorAll('.tpcnt-card');
+        cards.forEach(card=>{
+          card.addEventListener('click', ()=> card.classList.toggle('is-flipped'));
+          card.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('is-flipped'); }});
+        });
+
+        const buttons = document.querySelectorAll('.tpcnt-card .btn-criar');
+        buttons.forEach(btn=>{
+          btn.addEventListener('click', e=>{
+            e.stopPropagation();
+            const tgt = btn.getAttribute('data-target') || '#';
+            if(tgt && tgt !== '#') window.location.href = tgt;
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
