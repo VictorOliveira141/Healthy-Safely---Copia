@@ -49,34 +49,9 @@ router.get("/tarefas", verificarAutenticacao, (req, res) => {
   res.render("pages/tarefas", { tarefas });
 });
 
-router.get("/plano-premium", verificarAutenticacao, (req, res) => {
-  res.render("pages/plano-premium");
-});
-
-router.get("/plano-comum", verificarAutenticacao, (req, res) => {
-  res.render("pages/plano-comum");
-});
-
 // TAREFAS
 router.get("/sono", verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
-});
-router.get("/alimentacao", verificarAutenticacao, (req, res) => {
-  res.render("pages/alimentacao");
-});
-router.get("/saudemen", verificarAutenticacao, (req, res) => {
-  res.render("pages/saudemen");
-});
-router.get("/atividadefis", verificarAutenticacao, (req, res) => {
-  res.render("pages/atividadefis");
-});
-
-// PERFIL DO USUÁRIO
-router.get("/perfil", verificarAutenticacao, (req, res) => {
-  res.render("pages/perfil");
-});
-router.get("/minhaidentidade", verificarAutenticacao, (req, res) => {
-  res.render("pages/minhaidentidade");
 });
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
@@ -100,13 +75,7 @@ router.get("/cadastro", (req, res) => {
   res.render("pages/cadastro");
 });
 
-router.get("/cadastroColaborador", (req, res) => {
-  res.render("pages/cadastroColaborador", {
-    valores: {},
-    erroValidacao: {},
-    msgErro: {},
-  });
-});
+
 
 router.get("/cadastroCliente", (req, res) => {
   res.render("pages/cadastroCliente", {

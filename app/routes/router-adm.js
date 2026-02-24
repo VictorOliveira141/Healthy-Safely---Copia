@@ -37,72 +37,10 @@ let produtos = [
 ];
 
 /* ========== ROTAS PRIVADAS (apenas colaborador/farmácia tem acesso) ========== */
-router.get("/home2", verificarFarmacia, (req, res) => {
-  res.render("pages/farmacia/home2", {
-    produtos,
-  });
-});
-router.get("/paginaloja", verificarFarmacia, (req, res) => {
-  res.render("pages/farmacia/paginaloja", {
-    colaborador: req.session.usuario,
-    produtos,
-    mensagem: null,
-  });
-});
-router.get("/adicionarproduto", verificarFarmacia, (req, res) => {
-  res.render("pages/farmacia/adicionarproduto", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-router.get("/editarproduto", verificarFarmacia, (req, res) => {
-  res.render("pages/farmacia/editarproduto", {
-    colaborador: req.session.usuario,
-    produtos,
-    mensagem: null,
-  });
-});
-router.get("/gerenciarpedidos", verificarFarmacia, (req, res) => {
-  res.render("pages/farmacia/gerenciarpedidos", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-router.get("/vendas", verificarFarmacia, (req, res) => {
-  res.render("pages/farmacia/vendas", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-router.get("/avaliacoes", verificarFarmacia, (req, res) => {
-  res.render("pages/farmacia/avaliacoes", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-/* Rota de suporte ao cliente desativada para essa banca final
-router.get("/suportecliente", (req, res) => {
-  res.render("pages/farmacia/suportecliente", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
 
 /* ========== ROTAS PRIVADAS (apenas colaborador/profissional tem acesso) ========== */
-router.get("/home3", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/home3", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
 router.get("/perfil-profissional", verificarProfissional, (req, res) => {
   res.render("pages/profissional/perfil-profissional", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-router.get("/agenda", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/agenda", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
@@ -110,12 +48,6 @@ router.get("/agenda", verificarProfissional, (req, res) => {
 
 router.get("/painel-financeiro", verificarProfissional, (req, res) => {
   res.render("pages/profissional/painel-financeiro", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-router.get("/avaliacoes2", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/avaliacoes2", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
