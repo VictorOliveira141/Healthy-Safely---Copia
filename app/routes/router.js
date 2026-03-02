@@ -3,6 +3,25 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const verificarAutenticacao = require("../public/js/autenticacao");
 
+/* middleware que garante usuário logado **e** do tipo "usuario/cliente" */
+function verificarUsuario(req, res, next) {
+  // primeiro garante que está autenticado
+  if (!req.session || !req.session.usuario) {
+    return res.redirect('/login');
+  }
+
+  // o projeto atualmente salva o tipo em usuario.tipo com valores
+  // "cliente" ou "profissional"; alguns trechos futuros podem
+  // utilizar "usuario" como sinônimo para cliente. Aceitamos ambos.
+  const tipo = req.session.usuario.tipo;
+  if (tipo === 'usuario' || tipo === 'cliente') {
+    return next();
+  }
+
+  // caso seja profissional, vamos encaminhar à área correspondente
+  return res.redirect('/profissional/dashboard');
+}
+
 const usuarios = []; /* array que armazena os usuarios*/
 
 // Dados mockados para tarefas
@@ -47,6 +66,15 @@ router.get("/progressao", verificarAutenticacao, (req, res) => {
 });
 router.get("/tarefas", verificarAutenticacao, (req, res) => {
   res.render("pages/tarefas", { tarefas });
+});
+
+// Rota exclusiva para usuário comum (cliente/usuario)
+router.get("/dashboard", verificarUsuario, (req, res) => {
+  // o middleware já garantiu que req.session.nome e nivel existem
+  res.render("user/dashboard", {
+    nome: req.session.nome,
+    nivel: req.session.nivel,
+  });
 });
 
 // TAREFAS
@@ -315,8 +343,26 @@ router.post("/login", (req, res) => {
   );
 
   if (usuarioEncontrado) {
+    // armazenamos o objeto inteiro e algumas propriedades em sessão
     req.session.usuario = usuarioEncontrado;
-    return res.redirect("/tomarammeutela");
+    req.session.nome = usuarioEncontrado.nome;
+    // caso o cadastro futuro venha a possuir campo "nivel", usamos ele,
+    // senão assumimos iniciante por padrão
+    req.session.nivel = usuarioEncontrado.nivel || "iniciante";
+
+    // redirecionamento por tipo de conta
+    const tipo = usuarioEncontrado.tipo;
+    if (tipo === 'profissional') {
+      return res.redirect('/profissional/dashboard');
+    }
+
+    // tratar 'cliente' como usuário comum; aceitar também 'usuario' se existir
+    if (tipo === 'cliente' || tipo === 'usuario') {
+      return res.redirect('/dashboard');
+    }
+
+    // fallback: rota pública
+    return res.redirect('/tomarammeutela');
   }
 
   // SE FALHAR:

@@ -53,4 +53,10 @@ router.get("/painel-financeiro", verificarProfissional, (req, res) => {
   });
 });
 
+// rota auxiliar para atender redirecionamento desde o middleware de usuário comum
+router.get("/dashboard", verificarProfissional, (req, res) => {
+  // redireciona para painel financeiro, que é a área padrão do profissional
+  res.redirect("/profissional/painel-financeiro");
+});
+
 module.exports = router;

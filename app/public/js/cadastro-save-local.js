@@ -5,6 +5,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('main form');
   if (!form) return;
+  // Não interceptar o envio dos formulários reais de cadastro do sistema.
+  // Permitir o fluxo server-side em páginas:
+  //  - /cadastroCliente
+  //  - /cadastroProfissional
+  //  - /cadastro
+  const pathname = window.location.pathname || '';
+  const skipIntercept = ['/cadastroCliente', '/cadastroProfissional', '/cadastro'].includes(pathname);
+  if (skipIntercept) return; // deixa o envio seguir para o servidor
 
   form.addEventListener('submit', (e) => {
     // Interceptar e impedir envio ao servidor para modo front-end-only

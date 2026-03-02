@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Usuário - Healthy Safely</title>
+  <!-- estilos específicos desta tela -->
+  <link rel="stylesheet" href="/css/hs-user-dashboard.css" />
+  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+</head>
+<body>
+  <%- include('../partials/header.ejs') %>
+  <%- include('../partials/menu-inferior.ejs') %>
+
+  <!-- cabeçalho com saudação e subtítulo -->
+  <section class="hs-user-header">
+    <h1>Olá, <%= nome %></h1>
+    <p class="hs-subtitle">Seu plano físico de hoje</p>
+  </section>
+
+  <!-- Estatísticas rápidas -->
+  <section class="hs-user-stats" id="hs-user-stats">
+    <div class="hs-user-stat-card">
+      <div class="hs-user-stat-icon">⭐</div>
+      <div class="hs-user-stat-body">
+        <div class="hs-user-stat-title">Pontos acumulados</div>
+        <div class="hs-user-stat-value" id="hs-pontos">0</div>
+      </div>
+    </div>
+
+    <div class="hs-user-stat-card">
+      <div class="hs-user-stat-icon">📅</div>
+      <div class="hs-user-stat-body">
+        <div class="hs-user-stat-title">Dias ativos</div>
+        <div class="hs-user-stat-value" id="hs-dias">0</div>
+      </div>
+    </div>
+
+    <div class="hs-user-stat-card">
+      <div class="hs-user-stat-icon">📈</div>
+      <div class="hs-user-stat-body">
+        <div class="hs-user-stat-title">Percentual da semana</div>
+        <div class="hs-user-stat-value" id="hs-percent">0%</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- seção de tarefas -->
+  <section class="hs-tasks-section">
+    <h2 class="hs-section-title">Tarefas de Hoje</h2>
+    <main class="hs-user-tasks" id="hs-user-tasks">
+      <!-- cards serão injetados via JavaScript -->
+    </main>
+  </section>
+
+  <!-- modal de detalhes de tarefa -->
+  <div class="hs-user-modal" id="hs-user-modal" aria-hidden="true">
+    <div class="hs-user-modal-content">
+      <button class="hs-user-modal-close" id="hs-user-modal-close" aria-label="Fechar">&times;</button>
+      <h2 id="hs-user-modal-title"></h2>
+      <p id="hs-user-modal-desc"></p>
+
+      <div class="hs-user-progress">
+        <div class="progress-bar"><div class="fill" id="hs-user-modal-fill"></div></div>
+        <span class="percent-label" id="hs-user-modal-percent">0%</span>
+      </div>
+
+      <button class="hs-user-btn" id="hs-user-modal-button">Marcar como Concluída</button>
+    </div>
+  </div>
+
+  <section class="footer"><%- include('../partials/footer.ejs') %></section>
+
+  <!-- script específico - gera tarefas dinamicamente e gerencia pontos -->
+  <script>
+    /* ==================== DASHBOARD - JS ==================== */
+    // Nivel recebido do backend via EJS
+    const nivel = '<%= nivel %>' || 'iniciante';
+
+    // Pontuação do usuário (persistida localmente por enquanto)
+    let pontos = Number(localStorage.getItem('hs_pontos') || 0);
+    let diasAtivos = Number(localStorage.getItem('hs_diasAtivos') || 0);
+    let semanaPercent = Number(localStorage.getItem('hs_semanaPercent') || 0);
+
+    // Base de tarefas por nível
+    const baseTarefas = {
+      iniciante: [
+        { id: 'i1', nome: 'Caminhada 20 minutos', icone: '🚶', descricao: 'Uma caminhada leve para iniciar o dia.', progresso: 0 },
+        { id: 'i2', nome: 'Beber 2L de água', icone: '💧', descricao: 'Hidratação ao longo do dia melhora a saúde.', progresso: 0 },
+        { id: 'i3', nome: 'Alongamento leve', icone: '🧘', descricao: 'Alongamentos simples por 10-15 minutos.', progresso: 0 }
+      ],
+      intermediario: [
+        { id: 'm1', nome: 'Corrida 30 minutos', icone: '🏃', descricao: 'Corrida moderada para condicionamento.', progresso: 0 },
+        { id: 'm2', nome: 'Treino funcional', icone: '💪', descricao: 'Exercícios para força e resistência.', progresso: 0 },
+        { id: 'm3', nome: 'Alongamento + mobilidade', icone: '🤸', descricao: 'Mobilidade articular e alongamento.', progresso: 0 }
+      ],
+      avancado: [
+        { id: 'a1', nome: 'HIIT 25 minutos', icone: '⚡', descricao: 'Treino intervalado de alta intensidade.', progresso: 0 },
+        { id: 'a2', nome: 'Treino de força', icone: '🏋️', descricao: 'Séries com carga para ganho de força.', progresso: 0 },
+        { id: 'a3', nome: 'Alongamento intenso', icone: '🧘‍♀️', descricao: 'Alongamentos profundos para flexibilidade.', progresso: 0 }
+      ]
+    };
+
+    // Carregar tarefas do nivel (clonar para evitar mutação da base)
+    let tarefas = JSON.parse(JSON.stringify(baseTarefas[nivel] || baseTarefas['iniciante']));
+
+    // Atualiza os cards das estatísticas no topo
+    function atualizarEstatisticas() {
+      document.getElementById('hs-pontos').textContent = pontos;
+      document.getElementById('hs-dias').textContent = diasAtivos;
+      document.getElementById('hs-percent').textContent = semanaPercent + '%';
+    }
+
+    // animação breve quando pontos são adicionados
+    function animarPontos() {
+      const el = document.getElementById('hs-pontos');
+      el.classList.add('pontos-anim');
+      setTimeout(() => el.classList.remove('pontos-anim'), 600);
+    }
+
+    // recalcula percentual semanal com base nas tarefas concluídas
+    function calcularSemanaPercent() {
+      if (!tarefas.length) return 0;
+      const concluidas = tarefas.filter(t => t.progresso === 100).length;
+      return Math.round((concluidas / tarefas.length) * 100);
+    }
+
+    // salva estado simples em localStorage
+    function salvarEstado() {
+      localStorage.setItem('hs_pontos', String(pontos));
+      localStorage.setItem('hs_diasAtivos', String(diasAtivos));
+      localStorage.setItem('hs_semanaPercent', String(semanaPercent));
+      localStorage.setItem('hs_tarefas_' + nivel, JSON.stringify(tarefas));
+    }
+
+    function carregarEstado() {
+      const gravadas = localStorage.getItem('hs_tarefas_' + nivel);
+      if (gravadas) {
+        try {
+          const arr = JSON.parse(gravadas);
+          if (Array.isArray(arr) && arr.length) tarefas = arr;
+        } catch (e) { /* ignore parse errors */ }
+      }
+
+      // se não existir dias/pontos, inicializar valores simulados
+      if (!localStorage.getItem('hs_pontos')) pontos = 0;
+      if (!localStorage.getItem('hs_diasAtivos')) diasAtivos = Math.floor(Math.random()*7)+1;
+      if (!localStorage.getItem('hs_semanaPercent')) semanaPercent = Math.floor(Math.random()*100);
+
+      atualizarEstatisticas();
+    }
+
+    // Cria o elemento DOM para um card
+    function criarCardDOM(tarefa, idx) {
+      const card = document.createElement('article');
+      card.className = 'hs-user-task-card' + (tarefa.progresso === 100 ? ' concluida' : '');
+      card.dataset.index = idx;
+
+      const fillWidth = tarefa.progresso || 0;
+
+      card.innerHTML = `
+        <div class="hs-user-task-icon">${tarefa.icone}</div>
+        <div class="hs-user-task-name">${tarefa.nome}</div>
+        <div class="hs-user-task-desc">${tarefa.descricao}</div>
+        <div class="hs-user-progress">
+          <div class="progress-bar"><div class="fill" style="width:${fillWidth}%"></div></div>
+          <span class="percent-label">${fillWidth}%</span>
+        </div>
+        <button class="hs-user-btn" ${tarefa.progresso===100? 'disabled': ''}>${tarefa.progresso===100? 'Concluída' : 'Iniciar'}</button>
+        ${tarefa.progresso===100 ? '<div class="hs-task-badge">✓ Concluído</div>' : ''}
+      `;
+
+      return card;
+    }
+
+    // Renderiza lista de tarefas
+    function renderizarTarefas() {
+      const container = document.getElementById('hs-user-tasks');
+      container.innerHTML = '';
+      tarefas.forEach((t, i) => container.appendChild(criarCardDOM(t, i)));
+    }
+
+    // Abre modal com a tarefa selecionada
+    function abrirModalPorIndice(idx) {
+      const tarefa = tarefas[idx];
+      if (!tarefa) return;
+      const modal = document.getElementById('hs-user-modal');
+      document.getElementById('hs-user-modal-title').textContent = tarefa.nome;
+      document.getElementById('hs-user-modal-desc').textContent = tarefa.descricao;
+      const fill = document.getElementById('hs-user-modal-fill');
+      const percent = document.getElementById('hs-user-modal-percent');
+      fill.style.width = (tarefa.progresso||0) + '%';
+      percent.textContent = (tarefa.progresso||0) + '%';
+      modal.dataset.index = idx;
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden','false');
+    }
+
+    // Fecha modal
+    function fecharModal() {
+      const modal = document.getElementById('hs-user-modal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      delete modal.dataset.index;
+    }
+
+    // Marca como concluída e atualiza pontos
+    function concluirTarefaAtual() {
+      const modal = document.getElementById('hs-user-modal');
+      const idx = Number(modal.dataset.index);
+      if (Number.isNaN(idx)) return;
+      const tarefa = tarefas[idx];
+      if (!tarefa) return;
+
+      // animação da barra para 100%
+      tarefa.progresso = 100;
+      pontos += 10; // cada tarefa vale 10 pontos
+      semanaPercent = calcularSemanaPercent();
+
+      // efeito visual rápido no card
+      renderizarTarefas();
+      const container = document.querySelector(`.hs-user-task-card[data-index="${idx}"]`);
+      if (container) {
+        const flash = document.createElement('div');
+        flash.className = 'hs-user-complete-flash';
+        container.appendChild(flash);
+        setTimeout(()=> flash.remove(), 800);
+
+        // adicionar selo concluído
+        if (!container.querySelector('.hs-task-badge')) {
+          const badge = document.createElement('div');
+          badge.className = 'hs-task-badge';
+          badge.textContent = '✓ Concluído';
+          container.appendChild(badge);
+        }
+      }
+
+      // atualizar estatísticas e animar pontos
+      atualizarEstatisticas();
+      animarPontos();
+      salvarEstado();
+
+      // fechar modal com delay para ver barra
+      setTimeout(() => fecharModal(), 600);
+    }
+
+    // Eventos delegados para abrir modal e iniciar tarefas
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+
+      // abrir modal ao clicar no card ou no botão Iniciar
+      if (target.closest('.hs-user-task-card')) {
+        const card = target.closest('.hs-user-task-card');
+        const idx = Number(card.dataset.index);
+        abrirModalPorIndice(idx);
+      }
+
+      // fechar modal
+      if (target.id === 'hs-user-modal-close' || target.classList.contains('hs-user-modal') && target.id === 'hs-user-modal') {
+        fecharModal();
+      }
+
+      // marcar como concluída
+      if (target.id === 'hs-user-modal-button') {
+        concluirTarefaAtual();
+      }
+    });
+
+    // Fechar modal clicando no overlay
+    document.getElementById('hs-user-modal').addEventListener('click', (e)=>{
+      if (e.target === e.currentTarget) fecharModal();
+    });
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      carregarEstado();
+      semanaPercent = calcularSemanaPercent();
+      renderizarTarefas();
+
+      // Atualizar display de pontos imediatamente
+      atualizarEstatisticas();
+    });
+
+    // Expor funções para debug e futura integração
+    window.hs = { renderizarTarefas, salvarEstado, carregarEstado };
+  </script>
+</body>
+</html>
