@@ -47,7 +47,9 @@
                 class="<%= erroValidacao && erroValidacao.nome ? 'erro-input' : '' %>"
                 required
               />
-              <span class="msg-erro"><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span
+              >
             </div>
 
             <div class="form-group">
@@ -61,7 +63,10 @@
                 class="<%= erroValidacao && erroValidacao.nomeusuario ? 'erro-input' : '' %>"
                 required
               />
-              <span class="msg-erro"><%= msgErro && msgErro.nomeusuario ? msgErro.nomeusuario : '' %></span>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.nomeusuario ? msgErro.nomeusuario : ''
+                %></span
+              >
             </div>
 
             <div class="form-group">
@@ -75,7 +80,9 @@
                 class="<%= erroValidacao && erroValidacao.email ? 'erro-input' : '' %>"
                 required
               />
-              <span class="msg-erro"><%= msgErro && msgErro.email ? msgErro.email : '' %></span>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.email ? msgErro.email : '' %></span
+              >
             </div>
 
             <div class="form-group">
@@ -98,7 +105,9 @@
                   <i class="bi bi-eye-slash-fill"></i>
                 </button>
               </div>
-              <span class="msg-erro"><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span
+              >
             </div>
 
             <div class="form-group">
@@ -121,7 +130,10 @@
                   <i class="bi bi-eye-slash-fill"></i>
                 </button>
               </div>
-              <span class="msg-erro"><%= msgErro && msgErro.confirmarSenha ? msgErro.confirmarSenha : '' %></span>
+              <span class="msg-erro"
+                ><%= msgErro && msgErro.confirmarSenha ? msgErro.confirmarSenha
+                : '' %></span
+              >
             </div>
 
             <div class="actions">
@@ -130,7 +142,9 @@
 
             <p class="small">
               Quer se tornar um colaborador?
-              <a href="/cadastroColaborador" class="link-cadastro">Cadastre-se como um colaborador!</a>
+              <a href="/cadastroColaborador" class="link-cadastro"
+                >Cadastre-se como um colaborador!</a
+              >
             </p>
 
             <p class="small">
@@ -149,6 +163,5 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/validacao-front-end.js"></script>
     <script src="/js/ver-senha.js"></script>
-    <script src="/js/cadastro-save-local.js"></script>
   </body>
 </html>

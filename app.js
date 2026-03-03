@@ -11,7 +11,7 @@ app.use(
     saveUninitialized: false,
   })
 );
-
+app.use('/icons', express.static('node_modules/boxicons'));
 // 🔗 Torna o usuário logado disponível em todas as views EJS
 app.use((req, res, next) => {
   res.locals.usuario = req.session.usuario || null;

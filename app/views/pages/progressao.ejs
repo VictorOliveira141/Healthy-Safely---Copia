@@ -6,6 +6,10 @@
     <title>Healthy Safely</title>
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="../css/progressao.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
@@ -19,93 +23,113 @@
       </figure>
 
       <div class="info-perfil">
-        <h1>Victor Hugo</h1>
-        <h2>@Victor43153</h2>
+        <h1><%= usuario.nome.split(' ').slice(0,2).join(' ') %></h1>
+        <h2>@<%= usuario.nomeusuario %></h2>
         <p class="seguidores">
-          <span>0 seguidores</span> • <span>0 seguindo</span>
+          <span><%= usuario.seguidores || 0 %> seguidores</span> •
+          <span><%= usuario.seguindo || 0 %> seguindo</span>
         </p>
       </div>
 
       <article class="streak">
         <h2>Streak</h2>
-        <p>0 dias 🔥</p>
+        <p><%= usuario.streak || 0 %> dias <i class="fa-solid fa-fire"></i></p>
       </article>
     </header>
 
     <main class="perfil-corpo">
       <!--RANK-->
       <section class="rank-container">
-        <h2>🏆 Rank Atual</h2>
-
+        <h2><i class="fa-solid fa-ranking-star"></i> Rank Atual</h2>
         <div class="rank-info">
-          <span class="rank-atual">🥈 Prata I</span>
-          <span class="rank-proximo">Próximo: 🥇 Ouro I</span>
+          <span class="rank-atual"
+            ><i class="fa-solid fa-trophy" style="color: #a67b5b"></i> Bronze
+            I</span
+          >
+          <span class="rank-proximo"
+            >Próximo:
+            <i class="fa-solid fa-trophy" style="color: #a67b5b"></i> Bronze
+            II</span
+          >
         </div>
 
         <div class="barra-rank">
-          <div class="barra-preenchimento" id="barraRank"></div>
+          <div class="barra-preenchimento"></div>
         </div>
 
-        <p class="rank-detalhe" id="rankDetalhe"></p>
-        <p class="rank-faltando" id="rankFaltando"></p>
+        <p><%= usuario.xp || 0 %>/500</p>
+        <p class="rank-detalhe">
+          Faltam <%= 500 - (usuario.ranked || 0) %> XP para subir de rank
+        </p>
       </section>
 
       <!-- Estatísticas -->
       <section class="stats">
         <article class="stat">
-          <h3>Pontuação Total</h3>
-          <p>25⭐</p>
+          <h3>XP TOTAL</h3>
+          <p><%= usuario.pontuacao || 0 %><i class="fa-solid fa-star"></i></p>
         </article>
         <article class="stat">
-          <h3>Tarefas Totais Concluídas</h3>
-          <p>2📋</p>
+          <h3>TAREFAS TOTAIS CONCLUÍDAS</h3>
+          <p>
+            <%= usuario.tarefasConcluidas || 0 %><i
+              class="fa-solid fa-book"
+            ></i>
+          </p>
         </article>
         <article class="stat">
-          <h3>Rank Atual</h3>
-          <article class="medal">🥈 Prata I</article>
+          <h3>MEDALHAS TOTAIS</h3>
+          <p><%= usuario.medalhas || 0 %><i class="fa-solid fa-medal"></i></p>
         </article>
       </section>
 
       <!-- Medalhas -->
       <section class="medals">
-        <h2>Medalhas Conquistadas</h2>
+        <h2><i class="fa-solid fa-medal"></i> Medalhas Conquistadas</h2>
         <section class="medal-list">
-          <article class="medal">🥉 Corredor I</article>
-
-          <article class="medal">🥈 Completista II</article>
-
-          <article class="medal">🥇 Alimentação Saúdavel V</article>
+          <article class="medal-item">
+            <figure class="medal">
+              <img
+                src="../imagem/oie_transparent.png"
+                alt="Medalha de Bronze"
+                width="80px"
+                height="80px"
+              />
+            </figure>
+            <p>Corredor I</p>
+          </article>
+          <article class="medal-item">
+            <figure class="medal">
+              <img
+                src="../imagem/oie_transparent.png"
+                alt="Medalha de Bronze"
+                width="80px"
+                height="80px"
+              />
+            </figure>
+            <p>Corredor II</p>
+          </article>
         </section>
       </section>
     </main>
 
-    <script src="../js/grafico.js"></script>
+    <footer class="perfil-footer">
+      <section class="central-conta">
+        <h2><i class="fa-solid fa-user"></i> Central da Conta</h2>
+        <article class="perfil-botoes">
+          <p><i class="fa-solid fa-gear"></i> Configurações</p>
+          <p><i class="fa-solid fa-shield-halved"></i> Privacidade</p>
+          <p><i class="fa-solid fa-bell"></i> Notificações</p>
+          <p><i class="fa-solid fa-heart"></i> Ajuda</p>
+          <a href="/logout"
+            ><p>
+              <i class="fa-solid fa-right-from-bracket"></i> Sair da Conta
+            </p></a
+          >
+        </article>
+      </section>
+    </footer>
 
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>
-
-<!--SCRIPT DA BARRA DE PROGRESSAO-->
-<script>
-  // CONFIGURAÇÃO (você pode mudar esses valores)
-  const pontuacaoAtual = 325;
-  const pontosParaProximoRank = 500;
-
-  const barra = document.getElementById("barraRank");
-  const detalhe = document.getElementById("rankDetalhe");
-  const faltando = document.getElementById("rankFaltando");
-
-  // Calcula progresso
-  let progresso = (pontuacaoAtual / pontosParaProximoRank) * 100;
-  if (progresso > 100) progresso = 100;
-
-  // Atualiza barra
-  barra.style.width = progresso + "%";
-
-  // Atualiza textos
-  detalhe.textContent = `${pontuacaoAtual}⭐ / ${pontosParaProximoRank}⭐`;
-
-  const pontosRestantes = Math.max(pontosParaProximoRank - pontuacaoAtual, 0);
-
-  faltando.innerHTML = `Faltam <strong>${pontosRestantes}⭐</strong> para subir de rank`;
-</script>

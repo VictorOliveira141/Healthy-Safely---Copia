@@ -3,26 +3,22 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const verificarAutenticacao = require("../public/js/autenticacao");
 
-/* middleware que garante usuário logado **e** do tipo "usuario/cliente" */
-function verificarUsuario(req, res, next) {
-  // primeiro garante que está autenticado
-  if (!req.session || !req.session.usuario) {
-    return res.redirect('/login');
-  }
+/* ===================== MIDDLEWARES ===================== */
+//esse array armazena as informações dos usuarios*/
+const usuarios = [];
 
-  // o projeto atualmente salva o tipo em usuario.tipo com valores
-  // "cliente" ou "profissional"; alguns trechos futuros podem
-  // utilizar "usuario" como sinônimo para cliente. Aceitamos ambos.
+// middleware para verificar se o usuário está logado
+function verificarUsuario(req, res, next) {
+  if (!req.session || !req.session.usuario) {
+    return res.redirect("/login");
+  }
   const tipo = req.session.usuario.tipo;
-  if (tipo === 'usuario' || tipo === 'cliente') {
+  if (tipo === "usuario" || tipo === "cliente") {
     return next();
   }
 
-  // caso seja profissional, vamos encaminhar à área correspondente
-  return res.redirect('/profissional/dashboard');
+  return res.redirect("/profissional/dashboard");
 }
-
-const usuarios = []; /* array que armazena os usuarios*/
 
 // Dados mockados para tarefas
 const tarefas = [
@@ -52,46 +48,23 @@ router.get("/tela-inicial", (req, res) => {
 });
 
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
-router.get("/progressao", (req, res) => {
-  // Calcular pontos totais e progresso
-  const pontosTotais = tarefas
-    .filter((t) => t.concluida)
-    .reduce((sum, t) => sum + t.pontos, 0);
-  const tarefasConcluidas = tarefas.filter((t) => t.concluida).length;
-  const progresso = (tarefasConcluidas / tarefas.length) * 100;
-  let medalha = "";
-  if (pontosTotais >= 700) medalha = "Avançado";
-  else if (pontosTotais >= 300) medalha = "Consistente";
-  else if (pontosTotais >= 100) medalha = "Iniciante";
-
-  res.render("pages/progressao", {
-    pontosTotais,
-    tarefasConcluidas,
-    progresso,
-    medalha,
-    tarefas,
-  });
+router.get("/progressao", verificarAutenticacao, (req, res) => {
+  res.render("pages/progressao");
 });
 router.get("/tarefas", (req, res) => {
   res.render("pages/tarefas", { tarefas });
 });
-
-// Rota exclusiva para usuário comum (cliente/usuario)
 router.get("/dashboard", verificarUsuario, (req, res) => {
-  // o middleware já garantiu que req.session.nome e nivel existem
   res.render("user/dashboard", {
     nome: req.session.nome,
     nivel: req.session.nivel,
   });
 });
-
-// TAREFAS
 router.get("/sono", verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
 });
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
-
 //LOGIN
 router.get("/login", (req, res) => {
   res.render("pages/login", {
@@ -110,7 +83,6 @@ router.get("/login", (req, res) => {
 router.get("/cadastro", (req, res) => {
   res.render("pages/cadastro");
 });
-
 router.get("/cadastroCliente", (req, res) => {
   res.render("pages/cadastroCliente", {
     valores: {},
@@ -118,7 +90,6 @@ router.get("/cadastroCliente", (req, res) => {
     msgErro: {},
   });
 });
-
 router.get("/cadastroProfissional", (req, res) => {
   res.render("pages/cadastroProfissional", {
     valores: {},
@@ -126,12 +97,10 @@ router.get("/cadastroProfissional", (req, res) => {
     msgErro: {},
   });
 });
-
 router.get("/perfil", (req, res) => {
   res.render("pages/perfil");
 });
 
-// Rota pública para painel local (front-end-only) usado pelo demo localStorage
 router.get("/painel-local", (req, res) => {
   res.render("pages/painel-local");
 });
@@ -214,7 +183,7 @@ router.post(
       });
     }
 
-    // os dados do usuario sao puxados para o array usuarios
+    //os dados do usuario sao puxados para o array usuarios
     usuarios.push({
       nome: req.body.nome,
       nomeusuario: req.body.nomeusuario,
@@ -334,7 +303,7 @@ router.post(
       });
     }
 
-    // Dados do usuário são adicionados ao array
+    //Dados do usuário são adicionados ao array
     usuarios.push({
       nome: req.body.nome,
       especialidade: req.body.especialidades,
@@ -362,26 +331,20 @@ router.post("/login", (req, res) => {
   );
 
   if (usuarioEncontrado) {
-    // armazenamos o objeto inteiro e algumas propriedades em sessão
     req.session.usuario = usuarioEncontrado;
     req.session.nome = usuarioEncontrado.nome;
-    // caso o cadastro futuro venha a possuir campo "nivel", usamos ele,
-    // senão assumimos iniciante por padrão
     req.session.nivel = usuarioEncontrado.nivel || "iniciante";
 
-    // redirecionamento por tipo de conta
     const tipo = usuarioEncontrado.tipo;
-    if (tipo === 'profissional') {
-      return res.redirect('/profissional/dashboard');
+    if (tipo === "profissional") {
+      return res.redirect("/profissional/dashboard");
     }
 
-    // tratar 'cliente' como usuário comum; aceitar também 'usuario' se existir
-    if (tipo === 'cliente' || tipo === 'usuario') {
-      return res.redirect('/dashboard');
+    if (tipo === "cliente" || tipo === "usuario") {
+      return res.redirect("/dashboard");
     }
 
-    // fallback: rota pública
-    return res.redirect('/tomarammeutela');
+    return res.redirect("/tomarammeutela");
   }
 
   // SE FALHAR:
