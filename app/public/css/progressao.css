@@ -1,40 +1,170 @@
+/* ======================================
+   RESET & GLOBAL STYLES
+   ====================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
 body {
   background: #f2f5f2;
   color: #333;
   min-height: 100vh;
 }
 
-.container {
+/* ======================================
+   HEADER & PROFILE SECTION
+   ====================================== */
+.perfil {
   max-width: 1200px;
-  margin: 80px auto 20px;
-  padding: 20px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 25px 20px;
+  border-bottom: 2px solid #e0e0e0;
+  gap: 20px;
+  background-color: #fafafa;
 }
-
-/* Topo */
-.topo {
-  text-align: center;
-  margin-bottom: 40px;
+.foto-perfil {
+  margin: 0;
+  flex-shrink: 0;
 }
-
-.topo h1 {
+.foto-perfil img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.info-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.info-perfil h1 {
+  font-size: 1.8rem;
+  margin: 0;
   color: #013220;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+  font-weight: 600;
 }
-
-.topo p {
+.info-perfil h2 {
+  font-size: 0.9rem;
+  margin: 4px 0 10px 0;
   color: #666;
-  font-size: 1.2rem;
+  font-weight: 500;
+}
+.seguidores {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin: 0;
+  color: #888;
+  font-size: 0.95rem;
+}
+.streak {
+  background: linear-gradient(135deg, #166d5d 0%, #0c4f43 100%);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.25);
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.streak h2 {
+  font-size: 0.75rem;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+}
+.streak p {
+  font-size: 1.4rem;
+  margin: 0;
+  font-weight: 700;
 }
 
-/* Estatísticas */
+/* ======================================
+   MAIN CONTENT AREA
+   ====================================== */
+.perfil-corpo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px 20px;
+  border-bottom: 2px solid #e0e0e0;
+  background-color: #fafafa;
+}
+
+/* ======================================
+   RANK SECTION
+   ====================================== */
+.rank-container {
+  padding: 25px;
+  border-radius: 15px;
+  color: #013220;
+  max-width: 100%;
+  margin: 30px auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: baseline;
+}
+.rank-container h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.rank-info {
+  display: flex;
+  color: #013220;
+  justify-content: baseline;
+  gap: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+.rank-info span {
+  color: #013220;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  backdrop-filter: blur(10px);
+}
+.barra-rank {
+  width: 100%;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 20px 0;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.barra-preenchimento {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4a7c59 0%, #5a9c6a 100%);
+  border-radius: 15px;
+  transition: width 0.5s ease;
+}
+.rank-detalhe {
+  font-size: 0.95rem;
+  margin-top: 10px;
+  color: #013220;
+  font-weight: 500;
+}
+.rank-faltando {
+  font-size: 0.95rem;
+  margin-top: 8px;
+  color: #8ca700;
+  font-weight: bold;
+}
+
+/* ======================================
+   STATISTICS SECTION
+   ====================================== */
 .stats {
   display: flex;
   justify-content: space-around;
@@ -42,7 +172,6 @@ body {
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .stat {
   background: linear-gradient(135deg, #1e3a1c 0%, #2d4a2b 100%);
   color: white;
@@ -54,75 +183,36 @@ body {
   min-width: 200px;
   transition: transform 0.3s ease;
 }
-
 .stat:hover {
   transform: translateY(-5px);
 }
-
 .stat h3 {
   font-size: 1.1rem;
   margin-bottom: 10px;
   font-weight: bold;
 }
-
 .stat p {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* Barra de Progresso */
-.progress-section {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.progress-section h2 {
-  color: #013220;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 30px;
-  background: #e0e0e0;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #4a7c59 0%, #5a9c6a 100%);
-  border-radius: 15px;
-  transition: width 0.5s ease;
-}
-
-.progress-section p {
-  color: #013220;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-/* Medalhas */
+/* ======================================
+   MEDALS SECTION
+   ====================================== */
 .medals {
-  text-align: center;
+  border-top: solid 2px #ccc;
 }
-
 .medals h2 {
   color: #013220;
-  margin-bottom: 20px;
+  margin-top: 20px;
   font-size: 1.8rem;
 }
-
 .medal-list {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .medal {
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
   color: #013220;
@@ -133,43 +223,6 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
-
 .medal:hover {
   transform: scale(1.05);
-}
-
-/* Responsivo */
-@media (max-width: 768px) {
-  .container {
-    margin-top: 60px;
-    padding: 10px;
-  }
-
-  .topo h1 {
-    font-size: 2rem;
-  }
-
-  .topo p {
-    font-size: 1rem;
-  }
-
-  .stats {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .stat {
-    width: 80%;
-    max-width: 300px;
-  }
-
-  .progress-section h2,
-  .medals h2 {
-    font-size: 1.5rem;
-  }
-
-  .medal {
-    font-size: 1rem;
-    padding: 12px 18px;
-  }
 }

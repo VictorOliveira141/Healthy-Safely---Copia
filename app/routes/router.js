@@ -52,19 +52,27 @@ router.get("/tela-inicial", (req, res) => {
 });
 
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
-router.get("/progressao", verificarAutenticacao, (req, res) => {
+router.get("/progressao", (req, res) => {
   // Calcular pontos totais e progresso
-  const pontosTotais = tarefas.filter(t => t.concluida).reduce((sum, t) => sum + t.pontos, 0);
-  const tarefasConcluidas = tarefas.filter(t => t.concluida).length;
+  const pontosTotais = tarefas
+    .filter((t) => t.concluida)
+    .reduce((sum, t) => sum + t.pontos, 0);
+  const tarefasConcluidas = tarefas.filter((t) => t.concluida).length;
   const progresso = (tarefasConcluidas / tarefas.length) * 100;
   let medalha = "";
   if (pontosTotais >= 700) medalha = "Avançado";
   else if (pontosTotais >= 300) medalha = "Consistente";
   else if (pontosTotais >= 100) medalha = "Iniciante";
 
-  res.render("pages/progressao", { pontosTotais, tarefasConcluidas, progresso, medalha });
+  res.render("pages/progressao", {
+    pontosTotais,
+    tarefasConcluidas,
+    progresso,
+    medalha,
+    tarefas,
+  });
 });
-router.get("/tarefas", verificarAutenticacao, (req, res) => {
+router.get("/tarefas", (req, res) => {
   res.render("pages/tarefas", { tarefas });
 });
 
@@ -103,8 +111,6 @@ router.get("/cadastro", (req, res) => {
   res.render("pages/cadastro");
 });
 
-
-
 router.get("/cadastroCliente", (req, res) => {
   res.render("pages/cadastroCliente", {
     valores: {},
@@ -121,11 +127,14 @@ router.get("/cadastroProfissional", (req, res) => {
   });
 });
 
-// Rota pública para painel local (front-end-only) usado pelo demo localStorage
-router.get('/painel-local', (req, res) => {
-  res.render('pages/painel-local');
+router.get("/perfil", (req, res) => {
+  res.render("pages/perfil");
 });
 
+// Rota pública para painel local (front-end-only) usado pelo demo localStorage
+router.get("/painel-local", (req, res) => {
+  res.render("pages/painel-local");
+});
 
 /* ===================== ROUTER POST(VALIDAÇÕES) ===================== */
 
@@ -138,9 +147,21 @@ router.post(
     .withMessage("*Campo obrigatório!")
     .bail()
     .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome de usuário deve conter entre 3 e 50 caracteres!")
+    .withMessage("*O Nome deve conter entre 3 e 50 caracteres!")
     .matches(/^[A-Za-zÀ-ú\s]+$/)
     .withMessage("*O nome deve conter apenas letras!"),
+
+  body("nomeusuario")
+    .trim()
+    .notEmpty()
+    .withMessage("*Campo obrigatório!")
+    .bail()
+    .isLength({ min: 3, max: 30 })
+    .withMessage("*Nome de usuário deve conter entre 3 e 30 caracteres!")
+    .matches(/^[a-zA-Z0-9_-]+$/)
+    .withMessage(
+      "*Nome de usuário deve conter apenas letras, números, hífen e underscore!",
+    ),
 
   body("email")
     .notEmpty()
@@ -160,7 +181,7 @@ router.post(
       minSymbols: 1,
     })
     .withMessage(
-      "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!"
+      "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!",
     ),
 
   body("confirmarSenha")
@@ -204,7 +225,7 @@ router.post(
     });
 
     res.redirect("/login");
-  }
+  },
 );
 
 //CADASTRO PROFISSIONAL
@@ -236,9 +257,7 @@ router.post(
     .isLength({ min: 5, max: 20 })
     .withMessage("*CREF inválido!"),
 
-  body("areaAtuacao")
-    .notEmpty()
-    .withMessage("*Campo obrigatório!"),
+  body("areaAtuacao").notEmpty().withMessage("*Campo obrigatório!"),
 
   body("tempoExperiencia")
     .isInt({ min: 0 })
@@ -283,7 +302,7 @@ router.post(
       minSymbols: 1,
     })
     .withMessage(
-      "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!"
+      "*Sua senha deve conter pelo menos: uma letra maiúscula, um número e um caractere especial!",
     ),
 
   body("confirmarSenha")
@@ -331,7 +350,7 @@ router.post(
     });
 
     res.redirect("/login");
-  }
+  },
 );
 
 //LOGIN SENDO CLIENTE
@@ -339,7 +358,7 @@ router.post("/login", (req, res) => {
   const { email, senha } = req.body;
 
   const usuarioEncontrado = usuarios.find(
-    (u) => (u.email === email || u.nomeusuario === email) && u.senha === senha
+    (u) => (u.email === email || u.nomeusuario === email) && u.senha === senha,
   );
 
   if (usuarioEncontrado) {
