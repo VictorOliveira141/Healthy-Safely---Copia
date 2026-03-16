@@ -38,7 +38,7 @@
 
             <p class="section-title">Informações Profissionais</p>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="nome" class="textos">Nome Completo</label>
               <input
                 id="nome"
@@ -50,9 +50,9 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="email" class="textos">E-mail</label>
               <input
                 id="email"
@@ -64,9 +64,9 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.email ? msgErro.email : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="cref" class="textos">CREF</label>
               <input
                 id="cref"
@@ -78,9 +78,9 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.cref ? msgErro.cref : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="areaAtuacao" class="textos">Área de atuação</label>
               <select
                 id="areaAtuacao"
@@ -97,9 +97,9 @@
                 <option value="outros">Outros</option>
               </select>
               <span class="msg-erro"><%= msgErro && msgErro.areaAtuacao ? msgErro.areaAtuacao : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="tempoExperiencia" class="textos">Tempo de experiência (anos)</label>
               <input
                 id="tempoExperiencia"
@@ -112,9 +112,9 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.tempoExperiencia ? msgErro.tempoExperiencia : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="especialidades" class="textos">Especialidades</label>
               <input
                 id="especialidades"
@@ -126,11 +126,11 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.especialidades ? msgErro.especialidades : '' %></span>
-            </div>
+            </section>
 
             <p class="section-title">Perfil Profissional</p>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="fotoPerfil" class="textos">Foto de perfil</label>
               <input
                 id="fotoPerfil"
@@ -139,11 +139,11 @@
                 accept="image/*"
                 class="<%= erroValidacao && erroValidacao.fotoPerfil ? 'erro-input' : '' %>"
               />
-              <div id="preview" class="preview-container"></div>
+              <section id="preview" class="preview-container"></section>
               <span class="msg-erro"><%= msgErro && msgErro.fotoPerfil ? msgErro.fotoPerfil : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="bio" class="textos">Bio</label>
               <textarea
                 id="bio"
@@ -153,9 +153,9 @@
                 class="<%= erroValidacao && erroValidacao.bio ? 'erro-input' : '' %>"
               ><%= valores ? valores.bio || '' : '' %></textarea>
               <span class="msg-erro"><%= msgErro && msgErro.bio ? msgErro.bio : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="cidadeEstado" class="textos">Cidade/Estado</label>
               <input
                 id="cidadeEstado"
@@ -167,9 +167,9 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.cidadeEstado ? msgErro.cidadeEstado : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="senha" class="textos">Senha</label>
               <input
                 id="senha"
@@ -180,9 +180,9 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span>
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
               <label for="confirmarSenha" class="textos">Confirmar Senha</label>
               <input
                 id="confirmarSenha"
@@ -193,11 +193,11 @@
                 required
               />
               <span class="msg-erro"><%= msgErro && msgErro.confirmarSenha ? msgErro.confirmarSenha : '' %></span>
-            </div>
+            </section>
 
-            <div class="actions">
+            <section class="actions">
               <button class="btn-primary" type="submit">Cadastrar</button>
-            </div>
+            </section>
 
             <p class="small">
               Já tem conta?

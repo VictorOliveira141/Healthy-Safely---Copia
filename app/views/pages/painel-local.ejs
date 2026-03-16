@@ -13,23 +13,23 @@
       <section class="painel-grid">
         <!-- Coluna esquerda: perfil e estatísticas -->
         <aside class="col-esquerda">
-          <div class="perfil-card" id="perfilCard">
+          <section class="perfil-card" id="perfilCard">
             <!-- preenchido por JS -->
-          </div>
+          </section>
 
-          <div class="stats-card" id="statsCard">
+          <section class="stats-card" id="statsCard">
             <!-- preenchido por JS -->
-          </div>
+          </section>
         </aside>
 
         <!-- Coluna principal: tarefas e filtros -->
         <section class="col-centro">
           <header class="painel-header">
-            <div class="titulo-wrap">
+            <section class="titulo-wrap">
               <h1 id="tituloPainel">Painel do Profissional</h1>
-              <div class="subtitulo">Painel rápido e responsivo — suas tarefas e clientes à mão</div>
-            </div>
-            <div class="acoes-header">
+              <section class="subtitulo">Painel rápido e responsivo — suas tarefas e clientes à mão</section>
+            </section>
+            <section class="acoes-header">
               <input id="searchTarefas" class="input-search" placeholder="Buscar tarefas..." aria-label="Buscar tarefas" />
               <select id="statusFilter" class="select-small" title="Filtrar por status">
                 <option value="all">Todos</option>
@@ -40,46 +40,46 @@
                 <option value="all">Todas</option>
               </select>
               <button id="btnNovoTask" class="btn-primary">+ Nova</button>
-            </div>
+            </section>
           </header>
 
           <section class="tarefas-area">
             <ul id="listaTarefas" class="lista-tarefas"></ul>
-            <div id="emptyState" class="empty-state hidden">Nenhuma tarefa encontrada.</div>
+            <section id="emptyState" class="empty-state hidden">Nenhuma tarefa encontrada.</section>
           </section>
         </section>
 
         <!-- Coluna direita: notas e próximos compromissos -->
         <aside class="col-direita">
-          <div class="notas-card">
+          <section class="notas-card">
             <h3>Notas rápidas</h3>
             <textarea id="notasRapidas" placeholder="Anotações..." rows="8"></textarea>
-            <div class="nota-status"><span id="notaStatus">Nenhuma alteração</span></div>
-          </div>
+            <section class="nota-status"><span id="notaStatus">Nenhuma alteração</span></section>
+          </section>
 
-          <div class="agenda-card">
+          <section class="agenda-card">
             <h3>Próximos compromissos</h3>
             <ul id="proximosCompromissos"></ul>
-          </div>
+          </section>
         </aside>
       </section>
     </main>
 
     <!-- Modal de tarefa -->
-    <div id="modalTarefa" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal-content">
+    <section id="modalTarefa" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+      <section class="modal-content">
         <header class="modal-header"><h2 id="modalTitle">Nova tarefa</h2><button id="modalClose" class="modal-close">✕</button></header>
-        <div class="modal-body">
+        <section class="modal-body">
           <label>Título<input id="modalTitulo" type="text" /></label>
           <label>Prioridade<select id="modalPrioridade"><option value="low">Baixa</option><option value="medium" selected>Média</option><option value="high">Alta</option></select></label>
           <label>Data<input id="modalData" type="date" /></label>
-        </div>
+        </section>
         <footer class="modal-footer">
           <button id="modalSalvar" class="btn-primary">Salvar</button>
           <button id="modalCancelar" class="btn-secondary">Cancelar</button>
         </footer>
-      </div>
-    </div>
+      </section>
+    </section>
 
     <%- include('../partials/footer.ejs') %>
 

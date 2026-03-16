@@ -22,14 +22,14 @@
         <img src="../imagem/user.png" alt="Foto de perfil do usuário" />
       </figure>
 
-      <div class="info-perfil">
+      <section class="info-perfil">
         <h1><%= usuario.nome.split(' ').slice(0,2).join(' ') %></h1>
         <h2>@<%= usuario.nomeusuario %></h2>
         <p class="seguidores">
           <span><%= usuario.seguidores || 0 %> seguidores</span> •
           <span><%= usuario.seguindo || 0 %> seguindo</span>
         </p>
-      </div>
+      </section>
 
       <article class="streak">
         <h2>Streak</h2>
@@ -41,7 +41,7 @@
       <!--RANK-->
       <section class="rank-container">
         <h2><i class="fa-solid fa-ranking-star"></i> Rank Atual</h2>
-        <div class="rank-info">
+        <section class="rank-info">
           <span class="rank-atual"
             ><i class="fa-solid fa-trophy" style="color: #a67b5b"></i> Bronze
             I</span
@@ -51,11 +51,11 @@
             <i class="fa-solid fa-trophy" style="color: #a67b5b"></i> Bronze
             II</span
           >
-        </div>
+        </section>
 
-        <div class="barra-rank">
-          <div class="barra-preenchimento"></div>
-        </div>
+        <section class="barra-rank">
+          <section class="barra-preenchimento"></section>
+        </section>
 
         <p><%= usuario.xp || 0 %>/500</p>
         <p class="rank-detalhe">

@@ -3,8 +3,7 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const verificarAutenticacao = require("../public/js/autenticacao");
 
-/* ===================== MIDDLEWARES ===================== */
-//esse array armazena as informações dos usuarios*/
+
 const usuarios = [];
 
 // middleware para verificar se o usuário está logado
@@ -40,6 +39,7 @@ router.get("/logout", (req, res) => {
 router.get("/", (req, res) => {
   res.render("pages/tomarammeutela");
 });
+
 router.get("/tomarammeutela", (req, res) => {
   res.render("pages/tomarammeutela");
 });
@@ -51,9 +51,15 @@ router.get("/tela-inicial", (req, res) => {
 router.get("/progressao", verificarAutenticacao, (req, res) => {
   res.render("pages/progressao");
 });
-router.get("/tarefas", (req, res) => {
-  res.render("pages/tarefas", { tarefas });
+router.get("/tasks", verificarAutenticacao, (req, res) => {
+  const tasks = tarefas.map(t => ({
+    _id: t.id,
+    title: t.nome,
+    completed: t.concluida
+  }));
+  res.render("user/tasks", { tasks });
 });
+
 router.get("/dashboard", verificarUsuario, (req, res) => {
   res.render("user/dashboard", {
     nome: req.session.nome,
@@ -63,6 +69,7 @@ router.get("/dashboard", verificarUsuario, (req, res) => {
 router.get("/sono", verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
 });
+
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
 //LOGIN
@@ -98,7 +105,7 @@ router.get("/cadastroProfissional", (req, res) => {
   });
 });
 router.get("/perfil", (req, res) => {
-  res.render("pages/perfil");
+  res.render("pages/progressao");
 });
 
 router.get("/painel-local", (req, res) => {

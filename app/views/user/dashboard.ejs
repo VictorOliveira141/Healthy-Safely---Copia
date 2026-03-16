@@ -20,29 +20,29 @@
 
   <!-- Estatísticas rápidas -->
   <section class="hs-user-stats" id="hs-user-stats">
-    <div class="hs-user-stat-card">
-      <div class="hs-user-stat-icon">⭐</div>
-      <div class="hs-user-stat-body">
-        <div class="hs-user-stat-title">Pontos acumulados</div>
-        <div class="hs-user-stat-value" id="hs-pontos">0</div>
-      </div>
-    </div>
+    <section class="hs-user-stat-card">
+      <section class="hs-user-stat-icon">⭐</section>
+      <section class="hs-user-stat-body">
+        <section class="hs-user-stat-title">Pontos acumulados</section>
+        <section class="hs-user-stat-value" id="hs-pontos">0</section>
+      </section>
+    </section>
 
-    <div class="hs-user-stat-card">
-      <div class="hs-user-stat-icon">📅</div>
-      <div class="hs-user-stat-body">
-        <div class="hs-user-stat-title">Dias ativos</div>
-        <div class="hs-user-stat-value" id="hs-dias">0</div>
-      </div>
-    </div>
+    <section class="hs-user-stat-card">
+      <section class="hs-user-stat-icon">📅</section>
+      <section class="hs-user-stat-body">
+        <section class="hs-user-stat-title">Dias ativos</section>
+        <section class="hs-user-stat-value" id="hs-dias">0</section>
+      </section>
+    </section>
 
-    <div class="hs-user-stat-card">
-      <div class="hs-user-stat-icon">📈</div>
-      <div class="hs-user-stat-body">
-        <div class="hs-user-stat-title">Percentual da semana</div>
-        <div class="hs-user-stat-value" id="hs-percent">0%</div>
-      </div>
-    </div>
+    <section class="hs-user-stat-card">
+      <section class="hs-user-stat-icon">📈</section>
+      <section class="hs-user-stat-body">
+        <section class="hs-user-stat-title">Percentual da semana</section>
+        <section class="hs-user-stat-value" id="hs-percent">0%</section>
+      </section>
+    </section>
   </section>
 
   <!-- seção de tarefas -->
@@ -54,20 +54,20 @@
   </section>
 
   <!-- modal de detalhes de tarefa -->
-  <div class="hs-user-modal" id="hs-user-modal" aria-hidden="true">
-    <div class="hs-user-modal-content">
+  <section class="hs-user-modal" id="hs-user-modal" aria-hidden="true">
+    <section class="hs-user-modal-content">
       <button class="hs-user-modal-close" id="hs-user-modal-close" aria-label="Fechar">&times;</button>
       <h2 id="hs-user-modal-title"></h2>
       <p id="hs-user-modal-desc"></p>
 
-      <div class="hs-user-progress">
-        <div class="progress-bar"><div class="fill" id="hs-user-modal-fill"></div></div>
+      <section class="hs-user-progress">
+        <section class="progress-bar"><section class="fill" id="hs-user-modal-fill"></section></section>
         <span class="percent-label" id="hs-user-modal-percent">0%</span>
-      </div>
+      </section>
 
       <button class="hs-user-btn" id="hs-user-modal-button">Marcar como Concluída</button>
-    </div>
-  </div>
+    </section>
+  </section>
 
   <section class="footer"><%- include('../partials/footer.ejs') %></section>
 
@@ -159,15 +159,15 @@
       const fillWidth = tarefa.progresso || 0;
 
       card.innerHTML = `
-        <div class="hs-user-task-icon">${tarefa.icone}</div>
-        <div class="hs-user-task-name">${tarefa.nome}</div>
-        <div class="hs-user-task-desc">${tarefa.descricao}</div>
-        <div class="hs-user-progress">
-          <div class="progress-bar"><div class="fill" style="width:${fillWidth}%"></div></div>
+        <section class="hs-user-task-icon">${tarefa.icone}</section>
+        <section class="hs-user-task-name">${tarefa.nome}</section>
+        <section class="hs-user-task-desc">${tarefa.descricao}</section>
+        <section class="hs-user-progress">
+          <section class="progress-bar"><section class="fill" style="width:${fillWidth}%"></section></section>
           <span class="percent-label">${fillWidth}%</span>
-        </div>
+        </section>
         <button class="hs-user-btn" ${tarefa.progresso===100? 'disabled': ''}>${tarefa.progresso===100? 'Concluída' : 'Iniciar'}</button>
-        ${tarefa.progresso===100 ? '<div class="hs-task-badge">✓ Concluído</div>' : ''}
+        ${tarefa.progresso===100 ? '<section class="hs-task-badge">✓ Concluído</section>' : ''}
       `;
 
       return card;
@@ -221,14 +221,14 @@
       renderizarTarefas();
       const container = document.querySelector(`.hs-user-task-card[data-index="${idx}"]`);
       if (container) {
-        const flash = document.createElement('div');
+        const flash = document.createElement('section');
         flash.className = 'hs-user-complete-flash';
         container.appendChild(flash);
         setTimeout(()=> flash.remove(), 800);
 
         // adicionar selo concluído
         if (!container.querySelector('.hs-task-badge')) {
-          const badge = document.createElement('div');
+          const badge = document.createElement('section');
           badge.className = 'hs-task-badge';
           badge.textContent = '✓ Concluído';
           container.appendChild(badge);

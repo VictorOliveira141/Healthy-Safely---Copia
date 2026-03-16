@@ -10,10 +10,10 @@
     --texto-secundario: #6B7280;
 }
 
-/* Fonte base segue layout global do projeto (Arial/Arial Black) */
-
+/* Layout geral */
 body {
     background: var(--bg-claro);
+    box-sizing: border-box;
 }
 
 .hs-user-header {
@@ -34,28 +34,59 @@ body {
     color: #d4f2e1;
 }
 
-/* container de cards responsivo */
-.hs-user-tasks {
+/* Seção de estatísticas */
+.hs-user-stats {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    padding: 0.5rem 1rem 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 0.75rem auto 1.25rem auto;
 }
 
-/* responsividade grid de tarefas */
-@media(min-width: 640px) {
-    .hs-user-tasks { grid-template-columns: repeat(2,1fr); }
-}
-@media(min-width: 1024px) {
-    .hs-user-tasks { grid-template-columns: repeat(3,1fr); }
+.hs-user-stat-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    color: #eafff5;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 }
 
-/* seção e títulos */
+.hs-user-stat-icon {
+    font-size: 1.8rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--verde-claro);
+    border-radius: 8px;
+    color: #fff;
+}
+
+.hs-user-stat-body {
+    flex: 1;
+}
+
+.hs-user-stat-title {
+    font-size: 0.85rem;
+    color: var(--texto-secundario);
+}
+
+.hs-user-stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--texto-principal);
+}
+
+/* Seção de tarefas */
 .hs-tasks-section {
     margin: 1.5rem 0 2rem;
 }
+
 .hs-section-title {
     font-size: 1.4rem;
     font-weight: 600;
@@ -69,19 +100,16 @@ body {
     margin-top: 0.25rem;
 }
 
-@media(min-width: 768px) {
-    .hs-user-tasks {
-        grid-template-columns: repeat(2,1fr);
-    }
+.hs-user-tasks {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 0.5rem 1rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-@media(min-width: 1024px) {
-    .hs-user-tasks {
-        grid-template-columns: repeat(3,1fr);
-    }
-}
-
-/* cada card de tarefa */
+/* Cards de tarefa */
 .hs-user-task-card {
     background: var(--card-bg);
     border-radius: 12px;
@@ -92,6 +120,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-left: 4px solid var(--verde-principal);
 }
+
 .hs-user-task-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 6px 16px rgba(0,0,0,0.15);
@@ -153,22 +182,29 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, transform 0.1s;
+    min-height: 44px; /* touch-friendly */
 }
+
 .hs-user-btn:hover:not(:disabled) {
     background: var(--verde-principal);
 }
+
 .hs-user-btn:active:not(:disabled) {
     transform: scale(0.97);
 }
+
 .hs-user-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
 
-/* modal estilo básico */
+/* Modal */
 .hs-user-modal {
     position: fixed;
-    top:0; left:0; right:0; bottom:0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0,0,0,0.5);
     display: none;
     align-items: center;
@@ -176,6 +212,7 @@ body {
     z-index: 1000;
     padding: 1rem;
 }
+
 .hs-user-modal.active {
     display: flex;
 }
@@ -214,74 +251,13 @@ body {
     margin: 1rem 0;
 }
 
-/* responsividade modal pequena */
-@media(max-width:480px) {
-    .hs-user-modal-content {
-        padding: 1rem;
-    }
-}
-
-/* ===== Estatísticas no topo ===== */
-.hs-user-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    padding: 1rem;
-    max-width: 1100px;
-    margin: 0.75rem auto 1.25rem auto;
-}
-
-.hs-user-stat-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-    border-radius: 10px;
-    padding: 0.9rem 1rem;
-    color: #eafff5;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.hs-user-stat-icon {
-    font-size: 1.8rem;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--verde-claro);
-    border-radius: 8px;
-    color: #fff;
-}
-
-.hs-user-stat-body {
-    flex: 1;
-}
-
-.hs-user-stat-title {
-    font-size: 0.85rem;
-    color: var(--texto-secundario);
-}
-
-.hs-user-stat-value {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--texto-principal);
-}
-
-/* Ajuste mobile para stats */
-@media(max-width:768px) {
-    .hs-user-stats { grid-template-columns: 1fr; }
-}
-
-/* ===== Estado de card concluído ===== */
+/* Estados especiais */
 .hs-user-task-card.concluida {
     opacity: 0.8;
     border-left-color: var(--verde-claro);
     box-shadow: 0 0 0 2px var(--verde-claro);
 }
 
-/* efeito visual ao concluir */
 .hs-user-complete-flash {
     position: absolute;
     inset: 0;
@@ -292,13 +268,6 @@ body {
     animation: flashComplete 700ms ease forwards;
 }
 
-@keyframes flashComplete {
-    0% { opacity: 0; transform: scale(0.98); }
-    50% { opacity: 1; transform: scale(1.02); }
-    100% { opacity: 0; transform: scale(1); }
-}
-
-/* feedback progress small */
 .hs-user-progress .percent-label {
     display: block;
     text-align: right;
@@ -307,7 +276,6 @@ body {
     margin-top: 0.35rem;
 }
 
-/* badge de concluído */
 .hs-task-badge {
     position: absolute;
     top: 8px;
@@ -320,12 +288,240 @@ body {
     pointer-events: none;
 }
 
-/* animação de pontos */
+/* Animações */
+@keyframes flashComplete {
+    0% { opacity: 0; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 0; transform: scale(1); }
+}
+
 #hs-pontos.pontos-anim {
     animation: pontosScale 0.6s ease;
 }
+
 @keyframes pontosScale {
     0% { transform: scale(1); }
     50% { transform: scale(1.3); color: var(--verde-claro); }
     100% { transform: scale(1); color: var(--texto-principal); }
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .hs-user-stats {
+        max-width: 1000px;
+    }
+    .hs-user-tasks {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hs-user-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+    .hs-user-stat-card {
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+    .hs-user-stat-icon {
+        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+    .hs-user-stat-value {
+        font-size: 1.1rem;
+    }
+    .hs-user-tasks {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0.5rem 0.75rem 1.5rem;
+    }
+    .hs-user-task-card {
+        padding: 1rem;
+    }
+    .hs-user-task-icon {
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        font-size: 1.8rem;
+    }
+    .hs-user-task-name {
+        font-size: 1.1rem;
+    }
+    .hs-user-task-desc {
+        font-size: 0.85rem;
+    }
+    .hs-section-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hs-user-header {
+        padding: 1rem 0.5rem;
+    }
+    .hs-user-header h1 {
+        font-size: 1.3rem;
+    }
+    .hs-user-header p {
+        font-size: 0.9rem;
+    }
+    .hs-user-stats {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin: 0.5rem auto 1rem auto;
+    }
+    .hs-user-stat-card {
+        padding: 0.6rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    .hs-user-stat-icon {
+        font-size: 1.2rem;
+        width: 36px;
+        height: 36px;
+    }
+    .hs-user-stat-body {
+        text-align: center;
+    }
+    .hs-user-stat-title {
+        font-size: 0.8rem;
+    }
+    .hs-user-stat-value {
+        font-size: 1rem;
+    }
+    .hs-tasks-section {
+        margin: 1rem 0 1.5rem;
+    }
+    .hs-section-title {
+        font-size: 1.2rem;
+        margin: 0 0.5rem 0.5rem;
+    }
+    .hs-user-tasks {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        padding: 0.5rem 0.5rem 1rem;
+    }
+    .hs-user-task-card {
+        padding: 0.75rem;
+    }
+    .hs-user-task-icon {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 1.5rem;
+        margin-bottom: 0.4rem;
+    }
+    .hs-user-task-name {
+        font-size: 1rem;
+    }
+    .hs-user-task-desc {
+        font-size: 0.8rem;
+        min-height: 2rem;
+    }
+    .hs-user-btn {
+        padding: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+    .hs-user-modal-content {
+        padding: 1rem;
+        max-width: 90%;
+    }
+    .hs-user-modal h2 {
+        font-size: 1.2rem;
+    }
+    .hs-user-modal p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hs-user-header {
+        padding: 0.75rem 0.25rem;
+    }
+    .hs-user-header h1 {
+        font-size: 1.2rem;
+    }
+    .hs-user-header p {
+        font-size: 0.85rem;
+    }
+    .hs-user-stats {
+        padding: 0.25rem;
+        margin: 0.25rem auto 0.75rem auto;
+        gap: 0.25rem;
+    }
+    .hs-user-stat-card {
+        padding: 0.5rem;
+    }
+    .hs-user-stat-icon {
+        font-size: 1rem;
+        width: 32px;
+        height: 32px;
+    }
+    .hs-user-stat-title {
+        font-size: 0.75rem;
+    }
+    .hs-user-stat-value {
+        font-size: 0.9rem;
+    }
+    .hs-section-title {
+        font-size: 1.1rem;
+        margin: 0 0.25rem 0.25rem;
+    }
+    .hs-user-tasks {
+        padding: 0.25rem 0.25rem 0.75rem;
+        gap: 0.5rem;
+    }
+    .hs-user-task-card {
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+    .hs-user-task-icon {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 1.3rem;
+        margin-bottom: 0.3rem;
+    }
+    .hs-user-task-name {
+        font-size: 0.95rem;
+    }
+    .hs-user-task-desc {
+        font-size: 0.75rem;
+        min-height: 1.5rem;
+        margin-bottom: 0.4rem;
+    }
+    .hs-user-progress {
+        margin-bottom: 0.4rem;
+    }
+    .hs-user-btn {
+        padding: 0.4rem 0;
+        font-size: 0.85rem;
+        border-radius: 4px;
+    }
+    .hs-user-modal {
+        padding: 0.5rem;
+    }
+    .hs-user-modal-content {
+        padding: 0.75rem;
+        border-radius: 10px;
+    }
+    .hs-user-modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1rem;
+    }
+    .hs-user-modal h2 {
+        font-size: 1.1rem;
+    }
+    .hs-user-modal p {
+        font-size: 0.85rem;
+    }
+    .hs-user-modal .hs-user-progress {
+        margin: 0.75rem 0;
+    }
 }
