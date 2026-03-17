@@ -24,6 +24,9 @@
   font-family: Arial, sans-serif;
   margin-top: 25%;
 }
+a {
+  text-decoration: none;
+}
 
 /* ============ CONTAINER DOS TEXTOS ============ */
 .footer-text {

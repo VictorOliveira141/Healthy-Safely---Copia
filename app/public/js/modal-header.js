@@ -4,19 +4,24 @@ const modal = document.getElementById("headerModalCadastro");
 const closeBtn = document.getElementById("headerCloseCadastroModal");
 
 abrirBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (!modal) return;
     modal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
   });
 });
 
-closeBtn.addEventListener("click", () => {
-  modal.classList.add("hidden");
-  document.body.style.overflow = "";
-});
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    if (!modal) return;
+    modal.classList.add("hidden");
+    document.body.style.overflow = "";
+  });
+}
 
 window.addEventListener("click", (e) => {
-  if (e.target === modal) {
+  if (modal && e.target === modal) {
     modal.classList.add("hidden");
     document.body.style.overflow = "";
   }
@@ -26,13 +31,34 @@ window.addEventListener("click", (e) => {
 const perfilToggle = document.getElementById("perfilMenuToggle");
 const perfilMenu = document.getElementById("perfilMenu");
 
-perfilToggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  perfilMenu.classList.toggle("hidden");
-});
+if (perfilToggle && perfilMenu) {
+  perfilToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    perfilMenu.classList.toggle("hidden");
+  });
 
-window.addEventListener("click", (e) => {
-  if (!perfilToggle.contains(e.target) && !perfilMenu.contains(e.target)) {
-    perfilMenu.classList.add("hidden");
-  }
-});
+  window.addEventListener("click", (e) => {
+    if (!perfilToggle.contains(e.target) && !perfilMenu.contains(e.target)) {
+      perfilMenu.classList.add("hidden");
+    }
+  });
+}
+
+// Dropdown de notificações
+const notificationToggles = document.querySelectorAll(".notification-toggle");
+const notificationMenu = document.getElementById("notificationMenu");
+
+if (notificationToggles.length && notificationMenu) {
+  notificationToggles.forEach((toggle) => {
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      notificationMenu.classList.toggle("hidden");
+    });
+  });
+
+  window.addEventListener("click", (e) => {
+    if (!notificationMenu.contains(e.target)) {
+      notificationMenu.classList.add("hidden");
+    }
+  });
+}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Healthy Safely</title>
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
-    <link rel="stylesheet" href="../css/progressao.css" />
+    <link rel="stylesheet" href="../css/perfil.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -19,7 +19,12 @@
     <!--PERFIL-->
     <header class="perfil">
       <figure class="foto-perfil">
-        <img src="../imagem/user.png" alt="Foto de perfil do usuário" />
+        <img id="previewPerfil" src="../imagem/user.png" alt="Foto de perfil" />
+        <label for="uploadFoto" class="camera-icon">
+          <i class="bi bi-camera-fill"></i>
+        </label>
+        
+        <input type="file" id="uploadFoto" accept="image/*" hidden>
       </figure>
 
       <section class="info-perfil">
@@ -131,5 +136,27 @@
     </footer>
 
     <%- include('../partials/footer.ejs') %>
+    <script>
+const input = document.getElementById("uploadFoto");
+const img = document.getElementById("previewPerfil");
+
+img.addEventListener("click", () => {
+  input.click();
+});
+
+input.addEventListener("change", function () {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      img.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+</script>
   </body>
 </html>

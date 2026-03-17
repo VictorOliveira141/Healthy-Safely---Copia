@@ -3,7 +3,6 @@ const router = express.Router();
 const { body, validationResult } = require("express-validator");
 const verificarAutenticacao = require("../public/js/autenticacao");
 
-
 const usuarios = [];
 
 // middleware para verificar se o usuário está logado
@@ -39,12 +38,13 @@ router.get("/logout", (req, res) => {
 router.get("/", (req, res) => {
   res.render("pages/tomarammeutela");
 });
-
 router.get("/tomarammeutela", (req, res) => {
+  if(req.session && req.session.usuario) {
+    return res.redirect("/dashboard");
+  }
+  else {
   res.render("pages/tomarammeutela");
-});
-router.get("/tela-inicial", (req, res) => {
-  res.render("pages/tomarammeutela");
+  }
 });
 
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
@@ -59,8 +59,7 @@ router.get("/tasks", verificarAutenticacao, (req, res) => {
   }));
   res.render("user/tasks", { tasks });
 });
-
-router.get("/dashboard", verificarUsuario, (req, res) => {
+router.get("/dashboard", verificarAutenticacao, (req, res) => {
   res.render("user/dashboard", {
     nome: req.session.nome,
     nivel: req.session.nivel,
@@ -69,7 +68,13 @@ router.get("/dashboard", verificarUsuario, (req, res) => {
 router.get("/sono", verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
 });
-
+//PROGRESSÃO E PAINEL LOCAL
+router.get("/perfil", verificarAutenticacao, (req, res) => {
+  res.render("pages/perfil");
+});
+router.get("/painel-local", verificarAutenticacao, (req, res) => {
+  res.render("pages/painel-local");
+});
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
 //LOGIN
@@ -104,13 +109,7 @@ router.get("/cadastroProfissional", (req, res) => {
     msgErro: {},
   });
 });
-router.get("/perfil", (req, res) => {
-  res.render("pages/progressao");
-});
 
-router.get("/painel-local", (req, res) => {
-  res.render("pages/painel-local");
-});
 
 /* ===================== ROUTER POST(VALIDAÇÕES) ===================== */
 

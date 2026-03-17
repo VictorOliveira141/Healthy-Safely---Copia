@@ -10,7 +10,6 @@
   >
     <article class="nav-spacer">
       <a href="/tasks">Tarefas</a>
-      <a href="/progressao">Progressão</a>
       <a href="/perfil">Perfil</a>
     </article>
 
@@ -23,8 +22,8 @@
         aria-expanded="false"
         >Notificações</a
       >
-      <a href="/#">Contato</a>
-      <a href="/informacoes"> <i class="bi bi-info-circle"></i>Ajuda</a>
+      <a href="/tomarammeutela">Contato</a>
+      <a href="/tomarammeutela"> <i class="bi bi-info-circle"></i>Ajuda</a>
     </article>
   </nav>
 </article>
@@ -124,19 +123,17 @@
         <a href="/perfil">
           <i class="bi bi-person-circle logado"></i>
         </a>
-
-        <% if (usuario.tipo === "farmacia") { %>
         <span class="header-welcome">
           Olá, <strong><%= usuario.nome.split(' ')[0] %></strong> 👋
         </span>
-        <% } %> <% } else { %>
+        <% } else { %>
         <section class="logar-cadastrar">
-          <a href="/login">
+          <a href="/perfil">
             <i class="bi bi-person-circle"></i>
           </a>
-          <a href="/login">Entrar</a>
+          <a href="/login" class="abrir">Entrar</a>
           <span> | </span>
-          <a href="/cadastro">Cadastrar</a>
+          <a href="/cadastro" class="abrir-cadastro">Cadastrar</a>
         </section>
         <% } %>
       </section>
@@ -178,11 +175,7 @@
       &times;
     </button>
 
-    <h2 class="modalCadastroTitle">Acessar conta🔐</h2>
-
-    <a href="/login" class="btn-cadastro">Entrar</a>
-
-    <p class="ou">ou</p>
+    <h2 class="modalCadastroTitle">Criar uma conta🔐</h2>
 
     <p class="titulo-cadastro">Cadastrar como:</p>
 

@@ -279,7 +279,7 @@ body {
 /* =========== NAVS =========== */
 .header-nav2 {
   display: flex;
-  justify-content: flex-start; /* em vez de space-between */
+  justify-content: center; /* em vez de space-between */
   flex-direction: row;
   gap: 200px; /* controla a distância real entre eles */
   padding: 8px 16px;
@@ -313,37 +313,6 @@ body {
   color: var(--accent-color);
 }
 
-.header-nav {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  padding: 6px;
-  background: var(--secondary-color);
-  flex-wrap: wrap;
-}
-.header-nav a {
-  color: var(--primary-color);
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 18px;
-  position: relative;
-  padding: 12px 20px;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-}
-.header-nav a::after {
-  content: "";
-  display: block;
-  height: 3px;
-  width: 0;
-  background: var(--accent-color);
-  transition: width 0.3s ease;
-  margin-top: 6px;
-  border-radius: 2px;
-}
-.header-nav a:hover::after {
-  width: 100%;
-}
 
 /* ============ ACTIONS (CARRINHO + PERFIL + NOTIFICAÇÕES) ========== */
 .header-actions {
@@ -357,18 +326,6 @@ body {
   margin-right: 100px;
 }
 
-.action-btn {
-  color: var(--primary-color);
-  font-size: 22px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 8px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 /* ============ PERFIL E NOTIFICAÇÕES ============= */
 .user-menu {
@@ -407,7 +364,6 @@ body {
   background: none;
   border: none;
   color: var(--primary-color);
-  text-decoration: underline;
   cursor: pointer;
   font-size: 12px;
   padding: 2px 6px; /* espaço extra ao redor do texto */
@@ -415,24 +371,15 @@ body {
 }
 
 /* Saudação do usuário logado */
-.user-menu .nome {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.user-menu h1 {
-  color: var(--primary-color);
-  font-size: 13px;
-  font-weight: 500;
-  margin: 0 8px;
-  white-space: nowrap;
+.user-menu i.notificacao {
+  display: none;
 }
 .user-menu i.notificacao {
   display: none;
 }
 .header-welcome {
   color: #fff;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -441,50 +388,6 @@ body {
   font-weight: 600;
 }
 
-/* Dropdown do Perfil */
-.perfil-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: linear-gradient(135deg, #0c2727 0%, #0a1f1f 100%);
-  border-radius: 16px;
-  padding: 12px;
-  min-width: 160px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 1000;
-  margin-top: 8px;
-}
-.perfil-dropdown li {
-  list-style: none;
-}
-.perfil-dropdown.hidden {
-  display: none;
-}
-.perfil-dropdown a,
-.perfil-dropdown button {
-  display: block;
-  width: 100%;
-  padding: 10px 16px;
-  margin: 4px 0;
-  color: var(--background-light);
-  text-decoration: none;
-  border: none;
-  background: transparent;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: left;
-}
-.perfil-dropdown a:hover,
-.perfil-dropdown button:hover {
-  color: var(--accent-color);
-  background-color: rgba(140, 167, 0, 0.1);
-  transform: translateX(4px);
-}
 
 /* Dropdown de Notificações */
 .notification-dropdown {
@@ -545,200 +448,6 @@ body {
 .notification-dropdown a:hover {
   background-color: rgba(140, 167, 0, 0.2);
   transform: translateY(-2px);
-}
-
-/* =========== CARRINHO =========== */
-.cart-sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 0;
-  background: #ffffff;
-  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  transition: width 0.35s ease;
-  z-index: 1200;
-  display: flex;
-  flex-direction: column;
-}
-.cart-sidebar.open {
-  width: 400px;
-}
-
-.cart-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 20px;
-  border-bottom: 1px solid #ddd;
-  background: var(--secondary-color);
-  color: var(--primary-color);
-}
-.cart-header h2 {
-  font-size: 20px;
-  font-weight: 600;
-}
-.cart-header .close-btn {
-  font-size: 28px;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  color: var(--primary-color);
-  transition: transform 0.2s ease;
-}
-.cart-header .close-btn:hover {
-  transform: scale(1.2);
-}
-
-.cart-sidebar-content {
-  flex: 1;
-  padding: 15px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.empty-cart-message {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-  padding: 20px;
-  color: #999;
-  font-size: 14px;
-}
-.cart-sem-login {
-  display: flex;
-  color: black;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-align: center;
-  padding: 20px;
-}
-.cart-sem-login h1 {
-  font-size: 18px;
-}
-.cart-sem-login a {
-  color: #8ca700;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.cart-sidebar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.cart-sidebar ul li {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  align-items: center;
-  background: var(--background-light);
-  border-radius: 8px;
-}
-
-.produto-carrinho {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-}
-.produto-carrinho img {
-  width: 55px;
-  height: 55px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-}
-.produto-carrinho .info {
-  display: flex;
-  flex-direction: column;
-  font-size: 14px;
-}
-.produto-carrinho .titulo-produto {
-  font-weight: 600;
-  color: #333;
-}
-.produto-carrinho .preco-unitario {
-  font-size: 13px;
-  color: #777;
-}
-.produto-carrinho .subtotal {
-  font-weight: bold;
-  color: var(--secondary-color);
-}
-
-.acoes {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.acoes button {
-  border: none;
-  padding: 6px 8px;
-  border-radius: 6px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.acoes .mais {
-  background: var(--secondary-color);
-  color: var(--primary-color);
-}
-.acoes .menos {
-  background: #f1c40f;
-  color: #333;
-}
-.acoes .remover {
-  background: #e74c3c;
-  color: #fff;
-}
-.acoes button:hover {
-  opacity: 0.85;
-}
-
-.total {
-  color: black;
-}
-.quantidade {
-  color: black;
-}
-.info {
-  color: black;
-}
-
-.cart-footer {
-  padding: 18px 20px;
-  border-top: 1px solid #ddd;
-  background: #fafafa;
-}
-.cart-footer .total {
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.cart-footer button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: var(--secondary-color);
-  color: var(--primary-color);
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.25s;
-}
-.cart-footer button:hover {
-  background: var(--secondary-color);
-  opacity: 0.85;
 }
 
 /* =========== MODAL =========== */
@@ -818,32 +527,12 @@ body {
   box-shadow: 0 6px 20px rgba(12, 79, 67, 0.4);
 }
 
-.btn-login {
-  display: block;
-  margin: 12px 0 4px 0;
-  padding: 16px 24px;
-  background: linear-gradient(135deg, #0c8ce9 0%, #147ad6 100%);
-  color: #fff;
-  border-radius: 16px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(12, 140, 233, 0.3);
-}
-.btn-login:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(12, 140, 233, 0.4);
-}
 
 .titulo-cadastro {
   font-weight: 600;
   margin-bottom: 4px;
 }
 
-.ou {
-  opacity: 0.6;
-  margin: 12px 0;
-}
 
 .opcoes-cadastro {
   display: flex;
@@ -895,9 +584,12 @@ body {
 }
 
 @media (max-width: 768px) {
-  .logar-cadastrar a,
+  .abrir,.abrir-cadastro,
   .logar-cadastrar span,
-  .logar-cadastrar button {
+  .logar-cadastrar button{
+    display: none;
+  }
+  .header-welcome {
     display: none;
   }
   .logar-cadastrar {
@@ -910,39 +602,24 @@ body {
   .header-logo img {
     height: 70px;
   }
-  .user-menu h1 {
-    display: none;
+  
+  .header-actions {
+    margin-right: 0;
+    margin-left: 20px;
   }
+  
 }
 
-@media (max-width: 510px) {
-  .header-logo.farmacia img {
-    height: 60px;
-  }
+@media (max-width: 470px) {
   .header-logo img {
-    height: 45px;
-  }
-  .user-menu.farmacia i {
-    font-size: 28px;
+    height: 50px;
   }
   .user-menu i {
-    font-size: 24px;
+    font-size: 22px;
   }
   .header-actions {
     gap: 6px;
   }
-  .header-welcome {
-    display: none;
-  }
+  
 }
-@media (max-width: 400px) {
-  .header-logo img {
-    height: 40px;
-  }
-  .user-menu i {
-    font-size: 20px;
-  }
-  .header-actions {
-    gap: 4px;
-  }
-}
+
