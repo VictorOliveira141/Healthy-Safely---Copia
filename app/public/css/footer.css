@@ -1,28 +1,36 @@
 /* Definição de variáveis CSS para cores e estilos reutilizáveis EM TODO O SITE */
 :root {
-  --primary-color: #fff; /* Branco (60% do site) */
-  --secondary-color: #0c4f43; /* Verde Escuro (30% do site)   */
-  --accent-color: #8ca700; /* Verde grama (10% do site) */
-  --background-light: #f7f9fb; /* Branco claro para Titulos */
-  --background-dark: #dde2e7; /* Branco escuro para textos */
+  --primary-color: #fff;
+  --secondary-color: #0c4f43;
+  --accent-color: #8ca700;
+  --background-light: #f7f9fb;
+  --background-dark: #dde2e7;
   --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
   --border-radius: 12px;
 }
+
 * {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   box-sizing: border-box;
 }
+
 /* ============ CONTAINER PRINCIPAL ============ */
-.footer {
+footer {
   background: #17594a;
   color: white;
   padding: 40px 20px 50px;
   border-top: 4px solid #052205;
   font-family: Arial, sans-serif;
   margin-top: 25%;
+  align-items: center;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 a {
   text-decoration: none;
@@ -31,11 +39,13 @@ a {
 /* ============ CONTAINER DOS TEXTOS ============ */
 .footer-text {
   display: flex;
-  justify-content: flex-start;
   flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
 }
-.footer-text h1 {
+
+.footer-text h2 {
+  align-items: baseline;
   font-size: 23px;
   color: var(--background-light);
   border-left: 4px solid var(--accent-color);
@@ -43,7 +53,9 @@ a {
   border-radius: 6px;
   margin-bottom: 5px;
 }
+
 .footer-text p {
+  max-width: 1000px;
   font-size: 15px;
   color: var(--background-dark);
   line-height: 1.5;
@@ -53,9 +65,12 @@ a {
 /* ============ CONTAINER DAS COLUNAS ============ */
 .footer-col {
   display: flex;
-  gap: 120px;
+  justify-content: space-between;
+  max-width: 600px;
+  width: 100%;
 }
-.footer-col h1 {
+
+.footer-col h2 {
   font-size: 15px;
   color: var(--background-light);
   border-left: 4px solid var(--accent-color);
@@ -63,7 +78,9 @@ a {
   border-radius: 6px;
   margin-bottom: 5px;
 }
-.footer-col p {
+
+.footer-col a {
+  display: block;
   font-size: 13px;
   color: var(--background-dark);
   line-height: 1.5;
@@ -71,20 +88,9 @@ a {
   margin-bottom: 2px;
   cursor: pointer;
 }
-.footer-col p:hover {
+
+.footer-col a:hover {
   color: var(--accent-color);
-}
-.footer-col .payments {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5px;
-  max-width: 150px;
-}
-.footer-col img {
-  max-height: 30px;
-  width: auto;
-  margin-top: 10px;
 }
 
 /* ============ CONTAINER DO RODAPÉ ============ */
@@ -97,37 +103,17 @@ a {
 }
 
 /* ============ RESPONSIVIDADE ============ */
-@media (max-width: 1024px) {
-  .footer-text h1 {
-    font-size: 18px;
-  }
-  .footer-col {
-    gap: 80px;
-  }
-  .footer-col h1 {
-    font-size: 13px;
-  }
-  .footer-col p {
-    font-size: 11px;
-  }
-  .footer-col img {
-    max-height: 25px;
-  }
-  .footer-bottom {
-    font-size: 16px;
-  }
-}
 @media (max-width: 768px) {
-  .footer-text h1 {
+  .footer-text h2 {
     font-size: 15px;
   }
   .footer-col {
     gap: 10px;
   }
-  .footer-col h1 {
+  .footer-col h2 {
     font-size: 15px;
   }
-  .footer-col p {
+  .footer-col a {
     font-size: 13px;
   }
   .footer-col img {
@@ -137,8 +123,32 @@ a {
     font-size: 14px;
   }
 }
+
+@media (max-width: 650px) {
+  footer,
+  .footer-text,
+  .footer-col {
+    align-items: baseline;
+  }
+  .footer-col {
+    justify-content: baseline;
+    flex-direction: column;
+  }
+  .footer-col .options {
+    margin-top: 15px;
+  }
+
+  .footer-col h2 {
+    padding: 0;
+  }
+  .footer-col a {
+    margin-left: 0;
+    margin-bottom: 0px;
+  }
+}
+
 @media (max-width: 510px) {
-  .footer-text h1 {
+  .footer-text h2 {
     font-size: 15px;
   }
   .footer-col {
