@@ -19,9 +19,7 @@
 body {
   font-family: "Segoe UI", Arial, sans-serif;
 }
-
-/* ================= HEADER GERAL =============== */
-.header {
+header {
   background: var(--secondary-color);
   color: var(--primary-color);
   width: 100%;
@@ -35,7 +33,7 @@ body {
   justify-content: space-between;
   flex-wrap: nowrap; /* força tudo ficar em 1 linha */
   padding: 12px 20px;
-  max-width: 1600px;
+  max-width: 1000px;
   margin: 0 auto;
   gap: 16px;
 }
@@ -44,236 +42,15 @@ body {
 .header-logo {
   transition: transform 0.3s ease;
 }
-
 .header-logo:hover {
   transform: scale(1.05);
 }
-
 .header-logo img {
   height: 60px;
   width: auto;
   display: block;
   flex-shrink: 0;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-}
-
-/* =========== MENU HAMBURGUER E MENU MOBILE ================ */
-.menu-toggle-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 1002;
-}
-.menu-toggle-wrapper input[type="checkbox"] {
-  display: none;
-}
-.hamburger {
-  display: none; /* só aparece em mobile */
-  flex-direction: column;
-  justify-content: space-between;
-  width: 40px;
-  height: 35px;
-  cursor: pointer;
-  padding: 8px;
-  transition: background-color 0.3s ease;
-}
-.hamburger:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.hamburger span {
-  display: block;
-  height: 4px;
-  background: var(--primary-color);
-  border-radius: 6px;
-  transition: all 0.3s ease;
-}
-#menuToggle:checked + label .hamburger span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-#menuToggle:checked + label .hamburger span:nth-child(2) {
-  opacity: 0;
-}
-#menuToggle:checked + label .hamburger span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-/* MENU LATERAL MOBILE */
-#menu {
-  position: fixed;
-  top: 0;
-  left: -280px;
-  width: 280px;
-  height: 100%;
-  background: linear-gradient(135deg, #0c2727 0%, #0a1f1f 100%);
-  padding-top: 80px;
-  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-}
-
-#menu h1 {
-  color: var(--primary-color);
-  font-size: 22px;
-  font-weight: 700;
-  text-align: left;
-  margin: 0 0 20px 20px;
-  letter-spacing: 1px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-#menu ul {
-  list-style: none;
-  padding: 0 1px;
-}
-
-#menu li {
-  margin: 10px 0;
-}
-
-#menu a {
-  text-decoration: none;
-  color: var(--background-light);
-  font-size: 18px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  display: block;
-  padding: 5px 10px;
-  border-radius: 12px;
-}
-
-#menu a:hover {
-  color: var(--accent-color);
-  background-color: rgba(140, 167, 0, 0.1);
-  transform: translateX(8px);
-}
-
-#menuToggle:checked ~ #menu {
-  left: 0;
-}
-
-.close-menu {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 28px;
-  cursor: pointer;
-  color: var(--primary-color);
-  z-index: 1003;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-.close-menu:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* =========== SEARCH BAR (DESKTOP) =========== */
-.search-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-radius: 20px;
-  /* reduzindo altura da barra de pesquisa */
-  padding: 2px 15px;
-  flex: 1 1 auto;
-  min-width: 120px;
-  max-width: 400px;
-  background: rgba(131, 164, 154, 0.9);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar:hover {
-  background: rgba(131, 164, 154, 1);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.search-bar:focus-within {
-  background: rgba(131, 164, 154, 1);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.search-bar input {
-  width: 100%;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  /* reduzindo padding do input para deixar mais magro */
-  padding: 6px 12px;
-  color: #fff;
-  background: transparent;
-  border-radius: 25px;
-  font-weight: 500;
-}
-
-.search-bar input::placeholder {
-  color: rgba(216, 230, 225, 0.8);
-  font-weight: 400;
-}
-
-.search-icon {
-  font-size: 10px;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-.search-icon:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* =========== SEARCH BAR MOBILE ========= */
-.fundo {
-  display: none;
-  background: linear-gradient(135deg, #17594a 0%, #145c4f 100%);
-  padding: 16px 24px;
-}
-
-.search-bar2 {
-  display: none;
-  align-items: center;
-  gap: 12px;
-  border-radius: 20px;
-  /* reduzindo altura da barra de pesquisa */
-  padding: 2px 15px;
-  flex: 1 1 auto;
-  min-width: 120px;
-  max-width: 700px;
-  background: rgba(131, 164, 154, 0.9);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.search-bar2 input {
-  flex: 1 1 auto;
-  max-width: 100%;
-  padding: 10px 16px;
-  font-size: 16px;
-  border: none;
-  border-radius: 25px;
-  outline: none;
-  background: transparent;
-  color: #fff;
-  font-weight: 500;
-}
-
-.search-bar2 input::placeholder {
-  color: rgba(216, 230, 225, 0.8);
 }
 
 /* =========== NAVS =========== */
@@ -526,14 +303,10 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(12, 79, 67, 0.4);
 }
-
-
 .titulo-cadastro {
   font-weight: 600;
   margin-bottom: 4px;
 }
-
-
 .opcoes-cadastro {
   display: flex;
   flex-direction: column;
