@@ -9,9 +9,9 @@ app.use(
     secret: "sua-chave-secreta", // troque por algo seguro depois
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
-app.use('/icons', express.static('node_modules/boxicons'));
+app.use("/icons", express.static("node_modules/boxicons"));
 // 🔗 Torna o usuário logado disponível em todas as views EJS
 app.use((req, res, next) => {
   res.locals.usuario = req.session.usuario || null;
@@ -38,4 +38,3 @@ app.use("/", rotaPrincipal);
 app.listen(porta, () => {
   console.log(`Servidor online 🔥\nhttp://localhost:${porta}`);
 });
- 

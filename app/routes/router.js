@@ -39,11 +39,10 @@ router.get("/", (req, res) => {
   res.render("pages/tomarammeutela");
 });
 router.get("/tomarammeutela", (req, res) => {
-  if(req.session && req.session.usuario) {
+  if (req.session && req.session.usuario) {
     return res.redirect("/dashboard");
-  }
-  else {
-  res.render("pages/tomarammeutela");
+  } else {
+    res.render("pages/tomarammeutela");
   }
 });
 
@@ -52,10 +51,10 @@ router.get("/progressao", verificarAutenticacao, (req, res) => {
   res.render("pages/progressao");
 });
 router.get("/tasks", verificarAutenticacao, (req, res) => {
-  const tasks = tarefas.map(t => ({
+  const tasks = tarefas.map((t) => ({
     _id: t.id,
     title: t.nome,
-    completed: t.concluida
+    completed: t.concluida,
   }));
   res.render("user/tasks", { tasks });
 });
@@ -109,7 +108,6 @@ router.get("/cadastroProfissional", (req, res) => {
     msgErro: {},
   });
 });
-
 
 /* ===================== ROUTER POST(VALIDAÇÕES) ===================== */
 
