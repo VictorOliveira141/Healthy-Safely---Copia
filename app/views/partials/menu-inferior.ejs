@@ -4,15 +4,16 @@
     <span>Início</span>
   </a>
 
-  <a href="/tasks" class="circulo">
+  <a href="#" class="principal">
+    <i class="bi bi-plus-circle "></i>
+    <span>Adicionar</span>
+  </a>
+
+  <a href="/tasks">
     <i class="bi bi-check-square"></i>
     <span>Tarefas</span>
   </a>
 
-  <a href="/perfil">
-    <i class="bi bi-person"></i>
-    <span>Perfil</span>
-  </a>
 </nav>
 <style>
   .menu-inferior {
@@ -29,7 +30,7 @@
 
     justify-content: space-around;
     align-items: center;
-    height: 60px;
+    height: 55px;
     padding: 0;
   }
   .menu-inferior a {
@@ -37,15 +38,25 @@
     text-align: center;
     color: white;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 12px;
     padding: 8px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   .menu-inferior i {
-    font-size: 24px;
-    margin-bottom: 2px;
+    font-size: 20px;
+  }
+  .principal {
+  background: #0c4f43;
+  border-top: solid 2px #052205;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  padding: 1px;
+  margin-bottom: 8px;
+}
+  .principal i{
+     font-size: 40px;
   }
   @media (max-width: 768px) {
     .menu-inferior {
