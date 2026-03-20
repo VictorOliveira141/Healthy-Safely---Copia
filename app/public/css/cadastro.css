@@ -1,7 +1,7 @@
 /* Importação de fonte mais moderna */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
-/* Cores e variáveis globais */
+/* ================ Cores e variáveis globais ============= */
 :root {
   --primary-color: #fff; /* Branco (60% do site) */
   --secondary-color: #0c4f43; /* Verde Escuro (30% do site)   */
@@ -122,7 +122,7 @@ form {
   font-weight: 600;
 }
 
-.inputs-duplos {
+.form-duplo {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
@@ -345,309 +345,309 @@ form > div {
 
 /* Responsividade */
 @media (max-width: 1200px) {
-    main {
-        padding: 28px;
-        min-height: calc(100vh - 100px);
-    }
-    .card {
-        max-width: 700px;
-    }
-    .form-area {
-        padding: 18px;
-    }
-    form {
-        max-width: 600px;
-    }
-    .form-title {
-        font-size: 28px;
-        margin-bottom: 16px;
-    }
-    .btn-google {
-        padding: 11px 15px;
-        gap: 9px;
-    }
-    .icone-google {
-        font-size: 19px;
-    }
-    .textos {
-        font-size: 15px;
-        margin-top: 14px;
-    }
-    input[type="email"],
-    input[type="password"],
-    input[type="text"],
-    input[type="date"],
-    input[type="number"],
-    input[type="file"],
-    select,
-    textarea {
-        padding: 13px 15px;
-        font-size: 14px;
-    }
-    .btn-primary {
-        padding: 9px 15px;
-    }
-    .preview-container img {
-        max-width: 90px;
-        max-height: 90px;
-    }
+  main {
+    padding: 28px;
+    min-height: calc(100vh - 100px);
+  }
+  .card {
+    max-width: 700px;
+  }
+  .form-area {
+    padding: 18px;
+  }
+  form {
+    max-width: 600px;
+  }
+  .form-title {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+  .btn-google {
+    padding: 11px 15px;
+    gap: 9px;
+  }
+  .icone-google {
+    font-size: 19px;
+  }
+  .textos {
+    font-size: 15px;
+    margin-top: 14px;
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
+  input[type="file"],
+  select,
+  textarea {
+    padding: 13px 15px;
+    font-size: 14px;
+  }
+  .btn-primary {
+    padding: 9px 15px;
+  }
+  .preview-container img {
+    max-width: 90px;
+    max-height: 90px;
+  }
 }
 
 @media (max-width: 992px) {
-    main {
-        padding: 24px;
-        min-height: calc(100vh - 90px);
-    }
-    .card {
-        max-width: 600px;
-    }
-    .form-area {
-        padding: 16px;
-    }
-    form {
-        max-width: 550px;
-    }
-    .form-title {
-        font-size: 26px;
-        margin-bottom: 14px;
-    }
-    .btn-google {
-        padding: 10px 14px;
-        font-size: 15px;
-        gap: 8px;
-        margin-bottom: 12px;
-    }
-    .icone-google {
-        font-size: 18px;
-    }
-    .or {
-        font-size: 14px;
-        margin: 10px 0;
-    }
-    .textos {
-        font-size: 14px;
-        margin-top: 12px;
-        margin-bottom: 1px;
-    }
-    .inputs-duplos {
-        gap: 14px;
-    }
-    form > div {
-        margin-bottom: 14px;
-    }
-    input[type="email"],
-    input[type="password"],
-    input[type="text"],
-    input[type="date"],
-    input[type="number"],
-    input[type="file"],
-    select,
-    textarea {
-        padding: 12px 14px;
-        font-size: 14px;
-    }
-    .btn-olho {
-        font-size: 20px;
-        right: 10px;
-    }
-    .msg-erro {
-        font-size: 12px;
-        margin-top: 5px;
-    }
-    .btn-primary {
-        padding: 8px 14px;
-        font-size: 15px;
-        margin-top: 8px;
-        margin-bottom: 12px;
-    }
-    .small {
-        font-size: 12px;
-        margin-top: 10px;
-    }
-    .preview-container img {
-        max-width: 80px;
-        max-height: 80px;
-    }
-    .section-title {
-        font-size: 16px;
-        margin: 18px 0 8px 0;
-    }
+  main {
+    padding: 24px;
+    min-height: calc(100vh - 90px);
+  }
+  .card {
+    max-width: 600px;
+  }
+  .form-area {
+    padding: 16px;
+  }
+  form {
+    max-width: 550px;
+  }
+  .form-title {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+  .btn-google {
+    padding: 10px 14px;
+    font-size: 15px;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .icone-google {
+    font-size: 18px;
+  }
+  .or {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+  .textos {
+    font-size: 14px;
+    margin-top: 12px;
+    margin-bottom: 1px;
+  }
+  .inputs-duplos {
+    gap: 14px;
+  }
+  form > div {
+    margin-bottom: 14px;
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
+  input[type="file"],
+  select,
+  textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .btn-olho {
+    font-size: 20px;
+    right: 10px;
+  }
+  .msg-erro {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  .btn-primary {
+    padding: 8px 14px;
+    font-size: 15px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+  }
+  .small {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .preview-container img {
+    max-width: 80px;
+    max-height: 80px;
+  }
+  .section-title {
+    font-size: 16px;
+    margin: 18px 0 8px 0;
+  }
 }
 
 @media (max-width: 768px) {
-    main {
-        padding: 20px;
-        min-height: calc(100vh - 80px);
-    }
-    .card {
-        max-width: 100%;
-        border-radius: 10px;
-    }
-    .form-area {
-        padding: 20px;
-    }
-    form {
-        max-width: 100%;
-    }
-    .form-title {
-        font-size: 24px;
-        margin-bottom: 12px;
-    }
-    .btn-google {
-        padding: 10px 12px;
-        font-size: 14px;
-        gap: 6px;
-        margin-bottom: 10px;
-    }
-    .icone-google {
-        font-size: 16px;
-    }
-    .or {
-        font-size: 13px;
-        margin: 8px 0;
-    }
-    .textos {
-        font-size: 14px;
-        margin-top: 10px;
-        margin-bottom: 1px;
-    }
-    .inputs-duplos {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    .inputs-duplos > div {
-        margin-bottom: 10px;
-    }
-    form > div {
-        margin-bottom: 12px;
-    }
-    input[type="email"],
-    input[type="password"],
-    input[type="text"],
-    input[type="date"],
-    input[type="number"],
-    input[type="file"],
-    select,
-    textarea {
-        padding: 12px 14px;
-        font-size: 14px;
-    }
-    .campo-senha input {
-        padding-right: 40px;
-    }
-    .btn-olho {
-        font-size: 18px;
-        right: 8px;
-        padding: 2px 6px;
-    }
-    .msg-erro {
-        font-size: 12px;
-        margin-top: 4px;
-    }
-    .actions {
-        flex-direction: column;
-        gap: 8px;
-        margin-top: 12px;
-    }
-    .btn-primary {
-        width: 100%;
-        padding: 10px 14px;
-        font-size: 14px;
-        margin-top: 6px;
-        margin-bottom: 10px;
-    }
-    .link-muted {
-        font-size: 13px;
-    }
-    .small {
-        font-size: 12px;
-        margin-top: 8px;
-    }
-    .preview-container img {
-        max-width: 70px;
-        max-height: 70px;
-    }
-    .section-title {
-        font-size: 15px;
-        margin: 15px 0 6px 0;
-    }
+  main {
+    padding: 20px;
+    min-height: calc(100vh - 80px);
+  }
+  .card {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .form-area {
+    padding: 20px;
+  }
+  form {
+    max-width: 100%;
+  }
+  .form-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .btn-google {
+    padding: 10px 12px;
+    font-size: 14px;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .icone-google {
+    font-size: 16px;
+  }
+  .or {
+    font-size: 13px;
+    margin: 8px 0;
+  }
+  .textos {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 1px;
+  }
+  .inputs-duplos {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .inputs-duplos > div {
+    margin-bottom: 10px;
+  }
+  form > div {
+    margin-bottom: 12px;
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
+  input[type="file"],
+  select,
+  textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .campo-senha input {
+    padding-right: 40px;
+  }
+  .btn-olho {
+    font-size: 18px;
+    right: 8px;
+    padding: 2px 6px;
+  }
+  .msg-erro {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .btn-primary {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 14px;
+    margin-top: 6px;
+    margin-bottom: 10px;
+  }
+  .link-muted {
+    font-size: 13px;
+  }
+  .small {
+    font-size: 12px;
+    margin-top: 8px;
+  }
+  .preview-container img {
+    max-width: 70px;
+    max-height: 70px;
+  }
+  .section-title {
+    font-size: 15px;
+    margin: 15px 0 6px 0;
+  }
 }
 
 @media (max-width: 576px) {
-    main {
-        padding: 16px;
-        min-height: calc(100vh - 70px);
-    }
-    .card {
-        border-radius: 8px;
-    }
-    .form-area {
-        padding: 16px;
-    }
-    .form-title {
-        font-size: 22px;
-        margin-bottom: 10px;
-    }
-    .btn-google {
-        padding: 10px 12px;
-        font-size: 14px;
-        gap: 5px;
-        margin-bottom: 8px;
-    }
-    .icone-google {
-        font-size: 15px;
-    }
-    .or {
-        font-size: 12px;
-        margin: 6px 0;
-    }
-    .textos {
-        font-size: 14px;
-        margin-top: 8px;
-        margin-bottom: 1px;
-    }
-    form > div {
-        margin-bottom: 10px;
-    }
-    input[type="email"],
-    input[type="password"],
-    input[type="text"],
-    input[type="date"],
-    input[type="number"],
-    input[type="file"],
-    select,
-    textarea {
-        padding: 12px 14px;
-        font-size: 14px;
-    }
-    .campo-senha input {
-        padding-right: 38px;
-    }
-    .btn-olho {
-        font-size: 16px;
-        right: 6px;
-        padding: 2px 4px;
-    }
-    .msg-erro {
-        font-size: 11px;
-        margin-top: 3px;
-    }
-    .btn-primary {
-        padding: 10px 12px;
-        font-size: 14px;
-        margin-top: 4px;
-        margin-bottom: 8px;
-    }
-    .small {
-        font-size: 11px;
-        margin-top: 6px;
-    }
-    .preview-container img {
-        max-width: 60px;
-        max-height: 60px;
-    }
-    .section-title {
-        font-size: 14px;
-        margin: 12px 0 5px 0;
-    }
+  main {
+    padding: 16px;
+    min-height: calc(100vh - 70px);
+  }
+  .card {
+    border-radius: 8px;
+  }
+  .form-area {
+    padding: 16px;
+  }
+  .form-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .btn-google {
+    padding: 10px 12px;
+    font-size: 14px;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+  .icone-google {
+    font-size: 15px;
+  }
+  .or {
+    font-size: 12px;
+    margin: 6px 0;
+  }
+  .textos {
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 1px;
+  }
+  form > div {
+    margin-bottom: 10px;
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
+  input[type="file"],
+  select,
+  textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .campo-senha input {
+    padding-right: 38px;
+  }
+  .btn-olho {
+    font-size: 16px;
+    right: 6px;
+    padding: 2px 4px;
+  }
+  .msg-erro {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+  .btn-primary {
+    padding: 10px 12px;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+  }
+  .small {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+  .preview-container img {
+    max-width: 60px;
+    max-height: 60px;
+  }
+  .section-title {
+    font-size: 14px;
+    margin: 12px 0 5px 0;
+  }
 }

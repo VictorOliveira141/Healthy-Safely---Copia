@@ -126,14 +126,14 @@ header {
 .logar-cadastrar {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 1px;
   color: var(--primary-color);
   border: var(--primary-color) 1px solid;
   border-radius: 25px;
-  padding: 2px 2px; /* mais espaço interno */
+  padding: 1px 1px; /* mais espaço interno */
 }
 .logar-cadastrar i {
-  font-size: 17px;
+  font-size: 14px;
 }
 .logar-cadastrar a,
 .logar-cadastrar span,
@@ -143,7 +143,7 @@ header {
   color: var(--primary-color);
   cursor: pointer;
   font-size: 12px;
-  padding: 2px 6px; /* espaço extra ao redor do texto */
+  padding: 1px 4px; /* espaço extra ao redor do texto */
   text-decoration: none;
 }
 
@@ -357,17 +357,8 @@ header {
 }
 
 @media (max-width: 768px) {
-  .abrir,.abrir-cadastro,
-  .logar-cadastrar span,
-  .logar-cadastrar button{
-    display: none;
-  }
   .header-welcome {
     display: none;
-  }
-  .logar-cadastrar {
-    border: none;
-    padding: 0;
   }
   .user-menu i {
     font-size: 28px;
@@ -375,7 +366,6 @@ header {
   .header-logo img {
     height: 70px;
   }
-  
   .header-actions {
     margin-right: 0;
     margin-left: 20px;
@@ -391,7 +381,7 @@ header {
     font-size: 22px;
   }
   .header-actions {
-    gap: 6px;
+    gap: 4px;
   }
   
 }

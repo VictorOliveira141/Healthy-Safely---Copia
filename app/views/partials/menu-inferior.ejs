@@ -1,10 +1,17 @@
 <nav class="menu-inferior" aria-label="Menu inferior">
+
+  <% if (usuario) { %>
+    <a href="/perfil">
+      <i class="bi bi-person-circle"></i>
+      <span>Perfil</span>
+    </a>
+  
   <a href="/tomarammeutela">
     <i class="bi bi-house-door-fill"></i>
     <span>Início</span>
   </a>
 
-  <a href="#" class="principal">
+  <a href="#">
     <i class="bi bi-plus-circle "></i>
     <span>Adicionar</span>
   </a>
@@ -13,6 +20,22 @@
     <i class="bi bi-check-square"></i>
     <span>Tarefas</span>
   </a>
+  <% } else { %>
+    <a href="/tomarammeutela">
+      <i class="bi bi-house-door-fill"></i>
+      <span>Início</span>
+    </a>
+
+    <a href="/tomarammeutela">
+      <i class="bi bi-info-circle"></i>
+      <span>Ajuda</span>
+    </a>
+
+    <a href="/tomarammeutela">
+      <i class="bi bi-telephone-fill"></i>
+      <span>Contato</span>
+    </a>
+  <% } %>
 
 </nav>
 <style>
@@ -46,17 +69,6 @@
   }
   .menu-inferior i {
     font-size: 20px;
-  }
-  .principal {
-  background: #0c4f43;
-  border-top: solid 2px #052205;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  padding: 1px;
-  margin-bottom: 8px;
-}
-  .principal i{
-     font-size: 40px;
   }
   @media (max-width: 768px) {
     .menu-inferior {

@@ -11,11 +11,11 @@ $(document).ready(function () {
     value = value.replace(/^([\d]{2})\.([\d]{3})([\d])/, "$1.$2.$3");
     value = value.replace(
       /^([\d]{2})\.([\d]{3})\.([\d]{3})([\d])/,
-      "$1.$2.$3/$4"
+      "$1.$2.$3/$4",
     );
     value = value.replace(
       /^([\d]{2})\.([\d]{3})\.([\d]{3})\/([\d]{4})([\d]{1,2})/,
-      "$1.$2.$3/$4-$5"
+      "$1.$2.$3/$4-$5",
     );
     input.value = value;
   };
@@ -54,7 +54,7 @@ $(document).ready(function () {
   // ============ SUBMIT FORM ============
   $("form").on("submit", function (e) {
     const inputs = $(this).find(
-      "input[type='text'], input[type='email'], input[type='password']"
+      "input[type='text'], input[type='email'], input[type='password']",
     );
     let isValid = true;
 
@@ -134,28 +134,28 @@ $(document).ready(function () {
 
   function validarNome(valor) {
     if (!valor) {
-      return { valido: false, mensagem: "Nome é obrigatório" };
+      return { valido: false, mensagem: "⚠️Nome é obrigatório" };
     }
     if (valor.length < 3) {
-      return { valido: false, mensagem: "Mínimo 3 caracteres" };
+      return { valido: false, mensagem: "⚠️Mínimo 3 caracteres" };
     }
     if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(valor)) {
-      return { valido: false, mensagem: "Apenas letras permitidas" };
+      return { valido: false, mensagem: "⚠️Apenas letras permitidas" };
     }
     return { valido: true, mensagem: "" };
   }
 
   function validarNomeUsuario(valor) {
     if (!valor) {
-      return { valido: false, mensagem: "Nome de usuário é obrigatório" };
+      return { valido: false, mensagem: "⚠️Nome de usuário é obrigatório" };
     }
     if (valor.length < 3) {
-      return { valido: false, mensagem: "Mínimo 3 caracteres" };
+      return { valido: false, mensagem: "⚠️Mínimo 3 caracteres" };
     }
     if (!/^[A-Za-z0-9_]+$/.test(valor)) {
       return {
         valido: false,
-        mensagem: "Apenas letras, números e _",
+        mensagem: "⚠️Apenas letras, números e _",
       };
     }
     return { valido: true, mensagem: "" };
@@ -163,10 +163,10 @@ $(document).ready(function () {
 
   function validarEmail(valor) {
     if (!valor) {
-      return { valido: false, mensagem: "E-mail é obrigatório" };
+      return { valido: false, mensagem: "⚠️E-mail é obrigatório" };
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
-      return { valido: false, mensagem: "E-mail inválido" };
+      return { valido: false, mensagem: "⚠️E-mail inválido" };
     }
     return { valido: true, mensagem: "" };
   }
@@ -194,21 +194,21 @@ $(document).ready(function () {
 
   function validarSenha(valor) {
     if (!valor) {
-      return { valido: false, mensagem: "Senha é obrigatória" };
+      return { valido: false, mensagem: "⚠️Senha é obrigatória" };
     }
     if (valor.length < 8) {
-      return { valido: false, mensagem: "Mínimo 8 caracteres" };
+      return { valido: false, mensagem: "⚠️Mínimo 8 caracteres" };
     }
     if (!/[A-Z]/.test(valor)) {
-      return { valido: false, mensagem: "Precisa de letra maiúscula (A-Z)" };
+      return { valido: false, mensagem: "⚠️Precisa de letra maiúscula (A-Z)" };
     }
     if (!/[0-9]/.test(valor)) {
-      return { valido: false, mensagem: "Precisa de número (0-9)" };
+      return { valido: false, mensagem: "⚠️Precisa de número (0-9)" };
     }
     if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(valor)) {
       return {
         valido: false,
-        mensagem: "Precisa de caractere especial (!@#$%^&*)",
+        mensagem: "⚠️Precisa de caractere especial (!@#$%^&*)",
       };
     }
     return { valido: true, mensagem: "" };
@@ -221,11 +221,11 @@ $(document).ready(function () {
     const senhaValor = $senha.val();
 
     if (!valor) {
-      mostrarErro($input, "Confirmação é obrigatória");
+      mostrarErro($input, "⚠️Confirmação é obrigatória");
       return false;
     }
     if (valor !== senhaValor) {
-      mostrarErro($input, "Senhas não coincidem");
+      mostrarErro($input, "⚠️Senhas não coincidem");
       return false;
     }
     mostrarSucesso($input);
@@ -234,10 +234,10 @@ $(document).ready(function () {
 
   function validarConfirmarSenhaSubmit(valor, senhaValor) {
     if (!valor) {
-      return { valido: false, mensagem: "Confirmação é obrigatória" };
+      return { valido: false, mensagem: "⚠️Confirmação é obrigatória" };
     }
     if (valor !== senhaValor) {
-      return { valido: false, mensagem: "Senhas não coincidem" };
+      return { valido: false, mensagem: "⚠️Senhas não coincidem" };
     }
     return { valido: true, mensagem: "" };
   }

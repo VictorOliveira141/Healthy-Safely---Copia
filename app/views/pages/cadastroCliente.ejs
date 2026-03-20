@@ -19,10 +19,12 @@
     <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="main">
-      <article class="card" aria-labelledby="titulo-cadastro">
+      <section class="card" aria-labelledby="titulo-cadastro">
         <section class="form-area">
           <form action="/cadastroCliente" method="POST" novalidate>
-            <h1 id="titulo-cadastro" class="form-title">Criar Conta</h1>
+            <h1 id="titulo-cadastro" class="form-title">
+              Cadastrar no Healthy Safely
+            </h1>
 
             <a
               class="btn-google"
@@ -34,42 +36,9 @@
               <span>Continuar com Google</span>
             </a>
 
-            <section class="or" aria-hidden="true">ou</section>
+            <div class="or" aria-hidden="true">ou</div>
 
-            <section class="form-group">
-              <label for="nome" class="textos">Nome Completo</label>
-              <input
-                id="nome"
-                name="nome"
-                type="text"
-                placeholder="Digite seu nome completo"
-                value="<%= valores ? valores.nome || '' : '' %>"
-                class="<%= erroValidacao && erroValidacao.nome ? 'erro-input' : '' %>"
-                required
-              />
-              <span class="msg-erro"
-                ><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span
-              >
-            </section>
-
-            <section class="form-group">
-              <label for="nomeusuario" class="textos">Nome de Usuário</label>
-              <input
-                id="nomeusuario"
-                name="nomeusuario"
-                type="text"
-                placeholder="Escolha um nome de usuário"
-                value="<%= valores ? valores.nomeusuario || '' : '' %>"
-                class="<%= erroValidacao && erroValidacao.nomeusuario ? 'erro-input' : '' %>"
-                required
-              />
-              <span class="msg-erro"
-                ><%= msgErro && msgErro.nomeusuario ? msgErro.nomeusuario : ''
-                %></span
-              >
-            </section>
-
-            <section class="form-group">
+            <article class="form-group">
               <label for="email" class="textos">E-mail</label>
               <input
                 id="email"
@@ -83,62 +52,123 @@
               <span class="msg-erro"
                 ><%= msgErro && msgErro.email ? msgErro.email : '' %></span
               >
-            </section>
+            </article>
+            <p class="small">
+              Digite um e-mail válido. Ele será usado para login e recuperação
+              de conta.
+            </p>
 
-            <section class="form-group">
-              <label for="senha" class="textos">Senha</label>
-              <section class="campo-senha">
+            <article class="form-duplo">
+              <article class="form-group">
+                <label for="senha" class="textos">Senha</label>
+                <article class="campo-senha">
+                  <input
+                    id="senha"
+                    name="senha"
+                    type="password"
+                    placeholder="Crie uma senha"
+                    class="<%= erroValidacao && erroValidacao.senha ? 'erro-input' : '' %>"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="btn-olho"
+                    onclick="toggleSenha('senha')"
+                    aria-label="Mostrar senha"
+                  >
+                    <i class="bi bi-eye-slash-fill"></i>
+                  </button>
+                </article>
+                <span class="msg-erro"
+                  ><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span
+                >
+              </article>
+
+              <article class="form-group">
+                <label for="confirmarSenha" class="textos"
+                  >Confirmar Senha</label
+                >
+                <article class="campo-senha">
+                  <input
+                    id="confirmarSenha"
+                    name="confirmarSenha"
+                    type="password"
+                    placeholder="Confirme sua senha"
+                    class="<%= erroValidacao && erroValidacao.confirmarSenha ? 'erro-input' : '' %>"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="btn-olho"
+                    onclick="toggleSenha('confirmarSenha')"
+                    aria-label="Mostrar senha"
+                  >
+                    <i class="bi bi-eye-slash-fill"></i>
+                  </button>
+                </article>
+                <span class="msg-erro"
+                  ><%= msgErro && msgErro.confirmarSenha ?
+                  msgErro.confirmarSenha : '' %></span
+                >
+              </article>
+            </article>
+
+            <article class="form-duplo">
+              <p class="small">
+                Senha deve conter pelo menos 8 caracteres incluindo numeros e
+                caracteres especiais.
+              </p>
+              <p class="small">Digite novamente sua senha para confirmar.</p>
+            </article>
+
+            <article class="form-duplo">
+              <article class="form-group">
+                <label for="nome" class="textos">Nome Completo</label>
                 <input
-                  id="senha"
-                  name="senha"
-                  type="password"
-                  placeholder="Crie uma senha"
-                  class="<%= erroValidacao && erroValidacao.senha ? 'erro-input' : '' %>"
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  placeholder="Digite seu nome completo"
+                  value="<%= valores ? valores.nome || '' : '' %>"
+                  class="<%= erroValidacao && erroValidacao.nome ? 'erro-input' : '' %>"
                   required
                 />
-                <button
-                  type="button"
-                  class="btn-olho"
-                  onclick="toggleSenha('senha')"
-                  aria-label="Mostrar senha"
+                <span class="msg-erro"
+                  ><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span
                 >
-                  <i class="bi bi-eye-slash-fill"></i>
-                </button>
-              </section>
-              <span class="msg-erro"
-                ><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span
-              >
-            </section>
+              </article>
 
-            <section class="form-group">
-              <label for="confirmarSenha" class="textos">Confirmar Senha</label>
-              <section class="campo-senha">
+              <article class="form-group">
+                <label for="nomeusuario" class="textos">Nome de Usuário</label>
                 <input
-                  id="confirmarSenha"
-                  name="confirmarSenha"
-                  type="password"
-                  placeholder="Confirme sua senha"
-                  class="<%= erroValidacao && erroValidacao.confirmarSenha ? 'erro-input' : '' %>"
+                  id="nomeusuario"
+                  name="nomeusuario"
+                  type="text"
+                  placeholder="Escolha um nome de usuário"
+                  value="<%= valores ? valores.nomeusuario || '' : '' %>"
+                  class="<%= erroValidacao && erroValidacao.nomeusuario ? 'erro-input' : '' %>"
                   required
                 />
-                <button
-                  type="button"
-                  class="btn-olho"
-                  onclick="toggleSenha('confirmarSenha')"
-                  aria-label="Mostrar senha"
+                <span class="msg-erro"
+                  ><%= msgErro && msgErro.nomeusuario ? msgErro.nomeusuario : ''
+                  %></span
                 >
-                  <i class="bi bi-eye-slash-fill"></i>
-                </button>
-              </section>
-              <span class="msg-erro"
-                ><%= msgErro && msgErro.confirmarSenha ? msgErro.confirmarSenha
-                : '' %></span
-              >
-            </section>
+              </article>
+            </article>
 
-            <section class="actions">
+            <article class="form-duplo">
+              <p class="small">
+                Nome deve conter entre 3 e 50 caracteres.(somente letras).
+              </p>
+              <p class="small">
+                Nome de usuário deve conter apenas letras, números, hífen e
+                underscore.
+              </p>
+            </article>
+
+            <article class="actions">
               <button class="btn-primary" type="submit">Criar Conta</button>
-            </section>
+            </article>
 
             <p class="small">
               Quer se tornar um colaborador?
@@ -153,7 +183,7 @@
             </p>
           </form>
         </section>
-      </article>
+      </section>
     </main>
 
     <!--FOOTER-->
