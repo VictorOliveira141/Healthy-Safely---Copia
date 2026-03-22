@@ -3,273 +3,226 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Healthy Safely</title>
+    <title>Healthy Safely - Inicio</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/tomarammeutela.css" />
+    <link rel="stylesheet" href="../css/global.css" />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
-    <!--SCRIPT CARROSSEL-->
-    <script src="../js/carrossel-tomarammeutela.js"></script>
-    <!--SCRIPT SLIDER-->
-    <script src="../js/slider-tomarammeutela.js"></script>
   </head>
+
   <body id="topo">
     <%- include('../partials/header.ejs') %>
     <!---->
     <%- include('../partials/menu-inferior.ejs') %>
 
     <main>
-      <section class="main-fundo">
-        <section class="main-container">
-          <!-- Carrossel -->
-          <section class="main-content">
-            <section class="carrossel">
-              <article class="carrossel-slide active">
-              
-                <img src="../imagem/bannerzaodeacessoo.PNG" alt="Banner 1" />
-              </article>
-              <article class="carrossel-slide">
-                <img src="../imagem/1x/bannerprogresso.png" alt="Banner 2" />
-              </article>
-              <button class="botao-prev">&#10094;</button>
-              <button class="botao-next">&#10095;</button>
+      <section class="main-topo">
+        <section class="carrossel">
+          <article class="carrossel-slide active">
+            <img src="../imagem/bannerzaodeacessoo.PNG" alt="Banner 1" />
+          </article>
+
+          <article class="carrossel-slide">
+            <img src="../imagem/1x/bannerprogresso.png" alt="Banner 2" />
+          </article>
+
+          <button class="botao-prev">&#10094;</button>
+          <button class="botao-next">&#10095;</button>
+        </section>
+
+        <!-- LATERAL -->
+        <aside class="side-content">
+          <article class="side-item">
+            <img src="../imagem/confira.png" class="bannerof" />
+          </article>
+
+          <article class="side-item">
+            <img src="../imagem/a (34).png" class="bannerof" />
+          </article>
+        </aside>
+      </section>
+
+      <!-- TIPO DE CONTA -->
+      <section class="centro">
+        <h2>ESCOLHA SEU TIPO DE CONTA</h2>
+
+        <section class="escolher-container">
+          <article class="escolher-card" tabindex="0">
+            <article class="card-inner">
+              <div class="card-front">
+                <img src="../imagem/a (48).png" class="escolher-img" />
+              </div>
+
+              <div class="card-back">
+                <p>
+                  Conta para profissionais: Ideal para educadores físicos...
+                </p>
+                <button class="btn-criar" data-target="/cadastroProfissional">
+                  Criar conta
+                </button>
+              </div>
+            </article>
+          </article>
+
+          <article class="escolher-card" tabindex="0">
+            <article class="card-inner">
+              <div class="card-front">
+                <img src="../imagem/a (49).png" class="escolher-img" />
+              </div>
+
+              <div class="card-back">
+                <p>Conta para usuários: Perfeita para quem quer melhorar...</p>
+                <button class="btn-criar" data-target="/cadastroCliente">
+                  Criar conta
+                </button>
+              </div>
+            </article>
+          </article>
+        </section>
+      </section>
+
+      <!-- COMO FUNCIONA -->
+      <section class="centro">
+        <h2>COMO O SISTEMA FUNCIONA?</h2>
+
+        <section class="steps">
+          <section class="steps-container">
+            <section class="step">
+              <span>1</span>
+              <p>Crie sua conta</p>
+            </section>
+
+            <section class="step">
+              <span>2</span>
+              <p>Conecte-se com um profissional</p>
+            </section>
+
+            <section class="step">
+              <span>3</span>
+              <p>Acompanhe sua evolução</p>
             </section>
           </section>
-
-          <!-- Coluna lateral -->
-          <aside class="side-content">
-            <article class="side-item">
-              <img
-                src="../imagem/confira.png"
-                alt="Ofertas do Dia"
-                class="bannerof"
-              />
-            </article>
-            <article class="side-item">
-              <img
-                src="../imagem/a (34).png"
-                alt="Ofertas do Dia"
-                class="bannerof"
-              />
-            </article>
-          </aside>
-        </section>
-   <!-- TIPO DE CONTA -->
-      <section class="tpcnt">
-  <h2>ESCOLHA SEU TIPO DE CONTA</h2>
-
-  <section class="tpcnt-container">
-    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
-      <section class="card-inner">
-        <section class="card-front">
-          <img src="../imagem/a (48).png" alt="Conta Profissional" class="tpcnt-img" />
-          <h3 class="tpcnt-title">Profissional</h3>
-        </section>
-        <section class="card-back">
-          <p>Conta para profissionais: Ideal para educadores físicos que desejam acompanhar alunos, criar treinos personalizados e 
-            monitorar a evolução em tempo real com ferramentas inteligentes.</p>
-          <button class="btn-criar" data-target="/cadastroProfissional">Criar conta</button>
         </section>
       </section>
-    </article>
 
-    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
-      <section class="card-inner">
-        <section class="card-front">
-          <img src="../imagem/a (49).png" alt="Conta usuário comum" class="tpcnt-img" />
-          <h3 class="tpcnt-title">Usuário</h3>
-        </section>
-        <section class="card-back">
-          <p>Conta para usuários: Perfeita para quem quer melhorar a saúde e o desempenho com acompanhamento profissional, acesso a treinos personalizados e controle da própria evolução.</p>
-          <button class="btn-criar" data-target="/cadastroCliente">Criar conta</button>
-        </section>
-      </section>
-    </article>
-  </section>
-</section>
-        
-        <!-- COMO FUNCIONA -->
-  <section class="steps">
-    <h2>Como o sistema funciona</h2>
+      <!-- SUGESTÕES -->
+      <section class="centro">
+        <h2>SUGESTÕES DE TAREFAS</h2>
 
-    <section class="steps-container">
-      <section class="step">
-        <i class="bi bi-person-plus-fill step-icon"></i>
-        <span>1</span>
-        <p>Crie sua conta</p>
-      </section>
+        <section class="grade-tarefas">
+          <article class="cartao-tarefas" aria-labelledby="tarefa-corrida">
+            <h3 id="tarefa-corrida">
+              <span aria-hidden="true">🏃‍♂️</span> Corra!
+            </h3>
 
-      <section class="step">
-        <i class="bi bi-people-fill step-icon"></i>
-        <span>2</span>
-        <p>Conecte-se com um profissional</p>
-      </section>
+            <p>Caminhe um total de 10km em 1 semana</p>
+            <p>
+              Dificuldade:
+              <span aria-label="Dificuldade: Fácil" class="facil">Fácil</span>
+            </p>
+            <p>Duração: <span aria-label="Duração: 1 semana">1 semana</span></p>
+            <p>XP: <span aria-label="XP: 300" class="xp">300</span></p>
 
-      <section class="step">
-        <i class="bi bi-graph-up-arrow step-icon"></i>
-        <span>3</span>
-        <p>Acompanhe sua evolução</p>
-      </section>
-    </section>
-  </section>
-
-
-
-      <!-- SUGETOES DE CONSULTAS -->
-      <section class="main-centro">
-        <h1>Sugestões de Tarefas</h1>
-
-        <!-- SUGESTÃO 1-->
-        <section class="grade-servicos">
-          <article class="cartao-servico">
-            <header class="topo-servico">
-              <span class="icone-servico" aria-hidden="true">🏃‍♂️</span>
-              <span class="selo-online">
-                <i class="fas fa-video" aria-hidden="true"></i>
-                <strong>Online</strong>
-              </span>
-            </header>
-
-            <h2>Corra!</h2>
-            <p>Faça pequenas corris por dia por 2 semanas</p>
-
-            <section class="info-servico">
-              <ul class="linha-info">
-                <li>
-                  <i class="fas fa-clock" aria-hidden="true"></i>
-                  <time datetime="PT50M">15 min</time>
-                </li>
-                <li>
-                  <i class="fas fa-star" aria-hidden="true"></i>
-                  <span aria-label="Avaliação">4.9</span>
-                </li>
-              </ul>
-              <p class="disponibilidade">
-                <i class="fas fa-calendar" aria-hidden="true"></i>
-                Disponível: <time datetime="2025-09-27T14:00"></time>
-              </p>
-            </section>
-
-            <footer class="rodape-servico">
-              <p>
-                <strong class="valor">Faça Já!</strong>
-                <span class="por-consulta">começar</span>
-              </p>
-              <button class="botao-agendar">Iniciar</button>
-            </footer>
-          </article>
-
-          <!-- SUGESTÃO 2-->
-          <article class="cartao-servico">
-            <header class="topo-servico">
-              <span class="icone-servico" aria-hidden="true">🥗</span>
-              <span class="selo-online">
-                <i class="fas fa-video" aria-hidden="true"></i>
-                <strong>Online</strong>
-              </span>
-            </header>
-
-            <h2>Alimentação Saúdavel</h2>
-            <p>Planejamento alimentar da semana</p>
-
-            <section class="info-servico">
-              <ul class="linha-info">
-                <li>
-                  <i class="fas fa-clock" aria-hidden="true"></i>
-                  <time datetime="PT45M">1 sem</time>
-                </li>
-                <li>
-                  <i class="fas fa-star" aria-hidden="true"></i>
-                  <span aria-label="Avaliação">4.8</span>
-                </li>
-              </ul>
-              <p class="disponibilidade">
-                <i class="fas fa-calendar" aria-hidden="true"></i>
-                Disponível: <time datetime="2025-09-27T16:00"></time>
-              </p>
-            </section>
-
-            <footer class="rodape-servico">
-              <p>
-                <strong class="valor">Faça Já</strong>
-                <span class="por-consulta">começar</span>
-              </p>
-              <button class="botao-agendar">Iniciar</button>
-            </footer>
-          </article>
-
-          <!-- SUGESTÃO 3-->
-          <article class="cartao-servico">
-            <header class="topo-servico">
-              <span class="icone-servico" aria-hidden="true">👨‍👩‍👧‍👦</span>
-              <span class="selo-online">
-                <i class="fas fa-video" aria-hidden="true"></i>
-                <strong>Online</strong>
-              </span>
-            </header>
-
-            <h2>Familia Saúdavel</h2>
-            <p>Incentive sua familia a terem bons habitos</p>
-
-            <section class="info-servico">
-              <ul class="linha-info">
-                <li>
-                  <i class="fas fa-clock" aria-hidden="true"></i>
-                  <time datetime="PT45M">2 sem</time>
-                </li>
-                <li>
-                  <i class="fas fa-star" aria-hidden="true"></i>
-                  <span aria-label="Avaliação">4.8</span>
-                </li>
-              </ul>
-              <p class="disponibilidade">
-                <i class="fas fa-calendar" aria-hidden="true"></i>
-                Disponível: <time datetime="2025-09-27T16:00"></time>
-              </p>
-            </section>
-
-            <footer class="rodape-servico">
-              <p>
-                <strong class="valor">Comece Já</strong>
-                <span class="por-consulta">começar</span>
-              </p>
-              <button class="botao-agendar">Iniciar</button>
-            </footer>
-          </article>
-
-          <article class="produtos ver-mais">
-            <h2>Procurar por tarefas</h2>
             <button
-              class="btn-circular"
-              onclick="window.location.href=`/agendamento1`"
+              class="botao-tarefas"
+              type="button"
+              aria-label="Iniciar tarefa Corra"
             >
+              Iniciar
+            </button>
+          </article>
+
+          <article class="cartao-tarefas" aria-labelledby="tarefa-alimentacao">
+            <h3 id="tarefa-alimentacao">
+              <span aria-hidden="true">🥗</span> Alimentação Saudável
+            </h3>
+
+            <p>Coma 2 frutas diariamente</p>
+            <p>
+              Dificuldade:
+              <span aria-label="Dificuldade: Fácil" class="medio">Médio</span>
+            </p>
+            <p>Duração: <span aria-label="Duração: 1 semana">1 semana</span></p>
+            <p>XP: <span aria-label="XP: 300" class="xp">400</span></p>
+
+            <button
+              class="botao-tarefas"
+              type="button"
+              aria-label="Iniciar tarefa Alimentação Saudável"
+            >
+              Iniciar
+            </button>
+          </article>
+
+          <article class="cartao-tarefas" aria-labelledby="tarefa-familia">
+            <h3 id="tarefa-familia">
+              <span aria-hidden="true">📚</span> FOCO TOTAL!
+            </h3>
+
+            <p>Estude 2h por dia sem interrupções por 1 semana</p>
+            <p>
+              Dificuldade:
+              <span aria-label="Dificuldade: Fácil" class="dificil"
+                >Difícil</span
+              >
+            </p>
+            <p>Duração: <span aria-label="Duração: 1 semana">1 semana</span></p>
+            <p>
+              XP: <span aria-label="XP: 300" class="xp">500 + Medalha</span>
+            </p>
+            <button
+              class="botao-tarefas"
+              type="button"
+              aria-label="Iniciar tarefa FOCO TOTAL!"
+            >
+              Iniciar
+            </button>
+          </article>
+
+          <article class="ver-mais">
+            <h3>Ver mais tarefas</h3>
+            <button onclick="window.location.href = '/#'" class="btn-circular">
               +
             </button>
           </article>
         </section>
       </section>
 
+      <!-- VOLTAR -->
       <section class="voltar-topo">
         <a href="#topo"><h1>Voltar ao topo</h1></a>
       </section>
     </main>
 
-    <!--FOOTER-->
     <%- include('../partials/footer.ejs') %>
-    <!---->
+
+    <script src="../js/carrossel-tomarammeutela.js"></script>
+    <script src="../js/slider-tomarammeutela.js"></script>
     <script>
       // Flip card: toggle .is-flipped on click; button stops propagation and navigates
-      (function(){
-        const cards = document.querySelectorAll('.tpcnt-card');
-        cards.forEach(card=>{
-          card.addEventListener('click', ()=> card.classList.toggle('is-flipped'));
-          card.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('is-flipped'); }});
+      (function () {
+        const cards = document.querySelectorAll(".escolher-card");
+        cards.forEach((card) => {
+          card.addEventListener("click", () =>
+            card.classList.toggle("is-flipped"),
+          );
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              card.classList.toggle("is-flipped");
+            }
+          });
         });
 
-        const buttons = document.querySelectorAll('.tpcnt-card .btn-criar');
-        buttons.forEach(btn=>{
-          btn.addEventListener('click', e=>{
+        const buttons = document.querySelectorAll(".escolher-card .btn-criar");
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
             e.stopPropagation();
-            const tgt = btn.getAttribute('data-target') || '#';
-            if(tgt && tgt !== '#') window.location.href = tgt;
+            const tgt = btn.getAttribute("data-target") || "#";
+            if (tgt && tgt !== "#") window.location.href = tgt;
           });
         });
       })();

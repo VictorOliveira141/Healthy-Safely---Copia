@@ -90,7 +90,6 @@ header {
   color: var(--accent-color);
 }
 
-
 /* ============ ACTIONS (CARRINHO + PERFIL + NOTIFICAÇÕES) ========== */
 .header-actions {
   display: flex;
@@ -102,7 +101,6 @@ header {
   flex-shrink: 0;
   margin-right: 100px;
 }
-
 
 /* ============ PERFIL E NOTIFICAÇÕES ============= */
 .user-menu {
@@ -164,7 +162,6 @@ header {
 .header-welcome strong {
   font-weight: 600;
 }
-
 
 /* Dropdown de Notificações */
 .notification-dropdown {
@@ -370,19 +367,20 @@ header {
     margin-right: 0;
     margin-left: 20px;
   }
-  
 }
 
 @media (max-width: 470px) {
   .header-logo img {
-    height: 50px;
+    height: 40px;
   }
   .user-menu i {
-    font-size: 22px;
+    font-size: 25px;
+  }
+  .logar-cadastrar a,
+  .logar-cadastrar span {
+    font-size: 10px;
   }
   .header-actions {
     gap: 4px;
   }
-  
 }
-

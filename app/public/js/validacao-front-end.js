@@ -1,46 +1,9 @@
-/**
- * Sistema de Validação Front-end Melhorado
- * Foco em UX e Usabilidade
- */
-
 $(document).ready(function () {
-  // ============ MÁSCARAS ============
-  window.mascaraCNPJ = function (input) {
-    let value = input.value.replace(/\D/g, "");
-    value = value.replace(/^([\d]{2})([\d])/, "$1.$2");
-    value = value.replace(/^([\d]{2})\.([\d]{3})([\d])/, "$1.$2.$3");
-    value = value.replace(
-      /^([\d]{2})\.([\d]{3})\.([\d]{3})([\d])/,
-      "$1.$2.$3/$4",
-    );
-    value = value.replace(
-      /^([\d]{2})\.([\d]{3})\.([\d]{3})\/([\d]{4})([\d]{1,2})/,
-      "$1.$2.$3/$4-$5",
-    );
-    input.value = value;
-  };
-
   // ============ VALIDAÇÕES EM TEMPO REAL (BLUR) ============
 
-  // Cliente - Validação de Campo Único
-  $("form input[name='nome']").on("blur", function () {
-    validarCampo(this, validarNome);
-  });
-
-  $("form input[name='nomeusuario']").on("blur", function () {
-    validarCampo(this, validarNomeUsuario);
-  });
-
+  // CLIENTE
   $("form input[name='email']").on("blur", function () {
     validarCampo(this, validarEmail);
-  });
-
-  $("form input[name='nomeFarmacia']").on("blur", function () {
-    validarCampo(this, validarNomeFarmacia);
-  });
-
-  $("form input[name='CNPJ']").on("blur", function () {
-    validarCampo(this, validarCNPJ);
   });
 
   $("form input[name='senha']").on("blur", function () {
@@ -51,11 +14,44 @@ $(document).ready(function () {
     validarConfirmarSenha(this);
   });
 
+  $("form input[name='nome']").on("blur", function () {
+    validarCampo(this, validarNome);
+  });
+
+  $("form input[name='nomeusuario']").on("blur", function () {
+    validarCampo(this, validarNomeUsuario);
+  });
+
+  // PROFISSIONAL
+  $("form input[name='cref']").on("blur", function () {
+    validarCampo(this, validarCref);
+  });
+
+  $("form select[name='areaAtuacao']").on("change blur", function () {
+    validarSelect(this);
+  });
+
+  $("form input[name='tempoExperiencia']").on("blur", function () {
+    validarCampo(this, validarTempoExperiencia);
+  });
+
+  $("form input[name='especialidades']").on("blur", function () {
+    validarCampo(this, validarEspecialidades);
+  });
+
+  //login
+  $("form input[name='email-login']").on("blur", function () {
+    validarCampo(this, validarEmailLogin);
+  });
+
+  $("form input[name='senha-login']").on("blur", function () {
+    validarCampo(this, validarSenhaLogin);
+  });
+
   // ============ SUBMIT FORM ============
   $("form").on("submit", function (e) {
-    const inputs = $(this).find(
-      "input[type='text'], input[type='email'], input[type='password']",
-    );
+    const inputs = $(this).find("input, select, textarea");
+
     let isValid = true;
 
     inputs.each(function () {
@@ -70,11 +66,27 @@ $(document).ready(function () {
     }
   });
 
-  // ============ FUNÇÕES AUXILIARES ============
+  // ============ ENTER CONTROL ============
+  $("form").on("keydown", function (e) {
+    if (e.key === "Enter") {
+      const inputs = $(this).find("input, select, textarea");
 
-  /**
-   * Valida um campo individual e exibe feedback
-   */
+      let isValid = true;
+
+      inputs.each(function () {
+        if (!validarCampoAoSubmit(this)) {
+          isValid = false;
+        }
+      });
+
+      if (!isValid) {
+        e.preventDefault();
+        mostrarMensagemErro("Por favor, corrija os erros acima");
+      }
+    }
+  });
+
+  // ============ FUNÇÕES AUXILIARES ============
   function validarCampo(input, validarFuncao) {
     const $input = $(input);
     const resultado = validarFuncao($input.val().trim());
@@ -86,41 +98,48 @@ $(document).ready(function () {
     }
   }
 
-  /**
-   * Valida campo no submit (mais rigoroso)
-   */
   function validarCampoAoSubmit(input) {
     const $input = $(input);
-    const nome = $input.attr("name");
-    let resultado;
+    const name = $input.attr("name");
+    const valor = $input.val()?.trim();
 
-    switch (nome) {
-      case "nome":
-        resultado = validarNome($input.val().trim());
-        break;
-      case "nomeusuario":
-        resultado = validarNomeUsuario($input.val().trim());
-        break;
-      case "nomeFarmacia":
-        resultado = validarNomeFarmacia($input.val().trim());
-        break;
+    switch (name) {
       case "email":
-        resultado = validarEmail($input.val().trim());
-        break;
-      case "CNPJ":
-        resultado = validarCNPJ($input.val().trim());
-        break;
+        return processarValidacao($input, validarEmail(valor));
+
       case "senha":
-        resultado = validarSenha($input.val());
-        break;
+        return processarValidacao($input, validarSenha(valor));
+
       case "confirmarSenha":
-        const $senha = $input.closest("form").find("input[name='senha']");
-        resultado = validarConfirmarSenhaSubmit($input.val(), $senha.val());
-        break;
+        return validarConfirmarSenha(input);
+
+      case "nome":
+        return processarValidacao($input, validarNome(valor));
+
+      case "nomeusuario":
+        return processarValidacao($input, validarNomeUsuario(valor));
+
+      case "cref":
+        return processarValidacao($input, validarCref(valor));
+
+      case "areaAtuacao":
+        return validarSelect(input);
+
+      case "tempoExperiencia":
+        return processarValidacao($input, validarTempoExperiencia(valor));
+
+      case "especialidades":
+        return processarValidacao($input, validarEspecialidades(valor));
+
+      case "bio":
+        return processarValidacao($input, validarBio(valor));
+
       default:
         return true;
     }
+  }
 
+  function processarValidacao($input, resultado) {
     if (resultado.valido) {
       mostrarSucesso($input);
       return true;
@@ -132,202 +151,162 @@ $(document).ready(function () {
 
   // ============ VALIDADORES ============
 
-  function validarNome(valor) {
-    if (!valor) {
-      return { valido: false, mensagem: "⚠️Nome é obrigatório" };
-    }
-    if (valor.length < 3) {
-      return { valido: false, mensagem: "⚠️Mínimo 3 caracteres" };
-    }
-    if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/.test(valor)) {
-      return { valido: false, mensagem: "⚠️Apenas letras permitidas" };
-    }
-    return { valido: true, mensagem: "" };
-  }
-
-  function validarNomeUsuario(valor) {
-    if (!valor) {
-      return { valido: false, mensagem: "⚠️Nome de usuário é obrigatório" };
-    }
-    if (valor.length < 3) {
-      return { valido: false, mensagem: "⚠️Mínimo 3 caracteres" };
-    }
-    if (!/^[A-Za-z0-9_]+$/.test(valor)) {
-      return {
-        valido: false,
-        mensagem: "⚠️Apenas letras, números e _",
-      };
-    }
-    return { valido: true, mensagem: "" };
-  }
-
+  // CLIENTE
   function validarEmail(valor) {
-    if (!valor) {
-      return { valido: false, mensagem: "⚠️E-mail é obrigatório" };
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor)) {
-      return { valido: false, mensagem: "⚠️E-mail inválido" };
-    }
-    return { valido: true, mensagem: "" };
-  }
-
-  function validarNomeFarmacia(valor) {
-    if (!valor) {
-      return { valido: false, mensagem: "Nome da farmácia é obrigatório" };
-    }
-    if (valor.length < 3) {
-      return { valido: false, mensagem: "Mínimo 3 caracteres" };
-    }
-    return { valido: true, mensagem: "" };
-  }
-
-  function validarCNPJ(valor) {
-    if (!valor) {
-      return { valido: false, mensagem: "CNPJ é obrigatório" };
-    }
-    const apenasNumeros = valor.replace(/\D/g, "");
-    if (apenasNumeros.length !== 14) {
-      return { valido: false, mensagem: "CNPJ deve ter 14 números" };
-    }
+    if (!valor)
+      return { valido: false, mensagem: "⚠️Este campo é obrigatório." };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor))
+      return { valido: false, mensagem: "⚠️E-mail inválido." };
     return { valido: true, mensagem: "" };
   }
 
   function validarSenha(valor) {
-    if (!valor) {
-      return { valido: false, mensagem: "⚠️Senha é obrigatória" };
-    }
-    if (valor.length < 8) {
+    if (!valor)
+      return { valido: false, mensagem: "⚠️Este campo é obrigatório." };
+    if (valor.length < 8)
       return { valido: false, mensagem: "⚠️Mínimo 8 caracteres" };
-    }
-    if (!/[A-Z]/.test(valor)) {
-      return { valido: false, mensagem: "⚠️Precisa de letra maiúscula (A-Z)" };
-    }
-    if (!/[0-9]/.test(valor)) {
-      return { valido: false, mensagem: "⚠️Precisa de número (0-9)" };
-    }
-    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(valor)) {
-      return {
-        valido: false,
-        mensagem: "⚠️Precisa de caractere especial (!@#$%^&*)",
-      };
-    }
+    if (!/[A-Z]/.test(valor))
+      return { valido: false, mensagem: "⚠️Letra maiúscula obrigatória" };
+    if (!/[0-9]/.test(valor))
+      return { valido: false, mensagem: "⚠️Número obrigatório" };
+    if (!/[!@#$%^&*]/.test(valor))
+      return { valido: false, mensagem: "⚠️Caractere especial obrigatório" };
     return { valido: true, mensagem: "" };
   }
 
   function validarConfirmarSenha(input) {
     const $input = $(input);
-    const $senha = $input.closest("form").find("input[name='senha']");
-    const valor = $input.val();
-    const senhaValor = $senha.val();
+    const senha = $input.closest("form").find("input[name='senha']").val();
 
-    if (!valor) {
-      mostrarErro($input, "⚠️Confirmação é obrigatória");
+    if (!$input.val()) {
+      mostrarErro($input, "⚠️Confirmação obrigatória");
       return false;
     }
-    if (valor !== senhaValor) {
+
+    if ($input.val() !== senha) {
       mostrarErro($input, "⚠️Senhas não coincidem");
       return false;
     }
+
     mostrarSucesso($input);
     return true;
   }
 
-  function validarConfirmarSenhaSubmit(valor, senhaValor) {
-    if (!valor) {
-      return { valido: false, mensagem: "⚠️Confirmação é obrigatória" };
+  function validarNome(valor) {
+    if (!valor) return { valido: false, mensagem: "⚠️Campo obrigatório" };
+    if (valor.length < 3)
+      return { valido: false, mensagem: "⚠️Mínimo 3 caracteres" };
+    return { valido: true, mensagem: "" };
+  }
+
+  function validarNomeUsuario(valor) {
+    if (!valor) return { valido: false, mensagem: "⚠️Campo obrigatório" };
+    if (!/^[A-Za-z0-9_]+$/.test(valor))
+      return { valido: false, mensagem: "⚠️Apenas letras, números e _" };
+    return { valido: true, mensagem: "" };
+  }
+
+  // PROFISSIONAL
+  function validarCref(valor) {
+    if (!valor) return { valido: false, mensagem: "⚠️CREF obrigatório" };
+    if (!/^\d{4,6}-[A-Z]\/[A-Z]{2}$/.test(valor))
+      return { valido: false, mensagem: "⚠️Formato inválido (123456-G/SP)" };
+    return { valido: true, mensagem: "" };
+  }
+
+  function validarSelect(select) {
+    const $select = $(select);
+    if (!$select.val()) {
+      mostrarErro($select, "⚠️Selecione uma área");
+      return false;
     }
-    if (valor !== senhaValor) {
-      return { valido: false, mensagem: "⚠️Senhas não coincidem" };
-    }
+    mostrarSucesso($select);
+    return true;
+  }
+
+  function validarTempoExperiencia(valor) {
+    if (!valor) return { valido: false, mensagem: "⚠️Campo obrigatório" };
+    if (isNaN(valor) || valor < 0)
+      return { valido: false, mensagem: "⚠️Valor inválido" };
+    return { valido: true, mensagem: "" };
+  }
+
+  function validarEspecialidades(valor) {
+    if (!valor) return { valido: false, mensagem: "⚠️Campo obrigatório" };
+    if (valor.length < 3)
+      return { valido: false, mensagem: "⚠️Mínimo 3 caracteres" };
+    return { valido: true, mensagem: "" };
+  }
+
+  // LOGIN
+
+  function validarEmailLogin(valor) {
+    if (!valor)
+      return { valido: false, mensagem: "⚠️Este campo é obrigatório." };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valor))
+      return { valido: false, mensagem: "⚠️E-mail inválido." };
+    return { valido: true, mensagem: "" };
+  }
+
+  function validarSenhaLogin(valor) {
+    if (!valor)
+      return { valido: false, mensagem: "⚠️Este campo é obrigatório." };
     return { valido: true, mensagem: "" };
   }
 
   // ============ FEEDBACK VISUAL ============
-
   function mostrarErro($input, mensagem) {
     $input.addClass("erro-input").removeClass("sucesso-input");
+    let $msg = $input.next(".msg-erro");
 
-    // Encontra a mensagem de erro
-    let $mensagemErro = $input.next(".msg-erro");
-
-    // Se for um campo de senha, pode estar dentro de .campo-senha
-    if (!$mensagemErro.length) {
+    if (!$msg.length) {
       const $campoSenha = $input.closest(".campo-senha");
       if ($campoSenha.length) {
-        $mensagemErro = $campoSenha.next(".msg-erro");
+        $msg = $campoSenha.next(".msg-erro");
       }
     }
 
-    if ($mensagemErro.length) {
-      $mensagemErro.text(mensagem).show();
-    } else {
-      // Se não encontrar, cria a mensagem
-      $input.after(`<span class="msg-erro">${mensagem}</span>`);
-    }
+    if ($msg.length) $msg.text(mensagem).show();
+    else $input.after(`<span class="msg-erro">${mensagem}</span>`);
   }
 
   function mostrarSucesso($input) {
     $input.removeClass("erro-input").addClass("sucesso-input");
 
-    let $mensagemErro = $input.next(".msg-erro");
+    let $msg = $input.next(".msg-erro");
 
-    if (!$mensagemErro.length) {
+    if (!$msg.length) {
       const $campoSenha = $input.closest(".campo-senha");
       if ($campoSenha.length) {
-        $mensagemErro = $campoSenha.next(".msg-erro");
+        $msg = $campoSenha.next(".msg-erro");
       }
     }
 
-    if ($mensagemErro.length) {
-      $mensagemErro.empty().hide();
-    }
+    if ($msg.length) $msg.empty().hide();
   }
 
-  function mostrarMensagemErro(mensagem) {
-    // Cria um toast/alerta de erro no topo
-    const $alerta = $(`
-      <div class="alerta-erro" style="
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #ff6b6b;
-        color: white;
-        padding: 16px 24px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        z-index: 9999;
-        animation: slideIn 0.3s ease;
-      ">
-        <i class="bi bi-exclamation-circle"></i> ${mensagem}
+  function mostrarMensagemErro(msg) {
+    const alerta = $(`
+      <div class="alerta-erro">
+        ${msg}
       </div>
     `);
 
-    $("body").append($alerta);
+    $("body").append(alerta);
 
     setTimeout(() => {
-      $alerta.fadeOut(300, function () {
+      alerta.fadeOut(300, function () {
         $(this).remove();
       });
     }, 4000);
   }
 
-  // ============ LIMPEZA EM REAL-TIME ============
-  $("form input").on("input", function () {
+  // LIMPEZA
+  $("form input, textarea").on("input", function () {
     const $input = $(this);
     if ($input.hasClass("erro-input")) {
-      // Remove a classe de erro enquanto o usuário digita
       $input.removeClass("erro-input");
-
-      let $mensagemErro = $input.next(".msg-erro");
-      if (!$mensagemErro.length) {
-        const $campoSenha = $input.closest(".campo-senha");
-        if ($campoSenha.length) {
-          $mensagemErro = $campoSenha.next(".msg-erro");
-        }
-      }
-      if ($mensagemErro.length) {
-        $mensagemErro.empty();
-      }
+      $input.next(".msg-erro").empty();
     }
   });
 });

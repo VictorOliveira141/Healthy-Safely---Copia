@@ -114,28 +114,6 @@ router.get("/cadastroProfissional", (req, res) => {
 //CADASTRO SENDO CLIENTE
 router.post(
   "/cadastroCliente",
-  body("nome")
-    .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("*O Nome deve conter entre 3 e 50 caracteres!")
-    .matches(/^[A-Za-zÀ-ú\s]+$/)
-    .withMessage("*O nome deve conter apenas letras!"),
-
-  body("nomeusuario")
-    .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 30 })
-    .withMessage("*Nome de usuário deve conter entre 3 e 30 caracteres!")
-    .matches(/^[a-zA-Z0-9_-]+$/)
-    .withMessage(
-      "*Nome de usuário deve conter apenas letras, números, hífen e underscore!",
-    ),
-
   body("email")
     .notEmpty()
     .withMessage("*Campo obrigatório!")
@@ -166,6 +144,28 @@ router.post(
       }
       return true;
     }),
+
+  body("nome")
+    .trim()
+    .notEmpty()
+    .withMessage("*Campo obrigatório!")
+    .bail()
+    .isLength({ min: 3, max: 50 })
+    .withMessage("*O Nome deve conter entre 3 e 50 caracteres!")
+    .matches(/^[A-Za-zÀ-ú\s]+$/)
+    .withMessage("*O nome deve conter apenas letras!"),
+
+  body("nomeusuario")
+    .trim()
+    .notEmpty()
+    .withMessage("*Campo obrigatório!")
+    .bail()
+    .isLength({ min: 3, max: 30 })
+    .withMessage("*Nome de usuário deve conter entre 3 e 30 caracteres!")
+    .matches(/^[a-zA-Z0-9_-]+$/)
+    .withMessage(
+      "*Nome de usuário deve conter apenas letras, números, hífen e underscore!",
+    ),
 
   function (req, res) {
     const errors = validationResult(req);
@@ -328,7 +328,8 @@ router.post(
 
 //LOGIN SENDO CLIENTE
 router.post("/login", (req, res) => {
-  const { email, senha } = req.body;
+  const email = req.body["email-login"];
+  const senha = req.body["senha-login"];
 
   const usuarioEncontrado = usuarios.find(
     (u) => (u.email === email || u.nomeusuario === email) && u.senha === senha,
@@ -340,6 +341,7 @@ router.post("/login", (req, res) => {
     req.session.nivel = usuarioEncontrado.nivel || "iniciante";
 
     const tipo = usuarioEncontrado.tipo;
+
     if (tipo === "profissional") {
       return res.redirect("/profissional/dashboard");
     }
@@ -351,9 +353,8 @@ router.post("/login", (req, res) => {
     return res.redirect("/tomarammeutela");
   }
 
-  // SE FALHAR:
   return res.render("pages/login", {
-    erro: "Usuário ou senha incorretos!",
+    erro: "⚠️Usuário ou senha incorretos.Tente novamente.",
     valores: { email },
     erroValidacao: {},
     msgErro: {},

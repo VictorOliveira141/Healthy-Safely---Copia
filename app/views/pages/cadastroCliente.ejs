@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Healthy Safely | Cadastro</title>
+    <title>Healthy Safely - Cadastro Cliente</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/cadastro.css" />
+    <link rel="stylesheet" href="/css/global.css" />
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
   </head>
 
@@ -23,7 +24,7 @@
         <section class="form-area">
           <form action="/cadastroCliente" method="POST" novalidate>
             <h1 id="titulo-cadastro" class="form-title">
-              Cadastrar no Healthy Safely
+              Cadastrar como Cliente
             </h1>
 
             <a
@@ -32,14 +33,14 @@
               role="button"
               aria-label="Cadastrar com Google"
             >
-              <i class="bi bi-google icone-google"></i>
-              <span>Continuar com Google</span>
+              <i class="bi bi-google"></i>
+              <p>Continuar com Google</p>
             </a>
 
             <div class="or" aria-hidden="true">ou</div>
 
             <article class="form-group">
-              <label for="email" class="textos">E-mail</label>
+              <label for="email" class="inputs">E-mail</label>
               <input
                 id="email"
                 name="email"
@@ -52,15 +53,15 @@
               <span class="msg-erro"
                 ><%= msgErro && msgErro.email ? msgErro.email : '' %></span
               >
+              <p class="small">
+                Digite um e-mail válido. Ele será usado para login e recuperação
+                de conta.
+              </p>
             </article>
-            <p class="small">
-              Digite um e-mail válido. Ele será usado para login e recuperação
-              de conta.
-            </p>
 
             <article class="form-duplo">
               <article class="form-group">
-                <label for="senha" class="textos">Senha</label>
+                <label for="senha" class="inputs">Senha</label>
                 <article class="campo-senha">
                   <input
                     id="senha"
@@ -82,10 +83,14 @@
                 <span class="msg-erro"
                   ><%= msgErro && msgErro.senha ? msgErro.senha : '' %></span
                 >
+                <p class="small">
+                  Senha deve conter pelo menos 8 caracteres incluindo numeros,
+                  caracteres especiais,letra maiuscula e minuscula.
+                </p>
               </article>
 
               <article class="form-group">
-                <label for="confirmarSenha" class="textos"
+                <label for="confirmarSenha" class="inputs"
                   >Confirmar Senha</label
                 >
                 <article class="campo-senha">
@@ -110,20 +115,13 @@
                   ><%= msgErro && msgErro.confirmarSenha ?
                   msgErro.confirmarSenha : '' %></span
                 >
+                <p class="small">Digite novamente sua senha para confirmar.</p>
               </article>
             </article>
 
             <article class="form-duplo">
-              <p class="small">
-                Senha deve conter pelo menos 8 caracteres incluindo numeros e
-                caracteres especiais.
-              </p>
-              <p class="small">Digite novamente sua senha para confirmar.</p>
-            </article>
-
-            <article class="form-duplo">
               <article class="form-group">
-                <label for="nome" class="textos">Nome Completo</label>
+                <label for="nome" class="inputs">Nome Completo</label>
                 <input
                   id="nome"
                   name="nome"
@@ -136,10 +134,14 @@
                 <span class="msg-erro"
                   ><%= msgErro && msgErro.nome ? msgErro.nome : '' %></span
                 >
+
+                <p class="small">
+                  Nome deve conter entre 3 e 50 caracteres.(somente letras).
+                </p>
               </article>
 
               <article class="form-group">
-                <label for="nomeusuario" class="textos">Nome de Usuário</label>
+                <label for="nomeusuario" class="inputs">Nome de Usuário</label>
                 <input
                   id="nomeusuario"
                   name="nomeusuario"
@@ -153,17 +155,11 @@
                   ><%= msgErro && msgErro.nomeusuario ? msgErro.nomeusuario : ''
                   %></span
                 >
+                <p class="small">
+                  Nome de usuário deve conter apenas letras, números, hífen e
+                  underscore.
+                </p>
               </article>
-            </article>
-
-            <article class="form-duplo">
-              <p class="small">
-                Nome deve conter entre 3 e 50 caracteres.(somente letras).
-              </p>
-              <p class="small">
-                Nome de usuário deve conter apenas letras, números, hífen e
-                underscore.
-              </p>
             </article>
 
             <article class="actions">
@@ -171,9 +167,9 @@
             </article>
 
             <p class="small">
-              Quer se tornar um colaborador?
-              <a href="/cadastroColaborador" class="link-cadastro"
-                >Cadastre-se como um colaborador!</a
+              Quer se tornar um profissional no nosso site?
+              <a href="/cadastroProfissional" class="link-cadastro"
+                >Cadastre-se como um Profissional!</a
               >
             </p>
 
