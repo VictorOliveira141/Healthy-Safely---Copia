@@ -1,0 +1,523 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthy Safely - Ajuda</title>
+    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="../css/ajuda.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <%- include ('../partials/header.ejs') %>
+    <!---->
+    <%- include('../partials/menu-inferior.ejs') %>
+
+    <main class="ajuda-container">
+      <aside class="ajuda-aside">
+        <h1>Ajuda</h1>
+
+        <ul>
+          <li data-section="comecando">
+            <i class="fa-solid fa-rocket"></i>
+            <h2>Primeiros passos</h2>
+          </li>
+          <li data-section="faq">
+            <i class="fa-solid fa-question"></i>
+            <h2>Dúvidas frequentes</h2>
+          </li>
+          <li data-section="problemas">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <h2>Problemas técnicos</h2>
+          </li>
+          <li data-section="contato">
+            <i class="fa-solid fa-envelope"></i>
+            <h2>Suporte</h2>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="ajuda-conteudo">
+        <!-- SEÇÃO 1 -->
+        <div id="comecando" class="secao ativa">
+          <h2>Primeiros passos</h2>
+
+          <!-- PRIMEIROS PASSOS -->
+          <div class="accordion-item">
+            <button class="accordion-header">Primeiros passos</button>
+            <div class="accordion-content">
+              <p>
+                Para começar sua jornada, basta criar sua conta e acessar o
+                sistema. Após o login, você terá acesso às suas tarefas diárias
+                personalizadas.
+              </p>
+
+              <ol>
+                <li>
+                  <strong><a href="/cadastroCliente">Crie sua conta</a></strong>
+                  com seus dados básicos
+                </li>
+                <li>
+                  <strong><a href="/login">Faça login</a></strong> para acessar
+                  sua área
+                </li>
+                <li>
+                  <strong><a href="/tarefas">Visualize suas tarefas</a></strong>
+                  disponíveis
+                </li>
+                <li><strong>Complete tarefas</strong> ao longo do dia</li>
+                <li>
+                  <strong>Marque como concluídas</strong> para registrar
+                  progresso
+                </li>
+              </ol>
+
+              <p>
+                Tudo foi pensado para ser simples e rápido, para que você foque
+                no mais importante: construir hábitos saudáveis.
+              </p>
+            </div>
+          </div>
+
+          <!-- SISTEMA -->
+          <div class="accordion-item">
+            <button class="accordion-header">Como o sistema funciona</button>
+            <div class="accordion-content">
+              <p>
+                O sistema transforma suas ações diárias em progresso visível,
+                incentivando consistência e evolução contínua.
+              </p>
+
+              <ul>
+                <li>
+                  <strong> Tarefas:</strong> representam hábitos como beber
+                  água, se exercitar ou cuidar da saúde. Cada tarefa possui um
+                  nível de dificuldade (fácil, médio, difícil).
+                </li>
+
+                <li>
+                  <strong> XP (Experiência):</strong> ao completar tarefas, você
+                  ganha pontos. Tarefas mais difíceis concedem mais XP.
+                </li>
+
+                <li>
+                  <strong> Níveis:</strong> conforme acumula XP, você sobe de
+                  nível. Isso representa sua evolução ao longo do tempo.
+                </li>
+
+                <li>
+                  <strong> Streak (Sequência):</strong> completar tarefas
+                  diariamente cria uma sequência de dias. Manter essa sequência
+                  é essencial para formar hábitos sólidos.
+                </li>
+
+                <li>
+                  <strong> Medalhas:</strong> você desbloqueia conquistas ao
+                  atingir marcos importantes, como completar várias tarefas ou
+                  manter consistência por dias seguidos.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- PROGRESSO -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Como acompanhar seu progresso
+            </button>
+            <div class="accordion-content">
+              <p>
+                Seu progresso é atualizado automaticamente conforme você
+                completa tarefas.
+              </p>
+
+              <ul>
+                <li>Seu XP total aumenta;</li>
+                <li>Seu nível evolui com o tempo;</li>
+                <li>Sua sequência diária é mantida ou reiniciada;</li>
+                <li>Novas medalhas são desbloqueadas;</li>
+              </ul>
+
+              <p>
+                Acompanhar esses indicadores ajuda você a visualizar sua
+                evolução e manter a motivação.
+              </p>
+            </div>
+          </div>
+
+          <!-- HÁBITOS -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Construindo hábitos de verdade
+            </button>
+            <div class="accordion-content">
+              <p>
+                A mudança não acontece de uma vez. Este sistema foi criado para
+                incentivar progresso gradual e sustentável.
+              </p>
+
+              <ul>
+                <li>Comece com tarefas simples e aumente aos poucos;</li>
+                <li>Evite sobrecarga: menos é mais no início;</li>
+                <li>Se falhar um dia, recomece no próximo;</li>
+                <li>Consistência é mais importante que intensidade;</li>
+              </ul>
+
+              <p>
+                Pequenas ações feitas todos os dias geram resultados reais ao
+                longo do tempo.
+              </p>
+            </div>
+          </div>
+
+          <!-- MOTIVAÇÃO -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Dicas para manter a consistência
+            </button>
+            <div class="accordion-content">
+              <ul>
+                <li>Defina horários fixos para suas tarefas;</li>
+                <li>Use lembretes para não esquecer;</li>
+                <li>Comemore pequenas conquistas;</li>
+                <li>Evite tentar mudar tudo de uma vez;</li>
+              </ul>
+
+              <p>
+                Lembre-se: o objetivo não é perfeição, e sim evolução contínua.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 2 -->
+        <div id="faq" class="secao">
+          <h2>Perguntas Frequentes</h2>
+
+          <!-- SENHA -->
+          <div class="accordion-item">
+            <button class="accordion-header">Esqueci minha senha</button>
+            <div class="accordion-content">
+              <p>
+                Caso tenha esquecido sua senha, utilize a opção
+                <strong><a href="#">Recuperar senha</a></strong>
+                na tela de login.
+              </p>
+
+              <p>
+                Você receberá instruções no seu email para redefinir sua senha
+                de forma segura.
+              </p>
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="accordion-item">
+            <button class="accordion-header">Posso alterar meu email?</button>
+            <div class="accordion-content">
+              <p>
+                Sim. Você pode atualizar seu email nas
+                <a href="#">configurações</a> da sua conta.
+              </p>
+
+              <p>
+                Certifique-se de usar um email válido, pois ele é utilizado para
+                login e recuperação de acesso.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAREFAS -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Como marcar uma tarefa como concluída?
+            </button>
+            <div class="accordion-content">
+              <p>
+                Basta clicar no botão ou marcador ao lado da tarefa. Assim que
+                marcada, ela será registrada como concluída e você receberá o XP
+                correspondente.
+              </p>
+            </div>
+          </div>
+
+          <!-- PROGRESSO -->
+          <div class="accordion-item">
+            <button class="accordion-header">Como funciona o progresso?</button>
+            <div class="accordion-content">
+              <p>
+                Seu progresso é baseado no XP acumulado ao completar tarefas.
+              </p>
+
+              <ul>
+                <li>Você ganha XP ao concluir tarefas</li>
+                <li>Seu nível aumenta automaticamente</li>
+                <li>Medalhas são desbloqueadas ao atingir marcos</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- STREAK -->
+          <div class="accordion-item">
+            <button class="accordion-header">O que é streak?</button>
+            <div class="accordion-content">
+              <p>
+                Streak é a quantidade de dias consecutivos em que você completa
+                tarefas.
+              </p>
+
+              <p>
+                Manter sua sequência ativa ajuda a criar consistência e
+                disciplina.
+              </p>
+            </div>
+          </div>
+
+          <!-- PERDER PROGRESSO -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Perco progresso se não completar tarefas?
+            </button>
+            <div class="accordion-content">
+              <p>Você não perde seu XP ou nível.</p>
+
+              <p>
+                Porém, sua sequência (streak) pode ser reiniciada caso você
+                fique um dia sem completar tarefas.
+              </p>
+            </div>
+          </div>
+
+          <!-- MEDALHAS -->
+          <div class="accordion-item">
+            <button class="accordion-header">Como ganho medalhas?</button>
+            <div class="accordion-content">
+              <p>
+                Medalhas são conquistas desbloqueadas ao atingir objetivos
+                específicos, como completar tarefas, manter sequência ou atingir
+                certos marcos.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 3 -->
+        <div id="problemas" class="secao">
+          <h2>Problemas comuns</h2>
+
+          <!-- LOGIN -->
+          <div class="accordion-item">
+            <button class="accordion-header">Não consigo fazer login</button>
+            <div class="accordion-content">
+              <p>Se você não consegue acessar sua conta, tente o seguinte:</p>
+
+              <ul>
+                <li>Verifique se o email e a senha estão corretos</li>
+                <li>Confira se o Caps Lock está ativado</li>
+                <li>Tente redefinir sua senha</li>
+              </ul>
+
+              <p>Se o problema persistir, entre em contato com o suporte.</p>
+            </div>
+          </div>
+
+          <!-- PÁGINA NÃO CARREGA -->
+          <div class="accordion-item">
+            <button class="accordion-header">A página não carrega</button>
+            <div class="accordion-content">
+              <p>Isso pode acontecer por problemas de conexão ou navegador.</p>
+
+              <ul>
+                <li>Atualize a página (F5)</li>
+                <li>Tente acessar em outro navegador</li>
+                <li>Verifique sua conexão com a internet</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- TAREFA NÃO MARCA -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Não consigo marcar uma tarefa
+            </button>
+            <div class="accordion-content">
+              <p>Se uma tarefa não está sendo marcada como concluída:</p>
+
+              <ul>
+                <li>Atualize a página</li>
+                <li>Tente clicar novamente no botão</li>
+                <li>Verifique se há conexão com a internet</li>
+              </ul>
+
+              <p>
+                Caso o erro continue, pode ser um problema temporário do
+                sistema.
+              </p>
+            </div>
+          </div>
+
+          <!-- XP NÃO ATUALIZA -->
+          <div class="accordion-item">
+            <button class="accordion-header">Meu XP não atualizou</button>
+            <div class="accordion-content">
+              <p>O XP pode levar alguns segundos para atualizar.</p>
+
+              <ul>
+                <li>Aguarde alguns instantes</li>
+                <li>Atualize a página</li>
+                <li>Verifique se a tarefa foi realmente concluída</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- STREAK -->
+          <div class="accordion-item">
+            <button class="accordion-header">
+              Minha sequência (streak) sumiu
+            </button>
+            <div class="accordion-content">
+              <p>
+                A sequência é reiniciada caso você fique um dia sem completar
+                tarefas.
+              </p>
+
+              <p>
+                Para evitar isso, tente completar ao menos uma tarefa por dia.
+              </p>
+            </div>
+          </div>
+
+          <!-- ERRO GERAL -->
+          <div class="accordion-item">
+            <button class="accordion-header">O sistema está com erro</button>
+            <div class="accordion-content">
+              <p>Se algo não estiver funcionando corretamente:</p>
+
+              <ul>
+                <li>Atualize a página</li>
+                <li>Limpe o cache do navegador</li>
+                <li>Tente novamente mais tarde</li>
+              </ul>
+
+              <p>
+                Se o problema continuar, recomendamos entrar em contato com o
+                suporte.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div id="contato" class="secao">
+          <h2>Falar com suporte</h2>
+
+          <p>
+            Não encontrou sua resposta? Entre em contato com a gente. Vamos te
+            ajudar o mais rápido possível.
+          </p>
+
+          <form class="form-suporte">
+            <div class="campo">
+              <label>Nome</label>
+              <input type="text" name="nome" placeholder="Seu nome" required />
+            </div>
+
+            <div class="campo">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu email"
+                required
+              />
+            </div>
+
+            <div class="campo">
+              <label>Tipo de problema</label>
+              <select name="tipo">
+                <option value="">Selecione uma opção</option>
+                <option>Problema com login</option>
+                <option>Erro no sistema</option>
+                <option>Dúvida sobre tarefas</option>
+                <option>Outro</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label>Mensagem</label>
+              <textarea
+                name="mensagem"
+                placeholder="Descreva seu problema com o máximo de detalhes possível..."
+                required
+              ></textarea>
+            </div>
+            <p class="info-suporte">⏱️ Tempo médio de resposta: até 24 horas</p>
+            <button type="submit">Enviar mensagem</button>
+          </form>
+        </div>
+      </main>
+    </main>
+
+    <%- include ('../partials/footer.ejs') %>
+
+    <script>
+      const items = document.querySelectorAll("ul li");
+      const secoes = document.querySelectorAll(".secao");
+
+      function ativar(secao) {
+        // troca seção
+        secoes.forEach((s) => s.classList.remove("ativa"));
+
+        const alvo = document.getElementById(secao);
+        if (alvo) {
+          alvo.classList.add("ativa");
+        }
+
+        // troca item ativo
+        items.forEach((i) => i.classList.remove("ativo"));
+
+        const itemAtivo = document.querySelector(`[data-section="${secao}"]`);
+        if (itemAtivo) {
+          itemAtivo.classList.add("ativo");
+        }
+      }
+
+      // clique no menu lateral
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          const secao = item.getAttribute("data-section");
+
+          // muda URL sem recarregar
+          history.pushState(null, "", `?secao=${secao}`);
+
+          ativar(secao);
+        });
+      });
+
+      // abrir via URL (?secao=contato)
+      const params = new URLSearchParams(window.location.search);
+      const secaoInicial = params.get("secao") || "comecando";
+
+      ativar(secaoInicial);
+    </script>
+    <script>
+      document.addEventListener("click", (e) => {
+        const header = e.target.closest(".accordion-header");
+        if (!header) return;
+
+        const content = header.nextElementSibling;
+
+        // Fecha todos os outros
+        document.querySelectorAll(".accordion-content").forEach((c) => {
+          if (c !== content) c.classList.remove("ativo");
+        });
+
+        // Alterna o atual
+        content.classList.toggle("ativo");
+      });
+    </script>
+  </body>
+</html>

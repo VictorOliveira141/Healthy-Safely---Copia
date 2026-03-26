@@ -45,6 +45,9 @@ router.get("/tomarammeutela", (req, res) => {
     res.render("pages/tomarammeutela");
   }
 });
+router.get("/ajuda", (req, res) => {
+  res.render("pages/ajuda");
+});
 
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
 router.get("/progressao", verificarAutenticacao, (req, res) => {
