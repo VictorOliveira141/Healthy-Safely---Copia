@@ -6,6 +6,7 @@
     <title>Healthy Safely</title>
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="../css/perfil.css" />
+    <link rel="stylesheet" href="../css/global.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -15,47 +16,49 @@
     <%- include('../partials/header.ejs') %>
     <!---->
     <%- include('../partials/menu-inferior.ejs') %>
+    <main class="perfil-corpo">
+      <!--PERFIL-->
+      <section class="perfil">
+        <figure class="foto-perfil">
+          <img
+            id="previewPerfil"
+            src="../imagem/user.png"
+            alt="Foto de perfil"
+          />
+          <label for="uploadFoto" class="camera-icon">
+            <i class="bi bi-camera-fill"></i>
+          </label>
 
-    <!--PERFIL-->
-    <header class="perfil">
-      <figure class="foto-perfil">
-        <img id="previewPerfil" src="../imagem/user.png" alt="Foto de perfil" />
-        <label for="uploadFoto" class="camera-icon">
-          <i class="bi bi-camera-fill"></i>
-        </label>
-        
-        <input type="file" id="uploadFoto" accept="image/*" hidden>
-      </figure>
+          <input type="file" id="uploadFoto" accept="image/*" hidden />
+        </figure>
 
-      <section class="info-perfil">
-        <h1><%= usuario.nome.split(' ').slice(0,2).join(' ') %></h1>
-        <h2>@<%= usuario.nomeusuario %></h2>
-        <p class="seguidores">
-          <span><%= usuario.seguidores || 0 %> seguidores</span> •
-          <span><%= usuario.seguindo || 0 %> seguindo</span>
-        </p>
+        <section class="info-perfil">
+          <h1><%= usuario.nome.split(' ').slice(0,2).join(' ') %></h1>
+          <h2>@<%= usuario.nomeusuario %></h2>
+          <p class="seguidores">
+            <span><%= usuario.seguidores || 0 %> seguidores</span> •
+            <span><%= usuario.seguindo || 0 %> seguindo</span>
+          </p>
+        </section>
+
+        <article class="streak">
+          <h2>Streak</h2>
+          <p>
+            <%= usuario.streak || 0 %> dias <i class="fa-solid fa-fire"></i>
+          </p>
+        </article>
       </section>
 
-      <article class="streak">
-        <h2>Streak</h2>
-        <p><%= usuario.streak || 0 %> dias <i class="fa-solid fa-fire"></i></p>
-      </article>
-    </header>
-
-    <main class="perfil-corpo">
       <!--RANK-->
       <section class="rank-container">
-        <h2><i class="fa-solid fa-ranking-star"></i> Rank Atual</h2>
+        <h2><i class="fa-solid fa-ranking-star"></i> Nível Atual</h2>
         <section class="rank-info">
           <span class="rank-atual"
-            ><i class="fa-solid fa-trophy" style="color: #a67b5b"></i> Bronze
-            I</span
-          >
+            ><i class="fa-solid fa-star"></i> Nivel 1
+          </span>
           <span class="rank-proximo"
-            >Próximo:
-            <i class="fa-solid fa-trophy" style="color: #a67b5b"></i> Bronze
-            II</span
-          >
+            >Próximo: <i class="fa-solid fa-star"></i> Nivel 2
+          </span>
         </section>
 
         <section class="barra-rank">
@@ -66,6 +69,42 @@
         <p class="rank-detalhe">
           Faltam <%= 500 - (usuario.ranked || 0) %> XP para subir de rank
         </p>
+      </section>
+
+      <section class="calendario">
+        <section class="calendario-wrapper">
+          <!-- CALENDÁRIO -->
+          <article class="calendario-inner">
+            <article class="semana">
+              <div>Dom</div>
+              <div>Seg</div>
+              <div>Ter</div>
+              <div>Qua</div>
+              <div>Qui</div>
+              <div>Sex</div>
+              <div>Sáb</div>
+            </article>
+
+            <div class="dias" id="dias"></div>
+          </article>
+
+          <!-- BARRA DE PROGRESSO -->
+          <article class="progress-vertical">
+            <span class="data">01/03</span>
+
+            <div class="bolinhas">
+              <div class="item">
+                <div class="bolinha ativa"></div>
+                <span>Beba 3L de água</span>
+              </div>
+
+              <div class="item">
+                <div class="bolinha"></div>
+                <span>Dormir antes das 23h </span>
+              </div>
+            </div>
+          </article>
+        </section>
       </section>
 
       <!-- Estatísticas -->
@@ -116,47 +155,96 @@
           </article>
         </section>
       </section>
-    </main>
 
-    <footer class="perfil-footer">
-      <section class="central-conta">
-        <h2><i class="fa-solid fa-user"></i> Central da Conta</h2>
-        <article class="perfil-botoes">
-          <p><i class="fa-solid fa-gear"></i> Configurações</p>
-          <p><i class="fa-solid fa-shield-halved"></i> Privacidade</p>
-          <p><i class="fa-solid fa-bell"></i> Notificações</p>
-          <p><i class="fa-solid fa-heart"></i> Ajuda</p>
-          <a href="/logout"
-            ><p>
+      <section class="perfil-footer">
+        <section class="central-conta">
+          <h2><i class="fa-solid fa-user"></i> Central da Conta</h2>
+          <article class="perfil-botoes">
+            <button onclick="window.location.href = '/configuracoes'">
+              <i class="fa-solid fa-gear"></i> Configurações
+            </button>
+            <button onclick="window.location.href = '/privacidade'">
+              <i class="fa-solid fa-shield-halved"></i> Privacidade
+            </button>
+            <button onclick="window.location.href = '/notificacoes'">
+              <i class="fa-solid fa-bell"></i> Notificações
+            </button>
+            <button onclick="window.location.href = '/ajuda'">
+              <i class="fa-solid fa-heart"></i> Ajuda
+            </button>
+            <button onclick="window.location.href = '/logout'">
               <i class="fa-solid fa-right-from-bracket"></i> Sair da Conta
-            </p></a
-          >
-        </article>
+            </button>
+          </article>
+        </section>
       </section>
-    </footer>
+    </main>
 
     <%- include('../partials/footer.ejs') %>
     <script>
-const input = document.getElementById("uploadFoto");
-const img = document.getElementById("previewPerfil");
+      const input = document.getElementById("uploadFoto");
+      const img = document.getElementById("previewPerfil");
 
-img.addEventListener("click", () => {
-  input.click();
-});
+      img.addEventListener("click", () => {
+        input.click();
+      });
 
-input.addEventListener("change", function () {
-  const file = this.files[0];
+      input.addEventListener("change", function () {
+        const file = this.files[0];
 
-  if (file) {
-    const reader = new FileReader();
+        if (file) {
+          const reader = new FileReader();
 
-    reader.onload = function (e) {
-      img.src = e.target.result;
-    };
+          reader.onload = function (e) {
+            img.src = e.target.result;
+          };
 
-    reader.readAsDataURL(file);
-  }
-});
-</script>
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+    <script>
+      const diasContainer = document.getElementById("dias");
+
+      // EXEMPLO (depois você puxa do banco)
+      const diasFeitos = [1, 2, 3, 4, 5, 6, 7];
+
+      const hoje = new Date().getDate();
+      const totalDias = new Date().getDate(); // pode ajustar pro mês completo
+
+      let streak = 0;
+
+      // calcula streak
+      for (let i = hoje; i > 0; i--) {
+        if (diasFeitos.includes(i)) {
+          streak++;
+        } else {
+          break;
+        }
+      }
+
+      // cria calendário
+      for (let i = 1; i <= 30; i++) {
+        const div = document.createElement("div");
+        div.classList.add("dia");
+        div.innerText = i;
+
+        if (diasFeitos.includes(i)) {
+          div.classList.add("concluido");
+        }
+
+        if (i === hoje) {
+          div.classList.add("hoje");
+        }
+
+        // marca dias da streak
+        if (i > hoje - streak && i <= hoje) {
+          div.classList.add("streak");
+          div.innerHTML = "🔥";
+        }
+
+        diasContainer.appendChild(div);
+      }
+    </script>
   </body>
 </html>

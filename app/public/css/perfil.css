@@ -1,22 +1,4 @@
-/* Definição de variáveis CSS para cores e estilos reutilizáveis EM TODO O SITE */
-:root {
-  --primary-color: #fff; /* Branco (60% do site) */
-  --secondary-color: #0c4f43; /* Verde Escuro (30% do site)   */
-  --accent-color: #8ca700; /* Verde grama (10% do site) */
-  --background-light: #f7f9fb; /* Branco claro para Titulos */
-  --background-dark: #dde2e7; /* Branco escuro para textos */
-  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
-  --border-radius: 12px;
-}
-a
-/* Reset & Global Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+/* ============ containers =========== */
 body {
   background: var(--background-light);
   color: var(--secondary-color);
@@ -35,7 +17,7 @@ body {
   background-color: var(--background-light);
 }
 .foto-perfil {
-    position: relative;
+  position: relative;
   margin: 0;
   flex-shrink: 0;
 }
@@ -47,13 +29,14 @@ body {
   border: 3px solid var(--primary-color);
   box-shadow: var(--shadow-subtle);
   max-width: 100%;
+  background-color: var(--background-dark);
 }
 
-.camera-icon{
+.camera-icon {
   position: absolute;
   bottom: 0;
   right: 0;
-  background-color: #0c4f43;
+  background-color: var(--accent-color);
   color: white;
   border-radius: 50%;
   padding: 8px;
@@ -67,13 +50,13 @@ body {
   gap: 4px;
 }
 .info-perfil h1 {
-  font-size: 1.8rem;
+  font-size: var(--font-title);
   margin: 0;
   color: var(--secondary-color);
   font-weight: 600;
 }
 .info-perfil h2 {
-  font-size: 0.9rem;
+  font-size: var(--font-text);
   margin: 4px 0 10px 0;
   color: var(--secondary-color);
   font-weight: 500;
@@ -84,7 +67,7 @@ body {
   gap: 12px;
   margin: 0;
   color: var(--secondary-color);
-  font-size: 0.95rem;
+  font-size: var(--font-text);
 }
 .streak {
   color: var(--secondary-color);
@@ -94,7 +77,7 @@ body {
   margin-left: auto;
 }
 .streak h2 {
-  font-size: 0.75rem;
+  font-size: var(--font-text);
   margin: 0 0 6px 0;
   font-weight: 600;
   text-transform: uppercase;
@@ -102,7 +85,7 @@ body {
   opacity: 0.95;
 }
 .streak p {
-  font-size: 1.4rem;
+  font-size: var(--font-title);
   margin: 0;
   font-weight: 700;
 }
@@ -130,7 +113,7 @@ body {
 }
 .rank-container h2 {
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: var(--font-title);
   font-weight: bold;
 }
 .rank-info {
@@ -148,8 +131,12 @@ body {
   padding: 10px 15px;
   margin-left: 2px;
   border-radius: 10px;
-  font-size: 1rem;
+  font-size: var(--font-text);
   backdrop-filter: blur(10px);
+}
+.rank-info .rank-atual {
+  background-color: var(--accent-color);
+  color: var(--background-light);
 }
 .barra-rank {
   width: 100%;
@@ -172,16 +159,116 @@ body {
   transition: width 0.5s ease;
 }
 .rank-detalhe {
-  font-size: 0.95rem;
+  font-size: var(--font-text);
   margin-top: 10px;
   color: var(--secondary-color);
   font-weight: 500;
 }
 .rank-faltando {
-  font-size: 0.95rem;
+  font-size: var(--font-text);
   margin-top: 8px;
   color: var(--accent-color);
   font-weight: bold;
+}
+
+/* calendario e tarefas atuais */
+.calendario {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px 0;
+  background: var(--background-light);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+}
+.calendario-wrapper {
+  display: flex;
+  justify-content: baseline;
+  align-items: flex-start;
+  gap: 30px;
+}
+.calendario-inner {
+  max-width: 420px;
+  padding-left: 30px;
+}
+.semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+}
+.dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.dia {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  transition: 0.2s;
+}
+.dia:hover {
+  transform: scale(1.05);
+}
+.progress-vertical {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bolinhas {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 10px;
+}
+.bolinhas::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #ddd;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bolinha {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  z-index: 1;
+  transition: 0.2s;
+}
+.bolinha.ativa {
+  background: var(--accent-color);
+  box-shadow: 0 0 6px rgba(88, 204, 2, 0.5);
+}
+.item span {
+  font-size: 13px;
+  color: #555;
+}
+.data {
+  font-size: 12px;
+  color: #999;
+}
+.item:hover .bolinha {
+  transform: scale(1.2);
 }
 
 /* Statistics Section */
@@ -206,15 +293,16 @@ body {
   transform: translateY(-5px);
 }
 .stat h3 {
-  font-size: 1.1rem;
+  font-size: var(--font-title);
   margin-bottom: 10px;
   font-weight: bold;
 }
 .stat p {
-  font-size: 1.5rem;
+  font-size: var(--font-icon);
   font-weight: bold;
 }
 .stat p i {
+  color: var(--accent-color);
   margin-left: 5px;
 }
 
@@ -227,6 +315,11 @@ body {
   margin: 5px auto;
   box-shadow: var(--shadow-subtle);
   text-align: baseline;
+}
+.medals h2 {
+  margin-bottom: 20px;
+  font-size: var(--font-title);
+  font-weight: bold;
 }
 .medal-list {
   display: flex;
@@ -243,7 +336,7 @@ body {
   height: auto;
 }
 .medals p {
-  font-size: 1rem;
+  font-size: var(--font-text);
   margin-bottom: 20px;
   font-weight: bold;
   color: var(--secondary-color);
@@ -251,13 +344,6 @@ body {
 
 /* Footer & Logout Button */
 .perfil-footer {
-  max-width: 1200px;
-  margin: 10px auto 0;
-  padding: 18px 20px;
-  border-bottom: 2px solid var(--background-dark);
-  background-color: var(--background-light);
-}
-.central-conta {
   padding: 25px;
   border-radius: 15px;
   color: var(--secondary-color);
@@ -266,37 +352,50 @@ body {
   box-shadow: var(--shadow-subtle);
   text-align: baseline;
 }
+.central-conta {
+  border-radius: 15px;
+  color: var(--secondary-color);
+  max-width: 100%;
+
+  text-align: baseline;
+}
+.central-conta h2 {
+  margin-bottom: 20px;
+  font-size: var(--font-title);
+  font-weight: bold;
+}
 .perfil-botoes {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
   gap: 10px;
 }
-.perfil-botoes p {
+.perfil-botoes button {
   display: flex;
   align-items: center;
+  background-color: var(--background-light);
   gap: 12px;
   padding: 12px 16px;
-  background: var(--background-light);
+  border: 1px solid var(--background-dark);
   border-radius: var(--border-radius);
   cursor: pointer;
-  font-size: 20px;
+  font-size: var(--font-text);
   color: var(--secondary-color);
   transition: 0.3s;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   min-height: 44px;
 }
-.perfil-botoes p:hover {
+.perfil-botoes button:hover {
   transform: translateX(5px);
 }
 .perfil-botoes i {
   font-size: 1rem;
   color: var(--secondary-color);
 }
-.perfil-botoes p:last-child {
+.perfil-botoes button:last-child {
   color: red;
 }
-.perfil-botoes p:last-child i {
+.perfil-botoes button:last-child i {
   color: red;
 }
 .perfil-botoes a {
@@ -304,385 +403,132 @@ body {
 }
 
 /* Responsividade */
-@media (max-width: 1200px) {
-    .perfil {
-        max-width: 1000px;
-        padding: 20px 15px;
-        gap: 15px;
-    }
-    .foto-perfil img {
-        width: 100px;
-        height: 100px;
-    }
-    .info-perfil h1 {
-        font-size: 1.6rem;
-    }
-    .streak p {
-        font-size: 1.2rem;
-    }
-    .perfil-corpo {
-        max-width: 1000px;
-        padding: 20px 15px;
-    }
-    .rank-container {
-        padding: 20px;
-        margin: 25px auto;
-    }
-    .rank-container h2 {
-        font-size: 1.4rem;
-    }
-    .stats {
-        gap: 15px;
-    }
-    .stat {
-        padding: 18px;
-        min-width: 180px;
-    }
-    .medals {
-        padding: 18px;
-    }
-    .medal-list {
-        gap: 12px;
-    }
-    .perfil-footer {
-        max-width: 1000px;
-        padding: 15px;
-    }
-    .central-conta {
-        padding: 20px;
-        margin: 25px auto;
-    }
-    .perfil-botoes p {
-        font-size: 18px;
-        padding: 10px 14px;
-    }
-}
-
-@media (max-width: 992px) {
-    .perfil {
-        max-width: 90%;
-        padding: 18px 12px;
-        gap: 12px;
-    }
-    .foto-perfil img {
-        width: 90px;
-        height: 90px;
-    }
-    .info-perfil h1 {
-        font-size: 1.5rem;
-    }
-    .info-perfil h2 {
-        font-size: 0.85rem;
-    }
-    .seguidores {
-        font-size: 0.9rem;
-        gap: 10px;
-    }
-    .streak h2 {
-        font-size: 0.7rem;
-    }
-    .streak p {
-        font-size: 1.1rem;
-    }
-    .perfil-corpo {
-        max-width: 90%;
-        padding: 18px 12px;
-    }
-    .rank-container {
-        padding: 18px;
-        margin: 20px auto;
-        border-radius: 12px;
-    }
-    .rank-container h2 {
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-    }
-    .rank-info {
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-    .rank-info span {
-        padding: 8px 12px;
-        font-size: 0.95rem;
-    }
-    .barra-rank {
-        height: 22px;
-        margin: 15px 0;
-    }
-    .rank-detalhe {
-        font-size: 0.9rem;
-    }
-    .stats {
-        gap: 12px;
-    }
-    .stat {
-        padding: 15px;
-        min-width: 160px;
-    }
-    .stat h3 {
-        font-size: 1rem;
-    }
-    .stat p {
-        font-size: 1.3rem;
-    }
-    .medals {
-        padding: 15px;
-        border-radius: 12px;
-    }
-    .medals h2 {
-        font-size: 1.3rem;
-    }
-    .medal-list {
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    .medal-item {
-        align-items: center;
-    }
-    .medals p {
-        font-size: 0.95rem;
-    }
-    .perfil-footer {
-        max-width: 90%;
-        padding: 12px;
-    }
-    .central-conta {
-        padding: 18px;
-        margin: 20px auto;
-        border-radius: 12px;
-    }
-    .central-conta h2 {
-        font-size: 1.3rem;
-    }
-    .perfil-botoes {
-        gap: 8px;
-    }
-    .perfil-botoes p {
-        font-size: 16px;
-        padding: 8px 12px;
-    }
-}
-
 @media (max-width: 768px) {
-    .perfil {
-        max-width: 95%;
-        padding: 15px 10px;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
-    .foto-perfil img {
-        width: 80px;
-        height: 80px;
-    }
-    .info-perfil {
-        align-items: center;
-        text-align: center;
-        flex: 1;
-    }
-    .info-perfil h1 {
-        font-size: 1.4rem;
-    }
-    .info-perfil h2 {
-        font-size: 0.8rem;
-        margin: 2px 0 8px 0;
-    }
-    .seguidores {
-        justify-content: center;
-        font-size: 0.85rem;
-        gap: 8px;
-    }
-    .streak {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-    .streak h2 {
-        font-size: 0.65rem;
-    }
-    .streak p {
-        font-size: 1rem;
-    }
-    .perfil-corpo {
-        max-width: 95%;
-        padding: 15px 10px;
-    }
-    .rank-container {
-        padding: 15px;
-        margin: 15px auto;
-        border-radius: 10px;
-    }
-    .rank-container h2 {
-        font-size: 1.2rem;
-        margin-bottom: 12px;
-    }
-    .rank-info {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 12px;
-    }
-    .rank-info span {
-        padding: 6px 10px;
-        font-size: 0.9rem;
-    }
-    .barra-rank {
-        height: 20px;
-        margin: 12px 0;
-    }
-    .rank-detalhe {
-        font-size: 0.85rem;
-    }
-    .stats {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 30px;
-    }
-    .stat {
-        padding: 12px;
-        min-width: unset;
-    }
-    .stat h3 {
-        font-size: 0.95rem;
-    }
-    .stat p {
-        font-size: 1.2rem;
-    }
-    .medals {
-        padding: 12px;
-        border-radius: 10px;
-    }
-    .medals h2 {
-        font-size: 1.2rem;
-    }
-    .medal-list {
-        gap: 8px;
-        justify-content: center;
-    }
-    .medal-item {
-        margin-bottom: 5px;
-    }
-    .medals p {
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-    .perfil-footer {
-        max-width: 95%;
-        padding: 10px;
-    }
-    .central-conta {
-        padding: 15px;
-        margin: 15px auto;
-        border-radius: 10px;
-    }
-    .central-conta h2 {
-        font-size: 1.2rem;
-    }
-    .perfil-botoes {
-        gap: 6px;
-    }
-    .perfil-botoes p {
-        font-size: 14px;
-        padding: 6px 10px;
-    }
+  .perfil {
+    max-width: 95%;
+    padding: 15px 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foto-perfil img {
+    width: 80px;
+    height: 80px;
+  }
+  .info-perfil h1 {
+    font-size: 1.4rem;
+  }
+  .info-perfil h2 {
+    font-size: 0.8rem;
+    margin: 2px 0 8px 0;
+  }
+  .seguidores {
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+  .perfil-corpo {
+    max-width: 95%;
+    padding: 15px 10px;
+  }
 }
-
 @media (max-width: 576px) {
-    .perfil {
-        max-width: 98%;
-        padding: 12px 8px;
-        gap: 8px;
-    }
-    .foto-perfil img {
-        width: 70px;
-        height: 70px;
-    }
-    .info-perfil h1 {
-        font-size: 1.2rem;
-    }
-    .info-perfil h2 {
-        font-size: 0.75rem;
-        margin: 2px 0 6px 0;
-    }
-    .seguidores {
-        font-size: 0.8rem;
-        gap: 6px;
-    }
-    .streak h2 {
-        font-size: 0.6rem;
-    }
-    .streak p {
-        font-size: 0.9rem;
-    }
-    .perfil-corpo {
-        max-width: 98%;
-        padding: 12px 8px;
-    }
-    .rank-container {
-        padding: 12px;
-        margin: 12px auto;
-        border-radius: 8px;
-    }
-    .rank-container h2 {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-    }
-    .rank-info {
-        gap: 8px;
-        margin-bottom: 10px;
-    }
-    .rank-info span {
-        padding: 5px 8px;
-        font-size: 0.85rem;
-    }
-    .barra-rank {
-        height: 18px;
-        margin: 10px 0;
-    }
-    .rank-detalhe {
-        font-size: 0.8rem;
-    }
-    .stats {
-        gap: 8px;
-        margin-bottom: 25px;
-    }
-    .stat {
-        padding: 10px;
-    }
-    .stat h3 {
-        font-size: 0.9rem;
-    }
-    .stat p {
-        font-size: 1.1rem;
-    }
-    .medals {
-        padding: 10px;
-        border-radius: 8px;
-    }
-    .medals h2 {
-        font-size: 1.1rem;
-    }
-    .medal-list {
-        gap: 6px;
-    }
-    .medals p {
-        font-size: 0.85rem;
-        margin-bottom: 12px;
-    }
-    .perfil-footer {
-        max-width: 98%;
-        padding: 8px;
-    }
-    .central-conta {
-        padding: 12px;
-        margin: 12px auto;
-        border-radius: 8px;
-    }
-    .central-conta h2 {
-        font-size: 1.1rem;
-    }
-    .perfil-botoes {
-        gap: 4px;
-    }
-    .perfil-botoes p {
-        font-size: 12px;
-        padding: 5px 8px;
-    }
+  .perfil {
+    max-width: 98%;
+    padding: 12px 8px;
+    gap: 8px;
+  }
+  .foto-perfil img {
+    width: 70px;
+    height: 70px;
+  }
+  .info-perfil h1 {
+    font-size: 1.2rem;
+  }
+  .info-perfil h2 {
+    font-size: 0.75rem;
+    margin: 2px 0 6px 0;
+  }
+  .seguidores {
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+  .streak h2 {
+    font-size: 0.6rem;
+  }
+  .streak p {
+    font-size: 0.9rem;
+  }
+  .perfil-corpo {
+    max-width: 98%;
+    padding: 12px 8px;
+  }
+  .rank-container {
+    padding: 12px;
+    margin: 12px auto;
+    border-radius: 8px;
+  }
+  .rank-container h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  .rank-info {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .rank-info span {
+    padding: 5px 8px;
+    font-size: 0.85rem;
+  }
+  .barra-rank {
+    height: 18px;
+    margin: 10px 0;
+  }
+  .rank-detalhe {
+    font-size: 0.8rem;
+  }
+  .stats {
+    gap: 8px;
+    margin-bottom: 25px;
+  }
+  .stat {
+    padding: 10px;
+  }
+  .stat h3 {
+    font-size: 0.9rem;
+  }
+  .stat p {
+    font-size: 1.1rem;
+  }
+  .medals {
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .medals h2 {
+    font-size: 1.1rem;
+  }
+  .medal-list {
+    gap: 6px;
+  }
+  .medals p {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+  .perfil-footer {
+    max-width: 98%;
+    padding: 8px;
+  }
+  .central-conta {
+    padding: 12px;
+    margin: 12px auto;
+    border-radius: 8px;
+  }
+  .central-conta h2 {
+    font-size: 1.1rem;
+  }
+  .perfil-botoes {
+    gap: 4px;
+  }
+  .perfil-botoes p {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
 }
