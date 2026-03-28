@@ -1,9 +1,8 @@
 /* ============ CONTAINER PRINCIPAL ============ */
 footer {
-  background: #17594a;
-  color: white;
+  background: var(--secondary-color);
+  color: var(--fundoescuro);
   padding: 40px 20px 50px;
-  border-top: 4px solid #052205;
   font-family: Arial, sans-serif;
   margin-top: 5%;
   align-items: center;
@@ -28,7 +27,7 @@ a {
 .footer-text h2 {
   align-items: baseline;
   font-size: var(--font-title);
-  color: var(--background-light);
+  color: var(--fundoescuro);
   border-left: 4px solid var(--accent-color);
   padding: 5px;
   border-radius: 6px;
@@ -38,7 +37,7 @@ a {
 .footer-text p {
   max-width: 1000px;
   font-size: var(--font-text);
-  color: var(--background-dark);
+  color: var(--fundoescuro);
   line-height: 1.5;
   margin-bottom: 10px;
 }
@@ -53,7 +52,7 @@ a {
 
 .footer-col h2 {
   font-size: var(--font-title);
-  color: var(--background-light);
+  color: var(--fundoescuro);
   border-left: 4px solid var(--accent-color);
   padding: 5px;
   border-radius: 6px;
@@ -63,7 +62,7 @@ a {
 .footer-col a {
   display: block;
   font-size: var(--font-text);
-  color: var(--background-dark);
+  color: var(--fundoescuro);
   line-height: 1.5;
   margin-left: 5px;
   margin-bottom: 2px;
@@ -79,7 +78,7 @@ a {
   text-align: center;
   margin-top: 70px;
   font-size: 18px;
-  color: var(--background-dark);
+  color: var(--fundoescuro);
   margin-bottom: 30px;
 }
 

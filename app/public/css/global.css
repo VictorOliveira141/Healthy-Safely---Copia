@@ -1,23 +1,42 @@
 /* Importação de fonte mais moderna */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
-/* ================ Cores e variáveis globais ============= */
 :root {
-  --primary-color: #fff; /* Branco (60% do site) */
-  --secondary-color: #0c4f43; /* Verde Escuro (30% do site)   */
-  --accent-color: #8ca700; /* Verde grama (10% do site) */
-  --background-light: #f7f9fb; /* Branco claro para Titulos */
-  --background-dark: #dde2e7; /* Branco escuro para textos */
-  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
-  --border-radius: 12px;
-  --text-dark: #0f172a;
-  --muted: #64748b;
-  --white: #ffffff;
+  /* SEPARAÇÃO DAS CORES DO SITE NO GERAL */
+  --primary-color: #fff; /* Branco (60% do site) - para grandes containers */
+  --secondary-color: #0c4f43; /* Verde Escuro (30% do site) - para pequenos containers */
+  --accent-color: #8ca700; /* Verde grama (9% do site) - para icones e links */
+  --accent-color2: #8ca700; /* Verde grama (1% do site) - para icones e links */
+
+  /* separação de cores para textos e botoes */
+  --fundoclaro: #0c4f43; /* Verde escuro para textos com fundo claro */
+  --fundoescuro: #dde2e7; /* Branco para textos com fundo escuro */
+  --botao: #0c4f43; /* Verde escuro para botoes */
+  --botao-hover: #778f01; /* Verde grama para hover de botoes */
+
+  /* separação de font de textos */
   --font-title: 20px;
   --font-text: 13px;
   --font-icon: 15px;
   --small-text: 10px;
+
+  --border-radius: 12px;
+  --text-dark: #0f172a;
+  --muted: #64748b;
+  --white: #ffffff;
+}
+body.dark {
+  /* SEPARAÇÃO DO SITE NUM GERAL */
+  --primary-color: #181c22; /* Preto (60% do site) - para grandes containers */
+  --secondary-color: #181c22; /* Preto (10% do site) - para pequenos containers */
+  --accent-color: #0c4f43; /* Verde grama (10% do site) - para icones e links */
+  --accent-color2: #127563;
+
+  /* separação para textos e botoes */
+  --fundoclaro: #dde2e7; /* Branco para textos no geral */
+  --fundoescuro: #dde2e7; /* Branco para textos no geral */
+  --botao: #0f5f50; /* Verde grama para botoes */
+  --botao-hover: #0c4f43; /* Verde escuro para hover de botoes */
 }
 * {
   margin: 0;

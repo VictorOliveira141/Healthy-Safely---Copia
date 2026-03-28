@@ -1,24 +1,3 @@
-/* Definição de variáveis CSS para cores e estilos reutilizáveis EM TODO O SITE */
-:root {
-  --primary-color: #fff; /* Branco (60% do site) */
-  --secondary-color: #0c4f43; /* Verde Escuro (30% do site)   */
-  --accent-color: #8ca700; /* Verde grama (10% do site) */
-  --background-light: #f7f9fb; /* Branco claro para Titulos */
-  --background-dark: #dde2e7; /* Branco escuro para textos */
-  --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
-  --border-radius: 12px;
-}
-
-/* ================= RESET ============= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-}
 header {
   background: var(--secondary-color);
   color: var(--primary-color);
@@ -31,7 +10,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap; /* força tudo ficar em 1 linha */
   padding: 12px 20px;
   max-width: 1000px;
   margin: 0 auto;
@@ -47,7 +25,6 @@ header {
 }
 .header-logo img {
   height: 60px;
-  width: auto;
   display: block;
   flex-shrink: 0;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
@@ -56,9 +33,8 @@ header {
 /* =========== NAVS =========== */
 .header-nav2 {
   display: flex;
-  justify-content: center; /* em vez de space-between */
-  flex-direction: row;
-  gap: 200px; /* controla a distância real entre eles */
+  justify-content: center;
+  gap: 200px;
   padding: 8px 16px;
   background: var(--secondary-color);
   flex-wrap: wrap;
@@ -66,6 +42,7 @@ header {
 .header-nav2.farmacia {
   gap: 150px;
 }
+
 .nav-spacer {
   display: flex;
   margin-left: 10%;
@@ -73,15 +50,13 @@ header {
 }
 
 .header-nav2 a {
-  color: var(--background-dark);
+  color: var(--fundoescuro);
   font-weight: 500;
   text-decoration: none;
   font-size: 13px;
-  position: relative;
-  padding: 3px 6px; /* antes: 8px 12px */
-  line-height: 1;
+  padding: 3px 6px;
   border-right: 1px solid #d8e6e1d7;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 .header-nav2 a:last-child {
   border-right: none;
@@ -90,45 +65,43 @@ header {
   color: var(--accent-color);
 }
 
-/* ============ ACTIONS (CARRINHO + PERFIL + NOTIFICAÇÕES) ========== */
+/* ============ ACTIONS ========== */
 .header-actions {
   display: flex;
   align-items: center;
-  justify-content: center;
-  /* organizando todos os ícones horizontalmente */
   gap: 12px;
   font-size: 28px;
   flex-shrink: 0;
   margin-right: 100px;
 }
 
-/* ============ PERFIL E NOTIFICAÇÕES ============= */
+/* ============ USER MENU ============= */
 .user-menu {
   position: relative;
 }
-
 .user-menu i {
   cursor: pointer;
-  /* reduzindo tamanho do ícone */
   font-size: 22px;
-  /* reduzindo padding */
   padding: 8px;
-
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 .user-menu a {
   text-decoration: none;
   color: white;
 }
+.user-menu i.notificacao {
+  display: none;
+}
 
+/* Login / cadastro */
 .logar-cadastrar {
   display: flex;
   align-items: center;
   gap: 1px;
-  color: var(--primary-color);
-  border: var(--primary-color) 1px solid;
+  color: var(--fundoescuro);
+  border: 1px solid var(--fundoescuro);
   border-radius: 25px;
-  padding: 1px 1px; /* mais espaço interno */
+  padding: 1px;
 }
 .logar-cadastrar i {
   font-size: 14px;
@@ -138,37 +111,30 @@ header {
 .logar-cadastrar button {
   background: none;
   border: none;
-  color: var(--primary-color);
+  color: var(--fundoescuro);
   cursor: pointer;
   font-size: 12px;
-  padding: 1px 4px; /* espaço extra ao redor do texto */
+  padding: 1px 4px;
   text-decoration: none;
 }
 
-/* Saudação do usuário logado */
-.user-menu i.notificacao {
-  display: none;
-}
-.user-menu i.notificacao {
-  display: none;
-}
+/* Saudação */
 .header-welcome {
   color: #fff;
   font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
 }
-
 .header-welcome strong {
   font-weight: 600;
 }
 
-/* Dropdown de Notificações */
+/* ============ NOTIFICAÇÕES ============= */
 .notification-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
-  background: linear-gradient(135deg, #0c2727 0%, #0a1f1f 100%);
+  background: linear-gradient(135deg, #0c2727, #0a1f1f);
   border-radius: 16px;
   padding: 12px;
   min-width: 250px;
@@ -191,17 +157,17 @@ header {
 }
 .notification-dropdown ul {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 .notification-dropdown li {
-  color: var(--background-light);
+  color: var(--fundoescuro);
   padding: 8px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 14px;
 }
 .notification-dropdown li:last-child {
-  border-bottom: none;
+  border: none;
 }
 .notification-dropdown a {
   display: block;
@@ -210,31 +176,26 @@ header {
   margin-top: 10px;
   color: var(--accent-color);
   text-decoration: none;
-  border: none;
   background: rgba(140, 167, 0, 0.1);
   border-radius: 12px;
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
   text-align: center;
+  transition: 0.3s;
 }
 .notification-dropdown a:hover {
-  background-color: rgba(140, 167, 0, 0.2);
+  background: rgba(140, 167, 0, 0.2);
   transform: translateY(-2px);
 }
 
 /* =========== MODAL =========== */
 .modal {
+  position: fixed;
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
   z-index: 2000;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
   background: rgba(12, 12, 12, 0.8);
   backdrop-filter: blur(8px);
 }
@@ -242,8 +203,8 @@ header {
   display: none;
 }
 .modal-content {
-  background: #fff;
-  color: #333;
+  background: var(--primary-color);
+  color: var(--fundoclaro);
   padding: 40px;
   border-radius: 24px;
   max-width: 420px;
@@ -264,6 +225,7 @@ header {
   }
 }
 .close-btn {
+  color: var(--fundoclaro);
   position: absolute;
   top: 20px;
   right: 20px;
@@ -274,35 +236,24 @@ header {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-.close-btn:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.modal h2 {
-  margin-bottom: 15px;
 }
 
 .btn-cadastro {
   display: block;
   margin: 5px 0;
   padding: 16px 24px;
-  background: linear-gradient(135deg, #0c4f43 0%, #145c4f 100%);
-  color: #fff;
+  background: var(--botao);
+  color: var(--fundoclaro);
   border-radius: 16px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: 0.3s;
   box-shadow: 0 4px 16px rgba(12, 79, 67, 0.3);
 }
 .btn-cadastro:hover {
-  background: linear-gradient(135deg, #145c4f 0%, #17594a 100%);
+  background: var(--botao-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(12, 79, 67, 0.4);
-}
-.titulo-cadastro {
-  font-weight: 600;
-  margin-bottom: 4px;
 }
 .opcoes-cadastro {
   display: flex;
@@ -310,12 +261,11 @@ header {
   gap: 8px;
 }
 
-/* ======================== RESPONSIVIDADE ======================== */
+/* ================= RESPONSIVO ================= */
 @media (max-width: 1280px) {
   .header-nav2 {
     gap: 100px;
     font-size: 11px;
-    white-space: nowrap;
   }
   .nav-spacer {
     margin-left: 5%;
@@ -334,25 +284,19 @@ header {
   }
 }
 @media (max-width: 900px) {
-  .header-nav2 {
-    display: none;
-  }
+  .header-nav2,
   .search-bar {
     display: none;
   }
-  .hamburger {
+  .hamburger,
+  .fundo,
+  .search-bar2 {
     display: flex;
   }
   .user-menu i.notificacao {
     display: flex;
   }
-
-  .fundo,
-  .search-bar2 {
-    display: flex;
-  }
 }
-
 @media (max-width: 768px) {
   .header-welcome {
     display: none;
@@ -364,11 +308,9 @@ header {
     height: 70px;
   }
   .header-actions {
-    margin-right: 0;
-    margin-left: 20px;
+    margin: 0 0 0 20px;
   }
 }
-
 @media (max-width: 470px) {
   .header-logo img {
     height: 40px;
