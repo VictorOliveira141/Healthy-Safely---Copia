@@ -49,7 +49,8 @@ header {
   gap: 20px;
 }
 
-.header-nav2 a {
+.header-nav2 a,
+.header-nav2 button {
   color: var(--fundoescuro);
   font-weight: 500;
   text-decoration: none;
@@ -57,6 +58,11 @@ header {
   padding: 3px 6px;
   border-right: 1px solid #d8e6e1d7;
   transition: 0.2s;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
 }
 .header-nav2 a:last-child {
   border-right: none;
@@ -89,8 +95,16 @@ header {
   text-decoration: none;
   color: white;
 }
-.user-menu i.notificacao {
+.user-menu button.notificacao {
   display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+}
+.user-menu button i {
+  color: white;
 }
 
 /* Login / cadastro */
@@ -149,7 +163,7 @@ header {
   display: none;
 }
 .notification-dropdown h3 {
-  color: var(--primary-color);
+  color: var(--fundoescuro);
   font-size: 16px;
   margin-bottom: 10px;
   padding-bottom: 8px;
@@ -174,7 +188,7 @@ header {
   width: 100%;
   padding: 10px 16px;
   margin-top: 10px;
-  color: var(--accent-color);
+  color: var(--fundoescuro);
   text-decoration: none;
   background: rgba(140, 167, 0, 0.1);
   border-radius: 12px;
@@ -243,13 +257,14 @@ header {
   margin: 5px 0;
   padding: 16px 24px;
   background: var(--botao);
-  color: var(--fundoclaro);
+  color: var(--fundoescuro);
   border-radius: 16px;
   text-decoration: none;
   font-weight: 600;
   transition: 0.3s;
   box-shadow: 0 4px 16px rgba(12, 79, 67, 0.3);
 }
+
 .btn-cadastro:hover {
   background: var(--botao-hover);
   transform: translateY(-2px);
@@ -293,7 +308,7 @@ header {
   .search-bar2 {
     display: flex;
   }
-  .user-menu i.notificacao {
+  .user-menu button.notificacao {
     display: flex;
   }
 }
@@ -301,7 +316,8 @@ header {
   .header-welcome {
     display: none;
   }
-  .user-menu i {
+  .user-menu i,
+  .user {
     font-size: 28px;
   }
   .header-logo img {

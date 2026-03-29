@@ -2,8 +2,14 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Healthy Safely</title>
+    <title>Perfil | Healthy Safely - Hábitos Saudáveis</title>
+
+    <meta
+      name="description"
+      content="Acompanhe seus hábitos saudáveis, progresso, tarefas diárias e evolução no Healthy Safely."
+    />
+
+    <meta name="robots" content="index, follow" />
     <link rel="icon" href="../imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="../css/perfil.css" />
     <link rel="stylesheet" href="../css/global.css" />
@@ -15,18 +21,17 @@
   <body>
     <%- include('../partials/header.ejs') %>
     <!---->
-    <%- include('../partials/menu-inferior.ejs') %>
+    <%- include('../partials/tema.ejs') %>
     <main class="perfil-corpo">
       <!--PERFIL-->
       <section class="perfil">
         <figure class="foto-perfil">
           <img
-            id="previewPerfil"
             src="../imagem/user.png"
-            alt="Foto de perfil"
+            alt="Foto de perfil de <%= usuario.nome %>"
           />
           <label for="uploadFoto" class="camera-icon">
-            <i class="bi bi-camera-fill"></i>
+            <i class="bi bi-camera-fill" aria-hidden="true"></i>
           </label>
 
           <input type="file" id="uploadFoto" accept="image/*" hidden />
@@ -44,31 +49,43 @@
         <article class="streak">
           <h2>Streak</h2>
           <p>
-            <%= usuario.streak || 0 %> dias <i class="fa-solid fa-fire"></i>
+            <%= usuario.streak || 0 %> dias
+            <i class="fa-solid fa-fire" aria-hidden="true"></i>
           </p>
         </article>
       </section>
 
       <!--RANK-->
       <section class="rank-container">
-        <h2><i class="fa-solid fa-ranking-star"></i> Nível Atual</h2>
+        <h2>
+          <i class="fa-solid fa-ranking-star" aria-hidden="true"></i> Nível
+          Atual
+        </h2>
         <section class="rank-info">
           <span class="rank-atual"
-            ><i class="fa-solid fa-star"></i> Nivel 1
+            ><i class="fa-solid fa-star" aria-hidden="true"></i> Nivel 1
           </span>
           <span class="rank-proximo"
-            >Próximo: <i class="fa-solid fa-star"></i> Nivel 2
+            >Próximo: <i class="fa-solid fa-star" aria-hidden="true"></i> Nivel
+            2
           </span>
         </section>
 
         <section class="barra-rank">
-          <section class="barra-preenchimento"></section>
+          <section
+            class="barra-rank"
+            role="progressbar"
+            aria-valuenow="<%= usuario.xp || 0 %>"
+            aria-valuemin="0"
+            aria-valuemax="500"
+          ></section>
         </section>
 
-        <p><%= usuario.xp || 0 %>/500</p>
-        <p class="rank-detalhe">
+        <span class="rank-detalhe"><%= usuario.xp || 0 %>/500</span>
+        <p></p>
+        <span class="rank-detalhe">
           Faltam <%= 500 - (usuario.ranked || 0) %> XP para subir de rank
-        </p>
+        </span>
       </section>
 
       <section class="calendario">
@@ -85,7 +102,7 @@
               <div>Sáb</div>
             </article>
 
-            <div class="dias" id="dias"></div>
+            <div class="dias" id="dias" aria-live="polite"></div>
           </article>
 
           <!-- BARRA DE PROGRESSO -->
@@ -111,69 +128,93 @@
       <section class="stats">
         <article class="stat">
           <h3>XP TOTAL</h3>
-          <p><%= usuario.pontuacao || 0 %><i class="fa-solid fa-star"></i></p>
+          <p>
+            <%= usuario.pontuacao || 0 %><i
+              class="fa-solid fa-star"
+              aria-hidden="true"
+            ></i>
+          </p>
         </article>
         <article class="stat">
           <h3>TAREFAS TOTAIS CONCLUÍDAS</h3>
           <p>
             <%= usuario.tarefasConcluidas || 0 %><i
               class="fa-solid fa-book"
+              aria-hidden="true"
             ></i>
           </p>
         </article>
         <article class="stat">
           <h3>MEDALHAS TOTAIS</h3>
-          <p><%= usuario.medalhas || 0 %><i class="fa-solid fa-medal"></i></p>
+          <p>
+            <%= usuario.medalhas || 0 %><i
+              class="fa-solid fa-medal"
+              aria-hidden="true"
+            ></i>
+          </p>
         </article>
       </section>
 
       <!-- Medalhas -->
       <section class="medals">
-        <h2><i class="fa-solid fa-medal"></i> Medalhas Conquistadas</h2>
+        <h2>
+          <i class="fa-solid fa-medal" aria-hidden="true"></i> Medalhas
+          Conquistadas
+        </h2>
         <section class="medal-list">
           <article class="medal-item">
-            <figure class="medal">
+            <figure class="medal tooltip">
               <img
-                src="../imagem/oie_transparent.png"
-                alt="Medalha de Bronze"
+                src="../imagem/oie_transparent (1).png"
+                alt="Medalha Corredor Nivel 1"
                 width="80px"
                 height="80px"
               />
+
+              <span class="tooltip-text">Percorreu 10km! Parabéns 🎉</span>
+              <span>Corredor I</span>
             </figure>
-            <p>Corredor I</p>
-          </article>
-          <article class="medal-item">
-            <figure class="medal">
-              <img
-                src="../imagem/oie_transparent.png"
-                alt="Medalha de Bronze"
-                width="80px"
-                height="80px"
-              />
-            </figure>
-            <p>Corredor II</p>
           </article>
         </section>
       </section>
 
       <section class="perfil-footer">
         <section class="central-conta">
-          <h2><i class="fa-solid fa-user"></i> Central da Conta</h2>
+          <h2>
+            <i class="fa-solid fa-user" aria-hidden="true"></i> Central da Conta
+          </h2>
           <article class="perfil-botoes">
-            <button onclick="window.location.href = '/configuracoes'">
-              <i class="fa-solid fa-gear"></i> Configurações
+            <button
+              onclick="window.location.href = '/configuracoes'"
+              aria-label="Ir para página de configurações"
+            >
+              <i class="fa-solid fa-gear" aria-hidden="true"></i> Configurações
             </button>
-            <button onclick="window.location.href = '/privacidade'">
-              <i class="fa-solid fa-shield-halved"></i> Privacidade
+            <button
+              onclick="window.location.href = '/privacidade'"
+              aria-label="Ir para página de privacidade"
+            >
+              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+              Privacidade
             </button>
-            <button onclick="window.location.href = '/notificacoes'">
-              <i class="fa-solid fa-bell"></i> Notificações
+            <button
+              onclick="window.location.href = '/notificacoes'"
+              aria-label="Ir para página de notificações"
+            >
+              <i class="fa-solid fa-bell" aria-hidden="true"></i> Notificações
             </button>
-            <button onclick="window.location.href = '/ajuda'">
-              <i class="fa-solid fa-heart"></i> Ajuda
+            <button
+              onclick="window.location.href = '/ajuda'"
+              aria-label="Ir para página de ajuda "
+            >
+              <i class="fa-solid fa-heart" aria-hidden="true"></i> Ajuda
             </button>
-            <button onclick="window.location.href = '/logout'">
-              <i class="fa-solid fa-right-from-bracket"></i> Sair da Conta
+            <button
+              onclick="window.location.href = '/logout'"
+              aria-label="Deslogar da conta"
+            >
+              <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+              Sair da Conta
             </button>
           </article>
         </section>

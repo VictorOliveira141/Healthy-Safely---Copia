@@ -50,9 +50,7 @@ router.get("/ajuda", (req, res) => {
 });
 
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
-router.get("/progressao", verificarAutenticacao, (req, res) => {
-  res.render("pages/progressao");
-});
+
 router.get("/tasks", verificarAutenticacao, (req, res) => {
   const tasks = tarefas.map((t) => ({
     _id: t.id,

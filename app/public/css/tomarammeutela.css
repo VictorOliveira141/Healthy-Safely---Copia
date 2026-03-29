@@ -1,7 +1,7 @@
-body {
-  background: var(--primary-color);
-}
 /* ================= TOPO DO MAIN ================= */
+main a {
+  text-decoration: none;
+}
 .main-topo {
   margin: 30px auto 0 auto;
   display: grid;

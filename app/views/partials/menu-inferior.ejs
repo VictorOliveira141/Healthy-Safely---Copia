@@ -2,46 +2,52 @@
 
   <% if (usuario) { %>
 
-  <a href="/tomarammeutela">
-    <i class="bi bi-house-door-fill"></i>
+  <a href="/">
+    <i class="bi bi-house-door-fill" aria-hidden="true"></i>
     <span>Início</span>
   </a>
 
-  <a href="#">
-    <i class="bi bi-plus-circle "></i>
+  <button
+    class="menu-btn"
+    aria-label="Adicionar nova tarefa"
+  >
+    <i class="bi bi-plus-circle" aria-hidden="true"></i>
     <span>Adicionar</span>
-  </a>
+  </button>
 
   <a href="/tasks">
-    <i class="bi bi-check-square"></i>
+    <i class="bi bi-check-square" aria-hidden="true"></i>
     <span>Tarefas</span>
   </a>
+
   <% } else { %>
-    <a href="/tomarammeutela">
-      <i class="bi bi-house-door-fill"></i>
-      <span>Início</span>
-    </a>
 
-    <a href="/ajuda">
-      <i class="bi bi-info-circle"></i>
-      <span>Ajuda</span>
-    </a>
+  <a href="/">
+    <i class="bi bi-house-door-fill" aria-hidden="true"></i>
+    <span>Início</span>
+  </a>
 
-    <a href="/ajuda?secao=contato">
-      <i class="bi bi-telephone-fill"></i>
-      <span>Contato</span>
-    </a>
+  <a href="/ajuda">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+    <span>Ajuda</span>
+  </a>
+
+  <a href="/ajuda?secao=contato">
+    <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+    <span>Contato</span>
+  </a>
+
   <% } %>
 
 </nav>
 <style>
   .menu-inferior {
     position: fixed;
-    border-top: solid 2px #052205;
+
     left: 0;
     bottom: 0;
     width: 100vw;
-    background: #0c4f43;
+    background: var(--secondary-color);
     box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
     z-index: 999;
 
@@ -52,17 +58,23 @@
     height: 55px;
     padding: 0;
   }
-  .menu-inferior a {
-    flex: 1;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    padding: 8px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .menu-inferior a,
+.menu-inferior button {
+  flex: 1;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 12px;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
   .menu-inferior i {
     font-size: 20px;
   }

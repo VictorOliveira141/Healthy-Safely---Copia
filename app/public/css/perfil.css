@@ -1,10 +1,3 @@
-/* ============ containers =========== */
-body {
-  background: var(--background-light);
-  color: var(--secondary-color);
-  min-height: 100vh;
-}
-
 /* Header & Profile Section */
 .perfil {
   max-width: 1200px;
@@ -12,9 +5,9 @@ body {
   display: flex;
   align-items: center;
   padding: 25px 20px;
-  border-bottom: 2px solid var(--background-dark);
+  border-bottom: 2px solid var(--border);
   gap: 20px;
-  background-color: var(--background-light);
+  background: var(--primary-color);
 }
 .foto-perfil {
   position: relative;
@@ -26,10 +19,9 @@ body {
   height: 110px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--primary-color);
-  box-shadow: var(--shadow-subtle);
+  border: 3px solid var(--border);
   max-width: 100%;
-  background-color: var(--background-dark);
+  background: var(--primary-color);
 }
 
 .camera-icon {
@@ -37,7 +29,7 @@ body {
   bottom: 0;
   right: 0;
   background-color: var(--accent-color);
-  color: white;
+  color: var(--fundoescuro);
   border-radius: 50%;
   padding: 8px;
   cursor: pointer;
@@ -52,13 +44,13 @@ body {
 .info-perfil h1 {
   font-size: var(--font-title);
   margin: 0;
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   font-weight: 600;
 }
 .info-perfil h2 {
   font-size: var(--font-text);
   margin: 4px 0 10px 0;
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   font-weight: 500;
 }
 .seguidores {
@@ -66,11 +58,11 @@ body {
   flex-direction: row;
   gap: 12px;
   margin: 0;
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   font-size: var(--font-text);
 }
 .streak {
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   border-radius: 12px;
   text-align: center;
   flex-shrink: 0;
@@ -98,7 +90,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 25px 20px;
-  background-color: var(--background-light);
+  background-color: var(--primary-color);
 }
 
 /* Rank Section */
@@ -112,13 +104,14 @@ body {
   text-align: baseline;
 }
 .rank-container h2 {
+  color: var(--fundoclaro);
   margin-bottom: 20px;
   font-size: var(--font-title);
   font-weight: bold;
 }
 .rank-info {
   display: flex;
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   justify-content: baseline;
   gap: 20px;
   margin-bottom: 20px;
@@ -126,7 +119,7 @@ body {
   flex-wrap: wrap;
 }
 .rank-info span {
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   background: var(--primary-color);
   padding: 10px 15px;
   margin-left: 2px;
@@ -136,16 +129,15 @@ body {
 }
 .rank-info .rank-atual {
   background-color: var(--accent-color);
-  color: var(--background-light);
+  color: var(--fundoescuro);
 }
 .barra-rank {
   width: 100%;
   height: 25px;
-  background-color: var(--background-dark);
+  background-color: var(--border);
   border-radius: 15px;
   overflow: hidden;
   margin: 20px 0;
-  box-shadow: inset var(--shadow-subtle);
 }
 .barra-preenchimento {
   height: 100%;
@@ -161,7 +153,7 @@ body {
 .rank-detalhe {
   font-size: var(--font-text);
   margin-top: 10px;
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   font-weight: 500;
 }
 .rank-faltando {
@@ -176,9 +168,8 @@ body {
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px 0;
-  background: var(--background-light);
+  background: var(--primary-color);
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   font-family: "Segoe UI", sans-serif;
 }
 .calendario-wrapper {
@@ -208,13 +199,13 @@ body {
   width: 100%;
   aspect-ratio: 1/1;
   border-radius: 10px;
-  background: #f5f5f5;
+  background: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-weight: 600;
-  color: #666;
+  color: var(--fundoclaro);
   transition: 0.2s;
 }
 .dia:hover {
@@ -240,7 +231,7 @@ body {
   top: 0;
   width: 2px;
   height: 100%;
-  background: #ddd;
+  background: var(--border);
 }
 .item {
   display: flex;
@@ -251,7 +242,7 @@ body {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: #e0e0e0;
+  background: var(--fundoescuro);
   z-index: 1;
   transition: 0.2s;
 }
@@ -261,7 +252,7 @@ body {
 }
 .item span {
   font-size: 13px;
-  color: #555;
+  color: var(--fundoclaro);
 }
 .data {
   font-size: 12px;
@@ -280,14 +271,14 @@ body {
   gap: 20px;
 }
 .stat {
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   padding: 20px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: var(--shadow-subtle);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
   flex: 1;
   min-width: 200px;
-  transition: transform 0.3s ease;
+  transition: var(--animacao);
 }
 .stat:hover {
   transform: translateY(-5px);
@@ -310,10 +301,9 @@ body {
 .medals {
   padding: 20px;
   border-radius: 15px;
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
   max-width: 100%;
   margin: 5px auto;
-  box-shadow: var(--shadow-subtle);
   text-align: baseline;
 }
 .medals h2 {
@@ -339,7 +329,7 @@ body {
   font-size: var(--font-text);
   margin-bottom: 20px;
   font-weight: bold;
-  color: var(--secondary-color);
+  color: var(--fundoclaro);
 }
 
 /* Footer & Logout Button */
@@ -363,6 +353,7 @@ body {
   margin-bottom: 20px;
   font-size: var(--font-title);
   font-weight: bold;
+  color: var(--fundoclaro);
 }
 .perfil-botoes {
   display: flex;
@@ -373,24 +364,25 @@ body {
 .perfil-botoes button {
   display: flex;
   align-items: center;
-  background-color: var(--background-light);
+  background-color: var(--botao);
   gap: 12px;
   padding: 12px 16px;
-  border: 1px solid var(--background-dark);
+  border: 1px solid var(--border);
   border-radius: var(--border-radius);
   cursor: pointer;
   font-size: var(--font-text);
-  color: var(--secondary-color);
+  color: var(--fundoescuro);
   transition: 0.3s;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   min-height: 44px;
 }
 .perfil-botoes button:hover {
-  transform: translateX(5px);
+  background: var(--botao-hover);
+  transform: var(--animacao);
 }
 .perfil-botoes i {
   font-size: 1rem;
-  color: var(--secondary-color);
+  color: var(--fundoescuro);
 }
 .perfil-botoes button:last-child {
   color: red;
@@ -400,6 +392,38 @@ body {
 }
 .perfil-botoes a {
   text-decoration: none;
+}
+
+.tooltip {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  font-size: var(--font-text);
+  color: var(--fundoescuro);
+  text-align: center;
+  padding: 5px 10px;
+  border-radius: 6px;
+
+  position: absolute;
+  bottom: 125%; /* 👈 volta pra cima */
+  left: 50%;
+  transform: translateX(-50%);
+
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Responsividade */
