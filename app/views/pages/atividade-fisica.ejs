@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sono | Healthy Safely</title>
+    <title>Atividade Física | Healthy Safely</title>
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="/css/pagina-tarefa.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
@@ -14,15 +14,16 @@
 
     <main class="pt-page">
 
-      <section class="pt-card" aria-labelledby="titulo-sono">
+      <section class="pt-card" aria-labelledby="titulo-atf">
         <header class="pt-card-topo">
-          <img src="/imagem/lua.png" alt="Ícone de sono" />
-          <h1 id="titulo-sono">Sono de Qualidade</h1>
+          <img src="/imagem/atf.png" alt="Ícone de atividade física" />
+          <h1 id="titulo-atf">Atividade Física</h1>
         </header>
 
         <p class="pt-card-texto">
-          Durma pelo menos entre 8 a 9 horas por uma semana e escreva os resultados.<br />
-          Algum profissional irá atender seu relatório.
+          Realize no mínimo 30 minutos de atividade física moderada por dia
+          durante 7 dias consecutivos e registre sua evolução.<br />
+          Um profissional irá acompanhar seu relatório.
         </p>
 
         <footer class="pt-card-rodape">
@@ -40,33 +41,37 @@
             </section>
           </section>
           <button class="pt-botao" id="btnAcao" type="button" onclick="registrar()">
-            Iniciar
+            Registrar atividade
           </button>
         </footer>
       </section>
 
-      <section class="pt-secao" aria-labelledby="titulo-dicas-sono">
-        <h2 class="pt-secao-titulo" id="titulo-dicas-sono">Dicas para dormir melhor</h2>
+      <section class="pt-secao" aria-labelledby="titulo-treinos">
+        <h2 class="pt-secao-titulo" id="titulo-treinos">Sugestões de treino</h2>
         <section class="pt-grid">
           <article class="pt-grid-card">
-            <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
-            <h4>Horário fixo</h4>
-            <p>Durma e acorde sempre no mesmo horário, inclusive nos fins de semana.</p>
+            <i class="bi bi-person-walking" aria-hidden="true"></i>
+            <h4>Caminhada</h4>
+            <p>Ideal para iniciantes. Melhora a saúde cardiovascular com baixo impacto.</p>
+            <span class="badge-dificuldade">30 min · Fácil</span>
           </article>
           <article class="pt-grid-card">
-            <i class="bi bi-thermometer-low" aria-hidden="true"></i>
-            <h4>Ambiente fresco</h4>
-            <p>Um quarto com temperatura entre 18°C e 22°C favorece o sono profundo.</p>
+            <i class="bi bi-bicycle" aria-hidden="true"></i>
+            <h4>Ciclismo</h4>
+            <p>Baixo impacto e ótimo para condicionamento físico e queima calórica.</p>
+            <span class="badge-dificuldade">45 min · Moderado</span>
           </article>
           <article class="pt-grid-card">
-            <i class="bi bi-phone-landscape" aria-hidden="true"></i>
-            <h4>Sem telas</h4>
-            <p>Evite celular, TV e computador pelo menos 30 minutos antes de dormir.</p>
+            <i class="bi bi-person-arms-up" aria-hidden="true"></i>
+            <h4>Funcional</h4>
+            <p>Exercícios com peso corporal para força, resistência e equilíbrio.</p>
+            <span class="badge-dificuldade">30 min · Moderado</span>
           </article>
           <article class="pt-grid-card">
-            <i class="bi bi-cup-hot-fill" aria-hidden="true"></i>
-            <h4>Chá relaxante</h4>
-            <p>Camomila, erva-doce ou melissa ajudam o corpo a relaxar antes do sono.</p>
+            <i class="bi bi-lightning-fill" aria-hidden="true"></i>
+            <h4>HIIT</h4>
+            <p>Treino intervalado de alta intensidade para queima acelerada de gordura.</p>
+            <span class="badge-dificuldade">25 min · Intenso</span>
           </article>
         </section>
       </section>
@@ -74,9 +79,9 @@
       <nav class="pt-nav-tarefas" aria-label="Navegar entre categorias de saúde">
         <h2 class="pt-nav-titulo">Suas tarefas</h2>
         <section class="pt-nav-grid">
-          <a href="/sono" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/sono.png" alt="Sono" /><span>Sono</span></a>
+          <a href="/sono" class="pt-nav-item"><img src="/imagem/sono.png" alt="Sono" /><span>Sono</span></a>
           <a href="/saude-mental" class="pt-nav-item"><img src="/imagem/saudemental.png" alt="Saúde Mental" /><span>Saúde Mental</span></a>
-          <a href="/atividade-fisica" class="pt-nav-item"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade Física</span></a>
+          <a href="/atividade-fisica" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade Física</span></a>
           <a href="/alimentacao" class="pt-nav-item"><img src="/imagem/alimentacao.png" alt="Alimentação" /><span>Alimentação</span></a>
           <a href="#" class="pt-nav-outros"><img src="/imagem/outros.png" alt="Outros" /><span>Outros</span></a>
         </section>
@@ -87,7 +92,7 @@
     <%- include('../partials/footer.ejs') %>
 
     <script>
-      const CHAVE = 'hs_sono_prog';
+      const CHAVE = 'hs_atf_prog';
       let progresso = Number(localStorage.getItem(CHAVE) || 0);
       const btn = document.getElementById('btnAcao');
       const porcTexto = document.getElementById('porcTexto');
@@ -106,7 +111,7 @@
         progresso = Math.min(progresso + 14, 100);
         localStorage.setItem(CHAVE, progresso);
         renderProgresso();
-        if (progresso < 100) btn.textContent = 'Registrar próxima noite';
+        if (progresso < 100) btn.textContent = 'Registrar novamente';
       }
 
       renderProgresso();

@@ -1,0 +1,351 @@
+/* ============================================================
+   pagina-tarefa.css
+   CSS compartilhado para: sono, saude-mental, atividade-fisica, alimentacao
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  font-family: "Poppins", sans-serif;
+  background: #013a2e;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ---------- Layout principal ---------- */
+.pt-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem 1rem 6rem;
+  width: 100%;
+}
+
+/* ---------- Card principal da tarefa ---------- */
+.pt-card {
+  width: min(720px, 92vw);
+  background: linear-gradient(145deg, #0b4535, #0e3a2c);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ---------- Topo do card ---------- */
+.pt-card-topo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.pt-card-topo img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+}
+
+.pt-card-topo h1 {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ---------- Texto descritivo ---------- */
+.pt-card-texto {
+  font-size: clamp(0.875rem, 2vw, 1.05rem);
+  line-height: 1.75;
+  opacity: 0.88;
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid rgba(74, 222, 128, 0.5);
+}
+
+/* ---------- Rodapé do card (progresso + botão) ---------- */
+.pt-card-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pt-progresso-bloco {
+  flex: 1;
+  min-width: 200px;
+}
+
+.pt-porcentagem-texto {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: #86efac;
+}
+
+.pt-barra-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pt-barra-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+.pt-botao {
+  padding: 0.85rem 2rem;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.4);
+  white-space: nowrap;
+  min-width: 160px;
+  text-transform: uppercase;
+}
+
+.pt-botao:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(22, 163, 74, 0.5);
+}
+
+.pt-botao:disabled {
+  opacity: 0.7;
+  cursor: default;
+  background: linear-gradient(135deg, #166534, #14532d);
+}
+
+/* ---------- Seções de conteúdo extra (dicas, refeições, treinos) ---------- */
+.pt-secao {
+  width: min(800px, 92vw);
+}
+
+.pt-secao-titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  color: #86efac;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 1rem;
+}
+
+.pt-grid-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+
+.pt-grid-card i {
+  font-size: 1.75rem;
+  color: #86efac;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.pt-grid-card h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.pt-grid-card p {
+  font-size: 0.78rem;
+  opacity: 0.72;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.pt-grid-card span.badge-dificuldade {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.7rem;
+  background: rgba(74,222,128,0.18);
+  color: #86efac;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ---------- Checklist de refeições ---------- */
+.pt-checklist {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  width: min(680px, 92vw);
+}
+
+.pt-checklist h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #86efac;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pt-refeicoes-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pt-refeicao-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: background 0.15s;
+}
+
+.pt-refeicao-item:hover { background: rgba(255,255,255,0.09); }
+
+.pt-refeicao-item label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pt-refeicao-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #4ade80;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.pt-refeicao-hora {
+  font-size: 0.75rem;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+/* ---------- Seção de navegação entre tarefas ---------- */
+.pt-nav-tarefas {
+  background: linear-gradient(145deg, #0b4535, #0e3a2c);
+  border-radius: 20px;
+  padding: 2rem;
+  width: min(800px, 92vw);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.pt-nav-titulo {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: #a7f3d0;
+}
+
+.pt-nav-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.pt-nav-item {
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.2s, opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pt-nav-item:hover { transform: translateY(-4px); opacity: 0.9; }
+
+.pt-nav-item.ativo { opacity: 1; }
+
+.pt-nav-item.ativo img {
+  filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.6));
+}
+
+.pt-nav-item img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.pt-nav-item span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.pt-nav-outros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.pt-nav-outros:hover { opacity: 1; }
+
+.pt-nav-outros img { width: 60px; object-fit: contain; }
+
+.pt-nav-outros span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 600px) {
+  .pt-card { padding: 1.5rem 1.25rem; }
+  .pt-card-topo { flex-direction: column; text-align: center; gap: 0.75rem; }
+  .pt-card-topo img { width: 56px; height: 56px; }
+  .pt-card-rodape { flex-direction: column; align-items: stretch; }
+  .pt-botao { width: 100%; min-width: unset; text-align: center; }
+  .pt-nav-item img { width: 60px; height: 60px; }
+  .pt-grid { grid-template-columns: 1fr 1fr; }
+}

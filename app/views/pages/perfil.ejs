@@ -10,9 +10,9 @@
     />
 
     <meta name="robots" content="index, follow" />
-    <link rel="icon" href="../imagem/Logo repaginado 2.png" />
-    <link rel="stylesheet" href="../css/perfil.css" />
-    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="/css/perfil.css" />
+    <link rel="stylesheet" href="/css/global.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -27,7 +27,7 @@
       <section class="perfil">
         <figure class="foto-perfil">
           <img
-            src="../imagem/user.png"
+            src="/imagem/user.png"
             alt="Foto de perfil de <%= usuario.nome %>"
           />
           <label for="uploadFoto" class="camera-icon">
@@ -93,33 +93,33 @@
           <!-- CALENDÁRIO -->
           <article class="calendario-inner">
             <article class="semana">
-              <div>Dom</div>
-              <div>Seg</div>
-              <div>Ter</div>
-              <div>Qua</div>
-              <div>Qui</div>
-              <div>Sex</div>
-              <div>Sáb</div>
+              <abbr title="Domingo">Dom</abbr>
+              <abbr title="Segunda-feira">Seg</abbr>
+              <abbr title="Terça-feira">Ter</abbr>
+              <abbr title="Quarta-feira">Qua</abbr>
+              <abbr title="Quinta-feira">Qui</abbr>
+              <abbr title="Sexta-feira">Sex</abbr>
+              <abbr title="Sábado">Sáb</abbr>
             </article>
 
-            <div class="dias" id="dias" aria-live="polite"></div>
+            <section class="dias" id="dias" aria-live="polite"></section>
           </article>
 
           <!-- BARRA DE PROGRESSO -->
           <article class="progress-vertical">
             <span class="data">01/03</span>
 
-            <div class="bolinhas">
-              <div class="item">
-                <div class="bolinha ativa"></div>
+            <section class="bolinhas">
+              <article class="item">
+                <span class="bolinha ativa" aria-hidden="true"></span>
                 <span>Beba 3L de água</span>
-              </div>
+              </article>
 
-              <div class="item">
-                <div class="bolinha"></div>
+              <article class="item">
+                <span class="bolinha" aria-hidden="true"></span>
                 <span>Dormir antes das 23h </span>
-              </div>
-            </div>
+              </article>
+            </section>
           </article>
         </section>
       </section>
@@ -165,7 +165,7 @@
           <article class="medal-item">
             <figure class="medal tooltip">
               <img
-                src="../imagem/oie_transparent (1).png"
+                src="/imagem/oie_transparent (1).png"
                 alt="Medalha Corredor Nivel 1"
                 width="80px"
                 height="80px"

@@ -49,6 +49,13 @@ router.get("/ajuda", (req, res) => {
   res.render("pages/ajuda");
 });
 
+router.get("/plano-premium", (req, res) => {
+  res.render("pages/plano-premium");
+});
+router.get("/plano-comum", (req, res) => {
+  res.render("pages/plano-comum");
+});
+
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
 
 router.get("/tasks", verificarAutenticacao, (req, res) => {
@@ -74,6 +81,24 @@ router.get("/perfil", verificarAutenticacao, (req, res) => {
 });
 router.get("/painel-local", verificarAutenticacao, (req, res) => {
   res.render("pages/painel-local");
+});
+router.get("/saude-mental", verificarAutenticacao, (req, res) => {
+  res.render("pages/saude-mental");
+});
+router.get("/atividade-fisica", verificarAutenticacao, (req, res) => {
+  res.render("pages/atividade-fisica");
+});
+router.get("/alimentacao", verificarAutenticacao, (req, res) => {
+  res.render("pages/alimentacao");
+});
+router.get("/configuracoes", verificarAutenticacao, (req, res) => {
+  res.render("pages/configuracoes");
+});
+router.get("/notificacoes", verificarAutenticacao, (req, res) => {
+  res.render("pages/notificacoes");
+});
+router.get("/privacidade", verificarAutenticacao, (req, res) => {
+  res.render("pages/privacidade");
 });
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
@@ -215,14 +240,6 @@ router.post(
     .matches(/^[A-Za-zÀ-ú\s]+$/)
     .withMessage("*O nome deve conter apenas letras!"),
 
-  body("especialidade")
-    .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 50 })
-    .withMessage("*A especialidade deve conter entre 3 e 50 caracteres!"),
-
   body("cref")
     .trim()
     .notEmpty()
@@ -244,19 +261,6 @@ router.post(
     .bail()
     .isLength({ min: 3, max: 200 })
     .withMessage("*Especialidades devem conter entre 3 e 200 caracteres!"),
-
-  body("bio")
-    .optional()
-    .isLength({ max: 500 })
-    .withMessage("*Bio deve ter no máximo 500 caracteres!"),
-
-  body("cidadeEstado")
-    .trim()
-    .notEmpty()
-    .withMessage("*Campo obrigatório!")
-    .bail()
-    .isLength({ min: 3, max: 100 })
-    .withMessage("*Cidade/Estado deve conter entre 3 e 100 caracteres!"),
 
   body("email")
     .notEmpty()
@@ -309,21 +313,27 @@ router.post(
     }
 
     //Dados do usuário são adicionados ao array
-    usuarios.push({
+    const novoProfissional = {
       nome: req.body.nome,
+      nomeusuario: req.body.nomeusuario,
       especialidade: req.body.especialidades,
       cref: req.body.cref,
       areaAtuacao: req.body.areaAtuacao,
       tempoExperiencia: req.body.tempoExperiencia,
       especialidades: req.body.especialidades,
-      bio: req.body.bio,
-      cidadeEstado: req.body.cidadeEstado,
       email: req.body.email,
       senha: req.body.senha,
       tipo: "profissional",
-    });
+      nivel: "profissional",
+    };
+    usuarios.push(novoProfissional);
 
-    res.redirect("/login");
+    // Criar sessão imediatamente após cadastro
+    req.session.usuario = novoProfissional;
+    req.session.nome = novoProfissional.nome;
+    req.session.nivel = "profissional";
+
+    res.redirect("/profissional/painel-financeiro");
   },
 );
 

@@ -1,0 +1,176 @@
+/* painel-financeiro.css - Área financeira do profissional */
+
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  background: var(--primary-color);
+  overflow-y: auto;
+}
+
+.admin-main h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fundoclaro);
+  margin-bottom: 1.5rem;
+}
+
+/* Cards de resumo */
+.resumo-desempenho {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.resumo-desempenho .card {
+  background: var(--primary-color);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 1.25rem 1.4rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.resumo-desempenho .card:hover {
+  box-shadow: 0 6px 20px rgba(12, 79, 67, 0.1);
+  transform: translateY(-2px);
+}
+
+.resumo-desempenho .card h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.resumo-desempenho .card h3 i {
+  color: var(--accent-color);
+}
+
+.resumo-desempenho .card .valor {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin: 0;
+}
+
+/* Histórico */
+.historico-section {
+  background: var(--primary-color);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+}
+
+.historico-section h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fundoclaro);
+  margin-bottom: 1.25rem;
+}
+
+.tabela-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-text);
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 2px solid var(--border);
+}
+
+tbody td {
+  padding: 0.85rem 1rem;
+  color: var(--fundoclaro);
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover td {
+  background: rgba(26, 138, 117, 0.03);
+}
+
+.status-concluido {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: #e6f4f1;
+  color: #0c7a65;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-pendente {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: #fff8e1;
+  color: #b36a00;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .admin-main {
+    padding: 1rem;
+  }
+
+  .resumo-desempenho {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: none;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+}

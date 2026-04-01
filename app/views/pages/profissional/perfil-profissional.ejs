@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil Profissional | Healthy Safely</title>
+    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="/css/profissional/perfil-profissional.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      .perfil-pro-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem 0 2rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .perfil-pro-foto {
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .perfil-pro-foto img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent-color);
+      }
+
+      .perfil-pro-foto label {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        background: var(--accent-color);
+        color: #fff;
+        border-radius: 50%;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 0.75rem;
+      }
+
+      .perfil-pro-info h1 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--fundoclaro);
+        margin-bottom: 4px;
+      }
+
+      .perfil-pro-info p {
+        font-size: var(--font-text);
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .badge-pro {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: #e6f4f1;
+        color: var(--secondary-color);
+        border-radius: 20px;
+        padding: 3px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 6px;
+      }
+
+      .perfil-pro-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (max-width: 700px) {
+        .perfil-pro-grid { grid-template-columns: 1fr; }
+      }
+
+      .perfil-pro-secao {
+        background: var(--primary-color);
+        border: 1px solid var(--border);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+      }
+
+      .perfil-pro-secao h2 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--fundoclaro);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .perfil-pro-secao h2 i {
+        color: var(--accent-color);
+      }
+
+      .campo-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+
+      .campo-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        margin-bottom: 3px;
+        display: block;
+      }
+
+      .campo-input {
+        width: 100%;
+        padding: 0.6rem 0.85rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        font-size: var(--font-text);
+        color: var(--fundoclaro);
+        background: var(--primary-color);
+        transition: border-color 0.2s;
+      }
+
+      .campo-input:focus {
+        outline: none;
+        border-color: var(--accent-color);
+      }
+
+      textarea.campo-input {
+        resize: vertical;
+        min-height: 90px;
+      }
+
+      .btn-salvar {
+        margin-top: 1.5rem;
+        padding: 0.65rem 1.8rem;
+        background: var(--secondary-color);
+        color: #fff;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: var(--font-text);
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s, transform 0.2s;
+      }
+
+      .btn-salvar:hover {
+        opacity: var(--botao-opacity);
+        transform: var(--animacao);
+      }
+
+      .stats-mini {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .stat-mini-card {
+        background: #f0faf7;
+        border-radius: 10px;
+        padding: 0.9rem;
+        text-align: center;
+      }
+
+      .stat-mini-card strong {
+        display: block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--secondary-color);
+      }
+
+      .stat-mini-card span {
+        font-size: 10px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+      }
+
+      .perfil-pro-full {
+        grid-column: 1 / -1;
+      }
+
+      .msg-sucesso {
+        display: none;
+        background: #e6f4f1;
+        color: var(--secondary-color);
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+        font-size: var(--font-text);
+        margin-top: 0.75rem;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../../partials/header.ejs') %>
+    <%- include('../../partials/menu-inferior.ejs') %>
+
+    <section class="admin-container">
+      <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+
+      <main class="admin-main" aria-labelledby="titulo-perfil-pro">
+        <section class="perfil-pro-header">
+          <figure class="perfil-pro-foto">
+            <img
+              src="/imagem/user.png"
+              alt="Foto de perfil de <%= colaborador ? colaborador.nome : 'Profissional' %>"
+              id="fotoPerfil"
+            />
+            <label for="uploadFotoPro" aria-label="Alterar foto de perfil">
+              <i class="bi bi-camera-fill" aria-hidden="true"></i>
+            </label>
+            <input type="file" id="uploadFotoPro" accept="image/*" hidden />
+          </figure>
+
+          <section class="perfil-pro-info">
+            <h1 id="titulo-perfil-pro">
+              <%= colaborador ? colaborador.nome : 'Profissional' %>
+            </h1>
+            <p><%= colaborador ? colaborador.especialidade : 'Especialidade não informada' %></p>
+            <p class="badge-pro">
+              <i class="bi bi-patch-check-fill" aria-hidden="true"></i>
+              Profissional Verificado
+            </p>
+          </section>
+        </section>
+
+        <section class="stats-mini" aria-label="Estatísticas rápidas">
+          <article class="stat-mini-card">
+            <strong>38</strong>
+            <span>Pacientes</span>
+          </article>
+          <article class="stat-mini-card">
+            <strong>54</strong>
+            <span>Consultas</span>
+          </article>
+          <article class="stat-mini-card">
+            <strong>4,9</strong>
+            <span>Avaliação</span>
+          </article>
+        </section>
+
+        <section class="perfil-pro-grid">
+          <article class="perfil-pro-secao">
+            <h2>
+              <i class="bi bi-person-fill" aria-hidden="true"></i>
+              Dados Pessoais
+            </h2>
+            <section class="campo-group">
+              <label>
+                <span class="campo-label">Nome completo</span>
+                <input
+                  type="text"
+                  class="campo-input"
+                  value="<%= colaborador ? colaborador.nome : '' %>"
+                  placeholder="Seu nome completo"
+                  aria-label="Nome completo"
+                />
+              </label>
+              <label>
+                <span class="campo-label">E-mail profissional</span>
+                <input
+                  type="email"
+                  class="campo-input"
+                  value="<%= colaborador ? colaborador.email : '' %>"
+                  placeholder="seu@email.com"
+                  aria-label="E-mail profissional"
+                />
+              </label>
+              <label>
+                <span class="campo-label">Cidade / Estado</span>
+                <input
+                  type="text"
+                  class="campo-input"
+                  value="<%= colaborador ? colaborador.cidadeEstado : '' %>"
+                  placeholder="São Paulo, SP"
+                  aria-label="Cidade e estado"
+                />
+              </label>
+            </section>
+          </article>
+
+          <article class="perfil-pro-secao">
+            <h2>
+              <i class="bi bi-briefcase-fill" aria-hidden="true"></i>
+              Dados Profissionais
+            </h2>
+            <section class="campo-group">
+              <label>
+                <span class="campo-label">Especialidade principal</span>
+                <input
+                  type="text"
+                  class="campo-input"
+                  value="<%= colaborador ? colaborador.especialidade : '' %>"
+                  placeholder="Ex: Nutrição Esportiva"
+                  aria-label="Especialidade principal"
+                />
+              </label>
+              <label>
+                <span class="campo-label">CREF / CRN / CRM</span>
+                <input
+                  type="text"
+                  class="campo-input"
+                  value="<%= colaborador ? colaborador.cref : '' %>"
+                  placeholder="Nº do registro"
+                  aria-label="Número do registro profissional"
+                />
+              </label>
+              <label>
+                <span class="campo-label">Área de atuação</span>
+                <input
+                  type="text"
+                  class="campo-input"
+                  value="<%= colaborador ? colaborador.areaAtuacao : '' %>"
+                  placeholder="Ex: Saúde e Bem-estar"
+                  aria-label="Área de atuação"
+                />
+              </label>
+              <label>
+                <span class="campo-label">Tempo de experiência (anos)</span>
+                <input
+                  type="number"
+                  class="campo-input"
+                  value="<%= colaborador ? colaborador.tempoExperiencia : '' %>"
+                  min="0"
+                  placeholder="Ex: 5"
+                  aria-label="Tempo de experiência em anos"
+                />
+              </label>
+            </section>
+          </article>
+
+          <article class="perfil-pro-secao perfil-pro-full">
+            <h2>
+              <i class="bi bi-file-person-fill" aria-hidden="true"></i>
+              Bio / Apresentação
+            </h2>
+            <label>
+              <span class="campo-label">Conte um pouco sobre você</span>
+              <textarea
+                class="campo-input"
+                placeholder="Apresente-se aos seus pacientes..."
+                aria-label="Bio profissional"
+              ><%= colaborador ? colaborador.bio : '' %></textarea>
+            </label>
+            <button class="btn-salvar" onclick="salvarPerfil()" type="button">
+              <i class="bi bi-check2-circle" aria-hidden="true"></i>
+              Salvar alterações
+            </button>
+            <p class="msg-sucesso" id="msgSucesso" role="status">
+              ✅ Perfil atualizado com sucesso!
+            </p>
+          </article>
+        </section>
+      </main>
+    </section>
+
+    <%- include('../../partials/footer.ejs') %>
+
+    <script>
+      // Preview de foto de perfil
+      const inputFoto = document.getElementById('uploadFotoPro');
+      const imgPerfil = document.getElementById('fotoPerfil');
+
+      if (inputFoto && imgPerfil) {
+        inputFoto.addEventListener('change', function () {
+          const file = this.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => { imgPerfil.src = e.target.result; };
+            reader.readAsDataURL(file);
+          }
+        });
+      }
+
+      function salvarPerfil() {
+        const msg = document.getElementById('msgSucesso');
+        msg.style.display = 'block';
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
+      }
+    </script>
+  </body>
+</html>

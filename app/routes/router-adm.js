@@ -59,4 +59,17 @@ router.get("/dashboard", verificarProfissional, (req, res) => {
   res.redirect("/profissional/painel-financeiro");
 });
 
+
+router.get("/pacientes", verificarProfissional, (req, res) => {
+  res.render("pages/profissional/pacientes", {
+    colaborador: req.session.usuario,
+  });
+});
+
+router.get("/agenda", verificarProfissional, (req, res) => {
+  res.render("pages/profissional/agenda", {
+    colaborador: req.session.usuario,
+  });
+});
+
 module.exports = router;

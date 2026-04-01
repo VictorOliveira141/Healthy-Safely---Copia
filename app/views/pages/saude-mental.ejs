@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sono | Healthy Safely</title>
+    <title>Saúde Mental | Healthy Safely</title>
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="/css/pagina-tarefa.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
@@ -14,15 +14,16 @@
 
     <main class="pt-page">
 
-      <section class="pt-card" aria-labelledby="titulo-sono">
+      <section class="pt-card" aria-labelledby="titulo-saudemental">
         <header class="pt-card-topo">
-          <img src="/imagem/lua.png" alt="Ícone de sono" />
-          <h1 id="titulo-sono">Sono de Qualidade</h1>
+          <img src="/imagem/saudemental.png" alt="Ícone de saúde mental" />
+          <h1 id="titulo-saudemental">Saúde Mental</h1>
         </header>
 
         <p class="pt-card-texto">
-          Durma pelo menos entre 8 a 9 horas por uma semana e escreva os resultados.<br />
-          Algum profissional irá atender seu relatório.
+          Pratique 10 minutos de meditação ou respiração consciente por dia
+          durante uma semana e registre como se sentiu.<br />
+          Um profissional irá acompanhar seu progresso.
         </p>
 
         <footer class="pt-card-rodape">
@@ -40,33 +41,33 @@
             </section>
           </section>
           <button class="pt-botao" id="btnAcao" type="button" onclick="registrar()">
-            Iniciar
+            Iniciar prática
           </button>
         </footer>
       </section>
 
-      <section class="pt-secao" aria-labelledby="titulo-dicas-sono">
-        <h2 class="pt-secao-titulo" id="titulo-dicas-sono">Dicas para dormir melhor</h2>
+      <section class="pt-secao" aria-labelledby="titulo-dicas-sm">
+        <h2 class="pt-secao-titulo" id="titulo-dicas-sm">Dicas para o bem-estar mental</h2>
         <section class="pt-grid">
           <article class="pt-grid-card">
-            <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
-            <h4>Horário fixo</h4>
-            <p>Durma e acorde sempre no mesmo horário, inclusive nos fins de semana.</p>
+            <i class="bi bi-wind" aria-hidden="true"></i>
+            <h4>Respiração 4-7-8</h4>
+            <p>Inspire por 4s, segure por 7s e expire por 8s. Reduz a ansiedade em minutos.</p>
           </article>
           <article class="pt-grid-card">
-            <i class="bi bi-thermometer-low" aria-hidden="true"></i>
-            <h4>Ambiente fresco</h4>
-            <p>Um quarto com temperatura entre 18°C e 22°C favorece o sono profundo.</p>
+            <i class="bi bi-journal-text" aria-hidden="true"></i>
+            <h4>Diário emocional</h4>
+            <p>Escreva 3 coisas pelas quais é grato todo dia para treinar o pensamento positivo.</p>
           </article>
           <article class="pt-grid-card">
             <i class="bi bi-phone-landscape" aria-hidden="true"></i>
-            <h4>Sem telas</h4>
-            <p>Evite celular, TV e computador pelo menos 30 minutos antes de dormir.</p>
+            <h4>Detox digital</h4>
+            <p>30 minutos sem telas antes de dormir melhora o sono e reduz o estresse.</p>
           </article>
           <article class="pt-grid-card">
-            <i class="bi bi-cup-hot-fill" aria-hidden="true"></i>
-            <h4>Chá relaxante</h4>
-            <p>Camomila, erva-doce ou melissa ajudam o corpo a relaxar antes do sono.</p>
+            <i class="bi bi-people-fill" aria-hidden="true"></i>
+            <h4>Conexão social</h4>
+            <p>Fale com alguém de confiança. Relações saudáveis são fundamentais para a saúde mental.</p>
           </article>
         </section>
       </section>
@@ -74,8 +75,8 @@
       <nav class="pt-nav-tarefas" aria-label="Navegar entre categorias de saúde">
         <h2 class="pt-nav-titulo">Suas tarefas</h2>
         <section class="pt-nav-grid">
-          <a href="/sono" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/sono.png" alt="Sono" /><span>Sono</span></a>
-          <a href="/saude-mental" class="pt-nav-item"><img src="/imagem/saudemental.png" alt="Saúde Mental" /><span>Saúde Mental</span></a>
+          <a href="/sono" class="pt-nav-item"><img src="/imagem/sono.png" alt="Sono" /><span>Sono</span></a>
+          <a href="/saude-mental" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/saudemental.png" alt="Saúde Mental" /><span>Saúde Mental</span></a>
           <a href="/atividade-fisica" class="pt-nav-item"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade Física</span></a>
           <a href="/alimentacao" class="pt-nav-item"><img src="/imagem/alimentacao.png" alt="Alimentação" /><span>Alimentação</span></a>
           <a href="#" class="pt-nav-outros"><img src="/imagem/outros.png" alt="Outros" /><span>Outros</span></a>
@@ -87,7 +88,7 @@
     <%- include('../partials/footer.ejs') %>
 
     <script>
-      const CHAVE = 'hs_sono_prog';
+      const CHAVE = 'hs_saudemental_prog';
       let progresso = Number(localStorage.getItem(CHAVE) || 0);
       const btn = document.getElementById('btnAcao');
       const porcTexto = document.getElementById('porcTexto');
@@ -106,7 +107,7 @@
         progresso = Math.min(progresso + 14, 100);
         localStorage.setItem(CHAVE, progresso);
         renderProgresso();
-        if (progresso < 100) btn.textContent = 'Registrar próxima noite';
+        if (progresso < 100) btn.textContent = 'Continuar prática';
       }
 
       renderProgresso();
