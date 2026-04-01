@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/css/header.css" />
-<%- include('../partials/menu-inferior.ejs') %>
+<%- include('../partials/menu-inferior.ejs') %> <!-- MENU INFERIOR-->
+<%- include('../partials/darkmode.ejs') %> <!-- DARK MODE -->
 
 <header>
   <p class="visually-hidden">
@@ -98,34 +99,8 @@
           </section>
         <% } %>
       </section>
-
     </nav>
   </section>
 </header>
 
-<!-- MODAL -->
-<section
-  id="headerModalCadastro"
-  class="modal hidden"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="modalCadastroTitle"
->
-  <section class="modal-content">
-    <button id="headerCloseCadastroModal" class="close-btn" aria-label="Fechar">
-      &times;
-    </button>
 
-    <!-- agora tem ID correto -->
-    <p id="modalCadastroTitle" class="titulo-cadastro">
-      Cadastrar como:
-    </p>
-
-    <section class="opcoes-cadastro">
-      <a href="/cadastroCliente" class="btn-cadastro">Usuário</a>
-      <a href="/cadastroProfissional" class="btn-cadastro">Profissional</a>
-    </section>
-  </section>
-</section>
-
-<script src="/js/modal-header.js"></script>

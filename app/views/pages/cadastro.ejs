@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro | Healthy Safely</title>
+    <title>
+      Selecionar tipo de cadastro | Healthy Safely - Hábitos Saudáveis
+    </title>
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
-    <link rel="stylesheet" href="/css/cadastro.css" />
+
     <link rel="stylesheet" href="/css/global.css" />
     <link
       rel="stylesheet"
@@ -60,7 +62,10 @@
         text-decoration: none;
         color: var(--fundoclaro);
         background: var(--primary-color);
-        transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s,
+          transform 0.2s;
       }
 
       .opcao-tipo:hover {
@@ -139,15 +144,21 @@
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
-    <%- include('../partials/tema.ejs') %>
 
     <main class="cadastro-escolha">
       <article class="cadastro-card" aria-labelledby="titulo-cadastro">
+        <button onclick="voltarPagina()" class="btn-voltar">
+          <i class="bi bi-chevron-left"></i>
+        </button>
         <h1 id="titulo-cadastro">Criar conta</h1>
         <p>Escolha como você deseja se cadastrar na plataforma</p>
 
         <nav class="opcoes-tipo" aria-label="Tipos de cadastro disponíveis">
-          <a href="/cadastroCliente" class="opcao-tipo" aria-label="Cadastrar como Usuário comum">
+          <a
+            href="/cadastroCliente"
+            class="opcao-tipo"
+            aria-label="Cadastrar como Usuário comum"
+          >
             <figure class="opcao-icone" aria-hidden="true">
               <i class="bi bi-person-fill"></i>
             </figure>
@@ -158,7 +169,11 @@
             <i class="bi bi-chevron-right opcao-seta" aria-hidden="true"></i>
           </a>
 
-          <a href="/cadastroProfissional" class="opcao-tipo" aria-label="Cadastrar como Profissional de saúde">
+          <a
+            href="/cadastroProfissional"
+            class="opcao-tipo"
+            aria-label="Cadastrar como Profissional de saúde"
+          >
             <figure class="opcao-icone" aria-hidden="true">
               <i class="bi bi-briefcase-fill"></i>
             </figure>
@@ -172,9 +187,7 @@
 
         <p class="divisor">já tem uma conta?</p>
 
-        <p class="link-login">
-          Faça <a href="/login">login aqui</a>
-        </p>
+        <p class="link-login">Faça <a href="/login">login aqui</a></p>
       </article>
     </main>
 

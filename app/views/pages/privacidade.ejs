@@ -3,242 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacidade | Healthy Safely</title>
+    <title>Privacidade | Healthy Safely - Hábitos Saudáveis</title>
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/privacidade.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
-    <style>
-      .priv-main {
-        max-width: 680px;
-        margin: 0 auto;
-        padding: 2rem 1.25rem 6rem;
-      }
-
-      .priv-titulo {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--fundoclaro);
-        margin-bottom: 0.25rem;
-      }
-
-      .priv-subtitulo {
-        font-size: var(--font-text);
-        color: var(--muted);
-        margin-bottom: 2rem;
-      }
-
-      .priv-grupo {
-        background: var(--primary-color);
-        border: 1px solid var(--border);
-        border-radius: var(--border-radius);
-        margin-bottom: 1.25rem;
-        overflow: hidden;
-      }
-
-      .priv-grupo-titulo {
-        padding: 0.85rem 1.2rem;
-        font-size: 0.78rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--muted);
-        background: rgba(0,0,0,0.02);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .priv-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 1.2rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .priv-item:last-child {
-        border-bottom: none;
-      }
-
-      .priv-item-esq {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.85rem;
-        flex: 1;
-      }
-
-      .priv-icone {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        background: #e6f4f1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--secondary-color);
-        font-size: 1rem;
-        flex-shrink: 0;
-      }
-
-      .priv-nome {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--fundoclaro);
-        display: block;
-        margin-bottom: 2px;
-      }
-
-      .priv-desc {
-        font-size: 11px;
-        color: var(--muted);
-        line-height: 1.4;
-      }
-
-      /* Toggle */
-      .toggle {
-        position: relative;
-        width: 44px;
-        height: 24px;
-        flex-shrink: 0;
-      }
-
-      .toggle input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-
-      .slider-toggle {
-        position: absolute;
-        inset: 0;
-        background: #ccc;
-        border-radius: 24px;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-
-      .slider-toggle::before {
-        content: "";
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        left: 3px;
-        top: 3px;
-        background: #fff;
-        border-radius: 50%;
-        transition: transform 0.2s;
-      }
-
-      .toggle input:checked + .slider-toggle {
-        background: var(--accent-color);
-      }
-
-      .toggle input:checked + .slider-toggle::before {
-        transform: translateX(20px);
-      }
-
-      .priv-info-box {
-        background: #f0faf7;
-        border: 1px solid rgba(26, 138, 117, 0.2);
-        border-radius: var(--border-radius);
-        padding: 1rem 1.2rem;
-        margin-bottom: 1.25rem;
-        display: flex;
-        gap: 0.75rem;
-        align-items: flex-start;
-      }
-
-      .priv-info-box i {
-        color: var(--accent-color);
-        font-size: 1.1rem;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      .priv-info-box p {
-        font-size: var(--font-text);
-        color: var(--fundoclaro);
-        margin: 0;
-        line-height: 1.6;
-      }
-
-      .priv-info-box a {
-        color: var(--accent-color);
-        font-weight: 600;
-        text-decoration: none;
-      }
-
-      .btn-baixar-dados {
-        width: 100%;
-        padding: 0.85rem;
-        background: transparent;
-        color: var(--secondary-color);
-        border: 1.5px solid var(--secondary-color);
-        border-radius: var(--border-radius);
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 0.25rem;
-        transition: background 0.2s, color 0.2s;
-      }
-
-      .btn-baixar-dados:hover {
-        background: var(--secondary-color);
-        color: #fff;
-      }
-
-      .btn-salvar-priv {
-        width: 100%;
-        padding: 0.85rem;
-        background: var(--secondary-color);
-        color: #fff;
-        border: none;
-        border-radius: var(--border-radius);
-        font-size: 0.9rem;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 0.75rem;
-        transition: opacity 0.2s;
-      }
-
-      .btn-salvar-priv:hover {
-        opacity: var(--botao-opacity);
-      }
-
-      .msg-salvo {
-        display: none;
-        text-align: center;
-        color: var(--accent-color);
-        font-size: var(--font-text);
-        font-weight: 600;
-        margin-top: 0.75rem;
-      }
-    </style>
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
-    <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="priv-main" aria-labelledby="titulo-priv">
+      <%- include('../partials/botao-voltar.ejs') %>
       <h1 class="priv-titulo" id="titulo-priv">
         <i class="bi bi-shield-fill-check" aria-hidden="true"></i>
         Privacidade
       </h1>
-      <p class="priv-subtitulo">Gerencie como seus dados são usados na plataforma</p>
+      <p class="priv-subtitulo">
+        Gerencie como seus dados são usados na plataforma
+      </p>
 
       <aside class="priv-info-box" role="note">
         <i class="bi bi-info-circle-fill" aria-hidden="true"></i>
         <p>
-          Levamos sua privacidade a sério. Seus dados são armazenados com segurança e nunca
-          compartilhados sem o seu consentimento. Leia nossa
+          Levamos sua privacidade a sério. Seus dados são armazenados com
+          segurança e nunca compartilhados sem o seu consentimento. Leia nossa
           <a href="#">Política de Privacidade</a> completa.
         </p>
       </aside>
 
       <!-- VISIBILIDADE DO PERFIL -->
       <section class="priv-grupo" aria-labelledby="grupo-perfil">
-        <h2 class="priv-grupo-titulo" id="grupo-perfil">Visibilidade do Perfil</h2>
+        <h2 class="priv-grupo-titulo" id="grupo-perfil">
+          Visibilidade do Perfil
+        </h2>
 
         <article class="priv-item">
           <section class="priv-item-esq">
@@ -247,7 +47,9 @@
             </figure>
             <section>
               <span class="priv-nome">Perfil público</span>
-              <span class="priv-desc">Outros usuários podem visualizar seu perfil e progresso</span>
+              <span class="priv-desc"
+                >Outros usuários podem visualizar seu perfil e progresso</span
+              >
             </section>
           </section>
           <label class="toggle" aria-label="Tornar perfil público">
@@ -263,7 +65,9 @@
             </figure>
             <section>
               <span class="priv-nome">Exibir progresso</span>
-              <span class="priv-desc">Mostrar suas estatísticas e streak no ranking</span>
+              <span class="priv-desc"
+                >Mostrar suas estatísticas e streak no ranking</span
+              >
             </section>
           </section>
           <label class="toggle" aria-label="Exibir progresso publicamente">
@@ -279,7 +83,9 @@
             </figure>
             <section>
               <span class="priv-nome">Exibir medalhas</span>
-              <span class="priv-desc">Mostrar suas conquistas para outros usuários</span>
+              <span class="priv-desc"
+                >Mostrar suas conquistas para outros usuários</span
+              >
             </section>
           </section>
           <label class="toggle" aria-label="Exibir medalhas publicamente">
@@ -300,7 +106,10 @@
             </figure>
             <section>
               <span class="priv-nome">Analytics de uso</span>
-              <span class="priv-desc">Permitir coleta de dados anônimos para melhorar a plataforma</span>
+              <span class="priv-desc"
+                >Permitir coleta de dados anônimos para melhorar a
+                plataforma</span
+              >
             </section>
           </section>
           <label class="toggle" aria-label="Permitir analytics de uso">
@@ -316,10 +125,16 @@
             </figure>
             <section>
               <span class="priv-nome">Compartilhar com profissional</span>
-              <span class="priv-desc">Liberar acesso ao seu progresso para seu profissional de saúde</span>
+              <span class="priv-desc"
+                >Liberar acesso ao seu progresso para seu profissional de
+                saúde</span
+              >
             </section>
           </section>
-          <label class="toggle" aria-label="Compartilhar dados com profissional">
+          <label
+            class="toggle"
+            aria-label="Compartilhar dados com profissional"
+          >
             <input type="checkbox" id="compartilharPro" checked />
             <span class="slider-toggle"></span>
           </label>
@@ -337,26 +152,36 @@
             </figure>
             <section>
               <span class="priv-nome">Baixar meus dados</span>
-              <span class="priv-desc">Receba um arquivo com todos os seus dados cadastrados</span>
+              <span class="priv-desc"
+                >Receba um arquivo com todos os seus dados cadastrados</span
+              >
             </section>
           </section>
-          <i class="bi bi-chevron-right" style="color:var(--muted)" aria-hidden="true"></i>
+          <i
+            class="bi bi-chevron-right"
+            style="color: var(--muted)"
+            aria-hidden="true"
+          ></i>
         </article>
       </section>
 
       <button class="btn-salvar-priv" onclick="salvarPriv()" type="button">
         Salvar preferências
       </button>
-      <p class="msg-salvo" id="msgSalvo" role="status">✅ Preferências salvas com sucesso!</p>
+      <p class="msg-salvo" id="msgSalvo" role="status">
+        ✅ Preferências salvas com sucesso!
+      </p>
     </main>
 
     <%- include('../partials/footer.ejs') %>
 
     <script>
       function salvarPriv() {
-        const msg = document.getElementById('msgSalvo');
-        msg.style.display = 'block';
-        setTimeout(() => { msg.style.display = 'none'; }, 3000);
+        const msg = document.getElementById("msgSalvo");
+        msg.style.display = "block";
+        setTimeout(() => {
+          msg.style.display = "none";
+        }, 3000);
       }
     </script>
   </body>
