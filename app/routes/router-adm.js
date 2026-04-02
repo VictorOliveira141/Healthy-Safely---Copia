@@ -10,7 +10,7 @@ function verificarFarmacia(req, res, next) {
   ) {
     return next();
   }
-  return res.redirect("/cadastroColaborador");
+  return res.redirect("/login");
 }
 function verificarProfissional(req, res, next) {
   if (
@@ -20,7 +20,7 @@ function verificarProfissional(req, res, next) {
   ) {
     return next();
   }
-  return res.redirect("/cadastroColaborador");
+  return res.redirect("/login");
 }
 
 // Simulação de um array de produtos

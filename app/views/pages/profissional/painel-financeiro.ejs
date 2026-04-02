@@ -3,55 +3,167 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Desempenho Profissional | Área Profissional</title>
+    <title>Painel Financeiro | Healthy Safely</title>
     <link rel="stylesheet" href="/css/profissional/painel-financeiro.css" />
     <link rel="stylesheet" href="/css/global.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
   </head>
   <body>
     <%- include("../../partials/header.ejs") %>
-    <!---->
     <%- include('../../partials/menu-inferior.ejs') %>
 
     <section class="admin-container">
-      <!-- SIDEBAR -->
       <%- include('../../partials/adm/sidebar-profissional.ejs') %>
 
-      <!-- MAIN -->
-      <main class="admin-main">
-        <!-- CABEÇALHO PROFISSIONAL -->
-        <h1>Painel Financeiro</h1>
-        <!-- RESUMO DE DESEMPENHO -->
-        <section class="resumo-desempenho">
-          <section class="card">
-            <h3><i class="fa-solid fa-money-bill-wave"></i> Ganhos Totais</h3>
-            <p class="valor">R$ 4.250,00</p>
-          </section>
+      <main class="admin-main" aria-labelledby="titulo-painel">
 
-          <section class="card">
-            <h3><i class="fa-solid fa-user-check"></i> Pacientes Atendidos</h3>
+        <!-- Topo -->
+        <header class="painel-topo">
+          <h1 id="titulo-painel">
+            <i class="bi bi-bar-chart-fill" style="color:var(--g500)"></i>
+            Painel Financeiro
+          </h1>
+          <p>Visão geral do seu desempenho e faturamento como profissional</p>
+        </header>
+
+        <!-- KPIs -->
+        <section class="resumo-desempenho" aria-label="Indicadores de desempenho">
+          <article class="card">
+            <h3><i class="bi bi-cash-stack"></i> Ganhos Totais</h3>
+            <p class="valor">R$ 4.250</p>
+            <span class="variacao">↑ 12% este mês</span>
+          </article>
+          <article class="card">
+            <h3><i class="bi bi-person-check-fill"></i> Pacientes Ativos</h3>
             <p class="valor">38</p>
-          </section>
-
-          <section class="card">
-            <h3>
-              <i class="fa-solid fa-calendar-check"></i> Consultas Realizadas
-            </h3>
+            <span class="variacao">↑ 2 novos este mês</span>
+          </article>
+          <article class="card">
+            <h3><i class="bi bi-calendar-check-fill"></i> Consultas Realizadas</h3>
             <p class="valor">54</p>
-          </section>
-
-          <section class="card">
-            <h3><i class="fa-solid fa-clock"></i> Consultas Futuras</h3>
+            <span class="variacao">↑ 8% vs mês anterior</span>
+          </article>
+          <article class="card">
+            <h3><i class="bi bi-clock-fill"></i> Próximas Consultas</h3>
             <p class="valor">7</p>
-          </section>
+            <span class="variacao">Nos próximos 7 dias</span>
+          </article>
         </section>
 
-        <!-- HISTÓRICO DE CONSULTAS -->
-        <section class="historico-section">
-          <h2>Histórico de Consultas Recentes</h2>
+        <!-- Grid 2 colunas -->
+        <section class="painel-grid-2">
 
+          <!-- Gráfico de consultas mensais -->
+          <article class="painel-secao" aria-labelledby="titulo-grafico">
+            <header class="painel-secao-header">
+              <h2 id="titulo-grafico">
+                <i class="bi bi-graph-up-arrow"></i>
+                Consultas por Mês
+              </h2>
+            </header>
+            <section class="mini-chart" aria-label="Gráfico de barras de consultas mensais">
+              <section class="mini-chart-row">
+                <span class="mini-chart-label">Jul</span>
+                <section class="mini-chart-track"><section class="mini-chart-fill" style="width:55%"></section></section>
+                <span class="mini-chart-val">6</span>
+              </section>
+              <section class="mini-chart-row">
+                <span class="mini-chart-label">Ago</span>
+                <section class="mini-chart-track"><section class="mini-chart-fill" style="width:72%"></section></section>
+                <span class="mini-chart-val">8</span>
+              </section>
+              <section class="mini-chart-row">
+                <span class="mini-chart-label">Set</span>
+                <section class="mini-chart-track"><section class="mini-chart-fill" style="width:63%"></section></section>
+                <span class="mini-chart-val">7</span>
+              </section>
+              <section class="mini-chart-row">
+                <span class="mini-chart-label">Out</span>
+                <section class="mini-chart-track"><section class="mini-chart-fill" style="width:81%"></section></section>
+                <span class="mini-chart-val">9</span>
+              </section>
+              <section class="mini-chart-row">
+                <span class="mini-chart-label">Nov</span>
+                <section class="mini-chart-track"><section class="mini-chart-fill" style="width:90%"></section></section>
+                <span class="mini-chart-val">10</span>
+              </section>
+              <section class="mini-chart-row">
+                <span class="mini-chart-label">Dez</span>
+                <section class="mini-chart-track"><section class="mini-chart-fill" style="width:100%"></section></section>
+                <span class="mini-chart-val">14</span>
+              </section>
+            </section>
+          </article>
+
+          <!-- Pacientes recentes -->
+          <article class="painel-secao" aria-labelledby="titulo-pacientes-rec">
+            <header class="painel-secao-header">
+              <h2 id="titulo-pacientes-rec">
+                <i class="bi bi-people-fill"></i>
+                Pacientes Recentes
+              </h2>
+              <a href="/profissional/pacientes" class="btn-ver-todos">Ver todos</a>
+            </header>
+            <ul class="paciente-mini-lista" role="list">
+              <li class="paciente-mini-item">
+                <figure class="pac-avatar" aria-hidden="true">KM</figure>
+                <section class="pac-info">
+                  <strong>Kauã Mauricio</strong>
+                  <span>Acompanhamento físico</span>
+                </section>
+                <section class="pac-meta">
+                  <strong>R$ 100</strong>
+                  <span>12/10/2025</span>
+                </section>
+              </li>
+              <li class="paciente-mini-item">
+                <figure class="pac-avatar" aria-hidden="true">DR</figure>
+                <section class="pac-info">
+                  <strong>Daniel Renovato</strong>
+                  <span>Nutrição esportiva</span>
+                </section>
+                <section class="pac-meta">
+                  <strong>R$ 120</strong>
+                  <span>10/10/2025</span>
+                </section>
+              </li>
+              <li class="paciente-mini-item">
+                <figure class="pac-avatar" aria-hidden="true">MF</figure>
+                <section class="pac-info">
+                  <strong>Mateus Felipe</strong>
+                  <span>Avaliação física</span>
+                </section>
+                <section class="pac-meta">
+                  <strong>R$ 80</strong>
+                  <span>16/10/2025</span>
+                </section>
+              </li>
+              <li class="paciente-mini-item">
+                <figure class="pac-avatar" aria-hidden="true">AP</figure>
+                <section class="pac-info">
+                  <strong>Ana Paula Costa</strong>
+                  <span>Saúde mental</span>
+                </section>
+                <section class="pac-meta">
+                  <strong>R$ 90</strong>
+                  <span>28/10/2025</span>
+                </section>
+              </li>
+            </ul>
+          </article>
+
+        </section>
+
+        <!-- Histórico completo -->
+        <article class="painel-secao" aria-labelledby="titulo-historico" style="margin-bottom:2rem">
+          <header class="painel-secao-header">
+            <h2 id="titulo-historico">
+              <i class="bi bi-receipt"></i>
+              Histórico de Consultas
+            </h2>
+            <a href="/profissional/pacientes" class="btn-ver-todos">Exportar</a>
+          </header>
           <section class="tabela-container">
             <table>
               <thead>
@@ -66,12 +178,20 @@
               </thead>
               <tbody>
                 <tr>
+                  <td>#004</td>
+                  <td>Ana Paula Costa</td>
+                  <td>28/10/2025</td>
+                  <td>Saúde mental</td>
+                  <td>R$ 90,00</td>
+                  <td><span class="status-concluido">✓ Concluído</span></td>
+                </tr>
+                <tr>
                   <td>#003</td>
                   <td>Kauã Mauricio</td>
                   <td>12/10/2025</td>
                   <td>Consulta de Retorno</td>
                   <td>R$ 100,00</td>
-                  <td class="status-concluido">Concluído</td>
+                  <td><span class="status-concluido">✓ Concluído</span></td>
                 </tr>
                 <tr>
                   <td>#002</td>
@@ -79,21 +199,21 @@
                   <td>10/10/2025</td>
                   <td>Consulta Nutricional</td>
                   <td>R$ 120,00</td>
-                  <td class="status-concluido">Concluído</td>
+                  <td><span class="status-concluido">✓ Concluído</span></td>
                 </tr>
-
                 <tr>
                   <td>#001</td>
                   <td>Mateus Felipe</td>
                   <td>16/10/2025</td>
                   <td>Avaliação Física</td>
                   <td>R$ 80,00</td>
-                  <td class="status-concluido">Concluído</td>
+                  <td><span class="status-concluido">✓ Concluído</span></td>
                 </tr>
               </tbody>
             </table>
           </section>
-        </section>
+        </article>
+
       </main>
     </section>
 

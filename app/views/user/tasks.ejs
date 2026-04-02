@@ -3,48 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarefas - Healthy Safely</title>
+  <title>Tarefas | Healthy Safely</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="/css/hs-user-dashboard.css" />
   <link rel="stylesheet" href="/css/tasks.css" />
   <link rel="icon" href="/imagem/Logo repaginado 2.png" />
 </head>
 <body>
 
 <%- include('../partials/header.ejs') %>
+<%- include('../partials/menu-inferior.ejs') %>
 
+<!-- Hero -->
+<section class="tasks-hero" aria-labelledby="tasks-titulo">
+  <h1 id="tasks-titulo">Suas Tarefas</h1>
+  <p>Organize seu dia e marque tudo que já foi feito</p>
+</section>
+
+<!-- Barra de adição flutuante -->
+<section class="tasks-add-bar" aria-label="Adicionar nova tarefa">
+  <section class="tasks-add-inner">
+    <label for="campoTarefa" class="visually-hidden">Nova tarefa</label>
+    <input
+      type="text"
+      id="campoTarefa"
+      class="hs-task-input"
+      placeholder="Adicione uma nova tarefa..."
+      aria-label="Digite a nova tarefa"
+    />
+    <button type="button" class="hs-add-task-btn" onclick="adicionarTarefa()">
+      <i class="bi bi-plus-circle" aria-hidden="true"></i>
+      Adicionar
+    </button>
+  </section>
+</section>
+
+<!-- Conteúdo principal -->
 <main class="hs-tasks-main">
 
-  <section class="hs-user-header">
-    <h1>Suas Tarefas</h1>
-    <p>Organize seu dia e marque tudo que já foi feito</p>
-  </section>
-
-  <section class="hs-new-task-section" aria-labelledby="titulo-nova-tarefa">
-    <article class="hs-new-task-card">
-      <h2 id="titulo-nova-tarefa" class="visually-hidden">Adicionar nova tarefa</h2>
-      <section class="hs-form-group">
-        <label for="campoTarefa" class="visually-hidden">Descrição da nova tarefa</label>
-        <input
-          type="text"
-          id="campoTarefa"
-          placeholder="Adicione uma nova tarefa..."
-          class="hs-task-input"
-          aria-label="Digite a nova tarefa"
-        />
-        <button type="button" class="hs-add-task-btn" onclick="adicionarTarefa()" aria-label="Adicionar tarefa">
-          <i class="bi bi-plus-circle" aria-hidden="true"></i>
-          Adicionar
-        </button>
-      </section>
-    </article>
-  </section>
-
-  <section class="hs-tasks-section" aria-labelledby="titulo-tarefas-dia">
-    <h2 class="hs-section-title" id="titulo-tarefas-dia">Tarefas do Dia</h2>
+  <!-- Tarefas do servidor -->
+  <section class="hs-tasks-section" aria-labelledby="titulo-tarefas">
+    <header class="tasks-section-header">
+      <h2 class="hs-section-title" id="titulo-tarefas">Tarefas do Dia</h2>
+    </header>
 
     <% if(tasks && tasks.length > 0){ %>
-      <ul class="hs-user-tasks" id="listaTarefasServidor" aria-label="Lista de tarefas">
+      <ul class="hs-user-tasks" id="listaTarefasServidor" aria-label="Tarefas do dia">
         <% tasks.forEach((tarefa) => { %>
           <li>
             <article class="hs-user-task-card <%= tarefa.completed ? 'hs-task-completed' : '' %>">
@@ -61,15 +64,14 @@
                     <h3 class="hs-task-name"><%= tarefa.title %></h3>
                   </section>
                 </section>
-                <form action="/tasks/complete/<%= tarefa._id %>" method="POST" class="hs-task-form-action">
+                <form action="/tasks/complete/<%= tarefa._id %>" method="POST">
                   <button
                     type="submit"
                     class="hs-task-btn <%= tarefa.completed ? 'hs-btn-completed' : '' %>"
-                    <%= tarefa.completed ? 'disabled aria-disabled="true"' : '' %>
-                    aria-label="<%= tarefa.completed ? 'Concluída' : 'Concluir: ' + tarefa.title %>"
+                    <%= tarefa.completed ? 'disabled' : '' %>
                   >
                     <i class="bi bi-check" aria-hidden="true"></i>
-                    <% if(tarefa.completed) { %>Concluída<% } else { %>Concluir<% } %>
+                    <%= tarefa.completed ? 'Concluída' : 'Concluir' %>
                   </button>
                 </form>
               </header>
@@ -78,33 +80,37 @@
         <% }) %>
       </ul>
     <% } else { %>
-      <section class="hs-empty-state" id="estadoVazio" aria-live="polite">
+      <section class="hs-empty-state" id="estadoVazio">
         <i class="bi bi-inbox" aria-hidden="true"></i>
-        <p class="hs-empty-title">Nenhuma tarefa</p>
-        <p class="hs-empty-subtitle">Crie sua primeira tarefa para começar!</p>
+        <p class="hs-empty-title">Nenhuma tarefa ainda</p>
+        <p class="hs-empty-subtitle">Use o campo acima para adicionar sua primeira tarefa!</p>
       </section>
     <% } %>
 
-    <ul class="hs-user-tasks" id="listaTarefasLocais" aria-label="Tarefas adicionadas localmente" aria-live="polite"></ul>
+    <!-- Tarefas adicionadas localmente -->
+    <ul class="hs-user-tasks" id="listaTarefasLocais" aria-label="Tarefas adicionadas" aria-live="polite" style="margin-top:.75rem"></ul>
   </section>
 
-  <section class="hs-tasks-section" aria-labelledby="titulo-categorias">
-    <h2 class="hs-section-title" id="titulo-categorias">Categorias de Saúde</h2>
+  <!-- Categorias de saúde -->
+  <section class="hs-tasks-section" aria-labelledby="titulo-cats">
+    <header class="tasks-section-header">
+      <h2 class="hs-section-title" id="titulo-cats">Categorias de Saúde</h2>
+    </header>
     <nav class="hs-categorias" aria-label="Navegar por categoria">
       <a href="/sono" class="hs-categoria-link">
-        <img src="/imagem/sono.png" alt="" aria-hidden="true" width="36" height="36" />
+        <img src="/imagem/sono.png" alt="" aria-hidden="true" />
         <span>Sono</span>
       </a>
       <a href="/saude-mental" class="hs-categoria-link">
-        <img src="/imagem/saudemental.png" alt="" aria-hidden="true" width="36" height="36" />
+        <img src="/imagem/saudemental.png" alt="" aria-hidden="true" />
         <span>Saúde Mental</span>
       </a>
       <a href="/atividade-fisica" class="hs-categoria-link">
-        <img src="/imagem/atf.png" alt="" aria-hidden="true" width="36" height="36" />
+        <img src="/imagem/atf.png" alt="" aria-hidden="true" />
         <span>Atividade Física</span>
       </a>
       <a href="/alimentacao" class="hs-categoria-link">
-        <img src="/imagem/alimentacao.png" alt="" aria-hidden="true" width="36" height="36" />
+        <img src="/imagem/alimentacao.png" alt="" aria-hidden="true" />
         <span>Alimentação</span>
       </a>
     </nav>
@@ -114,37 +120,25 @@
 
 <%- include('../partials/footer.ejs') %>
 
-<style>
-  .visually-hidden { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-  .hs-categorias { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-  .hs-categoria-link {
-    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-    padding: 0.85rem 1.2rem; border: 1px solid var(--border); border-radius: var(--border-radius);
-    text-decoration: none; color: var(--fundoclaro); font-size: 0.8rem; font-weight: 600;
-    background: var(--primary-color); transition: box-shadow 0.2s, transform 0.2s;
-    min-width: 90px; text-align: center;
-  }
-  .hs-categoria-link:hover { box-shadow: 0 4px 12px rgba(12,79,67,0.12); transform: translateY(-2px); }
-</style>
-
-<script src="/js/tasks.js"></script>
 <script>
   function adicionarTarefa() {
     const campo = document.getElementById('campoTarefa');
     const texto = campo.value.trim();
-    if (!texto) return;
+    if (!texto) { campo.focus(); return; }
 
     const lista = document.getElementById('listaTarefasLocais');
-    const estadoVazio = document.getElementById('estadoVazio');
-    if (estadoVazio) estadoVazio.style.display = 'none';
+    const vazio = document.getElementById('estadoVazio');
+    if (vazio) vazio.style.display = 'none';
 
     const li = document.createElement('li');
     li.innerHTML = `
       <article class="hs-user-task-card">
         <header class="hs-task-header">
           <section class="hs-task-left">
-            <figure class="hs-task-icon" aria-hidden="true"><i class="bi bi-circle"></i></figure>
-            <section class="hs-task-content"><h3 class="hs-task-name">${texto}</h3></section>
+            <figure class="hs-task-icon" aria-hidden="true">
+              <i class="bi bi-circle"></i>
+            </figure>
+            <section><h3 class="hs-task-name">${texto}</h3></section>
           </section>
           <button type="button" class="hs-task-btn" onclick="concluirTarefa(this)">
             <i class="bi bi-check" aria-hidden="true"></i> Concluir
@@ -160,12 +154,12 @@
     const card = btn.closest('.hs-user-task-card');
     card.classList.add('hs-task-completed');
     card.querySelector('.hs-task-icon i').className = 'bi bi-check-circle-fill';
-    btn.innerHTML = '<i class="bi bi-check" aria-hidden="true"></i> Concluída';
+    btn.innerHTML = '<i class="bi bi-check"></i> Concluída';
     btn.disabled = true;
     btn.classList.add('hs-btn-completed');
   }
 
-  document.getElementById('campoTarefa').addEventListener('keydown', (e) => {
+  document.getElementById('campoTarefa').addEventListener('keydown', e => {
     if (e.key === 'Enter') adicionarTarefa();
   });
 </script>
