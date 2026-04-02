@@ -16,7 +16,7 @@
     <%- include('../partials/header.ejs') %>
 
     <main class="notif-main" aria-labelledby="titulo-notif">
-      <header class="notif-topo">
+      <section class="notif-topo">
         <%- include('../partials/botao-voltar.ejs') %>
         <h1 id="titulo-notif">
           <i class="bi bi-bell-fill" aria-hidden="true"></i>
@@ -25,7 +25,7 @@
         <button class="btn-marcar-todas" onclick="marcarTodas()" type="button">
           Marcar todas como lidas
         </button>
-      </header>
+      </section>
 
       <nav class="notif-filtros" aria-label="Filtrar notificações">
         <button

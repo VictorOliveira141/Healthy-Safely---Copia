@@ -16,16 +16,15 @@
   }
 
   .btn-voltar:hover {
-    background: var(--secondary-color);
-    color: #fff;
+    color: var(--botao-hover);
   }
 </style>
 <script>
   function voltarPagina() {
     if (document.referrer && window.history.length > 1) {
-      window.history.back();
+      window.location.href = document.referrer;
     } else {
-      window.location.href = "/"; // fallback (caso não tenha página anterior)
+      window.location.href = "/";
     }
   }
 </script>

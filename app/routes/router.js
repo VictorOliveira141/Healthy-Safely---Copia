@@ -48,6 +48,9 @@ router.get("/tomarammeutela", (req, res) => {
 router.get("/ajuda", (req, res) => {
   res.render("pages/ajuda");
 });
+router.get("/configuracoes", (req, res) => {
+  res.render("pages/configuracoes");
+});
 
 router.get("/plano-premium", (req, res) => {
   res.render("pages/plano-premium");
@@ -91,9 +94,7 @@ router.get("/atividade-fisica", verificarAutenticacao, (req, res) => {
 router.get("/alimentacao", verificarAutenticacao, (req, res) => {
   res.render("pages/alimentacao");
 });
-router.get("/configuracoes", verificarAutenticacao, (req, res) => {
-  res.render("pages/configuracoes");
-});
+
 router.get("/notificacoes", verificarAutenticacao, (req, res) => {
   res.render("pages/notificacoes");
 });
