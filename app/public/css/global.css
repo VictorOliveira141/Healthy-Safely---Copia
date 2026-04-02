@@ -26,7 +26,7 @@
   --animacao: translateY(-2px); /* somente hover */
   --botao-opacity: 0.95; /* somente hover */
 }
-body.dark {
+html.dark body {
   /* CORES GERAIS DO SITE (modo escuro) */
   --primary-color: #272b36; /* 60% */
   --secondary-color: #272c36; /* 30% */

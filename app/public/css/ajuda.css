@@ -183,8 +183,9 @@ ul li:hover {
 }
 
 .form-suporte button:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
+  background: var(--botao-hover);
+  opacity: var(--botao-opacity);
+  transform: var(--animacao);
 }
 
 @media (max-width: 768px) {

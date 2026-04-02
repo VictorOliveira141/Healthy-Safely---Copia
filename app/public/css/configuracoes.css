@@ -111,8 +111,7 @@
   position: absolute;
   width: 18px;
   height: 18px;
-  left: 3px;
-  top: 3px;
+  inset: 3px auto auto 3px;
   background: #fff;
   border-radius: 50%;
   transition: transform 0.2s;
@@ -148,7 +147,7 @@
 .btn-salvar-config {
   width: 100%;
   padding: 0.85rem;
-  background: var(--secondary-color);
+  background: var(--botao);
   color: #fff;
   border: none;
   border-radius: var(--border-radius);
@@ -162,6 +161,7 @@
 }
 
 .btn-salvar-config:hover {
+  background: var(--botao-hover);
   opacity: var(--botao-opacity);
   transform: var(--animacao);
 }
