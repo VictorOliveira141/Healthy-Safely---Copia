@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <script src="/js/darkmode.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amizades | Healthy Safely - Hábitos Saudáveis</title>
+    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/amizades.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+
+    <main class="notif-main" aria-labelledby="titulo-notif">
+      <section class="notif-topo">
+        <%- include('../partials/botao-voltar.ejs') %>
+        <h1 id="titulo-notif">
+          <i class="bi bi-people-fill" aria-hidden="true"></i>
+          Amizades
+        </h1>
+        <p></p>
+      </section>
+
+      <nav class="notif-filtros" aria-label="Filtrar seções de amizades">
+        <button
+          class="filtro-btn ativo"
+          data-filtro="amigos"
+          onclick="filtrar(this, 'amigos')"
+          type="button"
+        >
+          Amigos
+        </button>
+        <button
+          class="filtro-btn"
+          data-filtro="pedidos"
+          onclick="filtrar(this, 'pedidos')"
+          type="button"
+        >
+          Pedidos de Amizade
+        </button>
+        <button
+          class="filtro-btn"
+          data-filtro="adicionar"
+          onclick="filtrar(this, 'adicionar')"
+          type="button"
+        >
+          Adicionar Amigos
+        </button>
+      </nav>
+
+      <section
+        class="notif-lista"
+        id="listaNotificacoes"
+        aria-live="polite"
+        aria-label="Seção de amizades"
+      >
+        <section class="amizade-secao" data-secao="amigos">
+          <p class="notif-grupo-data">Amigos</p>
+
+          <article class="notif-item" data-tipo="amigo">
+            <figure class="notif-icone sistema" aria-hidden="true">
+              <i class="bi bi-person-fill"></i>
+            </figure>
+            <section class="notif-corpo">
+              <strong>Mauricio</strong>
+              <p>Última atividade: hoje.</p>
+              <button
+                onclick="window.location.href = '/perfil-amizade'"
+                class="btn-acao"
+                type="button"
+              >
+                Ver Perfil
+              </button>
+              <button class="btn-acao" type="button">
+                Convidar para Tarefa em Grupo
+              </button>
+              <button class="btn-acao perigo" type="button">
+                Remover Amizade
+              </button>
+            </section>
+          </article>
+        </section>
+
+        <section
+          class="amizade-secao"
+          data-secao="pedidos"
+          style="display: none"
+        >
+          <p class="notif-grupo-data">Pedidos de amizade</p>
+
+          <article class="notif-item" data-tipo="pedido">
+            <figure class="notif-icone tarefa" aria-hidden="true">
+              <i class="bi bi-person-plus-fill"></i>
+            </figure>
+            <section class="notif-corpo">
+              <strong>Diego</strong>
+              <p>Solicitou amizade há 2 horas.</p>
+            </section>
+            <span class="notif-ponto" aria-label="Novo pedido"></span>
+          </article>
+        </section>
+
+        <section
+          class="amizade-secao"
+          data-secao="adicionar"
+          style="display: none"
+        >
+          <p class="notif-grupo-data">Adicionar amigos</p>
+
+          <article class="notif-item">
+            <section
+              class="notif-corpo"
+              style="
+                width: 100%;
+                gap: 0.75rem;
+                display: flex;
+                flex-direction: column;
+              "
+            >
+              <label
+                for="pesquisa-amigo"
+                style="font-size: 0.85rem; color: var(--muted)"
+                >Buscar por Nome de Usuário</label
+              >
+              <input
+                id="pesquisa-amigo"
+                type="search"
+                placeholder="Buscar amigo"
+                aria-label="Buscar amigo"
+                style="
+                  width: 100%;
+                  padding: 0.85rem 1rem;
+                  border-radius: 12px;
+                  border: 1px solid var(--border);
+                  background: var(--primary-color);
+                  color: var(--fundoclaro);
+                "
+              />
+            </section>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
+    <script>
+      function filtrar(btn, tipo) {
+        document
+          .querySelectorAll(".filtro-btn")
+          .forEach((b) => b.classList.remove("ativo"));
+        btn.classList.add("ativo");
+
+        document.querySelectorAll(".amizade-secao").forEach((sec) => {
+          sec.style.display = sec.dataset.secao === tipo ? "block" : "none";
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const ativo = document.querySelector(".filtro-btn.ativo");
+        if (ativo) filtrar(ativo, ativo.dataset.filtro);
+      });
+    </script>
+  </body>
+</html>

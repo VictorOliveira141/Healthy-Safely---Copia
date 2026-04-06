@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <script src="/js/darkmode.js"></script>
+    <meta charset="UTF-8" />
+    <title>Perfil | Healthy Safely - Hábitos Saudáveis</title>
+    <meta
+      name="description"
+      content="Acompanhe seus hábitos saudáveis, progresso, tarefas diárias e evolução no Healthy Safely."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="/css/perfil.css" />
+
+    <link rel="stylesheet" href="/css/global.css" />
+    <style>
+      .btn-seguindo {
+        margin-top: 1rem;
+        padding: 0.75rem 1.2rem;
+        border-radius: 999px;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        background: var(--accent-color);
+        color: var(--fundoescuro);
+        font-weight: 700;
+        cursor: default;
+      }
+      .btn-seguindo:disabled {
+        opacity: 0.85;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+
+    <main class="perfil-corpo">
+      <%- include('../partials/botao-voltar.ejs') %>
+      <!--PERFIL-->
+      <section class="perfil">
+        <figure class="foto-perfil">
+          <img
+            src="/imagem/user.png"
+            alt="Foto de perfil de <%= usuario.nome %>"
+          />
+        </figure>
+
+        <section class="info-perfil">
+          <h1>Mauricio</h1>
+          <h2>@drex153</h2>
+          <p class="seguidores">
+            <span><%= usuario.seguidores || 0 %> seguidores</span> •
+            <span><%= usuario.seguindo || 0 %> seguindo</span>
+          </p>
+          <button class="btn-seguindo" type="button" disabled>
+            <i class="bi bi-check"></i> Seguindo
+          </button>
+        </section>
+      </section>
+
+      <!-- Estatísticas -->
+      <section class="stats">
+        <article class="stat">
+          <h3>XP TOTAL</h3>
+          <p><%= usuario.pontuacao || 0 %></p>
+        </article>
+        <article class="stat">
+          <h3>NIVEL ATUAL</h3>
+          <p><%= usuario.nivel || 1 %></p>
+        </article>
+        <article class="stat">
+          <h3>STREAK</h3>
+          <p>
+            <%= usuario.streak || 0 %> dias
+            <i class="bi bi-fire streak"></i>
+          </p>
+        </article>
+      </section>
+
+      <!-- Amizades -->
+      <section class="containers-gerais" aria-labelledby="grupo-conta">
+        <h2 class="containers-gerais-titulo" id="grupo-conta">Amizades</h2>
+        <section class="amizade-list">
+          <article class="amizade-item">
+            <figure class="notif-icone sistema" aria-hidden="true">
+              <i class="bi bi-person-fill"></i>
+            </figure>
+            <span class="amizade-nome"
+              ><%= usuario.nome.split(' ').slice(0,2).join(' ') %></span
+            >
+            <span class="amizade-status">🟢Online</span>
+          </article>
+        </section>
+      </section>
+
+      <!-- CONQUISTAS -->
+      <section class="containers-gerais" aria-labelledby="grupo-conta">
+        <h2 class="containers-gerais-titulo" id="grupo-conta">Conquistas</h2>
+      </section>
+
+      <section class="perfil-footer">
+        <section class="containers-gerais" aria-labelledby="grupo-conta">
+          <h2 class="containers-gerais-titulo" id="grupo-conta">Ações</h2>
+
+          <a href="#" aria-label="Fazer tarefa em grupo">
+            <article class="containers-botoes">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone" aria-hidden="true">
+                  <i class="bi bi-people-fill"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Convidar para Tarefa em Grupo</span>
+                  <span class="botao-desc"
+                    >Participe de tarefas colaborativas com seu amigo</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+
+          <a href="#" aria-label="Remover amizade">
+            <article class="containers-botoes containers-botoes-perigo">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone perigo" aria-hidden="true">
+                  <i class="bi bi-trash"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Remover Amizade</span>
+                  <span class="botao-desc"
+                    >Remova esta amizade da sua lista</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+
+          <a href="#" aria-label="Bloquear usuário">
+            <article class="containers-botoes containers-botoes-perigo">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone perigo" aria-hidden="true">
+                  <i class="bi bi-x-circle"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Bloquear Usuário</span>
+                  <span class="botao-desc"
+                    >Bloqueie este usuário e evite interações</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+        </section>
+      </section>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

@@ -13,14 +13,13 @@
 
     <article class="nav-spacer">
       <a href="/tasks">Tarefas</a>
+      <a href="/amizades">Amizades</a>
       <a href="/perfil">Perfil</a>
     </article>
 
     <article class="nav-spacer">
       <a href="/notificacoes">Notificações</a>
       <a href="/configuracoes">Configurações</a>
-      <a href="/ajuda?secao=contato">Contato</a>
-
       <a href="/ajuda">
         <i class="bi bi-info-circle" aria-hidden="true"></i> Ajuda
       </a>
@@ -53,11 +52,12 @@
       <!-- LOGIN / PERFIL -->
       <section class="user-menu cliente">
         <% if (usuario) { %>
-          <a href="/perfil" aria-label="Ir para perfil">
+          <a href="/configuracoes" aria-label="Ir para perfil" class="notificacoes-mobile">
+              <i class="bi bi-gear" aria-hidden="true"></i>
+            </a>
+          <a href="/perfil" aria-label="Ir para perfil" class="mobile">
             <i class="bi bi-person-circle logado" aria-hidden="true"></i>
-          </a>
-
-          <span class="header-welcome">
+          </a><span class="header-welcome">
             Olá, <strong><%= usuario.nome.split(' ')[0] %></strong>!
           </span>
         <% } else { %>

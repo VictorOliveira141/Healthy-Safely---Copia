@@ -100,7 +100,7 @@ header {
   gap: 1px;
   color: var(--fundoescuro);
   border: 1px solid var(--fundoescuro);
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   padding: 1px;
 }
 .logar-cadastrar i {
@@ -154,10 +154,9 @@ header {
 }
 
 @media (max-width: 768px) {
-  .header-nav2 {
-    display: none;
-  }
-  .header-welcome {
+  .header-nav2,
+  .header-welcome,
+  .user-menu a.mobile {
     display: none;
   }
   .notificacoes-mobile {
@@ -175,7 +174,7 @@ header {
 }
 @media (max-width: 470px) {
   .header-logo img {
-    height: 40px;
+    height: 45px;
   }
   .user-menu i {
     font-size: 25px;

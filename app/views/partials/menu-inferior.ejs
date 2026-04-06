@@ -1,83 +1,85 @@
 <nav class="menu-inferior" aria-label="Menu inferior">
+  <section class="menu-container">
+    <% if (usuario) { %>
+      <a href="/">
+        <i class="bi bi-house-door-fill" aria-hidden="true"></i>
+      </a>
 
-  <% if (usuario) { %>
+      <a href="/tasks">
+        <i class="bi bi-check-square" aria-hidden="true"></i>
+      </a>
 
-  <a href="/">
-    <i class="bi bi-house-door-fill" aria-hidden="true"></i>
-    <span>Início</span>
-  </a>
+      <a href="/amizades">
+        <i class="bi bi-people" aria-hidden="true"></i>
+      </a>
 
-  <button
-    class="menu-btn"
-    aria-label="Adicionar nova tarefa"
-  >
-    <i class="bi bi-plus-circle" aria-hidden="true"></i>
-    <span>Adicionar</span>
-  </button>
+      <a href="/perfil">
+        <i class="bi bi-person-circle" aria-hidden="true"></i>
+      </a>
+    <% } else { %>
+      <a href="/">
+        <i class="bi bi-house-door-fill" aria-hidden="true"></i>
+      </a>
 
-  <a href="/tasks">
-    <i class="bi bi-check-square" aria-hidden="true"></i>
-    <span>Tarefas</span>
-  </a>
+      <a href="/ajuda">
+        <i class="bi bi-info-circle" aria-hidden="true"></i>
+      </a>
 
-  <% } else { %>
-
-  <a href="/">
-    <i class="bi bi-house-door-fill" aria-hidden="true"></i>
-    <span>Início</span>
-  </a>
-
-  <a href="/ajuda">
-    <i class="bi bi-info-circle" aria-hidden="true"></i>
-    <span>Ajuda</span>
-  </a>
-
-  <a href="/configuracoes">
-    <i class="bi bi-gear" aria-hidden="true"></i>
-    <span>Configurações</span>
-  </a>
-
-  <% } %>
-
+      <a href="/configuracoes">
+        <i class="bi bi-gear" aria-hidden="true"></i>
+      </a>
+    <% } %>
+  </section>
 </nav>
+
 <style>
   .menu-inferior {
     position: fixed;
-
     left: 0;
     bottom: 0;
     width: 100vw;
     background: var(--secondary-color);
     box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
     z-index: 999;
-
     display: none; /* começa escondido */
-
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
     height: 55px;
     padding: 0;
   }
-  .menu-inferior a,
-.menu-inferior button {
-  flex: 1;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
-  padding: 8px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  background: none;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-}
-  .menu-inferior i {
-    font-size: 20px;
+  .menu-container {
+    display: flex;
+    max-width: 500px;
+    width: 100%;
   }
+
+  .menu-container a {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    font-size: var(--font-icon);
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    color: var(--fundoescuro);
+    transition: opacity 0.2s ease;
+  }
+
+  .menu-container a:hover {
+    opacity: 0.8;
+  }
+
+  .menu-inferior i {
+    font-size: 24px;
+    margin-bottom: 2px;
+  }
+
   @media (max-width: 768px) {
     .menu-inferior {
       display: flex;

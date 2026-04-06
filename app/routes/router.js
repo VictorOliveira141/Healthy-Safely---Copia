@@ -28,7 +28,7 @@ const tarefas = [
 ];
 
 /* ROTA PARA DESLOGAR O USUÁRIO */
-router.get("/logout", (req, res) => {
+router.get("/sair", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/login");
   });
@@ -78,10 +78,7 @@ router.get("/dashboard", verificarAutenticacao, (req, res) => {
 router.get("/sono", verificarAutenticacao, (req, res) => {
   res.render("pages/sono");
 });
-//PROGRESSÃO E PAINEL LOCAL
-router.get("/perfil", verificarAutenticacao, (req, res) => {
-  res.render("pages/perfil");
-});
+
 router.get("/painel-local", verificarAutenticacao, (req, res) => {
   res.render("pages/painel-local");
 });
@@ -95,11 +92,21 @@ router.get("/alimentacao", verificarAutenticacao, (req, res) => {
   res.render("pages/alimentacao");
 });
 
+// PERFIL e páginas relacionadas
+router.get("/perfil", verificarAutenticacao, (req, res) => {
+  res.render("pages/perfil");
+});
+router.get("/perfil-amizade", verificarAutenticacao, (req, res) => {
+  res.render("pages/perfil-amizade");
+});
 router.get("/notificacoes", verificarAutenticacao, (req, res) => {
   res.render("pages/notificacoes");
 });
 router.get("/privacidade", verificarAutenticacao, (req, res) => {
   res.render("pages/privacidade");
+});
+router.get("/amizades", verificarAutenticacao, (req, res) => {
+  res.render("pages/amizades");
 });
 
 /*  ===================== ROTAS COM VALIDAÇÕES  ===================== */
