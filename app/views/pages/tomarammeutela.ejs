@@ -15,39 +15,24 @@
   </head>
 
   <body id="topo">
-    <!-- DARK MODE -->
     <%- include('../partials/header.ejs') %>
-    <!---->
+
     <main>
-      <section class="main-topo">
-        <section class="carrossel">
-          <article class="carrossel-slide active">
-            <img src="/imagem/bannerzaodeacessoo.PNG" alt="Banner 1" />
-          </article>
-
-          <article class="carrossel-slide">
-            <img src="/imagem/1x/bannerprogresso.png" alt="Banner 2" />
-          </article>
-
-          <button class="botao-prev">&#10094;</button>
-          <button class="botao-next">&#10095;</button>
-        </section>
-
-        <!-- LATERAL -->
-        <aside class="side-content">
-          <article class="side-item">
-            <img src="/imagem/confira.png" class="bannerof" />
-          </article>
-
-          <article class="side-item">
-            <img src="/imagem/a (34).png" class="bannerof" />
-          </article>
-        </aside>
+      <section class="hero" id="inicio">
+        <h2>Cuide da sua saúde de forma inteligente</h2>
+        <p>
+          A Healthy Safely é a plataforma que torna divertido cuidar da sua
+          saúde. Faça tarefas, suba de nivel junto com amigos e acompanhe sua
+          evolução!
+        </p>
+        <button onclick="window.location.href = '#planos'">
+          Conheça os planos
+        </button>
       </section>
 
       <!-- TIPO DE CONTA -->
       <section class="centro">
-        <h2>ESCOLHA SEU TIPO DE CONTA</h2>
+        <h2>QUEM PODE CRIAR UMA CONTA?</h2>
 
         <section class="escolher-container">
           <article class="escolher-card" tabindex="0">
@@ -84,109 +69,106 @@
         </section>
       </section>
 
-      <!-- COMO FUNCIONA -->
-      <section class="centro">
-        <h2>COMO O SISTEMA FUNCIONA?</h2>
+      <!--PLANOS-->
+      <section class="centro planos" id="planos">
+        <h2>NOSSOS PLANOS</h2>
 
-        <section class="steps">
-          <section class="steps-container">
-            <section class="step">
-              <span>1</span>
-              <p>Crie sua conta</p>
-            </section>
+        <section class="planos-container">
+          <!-- PLANO GRATUITO -->
+          <article class="plano-card">
+            <span class="selo selo-gratis"
+              ><i class="bi bi-gift"></i> Grátis</span
+            >
+            <h3>Plano Gratuito</h3>
+            <p class="preco">R$ 0<span>/mês</span></p>
 
-            <section class="step">
-              <span>2</span>
-              <p>Conecte-se com um profissional</p>
-            </section>
+            <ul>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+            </ul>
 
-            <section class="step">
-              <span>3</span>
-              <p>Acompanhe sua evolução</p>
-            </section>
-          </section>
+            <button class="btn-plano" onclick="window.location.href = '/login'">
+              Começar grátis
+            </button>
+          </article>
+
+          <!-- PLANO PREMIUM -->
+          <article class="plano-card destaque">
+            <span class="selo selo-premium"
+              ><i class="bi bi-patch-check-fill"></i> Premium</span
+            >
+            <h3>Plano Premium</h3>
+
+            <p class="preco">7 dias grátis</p>
+
+            <p class="preco-atual">Depois R$ 14,90<span>/mês</span></p>
+
+            <ul>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+            </ul>
+
+            <button class="btn-plano" onclick="window.location.href = '/login'">
+              Assinar Premium
+            </button>
+          </article>
+
+          <!-- PLANO ANUAL -->
+          <article class="plano-card destaque">
+            <span class="selo selo-premium">
+              <i class="bi bi-patch-check-fill"></i> Premium
+            </span>
+
+            <h3>Plano Anual</h3>
+            <p class="preco">R$ 166,80 - desc. 10%</p>
+            <p class="preco-atual">R$ 13,40<span>/mês</span></p>
+
+            <ul>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+              <li>✔ ??????</li>
+            </ul>
+
+            <button class="btn-plano" onclick="window.location.href = '/login'">
+              Assinar Anual
+            </button>
+          </article>
         </section>
       </section>
 
-      <!-- SUGESTÕES -->
-      <section class="centro">
-        <h2>SUGESTÕES DE TAREFAS</h2>
+      <!--UPDATES-->
+      <section class="centro updates" id="updates">
+        <h2>NOVIDADES</h2>
+        <p>Confira as últimas atualizações do nosso serviço!</p>
 
-        <section class="grade-tarefas">
-          <article class="cartao-tarefas" aria-labelledby="tarefa-corrida">
-            <h3 id="tarefa-corrida">
-              <span aria-hidden="true">🏃‍♂️</span> Corra!
-            </h3>
-
-            <p>Caminhe um total de 10km em 1 semana</p>
+        <section class="updates-container">
+          <article class="update-card">
+            <h3>Nova funcionalidade: Tarefas em grupo</h3>
             <p>
-              Dificuldade:
-              <span aria-label="Dificuldade: Fácil" class="facil">Fácil</span>
+              Agora você pode participar de tarefas em grupo para ganhar pontos
+              extras e subir de nível mais rápido!
             </p>
-            <p>Duração: <span aria-label="Duração: 1 semana">1 semana</span></p>
-            <p>XP: <span aria-label="XP: 300" class="xp">300</span></p>
-
-            <button
-              class="botao-tarefas"
-              type="button"
-              aria-label="Iniciar tarefa Corra"
-            >
-              Iniciar
-            </button>
           </article>
 
-          <article class="cartao-tarefas" aria-labelledby="tarefa-alimentacao">
-            <h3 id="tarefa-alimentacao">
-              <span aria-hidden="true">🥗</span> Alimentação Saudável
-            </h3>
-
-            <p>Coma 2 frutas diariamente</p>
+          <article class="update-card">
+            <h3>Melhorias na interface</h3>
             <p>
-              Dificuldade:
-              <span aria-label="Dificuldade: Fácil" class="medio">Médio</span>
+              Fizemos melhorias na interface para tornar a navegação mais
+              intuitiva e agradável. Experimente agora!
             </p>
-            <p>Duração: <span aria-label="Duração: 1 semana">1 semana</span></p>
-            <p>XP: <span aria-label="XP: 300" class="xp">400</span></p>
-
-            <button
-              class="botao-tarefas"
-              type="button"
-              aria-label="Iniciar tarefa Alimentação Saudável"
-            >
-              Iniciar
-            </button>
           </article>
 
-          <article class="cartao-tarefas" aria-labelledby="tarefa-familia">
-            <h3 id="tarefa-familia">
-              <span aria-hidden="true">📚</span> FOCO TOTAL!
-            </h3>
-
-            <p>Estude 2h por dia sem interrupções por 1 semana</p>
+          <article class="update-card">
+            <h3>Novos planos de assinatura</h3>
             <p>
-              Dificuldade:
-              <span aria-label="Dificuldade: Fácil" class="dificil"
-                >Difícil</span
-              >
+              Lançamos novos planos de assinatura com benefícios exclusivos.
+              Veja qual é o melhor para você!
             </p>
-            <p>Duração: <span aria-label="Duração: 1 semana">1 semana</span></p>
-            <p>
-              XP: <span aria-label="XP: 300" class="xp">500 + Medalha</span>
-            </p>
-            <button
-              class="botao-tarefas"
-              type="button"
-              aria-label="Iniciar tarefa FOCO TOTAL!"
-            >
-              Iniciar
-            </button>
-          </article>
-
-          <article class="ver-mais">
-            <h3>Ver mais tarefas</h3>
-            <button onclick="window.location.href = '/#'" class="btn-circular">
-              +
-            </button>
           </article>
         </section>
       </section>
@@ -199,8 +181,6 @@
 
     <%- include('../partials/footer.ejs') %>
 
-    <script src="/js/carrossel-tomarammeutela.js"></script>
-    <script src="/js/slider-tomarammeutela.js"></script>
     <script>
       // Flip card: toggle .is-flipped on click; button stops propagation and navigates
       (function () {

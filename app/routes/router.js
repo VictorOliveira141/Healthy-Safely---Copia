@@ -52,13 +52,6 @@ router.get("/configuracoes", (req, res) => {
   res.render("pages/configuracoes");
 });
 
-router.get("/plano-premium", (req, res) => {
-  res.render("pages/plano-premium");
-});
-router.get("/plano-comum", (req, res) => {
-  res.render("pages/plano-comum");
-});
-
 /*  ===================== ROTAS PRIVADAS (PRECISA DE LOGIN) ===================== */
 
 router.get("/tasks", verificarAutenticacao, (req, res) => {
