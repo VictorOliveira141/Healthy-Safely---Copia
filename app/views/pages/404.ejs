@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página não encontrada | Healthy Safely</title>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <style>
+    .err-page { min-height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:2rem; gap:1.25rem; }
+    .err-code  { font-size:6rem; font-weight:900; color:var(--verde-300); line-height:1; }
+    .err-msg   { font-size:1.5rem; font-weight:800; color:var(--txt); }
+    .err-sub   { color:var(--muted); max-width:420px; }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header.ejs') %>
+  <section class="err-page">
+    <p class="err-code">404</p>
+    <h1 class="err-msg">Página não encontrada</h1>
+    <p class="err-sub">A página que você tentou acessar não existe ou foi removida.</p>
+    <a href="/" class="btn-primary"><i class="bi bi-house-fill"></i> Voltar ao início</a>
+  </section>
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html>

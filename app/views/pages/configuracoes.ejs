@@ -1,205 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <script src="/js/darkmode.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Configurações | Healthy Safely</title>
+    <meta
+      name="description"
+      content="Suas configurações personalizadas para uma experiência única no Healthy Safely. Ajuste preferências de conta, aparência e notificações."
+    />
+    <title>Configurações | Healthy Safely - Hábitos Saudáveis</title>
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/configuracoes.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <style>
-      .config-main {
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 2rem 1.25rem 6rem;
-      }
-
-      .config-titulo {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--fundoclaro);
-        margin-bottom: 0.25rem;
-      }
-
-      .config-subtitulo {
-        font-size: var(--font-text);
-        color: var(--muted);
-        margin-bottom: 2rem;
-      }
-
-      .config-grupo {
-        background: var(--primary-color);
-        border: 1px solid var(--border);
-        border-radius: var(--border-radius);
-        margin-bottom: 1.25rem;
-        overflow: hidden;
-      }
-
-      .config-grupo-titulo {
-        padding: 0.85rem 1.2rem;
-        font-size: 0.78rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--muted);
-        background: rgba(0,0,0,0.02);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .config-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 1.2rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .config-item:last-child {
-        border-bottom: none;
-      }
-
-      .config-item-esquerda {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-      }
-
-      .config-icone {
-        width: 38px;
-        height: 38px;
-        border-radius: 10px;
-        background: #e6f4f1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--secondary-color);
-        font-size: 1rem;
-        flex-shrink: 0;
-      }
-
-      .config-icone.perigo {
-        background: #fff0f0;
-        color: #dc3545;
-      }
-
-      .config-nome {
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: var(--fundoclaro);
-        display: block;
-      }
-
-      .config-desc {
-        font-size: 11px;
-        color: var(--muted);
-      }
-
-      /* Toggle switch */
-      .toggle {
-        position: relative;
-        width: 44px;
-        height: 24px;
-      }
-
-      .toggle input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-
-      .slider-toggle {
-        position: absolute;
-        inset: 0;
-        background: #ccc;
-        border-radius: 24px;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-
-      .slider-toggle::before {
-        content: "";
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        left: 3px;
-        top: 3px;
-        background: #fff;
-        border-radius: 50%;
-        transition: transform 0.2s;
-      }
-
-      .toggle input:checked + .slider-toggle {
-        background: var(--accent-color);
-      }
-
-      .toggle input:checked + .slider-toggle::before {
-        transform: translateX(20px);
-      }
-
-      .config-seta {
-        color: var(--muted);
-        font-size: 0.9rem;
-      }
-
-      .config-select {
-        padding: 0.35rem 0.65rem;
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        font-size: var(--font-text);
-        color: var(--fundoclaro);
-        background: var(--primary-color);
-        cursor: pointer;
-      }
-
-      .config-item-perigo .config-nome {
-        color: #dc3545;
-      }
-
-      .btn-salvar-config {
-        width: 100%;
-        padding: 0.85rem;
-        background: var(--secondary-color);
-        color: #fff;
-        border: none;
-        border-radius: var(--border-radius);
-        font-size: 0.9rem;
-        font-weight: 600;
-        cursor: pointer;
-        margin-top: 0.5rem;
-        transition: opacity 0.2s, transform 0.2s;
-      }
-
-      .btn-salvar-config:hover {
-        opacity: var(--botao-opacity);
-        transform: var(--animacao);
-      }
-
-      .msg-salvo {
-        display: none;
-        text-align: center;
-        color: var(--accent-color);
-        font-size: var(--font-text);
-        font-weight: 600;
-        margin-top: 0.75rem;
-      }
-    </style>
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
-    <%- include('../partials/menu-inferior.ejs') %>
 
     <main class="config-main" aria-labelledby="titulo-config">
+      <%- include('../partials/botao-voltar.ejs') %>
       <h1 class="config-titulo" id="titulo-config">Configurações</h1>
       <p class="config-subtitulo">Personalize sua experiência na plataforma</p>
 
       <!-- CONTA -->
+      <% if (usuario) { %>
       <section class="config-grupo" aria-labelledby="grupo-conta">
         <h2 class="config-grupo-titulo" id="grupo-conta">Conta</h2>
 
@@ -246,6 +73,7 @@
           <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
         </article>
       </section>
+      <% } %>
 
       <!-- APARÊNCIA -->
       <section class="config-grupo" aria-labelledby="grupo-aparencia">
@@ -257,14 +85,21 @@
               <i class="bi bi-moon-fill"></i>
             </figure>
             <section>
-              <span class="config-nome">Modo escuro</span>
-              <span class="config-desc">Alterar entre tema claro e escuro</span>
+              <span class="config-nome">Modo de aparência</span>
+              <span class="config-desc"
+                >Escolha automático, claro ou escuro</span
+              >
             </section>
           </section>
-          <label class="toggle" aria-label="Ativar ou desativar modo escuro">
-            <input type="checkbox" id="toggleDarkMode" />
-            <span class="slider-toggle"></span>
-          </label>
+          <select
+            class="config-select"
+            id="selectTheme"
+            aria-label="Selecionar modo de aparência"
+          >
+            <option value="auto">Automático</option>
+            <option value="light">Claro</option>
+            <option value="dark">Escuro</option>
+          </select>
         </article>
 
         <article class="config-item">
@@ -286,8 +121,11 @@
       </section>
 
       <!-- NOTIFICAÇÕES -->
+      <% if (usuario) { %>
       <section class="config-grupo" aria-labelledby="grupo-notificacoes">
-        <h2 class="config-grupo-titulo" id="grupo-notificacoes">Notificações</h2>
+        <h2 class="config-grupo-titulo" id="grupo-notificacoes">
+          Notificações
+        </h2>
 
         <article class="config-item">
           <section class="config-item-esquerda">
@@ -296,7 +134,9 @@
             </figure>
             <section>
               <span class="config-nome">Lembretes de tarefas</span>
-              <span class="config-desc">Receba avisos sobre tarefas pendentes</span>
+              <span class="config-desc"
+                >Receba avisos sobre tarefas pendentes</span
+              >
             </section>
           </section>
           <label class="toggle" aria-label="Ativar lembretes de tarefas">
@@ -312,7 +152,9 @@
             </figure>
             <section>
               <span class="config-nome">Conquistas e medalhas</span>
-              <span class="config-desc">Seja notificado ao ganhar recompensas</span>
+              <span class="config-desc"
+                >Seja notificado ao ganhar recompensas</span
+              >
             </section>
           </section>
           <label class="toggle" aria-label="Ativar notificações de conquistas">
@@ -328,7 +170,9 @@
             </figure>
             <section>
               <span class="config-nome">E-mails da plataforma</span>
-              <span class="config-desc">Novidades e atualizações por e-mail</span>
+              <span class="config-desc"
+                >Novidades e atualizações por e-mail</span
+              >
             </section>
           </section>
           <label class="toggle" aria-label="Ativar e-mails da plataforma">
@@ -355,38 +199,18 @@
           <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
         </article>
       </section>
+      <% } %>
 
+      <% if (usuario) { %>
       <button class="btn-salvar-config" onclick="salvarConfigs()" type="button">
         Salvar configurações
       </button>
-      <p class="msg-salvo" id="msgSalvo" role="status">✅ Configurações salvas!</p>
+      <p class="msg-salvo" id="msgSalvo" role="status">
+        ✅ Configurações salvas!
+      </p>
+      <% } %>
     </main>
 
     <%- include('../partials/footer.ejs') %>
-
-    <script>
-      // Sincroniza dark mode com o tema já existente no projeto
-      const toggleDark = document.getElementById('toggleDarkMode');
-      if (document.body.classList.contains('dark')) {
-        toggleDark.checked = true;
-      }
-      toggleDark.addEventListener('change', () => {
-        document.body.classList.toggle('dark', toggleDark.checked);
-        localStorage.setItem('hs_tema', toggleDark.checked ? 'dark' : 'light');
-      });
-
-      // Aplica tema salvo
-      const temaSalvo = localStorage.getItem('hs_tema');
-      if (temaSalvo === 'dark') {
-        document.body.classList.add('dark');
-        toggleDark.checked = true;
-      }
-
-      function salvarConfigs() {
-        const msg = document.getElementById('msgSalvo');
-        msg.style.display = 'block';
-        setTimeout(() => { msg.style.display = 'none'; }, 3000);
-      }
-    </script>
   </body>
 </html>

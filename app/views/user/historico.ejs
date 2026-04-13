@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="/js/darkmode.js"></script>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Histórico | Healthy Safely</title>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <style>
+    .hist-main { max-width:900px; margin:0 auto; padding:2.5rem 1.5rem 6rem; }
+    .hist-hero  { background:linear-gradient(135deg,#012e22,#0f5e50);padding:2.5rem 1.5rem;text-align:center;color:#fff;margin-bottom:-2rem; }
+    .hist-hero h1{ font-size:1.8rem;font-weight:900; }
+    .hist-hero p { opacity:.7;margin-top:.4rem; }
+    .hist-card  { background:var(--card);border:1px solid var(--border);border-radius:var(--border-radius);padding:1.5rem;margin-top:2.5rem;box-shadow:var(--shadow-sm); }
+    .hist-card h2{ font-size:1rem;font-weight:800;margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem; }
+    .hist-card h2 i{ color:var(--verde-500); }
+    .semana-linha{ display:flex;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--border); }
+    .semana-linha:last-child{ border-bottom:none; }
+    .semana-data { font-size:.8rem;font-weight:700;color:var(--muted);width:80px;flex-shrink:0; }
+    .semana-bar  { flex:1; }
+    .semana-pct  { font-size:.85rem;font-weight:800;color:var(--txt);width:40px;text-align:right; }
+    .tarefa-hist-item{ display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border); }
+    .tarefa-hist-item:last-child{ border-bottom:none; }
+    .tarefa-hist-nome{ font-size:.9rem;font-weight:600; }
+    .tarefa-hist-data{ font-size:.78rem;color:var(--muted); }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header.ejs') %>
+  <%- include('../partials/menu-inferior.ejs') %>
+
+  <section class="hist-hero">
+    <h1><i class="bi bi-clock-history"></i> Seu Histórico</h1>
+    <p>Acompanhe sua evolução semana a semana</p>
+  </section>
+
+  <main class="hist-main">
+
+    <article class="hist-card">
+      <h2><i class="bi bi-graph-up-arrow"></i> Constância Semanal</h2>
+      <% [
+        ['Semana 52', 68],['Semana 51', 74],['Semana 50', 55],
+        ['Semana 49', 82],['Semana 48', 90],['Semana 47', 61]
+      ].forEach(([s,p]) => { %>
+      <section class="semana-linha">
+        <span class="semana-data"><%= s %></span>
+        <section class="semana-bar">
+          <section class="progress-track"><section class="progress-fill" style="width:<%= p %>%;<%= p<60?'background:#ef4444':p<75?'background:#f59e0b':''%>"></section></section>
+        </section>
+        <span class="semana-pct"><%= p %>%</span>
+      </section>
+      <% }) %>
+    </article>
+
+    <article class="hist-card">
+      <h2><i class="bi bi-check-circle-fill"></i> Tarefas Concluídas Recentemente</h2>
+      <% [
+        {nome:'Caminhada 20 minutos', data:'Hoje', pts:10},
+        {nome:'Beber 2L de água',     data:'Ontem', pts:10},
+        {nome:'Alongamento leve',     data:'28/12', pts:10},
+        {nome:'Meditação 10 min',     data:'27/12', pts:15},
+        {nome:'Dormir 8 horas',       data:'26/12', pts:15},
+      ].forEach(t => { %>
+      <section class="tarefa-hist-item">
+        <section>
+          <p class="tarefa-hist-nome"><i class="bi bi-check-circle-fill" style="color:var(--verde-400);margin-right:.4rem"></i><%= t.nome %></p>
+          <span class="tarefa-hist-data"><%= t.data %></span>
+        </section>
+        <span class="badge badge-green">+<%= t.pts %> pts</span>
+      </section>
+      <% }) %>
+    </article>
+
+  </main>
+
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html>

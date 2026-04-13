@@ -39,9 +39,6 @@ header {
   background: var(--secondary-color);
   flex-wrap: wrap;
 }
-.header-nav2.farmacia {
-  gap: 150px;
-}
 
 .nav-spacer {
   display: flex;
@@ -95,17 +92,6 @@ header {
   text-decoration: none;
   color: white;
 }
-.user-menu button.notificacao {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font: inherit;
-}
-.user-menu button i {
-  color: white;
-}
 
 /* Login / cadastro */
 .logar-cadastrar {
@@ -114,15 +100,14 @@ header {
   gap: 1px;
   color: var(--fundoescuro);
   border: 1px solid var(--fundoescuro);
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   padding: 1px;
 }
 .logar-cadastrar i {
   font-size: 14px;
 }
 .logar-cadastrar a,
-.logar-cadastrar span,
-.logar-cadastrar button {
+.logar-cadastrar span {
   background: none;
   border: none;
   color: var(--fundoescuro);
@@ -142,140 +127,9 @@ header {
 .header-welcome strong {
   font-weight: 600;
 }
-
-/* ============ NOTIFICAÇÕES ============= */
-.notification-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: linear-gradient(135deg, #0c2727, #0a1f1f);
-  border-radius: 16px;
-  padding: 12px;
-  min-width: 250px;
-  max-width: 350px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 1000;
-  margin-top: 8px;
-}
-.notification-dropdown.hidden {
+.notificacoes-mobile {
   display: none;
 }
-.notification-dropdown h3 {
-  color: var(--fundoescuro);
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-.notification-dropdown ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.notification-dropdown li {
-  color: var(--fundoescuro);
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  font-size: 14px;
-}
-.notification-dropdown li:last-child {
-  border: none;
-}
-.notification-dropdown a {
-  display: block;
-  width: 100%;
-  padding: 10px 16px;
-  margin-top: 10px;
-  color: var(--fundoescuro);
-  text-decoration: none;
-  background: rgba(140, 167, 0, 0.1);
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  transition: 0.3s;
-}
-.notification-dropdown a:hover {
-  background: rgba(140, 167, 0, 0.2);
-  transform: translateY(-2px);
-}
-
-/* =========== MODAL =========== */
-.modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  background: rgba(12, 12, 12, 0.8);
-  backdrop-filter: blur(8px);
-}
-.modal.hidden {
-  display: none;
-}
-.modal-content {
-  background: var(--primary-color);
-  color: var(--fundoclaro);
-  padding: 40px;
-  border-radius: 24px;
-  max-width: 420px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: modalSlideIn 0.4s ease;
-}
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-.close-btn {
-  color: var(--fundoclaro);
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 24px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.btn-cadastro {
-  display: block;
-  margin: 5px 0;
-  padding: 16px 24px;
-  background: var(--botao);
-  color: var(--fundoescuro);
-  border-radius: 16px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-  box-shadow: 0 4px 16px rgba(12, 79, 67, 0.3);
-}
-
-.btn-cadastro:hover {
-  background: var(--botao-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(12, 79, 67, 0.4);
-}
-.opcoes-cadastro {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 /* ================= RESPONSIVO ================= */
 @media (max-width: 1280px) {
   .header-nav2 {
@@ -298,26 +152,17 @@ header {
     height: 50px;
   }
 }
-@media (max-width: 900px) {
-  .header-nav2,
-  .search-bar {
-    display: none;
-  }
-  .hamburger,
-  .fundo,
-  .search-bar2 {
-    display: flex;
-  }
-  .user-menu button.notificacao {
-    display: flex;
-  }
-}
+
 @media (max-width: 768px) {
-  .header-welcome {
+  .header-nav2,
+  .header-welcome,
+  .user-menu a.mobile {
     display: none;
   }
-  .user-menu i,
-  .user {
+  .notificacoes-mobile {
+    display: block;
+  }
+  .user-menu i {
     font-size: 28px;
   }
   .header-logo img {
@@ -329,7 +174,7 @@ header {
 }
 @media (max-width: 470px) {
   .header-logo img {
-    height: 40px;
+    height: 45px;
   }
   .user-menu i {
     font-size: 25px;

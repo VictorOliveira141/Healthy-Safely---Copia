@@ -1,0 +1,30 @@
+<button onclick="voltarPagina()" class="btn-voltar">
+  <i class="bi bi-chevron-left"></i>
+</button>
+
+<style>
+  .btn-voltar {
+    font-size: 1.5rem;
+    color: var(--fundoclaro);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-radius: var(--border-radius);
+    transition: background 0.15s;
+  }
+
+  .btn-voltar:hover {
+    color: var(--botao-hover);
+  }
+</style>
+<script>
+  function voltarPagina() {
+    if (document.referrer && window.history.length > 1) {
+      window.location.href = document.referrer;
+    } else {
+      window.location.href = "/";
+    }
+  }
+</script>

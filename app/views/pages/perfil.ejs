@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <script src="/js/darkmode.js"></script>
     <meta charset="UTF-8" />
     <title>Perfil | Healthy Safely - Hábitos Saudáveis</title>
-
     <meta
       name="description"
       content="Acompanhe seus hábitos saudáveis, progresso, tarefas diárias e evolução no Healthy Safely."
     />
-
     <meta name="robots" content="index, follow" />
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="/css/perfil.css" />
+
     <link rel="stylesheet" href="/css/global.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
-    <!---->
-    <%- include('../partials/tema.ejs') %>
+
     <main class="perfil-corpo">
       <!--PERFIL-->
       <section class="perfil">
@@ -45,30 +44,14 @@
             <span><%= usuario.seguindo || 0 %> seguindo</span>
           </p>
         </section>
-
-        <article class="streak">
-          <h2>Streak</h2>
-          <p>
-            <%= usuario.streak || 0 %> dias
-            <i class="fa-solid fa-fire" aria-hidden="true"></i>
-          </p>
-        </article>
       </section>
 
-      <!--RANK-->
-      <section class="rank-container">
-        <h2>
-          <i class="fa-solid fa-ranking-star" aria-hidden="true"></i> Nível
-          Atual
-        </h2>
+      <!--NIVEL-->
+      <section class="containers-gerais" aria-labelledby="grupo-conta">
+        <h2 class="containers-gerais-titulo" id="grupo-conta">Nivel atual</h2>
         <section class="rank-info">
-          <span class="rank-atual"
-            ><i class="fa-solid fa-star" aria-hidden="true"></i> Nivel 1
-          </span>
-          <span class="rank-proximo"
-            >Próximo: <i class="fa-solid fa-star" aria-hidden="true"></i> Nivel
-            2
-          </span>
+          <span class="rank-atual"><i class="bi bi-star"></i> Nivel 1 </span>
+          <span class="rank-proximo">Próximo: Nivel 2 </span>
         </section>
 
         <section class="barra-rank">
@@ -86,137 +69,162 @@
         <span class="rank-detalhe">
           Faltam <%= 500 - (usuario.ranked || 0) %> XP para subir de rank
         </span>
-      </section>
-
-      <section class="calendario">
-        <section class="calendario-wrapper">
-          <!-- CALENDÁRIO -->
-          <article class="calendario-inner">
-            <article class="semana">
-              <abbr title="Domingo">Dom</abbr>
-              <abbr title="Segunda-feira">Seg</abbr>
-              <abbr title="Terça-feira">Ter</abbr>
-              <abbr title="Quarta-feira">Qua</abbr>
-              <abbr title="Quinta-feira">Qui</abbr>
-              <abbr title="Sexta-feira">Sex</abbr>
-              <abbr title="Sábado">Sáb</abbr>
-            </article>
-
-            <section class="dias" id="dias" aria-live="polite"></section>
-          </article>
-
-          <!-- BARRA DE PROGRESSO -->
-          <article class="progress-vertical">
-            <span class="data">01/03</span>
-
-            <section class="bolinhas">
-              <article class="item">
-                <span class="bolinha ativa" aria-hidden="true"></span>
-                <span>Beba 3L de água</span>
-              </article>
-
-              <article class="item">
-                <span class="bolinha" aria-hidden="true"></span>
-                <span>Dormir antes das 23h </span>
-              </article>
-            </section>
-          </article>
-        </section>
+        <br />
       </section>
 
       <!-- Estatísticas -->
       <section class="stats">
         <article class="stat">
           <h3>XP TOTAL</h3>
-          <p>
-            <%= usuario.pontuacao || 0 %><i
-              class="fa-solid fa-star"
-              aria-hidden="true"
-            ></i>
-          </p>
+          <p><%= usuario.pontuacao || 0 %></p>
         </article>
         <article class="stat">
           <h3>TAREFAS TOTAIS CONCLUÍDAS</h3>
-          <p>
-            <%= usuario.tarefasConcluidas || 0 %><i
-              class="fa-solid fa-book"
-              aria-hidden="true"
-            ></i>
-          </p>
+          <p><%= usuario.tarefasConcluidas || 0 %></p>
         </article>
         <article class="stat">
-          <h3>MEDALHAS TOTAIS</h3>
+          <h3>STREAK</h3>
           <p>
-            <%= usuario.medalhas || 0 %><i
-              class="fa-solid fa-medal"
-              aria-hidden="true"
-            ></i>
+            <%= usuario.streak || 0 %> dias
+            <i class="bi bi-fire streak"></i>
           </p>
         </article>
       </section>
 
-      <!-- Medalhas -->
-      <section class="medals">
-        <h2>
-          <i class="fa-solid fa-medal" aria-hidden="true"></i> Medalhas
-          Conquistadas
-        </h2>
-        <section class="medal-list">
-          <article class="medal-item">
-            <figure class="medal tooltip">
-              <img
-                src="/imagem/oie_transparent (1).png"
-                alt="Medalha Corredor Nivel 1"
-                width="80px"
-                height="80px"
-              />
+      <!-- Amizades -->
+      <section class="containers-gerais" aria-labelledby="grupo-conta">
+        <h2 class="containers-gerais-titulo" id="grupo-conta">Amizades</h2>
 
-              <span class="tooltip-text">Percorreu 10km! Parabéns 🎉</span>
-              <span>Corredor I</span>
-            </figure>
-          </article>
+        <section class="amizade-list">
+          <a href="/perfil-amizade">
+            <article class="amizade-item">
+              <figure class="notif-icone sistema" aria-hidden="true">
+                <i class="bi bi-person-fill"></i>
+              </figure>
+              <span class="amizade-nome">Mauricio</span>
+              <span class="amizade-status">🟢Online</span>
+            </article>
+          </a>
         </section>
       </section>
 
+      <!-- CONQUISTAS -->
+      <section class="containers-gerais" aria-labelledby="grupo-conta">
+        <h2 class="containers-gerais-titulo" id="grupo-conta">Conquistas</h2>
+      </section>
+
       <section class="perfil-footer">
-        <section class="central-conta">
-          <h2>
-            <i class="fa-solid fa-user" aria-hidden="true"></i> Central da Conta
+        <section class="containers-gerais" aria-labelledby="grupo-conta">
+          <h2 class="containers-gerais-titulo" id="grupo-conta">
+            Central da Conta
           </h2>
-          <article class="perfil-botoes">
-            <button
-              onclick="window.location.href = '/configuracoes'"
-              aria-label="Ir para página de configurações"
-            >
-              <i class="fa-solid fa-gear" aria-hidden="true"></i> Configurações
-            </button>
-            <button
-              onclick="window.location.href = '/privacidade'"
-              aria-label="Ir para página de privacidade"
-            >
-              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-              Privacidade
-            </button>
-            <button
-              onclick="window.location.href = '/notificacoes'"
-              aria-label="Ir para página de notificações"
-            >
-              <i class="fa-solid fa-bell" aria-hidden="true"></i> Notificações
-            </button>
-            <button
-              onclick="window.location.href = '/ajuda'"
-              aria-label="Ir para página de ajuda "
-            >
-              <i class="fa-solid fa-heart" aria-hidden="true"></i> Ajuda
-            </button>
-            <button
-              onclick="window.location.href = '/logout'"
-              aria-label="Deslogar da conta"
-            >
-              <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
-              Sair da Conta
-            </button>
-          </article>
+
+          <a href="/configuracoes" aria-label="Ir para página de configurações">
+            <article class="containers-botoes">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone" aria-hidden="true">
+                  <i class="bi bi-gear-fill"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Configurações</span>
+                  <span class="botao-desc"
+                    >Gerencie suas preferências e configurações de conta</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+
+          <a href="/privacidade" aria-label="Ir para página de privacidade">
+            <article class="containers-botoes">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone" aria-hidden="true">
+                  <i class="bi bi-shield-fill"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Privacidade</span>
+                  <span class="botao-desc"
+                    >Gerencie suas preferências de privacidade</span
+                  >
+                </section>
+              </section>
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+
+          <a href="/amizades" aria-label="Ir para página de amizades">
+            <article class="containers-botoes">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone" aria-hidden="true">
+                  <i class="bi bi-people-fill"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Amizades</span>
+                  <span class="botao-desc"
+                    >Adicione e gerencie suas amizades</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+
+          <a href="/notificacoes" aria-label="Ir para página de notificações">
+            <article class="containers-botoes">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone" aria-hidden="true">
+                  <i class="bi bi-bell-fill"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Notificações</span>
+                  <span class="botao-desc"
+                    >Gerencie suas preferências de notificação</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+
+          <a href="/ajuda" aria-label="Ir para página de ajuda">
+            <article class="containers-botoes">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone" aria-hidden="true">
+                  <i class="bi bi-question-circle-fill"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Ajuda</span>
+                  <span class="botao-desc"
+                    >Obtenha suporte e informações sobre o uso do serviço</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
+
+          <a href="/sair" aria-label="Ir para página de sair">
+            <article class="containers-botoes containers-botoes-perigo">
+              <section class="containers-botoes-esquerda">
+                <figure class="containers-icone perigo" aria-hidden="true">
+                  <i class="bi bi-box-arrow-right"></i>
+                </figure>
+                <section>
+                  <span class="botao-nome">Sair</span>
+                  <span class="botao-desc"
+                    >Encerre sua sessão e saia do aplicativo</span
+                  >
+                </section>
+              </section>
+
+              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
+            </article>
+          </a>
         </section>
       </section>
     </main>
@@ -243,49 +251,6 @@
           reader.readAsDataURL(file);
         }
       });
-    </script>
-    <script>
-      const diasContainer = document.getElementById("dias");
-
-      // EXEMPLO (depois você puxa do banco)
-      const diasFeitos = [1, 2, 3, 4, 5, 6, 7];
-
-      const hoje = new Date().getDate();
-      const totalDias = new Date().getDate(); // pode ajustar pro mês completo
-
-      let streak = 0;
-
-      // calcula streak
-      for (let i = hoje; i > 0; i--) {
-        if (diasFeitos.includes(i)) {
-          streak++;
-        } else {
-          break;
-        }
-      }
-
-      // cria calendário
-      for (let i = 1; i <= 30; i++) {
-        const div = document.createElement("div");
-        div.classList.add("dia");
-        div.innerText = i;
-
-        if (diasFeitos.includes(i)) {
-          div.classList.add("concluido");
-        }
-
-        if (i === hoje) {
-          div.classList.add("hoje");
-        }
-
-        // marca dias da streak
-        if (i > hoje - streak && i <= hoje) {
-          div.classList.add("streak");
-          div.innerHTML = "🔥";
-        }
-
-        diasContainer.appendChild(div);
-      }
     </script>
   </body>
 </html>

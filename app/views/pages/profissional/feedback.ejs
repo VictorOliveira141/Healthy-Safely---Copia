@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="/js/darkmode.js"></script>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback | Healthy Safely</title>
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/profissional/painel-financeiro.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+</head>
+<body>
+  <%- include("../../partials/header.ejs") %>
+  <section class="pro-layout">
+    <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+    <main class="pro-main" aria-labelledby="feedback-titulo">
+      <h1 id="feedback-titulo" style="font-size:1.5rem;font-weight:900;margin-bottom:1.5rem">
+        <i class="bi bi-chat-quote-fill" style="color:var(--verde-500)"></i> Enviar Feedback
+      </h1>
+
+      <section class="pro-grid-2" style="gap:1.5rem">
+        <!-- Selecionar paciente + campo -->
+        <article class="pro-card" style="padding:1.5rem">
+          <h2 style="font-size:1rem;font-weight:800;margin-bottom:1.25rem">Novo feedback</h2>
+          <section style="display:flex;flex-direction:column;gap:1rem">
+            <label>
+              <span style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);display:block;margin-bottom:.3rem">Paciente</span>
+              <select style="width:100%;padding:.65rem .9rem;border:1px solid var(--border);border-radius:10px;font-family:Outfit,sans-serif;font-size:.9rem;color:var(--txt);background:var(--bg)">
+                <option value="">Selecione um paciente</option>
+                <option>Kauã Mauricio</option>
+                <option>Daniel Renovato</option>
+                <option>Mateus Felipe</option>
+                <option>Ana Paula Costa</option>
+              </select>
+            </label>
+            <label>
+              <span style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);display:block;margin-bottom:.3rem">Período de análise</span>
+              <input type="week" style="width:100%;padding:.65rem .9rem;border:1px solid var(--border);border-radius:10px;font-family:Outfit,sans-serif;font-size:.9rem;color:var(--txt);background:var(--bg)" />
+            </label>
+            <label>
+              <span style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);display:block;margin-bottom:.3rem">Mensagem de feedback</span>
+              <textarea rows="7" placeholder="Escreva aqui sua análise com base nos dados de desempenho do paciente..." style="width:100%;padding:.75rem .9rem;border:1px solid var(--border);border-radius:10px;font-family:Outfit,sans-serif;font-size:.9rem;resize:vertical;color:var(--txt);background:var(--bg)"></textarea>
+            </label>
+            <label>
+              <span style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);display:block;margin-bottom:.3rem">Avaliação geral</span>
+              <select style="width:100%;padding:.65rem .9rem;border:1px solid var(--border);border-radius:10px;font-family:Outfit,sans-serif;font-size:.9rem;color:var(--txt);background:var(--bg)">
+                <option>⭐⭐⭐⭐⭐ Excelente progresso</option>
+                <option>⭐⭐⭐⭐ Bom progresso</option>
+                <option>⭐⭐⭐ Progresso moderado</option>
+                <option>⭐⭐ Abaixo do esperado</option>
+                <option>⚠️ Precisa de atenção urgente</option>
+              </select>
+            </label>
+            <button class="btn-primary" style="justify-content:center" onclick="alert('Feedback enviado com sucesso!')">
+              <i class="bi bi-send-fill"></i> Enviar Feedback
+            </button>
+          </section>
+        </article>
+
+        <!-- Feedbacks anteriores -->
+        <article class="pro-card">
+          <header class="pro-card-header">
+            <h2><i class="bi bi-clock-history"></i> Feedbacks Enviados</h2>
+          </header>
+          <ul class="pro-pac-lista" role="list">
+            <li class="pro-pac-item">
+              <figure class="pro-pac-av">KM</figure>
+              <section class="pro-pac-info">
+                <strong>Kauã Mauricio</strong>
+                <span>"Continue com o ritmo atual..."</span>
+                <small>Semana 43 · ⭐⭐⭐⭐⭐ Excelente</small>
+              </section>
+            </li>
+            <li class="pro-pac-item">
+              <figure class="pro-pac-av">MF</figure>
+              <section class="pro-pac-info">
+                <strong>Mateus Felipe</strong>
+                <span>"Observei queda na constância..."</span>
+                <small>Semana 42 · ⚠️ Atenção</small>
+              </section>
+            </li>
+            <li class="pro-pac-item">
+              <figure class="pro-pac-av">DR</figure>
+              <section class="pro-pac-info">
+                <strong>Daniel Renovato</strong>
+                <span>"Ótima evolução nutricional..."</span>
+                <small>Semana 41 · ⭐⭐⭐⭐ Bom</small>
+              </section>
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </section>
+  <%- include("../../partials/footer.ejs") %>
+</body>
+</html>
