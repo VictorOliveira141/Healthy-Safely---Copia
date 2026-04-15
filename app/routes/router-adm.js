@@ -1,30 +1,32 @@
+// ============================================================
+// routes/router-adm.js
+// Router da área profissional — padrão MVC
+// (Prof. Giovani Wingter)
+// ============================================================
 const express = require("express");
-const router = express.Router();
+const router  = express.Router();
 
-// Middleware: só deixa passar se o usuário logado for profissional
+const tarefaController = require("../controllers/tarefaController");
+
+// ── Middleware: verifica se é profissional logado ────────────
 function verificarProfissional(req, res, next) {
   if (req.session && req.session.usuario && req.session.usuario.tipo === "profissional") {
     return next();
   }
-  return res.redirect("/login");   // FIX: era /cadastroColaborador (não existe)
+  return res.redirect("/login");
 }
 
-/* ── ROTAS DA ÁREA PROFISSIONAL ─────────────────────────── */
+/* ── PAINEL GERAL ─────────────────────────────────────────── */
+router.get("/painel-financeiro", verificarProfissional, tarefaController.exibirPainelProfissional);
 
+// Alias: /profissional/dashboard → painel-financeiro
 router.get("/dashboard", verificarProfissional, (req, res) => {
-  res.redirect("/profissional/painel");
+  res.redirect("/profissional/painel-financeiro");
 });
 
-router.get("/painel", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/painel-financeiro", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-
-// alias legado
-router.get("/painel-financeiro", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/painel-financeiro", {
+/* ── SUB-PÁGINAS ─────────────────────────────────────────── */
+router.get("/perfil-profissional", verificarProfissional, (req, res) => {
+  res.render("pages/profissional/perfil-profissional", {
     colaborador: req.session.usuario,
     mensagem: null,
   });
@@ -38,19 +40,6 @@ router.get("/pacientes", verificarProfissional, (req, res) => {
 
 router.get("/agenda", verificarProfissional, (req, res) => {
   res.render("pages/profissional/agenda", {
-    colaborador: req.session.usuario,
-  });
-});
-
-router.get("/perfil-profissional", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/perfil-profissional", {
-    colaborador: req.session.usuario,
-    mensagem: null,
-  });
-});
-
-router.get("/feedback", verificarProfissional, (req, res) => {
-  res.render("pages/profissional/feedback", {
     colaborador: req.session.usuario,
   });
 });

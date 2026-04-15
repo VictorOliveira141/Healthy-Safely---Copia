@@ -1,153 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+/* Importação de fonte mais moderna */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
-/* ── Design Tokens ───────────────────────────────────────── */
 :root {
-  /* Cores principais */
-  --verde-900: #012e22;
-  --verde-800: #0c4f43;
-  --verde-700: #0f5e50;
-  --verde-600: #157a66;
-  --verde-500: #1a8a75;
-  --verde-400: #22b899;
-  --verde-300: #34d399;
-  --verde-100: #d1fae5;
-  --verde-50:  #f0fdf4;
+  /* CORES GERAIS DO SITE (modo claro)*/
+  --primary-color: #fff; /* 60% */
+  --secondary-color: #0c4f43; /* 30% */
+  --accent-color: #1a8a75; /* 10% */
 
-  /* Alias semânticos */
-  --primary-color:    #ffffff;
-  --secondary-color:  var(--verde-800);
-  --accent-color:     var(--verde-500);
-  --fundoclaro:       var(--verde-800);
-  --fundoescuro:      #dde2e7;
-  --muted:            #5a7a70;
-  --bg:               #f0f7f4;
-  --card:             #ffffff;
-  --txt:              #0d2b22;
-  --border:           rgba(12,79,67,0.10);
-  --border-radius:    14px;
-  --shadow-sm:        0 2px 8px rgba(12,79,67,0.08);
-  --shadow-md:        0 6px 24px rgba(12,79,67,0.13);
-  --shadow-lg:        0 16px 48px rgba(12,79,67,0.18);
+  /* CORES PARA TEXTOS E BOTOES */
+  --fundoclaro: #0c4f43; /* Verde escuro para textos com fundo claro */
+  --fundoescuro: #dde2e7; /* Branco para textos com fundo escuro */
+  --botao: #0c4f43; /* Verde escuro para botoes */
+  --botao-hover: #0c4f43; /* Verde grama para hover de botoes */
+  --muted: #64748b; /* Cinza para textos de ajuda ou exemplificação */
 
-  /* Tipografia */
+  /* FONTE DE TEXTOS E ICONES */
   --font-title: 20px;
-  --font-text:  14px;
-  --font-small: 12px;
-}
+  --font-text: 13px;
+  --font-icon: 15px;
+  --small-text: 10px;
 
-/* Dark mode */
+  /* TAMANHO DE BORDAS E BOTOES */
+  --border: rgba(15, 23, 42, 0.08);
+  --border-radius: 12px;
+  --animacao: translateY(-2px); /* somente hover */
+  --botao-opacity: 0.95; /* somente hover */
+}
 html.dark body {
-  --primary-color:  #1a2330;
-  --secondary-color:#1e3a30;
-  --bg:             #0f1c16;
-  --card:           #1e2d27;
-  --txt:            #e2f0ea;
-  --fundoclaro:     #c8e6dc;
-  --muted:          #7fa898;
-  --border:         rgba(255,255,255,0.10);
+  /* CORES GERAIS DO SITE (modo escuro) */
+  --primary-color: #272b36; /* 60% */
+  --secondary-color: #272c36; /* 30% */
+  --accent-color: #1a8a75; /* 10% */
+
+  /* CORES PARA TEXTOS E BOTOES */
+  --fundoclaro: #dde2e7; /* Branco para textos no geral */
+  --fundoescuro: #dde2e7; /* Branco para textos no geral */
+  --botao: #313744;
+
+  /* TAMANHO DE BORDAS, E SUAS CORES */
+  --border: rgba(243, 244, 247, 0.329);
 }
-
-/* ── Reset ───────────────────────────────────────────────── */
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-html { scroll-behavior: smooth; }
-
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
 body {
-  font-family: "Outfit", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--txt);
+  background: var(--primary-color);
   line-height: 1.6;
-  min-height: 100vh;
-}
-
-a { color: inherit; }
-img { max-width: 100%; display: block; }
-button { font-family: inherit; cursor: pointer; }
-
-/* ── Utilitários globais ─────────────────────────────────── */
-.visually-hidden {
-  position: absolute; left: -9999px;
-  width:1px; height:1px; overflow:hidden;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-/* Botões padrão */
-.btn-primary {
-  padding: .75rem 1.75rem;
-  background: var(--verde-800);
-  color: #fff;
-  border: none;
-  border-radius: var(--border-radius);
-  font-family: "Outfit", sans-serif;
-  font-size: .95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  text-decoration: none;
-  min-height: 44px;
-}
-.btn-primary:hover { background: var(--verde-700); transform: translateY(-1px); box-shadow: var(--shadow-md); }
-
-.btn-outline {
-  padding: .7rem 1.5rem;
-  background: transparent;
-  color: var(--verde-800);
-  border: 2px solid var(--verde-800);
-  border-radius: var(--border-radius);
-  font-family: "Outfit", sans-serif;
-  font-size: .9rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background .2s, color .2s;
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  text-decoration: none;
-  min-height: 44px;
-}
-.btn-outline:hover { background: var(--verde-800); color: #fff; }
-
-/* Cards genéricos */
-.card-base {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-sm);
-  transition: transform .2s, box-shadow .2s;
-}
-.card-base:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-/* Badge */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: .72rem;
-  font-weight: 700;
-}
-.badge-green  { background: var(--verde-100); color: #065f46; }
-.badge-amber  { background: #fffbeb; color: #92400e; }
-.badge-blue   { background: #eff6ff; color: #1e40af; }
-
-/* Barra de progresso */
-.progress-track {
-  width: 100%; height: 8px;
-  background: rgba(12,79,67,.1);
-  border-radius: 8px; overflow: hidden;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--verde-500), var(--verde-300));
-  border-radius: 8px;
-  transition: width .5s ease;
+  height: 70vh;
 }

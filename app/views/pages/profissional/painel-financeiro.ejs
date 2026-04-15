@@ -1,148 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <script src="/js/darkmode.js"></script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Painel Profissional | Healthy Safely</title>
-  <link rel="stylesheet" href="/css/global.css" />
-  <link rel="stylesheet" href="/css/profissional/painel-financeiro.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
-</head>
-<body>
-  <%- include("../../partials/header.ejs") %>
-  <%- include('../../partials/menu-inferior.ejs') %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desempenho Profissional | Área Profissional</title>
+    <link rel="stylesheet" href="/css/profissional/painel-financeiro.css" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+  </head>
+  <body>
+    <%- include("../../partials/header.ejs") %>
+    <!---->
+    <%- include('../../partials/menu-inferior.ejs') %>
 
-  <section class="pro-layout">
-    <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+    <section class="admin-container">
+      <!-- SIDEBAR -->
+      <%- include('../../partials/adm/sidebar-profissional.ejs') %>
 
-    <main class="pro-main" aria-labelledby="pro-titulo">
+      <!-- MAIN -->
+      <main class="admin-main">
+        <!-- CABEÇALHO PROFISSIONAL -->
+        <h1>Painel Financeiro</h1>
+        <!-- RESUMO DE DESEMPENHO -->
+        <section class="resumo-desempenho">
+          <section class="card">
+            <h3><i class="fa-solid fa-money-bill-wave"></i> Ganhos Totais</h3>
+            <p class="valor">R$ 4.250,00</p>
+          </section>
 
-      <!-- Boas-vindas -->
-      <header class="pro-welcome">
-        <section class="pro-welcome-text">
-          <h1 id="pro-titulo">Olá, Dr(a). <%= colaborador ? colaborador.nome.split(' ')[0] : 'Profissional' %>!</h1>
-          <p>Aqui está o resumo do seu desempenho e dos seus pacientes.</p>
+          <section class="card">
+            <h3><i class="fa-solid fa-user-check"></i> Pacientes Atendidos</h3>
+            <p class="valor">38</p>
+          </section>
+
+          <section class="card">
+            <h3>
+              <i class="fa-solid fa-calendar-check"></i> Consultas Realizadas
+            </h3>
+            <p class="valor">54</p>
+          </section>
+
+          <section class="card">
+            <h3><i class="fa-solid fa-clock"></i> Consultas Futuras</h3>
+            <p class="valor">7</p>
+          </section>
         </section>
-        <figure class="pro-welcome-img" aria-hidden="true">
-          <!-- ESPAÇO PARA IMAGEM DO PROFISSIONAL -->
-          <section class="img-placeholder small" style="border-radius:12px;min-height:80px;background:rgba(255,255,255,.1);border:2px dashed rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.3rem;color:rgba(255,255,255,.4);font-size:.78rem;padding:1rem">
-            <i class="bi bi-image" style="font-size:1.5rem"></i>
-            <span>Banner profissional</span>
-          </section>
-        </figure>
-      </header>
 
-      <!-- KPIs -->
-      <section class="pro-kpis" aria-label="Indicadores de desempenho">
-        <article class="pro-kpi">
-          <figure class="pro-kpi-icon"><i class="bi bi-people-fill"></i></figure>
-          <section>
-            <p class="pro-kpi-label">Pacientes Ativos</p>
-            <p class="pro-kpi-val">38</p>
-            <span class="badge badge-green">↑ 2 novos</span>
-          </section>
-        </article>
-        <article class="pro-kpi">
-          <figure class="pro-kpi-icon azul"><i class="bi bi-calendar-check-fill"></i></figure>
-          <section>
-            <p class="pro-kpi-label">Consultas no Mês</p>
-            <p class="pro-kpi-val">54</p>
-            <span class="badge badge-green">↑ 8%</span>
-          </section>
-        </article>
-        <article class="pro-kpi">
-          <figure class="pro-kpi-icon amarelo"><i class="bi bi-graph-up-arrow"></i></figure>
-          <section>
-            <p class="pro-kpi-label">Constância Média</p>
-            <p class="pro-kpi-val">74%</p>
-            <span class="badge badge-amber">↑ 3 pts</span>
-          </section>
-        </article>
-        <article class="pro-kpi">
-          <figure class="pro-kpi-icon vermelho"><i class="bi bi-exclamation-triangle-fill"></i></figure>
-          <section>
-            <p class="pro-kpi-label">Com Queda</p>
-            <p class="pro-kpi-val">5</p>
-            <span class="badge badge-amber">Atenção</span>
-          </section>
-        </article>
-      </section>
+        <!-- HISTÓRICO DE CONSULTAS -->
+        <section class="historico-section">
+          <h2>Histórico de Consultas Recentes</h2>
 
-      <!-- Grid 2 colunas -->
-      <section class="pro-grid-2">
+          <section class="tabela-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Paciente</th>
+                  <th>Data</th>
+                  <th>Serviço</th>
+                  <th>Valor</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#003</td>
+                  <td>Kauã Mauricio</td>
+                  <td>12/10/2025</td>
+                  <td>Consulta de Retorno</td>
+                  <td>R$ 100,00</td>
+                  <td class="status-concluido">Concluído</td>
+                </tr>
+                <tr>
+                  <td>#002</td>
+                  <td>Daniel Renovato</td>
+                  <td>10/10/2025</td>
+                  <td>Consulta Nutricional</td>
+                  <td>R$ 120,00</td>
+                  <td class="status-concluido">Concluído</td>
+                </tr>
 
-        <!-- Gráfico de consultas -->
-        <article class="pro-card" aria-labelledby="pro-graf-titulo">
-          <header class="pro-card-header">
-            <h2 id="pro-graf-titulo"><i class="bi bi-bar-chart-fill"></i> Consultas por Mês</h2>
-          </header>
-          <section class="pro-chart">
-            <% [['Jul',55],['Ago',72],['Set',63],['Out',81],['Nov',90],['Dez',100]].forEach(([m,p]) => { %>
-            <section class="pro-chart-row">
-              <span class="pro-chart-label"><%= m %></span>
-              <section class="progress-track"><section class="progress-fill" style="width:<%= p %>%"></section></section>
-              <span class="pro-chart-val"><%= Math.round(p/10) %></span>
-            </section>
-            <% }) %>
+                <tr>
+                  <td>#001</td>
+                  <td>Mateus Felipe</td>
+                  <td>16/10/2025</td>
+                  <td>Avaliação Física</td>
+                  <td>R$ 80,00</td>
+                  <td class="status-concluido">Concluído</td>
+                </tr>
+              </tbody>
+            </table>
           </section>
-        </article>
-
-        <!-- Destaques / Atenção -->
-        <article class="pro-card" aria-labelledby="pro-dest-titulo">
-          <header class="pro-card-header">
-            <h2 id="pro-dest-titulo"><i class="bi bi-people-fill"></i> Pacientes Recentes</h2>
-            <a href="/profissional/pacientes" class="pro-card-link">Ver todos</a>
-          </header>
-          <ul class="pro-pac-lista" role="list">
-            <% [
-              {ini:'KM', nome:'Kauã Mauricio',   esp:'Acompanhamento físico', constancia:82, status:'ativo'},
-              {ini:'DR', nome:'Daniel Renovato',  esp:'Nutrição esportiva',   constancia:91, status:'ativo'},
-              {ini:'MF', nome:'Mateus Felipe',    esp:'Avaliação física',      constancia:45, status:'queda'},
-              {ini:'AP', nome:'Ana Paula Costa',  esp:'Saúde mental',          constancia:67, status:'ativo'},
-            ].forEach(p => { %>
-            <li class="pro-pac-item">
-              <figure class="pro-pac-av"><%= p.ini %></figure>
-              <section class="pro-pac-info">
-                <strong><%= p.nome %></strong>
-                <span><%= p.esp %></span>
-                <section class="progress-track" style="margin-top:.35rem;height:5px">
-                  <section class="progress-fill" style="width:<%= p.constancia %>%;<%= p.constancia<60?'background:#ef4444':''%>"></section>
-                </section>
-                <small><%= p.constancia %>% constância</small>
-              </section>
-              <% if(p.status==='queda'){%><span class="badge badge-amber" style="flex-shrink:0">↓ Queda</span><%}%>
-            </li>
-            <% }) %>
-          </ul>
-        </article>
-      </section>
-
-      <!-- Tabela histórico -->
-      <article class="pro-card" aria-labelledby="pro-hist-titulo" style="margin-bottom:2rem">
-        <header class="pro-card-header">
-          <h2 id="pro-hist-titulo"><i class="bi bi-receipt"></i> Histórico de Consultas</h2>
-          <a href="/profissional/pacientes" class="pro-card-link">Exportar</a>
-        </header>
-        <section style="overflow-x:auto">
-          <table class="pro-table">
-            <thead>
-              <tr><th>Paciente</th><th>Data</th><th>Serviço</th><th>Constância</th><th>Status</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Ana Paula Costa</td><td>28/10/2025</td><td>Saúde mental</td><td>67%</td><td><span class="badge badge-green">✓ Concluído</span></td></tr>
-              <tr><td>Kauã Mauricio</td><td>12/10/2025</td><td>Acomp. físico</td><td>82%</td><td><span class="badge badge-green">✓ Concluído</span></td></tr>
-              <tr><td>Daniel Renovato</td><td>10/10/2025</td><td>Nutrição</td><td>91%</td><td><span class="badge badge-green">✓ Concluído</span></td></tr>
-              <tr><td>Mateus Felipe</td><td>16/10/2025</td><td>Av. física</td><td>45%</td><td><span class="badge badge-amber">⚠ Atenção</span></td></tr>
-            </tbody>
-          </table>
         </section>
-      </article>
+      </main>
+    </section>
 
-    </main>
-  </section>
-
-  <%- include("../../partials/footer.ejs") %>
-</body>
+    <%- include("../../partials/footer.ejs") %>
+  </body>
 </html>

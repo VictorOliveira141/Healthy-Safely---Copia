@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin — Healthy Safely</title>
+  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f1f5f2;
+      color: #1e293b;
+      min-height: 100vh;
+    }
+
+    /* ── Topbar ──────────────────────────────────────────── */
+    .topbar {
+      background: #0c4f43;
+      color: #fff;
+      padding: 0 32px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .topbar-left img {
+      height: 32px;
+      filter: brightness(0) invert(1);
+    }
+
+    .topbar-left span {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-admin-top {
+      background: rgba(255,255,255,0.18);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .topbar-right { display: flex; align-items: center; gap: 16px; }
+
+    .topbar-right a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .topbar-right a:hover { color: #fff; }
+
+    .btn-sair {
+      background: rgba(255,255,255,0.15);
+      color: #fff !important;
+      padding: 6px 16px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+
+    .btn-sair:hover { background: rgba(255,255,255,0.28) !important; }
+
+    /* ── Layout principal ────────────────────────────────── */
+    .admin-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .admin-titulo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0c4f43;
+      margin-bottom: 4px;
+    }
+
+    .admin-subtitulo {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 28px;
+    }
+
+    /* ── Cards de estatísticas ───────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 22px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      border-left: 4px solid transparent;
+    }
+
+    .stat-card.verde  { border-left-color: #0c4f43; }
+    .stat-card.azul   { border-left-color: #3b82f6; }
+    .stat-card.laranja{ border-left-color: #f59e0b; }
+    .stat-card.roxo   { border-left-color: #8b5cf6; }
+
+    .stat-icon {
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .stat-info label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .stat-info strong {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    /* ── Tabela de usuários ──────────────────────────────── */
+    .tabela-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+
+    .tabela-header {
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tabela-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0c4f43;
+    }
+
+    .tabela-header span {
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    /* Busca */
+    .campo-busca {
+      position: relative;
+    }
+
+    .campo-busca input {
+      padding: 8px 14px 8px 36px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 13px;
+      outline: none;
+      width: 240px;
+      transition: border-color 0.2s;
+    }
+
+    .campo-busca input:focus { border-color: #0c4f43; }
+
+    .campo-busca::before {
+      content: "🔍";
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 13px;
+    }
+
+    /* Filtros */
+    .filtros { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .filtro-btn {
+      padding: 6px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      background: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: #475569;
+    }
+
+    .filtro-btn:hover,
+    .filtro-btn.ativo {
+      background: #0c4f43;
+      border-color: #0c4f43;
+      color: #fff;
+    }
+
+    /* Tabela */
+    .tabela-scroll { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    thead tr {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #f1f5f9;
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f8fffe; }
+
+    td {
+      padding: 14px 16px;
+      color: #334155;
+      vertical-align: middle;
+    }
+
+    /* Avatar */
+    .usuario-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0c4f43, #1a8a75);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .usuario-info { display: flex; align-items: center; gap: 10px; }
+
+    .usuario-nome { font-weight: 600; color: #1e293b; }
+    .usuario-username { font-size: 11px; color: #94a3b8; }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .badge-cliente      { background: #dcfce7; color: #166534; }
+    .badge-profissional { background: #dbeafe; color: #1e40af; }
+
+    .badge-nivel {
+      background: #fef9c3;
+      color: #854d0e;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    /* Pontos */
+    .pontos-valor {
+      font-weight: 700;
+      color: #0c4f43;
+    }
+
+    /* Progresso de tarefas */
+    .progresso-wrap { min-width: 100px; }
+    .progresso-texto { font-size: 11px; color: #64748b; margin-bottom: 4px; }
+
+    .progresso-bar {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progresso-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #0c4f43, #1a8a75);
+      border-radius: 99px;
+      transition: width 0.5s ease;
+    }
+
+    /* Data */
+    .data-col { font-size: 12px; color: #94a3b8; white-space: nowrap; }
+
+    /* Vazio */
+    .tabela-vazia {
+      text-align: center;
+      padding: 48px;
+      color: #94a3b8;
+    }
+
+    .tabela-vazia span { font-size: 40px; display: block; margin-bottom: 12px; }
+
+    /* Total rodapé */
+    .tabela-footer {
+      padding: 12px 24px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: right;
+    }
+
+    /* Responsivo */
+    @media (max-width: 600px) {
+      .admin-container { padding: 20px 14px; }
+      .topbar { padding: 0 16px; }
+      .campo-busca input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Topbar ───────────────────────────────────────────── -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <img src="/imagem/Logo repaginado 2.png" alt="Logo" />
+      <span>Healthy Safely</span>
+      <span class="badge-admin-top">ADMIN</span>
+    </div>
+    <div class="topbar-right">
+      <a href="/">Ir ao site</a>
+      <a href="/admin/sair" class="btn-sair">Sair</a>
+    </div>
+  </div>
+
+  <!-- ── Conteúdo ─────────────────────────────────────────── -->
+  <div class="admin-container">
+    <h1 class="admin-titulo">Painel Administrativo</h1>
+    <p class="admin-subtitulo">Visão geral de usuários e dados do sistema Healthy Safely</p>
+
+    <!-- Cards de estatísticas -->
+    <div class="stats-grid">
+      <div class="stat-card verde">
+        <div class="stat-icon">👥</div>
+        <div class="stat-info">
+          <label>Total de Usuários</label>
+          <strong><%= stats.total_usuarios || 0 %></strong>
+        </div>
+      </div>
+      <div class="stat-card azul">
+        <div class="stat-icon">🧑</div>
+        <div class="stat-info">
+          <label>Clientes</label>
+          <strong><%= stats.total_clientes || 0 %></strong>
+        </div>
+      </div>
+      <div class="stat-card laranja">
+        <div class="stat-icon">🩺</div>
+        <div class="stat-info">
+          <label>Profissionais</label>
+          <strong><%= stats.total_profissionais || 0 %></strong>
+        </div>
+      </div>
+      <div class="stat-card roxo">
+        <div class="stat-icon">✅</div>
+        <div class="stat-info">
+          <label>Tarefas Concluídas</label>
+          <strong><%= stats.tarefas_concluidas || 0 %></strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabela de usuários -->
+    <div class="tabela-card">
+      <div class="tabela-header">
+        <div>
+          <h2>Usuários Cadastrados</h2>
+          <span>Atualizado agora</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+          <!-- Busca -->
+          <div class="campo-busca">
+            <input
+              type="text"
+              id="campoBusca"
+              placeholder="Buscar usuário..."
+              oninput="filtrarTabela()"
+            />
+          </div>
+          <!-- Filtro por tipo -->
+          <div class="filtros">
+            <button class="filtro-btn ativo" onclick="filtrarTipo('todos', this)">Todos</button>
+            <button class="filtro-btn" onclick="filtrarTipo('cliente', this)">Clientes</button>
+            <button class="filtro-btn" onclick="filtrarTipo('profissional', this)">Profissionais</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabela-scroll">
+        <table id="tabelaUsuarios">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Usuário</th>
+              <th>E-mail</th>
+              <th>Tipo</th>
+              <th>Nível</th>
+              <th>Pontos</th>
+              <th>Tarefas</th>
+              <th>Cadastro</th>
+            </tr>
+          </thead>
+          <tbody id="corpoTabela">
+            <% if (usuarios && usuarios.length > 0) { %>
+              <% usuarios.forEach((u, i) => {
+                const inicial = u.nome ? u.nome.charAt(0).toUpperCase() : "?";
+                const concluidas = parseInt(u.tarefas_concluidas) || 0;
+                const total = parseInt(u.total_tarefas) || 0;
+                const pct = total > 0 ? Math.round((concluidas / total) * 100) : 0;
+                const data = u.criado_em
+                  ? new Date(u.criado_em).toLocaleDateString("pt-BR")
+                  : "—";
+              %>
+              <tr data-tipo="<%= u.tipo %>" data-busca="<%= u.nome.toLowerCase() %> <%= (u.nomeusuario || '').toLowerCase() %> <%= u.email.toLowerCase() %>">
+                <td style="color:#cbd5e1;font-size:12px;"><%= i + 1 %></td>
+                <td>
+                  <div class="usuario-info">
+                    <div class="usuario-avatar"><%= inicial %></div>
+                    <div>
+                      <div class="usuario-nome"><%= u.nome %></div>
+                      <div class="usuario-username">@<%= u.nomeusuario || "—" %></div>
+                    </div>
+                  </div>
+                </td>
+                <td><%= u.email %></td>
+                <td>
+                  <span class="badge badge-<%= u.tipo %>">
+                    <%= u.tipo === 'profissional' ? '🩺 Profissional' : '🧑 Cliente' %>
+                  </span>
+                </td>
+                <td><span class="badge-nivel"><%= u.nivel || 'iniciante' %></span></td>
+                <td><span class="pontos-valor">⭐ <%= u.pontos || 0 %></span></td>
+                <td>
+                  <div class="progresso-wrap">
+                    <div class="progresso-texto"><%= concluidas %>/<%= total %> (<%= pct %>%)</div>
+                    <div class="progresso-bar">
+                      <div class="progresso-fill" style="width: <%= pct %>%;"></div>
+                    </div>
+                  </div>
+                </td>
+                <td class="data-col"><%= data %></td>
+              </tr>
+              <% }) %>
+            <% } else { %>
+              <tr>
+                <td colspan="8">
+                  <div class="tabela-vazia">
+                    <span>🫥</span>
+                    Nenhum usuário cadastrado ainda.
+                  </div>
+                </td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tabela-footer" id="rodapeContagem">
+        Total: <strong><%= usuarios ? usuarios.length : 0 %></strong> usuário(s)
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let tipoAtivo = "todos";
+
+    function filtrarTabela() {
+      const busca = document.getElementById("campoBusca").value.toLowerCase();
+      const linhas = document.querySelectorAll("#corpoTabela tr[data-tipo]");
+      let visiveis = 0;
+
+      linhas.forEach(linha => {
+        const dadosBusca = linha.dataset.busca || "";
+        const tipo = linha.dataset.tipo;
+
+        const buscaOk = dadosBusca.includes(busca);
+        const tipoOk  = tipoAtivo === "todos" || tipo === tipoAtivo;
+
+        if (buscaOk && tipoOk) {
+          linha.style.display = "";
+          visiveis++;
+        } else {
+          linha.style.display = "none";
+        }
+      });
+
+      document.getElementById("rodapeContagem").innerHTML =
+        `Exibindo: <strong>${visiveis}</strong> usuário(s)`;
+    }
+
+    function filtrarTipo(tipo, btn) {
+      tipoAtivo = tipo;
+      document.querySelectorAll(".filtro-btn").forEach(b => b.classList.remove("ativo"));
+      btn.classList.add("ativo");
+      filtrarTabela();
+    }
+  </script>
+
+</body>
+</html>

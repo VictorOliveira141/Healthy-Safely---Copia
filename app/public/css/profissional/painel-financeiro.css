@@ -1,122 +1,176 @@
-/* ── Profissional Layout ──────────────────────────────── */
+/* painel-financeiro.css - Área financeira do profissional */
 
-.pro-layout { display:flex; min-height:100vh; }
-
-.pro-main {
-  flex:1; padding:2.5rem 2rem;
-  background:var(--bg); overflow-y:auto;
+.admin-container {
+  display: flex;
+  min-height: 100vh;
 }
 
-/* Welcome bar */
-.pro-welcome {
-  background:linear-gradient(135deg, #012e22, #0f5e50 70%, #1a8a75);
-  border-radius:16px; padding:2rem;
-  display:flex; align-items:center; justify-content:space-between;
-  margin-bottom:2rem; gap:1.5rem; overflow:hidden; position:relative;
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  background: var(--primary-color);
+  overflow-y: auto;
 }
-.pro-welcome::before {
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(ellipse 60% 80% at 90% 0%, rgba(52,211,153,.2) 0%, transparent 55%);
-  pointer-events:none;
-}
-.pro-welcome-text { position:relative; }
-.pro-welcome-text h1 { font-size:1.5rem; font-weight:900; color:#fff; margin-bottom:.25rem; }
-.pro-welcome-text p  { font-size:.9rem; color:rgba(255,255,255,.65); }
-.pro-welcome-img { flex-shrink:0; width:200px; }
 
-/* KPIs */
-.pro-kpis {
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:1.5rem;
+.admin-main h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fundoclaro);
+  margin-bottom: 1.5rem;
 }
-.pro-kpi {
-  background:var(--card); border:1px solid var(--border); border-radius:var(--border-radius);
-  padding:1.25rem; box-shadow:var(--shadow-sm);
-  display:flex; align-items:center; gap:.9rem;
-  transition:transform .2s, box-shadow .2s;
+
+/* Cards de resumo */
+.resumo-desempenho {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
-.pro-kpi:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
 
-.pro-kpi-icon {
-  width:48px; height:48px; border-radius:12px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.2rem; color:var(--verde-700); background:var(--verde-100); flex-shrink:0;
+.resumo-desempenho .card {
+  background: var(--primary-color);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 1.25rem 1.4rem;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
-.pro-kpi-icon.azul   { background:#eff6ff; color:#1e40af; }
-.pro-kpi-icon.amarelo{ background:#fffbeb; color:#92400e; }
-.pro-kpi-icon.vermelho{ background:#fef2f2; color:#dc2626; }
 
-.pro-kpi-label { font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.4px; color:var(--muted); margin-bottom:.15rem; }
-.pro-kpi-val   { font-size:1.6rem; font-weight:900; color:var(--txt); line-height:1; margin-bottom:.25rem; }
-
-/* Grid 2 col */
-.pro-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
-
-/* Cards */
-.pro-card {
-  background:var(--card); border:1px solid var(--border); border-radius:var(--border-radius);
-  box-shadow:var(--shadow-sm); overflow:hidden;
+.resumo-desempenho .card:hover {
+  box-shadow: 0 6px 20px rgba(12, 79, 67, 0.1);
+  transform: translateY(-2px);
 }
-.pro-card-header {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:1.1rem 1.4rem; border-bottom:1px solid var(--border);
-}
-.pro-card-header h2 { font-size:.95rem; font-weight:800; color:var(--txt); display:flex; align-items:center; gap:.5rem; }
-.pro-card-header h2 i { color:var(--verde-500); }
-.pro-card-link {
-  font-size:.78rem; color:var(--verde-500); font-weight:700;
-  text-decoration:none; background:var(--verde-100); padding:.25rem .7rem; border-radius:20px;
-}
-.pro-card-link:hover { background:#a7f3d0; }
 
-/* Chart */
-.pro-chart { padding:1.25rem; display:flex; flex-direction:column; gap:.65rem; }
-.pro-chart-row { display:flex; align-items:center; gap:.75rem; }
-.pro-chart-label { width:28px; font-size:.78rem; font-weight:700; color:var(--muted); text-align:right; flex-shrink:0; }
-.pro-chart-val   { width:24px; font-size:.78rem; font-weight:800; color:var(--txt); text-align:right; }
-
-/* Pacientes lista */
-.pro-pac-lista { list-style:none; padding:0; }
-.pro-pac-item {
-  display:flex; align-items:center; gap:.85rem;
-  padding:.85rem 1.4rem; border-bottom:1px solid var(--border);
-  transition:background .15s;
+.resumo-desempenho .card h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
-.pro-pac-item:last-child { border-bottom:none; }
-.pro-pac-item:hover { background:var(--verde-50); }
 
-.pro-pac-av {
-  width:42px; height:42px; border-radius:50%; background:var(--verde-100);
-  display:flex; align-items:center; justify-content:center;
-  font-size:.85rem; font-weight:900; color:var(--verde-800); flex-shrink:0;
+.resumo-desempenho .card h3 i {
+  color: var(--accent-color);
 }
-.pro-pac-info { flex:1; }
-.pro-pac-info strong { display:block; font-size:.875rem; font-weight:700; }
-.pro-pac-info span   { font-size:.75rem; color:var(--muted); }
-.pro-pac-info small  { font-size:.72rem; color:var(--muted); }
 
-/* Table */
-.pro-table { width:100%; border-collapse:collapse; font-size:.875rem; }
-.pro-table thead th {
-  padding:.75rem 1.25rem; font-size:.72rem; font-weight:800; text-transform:uppercase;
-  letter-spacing:.5px; color:var(--muted); text-align:left;
-  background:#f9fdfb; border-bottom:1px solid var(--border);
+.resumo-desempenho .card .valor {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin: 0;
 }
-.pro-table tbody td { padding:.9rem 1.25rem; border-bottom:1px solid var(--border); }
-.pro-table tbody tr:last-child td { border-bottom:none; }
-.pro-table tbody tr:hover td { background:var(--verde-50); }
 
-/* Sidebar override */
-.sidebar-profissional { background:var(--verde-900) !important; }
-
-/* Responsive */
-@media (max-width:1100px) {
-  .pro-kpis { grid-template-columns:repeat(2,1fr); }
-  .pro-grid-2 { grid-template-columns:1fr; }
+/* Histórico */
+.historico-section {
+  background: var(--primary-color);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
 }
-@media (max-width:768px) {
-  .pro-layout { flex-direction:column; }
-  .pro-main { padding:1.25rem 1rem; }
-  .pro-welcome { flex-direction:column; padding:1.5rem; }
-  .pro-welcome-img { display:none; }
-  .pro-kpis { grid-template-columns:1fr 1fr; }
+
+.historico-section h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--fundoclaro);
+  margin-bottom: 1.25rem;
+}
+
+.tabela-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-text);
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 2px solid var(--border);
+}
+
+tbody td {
+  padding: 0.85rem 1rem;
+  color: var(--fundoclaro);
+  border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover td {
+  background: rgba(26, 138, 117, 0.03);
+}
+
+.status-concluido {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: #e6f4f1;
+  color: #0c7a65;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-pendente {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: #fff8e1;
+  color: #b36a00;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .admin-main {
+    padding: 1rem;
+  }
+
+  .resumo-desempenho {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: block;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    margin-bottom: 0.75rem;
+    padding: 0.5rem;
+  }
+
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: none;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
 }
