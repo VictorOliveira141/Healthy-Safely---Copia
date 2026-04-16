@@ -1,20 +1,18 @@
-// ============================================================
-// app.js — Ponto de entrada do servidor Healthy Safely
-// Padrão MVC com MySQL2 + dotenv
-// ============================================================
 require("dotenv").config();
 
 const express = require("express");
 const session = require("express-session");
-const app     = express();
-const porta   = process.env.PORT || 3000;
+const app = express();
+const porta = process.env.PORT || 3000;
 
 // ── Sessão ────────────────────────────────────────────────
-app.use(session({
-  secret:            process.env.SESSION_SECRET || "hs-segredo-dev",
-  resave:            false,
-  saveUninitialized: false,
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "hs-segredo-dev",
+    resave: false,
+    saveUninitialized: false,
+  }),
+);
 
 // ── Torna o usuário disponível em todas as views EJS ──────
 app.use((req, res, next) => {
@@ -35,9 +33,9 @@ app.set("view engine", "ejs");
 app.set("views", "./app/views");
 
 // ── Routers ───────────────────────────────────────────────
-const rotaPrincipal    = require("./app/routes/router");
-const rotaProfissional = require("./app/routes/router-adm");
-const rotaAdmin        = require("./app/routes/router-admin");
+const rotaPrincipal = require("./app/routes/principalRoutes");
+const rotaProfissional = require("./app/routes/profissionalRoutes");
+const rotaAdmin = require("./app/routes/admRoutes");
 
 app.use("/", rotaPrincipal);
 app.use("/profissional", rotaProfissional);
