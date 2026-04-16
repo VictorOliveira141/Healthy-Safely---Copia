@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel Admin — Healthy Safely</title>
+  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap");
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:"Outfit",sans-serif;background:#f1f5f2;color:#1e293b;min-height:100vh;}
+
+    /* Topbar */
+    .topbar{background:#0c4f43;color:#fff;padding:0 28px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15);}
+    .topbar-left{display:flex;align-items:center;gap:10px;}
+    .topbar-left img{height:30px;filter:brightness(0) invert(1);}
+    .topbar-left span{font-size:15px;font-weight:700;}
+    .badge-admin{background:rgba(255,255,255,.18);font-size:10px;padding:3px 9px;border-radius:100px;font-weight:600;letter-spacing:.5px;}
+    .topbar-right{display:flex;align-items:center;gap:14px;}
+    .topbar-right a{color:rgba(255,255,255,.75);text-decoration:none;font-size:13px;transition:color .2s;}
+    .topbar-right a:hover{color:#fff;}
+    .btn-sair{background:rgba(255,255,255,.15);color:#fff!important;padding:5px 14px;border-radius:8px;font-weight:600!important;}
+    .btn-sair:hover{background:rgba(255,255,255,.28)!important;}
+
+    /* Layout */
+    .adm{max-width:1280px;margin:0 auto;padding:28px 20px;}
+    .adm-titulo{font-size:20px;font-weight:800;color:#0c4f43;margin-bottom:3px;}
+    .adm-sub{font-size:13px;color:#64748b;margin-bottom:24px;}
+
+    /* KPIs */
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px;}
+    .kpi{background:#fff;border-radius:12px;padding:18px 20px;box-shadow:0 2px 8px rgba(12,79,67,.07);border:1px solid rgba(12,79,67,.08);display:flex;align-items:center;gap:14px;transition:transform .2s,box-shadow .2s;}
+    .kpi:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(12,79,67,.12);}
+    .kpi-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+    .kpi-icon.g{background:#d1fae5;color:#065f46;}
+    .kpi-icon.b{background:#eff6ff;color:#1d4ed8;}
+    .kpi-icon.a{background:#fffbeb;color:#92400e;}
+    .kpi-icon.r{background:#fef2f2;color:#dc2626;}
+    .kpi-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:#64748b;margin-bottom:.15rem;}
+    .kpi-val  {font-size:1.55rem;font-weight:900;color:#0d2b22;line-height:1;}
+
+    /* Grid 2 cols */
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px;}
+
+    /* Cards */
+    .card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(12,79,67,.07);border:1px solid rgba(12,79,67,.08);}
+    .card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid rgba(12,79,67,.08);}
+    .card-header h2{font-size:.9rem;font-weight:800;color:#0d2b22;display:flex;align-items:center;gap:.4rem;}
+    .card-header h2 i{color:#1a8a75;}
+
+    /* Gráfico de barras manual */
+    .chart-wrap{padding:16px 18px;display:flex;flex-direction:column;gap:10px;}
+    .chart-row{display:flex;align-items:center;gap:10px;font-size:.78rem;}
+    .chart-dia{width:36px;color:#64748b;font-weight:600;text-align:right;flex-shrink:0;}
+    .chart-track{flex:1;height:10px;background:#e5e7eb;border-radius:10px;overflow:hidden;}
+    .chart-fill{height:100%;border-radius:10px;transition:width .6s ease;}
+    .chart-fill.green{background:linear-gradient(90deg,#1a8a75,#34d399);}
+    .chart-fill.blue {background:linear-gradient(90deg,#3b82f6,#60a5fa);}
+    .chart-val{width:28px;font-size:.78rem;font-weight:800;color:#0d2b22;text-align:right;}
+
+    /* Ranking */
+    .rank-lista{padding:0;list-style:none;}
+    .rank-item{display:flex;align-items:center;gap:12px;padding:10px 18px;border-bottom:1px solid rgba(12,79,67,.06);transition:background .15s;}
+    .rank-item:last-child{border-bottom:none;}
+    .rank-item:hover{background:#f0fdf4;}
+    .rank-pos{width:24px;height:24px;border-radius:50%;background:#d1fae5;color:#065f46;font-size:.75rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .rank-pos.gold  {background:#fef3c7;color:#92400e;}
+    .rank-pos.silver{background:#e5e7eb;color:#374151;}
+    .rank-pos.bronze{background:#fed7aa;color:#92400e;}
+    .rank-av{width:36px;height:36px;border-radius:50%;background:#d1fae5;color:#065f46;font-size:.78rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .rank-info{flex:1;min-width:0;}
+    .rank-info strong{display:block;font-size:.88rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .rank-info small{font-size:.72rem;color:#64748b;text-transform:capitalize;}
+    .rank-pts{font-size:.9rem;font-weight:800;color:#0c4f43;}
+
+    /* Tabela usuários */
+    .tbl-wrap{overflow-x:auto;}
+    table{width:100%;border-collapse:collapse;font-size:.83rem;}
+    thead th{padding:10px 14px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:#64748b;text-align:left;background:#f9fdfb;border-bottom:1px solid rgba(12,79,67,.08);}
+    tbody td{padding:10px 14px;border-bottom:1px solid rgba(12,79,67,.06);vertical-align:middle;}
+    tbody tr:last-child td{border-bottom:none;}
+    tbody tr:hover td{background:#f5fbf8;}
+
+    .td-av{width:32px;height:32px;border-radius:50%;background:#d1fae5;color:#065f46;font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+    .td-nome strong{display:block;font-weight:700;color:#0d2b22;}
+    .td-nome small{font-size:.72rem;color:#64748b;}
+    .badge-tipo{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:20px;}
+    .badge-tipo.cliente{background:#d1fae5;color:#065f46;}
+    .badge-tipo.profissional{background:#eff6ff;color:#1d4ed8;}
+    .badge-nivel{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:20px;background:#f1f5f2;color:#374151;text-transform:capitalize;}
+    .pts-val{font-weight:800;color:#0c4f43;}
+
+    /* Barra de progresso inline */
+    .pct-wrap{display:flex;align-items:center;gap:8px;}
+    .pct-bar{flex:1;height:6px;background:#e5e7eb;border-radius:6px;overflow:hidden;min-width:50px;}
+    .pct-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#1a8a75,#34d399);}
+    .pct-txt{font-size:.75rem;font-weight:700;color:#64748b;white-space:nowrap;}
+
+    .tag-sem-ativ{font-size:.72rem;color:#94a3b8;font-style:italic;}
+
+    @media(max-width:800px){
+      .grid2{grid-template-columns:1fr;}
+      .kpis{grid-template-columns:1fr 1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<header class="topbar">
+  <section class="topbar-left">
+    <img src="/imagem/Logo repaginado 2.png" alt="Healthy Safely" />
+    <span>Healthy Safely</span>
+    <span class="badge-admin">ADMIN</span>
+  </section>
+  <nav class="topbar-right">
+    <a href="/">← Ver site</a>
+    <a href="/admin/sair" class="btn-sair">Sair</a>
+  </nav>
+</header>
+
+<main class="adm">
+  <h1 class="adm-titulo">Painel Administrativo</h1>
+  <p class="adm-sub">Visão geral da plataforma em tempo real · dados do MySQL</p>
+
+  <!-- KPIs -->
+  <section class="kpis" aria-label="Indicadores gerais">
+    <article class="kpi">
+      <figure class="kpi-icon g"><i class="bi bi-people-fill"></i></figure>
+      <section>
+        <p class="kpi-label">Usuários</p>
+        <p class="kpi-val"><%= stats.total_usuarios || 0 %></p>
+      </section>
+    </article>
+    <article class="kpi">
+      <figure class="kpi-icon b"><i class="bi bi-person-fill"></i></figure>
+      <section>
+        <p class="kpi-label">Clientes</p>
+        <p class="kpi-val"><%= stats.total_clientes || 0 %></p>
+      </section>
+    </article>
+    <article class="kpi">
+      <figure class="kpi-icon a"><i class="bi bi-briefcase-fill"></i></figure>
+      <section>
+        <p class="kpi-label">Profissionais</p>
+        <p class="kpi-val"><%= stats.total_profissionais || 0 %></p>
+      </section>
+    </article>
+    <article class="kpi">
+      <figure class="kpi-icon g"><i class="bi bi-check-circle-fill"></i></figure>
+      <section>
+        <p class="kpi-label">Tarefas feitas</p>
+        <p class="kpi-val"><%= stats.tarefas_concluidas || 0 %></p>
+      </section>
+    </article>
+    <article class="kpi">
+      <figure class="kpi-icon r"><i class="bi bi-list-task"></i></figure>
+      <section>
+        <p class="kpi-label">Total tarefas</p>
+        <p class="kpi-val"><%= stats.total_tarefas || 0 %></p>
+      </section>
+    </article>
+    <article class="kpi">
+      <figure class="kpi-icon a"><i class="bi bi-star-fill"></i></figure>
+      <section>
+        <p class="kpi-label">Pontos totais</p>
+        <p class="kpi-val"><%= stats.pontos_totais || 0 %></p>
+      </section>
+    </article>
+  </section>
+
+  <!-- Grid gráficos + ranking -->
+  <section class="grid2">
+
+    <!-- Cadastros por dia -->
+    <article class="card" aria-labelledby="graf-cadastros">
+      <header class="card-header">
+        <h2 id="graf-cadastros"><i class="bi bi-person-plus-fill"></i> Cadastros (7 dias)</h2>
+      </header>
+      <%
+        const maxCad = cadastrosPorDia.length ? Math.max(...cadastrosPorDia.map(d=>d.quantidade)) : 1;
+      %>
+      <section class="chart-wrap">
+        <% if (!cadastrosPorDia.length) { %>
+          <p style="color:#94a3b8;font-size:.85rem;text-align:center;padding:.5rem">Sem dados ainda.</p>
+        <% } else { %>
+          <% cadastrosPorDia.forEach(d => { %>
+          <section class="chart-row">
+            <span class="chart-dia">
+              <%= new Date(d.dia).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}) %>
+            </span>
+            <section class="chart-track">
+              <section class="chart-fill blue"
+                style="width:<%= Math.round((d.quantidade/maxCad)*100) %>%"></section>
+            </section>
+            <span class="chart-val"><%= d.quantidade %></span>
+          </section>
+          <% }) %>
+        <% } %>
+      </section>
+    </article>
+
+    <!-- Tarefas concluídas por dia -->
+    <article class="card" aria-labelledby="graf-tarefas">
+      <header class="card-header">
+        <h2 id="graf-tarefas"><i class="bi bi-check2-all"></i> Tarefas concluídas (7 dias)</h2>
+      </header>
+      <%
+        const maxTar = tarefasPorDia.length ? Math.max(...tarefasPorDia.map(d=>d.quantidade)) : 1;
+      %>
+      <section class="chart-wrap">
+        <% if (!tarefasPorDia.length) { %>
+          <p style="color:#94a3b8;font-size:.85rem;text-align:center;padding:.5rem">Sem conclusões ainda.</p>
+        <% } else { %>
+          <% tarefasPorDia.forEach(d => { %>
+          <section class="chart-row">
+            <span class="chart-dia">
+              <%= new Date(d.dia).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'}) %>
+            </span>
+            <section class="chart-track">
+              <section class="chart-fill green"
+                style="width:<%= Math.round((d.quantidade/maxTar)*100) %>%"></section>
+            </section>
+            <span class="chart-val"><%= d.quantidade %></span>
+          </section>
+          <% }) %>
+        <% } %>
+      </section>
+    </article>
+
+  </section>
+
+  <!-- Ranking top 5 -->
+  <article class="card" style="margin-bottom:22px" aria-labelledby="ranking-titulo">
+    <header class="card-header">
+      <h2 id="ranking-titulo"><i class="bi bi-trophy-fill"></i> Top 5 usuários por pontos</h2>
+    </header>
+    <ul class="rank-lista" role="list">
+      <% if (!ranking.length) { %>
+        <li style="padding:1rem 18px;color:#94a3b8;font-size:.85rem">Nenhum cliente cadastrado ainda.</li>
+      <% } else { %>
+      <% ranking.forEach((u, i) => {
+           const posClasses = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+           const iniciais = u.nome.slice(0,2).toUpperCase();
+         %>
+      <li class="rank-item">
+        <span class="rank-pos <%= posClasses %>"><%= i+1 %></span>
+        <figure class="rank-av" aria-hidden="true"><%= iniciais %></figure>
+        <section class="rank-info">
+          <strong><%= u.nome %></strong>
+          <small><%= u.nivel %> · <%= u.tarefas_concluidas %> tarefas concluídas</small>
+        </section>
+        <span class="rank-pts">⭐ <%= u.pontos %> pts</span>
+      </li>
+      <% }) %>
+      <% } %>
+    </ul>
+  </article>
+
+  <!-- Tabela completa de usuários -->
+  <article class="card" aria-labelledby="tabela-titulo">
+    <header class="card-header">
+      <h2 id="tabela-titulo"><i class="bi bi-table"></i> Todos os usuários</h2>
+      <span style="font-size:.78rem;color:#64748b"><%= usuarios.length %> registros</span>
+    </header>
+    <section class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Nível</th>
+            <th>Pontos</th>
+            <th>Tarefas</th>
+            <th>% Feitas</th>
+            <th>Última atividade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (!usuarios.length) { %>
+          <tr><td colspan="8" style="text-align:center;color:#94a3b8;padding:1.5rem">Nenhum usuário cadastrado ainda.</td></tr>
+          <% } else { %>
+          <% usuarios.forEach(u => {
+               const iniciais = u.nome.slice(0,2).toUpperCase();
+               const pct = u.pct_conclusao || 0;
+               const ult = u.ultima_atividade
+                 ? new Date(u.ultima_atividade).toLocaleDateString('pt-BR')
+                 : null;
+             %>
+          <tr>
+            <td><figure class="td-av"><%= iniciais %></figure></td>
+            <td class="td-nome">
+              <strong><%= u.nome %></strong>
+              <small><%= u.email %></small>
+            </td>
+            <td><span class="badge-tipo <%= u.tipo %>"><%= u.tipo %></span></td>
+            <td><span class="badge-nivel"><%= u.nivel %></span></td>
+            <td class="pts-val">⭐ <%= u.pontos %></td>
+            <td style="color:#64748b"><%= u.tarefas_concluidas || 0 %> / <%= u.total_tarefas || 0 %></td>
+            <td>
+              <section class="pct-wrap">
+                <section class="pct-bar">
+                  <section class="pct-fill" style="width:<%= pct %>%"></section>
+                </section>
+                <span class="pct-txt"><%= pct %>%</span>
+              </section>
+            </td>
+            <td>
+              <% if (ult) { %>
+                <span style="font-size:.78rem;color:#64748b"><%= ult %></span>
+              <% } else { %>
+                <span class="tag-sem-ativ">sem atividade</span>
+              <% } %>
+            </td>
+          </tr>
+          <% }) %>
+          <% } %>
+        </tbody>
+      </table>
+    </section>
+  </article>
+
+</main>
+
+</body>
+</html>
