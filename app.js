@@ -1,42 +1,55 @@
-// Módulos necessários
+// ============================================================
+// app.js — Ponto de entrada do servidor Healthy Safely
+// Padrão MVC com MySQL2 + dotenv
+// ============================================================
+require("dotenv").config();
+
 const express = require("express");
 const session = require("express-session");
-const app = express();
-const porta = 3000;
+const app     = express();
+const porta   = process.env.PORT || 3000;
 
-// Configuração da sessão para manter o usuário logado (express-session)
-app.use(
-  session({
-    secret: "sua-chave-secreta",
-    resave: false,
-    saveUninitialized: false,
-  }),
-);
+// ── Sessão ────────────────────────────────────────────────
+app.use(session({
+  secret:            process.env.SESSION_SECRET || "hs-segredo-dev",
+  resave:            false,
+  saveUninitialized: false,
+}));
 
-// Torna o usuário logado disponível em todas as views EJS (res.locals)
-app.use("/icons", express.static("node_modules/boxicons"));
+// ── Torna o usuário disponível em todas as views EJS ──────
 app.use((req, res, next) => {
   res.locals.usuario = req.session.usuario || null;
   next();
 });
 
-// Configuração para receber dados de formulários (router.post)
+// ── Parsers ───────────────────────────────────────────────
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// Arquivos estáticos (CSS, imagens, JS frontend)
+// ── Arquivos estáticos ────────────────────────────────────
+app.use("/icons", express.static("node_modules/boxicons"));
 app.use(express.static("./app/public"));
 
-//  Configuração do EJS (views)
+// ── View engine ───────────────────────────────────────────
 app.set("view engine", "ejs");
 app.set("views", "./app/views");
 
-//  Importação das rotas (router)
-const rotaPrincipal = require("./app/routes/router");
-app.use("/", rotaPrincipal);
+// ── Routers ───────────────────────────────────────────────
+const rotaPrincipal    = require("./app/routes/router");
+const rotaProfissional = require("./app/routes/router-adm");
+const rotaAdmin        = require("./app/routes/router-admin");
 
-// Inicialização do servidor (node app.js)
+app.use("/", rotaPrincipal);
+app.use("/profissional", rotaProfissional);
+app.use("/admin", rotaAdmin);
+
+// ── 404 ───────────────────────────────────────────────────
+app.use((req, res) => {
+  res.status(404).render("pages/404", {});
+});
+
+// ── Iniciar servidor ──────────────────────────────────────
 app.listen(porta, () => {
-  console.log(
-    `Servidor do Healthy Safely está aberto! 🔥\nhttp://localhost:${porta}`,
-  );
+  console.log(`\n🚀 Healthy Safely rodando em http://localhost:${porta}`);
+  console.log(`   Ambiente: ${process.env.NODE_ENV || "desenvolvimento"}\n`);
 });
