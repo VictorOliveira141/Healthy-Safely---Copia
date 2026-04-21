@@ -14,93 +14,69 @@
 
     <main class="pt-page">
 
-      <!-- Card principal -->
-      <section class="pt-card" aria-labelledby="titulo-alimentacao">
-        <header class="pt-card-topo">
-          <img src="/imagem/alimentacao.png" alt="Ícone de alimentação saudável" />
-          <h1 id="titulo-alimentacao">Alimentação</h1>
-        </header>
+      <div class="pt-hero" aria-hidden="true"></div>
 
-        <p class="pt-card-texto">
-          Mantenha uma alimentação equilibrada com frutas, legumes e proteínas
-          por 7 dias e registre suas refeições.<br />
-          Um nutricionista poderá avaliar seu diário alimentar.
-        </p>
+      <div class="pt-card-wrap">
+        <section class="pt-card" aria-labelledby="titulo-alimentacao">
 
-        <footer class="pt-card-rodape">
-          <section class="pt-progresso-bloco">
-            <p class="pt-porcentagem-texto" id="porcTexto" aria-live="polite">0% concluída</p>
-            <section
-              class="pt-barra-track"
-              role="progressbar"
-              aria-valuenow="0"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              id="barraTrack"
-            >
-              <section class="pt-barra-fill" id="barraFill"></section>
-            </section>
-          </section>
-          <button
-            class="pt-botao"
-            id="btnAcao"
-            type="button"
-            onclick="salvarDia()"
-          >
-            Salvar dia
-          </button>
-        </footer>
-      </section>
+          <header class="pt-card-topo">
+            <img src="/imagem/alimentacao.png" alt="Ícone de alimentação saudável" />
+            <h1 id="titulo-alimentacao">Alimentação</h1>
+          </header>
+
+          <div class="pt-card-corpo">
+            <p class="pt-card-texto">
+              Mantenha uma alimentação equilibrada com frutas, legumes e proteínas por 7 dias e registre suas refeições.<br />
+              Um nutricionista poderá avaliar seu diário alimentar.
+            </p>
+          </div>
+
+          <footer class="pt-card-rodape">
+            <div class="pt-progresso-bloco">
+              <span class="pt-porcentagem-texto" id="porcTexto" aria-live="polite">0% concluída</span>
+              <div class="pt-barra-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="barraTrack">
+                <div class="pt-barra-fill" id="barraFill"></div>
+              </div>
+            </div>
+            <button class="pt-botao" id="btnAcao" type="button" onclick="salvarDia()">Salvar dia</button>
+          </footer>
+
+        </section>
+      </div>
 
       <!-- Checklist de refeições -->
-      <section class="pt-checklist" aria-labelledby="titulo-refeicoes">
-        <h3 id="titulo-refeicoes">
-          <i class="bi bi-clipboard-check-fill" aria-hidden="true"></i>
-          Marque as refeições de hoje
-        </h3>
-        <ul class="pt-refeicoes-lista" role="list">
-          <li class="pt-refeicao-item">
-            <label>
-              <input type="checkbox" id="cafe" aria-label="Café da manhã completo" />
-              ☀️ Café da manhã completo
-            </label>
-            <time class="pt-refeicao-hora" datetime="07:00">07h – 09h</time>
-          </li>
-          <li class="pt-refeicao-item">
-            <label>
-              <input type="checkbox" id="lanche1" aria-label="Lanche da manhã" />
-              🍎 Lanche da manhã
-            </label>
-            <time class="pt-refeicao-hora" datetime="10:00">10h – 11h</time>
-          </li>
-          <li class="pt-refeicao-item">
-            <label>
-              <input type="checkbox" id="almoco" aria-label="Almoço com legumes e proteína" />
-              🥗 Almoço com legumes e proteína
-            </label>
-            <time class="pt-refeicao-hora" datetime="12:00">12h – 14h</time>
-          </li>
-          <li class="pt-refeicao-item">
-            <label>
-              <input type="checkbox" id="lanche2" aria-label="Lanche da tarde" />
-              🍌 Lanche da tarde
-            </label>
-            <time class="pt-refeicao-hora" datetime="15:00">15h – 16h</time>
-          </li>
-          <li class="pt-refeicao-item">
-            <label>
-              <input type="checkbox" id="jantar" aria-label="Jantar leve e equilibrado" />
-              🌙 Jantar leve e equilibrado
-            </label>
-            <time class="pt-refeicao-hora" datetime="19:00">19h – 21h</time>
-          </li>
-        </ul>
+      <section class="pt-secao" aria-labelledby="titulo-refeicoes">
+        <h2 class="pt-secao-titulo" id="titulo-refeicoes">Marque as refeições de hoje</h2>
+        <div class="pt-checklist">
+          <ul class="pt-refeicoes-lista" role="list">
+            <li class="pt-refeicao-item">
+              <label><input type="checkbox" id="cafe" aria-label="Café da manhã completo" /> ☀️ Café da manhã completo</label>
+              <time class="pt-refeicao-hora" datetime="07:00">07h – 09h</time>
+            </li>
+            <li class="pt-refeicao-item">
+              <label><input type="checkbox" id="lanche1" aria-label="Lanche da manhã" /> 🍎 Lanche da manhã</label>
+              <time class="pt-refeicao-hora" datetime="10:00">10h – 11h</time>
+            </li>
+            <li class="pt-refeicao-item">
+              <label><input type="checkbox" id="almoco" aria-label="Almoço com legumes e proteína" /> 🥗 Almoço com legumes e proteína</label>
+              <time class="pt-refeicao-hora" datetime="12:00">12h – 14h</time>
+            </li>
+            <li class="pt-refeicao-item">
+              <label><input type="checkbox" id="lanche2" aria-label="Lanche da tarde" /> 🍌 Lanche da tarde</label>
+              <time class="pt-refeicao-hora" datetime="15:00">15h – 16h</time>
+            </li>
+            <li class="pt-refeicao-item">
+              <label><input type="checkbox" id="jantar" aria-label="Jantar leve e equilibrado" /> 🌙 Jantar leve e equilibrado</label>
+              <time class="pt-refeicao-hora" datetime="19:00">19h – 21h</time>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <!-- Dicas nutricionais -->
       <section class="pt-secao" aria-labelledby="titulo-dicas">
         <h2 class="pt-secao-titulo" id="titulo-dicas">Dicas de alimentação saudável</h2>
-        <section class="pt-grid">
+        <div class="pt-grid">
           <article class="pt-grid-card">
             <i class="bi bi-droplet-fill" aria-hidden="true"></i>
             <h4>Hidratação</h4>
@@ -121,34 +97,18 @@
             <h4>Evite ultraprocessados</h4>
             <p>Reduza refrigerantes, fast food e alimentos com excesso de açúcar e sódio.</p>
           </article>
-        </section>
+        </div>
       </section>
 
-      <!-- Navegação entre categorias -->
       <nav class="pt-nav-tarefas" aria-label="Navegar entre categorias de saúde">
         <h2 class="pt-nav-titulo">Suas tarefas</h2>
-        <section class="pt-nav-grid">
-          <a href="/sono" class="pt-nav-item">
-            <img src="/imagem/sono.png" alt="Sono" />
-            <span>Sono</span>
-          </a>
-          <a href="/saude-mental" class="pt-nav-item">
-            <img src="/imagem/saudemental.png" alt="Saúde Mental" />
-            <span>Saúde Mental</span>
-          </a>
-          <a href="/atividade-fisica" class="pt-nav-item">
-            <img src="/imagem/atf.png" alt="Atividade Física" />
-            <span>Atividade Física</span>
-          </a>
-          <a href="/alimentacao" class="pt-nav-item ativo" aria-current="page">
-            <img src="/imagem/alimentacao.png" alt="Alimentação" />
-            <span>Alimentação</span>
-          </a>
-          <a href="#" class="pt-nav-outros">
-            <img src="/imagem/outros.png" alt="Outros" />
-            <span>Outros</span>
-          </a>
-        </section>
+        <div class="pt-nav-grid">
+          <a href="/sono" class="pt-nav-item"><img src="/imagem/sono.png" alt="Sono" /><span>Sono</span></a>
+          <a href="/saude-mental" class="pt-nav-item"><img src="/imagem/saudemental.png" alt="Saúde Mental" /><span>Saúde Mental</span></a>
+          <a href="/atividade-fisica" class="pt-nav-item"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade</span></a>
+          <a href="/alimentacao" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/alimentacao.png" alt="Alimentação" /><span>Alimentação</span></a>
+          <a href="#" class="pt-nav-outros"><img src="/imagem/outros.png" alt="Outros" /><span>Outros</span></a>
+        </div>
       </nav>
 
     </main>
@@ -167,20 +127,14 @@
         fill.style.width = progresso + '%';
         porcTexto.textContent = progresso + '% concluída';
         track.setAttribute('aria-valuenow', progresso);
-        if (progresso >= 100) {
-          btn.textContent = '✓ Concluída!';
-          btn.disabled = true;
-        }
+        if (progresso >= 100) { btn.textContent = '✓ Concluída!'; btn.disabled = true; }
       }
 
       function salvarDia() {
         if (progresso >= 100) return;
         const ids = ['cafe', 'lanche1', 'almoco', 'lanche2', 'jantar'];
         const marcadas = ids.filter(id => document.getElementById(id).checked).length;
-        if (marcadas === 0) {
-          alert('Marque pelo menos uma refeição antes de salvar!');
-          return;
-        }
+        if (marcadas === 0) { alert('Marque pelo menos uma refeição antes de salvar!'); return; }
         progresso = Math.min(progresso + 14, 100);
         localStorage.setItem(CHAVE, progresso);
         renderProgresso();

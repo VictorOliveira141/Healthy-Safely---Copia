@@ -19,9 +19,21 @@ router.get("/sair",   usuarioController.logout);
 router.get("/logout", usuarioController.logout);
 
 /* ── PÚBLICAS ────────────────────────────────────────────── */
-router.get("/",              (req,res) => res.render("pages/tomarammeutela"));
-router.get("/tomarammeutela",(req,res) => {
-  if (req.session?.usuario) return res.redirect("/dashboard");
+// Rota raiz "/" — ao clicar na logo redireciona conforme tipo de usuário
+router.get("/", (req, res) => {
+  if (req.session?.usuario) {
+    if (req.session.usuario.tipo === "profissional")
+      return res.redirect("/profissional/painel-financeiro");
+    return res.redirect("/dashboard");
+  }
+  res.render("pages/tomarammeutela");
+});
+router.get("/tomarammeutela", (req, res) => {
+  if (req.session?.usuario) {
+    if (req.session.usuario.tipo === "profissional")
+      return res.redirect("/profissional/painel-financeiro");
+    return res.redirect("/dashboard");
+  }
   res.render("pages/tomarammeutela");
 });
 router.get("/ajuda",         (req,res) => res.render("pages/ajuda"));

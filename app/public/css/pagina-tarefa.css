@@ -1,19 +1,21 @@
 /* ============================================================
-   pagina-tarefa.css
-   CSS compartilhado para: sono, saude-mental, atividade-fisica, alimentacao
+   pagina-tarefa.css — Healthy Safely
+   Usado por: sono, saude-mental, atividade-fisica, alimentacao
+   Design: limpo, leve, arejado — consistente com o global.css
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
 
-/* ---------- Reset & base ---------- */
+/* ---------- Reset ---------- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 html, body {
-  font-family: "Poppins", sans-serif;
-  background: #013a2e;
-  color: #fff;
+  font-family: "Outfit", system-ui, sans-serif;
+  background: #f0f7f4;
+  color: #0d1f1a;
   overflow-x: hidden;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ---------- Layout principal ---------- */
@@ -21,55 +23,89 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
-  padding: 2.5rem 1rem 6rem;
+  gap: 0;
+  padding-bottom: 5rem;
   width: 100%;
 }
 
+/* ---------- Hero banner ---------- */
+.pt-hero {
+  width: 100%;
+  background: linear-gradient(135deg, #012e22 0%, #0c4f43 55%, #1a8a75 100%);
+  padding: 3.5rem 1.5rem 6rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pt-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 85% 10%, rgba(52,211,153,.16) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 45% at 10% 85%, rgba(1,46,34,.5) 0%, transparent 50%);
+  pointer-events: none;
+}
+
 /* ---------- Card principal da tarefa ---------- */
+.pt-card-wrap {
+  width: 100%;
+  max-width: 720px;
+  padding: 0 1.25rem;
+  margin-top: -3rem;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 2rem;
+}
+
 .pt-card {
-  width: min(720px, 92vw);
-  background: linear-gradient(145deg, #0b4535, #0e3a2c);
+  background: #fff;
   border-radius: 20px;
-  padding: 2.5rem 2rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
+  box-shadow: 0 10px 40px rgba(12,79,67,.14), 0 1px 4px rgba(12,79,67,.07);
+  border: 1px solid rgba(12,79,67,.07);
+  overflow: hidden;
 }
 
 /* ---------- Topo do card ---------- */
 .pt-card-topo {
+  background: linear-gradient(90deg, #0c4f43 0%, #1a8a75 100%);
+  padding: 1.4rem 1.75rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .pt-card-topo img {
-  width: 72px;
-  height: 72px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.25));
+  flex-shrink: 0;
 }
 
 .pt-card-topo h1 {
-  font-size: clamp(1.5rem, 4vw, 2.2rem);
-  font-weight: 800;
-  letter-spacing: 1px;
+  font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+/* ---------- Corpo do card ---------- */
+.pt-card-corpo {
+  padding: 1.75rem;
 }
 
 /* ---------- Texto descritivo ---------- */
 .pt-card-texto {
-  font-size: clamp(0.875rem, 2vw, 1.05rem);
-  line-height: 1.75;
-  opacity: 0.88;
-  text-align: center;
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: #2d4a40;
+  background: #f0fdf4;
+  border-left: 3px solid #34d399;
+  border-radius: 0 10px 10px 0;
   padding: 1rem 1.25rem;
-  border-left: 3px solid rgba(74, 222, 128, 0.5);
+  margin: 0;
 }
 
 /* ---------- Rodapé do card (progresso + botão) ---------- */
@@ -79,273 +115,325 @@ html, body {
   justify-content: space-between;
   gap: 1.5rem;
   flex-wrap: wrap;
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(12,79,67,.07);
+  background: #fafffe;
 }
 
 .pt-progresso-bloco {
   flex: 1;
-  min-width: 200px;
+  min-width: 180px;
 }
 
 .pt-porcentagem-texto {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 0.6rem;
-  color: #86efac;
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #0c4f43;
+  margin-bottom: 0.4rem;
+  display: block;
 }
 
 .pt-barra-track {
   width: 100%;
-  height: 10px;
-  background: rgba(255,255,255,0.15);
-  border-radius: 10px;
+  height: 8px;
+  background: rgba(12,79,67,.1);
+  border-radius: 9999px;
   overflow: hidden;
 }
 
 .pt-barra-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #4ade80, #22c55e);
-  border-radius: 10px;
+  background: linear-gradient(90deg, #0c4f43, #34d399);
+  border-radius: 9999px;
   transition: width 0.6s ease;
 }
 
 .pt-botao {
-  padding: 0.85rem 2rem;
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  padding: 0.8rem 2rem;
+  background: #0c4f43;
   color: #fff;
   border: none;
   border-radius: 12px;
-  font-family: "Poppins", sans-serif;
-  font-size: 0.95rem;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.4);
-  white-space: nowrap;
-  min-width: 160px;
   text-transform: uppercase;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(12,79,67,.25);
+  white-space: nowrap;
+  min-height: 44px;
+  min-width: 160px;
 }
 
 .pt-botao:hover:not(:disabled) {
+  background: #1a8a75;
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(22, 163, 74, 0.5);
+  box-shadow: 0 6px 22px rgba(12,79,67,.32);
 }
+
+.pt-botao:active:not(:disabled) { transform: scale(0.98); }
 
 .pt-botao:disabled {
-  opacity: 0.7;
+  background: #d1fae5;
+  color: #065f46;
+  box-shadow: none;
   cursor: default;
-  background: linear-gradient(135deg, #166534, #14532d);
 }
 
-/* ---------- Seções de conteúdo extra (dicas, refeições, treinos) ---------- */
+/* ---------- Seções de conteúdo abaixo do card ---------- */
 .pt-secao {
-  width: min(800px, 92vw);
+  width: 100%;
+  max-width: 720px;
+  padding: 0 1.25rem;
+  margin-bottom: 2rem;
 }
 
 .pt-secao-titulo {
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 1.25rem;
-  color: #86efac;
+  font-size: 0.7rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.09em;
+  color: #1a8a75;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.pt-secao-titulo::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(12,79,67,.12);
 }
 
+/* Grid de dicas / treinos */
 .pt-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 0.85rem;
 }
 
 .pt-grid-card {
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #fff;
+  border: 1px solid rgba(12,79,67,.09);
   border-radius: 14px;
-  padding: 1.25rem;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(12,79,67,.06);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-
+.pt-grid-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(12,79,67,.11);
+}
 .pt-grid-card i {
-  font-size: 1.75rem;
-  color: #86efac;
+  font-size: 1.5rem;
+  color: #0c4f43;
   display: block;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
 }
-
 .pt-grid-card h4 {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  margin-bottom: 0.4rem;
+  color: #0d1f1a;
+  margin-bottom: 0.3rem;
 }
-
 .pt-grid-card p {
   font-size: 0.78rem;
-  opacity: 0.72;
+  color: #4a6560;
   line-height: 1.55;
   margin: 0;
 }
-
-.pt-grid-card span.badge-dificuldade {
+.pt-grid-card .badge-dificuldade {
   display: inline-block;
   margin-top: 0.6rem;
-  font-size: 0.7rem;
-  background: rgba(74,222,128,0.18);
-  color: #86efac;
-  padding: 2px 10px;
-  border-radius: 20px;
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: #d1fae5;
+  color: #065f46;
+  padding: 2px 9px;
+  border-radius: 9999px;
 }
 
 /* ---------- Checklist de refeições ---------- */
 .pt-checklist {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: #fff;
+  border: 1px solid rgba(12,79,67,.09);
   border-radius: 16px;
   padding: 1.5rem;
-  width: min(680px, 92vw);
+  box-shadow: 0 2px 8px rgba(12,79,67,.06);
+  width: 100%;
+  max-width: 720px;
+  margin: 0 1.25rem 2rem;
+  align-self: center;
 }
 
 .pt-checklist h3 {
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #0d1f1a;
   margin-bottom: 1rem;
-  color: #86efac;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
+.pt-checklist h3 i { color: #0c4f43; }
 
 .pt-refeicoes-lista {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 
 .pt-refeicao-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1rem;
-  background: rgba(255,255,255,0.05);
+  padding: 0.7rem 1rem;
+  background: #f0f7f4;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.07);
+  border: 1px solid rgba(12,79,67,.07);
   transition: background 0.15s;
 }
-
-.pt-refeicao-item:hover { background: rgba(255,255,255,0.09); }
+.pt-refeicao-item:hover { background: #e6f9f1; }
 
 .pt-refeicao-item label {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
+  color: #0d1f1a;
 }
 
 .pt-refeicao-item input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  accent-color: #4ade80;
+  width: 18px;
+  height: 18px;
+  accent-color: #0c4f43;
   cursor: pointer;
   flex-shrink: 0;
 }
 
 .pt-refeicao-hora {
-  font-size: 0.75rem;
-  opacity: 0.55;
+  font-size: 0.72rem;
+  color: #7a9490;
   white-space: nowrap;
+  font-weight: 600;
 }
 
-/* ---------- Seção de navegação entre tarefas ---------- */
+/* ---------- Navegação entre categorias de saúde ---------- */
 .pt-nav-tarefas {
-  background: linear-gradient(145deg, #0b4535, #0e3a2c);
-  border-radius: 20px;
-  padding: 2rem;
-  width: min(800px, 92vw);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 720px;
+  padding: 0 1.25rem;
+  margin-bottom: 2rem;
 }
 
 .pt-nav-titulo {
-  text-align: center;
-  font-size: 1.2rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  color: #a7f3d0;
+  letter-spacing: 0.09em;
+  color: #1a8a75;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.pt-nav-titulo::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(12,79,67,.12);
 }
 
 .pt-nav-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.65rem;
 }
 
 .pt-nav-item {
   text-decoration: none;
-  color: #fff;
+  color: #0d1f1a;
   text-align: center;
-  transition: transform 0.2s, opacity 0.2s;
+  background: #fff;
+  border: 1px solid rgba(12,79,67,.09);
+  border-radius: 14px;
+  padding: 0.9rem 0.5rem 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
+  box-shadow: 0 2px 8px rgba(12,79,67,.05);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
-
-.pt-nav-item:hover { transform: translateY(-4px); opacity: 0.9; }
-
-.pt-nav-item.ativo { opacity: 1; }
-
-.pt-nav-item.ativo img {
-  filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.6));
+.pt-nav-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(12,79,67,.11);
+  border-color: rgba(52,211,153,.4);
 }
-
+.pt-nav-item.ativo {
+  border-color: #0c4f43;
+  background: #f0fdf4;
+}
 .pt-nav-item img {
-  width: 80px;
-  height: 80px;
+  width: 42px;
+  height: 42px;
   object-fit: contain;
-  transition: transform 0.2s;
 }
-
 .pt-nav-item span {
-  font-size: 0.85rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  color: #0d1f1a;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
+.pt-nav-item.ativo span { color: #0c4f43; }
 
 .pt-nav-outros {
+  text-decoration: none;
+  color: #0d1f1a;
+  text-align: center;
+  background: #fff;
+  border: 1px solid rgba(12,79,67,.09);
+  border-radius: 14px;
+  padding: 0.9rem 0.5rem 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  color: #fff;
-  text-decoration: none;
-  opacity: 0.6;
-  transition: opacity 0.2s;
+  gap: 0.45rem;
+  box-shadow: 0 2px 8px rgba(12,79,67,.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  opacity: 0.55;
 }
-
-.pt-nav-outros:hover { opacity: 1; }
-
-.pt-nav-outros img { width: 60px; object-fit: contain; }
-
+.pt-nav-outros:hover { transform: translateY(-2px); opacity: 0.85; }
+.pt-nav-outros img { width: 42px; height: 42px; object-fit: contain; }
 .pt-nav-outros span {
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.68rem;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 /* ---------- Responsivo ---------- */
-@media (max-width: 600px) {
-  .pt-card { padding: 1.5rem 1.25rem; }
-  .pt-card-topo { flex-direction: column; text-align: center; gap: 0.75rem; }
-  .pt-card-topo img { width: 56px; height: 56px; }
-  .pt-card-rodape { flex-direction: column; align-items: stretch; }
-  .pt-botao { width: 100%; min-width: unset; text-align: center; }
-  .pt-nav-item img { width: 60px; height: 60px; }
-  .pt-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) {
+  .pt-hero         { padding: 2.5rem 1rem 5.5rem; }
+  .pt-card-wrap    { padding: 0 1rem; margin-top: -2.5rem; }
+  .pt-card-topo    { padding: 1.1rem 1.25rem; }
+  .pt-card-topo img{ width: 44px; height: 44px; }
+  .pt-card-corpo   { padding: 1.25rem; }
+  .pt-card-rodape  { flex-direction: column; align-items: stretch; padding: 1rem 1.25rem; }
+  .pt-botao        { min-width: unset; text-align: center; width: 100%; }
+  .pt-secao        { padding: 0 1rem; }
+  .pt-nav-tarefas  { padding: 0 1rem; }
+  .pt-nav-grid     { grid-template-columns: repeat(3, 1fr); }
+  .pt-grid         { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 400px) {
+  .pt-nav-grid { grid-template-columns: repeat(2, 1fr); }
 }

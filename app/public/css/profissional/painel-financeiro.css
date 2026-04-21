@@ -1,176 +1,175 @@
-/* painel-financeiro.css - Área financeira do profissional */
+/* ============================================================
+   Área Profissional — Healthy Safely
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap");
 
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Outfit", sans-serif; background: #f0f7f4; color: #0d1f1a; }
+
+/* ── Layout com sidebar ──────────────────────────────────── */
 .admin-container {
   display: flex;
   min-height: 100vh;
 }
-
 .admin-main {
   flex: 1;
   padding: 2rem;
-  background: var(--primary-color);
+  background: #f0f7f4;
   overflow-y: auto;
 }
 
-.admin-main h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--fundoclaro);
-  margin-bottom: 1.5rem;
+/* ── Boas-vindas banner ──────────────────────────────────── */
+.pro-welcome {
+  background: linear-gradient(135deg, #012e22, #0c4f43 65%, #1a8a75);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.75rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.pro-welcome::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 80% at 90% 10%, rgba(52,211,153,.18) 0%, transparent 55%);
+  pointer-events: none;
+}
+.pro-welcome h1 {
+  font-size: 1.4rem;
+  font-weight: 900;
+  position: relative;
+  margin-bottom: 0.2rem;
+}
+.pro-welcome p {
+  font-size: 0.88rem;
+  opacity: 0.7;
+  position: relative;
 }
 
-/* Cards de resumo */
+/* ── KPIs ────────────────────────────────────────────────── */
 .resumo-desempenho {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
-
-.resumo-desempenho .card {
-  background: var(--primary-color);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  padding: 1.25rem 1.4rem;
-  transition: box-shadow 0.2s, transform 0.2s;
+.card {
+  background: #fff;
+  border: 1px solid rgba(12,79,67,.1);
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(12,79,67,.07);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
-
-.resumo-desempenho .card:hover {
-  box-shadow: 0 6px 20px rgba(12, 79, 67, 0.1);
+.card:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(12,79,67,.12);
 }
-
-.resumo-desempenho .card h3 {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--muted);
+.card h3 {
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  margin-bottom: 0.6rem;
+  color: #4a6560;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
-
-.resumo-desempenho .card h3 i {
-  color: var(--accent-color);
+.card .valor {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #0c4f43;
 }
 
-.resumo-desempenho .card .valor {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  margin: 0;
+/* ── Cabeçalho de seções ─────────────────────────────────── */
+.admin-main > h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0c4f43;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Histórico */
-.historico-section {
-  background: var(--primary-color);
-  border: 1px solid var(--border);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-}
-
+/* ── Seção histórico ─────────────────────────────────────── */
+.historico-section { margin-bottom: 2rem; }
 .historico-section h2 {
   font-size: 1rem;
-  font-weight: 700;
-  color: var(--fundoclaro);
-  margin-bottom: 1.25rem;
+  font-weight: 800;
+  color: #0d1f1a;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.historico-section h2::before {
+  content: "";
+  width: 4px;
+  height: 18px;
+  background: #0c4f43;
+  border-radius: 2px;
 }
 
+/* ── Tabela ──────────────────────────────────────────────── */
 .tabela-container {
-  overflow-x: auto;
+  background: #fff;
+  border: 1px solid rgba(12,79,67,.1);
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(12,79,67,.07);
+  overflow: hidden;
 }
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--font-text);
-}
-
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
 thead th {
-  text-align: left;
-  padding: 0.75rem 1rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--muted);
+  padding: 0.85rem 1.1rem;
+  font-size: 0.7rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  border-bottom: 2px solid var(--border);
+  color: #4a6560;
+  text-align: left;
+  background: #f8fafb;
+  border-bottom: 1px solid rgba(12,79,67,.08);
 }
-
 tbody td {
-  padding: 0.85rem 1rem;
-  color: var(--fundoclaro);
-  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid rgba(12,79,67,.06);
+  color: #0d1f1a;
+  vertical-align: middle;
 }
-
-tbody tr:last-child td {
-  border-bottom: none;
-}
-
-tbody tr:hover td {
-  background: rgba(26, 138, 117, 0.03);
-}
-
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #f5fbf8; }
 .status-concluido {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 0.72rem;
+  font-weight: 700;
   padding: 3px 10px;
-  background: #e6f4f1;
-  color: #0c7a65;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
+  border-radius: 9999px;
+  display: inline-block;
 }
-
 .status-pendente {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 0.72rem;
+  font-weight: 700;
   padding: 3px 10px;
-  background: #fff8e1;
-  color: #b36a00;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 600;
+  border-radius: 9999px;
+  display: inline-block;
 }
 
+/* ── Responsividade ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .resumo-desempenho { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 768px) {
-  .admin-main {
-    padding: 1rem;
-  }
-
-  .resumo-desempenho {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  thead {
-    display: none;
-  }
-
-  tbody tr {
-    display: block;
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
-    margin-bottom: 0.75rem;
-    padding: 0.5rem;
-  }
-
-  tbody td {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: none;
-    padding: 0.4rem 0.75rem;
-    font-size: 0.8rem;
-  }
-
-  tbody td::before {
-    content: attr(data-label);
-    font-weight: 700;
-    color: var(--muted);
-    font-size: 0.72rem;
-    text-transform: uppercase;
-  }
+  .admin-container { flex-direction: column; }
+  .admin-main { padding: 1.25rem 1rem; }
+  .resumo-desempenho { grid-template-columns: 1fr 1fr; }
+  .tabela-container { overflow-x: auto; }
+}
+@media (max-width: 480px) {
+  .resumo-desempenho { grid-template-columns: 1fr; }
 }

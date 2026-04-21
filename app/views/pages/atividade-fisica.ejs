@@ -14,41 +14,39 @@
 
     <main class="pt-page">
 
-      <section class="pt-card" aria-labelledby="titulo-atf">
-        <header class="pt-card-topo">
-          <img src="/imagem/atf.png" alt="Ícone de atividade física" />
-          <h1 id="titulo-atf">Atividade Física</h1>
-        </header>
+      <div class="pt-hero" aria-hidden="true"></div>
 
-        <p class="pt-card-texto">
-          Realize no mínimo 30 minutos de atividade física moderada por dia
-          durante 7 dias consecutivos e registre sua evolução.<br />
-          Um profissional irá acompanhar seu relatório.
-        </p>
+      <div class="pt-card-wrap">
+        <section class="pt-card" aria-labelledby="titulo-atf">
 
-        <footer class="pt-card-rodape">
-          <section class="pt-progresso-bloco">
-            <p class="pt-porcentagem-texto" id="porcTexto" aria-live="polite">0% concluída</p>
-            <section
-              class="pt-barra-track"
-              role="progressbar"
-              aria-valuenow="0"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              id="barraTrack"
-            >
-              <section class="pt-barra-fill" id="barraFill"></section>
-            </section>
-          </section>
-          <button class="pt-botao" id="btnAcao" type="button" onclick="registrar()">
-            Registrar atividade
-          </button>
-        </footer>
-      </section>
+          <header class="pt-card-topo">
+            <img src="/imagem/atf.png" alt="Ícone de atividade física" />
+            <h1 id="titulo-atf">Atividade Física</h1>
+          </header>
+
+          <div class="pt-card-corpo">
+            <p class="pt-card-texto">
+              Realize no mínimo 30 minutos de atividade física moderada por dia durante 7 dias consecutivos e registre sua evolução.<br />
+              Um profissional irá acompanhar seu relatório.
+            </p>
+          </div>
+
+          <footer class="pt-card-rodape">
+            <div class="pt-progresso-bloco">
+              <span class="pt-porcentagem-texto" id="porcTexto" aria-live="polite">0% concluída</span>
+              <div class="pt-barra-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="barraTrack">
+                <div class="pt-barra-fill" id="barraFill"></div>
+              </div>
+            </div>
+            <button class="pt-botao" id="btnAcao" type="button" onclick="registrar()">Registrar atividade</button>
+          </footer>
+
+        </section>
+      </div>
 
       <section class="pt-secao" aria-labelledby="titulo-treinos">
         <h2 class="pt-secao-titulo" id="titulo-treinos">Sugestões de treino</h2>
-        <section class="pt-grid">
+        <div class="pt-grid">
           <article class="pt-grid-card">
             <i class="bi bi-person-walking" aria-hidden="true"></i>
             <h4>Caminhada</h4>
@@ -73,18 +71,18 @@
             <p>Treino intervalado de alta intensidade para queima acelerada de gordura.</p>
             <span class="badge-dificuldade">25 min · Intenso</span>
           </article>
-        </section>
+        </div>
       </section>
 
       <nav class="pt-nav-tarefas" aria-label="Navegar entre categorias de saúde">
         <h2 class="pt-nav-titulo">Suas tarefas</h2>
-        <section class="pt-nav-grid">
+        <div class="pt-nav-grid">
           <a href="/sono" class="pt-nav-item"><img src="/imagem/sono.png" alt="Sono" /><span>Sono</span></a>
           <a href="/saude-mental" class="pt-nav-item"><img src="/imagem/saudemental.png" alt="Saúde Mental" /><span>Saúde Mental</span></a>
-          <a href="/atividade-fisica" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade Física</span></a>
+          <a href="/atividade-fisica" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade</span></a>
           <a href="/alimentacao" class="pt-nav-item"><img src="/imagem/alimentacao.png" alt="Alimentação" /><span>Alimentação</span></a>
           <a href="#" class="pt-nav-outros"><img src="/imagem/outros.png" alt="Outros" /><span>Outros</span></a>
-        </section>
+        </div>
       </nav>
 
     </main>

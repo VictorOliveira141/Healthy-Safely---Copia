@@ -1,286 +1,244 @@
-/* ============= Containers principais ============ */
-main {
+/* ============================================================
+   Cadastro & Login — Healthy Safely
+   ============================================================ */
+
+/* ── Layout ──────────────────────────────────────────────── */
+main.main, main {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 32px;
+  padding: 2.5rem 1.5rem 5rem;
+  min-height: calc(100vh - 120px);
+  background: #f0f7f4;
 }
+
+/* ── Card formulário ─────────────────────────────────────── */
 .card {
   width: 100%;
-  max-width: 800px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.95),
-    rgba(255, 255, 255, 0.98)
-  );
-  border-radius: var(--border-radius);
-  display: grid;
-  grid-template-columns: 1fr;
+  max-width: 640px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(12,79,67,.12);
+  border: 1px solid rgba(12,79,67,.08);
   overflow: hidden;
 }
 
-/* =============== Formulário ========= */
 .form-area {
-  background: var(--primary-color);
-  padding: 20px;
+  padding: 2.5rem 2.5rem 2rem;
+}
+
+form { width: 100%; }
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0c4f43;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+/* ── Botão Google ────────────────────────────────────────── */
+.btn-google {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.75rem;
   width: 100%;
-}
-form {
-  background: var(--primary-color);
-  width: 100%;
-  max-width: 650px;
-}
-form .form-title {
-  margin-bottom: 18px;
-  font-size: var(--font-title);
-  color: var(--fundoclaro);
-}
-
-/* ============ Botão Google ========= */
-.btn-google {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--primary-color);
+  border: 1.5px solid rgba(12,79,67,.14);
+  background: #fff;
   cursor: pointer;
   text-decoration: none;
-  color: var(--fundoclaro);
-  margin-bottom: 14px;
-  transition: all 0.3s ease;
-  min-height: 44px;
-}
-.btn-google p {
-  font-size: var(--font-text);
+  color: #0d1f1a;
+  margin-bottom: 1.25rem;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 48px;
 }
 .btn-google:hover {
-  transform: translateY(-2px);
+  border-color: #1a8a75;
+  box-shadow: 0 2px 10px rgba(12,79,67,.1);
+  transform: translateY(-1px);
 }
-.btn-google i {
-  font-size: var(--font-icon);
-  color: var(--accent-color);
-}
+.btn-google .icone-google { font-size: 1rem; color: #db4437; }
+.btn-google p, .btn-google span { font-size: 0.9rem; font-weight: 600; }
+
+/* ── Divisor ─────────────────────────────────────────────── */
 .or {
-  text-align: center;
-  color: var(--muted);
-  font-size: var(--font-text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: #7a9490;
+  margin-bottom: 1.25rem;
+}
+.or::before, .or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(12,79,67,.1);
 }
 
-/* ============ Inputs e labels =========== */
-form .inputs {
-  display: block;
-  font-size: var(--font-text);
-  margin-bottom: 2px;
-  margin-top: 15px;
-  color: var(--fundoclaro);
-  font-weight: 600;
+/* ── Grupos de campo ─────────────────────────────────────── */
+.form-group, article.form-group {
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
-.form-duplo {
+
+.form-duplo, article.form-duplo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 0;
-}
-.inputs-duplos > div {
-  margin-bottom: 0;
-}
-form > div {
-  margin-bottom: 16px;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
 }
 
-form input[type="email"],
-form input[type="password"],
-form input[type="text"],
-input[type="date"],
+/* ── Labels ──────────────────────────────────────────────── */
+.inputs, label.inputs {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0d1f1a;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ── Inputs ──────────────────────────────────────────────── */
+input[type="text"],
+input[type="email"],
+input[type="password"],
 input[type="number"],
-input[type="file"],
 select,
 textarea {
   width: 100%;
-  padding: 8px 10px;
+  padding: 0.72rem 1rem;
+  border: 1.5px solid rgba(12,79,67,.14);
   border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--primary-color);
-  color: var(--fundoclaro);
-  font-size: var(--font-text);
+  font-family: "Outfit", sans-serif;
+  font-size: 0.9rem;
+  color: #0d1f1a;
+  background: #f8fafb;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  min-height: 44px;
+}
+input:focus, select:focus, textarea:focus {
   outline: none;
-  transition: all 0.2s ease;
+  border-color: #1a8a75;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26,138,117,.12);
+}
+input.erro-input {
+  border-color: #ef4444;
+  background: #fff5f5;
+}
+input.erro-input:focus { box-shadow: 0 0 0 3px rgba(239,68,68,.12); }
+
+/* ── Mensagens de erro ───────────────────────────────────── */
+.msg-erro {
+  font-size: 0.75rem;
+  color: #dc2626;
+  font-weight: 600;
+  min-height: 1rem;
+  display: block;
 }
 
-/* Foco inputs */
-form input[type="email"]:focus,
-form input[type="password"]:focus,
-form input[type="text"]:focus,
-input[type="date"]:focus,
-input[type="number"]:focus,
-input[type="file"]:focus,
-select:focus,
-textarea:focus {
-  border-color: var(--fundoclaro);
-  box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
-}
-input[type="date"] {
-  color: var(--fundoclaro);
-  cursor: pointer;
+/* ── Texto auxiliar (small) ──────────────────────────────── */
+p.small, .small {
+  font-size: 0.75rem;
+  color: #7a9490;
+  line-height: 1.45;
+  margin-top: 0.2rem;
 }
 
-/* Campo senha */
+/* ── Campo senha (com olho) ──────────────────────────────── */
 .campo-senha {
   position: relative;
   display: flex;
   align-items: center;
 }
+.campo-senha input { padding-right: 2.8rem; }
 .btn-olho {
   position: absolute;
-  right: 12px;
+  right: 0.75rem;
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--fundoclaro);
-  font-size: var(--font-icon);
-  padding: 4px 8px;
+  color: #7a9490;
+  font-size: 1rem;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+.btn-olho:hover { color: #0c4f43; }
+
+/* ── Espaço extra campo ──────────────────────────────────── */
+.espaco-campo { margin-bottom: 1.1rem; }
+
+/* ── Botão submit ────────────────────────────────────────── */
+.btn-primary {
+  width: 100%;
+  padding: 0.85rem;
+  background: #0c4f43;
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  font-family: "Outfit", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s ease;
-  min-height: 44px;
-  min-width: 44px;
-}
-.btn-olho:hover {
-  color: var(--fundoclaro);
-}
-
-/* Mensagem erro */
-.msg-erro {
-  color: #ff6b6b;
-  font-size: 13px;
-  margin-top: 6px;
-  display: none;
-  font-weight: 500;
-  animation: slideDown 0.2s ease;
-  height: 0;
-  overflow: hidden;
-}
-.msg-erro:not(:empty) {
-  display: block;
-  height: auto;
-}
-.erro-input {
-  border-color: #ff6b6b !important;
-  background-color: rgba(255, 107, 107, 0.03) !important;
-}
-.erro-input:focus {
-  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15) !important;
-}
-.sucesso-input {
-  border-color: var(--accent-color) !important;
-  background-color: rgba(0, 168, 107, 0.02) !important;
-}
-.sucesso-input:focus {
-  box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1) !important;
-}
-
-/* Animações */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-form > div {
-  margin-bottom: 12px;
-}
-.actions {
-  color: var(--botao-hover);
-  margin-top: 16px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Botões e links */
-.btn-primary {
-  background: var(--botao);
-  color: var(--fundoescuro);
-  width: 100%;
-  margin-bottom: 15px;
-  margin-top: 10px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  min-height: 44px;
+  gap: 0.4rem;
 }
 .btn-primary:hover {
-  background: var(--botao-hover);
-  transform: var(--animacao);
-  opacity: var(--botao-opacity);
+  background: #0f6354;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(12,79,67,.22);
 }
-.link-muted {
-  color: var(--secondary-color);
-  font-size: var(--small-text);
+.btn-primary:active { transform: scale(0.99); }
+
+/* ── Ações ───────────────────────────────────────────────── */
+.actions { margin-top: 1.25rem; margin-bottom: 1rem; }
+
+/* ── Links do formulário ─────────────────────────────────── */
+.link-cadastro {
+  color: #1a8a75;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s;
 }
-.small {
-  font-size: var(--small-text);
-  color: var(--muted);
-  margin-top: 3px;
-}
-.small a {
-  color: var(--accent-color);
+.link-cadastro:hover { text-decoration: underline; color: #0c4f43; }
+
+/* ── Mensagem de retorno ─────────────────────────────────── */
+.msg-retorno-erro {
+  background: #fee2e2;
+  color: #991b1b;
+  border-left: 4px solid #ef4444;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 600;
+  margin-bottom: 1rem;
+}
+.msg-retorno-ok {
+  background: #d1fae5;
+  color: #065f46;
+  border-left: 4px solid #34d399;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
-/* Responsividade */
-@media (max-width: 1200px) {
-  main {
-    padding: 28px;
-    min-height: calc(100vh - 100px);
-  }
-  .card {
-    max-width: 700px;
-  }
-}
-
-@media (max-width: 768px) {
-  main {
-    padding: 20px;
-    min-height: calc(100vh - 80px);
-  }
-  .card {
-    max-width: 100%;
-    border-radius: 10px;
-  }
-  .form-area {
-    padding: 20px;
-  }
-  .form-duplo {
-    display: flex;
-    flex-direction: column;
-  }
+/* ── Responsividade ──────────────────────────────────────── */
+@media (max-width: 600px) {
+  main.main, main { padding: 1.25rem 1rem 5rem; }
+  .form-area       { padding: 1.75rem 1.25rem 1.5rem; }
+  .form-duplo, article.form-duplo { grid-template-columns: 1fr; }
+  .form-title      { font-size: 1.25rem; }
 }

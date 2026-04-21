@@ -14,41 +14,39 @@
 
     <main class="pt-page">
 
-      <section class="pt-card" aria-labelledby="titulo-saudemental">
-        <header class="pt-card-topo">
-          <img src="/imagem/saudemental.png" alt="Ícone de saúde mental" />
-          <h1 id="titulo-saudemental">Saúde Mental</h1>
-        </header>
+      <div class="pt-hero" aria-hidden="true"></div>
 
-        <p class="pt-card-texto">
-          Pratique 10 minutos de meditação ou respiração consciente por dia
-          durante uma semana e registre como se sentiu.<br />
-          Um profissional irá acompanhar seu progresso.
-        </p>
+      <div class="pt-card-wrap">
+        <section class="pt-card" aria-labelledby="titulo-saudemental">
 
-        <footer class="pt-card-rodape">
-          <section class="pt-progresso-bloco">
-            <p class="pt-porcentagem-texto" id="porcTexto" aria-live="polite">0% concluída</p>
-            <section
-              class="pt-barra-track"
-              role="progressbar"
-              aria-valuenow="0"
-              aria-valuemin="0"
-              aria-valuemax="100"
-              id="barraTrack"
-            >
-              <section class="pt-barra-fill" id="barraFill"></section>
-            </section>
-          </section>
-          <button class="pt-botao" id="btnAcao" type="button" onclick="registrar()">
-            Iniciar prática
-          </button>
-        </footer>
-      </section>
+          <header class="pt-card-topo">
+            <img src="/imagem/saudemental.png" alt="Ícone de saúde mental" />
+            <h1 id="titulo-saudemental">Saúde Mental</h1>
+          </header>
+
+          <div class="pt-card-corpo">
+            <p class="pt-card-texto">
+              Pratique 10 minutos de meditação ou respiração consciente por dia durante uma semana e registre como se sentiu.<br />
+              Um profissional irá acompanhar seu progresso.
+            </p>
+          </div>
+
+          <footer class="pt-card-rodape">
+            <div class="pt-progresso-bloco">
+              <span class="pt-porcentagem-texto" id="porcTexto" aria-live="polite">0% concluída</span>
+              <div class="pt-barra-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="barraTrack">
+                <div class="pt-barra-fill" id="barraFill"></div>
+              </div>
+            </div>
+            <button class="pt-botao" id="btnAcao" type="button" onclick="registrar()">Iniciar prática</button>
+          </footer>
+
+        </section>
+      </div>
 
       <section class="pt-secao" aria-labelledby="titulo-dicas-sm">
         <h2 class="pt-secao-titulo" id="titulo-dicas-sm">Dicas para o bem-estar mental</h2>
-        <section class="pt-grid">
+        <div class="pt-grid">
           <article class="pt-grid-card">
             <i class="bi bi-wind" aria-hidden="true"></i>
             <h4>Respiração 4-7-8</h4>
@@ -69,18 +67,18 @@
             <h4>Conexão social</h4>
             <p>Fale com alguém de confiança. Relações saudáveis são fundamentais para a saúde mental.</p>
           </article>
-        </section>
+        </div>
       </section>
 
       <nav class="pt-nav-tarefas" aria-label="Navegar entre categorias de saúde">
         <h2 class="pt-nav-titulo">Suas tarefas</h2>
-        <section class="pt-nav-grid">
+        <div class="pt-nav-grid">
           <a href="/sono" class="pt-nav-item"><img src="/imagem/sono.png" alt="Sono" /><span>Sono</span></a>
           <a href="/saude-mental" class="pt-nav-item ativo" aria-current="page"><img src="/imagem/saudemental.png" alt="Saúde Mental" /><span>Saúde Mental</span></a>
-          <a href="/atividade-fisica" class="pt-nav-item"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade Física</span></a>
+          <a href="/atividade-fisica" class="pt-nav-item"><img src="/imagem/atf.png" alt="Atividade Física" /><span>Atividade</span></a>
           <a href="/alimentacao" class="pt-nav-item"><img src="/imagem/alimentacao.png" alt="Alimentação" /><span>Alimentação</span></a>
           <a href="#" class="pt-nav-outros"><img src="/imagem/outros.png" alt="Outros" /><span>Outros</span></a>
-        </section>
+        </div>
       </nav>
 
     </main>

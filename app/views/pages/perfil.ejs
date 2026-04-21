@@ -1,256 +1,111 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <script src="/js/darkmode.js"></script>
-    <meta charset="UTF-8" />
-    <title>Perfil | Healthy Safely - Hábitos Saudáveis</title>
-    <meta
-      name="description"
-      content="Acompanhe seus hábitos saudáveis, progresso, tarefas diárias e evolução no Healthy Safely."
-    />
-    <meta name="robots" content="index, follow" />
-    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
-    <link rel="stylesheet" href="/css/perfil.css" />
+<html lang="pt-BR">
+<head>
+  <script src="/js/darkmode.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil | Healthy Safely</title>
+  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+  <link rel="stylesheet" href="/css/perfil.css" />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+</head>
+<body>
+  <%- include('../partials/header.ejs') %>
 
-    <link rel="stylesheet" href="/css/global.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
-  </head>
-  <body>
-    <%- include('../partials/header.ejs') %>
+  <main class="perfil-corpo" style="padding-bottom:6rem">
 
-    <main class="perfil-corpo">
-      <!--PERFIL-->
-      <section class="perfil">
-        <figure class="foto-perfil">
-          <img
-            src="/imagem/user.png"
-            alt="Foto de perfil de <%= usuario.nome %>"
-          />
-          <label for="uploadFoto" class="camera-icon">
-            <i class="bi bi-camera-fill" aria-hidden="true"></i>
-          </label>
+    <!-- Banner perfil -->
+    <section class="perfil" aria-labelledby="perfil-nome">
+      <figure class="foto-perfil">
+        <img
+          src="<%= usuario && usuario.foto_perfil ? usuario.foto_perfil : '/imagem/user.png' %>"
+          alt="Foto de perfil"
+        />
+        <label for="uploadFoto" class="camera-icon" title="Alterar foto">
+          <i class="bi bi-camera-fill" aria-hidden="true"></i>
+        </label>
+        <input type="file" id="uploadFoto" accept="image/*" hidden />
+      </figure>
 
-          <input type="file" id="uploadFoto" accept="image/*" hidden />
-        </figure>
-
-        <section class="info-perfil">
-          <h1><%= usuario.nome.split(' ').slice(0,2).join(' ') %></h1>
-          <h2>@<%= usuario.nomeusuario %></h2>
-          <p class="seguidores">
-            <span><%= usuario.seguidores || 0 %> seguidores</span> •
-            <span><%= usuario.seguindo || 0 %> seguindo</span>
-          </p>
-        </section>
+      <section class="info-perfil" style="position:relative">
+        <h1 id="perfil-nome">
+          <%= usuario && usuario.nome ? usuario.nome.split(' ').slice(0,2).join(' ') : 'Usuário' %>
+        </h1>
+        <h2>@<%= usuario && usuario.nomeusuario ? usuario.nomeusuario : '—' %></h2>
+        <p class="seguidores">
+          <span><i class="bi bi-people-fill"></i> <%= usuario && usuario.seguidores || 0 %> seguidores</span>
+          <span><i class="bi bi-person-check-fill"></i> <%= usuario && usuario.seguindo || 0 %> seguindo</span>
+        </p>
       </section>
+    </section>
 
-      <!--NIVEL-->
-      <section class="containers-gerais" aria-labelledby="grupo-conta">
-        <h2 class="containers-gerais-titulo" id="grupo-conta">Nivel atual</h2>
-        <section class="rank-info">
-          <span class="rank-atual"><i class="bi bi-star"></i> Nivel 1 </span>
-          <span class="rank-proximo">Próximo: Nivel 2 </span>
-        </section>
-
-        <section class="barra-rank">
-          <section
-            class="barra-rank"
-            role="progressbar"
-            aria-valuenow="<%= usuario.xp || 0 %>"
-            aria-valuemin="0"
-            aria-valuemax="500"
-          ></section>
-        </section>
-
-        <span class="rank-detalhe"><%= usuario.xp || 0 %>/500</span>
-        <p></p>
-        <span class="rank-detalhe">
-          Faltam <%= 500 - (usuario.ranked || 0) %> XP para subir de rank
+    <!-- Nível -->
+    <section class="containers-gerais" aria-labelledby="sec-nivel">
+      <h2 class="containers-gerais-titulo" id="sec-nivel">Nível Atual</h2>
+      <section class="rank-info">
+        <span class="rank-atual">
+          <i class="bi bi-star-fill" style="color:#f59e0b"></i>
+          <%= usuario && usuario.nivel ? usuario.nivel.charAt(0).toUpperCase() + usuario.nivel.slice(1) : 'Iniciante' %>
         </span>
-        <br />
+        <span class="rank-proximo">
+          Próxima meta: <strong><%= usuario && usuario.pontos || 0 %> / 100 pts</strong>
+        </span>
       </section>
+      <section class="barra-rank" role="progressbar"
+        aria-valuenow="<%= usuario && usuario.pontos || 0 %>"
+        aria-valuemin="0" aria-valuemax="100">
+        <section class="barra-rank-fill"
+          style="width:<%= Math.min((usuario && usuario.pontos || 0), 100) %>%"></section>
+      </section>
+      <span class="rank-detalhe">
+        <%= usuario && usuario.pontos || 0 %> pts acumulados
+      </span>
+    </section>
 
-      <!-- Estatísticas -->
+    <!-- Stats -->
+    <section class="containers-gerais" aria-labelledby="sec-stats">
+      <h2 class="containers-gerais-titulo" id="sec-stats">Estatísticas</h2>
       <section class="stats">
         <article class="stat">
-          <h3>XP TOTAL</h3>
-          <p><%= usuario.pontuacao || 0 %></p>
+          <h3>Pontos XP</h3>
+          <p>⭐ <%= usuario && usuario.pontos || 0 %></p>
         </article>
         <article class="stat">
-          <h3>TAREFAS TOTAIS CONCLUÍDAS</h3>
-          <p><%= usuario.tarefasConcluidas || 0 %></p>
+          <h3>Tipo de Conta</h3>
+          <p style="font-size:1rem;text-transform:capitalize">
+            <%= usuario && usuario.tipo ? usuario.tipo : 'cliente' %>
+          </p>
         </article>
         <article class="stat">
-          <h3>STREAK</h3>
-          <p>
-            <%= usuario.streak || 0 %> dias
-            <i class="bi bi-fire streak"></i>
+          <h3>Membro desde</h3>
+          <p style="font-size:1rem">
+            <% if (usuario && usuario.criado_em) { %>
+              <%= new Date(usuario.criado_em).toLocaleDateString('pt-BR', {month:'short', year:'numeric'}) %>
+            <% } else { %>2025<% } %>
           </p>
         </article>
       </section>
+    </section>
 
-      <!-- Amizades -->
-      <section class="containers-gerais" aria-labelledby="grupo-conta">
-        <h2 class="containers-gerais-titulo" id="grupo-conta">Amizades</h2>
+    <!-- Ações rápidas -->
+    <section class="containers-gerais" aria-labelledby="sec-acoes">
+      <h2 class="containers-gerais-titulo" id="sec-acoes">Acesso Rápido</h2>
+      <nav class="item-container" aria-label="Ações do perfil">
+        <a href="/tasks"><i class="bi bi-check2-circle"></i> Minhas Tarefas</a>
+        <a href="/notificacoes"><i class="bi bi-bell-fill"></i> Notificações</a>
+        <a href="/amizades"><i class="bi bi-people-fill"></i> Amizades</a>
+        <a href="/configuracoes"><i class="bi bi-gear-fill"></i> Configurações</a>
+        <a href="/privacidade"><i class="bi bi-shield-lock-fill"></i> Privacidade</a>
+        <a href="/ajuda"><i class="bi bi-question-circle-fill"></i> Ajuda</a>
+        <a href="/sair" style="color:#dc2626">
+          <i class="bi bi-box-arrow-right" style="color:#dc2626"></i> Sair da conta
+        </a>
+      </nav>
+    </section>
 
-        <section class="amizade-list">
-          <a href="/perfil-amizade">
-            <article class="amizade-item">
-              <figure class="notif-icone sistema" aria-hidden="true">
-                <i class="bi bi-person-fill"></i>
-              </figure>
-              <span class="amizade-nome">Mauricio</span>
-              <span class="amizade-status">🟢Online</span>
-            </article>
-          </a>
-        </section>
-      </section>
+  </main>
 
-      <!-- CONQUISTAS -->
-      <section class="containers-gerais" aria-labelledby="grupo-conta">
-        <h2 class="containers-gerais-titulo" id="grupo-conta">Conquistas</h2>
-      </section>
-
-      <section class="perfil-footer">
-        <section class="containers-gerais" aria-labelledby="grupo-conta">
-          <h2 class="containers-gerais-titulo" id="grupo-conta">
-            Central da Conta
-          </h2>
-
-          <a href="/configuracoes" aria-label="Ir para página de configurações">
-            <article class="containers-botoes">
-              <section class="containers-botoes-esquerda">
-                <figure class="containers-icone" aria-hidden="true">
-                  <i class="bi bi-gear-fill"></i>
-                </figure>
-                <section>
-                  <span class="botao-nome">Configurações</span>
-                  <span class="botao-desc"
-                    >Gerencie suas preferências e configurações de conta</span
-                  >
-                </section>
-              </section>
-
-              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
-            </article>
-          </a>
-
-          <a href="/privacidade" aria-label="Ir para página de privacidade">
-            <article class="containers-botoes">
-              <section class="containers-botoes-esquerda">
-                <figure class="containers-icone" aria-hidden="true">
-                  <i class="bi bi-shield-fill"></i>
-                </figure>
-                <section>
-                  <span class="botao-nome">Privacidade</span>
-                  <span class="botao-desc"
-                    >Gerencie suas preferências de privacidade</span
-                  >
-                </section>
-              </section>
-              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
-            </article>
-          </a>
-
-          <a href="/amizades" aria-label="Ir para página de amizades">
-            <article class="containers-botoes">
-              <section class="containers-botoes-esquerda">
-                <figure class="containers-icone" aria-hidden="true">
-                  <i class="bi bi-people-fill"></i>
-                </figure>
-                <section>
-                  <span class="botao-nome">Amizades</span>
-                  <span class="botao-desc"
-                    >Adicione e gerencie suas amizades</span
-                  >
-                </section>
-              </section>
-
-              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
-            </article>
-          </a>
-
-          <a href="/notificacoes" aria-label="Ir para página de notificações">
-            <article class="containers-botoes">
-              <section class="containers-botoes-esquerda">
-                <figure class="containers-icone" aria-hidden="true">
-                  <i class="bi bi-bell-fill"></i>
-                </figure>
-                <section>
-                  <span class="botao-nome">Notificações</span>
-                  <span class="botao-desc"
-                    >Gerencie suas preferências de notificação</span
-                  >
-                </section>
-              </section>
-
-              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
-            </article>
-          </a>
-
-          <a href="/ajuda" aria-label="Ir para página de ajuda">
-            <article class="containers-botoes">
-              <section class="containers-botoes-esquerda">
-                <figure class="containers-icone" aria-hidden="true">
-                  <i class="bi bi-question-circle-fill"></i>
-                </figure>
-                <section>
-                  <span class="botao-nome">Ajuda</span>
-                  <span class="botao-desc"
-                    >Obtenha suporte e informações sobre o uso do serviço</span
-                  >
-                </section>
-              </section>
-
-              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
-            </article>
-          </a>
-
-          <a href="/sair" aria-label="Ir para página de sair">
-            <article class="containers-botoes containers-botoes-perigo">
-              <section class="containers-botoes-esquerda">
-                <figure class="containers-icone perigo" aria-hidden="true">
-                  <i class="bi bi-box-arrow-right"></i>
-                </figure>
-                <section>
-                  <span class="botao-nome">Sair</span>
-                  <span class="botao-desc"
-                    >Encerre sua sessão e saia do aplicativo</span
-                  >
-                </section>
-              </section>
-
-              <i class="bi bi-chevron-right config-seta" aria-hidden="true"></i>
-            </article>
-          </a>
-        </section>
-      </section>
-    </main>
-
-    <%- include('../partials/footer.ejs') %>
-    <script>
-      const input = document.getElementById("uploadFoto");
-      const img = document.getElementById("previewPerfil");
-
-      img.addEventListener("click", () => {
-        input.click();
-      });
-
-      input.addEventListener("change", function () {
-        const file = this.files[0];
-
-        if (file) {
-          const reader = new FileReader();
-
-          reader.onload = function (e) {
-            img.src = e.target.result;
-          };
-
-          reader.readAsDataURL(file);
-        }
-      });
-    </script>
-  </body>
+  <%- include('../partials/footer.ejs') %>
+</body>
 </html>
