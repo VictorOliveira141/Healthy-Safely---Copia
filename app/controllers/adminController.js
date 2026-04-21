@@ -1,60 +1,104 @@
 // controllers/adminController.js — Padrão MVC
+// VERSÃO CORRIGIDA: cada query do model é chamada em Promise separada
+// com fallback seguro, para que um erro em uma tabela não zere os dados.
 const adminModel = require("../models/Admin");
+
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
 
 const adminController = {
 
+  // ── Exibir formulário de login ─────────────────────────────
   exibirLogin: (req, res) => {
     if (req.session.adminAutenticado) return res.redirect("/admin/painel");
-    res.render("pages/admin/login", { erro:null });
+    res.render("pages/admin/login", { erro: null });
   },
 
+  // ── Processar login (senha do .env) ───────────────────────
   processarLogin: (req, res) => {
     if (req.body.senha === ADMIN_PASSWORD) {
       req.session.adminAutenticado = true;
       return res.redirect("/admin/painel");
     }
-    res.render("pages/admin/login", { erro:"Senha incorreta. Tente novamente." });
+    res.render("pages/admin/login", { erro: "Senha incorreta. Tente novamente." });
   },
 
+  // ── Painel principal ───────────────────────────────────────
+  // Usa Promise.allSettled para garantir que se UMA query falhar
+  // as outras ainda chegam à view com seus dados reais.
   exibirPainel: async (req, res) => {
-    try {
-      const [usuarios, stats, cadastrosPorDia, tarefasPorDia, ranking, solicitacoes] =
-        await Promise.all([
-          adminModel.listarTodosUsuarios(),
-          adminModel.estatisticasGerais(),
-          adminModel.cadastrosPorDia(),
-          adminModel.tarefasConcluidasPorDia(),
-          adminModel.rankingUsuarios(),
-          adminModel.listarSolicitacoes(),
-        ]);
-      res.render("pages/admin/painel", {
-        usuarios, stats, cadastrosPorDia, tarefasPorDia, ranking, solicitacoes,
-      });
-    } catch(err) {
-      console.error("Erro admin painel:", err);
-      res.status(500).render("pages/admin/painel", {
-        usuarios:[], stats:{}, cadastrosPorDia:[], tarefasPorDia:[],
-        ranking:[], solicitacoes:[], erro:"Erro ao carregar dados.",
-      });
-    }
+    // Promise.allSettled nunca rejeita — cada item tem {status, value, reason}
+    const resultados = await Promise.allSettled([
+      adminModel.listarTodosUsuarios(),      // 0
+      adminModel.estatisticasGerais(),       // 1
+      adminModel.cadastrosPorDia(),          // 2
+      adminModel.tarefasConcluidasPorDia(),  // 3
+      adminModel.rankingUsuarios(),          // 4
+      adminModel.listarSolicitacoes(),       // 5
+    ]);
+
+    // Extrai o valor ou usa o fallback seguro caso a promise tenha rejeitado
+    const pegar = (i, fallback) =>
+      resultados[i].status === "fulfilled" ? resultados[i].value : fallback;
+
+    const usuarios       = pegar(0, []);
+    const stats          = pegar(1, {
+      total_usuarios: 0, total_clientes: 0, total_profissionais: 0,
+      pontos_totais: 0,  total_tarefas: 0,  tarefas_concluidas: 0,
+      total_solicitacoes: 0,
+    });
+    const cadastrosPorDia  = pegar(2, []);
+    const tarefasPorDia    = pegar(3, []);
+    const ranking          = pegar(4, []);
+    const solicitacoes     = pegar(5, []);
+
+    // Loga o que foi carregado para facilitar debug no servidor
+    console.log(`[Admin] Painel carregado: ${usuarios.length} usuários, stats:`, {
+      total: stats.total_usuarios,
+      clientes: stats.total_clientes,
+      profissionais: stats.total_profissionais,
+    });
+
+    res.render("pages/admin/painel", {
+      usuarios,
+      stats,
+      cadastrosPorDia,
+      tarefasPorDia,
+      ranking,
+      solicitacoes,
+    });
   },
 
+  // ── Deletar usuário ─────────────────────────────────────────
   deletarUsuario: async (req, res) => {
-    await adminModel.deletarUsuario(req.params.id);
+    try {
+      await adminModel.deletarUsuario(req.params.id);
+    } catch (e) {
+      console.error("[Admin.deletarUsuario]", e.message);
+    }
     res.redirect("/admin/painel");
   },
 
+  // ── Aprovar solicitação ─────────────────────────────────────
   aprovarSolicitacao: async (req, res) => {
-    await adminModel.aprovarSolicitacao(req.params.id);
+    try {
+      await adminModel.aprovarSolicitacao(req.params.id);
+    } catch (e) {
+      console.error("[Admin.aprovarSolicitacao]", e.message);
+    }
     res.redirect("/admin/painel");
   },
 
+  // ── Rejeitar solicitação ────────────────────────────────────
   rejeitarSolicitacao: async (req, res) => {
-    await adminModel.rejeitarSolicitacao(req.params.id);
+    try {
+      await adminModel.rejeitarSolicitacao(req.params.id);
+    } catch (e) {
+      console.error("[Admin.rejeitarSolicitacao]", e.message);
+    }
     res.redirect("/admin/painel");
   },
 
+  // ── Sair do admin ───────────────────────────────────────────
   sair: (req, res) => {
     req.session.adminAutenticado = false;
     res.redirect("/admin");
