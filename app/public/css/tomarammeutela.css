@@ -1,8 +1,25 @@
 /* ================= TOPO DO MAIN ================= */
-main a {
+body a {
   text-decoration: none;
 }
-.main-topo {
+
+body h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0c4f43;
+  margin-bottom: 50px;
+  position: relative;
+}
+body h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #8ca700, #0c4f43);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+.main-container {
   margin: 30px auto 0 auto;
   display: grid;
   grid-template-columns: 1.8fr 1.3fr;
@@ -10,108 +27,177 @@ main a {
   max-width: 1200px;
   align-items: start;
 }
-.hero {
-  background: var(--secondary-color);
-  width: 100%;
-  color: var(--fundoescuro);
-  text-align: center;
-  padding: 80px 20px; /* Mais padding */
-  margin-bottom: 30px;
+.img-agende {
+  width: 90%;
+  margin-left: 7%;
 }
-.hero h2 {
-  font-size: 40px; /* Maior e mais impactante */
-  margin-bottom: 10px;
-}
-.hero p {
-  font-size: var(--font-title);
-  max-width: 700px;
-  margin: 0 auto 35px;
-  opacity: 0.9;
-}
-.hero button {
-  background-color: var(--accent-color); /* Botão com cor primária */
-  color: white;
-  padding: 15px 35px;
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: var(--font-title);
-  cursor: pointer;
-}
-.hero button:hover {
-  transform: var(--animacao);
-}
-
-/* ================= CENTRO DO MAIN =================  */
-.centro {
-  background-color: var(--primary-color);
+.main-content {
   border-radius: 12px;
-  padding: 15px 10px;
-  margin-top: 35px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-.centro h2 {
-  font-size: var(--font-title);
-  font-weight: 700;
-  color: var(--fundoclaro);
-  margin-bottom: 20px;
-  position: relative;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 255px; /* ajustado para min-height */
+  gap: 10px;
 }
 
-/* ===== tipo de conta ===== */
-.escolher-container {
+/* ================= CARROSSEL ================= */
+.carrossel {
+  width: 100%;
+  height: 255px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+.carrossel-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.carrossel-slide.active {
+  display: block;
+}
+
+.carrossel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+.botao-prev,
+.botao-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  font-size: 1.5rem;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.botao-prev {
+  left: 8px;
+}
+.botao-next {
+  right: 8px;
+}
+
+.botao-prev:hover,
+.botao-next:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* ================= BANNERS SEGUNDARIOS ================= */
+.side-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: stretch;
+}
+
+.side-item {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 120px;
+  
+}
+
+.side-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
+ /* TIPO DE CONTA */
+.tpcnt {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 40px 20px;
+  margin-top: 35px;
+
+  display: flex;
+  flex-direction: column; /* coloca o conteúdo em coluna */
+  align-items: center;
+}
+
+.tpcnt-container {
   display: flex;
   justify-content: center;
-  gap: 20px; /* espaço entre as imagens */
+  gap: 50px; /* espaço entre as imagens */
   flex-wrap: wrap;
 }
-.escolher-img {
-  max-width: 250px;
+
+.tpcnt-img {
+  max-width: 350px;
   width: 100%;
 }
-.escolher-card::before {
-  content: "";
+.tpcnt-card::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--accent-color);
+  background: linear-gradient(90deg, #8ca700, #0c4f43);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
-.escolher-card:hover {
+
+.tpcnt-card:hover {
+  transform: translateY(-10px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border-color: var(--accent-color);
+  border-color: #8ca700;
 }
-.escolher-card:hover::before {
+
+.tpcnt-card:hover::before {
   transform: scaleX(1);
 }
 
-/* ===== Flip card styles (3D) ===== */
-.escolher-card {
-  position: relative;
+/* Flip card styles (3D) */
+.tpcnt-card {
+  position: relative; /* needed for ::before */
   max-width: 100%;
   border-radius: 12px;
   perspective: 1000px; /* 3D perspective */
   cursor: pointer;
   background: transparent;
 }
-.escolher-card:focus {
-  outline: 3px solid rgba(140, 167, 0, 0.12);
+
+.tpcnt-card:focus {
+  outline: 3px solid rgba(140,167,0,0.12);
   outline-offset: 4px;
 }
-.escolher-card .card-inner {
+
+.tpcnt-card .card-inner {
   position: relative;
   display: inline-block; /* allow width to be defined by front content (image) */
-  margin-top: 5px;
-  min-height: 100px;
+  min-height: 220px;
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
   border-radius: 12px;
 }
-.escolher-card .card-front {
+
+.tpcnt-card .card-front {
   position: relative;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -121,9 +207,10 @@ main a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--primary-color);
+  background: #ffffff;
 }
-.escolher-card .card-back {
+
+.tpcnt-card .card-back {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
@@ -134,15 +221,17 @@ main a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--primary-color);
+  background: #ffffff;
 }
-.escolher-card .card-front img {
+
+.tpcnt-card .card-front img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
 }
-.escolher-title {
+
+.tpcnt-title {
   margin-top: 10px;
   color: #0c4f43;
   font-size: 20px;
@@ -150,34 +239,47 @@ main a {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  background: var(--primary-color);
+  background: rgba(255,255,255,0.9);
 }
-.escolher-card .card-back {
+
+.tpcnt-card .card-back {
   transform: rotateY(180deg);
   padding: 20px;
   text-align: center;
-  background: var(--primary-color);
+  background: linear-gradient(180deg, #ffffff 0%, #f7fff4 100%);
+  color: #0c4f43;
 }
-.escolher-card .card-back p {
+
+.tpcnt-card .card-back p {
   margin: 0 0 16px 0;
-  color: var(--fundoclaro);
+  color: #20413b;
   font-size: 15px;
   line-height: 1.4;
 }
-.escolher-card .btn-criar {
-  background: var(--botao);
-  color: var(--fundoescuro);
+
+.tpcnt-card .btn-criar {
+  background: #0c4f43;
+  color: #fff;
   border: none;
   padding: 10px 18px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
 }
-.escolher-card.is-flipped .card-inner {
+
+.tpcnt-card.is-flipped .card-inner {
   transform: rotateY(180deg);
 }
 
+
 /* ===== PLANOS ===== */
+.centro.planos {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .preco-atual {
   margin-top: 8px;
   font-size: 14px;
@@ -272,6 +374,12 @@ main a {
 }
 
 /* ========= NOVIDADES =========== */
+.centro.updates {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .centro.updates p,
 .centro.updates h3,
 .update-card {

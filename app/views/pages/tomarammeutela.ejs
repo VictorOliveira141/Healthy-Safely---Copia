@@ -12,62 +12,84 @@
     <link rel="stylesheet" href="/css/tomarammeutela.css" />
     <link rel="stylesheet" href="/css/global.css" />
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+      <script src="../js/carrossel-tomarammeutela.js"></script>
+    <!--SCRIPT SLIDER-->
+    <script src="../js/slider-tomarammeutela.js"></script>
   </head>
 
   <body id="topo">
     <%- include('../partials/header.ejs') %>
 
     <main>
-      <section class="hero" id="inicio">
-        <h2>Cuide da sua saúde de forma inteligente</h2>
-        <p>
-          A Healthy Safely é a plataforma que torna divertido cuidar da sua
-          saúde. Faça tarefas, suba de nivel junto com amigos e acompanhe sua
-          evolução!
-        </p>
-        <button onclick="window.location.href = '#planos'">
-          Conheça os planos
-        </button>
-      </section>
+      <section class="main-fundo">
+        <section class="main-container">
+          <!-- Carrossel -->
+          <section class="main-content">
+            <section class="carrossel">
+              <article class="carrossel-slide active">
+              
+                <img src="../imagem/bannerzaodeacessoo.PNG" alt="Banner 1" />
+              </article>
+              <article class="carrossel-slide">
+                <img src="../imagem/1x/bannerprogresso.png" alt="Banner 2" />
+              </article>
+              <button class="botao-prev">&#10094;</button>
+              <button class="botao-next">&#10095;</button>
+            </section>
+          </section>
+
+          <!-- Coluna lateral -->
+          <aside class="side-content">
+            <article class="side-item">
+              <img
+                src="../imagem/confira.png"
+                alt="Ofertas do Dia"
+                class="bannerof"
+              />
+            </article>
+            <article class="side-item">
+              <img
+                src="../imagem/a (34).png"
+                alt="Ofertas do Dia"
+                class="bannerof"
+              />
+            </article>
+          </aside>
+        </section>
 
       <!-- TIPO DE CONTA -->
-      <section class="centro">
-        <h2>QUEM PODE CRIAR UMA CONTA?</h2>
+      <section class="tpcnt">
+  <h2>ESCOLHA SEU TIPO DE CONTA</h2>
 
-        <section class="escolher-container">
-          <article class="escolher-card" tabindex="0">
-            <article class="card-inner">
-              <figure class="card-front">
-                <img src="/imagem/a (48).png" class="escolher-img" />
-              </figure>
-
-              <section class="card-back">
-                <p>
-                  Conta para profissionais: Ideal para educadores físicos...
-                </p>
-                <button class="btn-criar" data-target="/cadastroProfissional">
-                  Criar conta
-                </button>
-              </section>
-            </article>
-          </article>
-
-          <article class="escolher-card" tabindex="0">
-            <article class="card-inner">
-              <figure class="card-front">
-                <img src="/imagem/a (49).png" class="escolher-img" />
-              </figure>
-
-              <section class="card-back">
-                <p>Conta para usuários: Perfeita para quem quer melhorar...</p>
-                <button class="btn-criar" data-target="/cadastroCliente">
-                  Criar conta
-                </button>
-              </section>
-            </article>
-          </article>
+  <section class="tpcnt-container">
+    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
+      <section class="card-inner">
+        <section class="card-front">
+          <img src="../imagem/a (48).png" alt="Conta Profissional" class="tpcnt-img" />
+          <h3 class="tpcnt-title">Profissional</h3>
+        </section>
+        <section class="card-back">
+          <p>Conta para profissionais: Ideal para educadores físicos que desejam acompanhar alunos, criar treinos personalizados e 
+            monitorar a evolução em tempo real com ferramentas inteligentes.</p>
+          <button class="btn-criar" data-target="/cadastroProfissional">Criar conta</button>
         </section>
       </section>
+    </article>
+
+    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
+      <section class="card-inner">
+        <section class="card-front">
+          <img src="../imagem/a (49).png" alt="Conta usuário comum" class="tpcnt-img" />
+          <h3 class="tpcnt-title">Usuário</h3>
+        </section>
+        <section class="card-back">
+          <p>Conta para usuários: Perfeita para quem quer melhorar a saúde e o desempenho com acompanhamento profissional, acesso a treinos personalizados e controle da própria evolução.</p>
+          <button class="btn-criar" data-target="/cadastroCliente">Criar conta</button>
+        </section>
+      </section>
+    </article>
+  </section>
+</section>
 
       <!--PLANOS-->
       <section class="centro planos" id="planos">
@@ -181,28 +203,21 @@
 
     <%- include('../partials/footer.ejs') %>
 
-    <script>
+     <script>
       // Flip card: toggle .is-flipped on click; button stops propagation and navigates
-      (function () {
-        const cards = document.querySelectorAll(".escolher-card");
-        cards.forEach((card) => {
-          card.addEventListener("click", () =>
-            card.classList.toggle("is-flipped"),
-          );
-          card.addEventListener("keydown", (e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              card.classList.toggle("is-flipped");
-            }
-          });
+      (function(){
+        const cards = document.querySelectorAll('.tpcnt-card');
+        cards.forEach(card=>{
+          card.addEventListener('click', ()=> card.classList.toggle('is-flipped'));
+          card.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('is-flipped'); }});
         });
 
-        const buttons = document.querySelectorAll(".escolher-card .btn-criar");
-        buttons.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
+        const buttons = document.querySelectorAll('.tpcnt-card .btn-criar');
+        buttons.forEach(btn=>{
+          btn.addEventListener('click', e=>{
             e.stopPropagation();
-            const tgt = btn.getAttribute("data-target") || "#";
-            if (tgt && tgt !== "#") window.location.href = tgt;
+            const tgt = btn.getAttribute('data-target') || '#';
+            if(tgt && tgt !== '#') window.location.href = tgt;
           });
         });
       })();

@@ -1,21 +1,23 @@
-const express        = require("express");
-const router         = express.Router();
+// routes/admRoutes.js — Padrão MVC
+const express         = require("express");
+const router          = express.Router();
 const adminController = require("../controllers/adminController");
 
-// ── Middleware: bloqueia acesso sem sessão admin ─────────────
 function verificarAdmin(req, res, next) {
-  if (req.session && req.session.adminAutenticado) return next();
+  if (req.session?.adminAutenticado) return next();
   return res.redirect("/admin");
 }
 
-/* ── LOGIN ─────────────────────────────────────────────────── */
-router.get("/",      adminController.exibirLogin);
-router.post("/",     adminController.processarLogin);
-
-/* ── PAINEL ────────────────────────────────────────────────── */
+router.get("/",       adminController.exibirLogin);
+router.post("/",      adminController.processarLogin);
 router.get("/painel", verificarAdmin, adminController.exibirPainel);
-
-/* ── LOGOUT ────────────────────────────────────────────────── */
 router.get("/sair",   verificarAdmin, adminController.sair);
+
+// Gerenciamento de usuários
+router.post("/usuario/deletar/:id", verificarAdmin, adminController.deletarUsuario);
+
+// Solicitações
+router.post("/solicitacao/aprovar/:id",  verificarAdmin, adminController.aprovarSolicitacao);
+router.post("/solicitacao/rejeitar/:id", verificarAdmin, adminController.rejeitarSolicitacao);
 
 module.exports = router;
