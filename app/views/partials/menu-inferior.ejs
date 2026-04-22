@@ -1,34 +1,28 @@
 <nav class="menu-inferior" aria-label="Menu inferior">
   <section class="menu-container">
-    <% if (usuario) { %>
-      <a href="/">
-        <i class="bi bi-house-door-fill" aria-hidden="true"></i>
-      </a>
+    <% if (usuario && usuario.tipo === "cliente") { %>
 
-      <a href="/tasks">
-        <i class="bi bi-check-square" aria-hidden="true"></i>
-      </a>
+  <!-- CLIENTE -->
+  <a href="/"><i class="bi bi-house-door-fill"></i></a>
+  <a href="/tasks"><i class="bi bi-check-square"></i></a>
+  <a href="/amizades"><i class="bi bi-people"></i></a>
+  <a href="/perfil"><i class="bi bi-person-circle"></i></a>
 
-      <a href="/amizades">
-        <i class="bi bi-people" aria-hidden="true"></i>
-      </a>
+  <% } else if (usuario && usuario.tipo === "profissional") { %>
 
-      <a href="/perfil">
-        <i class="bi bi-person-circle" aria-hidden="true"></i>
-      </a>
-    <% } else { %>
-      <a href="/">
-        <i class="bi bi-house-door-fill" aria-hidden="true"></i>
-      </a>
+  <!-- PROFISSIONAL -->
+  <a href="/profissional/painel-financeiro"><i class="bi bi-bar-chart"></i></a>
+  <a href="/profissional/planos"><i class="bi bi-bag-heart"></i></a>
+  <a href="/profissional/perfil-profissional"><i class="bi bi-person"></i></a>
 
-      <a href="/ajuda">
-        <i class="bi bi-info-circle" aria-hidden="true"></i>
-      </a>
+  <% }  else { %>
 
-      <a href="/configuracoes">
-        <i class="bi bi-gear" aria-hidden="true"></i>
-      </a>
-    <% } %>
+  <!-- NÃO LOGADO -->
+  <a href="/"><i class="bi bi-house-door-fill"></i></a>
+  <a href="/login"><i class="bi bi-box-arrow-in-right"></i></a>
+  <a href="/cadastro"><i class="bi bi-person-plus"></i></a>
+
+  <% } %>
   </section>
 </nav>
 

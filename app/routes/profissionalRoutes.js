@@ -12,7 +12,11 @@ function apenasProfissional(req, res, next) {
 router.get("/painel-financeiro", apenasProfissional, tarefaController.exibirPainelProfissional);
 router.get("/dashboard",         apenasProfissional, (req,res) => res.redirect("/profissional/painel-financeiro"));
 router.get("/pacientes",         apenasProfissional, tarefaController.listarPacientes);
-
+router.get("/planos", apenasProfissional, (req, res) => {
+  res.render("pages/profissional/planos", {
+    colaborador: req.session.usuario
+  });
+});
 // Ver tarefas de um paciente específico
 router.get("/paciente/:clienteId/tarefas", apenasProfissional, tarefaController.tarefasDoPaciente);
 
