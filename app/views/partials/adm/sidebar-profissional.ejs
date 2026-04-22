@@ -10,7 +10,6 @@
   const iniciais = nomeDisplay.split(' ').slice(0,2).map(p=>p[0]).join('').toUpperCase();
 %>
 
-
 <aside class="pro-sidebar" aria-label="Menu do profissional">
   <span class="pro-sidebar-section-label">Principal</span>
   <nav class="pro-sidebar-nav" aria-label="Navegação principal">
@@ -24,9 +23,21 @@
     </a>
   </nav>
 
+  <span class="pro-sidebar-section-label">Pacientes</span>
+  <nav class="pro-sidebar-nav">
+    <a href="/profissional/pacientes" class="pro-sidebar-link <%= isAtivo('/profissional/pacientes') %>">
+      <i class="bi bi-people-fill" aria-hidden="true"></i>
+      <span>Pacientes</span>
+    </a>
+    <a href="/profissional/agenda" class="pro-sidebar-link <%= isAtivo('/profissional/agenda') %>">
+      <i class="bi bi-calendar-check-fill" aria-hidden="true"></i>
+      <span>Agenda</span>
+    </a>
+  </nav>
+
   <span class="pro-sidebar-section-label">Conta</span>
   <nav class="pro-sidebar-nav">
-    <a href="#" class="pro-sidebar-link <%= isAtivo('/profissional/perfil-profissional') %>">
+    <a href="/profissional/perfil-profissional" class="pro-sidebar-link <%= isAtivo('/profissional/perfil-profissional') %>">
       <i class="bi bi-person-badge-fill" aria-hidden="true"></i>
       <span>Meu Perfil</span>
     </a>
@@ -44,8 +55,6 @@
       <span>Sair</span>
     </a>
   </nav>
-
-  
 </aside>
 
 
@@ -62,7 +71,13 @@
   height: 100vh;
   overflow-y: auto;
   transition: background 0.3s;
-box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode: sidebar keeps dark green tones */
+html.dark .pro-sidebar {
+  background: #1e3a30;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.25);
 }
 
 .pro-sidebar-logo {
@@ -135,7 +150,7 @@ box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   top: 20%;
   bottom: 20%;
   width: 3px;
-  background: var(--pro-green3);
+  background: #34d399;
   border-radius: 0 3px 3px 0;
 }
 
@@ -164,7 +179,7 @@ box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--pro-green3);
+  background: #34d399;
   color: #0c4f43;
   display: flex;
   align-items: center;

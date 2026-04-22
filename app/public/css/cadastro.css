@@ -9,7 +9,7 @@ main.main, main {
   justify-content: center;
   padding: 2.5rem 1.5rem 5rem;
   min-height: calc(100vh - 120px);
-  background: #f0f7f4;
+  
 }
 
 /* ── Card formulário ─────────────────────────────────────── */

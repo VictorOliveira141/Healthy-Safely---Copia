@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="/js/darkmode.js"></script>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pacientes | Healthy Safely</title>
+  <link rel="stylesheet" href="/css/profissional/painel-financeiro.css" />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+  <style>
+    .pac-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.75rem;}
+    .pac-toolbar h1{font-size:1.35rem;font-weight:800;color:var(--fundoclaro);margin:0;display:flex;align-items:center;gap:.5rem;}
+    .pac-busca{padding:.55rem .9rem;border:1.5px solid var(--border);border-radius:10px;
+      font-size:.88rem;color:var(--fundoclaro);background:var(--surface-bg, var(--primary-color));min-width:200px;
+      transition:border-color .15s;}
+    .pac-busca:focus{outline:none;border-color:#1a8a75;}
+    .pac-mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;}
+    .pac-mini{background:var(--surface-card, var(--primary-color));border:1px solid var(--border);border-radius:12px;
+      padding:1rem;text-align:center;box-shadow:0 2px 8px rgba(12,79,67,.07);}
+    .pac-mini strong{display:block;font-size:1.5rem;font-weight:900;color:var(--secondary-color);}
+    .pac-mini span{font-size:.75rem;color:var(--muted);}
+    .pac-lista{display:flex;flex-direction:column;gap:.6rem;}
+    .pac-card{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;
+      background:var(--surface-card, var(--primary-color));border:1px solid var(--border);border-radius:14px;
+      transition:box-shadow .15s,border-color .15s;}
+    .pac-card:hover{box-shadow:0 4px 16px rgba(12,79,67,.1);border-color:#34d399;}
+    .pac-av{width:44px;height:44px;border-radius:50%;background:var(--c-verde-100, #d1fae5);color:#065f46;
+      display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;flex-shrink:0;}
+    .pac-info{flex:1;}
+    .pac-info strong{display:block;font-size:.9rem;font-weight:700;color:var(--fundoclaro);margin-bottom:.15rem;}
+    .pac-info small{font-size:.75rem;color:var(--muted);}
+    .pac-pct{display:flex;flex-direction:column;align-items:flex-end;gap:.25rem;min-width:90px;}
+    .pac-pct-label{font-size:.7rem;font-weight:800;color:var(--fundoclaro);}
+    .pct-bar{width:80px;height:5px;background:var(--border);border-radius:5px;overflow:hidden;}
+    .pct-fill{height:100%;background:linear-gradient(90deg,#0c4f43,#34d399);border-radius:5px;}
+    .pac-btn{padding:.45rem .9rem;background:var(--secondary-color);color:#fff;border:none;border-radius:8px;
+      font-family:inherit;font-size:.78rem;font-weight:700;cursor:pointer;text-decoration:none;
+      transition:background .15s,opacity .15s;white-space:nowrap;}
+    .pac-btn:hover{opacity:.88;}
+    .badge-nivel{font-size:.68rem;font-weight:700;padding:2px 7px;border-radius:20px;
+      background:#fef3c7;color:#92400e;text-transform:capitalize;}
+    .empty-state{text-align:center;padding:3rem;color:var(--muted);border:1px dashed var(--border);border-radius:14px;}
+    .empty-state i{font-size:2.5rem;display:block;margin-bottom:.75rem;opacity:.35;}
+    @media(max-width:600px){.pac-mini-stats{grid-template-columns:1fr;}.pac-pct{display:none;}}
+  </style>
+</head>
+<body>
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/menu-inferior.ejs') %>
+<section class="admin-container">
+  <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+  <main class="admin-main">
+    <header class="pac-toolbar">
+      <h1><i class="bi bi-people-fill"></i> Pacientes</h1>
+      <input type="search" class="pac-busca" placeholder="Buscar paciente..."
+        oninput="filtrar(this.value)" aria-label="Buscar paciente" />
+    </header>
+
+    <!-- Mini stats -->
+    <section class="pac-mini-stats">
+      <article class="pac-mini">
+        <strong><%= pacientes.length %></strong><span>Total</span>
+      </article>
+      <article class="pac-mini">
+        <strong style="color:#34d399"><%= pacientes.filter(p=>p.pct>=80).length %></strong>
+        <span>Alto desempenho (≥80%)</span>
+      </article>
+      <article class="pac-mini">
+        <strong style="color:#f59e0b"><%= pacientes.filter(p=>p.pct<50).length %></strong>
+        <span>Atenção (&lt;50%)</span>
+      </article>
+    </section>
+
+    <!-- Lista de pacientes do banco -->
+    <section class="pac-lista" id="listaPac">
+      <% if(!pacientes || !pacientes.length){ %>
+        <section class="empty-state">
+          <i class="bi bi-people"></i>
+          <p style="font-weight:700">Nenhum cliente cadastrado</p>
+          <p style="font-size:.85rem">Os clientes aparecerão aqui após o cadastro.</p>
+        </section>
+      <% } else { pacientes.forEach(p => {
+           const ini = p.nome.slice(0,2).toUpperCase();
+           const pct = p.pct || 0;
+         %>
+      <article class="pac-card" data-nome="<%= p.nome.toLowerCase() %>">
+        <figure class="pac-av"><%= ini %></figure>
+        <section class="pac-info">
+          <strong><%= p.nome %></strong>
+          <small>⭐ <%= p.pontos %> pts · <span class="badge-nivel"><%= p.nivel %></span></small>
+        </section>
+        <section class="pac-pct">
+          <span class="pac-pct-label"><%= pct %>%</span>
+          <section class="pct-bar">
+            <section class="pct-fill" style="width:<%= pct %>%;<%= pct<50?'background:#f59e0b':'' %>"></section>
+          </section>
+          <small style="font-size:.65rem;color:#5a7a70"><%= p.tarefas_concluidas %>/<%= p.total_tarefas %> tarefas</small>
+        </section>
+        <a href="/profissional/paciente/<%= p.id %>/tarefas" class="pac-btn">
+          <i class="bi bi-graph-up"></i> Ver tarefas
+        </a>
+      </article>
+      <% }) } %>
+    </section>
+  </main>
+</section>
+<%- include('../../partials/footer.ejs') %>
+<script>
+function filtrar(t) {
+  const f = t.toLowerCase();
+  document.querySelectorAll('.pac-card').forEach(c => {
+    c.style.display = c.dataset.nome.includes(f) ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>

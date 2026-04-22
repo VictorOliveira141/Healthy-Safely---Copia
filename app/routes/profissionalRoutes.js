@@ -6,6 +6,8 @@ const tarefaController = require("../controllers/tarefaController");
 function apenasProfissional(req, res, next) {
   if (!req.session?.usuario) return res.redirect("/login");
   if (req.session.usuario.tipo !== "profissional") return res.redirect("/dashboard");
+  // Injeta currentPath para o sidebar destacar o link ativo
+  res.locals.currentPath = req.path === '/' ? '/profissional' : '/profissional' + req.path;
   next();
 }
 
