@@ -82,7 +82,7 @@
 
 /* Dark mode */
 html.dark body {
-  --primary-color:   #1a2330;
+  --primary-color:   #12261f;
   --secondary-color: #1e3a30;
   --accent-color:    #1a8a75;
   --surface-bg:      #141f1a;
@@ -100,6 +100,9 @@ html.dark body {
   --pro-green2:      #34d399;
   --pro-shadow:      0 2px 8px rgba(0,0,0,0.2);
   --pro-shadow-lg:   0 6px 20px rgba(0,0,0,0.3);
+  background:
+    radial-gradient(circle at top, rgba(52,211,153,0.16) 0%, transparent 36%),
+    linear-gradient(180deg, #091a14 0%, #0e241c 42%, #123328 100%);
 }
 
 /* ── Reset ──────────────────────────────────────────────── */

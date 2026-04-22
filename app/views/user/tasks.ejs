@@ -17,8 +17,8 @@
   <section class="hs-page-head card-base" aria-label="Tarefas">
     <section class="hs-page-head-copy">
       <span class="hs-page-kicker">Tarefas</span>
-      <h1>Organize o dia sem ruído visual</h1>
-      <p>Crie, conclua e acompanhe seu fluxo em um layout mais limpo e direto.</p>
+      <h1>Organize o dia com saúde</h1>
+      <p>Crie, conclua tarefas e acompanhe seu progresso.</p>
     </section>
     <section class="hs-page-head-meta" aria-hidden="true">
       <span class="hs-meta-chip"><i class="bi bi-lightning-fill"></i> Simples</span>
@@ -91,8 +91,7 @@
                   <% } %>
                 </figure>
                 <section class="hs-task-content">
-                  <h3 class="hs-task-name"
-                    style="<%= tarefa.completed ? 'text-decoration:line-through;opacity:.55' : '' %>">
+                  <h3 class="hs-task-name <%= tarefa.completed ? 'hs-task-name-completed' : '' %>">
                     <%= tarefa.title %>
                   </h3>
                   <section class="hs-task-meta">
@@ -149,6 +148,7 @@
 
 <style>
   .visually-hidden{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  .hs-task-name-completed{text-decoration:line-through;opacity:.55;}
 </style>
 
 <script src="/js/tasks.js"></script>

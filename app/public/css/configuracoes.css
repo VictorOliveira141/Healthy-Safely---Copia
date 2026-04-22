@@ -174,3 +174,7 @@
   font-weight: 600;
   margin-top: 0.75rem;
 }
+
+html.dark .config-grupo-titulo {
+  background: rgba(255, 255, 255, 0.04);
+}
