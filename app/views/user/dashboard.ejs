@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard | Healthy Safely</title>
+    <link rel="stylesheet" href="/css/global.css" />
   <link rel="stylesheet" href="/css/hs-user-dashboard.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
   <link rel="icon" href="/imagem/Logo repaginado 2.png" />
@@ -27,26 +28,23 @@
     const feitas   = taskList.filter(t => t.completed).length;
   %>
 
-  <!-- HERO ─────────────────────────────────────────────── -->
-  <section class="hs-hero" aria-label="Boas-vindas">
-    <section class="hs-hero-inner">
-      <section class="hs-hero-text">
-        <span class="hs-hero-tag">
-          <i class="bi bi-lightning-fill"></i> <%= ncfg.label %>
-        </span>
-        <h1>Olá, <span><%= nome ? nome.split(' ')[0] : 'Usuário' %>!</span></h1>
-        <p class="hs-hero-sub">Continue construindo seus hábitos. Cada tarefa importa. 💪</p>
-        <nav class="hs-hero-btns">
-          <a href="/tasks" class="hs-btn-hero-prim">
-            <i class="bi bi-check2-circle"></i> Minhas tarefas
-          </a>
-          <a href="/perfil" class="hs-btn-hero-ghost">
-            <i class="bi bi-person-circle"></i> Perfil
-          </a>
-        </nav>
+  <main class="hs-main hs-main-spaced">
+
+    <section class="hs-page-head card-base" aria-label="Boas-vindas">
+      <section class="hs-page-head-copy">
+        <span class="hs-page-kicker">Dashboard</span>
+        <h1>Olá, <span><%= nome ? nome.split(' ')[0] : 'Usuário' %></span></h1>
+        <p>Continue construindo seus hábitos com uma visão clara do seu progresso.</p>
       </section>
+      <nav class="hs-hero-btns" aria-label="Ações rápidas">
+        <a href="/tasks" class="hs-btn-hero-prim">
+          <i class="bi bi-check2-circle"></i> Minhas tarefas
+        </a>
+        <a href="/perfil" class="hs-btn-hero-ghost">
+          <i class="bi bi-person-circle"></i> Perfil
+        </a>
+      </nav>
     </section>
-  </section>
 
   <!-- BARRA DE NÍVEL ──────────────────────────────────── -->
   <section class="hs-nivel-wrap" aria-label="Barra de nível">
@@ -99,13 +97,10 @@
     </article>
   </section>
 
-  <!-- MAIN ────────────────────────────────────────────── -->
-  <main class="hs-main">
-
     <!-- Tarefas de hoje -->
     <section class="hs-tasks-section" aria-labelledby="tit-tarefas">
-      <header class="hs-section-header" style="padding:0 0 0 0">
-        <h2 class="hs-section-title" id="tit-tarefas" style="margin:0">Tarefas de Hoje</h2>
+      <header class="hs-section-header">
+        <h2 class="hs-section-title" id="tit-tarefas">Tarefas de Hoje</h2>
         <a href="/tasks" class="hs-section-link">Ver todas →</a>
       </header>
 

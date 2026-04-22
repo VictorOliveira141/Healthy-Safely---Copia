@@ -48,6 +48,6 @@ app.use((req, res) => {
 
 // ── Iniciar servidor ──────────────────────────────────────
 app.listen(porta, () => {
-  console.log(`\n🚀 Healthy Safely rodando em http://localhost:${porta}`);
+  console.log(` Healthy Safely rodando em http://localhost:${porta}`);
   console.log(`   Ambiente: ${process.env.NODE_ENV || "desenvolvimento"}\n`);
 });

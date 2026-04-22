@@ -4,37 +4,69 @@
 
 .hs-tasks-main {
   min-height: 100vh;
-  background: #f0f7f4;
+  background:
+    radial-gradient(circle at top right, rgba(52,211,153,.10) 0%, transparent 30%),
+    linear-gradient(180deg, #fbfcfc 0%, #f5f8f7 40%, #edf3f1 100%);
   padding-bottom: 5rem;
-}
-
-/* ── Hero ────────────────────────────────────────────────── */
-.hs-tasks-hero {
-  background: linear-gradient(135deg, #012e22, #0c4f43 60%, #1a8a75);
-  padding: 2.5rem 1.5rem 5.25rem;
-  text-align: center;
   position: relative;
   overflow: hidden;
 }
-.hs-tasks-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 60% 80% at 90% 10%, rgba(52,211,153,.18) 0%, transparent 55%);
-  pointer-events: none;
+
+.hs-page-head {
+  max-width: 1100px;
+  margin: 1.1rem auto 1rem;
+  padding: 1.35rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 24px;
 }
-.hs-tasks-hero h1 {
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
+.hs-page-head-copy { min-width: 0; }
+.hs-page-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #eefaf4;
+  border: 1px solid rgba(52,211,153,.18);
+  color: #0c4f43;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 0.85rem;
+}
+.hs-page-head h1 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 900;
-  color: #fff;
-  position: relative;
-  margin-bottom: 0.4rem;
+  color: #17302b;
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
 }
-.hs-tasks-hero p {
+.hs-page-head p {
   font-size: 0.95rem;
-  color: rgba(255,255,255,.65);
-  position: relative;
+  color: #56707a;
+  max-width: 54ch;
+}
+.hs-page-head-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.hs-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 9999px;
+  background: #f7fbfa;
+  border: 1px solid rgba(12,79,67,.08);
+  color: #56707a;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 /* ── Barra de adicionar ──────────────────────────────────── */
@@ -46,39 +78,40 @@
   z-index: 10;
 }
 .hs-add-inner {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 6px 24px rgba(12,79,67,.16);
+  background: rgba(255,255,255,.94);
+  border-radius: 24px;
+  box-shadow: 0 14px 36px rgba(15,23,42,.08);
   padding: 1.1rem 1.25rem;
   display: flex;
   gap: 0.7rem;
   border: 1px solid rgba(12,79,67,.08);
+  backdrop-filter: blur(10px);
 }
 .hs-task-input {
   flex: 1;
   padding: 0.7rem 1rem;
-  border: 1.5px solid rgba(12,79,67,.14);
-  border-radius: 10px;
+    radial-gradient(circle at top right, rgba(35,121,106,.07) 0%, transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f6f7f8 45%, #eef1f0 100%);
   font-family: "Outfit", sans-serif;
-  font-size: 0.92rem;
-  color: #0d1f1a;
-  background: #f0f7f4;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  min-height: 44px;
-}
-.hs-task-input:focus {
-  outline: none;
-  border-color: #1a8a75;
-  box-shadow: 0 0 0 3px rgba(26,138,117,.12);
-}
-.hs-tasks-select {
-  padding: 0.7rem 0.9rem;
-  border: 1.5px solid rgba(12,79,67,.14);
-  border-radius: 10px;
+  border-radius: 22px;
+  background: #f3f5f6;
+  border: 1px solid rgba(12,79,67,.08);
+  color: #35534a;
+  background: #f6f8f8;
+  box-shadow: 0 12px 30px rgba(15,23,42,.06);
+  box-shadow: 0 8px 20px rgba(15,23,42,.05);
+  box-shadow: 0 14px 28px rgba(15,23,42,.08);
+  background: linear-gradient(90deg, #f6fbf8 0%, #fff 72%);
+  background: #eaf7f2;
+  box-shadow: 0 8px 20px rgba(15,23,42,.04);
+  box-shadow: 0 8px 20px rgba(15,23,42,.05);
+  box-shadow: 0 14px 28px rgba(15,23,42,.08);
+  border-color: rgba(12,79,67,.16);
+  border-radius: 9999px;
   font-family: "Outfit", sans-serif;
   font-size: 0.85rem;
   color: #0d1f1a;
-  background: #f0f7f4;
+  background: #fff;
   cursor: pointer;
   min-height: 44px;
 }
@@ -87,7 +120,7 @@
   background: #0c4f43;
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: 9999px;
   font-family: "Outfit", sans-serif;
   font-size: 0.9rem;
   font-weight: 700;
@@ -116,8 +149,17 @@
 .hs-section-title {
   font-size: 1.1rem;
   font-weight: 800;
-  color: #0d1f1a;
+  color: #17302b;
   margin-bottom: 1rem;
+}
+.hs-section-count {
+  font-size: .78rem;
+  color: #56707a;
+  font-weight: 700;
+  background: #f7fbfa;
+  padding: .35rem .75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(12,79,67,.08);
 }
 
 /* ── Task card (lista) ───────────────────────────────────── */
@@ -129,25 +171,25 @@
   padding: 0;
 }
 .hs-user-task-card {
-  background: #fff;
-  border: 1px solid rgba(12,79,67,.1);
-  border-radius: 14px;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(12,79,67,.08);
+  border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(12,79,67,.07);
+  box-shadow: 0 10px 24px rgba(15,23,42,.06);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .hs-user-task-card:hover {
-  transform: translateX(3px);
-  box-shadow: 0 4px 16px rgba(12,79,67,.12);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(15,23,42,.10);
 }
 .hs-user-task-card.hs-task-completed {
   border-left: 3px solid #34d399;
-  background: linear-gradient(90deg, #f0fdf4, #fff);
+  background: linear-gradient(90deg, #f0fdf4 0%, #fff 72%);
 }
 .hs-task-header {
   display: flex;
   align-items: center;
-  padding: 1rem 1.25rem;
+  padding: 1.05rem 1.25rem;
   gap: 1rem;
 }
 .hs-task-left {
@@ -159,8 +201,8 @@
 .hs-task-icon {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
-  background: #f0f7f4;
+  border-radius: 14px;
+  background: #edf8f5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,12 +214,13 @@
 .hs-task-name {
   font-size: 0.92rem;
   font-weight: 700;
-  color: #0d1f1a;
+  color: #17302b;
+  line-height: 1.35;
   margin-bottom: 0.1rem;
 }
 .hs-task-meta {
   font-size: 0.72rem;
-  color: #4a6560;
+  color: #56707a;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -187,15 +230,15 @@
   color: #065f46;
   font-size: 0.65rem;
   font-weight: 700;
-  padding: 1px 6px;
+  padding: 0.2rem 0.55rem;
   border-radius: 9999px;
 }
 .hs-task-cat-badge {
-  background: #f1f5f9;
-  color: #475569;
+  background: #eef2f7;
+  color: #51656f;
   font-size: 0.65rem;
   font-weight: 600;
-  padding: 1px 6px;
+  padding: 0.2rem 0.55rem;
   border-radius: 9999px;
   text-transform: capitalize;
 }
@@ -204,7 +247,7 @@
   background: #0c4f43;
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: 9999px;
   font-family: "Outfit", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
@@ -226,9 +269,9 @@
 .hs-btn-excluir {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
-  border: 1px solid rgba(200,0,0,.18);
-  background: none;
+  border-radius: 12px;
+  border: 1px solid rgba(200,0,0,.16);
+  background: rgba(255,255,255,.9);
   font-size: 0.82rem;
   color: #dc2626;
   cursor: pointer;
@@ -244,7 +287,11 @@
 .hs-empty-state {
   text-align: center;
   padding: 3rem 1rem;
-  color: #4a6560;
+  color: #56707a;
+  background: rgba(255,255,255,.9);
+  border: 1px dashed rgba(12,79,67,.12);
+  border-radius: 22px;
+  box-shadow: 0 10px 24px rgba(15,23,42,.05);
 }
 .hs-empty-state i {
   font-size: 2.5rem;
@@ -268,27 +315,27 @@
   align-items: center;
   gap: 0.4rem;
   padding: 1rem 0.75rem;
-  border: 1px solid rgba(12,79,67,.1);
-  border-radius: 14px;
+  border: 1px solid rgba(12,79,67,.08);
+  border-radius: 22px;
   text-decoration: none;
   color: #0d1f1a;
   font-size: 0.78rem;
   font-weight: 700;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(12,79,67,.07);
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 10px 24px rgba(15,23,42,.06);
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   text-align: center;
 }
 .hs-categoria-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(12,79,67,.12);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(15,23,42,.10);
   border-color: #34d399;
 }
 .hs-categoria-link img { width: 38px; height: 38px; object-fit: contain; }
 
 /* ── Responsividade ──────────────────────────────────────── */
 @media (max-width: 768px) {
-  .hs-tasks-hero  { padding: 2rem 1rem 4.5rem; }
+  .hs-page-head   { margin: 1rem 1rem 1rem; flex-direction: column; align-items: flex-start; }
   .hs-add-bar     { padding: 0 1rem; }
   .hs-add-inner   { flex-direction: column; }
   .hs-add-task-btn{ justify-content: center; }
@@ -299,4 +346,5 @@
   .hs-task-header { padding: 0.85rem 1rem; gap: 0.7rem; }
   .hs-task-icon   { width: 34px; height: 34px; font-size: 0.85rem; }
   .hs-categorias  { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
+  .hs-page-head   { padding: 1.1rem 1rem; }
 }

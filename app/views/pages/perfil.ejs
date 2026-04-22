@@ -14,21 +14,22 @@
   <%- include('../partials/header.ejs') %>
 
   <main class="perfil-corpo" style="padding-bottom:6rem">
+    <section class="perfil-head card-base" aria-labelledby="perfil-nome">
+      <section class="perfil-avatar-wrap">
+        <figure class="foto-perfil">
+          <img
+            src="<%= usuario && usuario.foto_perfil ? usuario.foto_perfil : '/imagem/user.png' %>"
+            alt="Foto de perfil"
+          />
+          <label for="uploadFoto" class="camera-icon" title="Alterar foto">
+            <i class="bi bi-camera-fill" aria-hidden="true"></i>
+          </label>
+          <input type="file" id="uploadFoto" accept="image/*" hidden />
+        </figure>
+      </section>
 
-    <!-- Banner perfil -->
-    <section class="perfil" aria-labelledby="perfil-nome">
-      <figure class="foto-perfil">
-        <img
-          src="<%= usuario && usuario.foto_perfil ? usuario.foto_perfil : '/imagem/user.png' %>"
-          alt="Foto de perfil"
-        />
-        <label for="uploadFoto" class="camera-icon" title="Alterar foto">
-          <i class="bi bi-camera-fill" aria-hidden="true"></i>
-        </label>
-        <input type="file" id="uploadFoto" accept="image/*" hidden />
-      </figure>
-
-      <section class="info-perfil" style="position:relative">
+      <section class="info-perfil">
+        <span class="perfil-kicker">Perfil</span>
         <h1 id="perfil-nome">
           <%= usuario && usuario.nome ? usuario.nome.split(' ').slice(0,2).join(' ') : 'Usuário' %>
         </h1>
@@ -37,6 +38,10 @@
           <span><i class="bi bi-people-fill"></i> <%= usuario && usuario.seguidores || 0 %> seguidores</span>
           <span><i class="bi bi-person-check-fill"></i> <%= usuario && usuario.seguindo || 0 %> seguindo</span>
         </p>
+        <section class="perfil-actions">
+          <a href="/tasks" class="perfil-cta primary">Minhas tarefas</a>
+          <a href="/amizades" class="perfil-cta">Amizades</a>
+        </section>
       </section>
     </section>
 
