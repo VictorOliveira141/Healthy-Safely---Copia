@@ -2,15 +2,12 @@
 <%- include('../partials/menu-inferior.ejs') %> <!-- MENU INFERIOR-->
 
 <header class="site-header">
+ <% if (!usuario || usuario.tipo === "cliente") { %>
   <nav
-    class="header-nav2 cliente"
+    class="header-nav2"
     id="mobileNav"
     aria-label="Menu principal do site Healthy Safely"
   >
-  <p class="visually-hidden" >
-    Navegação principal do site Healthy Safely com acesso a tarefas, perfil, notificações e suporte ao usuário.
-  </p>
-
     <article class="nav-spacer">
       <a href="/tasks">Tarefas</a>
       <a href="/amizades">Amizades</a>
@@ -21,10 +18,11 @@
       <a href="/notificacoes">Notificações</a>
       <a href="/configuracoes">Configurações</a>
       <a href="/ajuda">
-        <i class="bi bi-info-circle" aria-hidden="true"></i> Ajuda
+        <i class="bi bi-info-circle"></i> Ajuda
       </a>
     </article>
   </nav>
+<% } %>
 
   <!-- PARTE VISUAL DO HEADER -->
   <section class="header-container">

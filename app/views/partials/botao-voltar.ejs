@@ -20,11 +20,11 @@
   }
 </style>
 <script>
-  function voltarPagina() {
-    if (document.referrer && window.history.length > 1) {
-      window.location.href = document.referrer;
-    } else {
-      window.location.href = "/";
-    }
+ function voltarPagina() {
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    window.location.href = "/";
   }
+}
 </script>
