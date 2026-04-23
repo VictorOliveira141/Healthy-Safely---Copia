@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <script src="/js/darkmode.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard | Healthy Safely</title>
@@ -40,7 +41,7 @@
         <a href="/tasks" class="hs-btn-hero-prim">
           <i class="bi bi-check2-circle"></i> Minhas tarefas
         </a>
-        <a href="/perfil" class="hs-btn-hero-ghost">
+        <a href="/perfil" class="hs-btn-hero-prim">
           <i class="bi bi-person-circle"></i> Perfil
         </a>
       </nav>
@@ -50,6 +51,7 @@
   <section class="hs-nivel-wrap" aria-label="Barra de nível">
     <section class="hs-nivel-card">
       <section class="hs-nivel-info">
+
         <span class="hs-nivel-label"><%= ncfg.label %></span>
         <span class="hs-nivel-pts">
           <%= pontosTpl %> / <%= ncfg.max %> pts

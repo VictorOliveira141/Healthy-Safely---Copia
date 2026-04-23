@@ -6,7 +6,7 @@ body a {
 body h2 {
   font-size: 36px;
   font-weight: 700;
-  color: #0c4f43;
+  color: var(--fundoclaro);
   margin-bottom: 50px;
   position: relative;
 }
@@ -129,7 +129,7 @@ body h2::after {
 }
 
 .insight-card {
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.96) 0%, rgba(241, 251, 247, 0.95) 100%);
+  background: var(--secondary-color);
   border-radius: 12px;
   border: 1px solid rgba(12, 79, 67, 0.12);
   box-shadow: 0 8px 28px rgba(14, 54, 46, 0.08);
@@ -146,7 +146,7 @@ body h2::after {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  color: #0c4f43;
+  color: var(--accent-color);
   background: rgba(26, 138, 117, 0.14);
   font-size: 22px;
   margin-bottom: 6px;
@@ -155,11 +155,11 @@ body h2::after {
 .insight-card h3 {
   font-size: 20px;
   line-height: 1.2;
-  color: #0c4f43;
+  color: var(--fundoescuro);
 }
 
 .insight-card p {
-  color: #32554d;
+  color: var(--fundoescuro);
   font-size: 14px;
   line-height: 1.45;
 }

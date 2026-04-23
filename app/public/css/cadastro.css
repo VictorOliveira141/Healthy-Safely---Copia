@@ -16,7 +16,7 @@ main.main, main {
 .card {
   width: 100%;
   max-width: 640px;
-  background: #fff;
+  background: var(--primary-color);
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(12,79,67,.12);
   border: 1px solid rgba(12,79,67,.08);
@@ -32,7 +32,7 @@ form { width: 100%; }
 .form-title {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #0c4f43;
+  color: var(--fundoclaro);
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
@@ -46,10 +46,10 @@ form { width: 100%; }
   padding: 0.75rem 1rem;
   border-radius: 10px;
   border: 1.5px solid rgba(12,79,67,.14);
-  background: #fff;
+  background: var(--botao);
   cursor: pointer;
   text-decoration: none;
-  color: #0d1f1a;
+  color: var(--fundoescuro);
   margin-bottom: 1.25rem;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   font-family: "Outfit", sans-serif;
@@ -100,7 +100,7 @@ form { width: 100%; }
 .inputs, label.inputs {
   font-size: 0.8rem;
   font-weight: 700;
-  color: #0d1f1a;
+  color: var(--fundoclaro);
   text-transform: uppercase;
   letter-spacing: 0.4px;
 }
@@ -118,20 +118,19 @@ textarea {
   border-radius: 10px;
   font-family: "Outfit", sans-serif;
   font-size: 0.9rem;
-  color: #0d1f1a;
-  background: #f8fafb;
+  color: var(--fundoclaro);
+  background: var(--primary-color);
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   min-height: 44px;
 }
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: #1a8a75;
-  background: #fff;
+
   box-shadow: 0 0 0 3px rgba(26,138,117,.12);
 }
 input.erro-input {
   border-color: #ef4444;
-  background: #fff5f5;
 }
 input.erro-input:focus { box-shadow: 0 0 0 3px rgba(239,68,68,.12); }
 
@@ -179,8 +178,8 @@ p.small, .small {
 .btn-primary {
   width: 100%;
   padding: 0.85rem;
-  background: #0c4f43;
-  color: #fff;
+  background: var(--botao);
+  color: var(--fundoescuro);
   border: none;
   border-radius: 11px;
   font-family: "Outfit", sans-serif;

@@ -13,7 +13,7 @@ html, body {
   font-family: "Outfit", system-ui, sans-serif;
   background:
     radial-gradient(circle at top right, rgba(35,121,106,.06) 0%, transparent 28%),
-    linear-gradient(180deg, #ffffff 0%, #f6f7f8 45%, #eef1f0 100%);
+    linear-gradient(180deg, var(--primary-color)fff 0%, #f6f7f8 45%, #eef1f0 100%);
   color: #18211f;
   overflow-x: hidden;
   min-height: 100vh;
@@ -61,7 +61,7 @@ html, body {
 }
 
 .pt-card {
-  background: #fff;
+  background:var(--primary-color);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(15,23,42,.06);
   border: 1px solid rgba(12,79,67,.07);
@@ -70,7 +70,7 @@ html, body {
 
 /* ---------- Topo do card ---------- */
 .pt-card-topo {
-  background: #fff;
+  background: var(--primary-color);
   padding: 1.25rem 1.5rem;
   display: flex;
   align-items: center;
@@ -82,7 +82,7 @@ html, body {
   width: 48px;
   height: 48px;
   object-fit: contain;
-  background: #f3f8f6;
+  background: var(--primary-color);
   border-radius: 14px;
   padding: 8px;
   flex-shrink: 0;
@@ -91,7 +91,7 @@ html, body {
 .pt-card-topo h1 {
   font-size: clamp(1.2rem, 3.5vw, 1.6rem);
   font-weight: 900;
-  color: #18211f;
+  color: var(--fundoclaro);
   letter-spacing: -0.02em;
   text-transform: none;
 }
@@ -105,8 +105,8 @@ html, body {
 .pt-card-texto {
   font-size: 0.93rem;
   line-height: 1.7;
-  color: #4f6470;
-  background: #f8fafb;
+  color: var(--fundoclaro);
+  background: var(--primary-color);
   border: 1px solid rgba(12,79,67,.06);
   border-radius: 14px;
   padding: 1rem 1.25rem;
@@ -122,7 +122,7 @@ html, body {
   flex-wrap: wrap;
   padding: 1.25rem 1.75rem;
   border-top: 1px solid rgba(12,79,67,.06);
-  background: #fbfcfd;
+  background:  var(--primary-color);
 }
 
 .pt-progresso-bloco {
@@ -133,7 +133,7 @@ html, body {
 .pt-porcentagem-texto {
   font-size: 1.45rem;
   font-weight: 900;
-  color: #17302b;
+  color: var(--fundoclaro);
   margin-bottom: 0.4rem;
   display: block;
 }
@@ -156,8 +156,8 @@ html, body {
 
 .pt-botao {
   padding: 0.8rem 2rem;
-  background: #0c4f43;
-  color: #fff;
+  background: var(--botao);
+  color: var(--fundoescuro);
   border: none;
   border-radius: 9999px;
   font-family: "Outfit", sans-serif;
@@ -182,8 +182,6 @@ html, body {
 .pt-botao:active:not(:disabled) { transform: scale(0.98); }
 
 .pt-botao:disabled {
-  background: #eef7f4;
-  color: #0c4f43;
   box-shadow: none;
   cursor: default;
 }
@@ -222,7 +220,7 @@ html, body {
 }
 
 .pt-grid-card {
-  background: #fff;
+  background: var(--primary-color);
   border: 1px solid rgba(12,79,67,.09);
   border-radius: 14px;
   padding: 1.2rem;
@@ -264,7 +262,7 @@ html, body {
 
 /* ---------- Checklist de refeições ---------- */
 .pt-checklist {
-  background: #fff;
+  background: var(--primary-color);
   border: 1px solid rgba(12,79,67,.09);
   border-radius: 16px;
   padding: 1.5rem;
@@ -298,7 +296,7 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0.7rem 1rem;
-  background: #f8fafb;
+  background: var(--primary-color);
   border-radius: 10px;
   border: 1px solid rgba(12,79,67,.07);
   transition: background 0.15s;
@@ -364,9 +362,8 @@ html, body {
 
 .pt-nav-item {
   text-decoration: none;
-  color: #18211f;
   text-align: center;
-  background: #fff;
+  background: var(--primary-color);
   border: 1px solid rgba(12,79,67,.09);
   border-radius: 14px;
   padding: 0.9rem 0.5rem 0.75rem;
@@ -384,7 +381,7 @@ html, body {
 }
 .pt-nav-item.ativo {
   border-color: rgba(12,79,67,.18);
-  background: #f6fbf8;
+  background: var(--secondary-color);
 }
 .pt-nav-item img {
   width: 42px;
@@ -394,17 +391,16 @@ html, body {
 .pt-nav-item span {
   font-size: 0.68rem;
   font-weight: 700;
-  color: #18211f;
+  color: var(--fundoclaro);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
-.pt-nav-item.ativo span { color: #0c4f43; }
 
 .pt-nav-outros {
   text-decoration: none;
   color: #18211f;
   text-align: center;
-  background: #fff;
+  background: var(--primary-color);
   border: 1px solid rgba(12,79,67,.09);
   border-radius: 14px;
   padding: 0.9rem 0.5rem 0.75rem;
