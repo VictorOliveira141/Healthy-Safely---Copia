@@ -19,6 +19,11 @@ router.get("/planos", apenasProfissional, (req, res) => {
     colaborador: req.session.usuario
   });
 });
+router.get("/configuracoes", apenasProfissional, (req, res) => {
+  res.render("pages/profissional/configuracoes", {
+    colaborador: req.session.usuario,
+  });
+});
 // Ver tarefas de um paciente específico
 router.get("/paciente/:clienteId/tarefas", apenasProfissional, tarefaController.tarefasDoPaciente);
 

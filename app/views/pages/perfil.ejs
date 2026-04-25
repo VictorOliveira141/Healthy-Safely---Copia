@@ -16,6 +16,11 @@
 </head>
 <body>
   <%- include('../partials/header.ejs') %>
+  <%
+    const configHref = usuario && usuario.tipo === "profissional"
+      ? "/profissional/configuracoes"
+      : "/configuracoes";
+  %>
 
   <main class="perfil-corpo" style="padding-bottom:6rem">
 
@@ -63,7 +68,7 @@
         aria-valuenow="<%= usuario && usuario.pontos || 0 %>"
         aria-valuemin="0" aria-valuemax="100">
         <section class="barra-rank-fill"
-          style="width:<%= Math.min((usuario && usuario.pontos || 0), 100) %>%"></section>
+                  <a href="<%= configHref %>"><i class="bi bi-gear-fill"></i> Configurações</a>
       </section>
       <span class="rank-detalhe">
         <%= usuario && usuario.pontos || 0 %> pts acumulados
@@ -102,7 +107,7 @@
         <a href="/tasks"><i class="bi bi-check2-circle"></i> Minhas Tarefas</a>
         <a href="/notificacoes"><i class="bi bi-bell-fill"></i> Notificações</a>
         <a href="/amizades"><i class="bi bi-people-fill"></i> Amizades</a>
-        <a href="/configuracoes"><i class="bi bi-gear-fill"></i> Configurações</a>
+        <a href="<%= configHref %>"><i class="bi bi-gear-fill"></i> Configurações</a>
         <a href="/privacidade"><i class="bi bi-shield-lock-fill"></i> Privacidade</a>
         <a href="/ajuda"><i class="bi bi-question-circle-fill"></i> Ajuda</a>
         <a href="/sair" style="color:#dc2626">

@@ -1,6 +1,12 @@
 <link rel="stylesheet" href="/css/header.css" />
 <%- include('../partials/menu-inferior.ejs') %> <!-- MENU INFERIOR-->
 
+<%
+  const configHref = usuario && usuario.tipo === "profissional"
+    ? "/profissional/configuracoes"
+    : "/configuracoes";
+%>
+
 <header class="site-header">
  <% if (!usuario || usuario.tipo === "cliente") { %>
   <nav
@@ -50,7 +56,7 @@
       <!-- LOGIN / PERFIL -->
       <section class="user-menu cliente">
         <% if (usuario) { %>
-          <a href="/configuracoes" aria-label="Ir para perfil" class="notificacoes-mobile">
+          <a href="<%= configHref %>" aria-label="Ir para configurações" class="notificacoes-mobile">
               <i class="bi bi-gear" aria-hidden="true"></i>
             </a>
           <a href="/perfil" aria-label="Ir para perfil" class="mobile">
