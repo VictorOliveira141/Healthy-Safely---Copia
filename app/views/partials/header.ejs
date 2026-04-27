@@ -59,9 +59,16 @@
           <a href="<%= configHref %>" aria-label="Ir para configurações" class="notificacoes-mobile">
               <i class="bi bi-gear" aria-hidden="true"></i>
             </a>
+          <% if (usuario && usuario.tipo === "cliente") { %>
           <a href="/perfil" aria-label="Ir para perfil" class="mobile">
             <i class="bi bi-person-circle logado" aria-hidden="true"></i>
-          </a><span class="header-welcome">
+          </a>
+          <% } else if (usuario && usuario.tipo === "profissional") { %>
+            <a href="/profissional/perfil-profissional" aria-label="Ir para perfil" class="mobile">
+            <i class="bi bi-person-circle logado" aria-hidden="true"></i>
+          </a>
+           <% } %>
+          <span class="header-welcome">
             Olá, <strong><%= usuario.nome.split(' ')[0] %></strong>!
           </span>
         <% } else { %>
