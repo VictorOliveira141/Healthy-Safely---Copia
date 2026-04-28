@@ -12,7 +12,6 @@
 </head>
 <body>
   <%- include('../partials/header.ejs') %>
-  <%- include('../partials/menu-inferior.ejs') %>
 
   <%
     const nivelMap = {
@@ -188,7 +187,7 @@
     </article>
   </section>
 
-  <section class="footer"><%- include('../partials/footer.ejs') %></section>
+<%- include('../partials/footer.ejs') %>
 
   <script>
     const nivel = '<%= nivel %>' || 'iniciante';

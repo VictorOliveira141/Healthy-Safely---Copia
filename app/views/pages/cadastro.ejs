@@ -4,9 +4,7 @@
     <script src="/js/darkmode.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Selecionar tipo de cadastro | Healthy Safely - Hábitos Saudáveis
-    </title>
+    <title>Escolha seu tipo de conta | Healthy Safely</title>
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
 
     <link rel="stylesheet" href="/css/global.css" />
@@ -14,6 +12,55 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+
+    <main class="cadastro-escolha">
+      <article class="cadastro-card" aria-labelledby="titulo-cadastro">
+        <h1 id="titulo-cadastro">Criar conta</h1>
+        <p>Escolha como você deseja se cadastrar na plataforma</p>
+
+        <nav class="opcoes-tipo" aria-label="Tipos de cadastro disponíveis">
+          <a
+            href="/cadastroCliente"
+            class="opcao-tipo"
+            aria-label="Cadastrar como Usuário comum"
+          >
+            <figure class="opcao-icone" aria-hidden="true">
+              <i class="bi bi-person-fill"></i>
+            </figure>
+            <section class="opcao-texto">
+              <strong>Usuário</strong>
+              <span>Acompanhe sua saúde, tarefas e progresso diário</span>
+            </section>
+            <i class="bi bi-chevron-right opcao-seta" aria-hidden="true"></i>
+          </a>
+
+          <a
+            href="/cadastroProfissional"
+            class="opcao-tipo"
+            aria-label="Cadastrar como Profissional de saúde"
+          >
+            <figure class="opcao-icone" aria-hidden="true">
+              <i class="bi bi-briefcase-fill"></i>
+            </figure>
+            <section class="opcao-texto">
+              <strong>Profissional</strong>
+              <span>Gerencie pacientes e acompanhe seu desempenho</span>
+            </section>
+            <i class="bi bi-chevron-right opcao-seta" aria-hidden="true"></i>
+          </a>
+        </nav>
+
+        <p class="divisor">já tem uma conta?</p>
+
+        <p class="link-login">Faça <a href="/login">login aqui</a></p>
+      </article>
+    </main>
+
+    <%- include('../partials/footer.ejs') %>
+
     <style>
       .cadastro-escolha {
         min-height: 80vh;
@@ -142,53 +189,5 @@
         text-decoration: underline;
       }
     </style>
-  </head>
-  <body>
-    <%- include('../partials/header.ejs') %>
-
-    <main class="cadastro-escolha">
-      <article class="cadastro-card" aria-labelledby="titulo-cadastro">
-        <h1 id="titulo-cadastro">Criar conta</h1>
-        <p>Escolha como você deseja se cadastrar na plataforma</p>
-
-        <nav class="opcoes-tipo" aria-label="Tipos de cadastro disponíveis">
-          <a
-            href="/cadastroCliente"
-            class="opcao-tipo"
-            aria-label="Cadastrar como Usuário comum"
-          >
-            <figure class="opcao-icone" aria-hidden="true">
-              <i class="bi bi-person-fill"></i>
-            </figure>
-            <section class="opcao-texto">
-              <strong>Usuário</strong>
-              <span>Acompanhe sua saúde, tarefas e progresso diário</span>
-            </section>
-            <i class="bi bi-chevron-right opcao-seta" aria-hidden="true"></i>
-          </a>
-
-          <a
-            href="/cadastroProfissional"
-            class="opcao-tipo"
-            aria-label="Cadastrar como Profissional de saúde"
-          >
-            <figure class="opcao-icone" aria-hidden="true">
-              <i class="bi bi-briefcase-fill"></i>
-            </figure>
-            <section class="opcao-texto">
-              <strong>Profissional</strong>
-              <span>Gerencie pacientes e acompanhe seu desempenho</span>
-            </section>
-            <i class="bi bi-chevron-right opcao-seta" aria-hidden="true"></i>
-          </a>
-        </nav>
-
-        <p class="divisor">já tem uma conta?</p>
-
-        <p class="link-login">Faça <a href="/login">login aqui</a></p>
-      </article>
-    </main>
-
-    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

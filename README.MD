@@ -1,4 +1,5 @@
-Para instalar as dependencias utilize
-npm i --save
+1- É necessario ter a chave do servidor, para abri-lo;
 
-00.000.000/0001-91
+2- Para instalar as dependencias utilize
+npm install;
+

@@ -1,10 +1,8 @@
-// controllers/tarefaController.js — Padrão MVC
 const tarefaModel  = require("../models/Tarefa");
 const usuarioModel = require("../models/Usuario");
 
 const tarefaController = {
 
-  // Dashboard: dados reais do banco
   exibirDashboard: async (req, res) => {
     try {
       const uid = req.session.usuario.id;
@@ -107,7 +105,7 @@ const tarefaController = {
     res.redirect("/dashboard");
   },
 
-  // Painel profissional com dados reais
+  // Painel profissional
   exibirPainelProfissional: async (req, res) => {
     try {
       const pacientes = await usuarioModel.listarPacientes();

@@ -1,6 +1,3 @@
-// controllers/adminController.js — Padrão MVC
-// VERSÃO CORRIGIDA: cada query do model é chamada em Promise separada
-// com fallback seguro, para que um erro em uma tabela não zere os dados.
 const adminModel = require("../models/Admin");
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
@@ -23,10 +20,7 @@ const adminController = {
   },
 
   // ── Painel principal ───────────────────────────────────────
-  // Usa Promise.allSettled para garantir que se UMA query falhar
-  // as outras ainda chegam à view com seus dados reais.
   exibirPainel: async (req, res) => {
-    // Promise.allSettled nunca rejeita — cada item tem {status, value, reason}
     const resultados = await Promise.allSettled([
       adminModel.listarTodosUsuarios(),      // 0
       adminModel.estatisticasGerais(),       // 1
@@ -36,7 +30,6 @@ const adminController = {
       adminModel.listarSolicitacoes(),       // 5
     ]);
 
-    // Extrai o valor ou usa o fallback seguro caso a promise tenha rejeitado
     const pegar = (i, fallback) =>
       resultados[i].status === "fulfilled" ? resultados[i].value : fallback;
 

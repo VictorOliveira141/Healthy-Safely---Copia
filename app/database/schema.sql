@@ -1,5 +1,3 @@
--- ============================================================
--- HEALTHY SAFELY — Schema completo
 -- mysql -u root -p < app/database/schema.sql
 
 

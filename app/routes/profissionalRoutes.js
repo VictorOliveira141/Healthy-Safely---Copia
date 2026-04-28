@@ -1,6 +1,7 @@
-// routes/profissionalRoutes.js — Padrão MVC
 const express = require("express");
 const router  = express.Router();
+
+// CONTROLERS
 const tarefaController = require("../controllers/tarefaController");
 
 function apenasProfissional(req, res, next) {
@@ -11,6 +12,7 @@ function apenasProfissional(req, res, next) {
   next();
 }
 
+// ──────────────── Apenas profissionais podem acessar ────────────────
 router.get("/painel-financeiro", apenasProfissional, tarefaController.exibirPainelProfissional);
 router.get("/dashboard",         apenasProfissional, (req,res) => res.redirect("/profissional/painel-financeiro"));
 router.get("/pacientes",         apenasProfissional, tarefaController.listarPacientes);
@@ -24,17 +26,16 @@ router.get("/configuracoes", apenasProfissional, (req, res) => {
     colaborador: req.session.usuario,
   });
 });
-// Ver tarefas de um paciente específico
-router.get("/paciente/:clienteId/tarefas", apenasProfissional, tarefaController.tarefasDoPaciente);
-
-// Criar tarefa para paciente
-router.post("/paciente/tarefa/criar", apenasProfissional, tarefaController.criarTarefaParaPaciente);
-
 router.get("/perfil-profissional", apenasProfissional, (req,res) => {
   res.render("pages/profissional/perfil-profissional", { colaborador:req.session.usuario, mensagem:null });
 });
 router.get("/agenda", apenasProfissional, (req,res) => {
   res.render("pages/profissional/agenda", { colaborador:req.session.usuario });
 });
+
+/*Ver tarefas de um paciente específico*/
+router.get("/paciente/:clienteId/tarefas", apenasProfissional, tarefaController.tarefasDoPaciente);
+/*Criar tarefa para paciente*/
+router.post("/paciente/tarefa/criar", apenasProfissional, tarefaController.criarTarefaParaPaciente);
 
 module.exports = router;

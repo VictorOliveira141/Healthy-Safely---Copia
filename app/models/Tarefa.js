@@ -1,4 +1,3 @@
-// models/Tarefa.js — Padrão MVC (Prof. Giovani Wingter)
 var pool = require("../../app/config/pool_conexoes");
 
 const tarefaModel = {

@@ -1,4 +1,3 @@
-// models/Usuario.js — Padrão MVC (Prof. Giovani Wingter)
 var pool   = require("../../app/config/pool_conexoes");
 var bcrypt = require("bcryptjs");
 

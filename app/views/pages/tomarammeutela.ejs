@@ -4,7 +4,7 @@
     <script src="/js/darkmode.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Início | Healthy Safely - Hábitos Saudáveis</title>
+    <title>Início | Healthy Safely</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
       rel="stylesheet"
@@ -25,14 +25,19 @@
               <i class="bi bi-activity"></i>
               Plataforma Healthy Safely
             </span>
-            <h1>Construa habitos saudaveis com apoio real e metas inteligentes</h1>
+            <h1>
+              Construa habitos saudaveis com apoio real e metas inteligentes
+            </h1>
             <p>
-              Organize sua rotina, acompanhe sua evolucao e tenha orientacao profissional
-              em um ambiente simples, bonito e focado no seu progresso diario.
+              Organize sua rotina, acompanhe sua evolucao e tenha orientacao
+              profissional em um ambiente simples, bonito e focado no seu
+              progresso diario.
             </p>
 
             <section class="hero-actions">
-              <a class="hero-btn hero-btn-primary" href="/cadastroCliente">Comecar agora</a>
+              <a class="hero-btn hero-btn-primary" href="/cadastro"
+                >Comecar agora</a
+              >
               <a class="hero-btn hero-btn-ghost" href="#planos">Ver planos</a>
             </section>
 
@@ -47,56 +52,93 @@
             <article class="insight-card">
               <i class="bi bi-graph-up-arrow"></i>
               <h3>Progresso visual</h3>
-              <p>Veja seu desempenho semanal com indicadores claros e objetivos.</p>
+              <p>
+                Veja seu desempenho semanal com indicadores claros e objetivos.
+              </p>
             </article>
 
             <article class="insight-card">
               <i class="bi bi-shield-check"></i>
               <h3>Rotina segura</h3>
-              <p>Ferramentas para manter consistencia e equilibrio no dia a dia.</p>
+              <p>
+                Ferramentas para manter consistencia e equilibrio no dia a dia.
+              </p>
             </article>
 
             <article class="insight-card">
               <i class="bi bi-people"></i>
               <h3>Conta para cada perfil</h3>
-              <p>Escolha entre usuario e profissional com experiencia dedicada.</p>
+              <p>
+                Escolha entre usuario e profissional com experiencia dedicada.
+              </p>
             </article>
           </section>
         </section>
+      </section>
 
       <!-- TIPO DE CONTA -->
       <section class="tpcnt">
-  <h2>ESCOLHA SEU TIPO DE CONTA</h2>
+        <h2>ESCOLHA SEU TIPO DE CONTA</h2>
 
-  <section class="tpcnt-container">
-    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
-      <section class="card-inner">
-        <section class="card-front">
-          <img src="../imagem/a (48).png" alt="Conta Profissional" class="tpcnt-img" />
-          <h3 class="tpcnt-title">Profissional</h3>
-        </section>
-        <section class="card-back">
-          <p>Conta para profissionais: Ideal para educadores físicos que desejam acompanhar alunos, criar treinos personalizados e 
-            monitorar a evolução em tempo real com ferramentas inteligentes.</p>
-          <button class="btn-criar" data-target="/cadastroProfissional">Criar conta</button>
+        <section class="tpcnt-container">
+          <article
+            class="tpcnt-card"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+          >
+            <section class="card-inner">
+              <section class="card-front">
+                <img
+                  src="../imagem/a (48).png"
+                  alt="Conta Profissional"
+                  class="tpcnt-img"
+                />
+                <h3 class="tpcnt-title">Profissional</h3>
+              </section>
+              <section class="card-back">
+                <p>
+                  Conta para profissionais: Ideal para educadores físicos que
+                  desejam acompanhar alunos, criar treinos personalizados e
+                  monitorar a evolução em tempo real com ferramentas
+                  inteligentes.
+                </p>
+                <button class="btn-criar" data-target="/cadastroProfissional">
+                  Criar conta
+                </button>
+              </section>
+            </section>
+          </article>
+
+          <article
+            class="tpcnt-card"
+            tabindex="0"
+            role="button"
+            aria-pressed="false"
+          >
+            <section class="card-inner">
+              <section class="card-front">
+                <img
+                  src="../imagem/a (49).png"
+                  alt="Conta usuário comum"
+                  class="tpcnt-img"
+                />
+                <h3 class="tpcnt-title">Usuário</h3>
+              </section>
+              <section class="card-back">
+                <p>
+                  Conta para usuários: Perfeita para quem quer melhorar a saúde
+                  e o desempenho com acompanhamento profissional, acesso a
+                  treinos personalizados e controle da própria evolução.
+                </p>
+                <button class="btn-criar" data-target="/cadastroCliente">
+                  Criar conta
+                </button>
+              </section>
+            </section>
+          </article>
         </section>
       </section>
-    </article>
-
-    <article class="tpcnt-card" tabindex="0" role="button" aria-pressed="false">
-      <section class="card-inner">
-        <section class="card-front">
-          <img src="../imagem/a (49).png" alt="Conta usuário comum" class="tpcnt-img" />
-          <h3 class="tpcnt-title">Usuário</h3>
-        </section>
-        <section class="card-back">
-          <p>Conta para usuários: Perfeita para quem quer melhorar a saúde e o desempenho com acompanhamento profissional, acesso a treinos personalizados e controle da própria evolução.</p>
-          <button class="btn-criar" data-target="/cadastroCliente">Criar conta</button>
-        </section>
-      </section>
-    </article>
-  </section>
-</section>
 
       <!--PLANOS-->
       <section class="centro planos" id="planos">
@@ -210,21 +252,28 @@
 
     <%- include('../partials/footer.ejs') %>
 
-     <script>
+    <script>
       // Flip card: toggle .is-flipped on click; button stops propagation and navigates
-      (function(){
-        const cards = document.querySelectorAll('.tpcnt-card');
-        cards.forEach(card=>{
-          card.addEventListener('click', ()=> card.classList.toggle('is-flipped'));
-          card.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); card.classList.toggle('is-flipped'); }});
+      (function () {
+        const cards = document.querySelectorAll(".tpcnt-card");
+        cards.forEach((card) => {
+          card.addEventListener("click", () =>
+            card.classList.toggle("is-flipped"),
+          );
+          card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              card.classList.toggle("is-flipped");
+            }
+          });
         });
 
-        const buttons = document.querySelectorAll('.tpcnt-card .btn-criar');
-        buttons.forEach(btn=>{
-          btn.addEventListener('click', e=>{
+        const buttons = document.querySelectorAll(".tpcnt-card .btn-criar");
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
             e.stopPropagation();
-            const tgt = btn.getAttribute('data-target') || '#';
-            if(tgt && tgt !== '#') window.location.href = tgt;
+            const tgt = btn.getAttribute("data-target") || "#";
+            if (tgt && tgt !== "#") window.location.href = tgt;
           });
         });
       })();

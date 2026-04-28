@@ -1,12 +1,7 @@
-// models/Admin.js — Padrão MVC (Prof. Giovani Wingter)
-// VERSÃO CORRIGIDA: cada query em try/catch individual para evitar
-// que um erro em uma tabela derrube todas as outras.
 const pool = require("../config/pool_conexoes");
 
 const adminModel = {
-
   // ── Listar todos os usuários com estatísticas ──────────────
-  // Compatível com banco sem a coluna concluida_em
   listarTodosUsuarios: async () => {
     try {
       const [linhas] = await pool.query(
@@ -41,7 +36,6 @@ const adminModel = {
 
   // ── Estatísticas gerais ────────────────────────────────────
   estatisticasGerais: async () => {
-    // Cada bloco separado para não zerar tudo se uma tabela não existir
     let totais = {
       total_usuarios: 0,
       total_clientes: 0,
@@ -85,7 +79,6 @@ const adminModel = {
       );
       solic = r;
     } catch (e) {
-      // tabela pode não existir ainda — não é erro crítico
     }
 
     return { ...totais, ...tarefas, ...solic };
@@ -110,9 +103,8 @@ const adminModel = {
     }
   },
 
-  // ── Tarefas concluídas por dia (compatível sem concluida_em) ─
+  // ── Tarefas concluídas por dia
   tarefasConcluidasPorDia: async () => {
-    // Tenta com coluna concluida_em; se não existir usa criado_em como fallback
     try {
       const [linhas] = await pool.query(
         `SELECT DATE(concluida_em) AS dia, COUNT(*) AS quantidade
@@ -125,7 +117,6 @@ const adminModel = {
       );
       return linhas;
     } catch (_) {
-      // fallback: se coluna não existir usa data de criação
       try {
         const [linhas] = await pool.query(
           `SELECT DATE(criado_em) AS dia, COUNT(*) AS quantidade
@@ -181,7 +172,6 @@ const adminModel = {
       );
       return linhas;
     } catch (e) {
-      // tabela pode não existir no banco antigo
       return [];
     }
   },

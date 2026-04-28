@@ -16,6 +16,111 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
+  </head>
+  <body>
+    <%- include("../../partials/header.ejs") %>
+
+    <%
+      const prof = colaborador || usuario || {};
+      const nomeCompleto = prof.nome || "Profissional";
+      const nomeCurto = nomeCompleto.split(" ").slice(0, 2).join(" ");
+      const iniciais = nomeCompleto
+        .split(" ")
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((p) => p[0])
+        .join("")
+        .toUpperCase() || "PR";
+      const dataCadastro = prof.criado_em
+        ? new Date(prof.criado_em).toLocaleDateString("pt-BR", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          })
+        : "Nao informado";
+    %>
+
+    <div class="pro-wrapper">
+      <%- include('../../partials/adm/sidebar-profissional.ejs') %>
+
+      <main class="pro-main">
+        <h1 class="pro-page-title">
+          <i class="bi bi-person-badge-fill"></i> Meu Perfil Profissional
+        </h1>
+
+        <section class="perfil-grid" aria-label="Perfil profissional">
+          <article class="perfil-card perfil-identidade">
+            <figure class="perfil-avatar" aria-hidden="true"><%= iniciais %></figure>
+
+            <section>
+              <h2><%= nomeCurto %></h2>
+              <p><%= prof.email || "email nao informado" %></p>
+            </section>
+
+            <section class="perfil-badges" aria-label="Tags de perfil">
+              <span class="perfil-badge">
+                <i class="bi bi-shield-check"></i> Conta profissional
+              </span>
+              <span class="perfil-badge">
+                <i class="bi bi-award"></i> Nivel: <%= prof.nivel || "profissional" %>
+              </span>
+            </section>
+
+            <nav class="perfil-acoes" aria-label="Acoes rapidas do profissional">
+              <a href="/profissional/configuracoes" class="perfil-link">
+                <span><i class="bi bi-gear-fill"></i> Configuracoes</span>
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <a href="/profissional/planos" class="perfil-link">
+                <span><i class="bi bi-bag-heart-fill"></i> Meus planos</span>
+                <i class="bi bi-chevron-right"></i>
+              </a>
+              <a href="/profissional/pacientes" class="perfil-link">
+                <span><i class="bi bi-people-fill"></i> Pacientes</span>
+                <i class="bi bi-chevron-right"></i>
+              </a>
+            </nav>
+          </article>
+
+          <article class="perfil-card perfil-detalhes">
+            <h3>Informacoes da conta</h3>
+
+            <section class="perfil-linha">
+              <span class="perfil-label">Nome completo</span>
+              <span class="perfil-valor"><%= nomeCompleto %></span>
+            </section>
+
+            <section class="perfil-linha">
+              <span class="perfil-label">E-mail</span>
+              <span class="perfil-valor"><%= prof.email || "Nao informado" %></span>
+            </section>
+
+            <section class="perfil-linha">
+              <span class="perfil-label">Tipo de conta</span>
+              <span class="perfil-valor"><%= prof.tipo || "profissional" %></span>
+            </section>
+
+            <section class="perfil-linha">
+              <span class="perfil-label">Nivel</span>
+              <span class="perfil-valor"><%= prof.nivel || "profissional" %></span>
+            </section>
+
+            <section class="perfil-linha">
+              <span class="perfil-label">Data de cadastro</span>
+              <span class="perfil-valor"><%= dataCadastro %></span>
+            </section>
+
+            <p class="perfil-nota">
+              Esta pagina mostra os dados principais da sua conta profissional.
+              Para alterar preferencias de uso e notificacoes, acesse a area de
+              configuracoes.
+            </p>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <%- include("../../partials/footer.ejs") %>
     <style>
       .perfil-grid {
         display: grid;
@@ -176,110 +281,5 @@
         }
       }
     </style>
-  </head>
-  <body>
-    <%- include("../../partials/header.ejs") %>
-
-    <%
-      const prof = colaborador || usuario || {};
-      const nomeCompleto = prof.nome || "Profissional";
-      const nomeCurto = nomeCompleto.split(" ").slice(0, 2).join(" ");
-      const iniciais = nomeCompleto
-        .split(" ")
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((p) => p[0])
-        .join("")
-        .toUpperCase() || "PR";
-      const dataCadastro = prof.criado_em
-        ? new Date(prof.criado_em).toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "2-digit",
-            year: "numeric",
-          })
-        : "Nao informado";
-    %>
-
-    <div class="pro-wrapper">
-      <%- include('../../partials/adm/sidebar-profissional.ejs') %>
-
-      <main class="pro-main">
-        <h1 class="pro-page-title">
-          <i class="bi bi-person-badge-fill"></i> Meu Perfil Profissional
-        </h1>
-
-        <section class="perfil-grid" aria-label="Perfil profissional">
-          <article class="perfil-card perfil-identidade">
-            <figure class="perfil-avatar" aria-hidden="true"><%= iniciais %></figure>
-
-            <section>
-              <h2><%= nomeCurto %></h2>
-              <p><%= prof.email || "email nao informado" %></p>
-            </section>
-
-            <section class="perfil-badges" aria-label="Tags de perfil">
-              <span class="perfil-badge">
-                <i class="bi bi-shield-check"></i> Conta profissional
-              </span>
-              <span class="perfil-badge">
-                <i class="bi bi-award"></i> Nivel: <%= prof.nivel || "profissional" %>
-              </span>
-            </section>
-
-            <nav class="perfil-acoes" aria-label="Acoes rapidas do profissional">
-              <a href="/profissional/configuracoes" class="perfil-link">
-                <span><i class="bi bi-gear-fill"></i> Configuracoes</span>
-                <i class="bi bi-chevron-right"></i>
-              </a>
-              <a href="/profissional/planos" class="perfil-link">
-                <span><i class="bi bi-bag-heart-fill"></i> Meus planos</span>
-                <i class="bi bi-chevron-right"></i>
-              </a>
-              <a href="/profissional/pacientes" class="perfil-link">
-                <span><i class="bi bi-people-fill"></i> Pacientes</span>
-                <i class="bi bi-chevron-right"></i>
-              </a>
-            </nav>
-          </article>
-
-          <article class="perfil-card perfil-detalhes">
-            <h3>Informacoes da conta</h3>
-
-            <section class="perfil-linha">
-              <span class="perfil-label">Nome completo</span>
-              <span class="perfil-valor"><%= nomeCompleto %></span>
-            </section>
-
-            <section class="perfil-linha">
-              <span class="perfil-label">E-mail</span>
-              <span class="perfil-valor"><%= prof.email || "Nao informado" %></span>
-            </section>
-
-            <section class="perfil-linha">
-              <span class="perfil-label">Tipo de conta</span>
-              <span class="perfil-valor"><%= prof.tipo || "profissional" %></span>
-            </section>
-
-            <section class="perfil-linha">
-              <span class="perfil-label">Nivel</span>
-              <span class="perfil-valor"><%= prof.nivel || "profissional" %></span>
-            </section>
-
-            <section class="perfil-linha">
-              <span class="perfil-label">Data de cadastro</span>
-              <span class="perfil-valor"><%= dataCadastro %></span>
-            </section>
-
-            <p class="perfil-nota">
-              Esta pagina mostra os dados principais da sua conta profissional.
-              Para alterar preferencias de uso e notificacoes, acesse a area de
-              configuracoes.
-            </p>
-          </article>
-        </section>
-      </main>
-    </div>
-
-    <%- include("../../partials/footer.ejs") %>
   </body>
 </html>

@@ -1,4 +1,3 @@
-// routes/admRoutes.js — Padrão MVC
 const express         = require("express");
 const router          = express.Router();
 const adminController = require("../controllers/adminController");
@@ -8,15 +7,16 @@ function verificarAdmin(req, res, next) {
   return res.redirect("/admin");
 }
 
+// ──────────────── Apenas admin podem acessar ────────────────
 router.get("/",       adminController.exibirLogin);
 router.post("/",      adminController.processarLogin);
 router.get("/painel", verificarAdmin, adminController.exibirPainel);
 router.get("/sair",   verificarAdmin, adminController.sair);
 
-// Gerenciamento de usuários
+/*Gerenciamento de usuários*/
 router.post("/usuario/deletar/:id", verificarAdmin, adminController.deletarUsuario);
 
-// Solicitações
+/*Solicitações*/
 router.post("/solicitacao/aprovar/:id",  verificarAdmin, adminController.aprovarSolicitacao);
 router.post("/solicitacao/rejeitar/:id", verificarAdmin, adminController.rejeitarSolicitacao);
 
