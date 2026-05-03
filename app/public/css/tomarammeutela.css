@@ -4,18 +4,18 @@ body a {
 }
 
 body h2 {
-  font-size: 36px;
+  font-size: var(--font-title);
   font-weight: 700;
   color: var(--fundoclaro);
   margin-bottom: 50px;
   position: relative;
 }
 body h2::after {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #8ca700, #0c4f43);
+  background: var(--accent-color);
   margin: 15px auto 0;
   border-radius: 2px;
 }
@@ -33,10 +33,7 @@ body h2::after {
   overflow: hidden;
   border-radius: 18px;
   padding: clamp(24px, 3.6vw, 44px);
-  background:
-    radial-gradient(circle at 15% 20%, rgba(140, 167, 0, 0.18), transparent 42%),
-    radial-gradient(circle at 82% 82%, rgba(26, 138, 117, 0.24), transparent 46%),
-    linear-gradient(135deg, #0c4f43 0%, #136f5f 55%, #1a8a75 100%);
+  background: var(--secondary-color);
   color: #f5fffb;
   box-shadow: 0 20px 45px rgba(12, 79, 67, 0.28);
 }
@@ -86,7 +83,10 @@ body h2::after {
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .hero-btn:hover {
@@ -164,7 +164,7 @@ body h2::after {
   line-height: 1.45;
 }
 
- /* TIPO DE CONTA */
+/* TIPO DE CONTA */
 .tpcnt {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -188,13 +188,12 @@ body h2::after {
   width: 100%;
 }
 .tpcnt-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #8ca700, #0c4f43);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -220,7 +219,7 @@ body h2::after {
 }
 
 .tpcnt-card:focus {
-  outline: 3px solid rgba(140,167,0,0.12);
+  outline: 3px solid rgba(140, 167, 0, 0.12);
   outline-offset: 4px;
 }
 
@@ -275,7 +274,7 @@ body h2::after {
   width: 100%;
   text-align: center;
   padding: 10px 0;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .tpcnt-card .card-back {
@@ -307,7 +306,6 @@ body h2::after {
   transform: rotateY(180deg);
 }
 
-
 /* ===== PLANOS ===== */
 .centro.planos {
   margin-top: 50px;
@@ -326,46 +324,54 @@ body h2::after {
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: stretch;
 }
 .plano-card {
   background: var(--primary-color);
   color: var(--fundoclaro);
   padding: 20px;
-  border-radius: var(--border-radius);
+  border-radius: 12px;
   width: 280px;
+  min-width: 260px;
+  max-width: 320px;
   text-align: center;
   border: 1px solid var(--border);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
-}
-.plano-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* empurra o botão pra baixo */
-
-  padding: 20px;
-  border-radius: 12px;
-  width: 280px;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
 }
 .plano-card h3 {
   margin-bottom: 10px;
+  width: 100%;
 }
 .preco {
   font-size: var(--font-title);
   font-weight: bold;
+  width: 100%;
 }
 .preco span {
   color: gray;
+  font-size: 14px;
+  font-weight: normal;
 }
 .plano-card ul {
   list-style: none;
   padding: 0;
   margin: 15px 0;
+  width: 100%;
+  text-align: left;
 }
 .plano-card li {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 .btn-plano {
   background: var(--botao);
@@ -374,6 +380,8 @@ body h2::after {
   padding: 10px 15px;
   border-radius: 8px;
   cursor: pointer;
+  width: 100%;
+  margin-top: auto;
 }
 .btn-plano:hover {
   transform: var(--animacao);

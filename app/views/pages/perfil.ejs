@@ -67,8 +67,7 @@
       <section class="barra-rank" role="progressbar"
         aria-valuenow="<%= usuario && usuario.pontos || 0 %>"
         aria-valuemin="0" aria-valuemax="100">
-        <section class="barra-rank-fill"
-                  <a href="<%= configHref %>"><i class="bi bi-gear-fill"></i> Configurações</a>
+        <section class="barra-rank-fill" style="width: <%= Math.min((usuario && usuario.pontos || 0), 100) %>%"></section>
       </section>
       <span class="rank-detalhe">
         <%= usuario && usuario.pontos || 0 %> pts acumulados

@@ -191,7 +191,6 @@
 }
 
 .btn-acao:hover {
-  background: var(--botao-hover);
   box-shadow: 0 12px 24px rgba(26, 138, 117, 0.12);
   transform: translateY(-1px);
 }
