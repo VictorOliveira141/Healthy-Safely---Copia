@@ -31,6 +31,8 @@
   <main class="hs-main hs-main-spaced">
 
     <section class="hs-page-head card-base" aria-label="Boas-vindas">
+
+      <section>
       <section class="hs-page-head-copy">
         <span class="hs-page-kicker">Dashboard</span>
         <h1>Olá, <span><%= nome ? nome.split(' ')[0] : 'Usuário' %></span></h1>
@@ -44,13 +46,15 @@
           <i class="bi bi-person-circle"></i> Perfil
         </a>
       </nav>
-    </section>
+      </section>
 
-  <!-- BARRA DE NÍVEL ──────────────────────────────────── -->
-  <section class="hs-nivel-wrap" aria-label="Barra de nível">
-    <section class="hs-nivel-card">
+      <!-- BARRA DE NÍVEL ──────────────────────────────────── -->
+
+      <section class="hs-nivel-wrap" aria-label="Barra de nível">
+      <section class="hs-nivel-card">
       <section class="hs-nivel-info">
 
+        
         <span class="hs-nivel-label"><%= ncfg.label %></span>
         <span class="hs-nivel-pts">
           <%= pontosTpl %> / <%= ncfg.max %> pts
@@ -63,6 +67,10 @@
       </section>
     </section>
   </section>
+    </section>
+
+
+ 
 
   <!-- STATS STRIP ─────────────────────────────────────── -->
   <section class="hs-user-stats" aria-label="Estatísticas">

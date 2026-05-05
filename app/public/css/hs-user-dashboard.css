@@ -16,11 +16,14 @@ body {
   padding: 1.35rem 1.4rem;
   padding-bottom: 2rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   gap: 1rem;
   border-radius: 22px;
-  background: var(--primary-color);
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
 }
 .hs-page-head-copy {
   min-width: 0;
@@ -85,7 +88,7 @@ body {
   border: none;
   border-radius: 9999px;
   font-family: "Outfit", sans-serif;
-  font-size: 0.9rem;
+  font-size: 12px;
   font-weight: 700;
   cursor: pointer;
   text-decoration: none;
@@ -123,26 +126,63 @@ body {
 
 /* ── Barra de nível ──────────────────────────────────────── */
 .hs-nivel-wrap {
-  max-width: 1100px;
-  margin: -2.25rem auto 1.5rem;
-  padding: 0 1.5rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   position: relative;
-  z-index: 10;
+  z-index: 1;
 }
 
 .hs-nivel-card {
-  border: 1px solid rgba(12, 79, 67, 0.08);
-  border-radius: 22px;
-  color: #35534a;
-  background:
-    radial-gradient(
-      circle at top right,
-      rgba(35, 121, 106, 0.08) 0%,
-      transparent 28%
-    ),
-    linear-gradient(180deg, #ffffff 0%, var(--bg-claro) 48%, #eef1f0 100%);
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+  color: var(--fundoclaro);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
+
+.hs-nivel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.hs-nivel-label {
+  
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.hs-nivel-pts {
+  font-size: 1rem;
+  color: var(--fundoclaro);
+  line-height: 1.4;
+}
+
+.hs-nivel-track {
+  width: 100%;
+  height: 14px;
+  border-radius: 9999px;
+  background: rgba(12, 79, 67, 0.1);
+  overflow: hidden;
+  margin-top: 0.6rem;
+}
+
+.hs-nivel-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #1a8a75, #34d399);
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
 .hs-user-stat-icon.ic-c {
   background: #eef7f4;
 }
@@ -541,8 +581,19 @@ body {
 }
 @media (max-width: 768px) {
   .hs-nivel-wrap {
-    padding: 0 1rem;
-    margin-top: -1.75rem;
+    padding: 0;
+    margin: 0;
+  }
+  .hs-nivel-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .hs-nivel-info {
+    width: 100%;
+  }
+  .hs-nivel-track {
+    min-width: 0;
   }
   .hs-user-stats {
     padding: 0 1rem;
@@ -562,7 +613,7 @@ body {
   }
   .hs-page-head {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     margin: 0 1rem 1rem;
   }
   .hs-page-head-meta {
@@ -580,7 +631,19 @@ body {
   .hs-user-stat-card {
     padding: 0.85rem;
   }
+  .hs-nivel-wrap {
+    padding: 0;
+    margin: 0;
+  }
+  .hs-nivel-label {
+    font-size: 0.9rem;
+  }
+  .hs-nivel-pts {
+    font-size: 0.95rem;
+  }
   .hs-page-head {
     padding: 1.1rem 1rem;
+    margin: 50px 0.5rem 1rem;
   }
 }
+
