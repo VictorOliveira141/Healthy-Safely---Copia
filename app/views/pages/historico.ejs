@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script src="/js/darkmode.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Histórico | Healthy Safely</title>
+  <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/tarefas.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <style>
+    .hist-main { max-width: 700px; margin: 0 auto; padding: 1.5rem 1rem 6rem; }
+    .hist-header { margin-bottom: 1.5rem; }
+    .hist-header h1 { font-size: 1.5rem; font-weight: 900; color: var(--fundoclaro); }
+    .hist-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-bottom: 1.75rem; }
+    .hist-stat { background: var(--surface-card, var(--primary-color)); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem; text-align: center; }
+    .hist-stat strong { display: block; font-size: 1.75rem; font-weight: 900; color: var(--secondary-color); }
+    .hist-stat span { font-size: .75rem; color: var(--muted); }
+    .hist-lista { display: flex; flex-direction: column; gap: .75rem; }
+    .hist-dia { background: var(--surface-card, var(--primary-color)); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.25rem; }
+    .hist-dia-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: .5rem; }
+    .hist-dia-data { font-size: .9rem; font-weight: 800; color: var(--fundoclaro); }
+    .hist-dia-pts { font-size: .75rem; font-weight: 700; color: #34d399; background: #d1fae5; padding: 2px 8px; border-radius: 20px; }
+    .hist-dia-tarefas { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+    .hist-dia-concl { font-size: .75rem; color: var(--muted); margin-top: .35rem; }
+    .pct-bar { width: 100%; height: 5px; background: var(--border); border-radius: 5px; overflow: hidden; margin-top: .35rem; }
+    .pct-fill { height: 100%; background: linear-gradient(90deg, #0c4f43, #34d399); border-radius: 5px; }
+    .empty-hist { text-align: center; padding: 3rem; color: var(--muted); border: 1px dashed var(--border); border-radius: 14px; }
+    .empty-hist i { font-size: 2.5rem; display: block; margin-bottom: .75rem; opacity: .3; }
+    @media(max-width:480px){ .hist-stats{ grid-template-columns:1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <%- include('../partials/header.ejs') %>
+
+  <main class="hist-main">
+    <header class="hist-header">
+      <%- include('../partials/botao-voltar.ejs') %>
+      <h1><i class="bi bi-calendar-check-fill" style="color:#1a8a75"></i> Histórico de Atividades</h1>
+      <p style="font-size:.85rem;color:var(--muted);margin-top:.25rem">Acompanhe seu progresso ao longo dos dias</p>
+    </header>
+
+    <!-- Stats gerais -->
+    <section class="hist-stats" aria-label="Estatísticas gerais">
+      <article class="hist-stat">
+        <strong><%= totalConcluidas %></strong>
+        <span>Tarefas concluídas</span>
+      </article>
+      <article class="hist-stat">
+        <strong><%= historico.length %></strong>
+        <span>Dias ativos</span>
+      </article>
+      <article class="hist-stat">
+        <strong><%= pctSemanal %>%</strong>
+        <span>% esta semana</span>
+      </article>
+    </section>
+
+    <!-- Progresso semanal -->
+    <section style="background:var(--surface-card,var(--primary-color));border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.25rem;margin-bottom:1.5rem">
+      <h2 style="font-size:.9rem;font-weight:800;color:var(--fundoclaro);margin-bottom:.5rem">
+        <i class="bi bi-bar-chart-fill" style="color:#1a8a75"></i> Progresso desta semana
+      </h2>
+      <div class="pct-bar" style="height:10px">
+        <div class="pct-fill" style="width:<%= pctSemanal %>%"></div>
+      </div>
+      <p style="font-size:.75rem;color:var(--muted);margin-top:.35rem"><%= pctSemanal %>% das tarefas da semana concluídas</p>
+    </section>
+
+    <!-- Lista por dia -->
+    <section class="hist-lista" aria-label="Histórico por dia">
+      <% if (!historico || !historico.length) { %>
+        <section class="empty-hist">
+          <i class="bi bi-clock-history"></i>
+          <p style="font-weight:700">Nenhuma atividade registrada ainda</p>
+          <p style="font-size:.85rem">Complete tarefas para ver seu histórico aqui!</p>
+          <a href="/tasks" style="display:inline-block;margin-top:1rem;padding:.55rem 1.25rem;background:var(--secondary-color);color:#fff;border-radius:10px;font-size:.85rem;font-weight:700;text-decoration:none">Ver tarefas</a>
+        </section>
+      <% } else { %>
+        <% historico.forEach(dia => { %>
+        <article class="hist-dia">
+          <header class="hist-dia-header">
+            <span class="hist-dia-data">
+              <i class="bi bi-calendar3" style="margin-right:.3rem"></i>
+              <%= new Date(dia.data + 'T12:00:00').toLocaleDateString('pt-BR', {weekday:'long', day:'2-digit', month:'long'}) %>
+            </span>
+            <span class="hist-dia-pts">+<%= dia.pontos_do_dia || 0 %> pts</span>
+          </header>
+          <p class="hist-dia-concl">
+            <i class="bi bi-check-circle-fill" style="color:#34d399"></i>
+            <%= dia.total_concluidas %> tarefa<%= dia.total_concluidas > 1 ? 's' : '' %> concluída<%= dia.total_concluidas > 1 ? 's' : '' %>
+          </p>
+          <% if (dia.tarefas) { %>
+          <p class="hist-dia-tarefas" style="margin-top:.4rem"><%= dia.tarefas %></p>
+          <% } %>
+        </article>
+        <% }) %>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('../partials/footer.ejs') %>
+  <%- include('../partials/menu-inferior.ejs') %>
+</body>
+</html>

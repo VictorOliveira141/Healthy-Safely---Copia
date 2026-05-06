@@ -1,4 +1,4 @@
-const adminModel = require("../models/Admin");
+const { adminModel } = require("../models/Admin");
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
 

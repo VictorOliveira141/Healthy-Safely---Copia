@@ -19,6 +19,18 @@
     <% const concl = tarefas.filter(t=>t.concluida).length; %>
     <% const pct = tarefas.length ? Math.round((concl/tarefas.length)*100) : 0; %>
 
+    <!-- Flash message -->
+    <% if (flash) { %>
+    <div id="flash-msg" style="
+      padding:.75rem 1.25rem;border-radius:10px;font-weight:700;font-size:.85rem;margin-bottom:1rem;
+      background:<%= flash.tipo==='sucesso' ? '#d1fae5' : flash.tipo==='erro' ? '#fee2e2' : '#dbeafe' %>;
+      color:<%= flash.tipo==='sucesso' ? '#065f46' : flash.tipo==='erro' ? '#991b1b' : '#1e40af' %>;
+      border:1px solid <%= flash.tipo==='sucesso' ? '#6ee7b7' : flash.tipo==='erro' ? '#fca5a5' : '#93c5fd' %>;">
+      <%= flash.msg %>
+    </div>
+    <script>setTimeout(()=>{const el=document.getElementById('flash-msg');if(el)el.remove();},3500);</script>
+    <% } %>
+
     <!-- Hero -->
     <section class="pac-hero">
       <h1><i class="bi bi-person-fill"></i> <%= paciente?.nome || 'Paciente' %></h1>
@@ -290,15 +302,22 @@
     margin-bottom: 0.5rem;
     opacity: 0.35;
   }
-  @media (max-width: 600px) {
-    .pac-stats {
-      grid-template-columns: 1fr;
-    }
-    .form-row {
-      flex-direction: column;
-    }
-  }
+  .feedback-form { background: var(--surface-card, var(--primary-color)); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; margin-top: 1.5rem; }
+  .feedback-form h2 { font-size: 1rem; font-weight: 800; color: var(--fundoclaro); margin-bottom: .75rem; }
+  .feedback-form textarea { width: 100%; padding: .6rem .9rem; border: 1.5px solid var(--border); border-radius: 10px; font-family: inherit; font-size: .88rem; color: var(--fundoclaro); background: var(--primary-color); resize: vertical; min-height: 80px; box-sizing: border-box; }
+  .feedback-form textarea:focus { outline: none; border-color: #1a8a75; }
+  .btn-feedback { margin-top: .5rem; padding: .5rem 1.25rem; background: #1a8a75; color: #fff; border: none; border-radius: 8px; font-family: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; transition: opacity .15s; }
+  .btn-feedback:hover { opacity: .85; }
 </style>
+
+<!-- Formulário de feedback para o paciente -->
+<section class="feedback-form">
+  <h2><i class="bi bi-chat-dots-fill" style="color:#1a8a75"></i> Enviar feedback para <%= paciente?.nome?.split(' ')[0] || 'o paciente' %></h2>
+  <form action="/profissional/paciente/<%= paciente?.id %>/feedback" method="POST">
+    <textarea name="comentario" placeholder="Escreva um comentário com base nas tarefas e no desempenho do paciente..." required maxlength="500"></textarea>
+    <button type="submit" class="btn-feedback"><i class="bi bi-send-fill"></i> Enviar feedback</button>
+  </form>
+</section>
 
 </body>
 </html>

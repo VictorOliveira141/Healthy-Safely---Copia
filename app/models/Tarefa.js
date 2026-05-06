@@ -75,6 +75,35 @@ const tarefaModel = {
       return linhas;
     } catch (e) { return []; }
   },
+
+  // Histórico de tarefas concluídas por data
+  historicoPorData: async (usuarioId) => {
+    try {
+      const [linhas] = await pool.query(
+        `SELECT DATE(concluida_em) AS data,
+                COUNT(*) AS total_concluidas,
+                SUM(pontos) AS pontos_do_dia,
+                GROUP_CONCAT(titulo ORDER BY concluida_em SEPARATOR ', ') AS tarefas
+         FROM tarefas
+         WHERE usuario_id = ? AND concluida = 1 AND concluida_em IS NOT NULL
+         GROUP BY DATE(concluida_em)
+         ORDER BY data DESC
+         LIMIT 30`,
+        [usuarioId]);
+      return linhas;
+    } catch (e) { return []; }
+  },
+
+  // Total de tarefas concluídas
+  totalConcluidas: async (usuarioId) => {
+    try {
+      const [linhas] = await pool.query(
+        "SELECT COUNT(*) AS total FROM tarefas WHERE usuario_id = ? AND concluida = 1",
+        [usuarioId]);
+      return linhas[0]?.total || 0;
+    } catch (e) { return 0; }
+  },
 };
 
-module.exports = tarefaModel;
+module.exports = { tarefaModel };
+

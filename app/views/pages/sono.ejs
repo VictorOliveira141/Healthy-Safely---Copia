@@ -7,10 +7,27 @@
     <title>Sono | Healthy Safely</title>
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="/css/pagina-tarefa.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <style>
+      .sono-form-card { background: var(--surface-card, var(--primary-color)); border: 1px solid var(--border); border-radius: 16px; padding: 1.25rem; margin: 1.5rem auto; max-width: 500px; }
+      .sono-form-card h2 { font-size: 1rem; font-weight: 800; color: var(--fundoclaro); margin-bottom: .75rem; }
+      .sono-form-row { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin-bottom: .6rem; }
+      .sono-form-row label { font-size: .82rem; color: var(--muted); font-weight: 600; min-width: 130px; }
+      .sono-form-row input, .sono-form-row select { flex: 1; padding: .5rem .75rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: .88rem; color: var(--fundoclaro); background: var(--primary-color); min-width: 100px; }
+      .sono-form-row input:focus, .sono-form-row select:focus { outline: none; border-color: #1a8a75; }
+      .btn-sono { padding: .55rem 1.25rem; background: #1a8a75; color: #fff; border: none; border-radius: 10px; font-family: inherit; font-size: .88rem; font-weight: 700; cursor: pointer; margin-top: .25rem; transition: opacity .15s; }
+      .btn-sono:hover { opacity: .85; }
+      .sono-historico { max-width: 500px; margin: 0 auto 2rem; }
+      .sono-historico h2 { font-size: .95rem; font-weight: 800; color: var(--fundoclaro); margin-bottom: .6rem; }
+      .sono-item { display: flex; align-items: center; justify-content: space-between; padding: .5rem .75rem; background: var(--surface-card, var(--primary-color)); border: 1px solid var(--border); border-radius: 10px; margin-bottom: .4rem; font-size: .82rem; }
+      .sono-item-data { color: var(--muted); }
+      .sono-item-horas { font-weight: 800; color: var(--fundoclaro); }
+      .sono-item-qual { font-size: .72rem; padding: 2px 8px; border-radius: 20px; font-weight: 700; }
+      .qual-5 { background: #d1fae5; color: #065f46; }
+      .qual-4 { background: #dbeafe; color: #1e40af; }
+      .qual-3 { background: #fef3c7; color: #92400e; }
+      .qual-2, .qual-1 { background: #fee2e2; color: #991b1b; }
+    </style>
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
@@ -140,7 +157,52 @@
 
     <%- include('../partials/footer.ejs') %>
 
+    <!-- Flash message -->
+    <% if (typeof flash !== 'undefined' && flash) { %>
+    <div id="flash-sono" style="position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:9999;padding:.75rem 1.5rem;border-radius:12px;font-weight:700;font-size:.9rem;box-shadow:0 4px 20px rgba(0,0,0,.15);background:#d1fae5;color:#065f46;border:1px solid #6ee7b7;">
+      <%= flash.msg %>
+    </div>
+    <script>setTimeout(()=>{const el=document.getElementById('flash-sono');if(el)el.remove();},3500);</script>
+    <% } %>
+
+    <!-- Formulário de registro de sono -->
+    <section class="sono-form-card">
+      <h2><i class="bi bi-moon-stars-fill" style="color:#1a8a75"></i> Registrar sono de hoje</h2>
+      <form action="/sono/registrar" method="POST">
+        <div class="sono-form-row">
+          <label for="horas">Horas dormidas</label>
+          <input type="number" id="horas" name="horas_dormidas" min="0" max="24" step="0.5" placeholder="Ex: 7.5" required />
+        </div>
+        <div class="sono-form-row">
+          <label for="qualidade">Qualidade do sono</label>
+          <select id="qualidade" name="qualidade">
+            <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+            <option value="4">⭐⭐⭐⭐ Boa</option>
+            <option value="3" selected>⭐⭐⭐ Regular</option>
+            <option value="2">⭐⭐ Ruim</option>
+            <option value="1">⭐ Péssima</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-sono"><i class="bi bi-save-fill"></i> Salvar registro</button>
+      </form>
+    </section>
+
+    <!-- Histórico de sono -->
+    <% if (typeof registros !== 'undefined' && registros && registros.length) { %>
+    <section class="sono-historico">
+      <h2>Últimos registros</h2>
+      <% registros.forEach(r => { %>
+      <article class="sono-item">
+        <span class="sono-item-data"><%= new Date(r.data + 'T12:00:00').toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit'}) %></span>
+        <span class="sono-item-horas"><i class="bi bi-moon-fill" style="color:#6366f1"></i> <%= r.horas_dormidas %>h</span>
+        <span class="sono-item-qual qual-<%= r.qualidade %>"><%= ['','Péssima','Ruim','Regular','Boa','Excelente'][r.qualidade] %></span>
+      </article>
+      <% }) %>
+    </section>
+    <% } %>
+
     <script>
+      // Script de progresso local mantido por compatibilidade
       const CHAVE = "hs_sono_prog";
       let progresso = Number(localStorage.getItem(CHAVE) || 0);
       const btn = document.getElementById("btnAcao");
@@ -149,13 +211,11 @@
       const track = document.getElementById("barraTrack");
 
       function renderProgresso() {
+        if (!fill) return;
         fill.style.width = progresso + "%";
-        porcTexto.textContent = progresso + "% concluída";
-        track.setAttribute("aria-valuenow", progresso);
-        if (progresso >= 100) {
-          btn.textContent = "✓ Concluída!";
-          btn.disabled = true;
-        }
+        if (porcTexto) porcTexto.textContent = progresso + "% concluída";
+        if (track) track.setAttribute("aria-valuenow", progresso);
+        if (progresso >= 100 && btn) { btn.textContent = "✓ Concluída!"; btn.disabled = true; }
       }
 
       function registrar() {
@@ -163,7 +223,7 @@
         progresso = Math.min(progresso + 14, 100);
         localStorage.setItem(CHAVE, progresso);
         renderProgresso();
-        if (progresso < 100) btn.textContent = "Registrar próxima noite";
+        if (progresso < 100 && btn) btn.textContent = "Registrar próxima noite";
       }
 
       renderProgresso();

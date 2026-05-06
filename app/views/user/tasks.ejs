@@ -14,6 +14,21 @@
 <body>
 <%- include('../partials/header.ejs') %>
 
+<!-- Flash message -->
+<% if (flash) { %>
+<div id="flash-msg" style="
+  position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:9999;
+  padding:.75rem 1.5rem;border-radius:12px;font-weight:700;font-size:.9rem;
+  box-shadow:0 4px 20px rgba(0,0,0,.15);animation:slideDown .3s ease;
+  background:<%= flash.tipo==='sucesso' ? '#d1fae5' : flash.tipo==='erro' ? '#fee2e2' : '#dbeafe' %>;
+  color:<%= flash.tipo==='sucesso' ? '#065f46' : flash.tipo==='erro' ? '#991b1b' : '#1e40af' %>;
+  border:1px solid <%= flash.tipo==='sucesso' ? '#6ee7b7' : flash.tipo==='erro' ? '#fca5a5' : '#93c5fd' %>;">
+  <%= flash.msg %>
+</div>
+<style>@keyframes slideDown{from{opacity:0;top:.25rem}to{opacity:1;top:1rem}}</style>
+<script>setTimeout(()=>{const el=document.getElementById('flash-msg');if(el)el.remove();},3500);</script>
+<% } %>
+
 <main class="hs-tasks-main">
   <section class="hs-page-head card-base" aria-label="Tarefas">
     <section class="hs-page-head-copy">

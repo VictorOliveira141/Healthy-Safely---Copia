@@ -1,7 +1,6 @@
 const express = require("express");
 const router  = express.Router();
 
-// Controllers
 const usuarioController = require("../controllers/usuarioController");
 const tarefaController  = require("../controllers/tarefaController");
 
@@ -19,56 +18,92 @@ function apenasAutenticado(req, res, next) {
 router.get("/sair",   usuarioController.logout);
 router.get("/logout", usuarioController.logout);
 
-/* ── ROTAS PÚBLICAS ────────────────────────────────────────────── */
+/* ── ROTAS PÚBLICAS ─────────────────────────────────────────────── */
 router.get("/", (req, res) => {
+  // Redireciona usuário logado
   if (req.session?.usuario) {
     if (req.session.usuario.tipo === "profissional")
-      //caso seja profissional vai para o painel-financeiro
       return res.redirect("/profissional/painel-financeiro");
-      //se não,vai para o dashboard do usuario
     return res.redirect("/dashboard");
   }
-  //e se não for nenhum dos 2, vai para a pagina inicial publica
   res.render("pages/tomarammeutela");
 });
 
-
-// ──────────────── Qualquer um podem acessar ────────────────
 router.get("/ajuda",         (req,res) => res.render("pages/ajuda"));
 router.get("/configuracoes", (req,res) => res.render("pages/configuracoes"));
-router.get("/cadastro",      (req,res) => res.render("pages/cadastro"));
+router.get("/cadastro",      (req,res) => {
+  // Redireciona logado para o dashboard
+  if (req.session?.usuario) {
+    return req.session.usuario.tipo === "profissional"
+      ? res.redirect("/profissional/painel-financeiro")
+      : res.redirect("/dashboard");
+  }
+  res.render("pages/cadastro");
+});
 router.get("/cadastroCliente",      usuarioController.exibirCadastroCliente);
 router.get("/cadastroProfissional", usuarioController.exibirCadastroProfissional);
-router.get("/login", usuarioController.exibirLogin);
+router.get("/login", (req, res) => {
+  // Redireciona usuário já logado
+  if (req.session?.usuario) {
+    return req.session.usuario.tipo === "profissional"
+      ? res.redirect("/profissional/painel-financeiro")
+      : res.redirect("/dashboard");
+  }
+  usuarioController.exibirLogin(req, res);
+});
 
-// ──────────────── Apenas CLIENTE podem acessar ────────────────
+/* ── APENAS CLIENTE ─────────────────────────────────────────────── */
 router.get("/dashboard", apenasCliente, tarefaController.exibirDashboard);
 
-/*tarefas*/
+// Tarefas
 router.get("/tasks",          apenasCliente, tarefaController.listarTarefas);
-router.post("/tasks/criar",   apenasCliente, tarefaController.criarTarefa);
+router.post("/tasks/criar",   apenasCliente, tarefaController.regrasValidacaoTarefa, tarefaController.criarTarefa);
 router.get("/tasks/concluir", apenasCliente, tarefaController.alternarConclusao);
 router.post("/tasks/excluir/:id", apenasCliente, tarefaController.excluirTarefa);
 
-/*conectar-profissionais*/
+// Conectar profissionais
 router.get("/api/profissionais", apenasCliente, tarefaController.buscarProfissionais);
 router.post("/vincular-profissional", apenasCliente, tarefaController.solicitarVinculo);
 
-/*paginas-de-tarefas*/
-router.get("/sono",             apenasCliente, (req,res) => res.render("pages/sono"));
+// Páginas de saúde
+router.get("/sono",             apenasCliente, async (req,res) => {
+  const { usuarioModel } = require("../models/Usuario");
+  const registros = await usuarioModel.listarSono(req.session.usuario.id);
+  const flash = req.session.flash || null;
+  delete req.session.flash;
+  res.render("pages/sono", { registros, flash });
+});
+router.post("/sono/registrar",  apenasCliente, tarefaController.registrarSono);
 router.get("/saude-mental",     apenasCliente, (req,res) => res.render("pages/saude-mental"));
 router.get("/atividade-fisica", apenasCliente, (req,res) => res.render("pages/atividade-fisica"));
 router.get("/alimentacao",      apenasCliente, (req,res) => res.render("pages/alimentacao"));
 router.get("/amizades",         apenasCliente, (req,res) => res.render("pages/amizades"));
 router.get("/perfil-amizade",   apenasCliente, (req,res) => res.render("pages/perfil-amizade"));
 
-// ──────────────── Apenas Autenticado (cliente ou profissional) ────────────────
-router.get("/perfil",        apenasAutenticado, (req,res) => res.render("pages/perfil"));
-router.get("/notificacoes",  apenasAutenticado, (req,res) => res.render("pages/notificacoes"));
+// Histórico
+router.get("/historico", apenasCliente, tarefaController.exibirHistorico);
+
+/* ── AUTENTICADO (cliente ou profissional) ─────────────────────── */
+router.get("/perfil", apenasAutenticado, async (req, res) => {
+  const { usuarioModel } = require("../models/Usuario");
+  const usuario = await usuarioModel.buscarPerfilCompleto(req.session.usuario.id) || req.session.usuario;
+  res.render("pages/perfil", { usuario });
+});
+
+router.get("/notificacoes", apenasAutenticado, async (req, res) => {
+  const { usuarioModel } = require("../models/Usuario");
+  const notificacoes = await usuarioModel.listarNotificacoes(req.session.usuario.id);
+  res.render("pages/notificacoes", { notificacoes });
+});
+router.post("/notificacoes/marcar-lidas", apenasAutenticado, async (req, res) => {
+  const { usuarioModel } = require("../models/Usuario");
+  await usuarioModel.marcarTodasLidas(req.session.usuario.id);
+  res.redirect("/notificacoes");
+});
+
 router.get("/privacidade",   apenasAutenticado, (req,res) => res.render("pages/privacidade"));
 
-
-// ──────────────── POST cadastro / login  ────────────────
+/* ── POST cadastro / login ─────────────────────────────────────── */
 router.post("/cadastroCliente",
   usuarioController.regrasValidacaoCliente,
   usuarioController.cadastrarCliente);

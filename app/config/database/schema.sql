@@ -102,6 +102,7 @@ CREATE TABLE IF NOT EXISTS registros_sono (
   horas_dormidas DECIMAL(4,1) NOT NULL,
   qualidade      TINYINT DEFAULT 3,
   data           DATE    DEFAULT (CURDATE()),
+  UNIQUE KEY uk_sono_dia (usuario_id, data),
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 

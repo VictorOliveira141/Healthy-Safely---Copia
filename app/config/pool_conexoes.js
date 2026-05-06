@@ -1,4 +1,4 @@
-require("dotenv").config();
+// dotenv.config() é chamado em app.js
 const mysql = require("mysql2");
 
 const pool = mysql.createPool({
