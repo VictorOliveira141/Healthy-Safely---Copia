@@ -3,11 +3,15 @@
     <% if (usuario && usuario.tipo === "cliente") { %>
 
   <!-- CLIENTE -->
-  <a href="/"><i class="bi bi-house-door-fill"></i></a>
-  <a href="/tasks"><i class="bi bi-check-square"></i></a>
-  <a href="/historico"><i class="bi bi-calendar-check"></i></a>
-  <a href="/amizades"><i class="bi bi-people"></i></a>
-  <a href="/perfil"><i class="bi bi-person-circle"></i></a>
+  <a href="/"><i data-lucide="house"></i></a>
+  <a href="/tasks"><i data-lucide="clipboard-check"></i></a>
+  <a href="/programas"><i data-lucide="layout-grid"></i></a>
+  <a href="/historico"><i data-lucide="bar-chart-3"></i></a>
+  <figure class="foto-perfil">
+    <a href="/perfil" aria-label="Ir para perfil">
+      <img src="<%= usuario && usuario.foto_perfil ? usuario.foto_perfil : '/imagem/user.png' %>" alt="Foto de perfil"/>
+    </a>
+  </figure>
 
   <% } else if (usuario && usuario.tipo === "profissional") { %>
 
@@ -49,6 +53,35 @@
     display: flex;
     max-width: 500px;
     width: 100%;
+    gap: 0;
+  }
+  
+  .menu-container .foto-perfil {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .menu-container .foto-perfil a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+  }
+
+  .menu-container .foto-perfil img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,.4);
   }
 
   .menu-container a {
@@ -74,7 +107,7 @@
   }
 
   .menu-inferior i {
-    font-size: 24px;
+    font-size: 25px;
     margin-bottom: 2px;
   }
 

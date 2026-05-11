@@ -24,7 +24,7 @@
   transform: scale(1.05);
 }
 .header-logo img {
-  height: 60px;
+  height: 50px;
   display: block;
   flex-shrink: 0;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
@@ -49,21 +49,12 @@
 .header-nav2 a,
 .header-nav2 button {
   color: var(--fundoescuro);
-  font-weight: 500;
   text-decoration: none;
-  font-size: 13px;
+  font-size: var(--font-text);
   padding: 3px 6px;
-  border-right: 1px solid #d8e6e1d7;
   transition: 0.2s;
+}
 
-  background: none;
-  border: none;
-  cursor: pointer;
-  font: inherit;
-}
-.header-nav2 a:last-child {
-  border-right: none;
-}
 .header-nav2 a:hover {
   color: var(--accent-color);
 }
@@ -77,7 +68,15 @@
   flex-shrink: 0;
   margin-right: 100px;
 }
-
+.header-actions .foto-perfil img {
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
 /* ============ USER MENU ============= */
 .user-menu {
   position: relative;
@@ -155,7 +154,7 @@
 
 @media (max-width: 768px) {
   .header-nav2,
-  .header-welcome,
+  .header-actions .foto-perfil,
   .user-menu a.mobile {
     display: none;
   }
