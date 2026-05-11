@@ -54,6 +54,8 @@ router.get("/login", (req, res) => {
 
 /* ── APENAS CLIENTE ─────────────────────────────────────────────── */
 router.get("/dashboard", apenasCliente, tarefaController.exibirDashboard);
+router.get("/programas", apenasCliente, (req, res) => res.render("user/programas"));
+router.get("/programas-detalhes", apenasCliente, (req, res) => res.render("user/programas-detalhes"));
 
 // Tarefas
 router.get("/tasks",          apenasCliente, tarefaController.listarTarefas);
