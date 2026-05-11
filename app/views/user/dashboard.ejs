@@ -5,8 +5,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard | Healthy Safely</title>
-    <link rel="stylesheet" href="/css/global.css" />
-  <link rel="stylesheet" href="/css/hs-user-dashboard.css" />
+  <meta name="description" content="Dashboard do Healthy Safely - Acompanhe seu progresso em saúde e bem-estar." />
+  <meta name="keywords" content="saúde, bem-estar, dashboard, tarefas, programas" />
+  <meta property="og:title" content="Dashboard | Healthy Safely" />
+  <meta property="og:description" content="Acompanhe seu progresso, programas e tarefas — tudo em um só lugar." />
+  <meta property="og:image" content="/imagem/Logo repaginado 2.png" />
+  <meta property="og:url" content="https://healthysafely.com/dashboard" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Healthy Safely" />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
   <link rel="icon" href="/imagem/Logo repaginado 2.png" />
 </head>
@@ -15,161 +23,188 @@
 
   <!-- Flash message -->
   <% if (flash) { %>
-  <div id="flash-msg" style="
-    position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:9999;
-    padding:.75rem 1.5rem;border-radius:12px;font-weight:700;font-size:.9rem;
-    box-shadow:0 4px 20px rgba(0,0,0,.15);animation:slideDown .3s ease;
+  <aside id="flash-msg" class="hs-flash-msg" style="
     background:<%= flash.tipo==='sucesso' ? '#d1fae5' : flash.tipo==='erro' ? '#fee2e2' : '#dbeafe' %>;
     color:<%= flash.tipo==='sucesso' ? '#065f46' : flash.tipo==='erro' ? '#991b1b' : '#1e40af' %>;
-    border:1px solid <%= flash.tipo==='sucesso' ? '#6ee7b7' : flash.tipo==='erro' ? '#fca5a5' : '#93c5fd' %>;">
+    border:1px solid <%= flash.tipo==='sucesso' ? '#6ee7b7' : flash.tipo==='erro' ? '#fca5a5' : '#93c5fd' %>;" aria-live="polite">
     <%= flash.msg %>
-  </div>
-  <style>@keyframes slideDown{from{opacity:0;top:.25rem}to{opacity:1;top:1rem}}</style>
-  <script>setTimeout(()=>{const el=document.getElementById('flash-msg');if(el)el.remove();},3500);</script>
+  </aside>
   <% } %>
 
   <%
-    const nivelMap = {
-      iniciante:     { label:'🌱 Iniciante',    max: 100,  proximo: 'Em Evolução' },
-      intermediario: { label:'📈 Em Evolução',  max: 300,  proximo: 'Avançado'   },
-      avancado:      { label:'⚡ Avançado',       max: 600,  proximo: 'Elite'      },
-      elite:         { label:'🏆 Elite',          max: 9999, proximo: '—'          },
-    };
-    const ncfg     = nivelMap[nivel] || nivelMap.iniciante;
-    const pontosTpl = typeof pontos !== 'undefined' ? pontos : 0;
-    const pctNivel = Math.min(Math.round((pontosTpl / ncfg.max) * 100), 100);
-    const pctSem   = typeof pctSemana !== 'undefined' ? pctSemana : 0;
     const taskList = typeof tasks !== 'undefined' ? tasks : [];
-    const feitas   = taskList.filter(t => t.completed).length;
+    const tarefasHoje = taskList.filter(t => !t.completed).slice(0, 4);
   %>
 
   <main class="hs-main hs-main-spaced">
-
     <section class="hs-page-head card-base" aria-label="Boas-vindas">
-
-      <section>
       <section class="hs-page-head-copy">
-        <span class="hs-page-kicker">Dashboard</span>
-        <h1>Olá, <span><%= nome ? nome.split(' ')[0] : 'Usuário' %></span></h1>
-        <p>Continue construindo seus hábitos com uma visão clara do seu progresso.</p>
-      </section>
-      <nav class="hs-hero-btns" aria-label="Ações rápidas">
-        <a href="/tasks" class="hs-btn-hero-prim">
-          <i class="bi bi-check2-circle"></i> Minhas tarefas
-        </a>
-        <a href="/perfil" class="hs-btn-hero-prim">
-          <i class="bi bi-person-circle"></i> Perfil
-        </a>
-      </nav>
-      </section>
-
-      <!-- BARRA DE NÍVEL ──────────────────────────────────── -->
-
-      <section class="hs-nivel-wrap" aria-label="Barra de nível">
-      <section class="hs-nivel-card">
-      <section class="hs-nivel-info">
-
-        
-        <span class="hs-nivel-label"><%= ncfg.label %></span>
-        <span class="hs-nivel-pts">
-          <%= pontosTpl %> / <%= ncfg.max %> pts
-          <% if (ncfg.proximo !== '—') { %> · Próximo: <strong><%= ncfg.proximo %></strong><% } %>
+        <span class="hs-page-kicker">
+          Dashboard
         </span>
-      </section>
-      <section class="hs-nivel-track"
-        role="progressbar" aria-valuenow="<%= pctNivel %>" aria-valuemin="0" aria-valuemax="100">
-        <section class="hs-nivel-fill" style="width:<%= pctNivel %>%"></section>
+        <h1>Olá, <span><%= nome ? nome.split(' ')[0] : 'Usuário' %></span> </h1>
+        <p>Acompanhe seu progresso, programas e tarefas — tudo em um só lugar.</p>
       </section>
     </section>
-  </section>
-    </section>
 
-
- 
-
-  <!-- STATS STRIP ─────────────────────────────────────── -->
-  <section class="hs-user-stats" aria-label="Estatísticas">
-    <article class="hs-user-stat-card">
-      <figure class="hs-user-stat-icon ic-a" aria-hidden="true">⭐</figure>
-      <section class="hs-user-stat-body">
-        <p class="hs-user-stat-title">Pontos</p>
-        <p class="hs-user-stat-value" id="hs-pontos"><%= pontosTpl %></p>
-      </section>
-    </article>
-    <article class="hs-user-stat-card">
-      <figure class="hs-user-stat-icon ic-b" aria-hidden="true">📊</figure>
-      <section class="hs-user-stat-body">
-        <p class="hs-user-stat-title">Semana</p>
-        <p class="hs-user-stat-value" id="hs-percent"><%= pctSem %>%</p>
-      </section>
-    </article>
-    <article class="hs-user-stat-card">
-      <figure class="hs-user-stat-icon ic-c" aria-hidden="true">✅</figure>
-      <section class="hs-user-stat-body">
-        <p class="hs-user-stat-title">Feitas hoje</p>
-        <p class="hs-user-stat-value" id="hs-dias"><%= feitas %></p>
-      </section>
-    </article>
-    <article class="hs-user-stat-card">
-      <figure class="hs-user-stat-icon ic-d" aria-hidden="true">🏅</figure>
-      <section class="hs-user-stat-body">
-        <p class="hs-user-stat-title">Nível</p>
-        <p class="hs-user-stat-value" style="font-size:.9rem;text-transform:capitalize">
-          <%= nivel || 'iniciante' %>
-        </p>
-      </section>
-    </article>
-  </section>
-
-    <!-- Tarefas de hoje -->
-    <section class="hs-tasks-section" aria-labelledby="tit-tarefas">
+    <!-- ── PROGRAMAS ATIVOS ─────────────────────────────────── -->
+    <section class="hs-tasks-section" aria-labelledby="tit-programas">
       <header class="hs-section-header">
-        <h2 class="hs-section-title" id="tit-tarefas">Tarefas de Hoje</h2>
-        <a href="/tasks" class="hs-section-link">Ver todas →</a>
+        <h2 class="hs-section-title" id="tit-programas">
+          Programas Ativos
+        </h2>
+        <a href="/programas" class="hs-section-link">Ver todos →</a>
       </header>
 
-      <% if (!taskList.length) { %>
-        <section class="empty-state">
-          <i class="bi bi-inbox"></i>
-          <p style="font-weight:700">Nenhuma tarefa ainda</p>
-          <p><a href="/tasks" style="color:#1a8a75;font-weight:600">Adicione sua primeira tarefa</a></p>
+      <!-- CARD DO PROGRAMA -->
+      <article class="hs-user-task-card programa-card-real">
+        <!-- TOPO -->
+        <header class="programa-topo">
+          <div>
+            <h3 class="hs-user-task-name" style="color: var(--accent-color)">
+              Plano Alimentar
+            </h3>
+            <p class="programa-profissional">
+              Criado por Nutricionista Ana
+            </p>
+          </div>
+          <span class="programa-status">
+            Ativo
+          </span>
+        </header>
+
+        <!-- PROGRESSO -->
+        <section class="programa-progresso">
+          <div class="programa-progresso-info">
+            <span>Progresso diário</span>
+            <span id="programa-percentual">0%</span>
+          </div>
+          <div class="programa-barra">
+            <div class="programa-fill" id="programa-fill"></div>
+          </div>
         </section>
-      <% } else { %>
-      <main class="hs-user-tasks" id="hs-user-tasks">
-        <% taskList.slice(0,6).forEach((t, i) => {
-             const icones = {saude:'💊',sono:'🌙',alimentacao:'🥗',exercicio:'💪',geral:'✅'};
-             const icone  = icones[t.categoria] || '✅';
-           %>
-        <article class="hs-user-task-card <%= t.completed ? 'concluida' : '' %>"
-          data-index="<%= i %>">
-          <figure class="hs-user-task-icon"><%= icone %></figure>
-          <p class="hs-user-task-name"
-            style="<%= t.completed ? 'text-decoration:line-through;opacity:.6' : '' %>">
-            <%= t.title %>
+
+        <!-- ATIVIDADES -->
+        <section class="programa-atividades">
+          <p class="programa-subtitulo">
+            Atividades de hoje
           </p>
-          <section class="hs-user-progress">
-            <section class="progress-bar">
-              <section class="fill" style="width:<%= t.completed ? 100 : 0 %>%"></section>
-            </section>
-            <span class="percent-label"><%= t.completed ? 100 : 0 %>%</span>
-          </section>
-          <% if (!t.completed) { %>
-            <a href="/tasks/concluir?id=<%= t._id %>" class="hs-user-btn">
-              <i class="bi bi-check-circle"></i> Concluir
+          <div class="atividade-item" data-concluida="false">
+            <div class="atividade-info">
+              <span>- Beber 2L de água</span>
+            </div>
+            <button class="atividade-btn">
+              Concluir
+            </button>
+          </div>
+          <div class="atividade-item" data-concluida="false">
+            <div class="atividade-info">
+              <span>- Comer salada no almoço</span>
+            </div>
+            <button class="atividade-btn">
+              Concluir
+            </button>
+          </div>
+          <div class="atividade-item" data-concluida="false">
+            <div class="atividade-info">
+              <span>- Evitar refrigerante</span>
+            </div>
+            <button class="atividade-btn">
+              Concluir
+            </button>
+          </div>
+          <div class="atividade-item" data-concluida="false">
+            <div class="atividade-info">
+              <span>- Comer fruta à tarde</span>
+            </div>
+            <button class="atividade-btn">
+              Concluir
+            </button>
+          </div>
+        </section>
+
+        <a href="/programas/1" class="hs-user-btn hs-user-btn-fullwidth">
+          Ver plano completo
+        </a>
+      </article>
+    </section>
+
+    <!-- ── ATIVIDADES PESSOAIS DE HOJE ───────────────────────────────── -->
+    <section class="hs-tasks-section" aria-labelledby="tit-hoje">
+      <header class="hs-section-header">
+        <h2 class="hs-section-title" id="tit-hoje">
+          Atividades Pessoais de Hoje
+        </h2>
+        <a href="/tasks" class="hs-section-link">Ver todas →</a>
+      </header>
+      
+      <% if (!tarefasHoje || !tarefasHoje.length) { %>
+      <section class="hs-empty-state" aria-live="polite">
+          <i class="bi bi-journal-plus" aria-hidden="true"></i>
+          <p class="hs-empty-title">Nenhuma atividade pessoal hoje</p>
+          <p class="hs-empty-subtitle">
+            Adicione tarefas pessoais para acompanhar seu progresso diário.
+          </p>
+      </section>
+
+      <% } else { %>
+      <!-- TAREFAS PESSOAIS -->
+      <main class="hs-pessoais-wrapper">
+        <% tarefasHoje.forEach((t, i) => { %>
+        <article class="hs-pessoal-card <%= t.completed ? 'concluida' : '' %>">
+          <!-- ESQUERDA -->
+          <div class="hs-pessoal-left">
+            <div class="hs-pessoal-icon">
+            </div>
+            <div class="hs-pessoal-info">
+              <p class="hs-pessoal-titulo">
+                <%= t.title %>
+              </p>
+              <p class="hs-pessoal-meta">
+                <i class="bi bi-tag"></i>
+                <%= t.categoria || 'geral' %>
+              </p>
+            </div>
+          </div>
+
+          <!-- DIREITA -->
+          <div class="hs-pessoal-right">
+            <div class="hs-pessoal-progress-area">
+              <div class="hs-pessoal-barra">
+                <div class="hs-pessoal-fill"
+                  style="width:<%= t.completed ? 100 : 0 %>%">
+                </div>
+              </div>
+              <span class="hs-pessoal-percentual">
+                <%= t.completed ? 100 : 0 %>%
+              </span>
+            </div>
+
+            <% if (!t.completed) { %>
+            <a href="/tasks/concluir?id=<%= t._id %>"
+              class="hs-pessoal-btn">
+              <i class="bi bi-check-circle"></i>
+              Concluir
             </a>
-          <% } else { %>
-            <button class="hs-user-btn" disabled>✓ Concluída</button>
-            <span class="hs-task-badge">✓</span>
-          <% } %>
+            <% } else { %>
+            <button class="hs-pessoal-btn" disabled>
+              ✓ Concluída
+            </button>
+            <% } %>
+          </div>
         </article>
         <% }) %>
       </main>
       <% } %>
     </section>
 
-    <!-- Categorias de saúde -->
+    <!-- ── ÁREAS DE SAÚDE ───────────────────────────────────── -->
     <section class="hs-tasks-section" aria-labelledby="tit-cats">
-      <h2 class="hs-section-title" id="tit-cats">Áreas de Saúde</h2>
+      <header class="hs-section-header">
+        <h2 class="hs-section-title" id="tit-cats">
+          Áreas de Saúde
+        </h2>
+      </header>
       <nav class="hs-categorias" aria-label="Categorias">
         <a href="/sono" class="hs-categoria-link">
           <img src="/imagem/sono.png" alt="" aria-hidden="true" />
@@ -189,7 +224,6 @@
         </a>
       </nav>
     </section>
-
   </main>
 
   <!-- Modal -->
@@ -204,87 +238,14 @@
         </section>
         <span class="percent-label" id="hs-user-modal-percent">0%</span>
       </section>
-      <button class="hs-user-btn" id="hs-user-modal-button" style="margin-top:.75rem">
+      <button class="hs-user-btn hs-user-modal-button" id="hs-user-modal-button">
         Marcar como Concluída
       </button>
     </article>
   </section>
 
-<%- include('../partials/footer.ejs') %>
+  <%- include('../partials/footer.ejs') %>
 
-  <script>
-    const nivel = '<%= nivel %>' || 'iniciante';
-    let pontos       = <%= typeof pontos !== 'undefined' ? pontos : 0 %>;
-    let diasAtivos   = Number(localStorage.getItem('hs_diasAtivos') || 1);
-    let semanaPercent= <%= typeof pctSemana !== 'undefined' ? pctSemana : 0 %>;
-
-    const baseTarefas = {
-      iniciante:     [
-        { id:'i1', nome:'Caminhada 20 min',      icone:'🚶', descricao:'Caminhada leve para começar o dia.',     progresso:0 },
-        { id:'i2', nome:'Beber 2L de água',       icone:'💧', descricao:'Hidratação melhora disposição e saúde.',progresso:0 },
-        { id:'i3', nome:'Alongamento leve',       icone:'🧘', descricao:'10–15 minutos de alongamentos simples.',progresso:0 },
-      ],
-      intermediario: [
-        { id:'m1', nome:'Corrida 30 min',         icone:'🏃', descricao:'Corrida moderada.',         progresso:0 },
-        { id:'m2', nome:'Treino funcional',       icone:'💪', descricao:'Força e resistência.',      progresso:0 },
-        { id:'m3', nome:'Mobilidade',             icone:'🤸', descricao:'Mobilidade articular.',     progresso:0 },
-      ],
-      avancado: [
-        { id:'a1', nome:'HIIT 25 min',            icone:'⚡', descricao:'Treino de alta intensidade.',progresso:0 },
-        { id:'a2', nome:'Treino de força',        icone:'🏋️', descricao:'Séries com carga.',          progresso:0 },
-        { id:'a3', nome:'Alongamento intenso',   icone:'🧘‍♀️',descricao:'Flexibilidade profunda.',   progresso:0 },
-      ],
-    };
-    let tarefas = JSON.parse(JSON.stringify(baseTarefas[nivel] || baseTarefas.iniciante));
-
-    function calcularSemanaPercent() {
-      if (!tarefas.length) return 0;
-      return Math.round((tarefas.filter(t => t.progresso === 100).length / tarefas.length) * 100);
-    }
-    function salvar() {
-      localStorage.setItem('hs_diasAtivos',    String(diasAtivos));
-      localStorage.setItem('hs_tarefas_' + nivel, JSON.stringify(tarefas));
-    }
-    function carregar() {
-      const g = localStorage.getItem('hs_tarefas_' + nivel);
-      if (g) try { const a = JSON.parse(g); if (Array.isArray(a) && a.length) tarefas = a; } catch(e) {}
-      if (!localStorage.getItem('hs_diasAtivos')) diasAtivos = 1;
-    }
-
-    function abrirModal(idx) {
-      const t = tarefas[idx]; if (!t) return;
-      const m = document.getElementById('hs-user-modal');
-      document.getElementById('hs-user-modal-title').textContent = t.nome;
-      document.getElementById('hs-user-modal-desc').textContent  = t.descricao;
-      document.getElementById('hs-user-modal-fill').style.width  = (t.progresso||0) + '%';
-      document.getElementById('hs-user-modal-percent').textContent = (t.progresso||0) + '%';
-      m.dataset.index = idx;
-      m.classList.add('active');
-      m.setAttribute('aria-hidden','false');
-    }
-    function fecharModal() {
-      const m = document.getElementById('hs-user-modal');
-      m.classList.remove('active');
-      m.setAttribute('aria-hidden','true');
-    }
-    function concluir() {
-      const m = document.getElementById('hs-user-modal');
-      const i = Number(m.dataset.index);
-      if (isNaN(i)) return;
-      tarefas[i].progresso = 100;
-      pontos += 10;
-      semanaPercent = calcularSemanaPercent();
-      salvar();
-      fecharModal();
-    }
-    document.addEventListener('click', e => {
-      if (e.target.id === 'hs-user-modal-close') { fecharModal(); return; }
-      if (e.target.id === 'hs-user-modal-button') { concluir(); return; }
-    });
-    document.getElementById('hs-user-modal').addEventListener('click', e => {
-      if (e.target === e.currentTarget) fecharModal();
-    });
-    document.addEventListener('DOMContentLoaded', () => { carregar(); });
-  </script>
+  <script src="/js/dashboard.js"></script>
 </body>
 </html>
