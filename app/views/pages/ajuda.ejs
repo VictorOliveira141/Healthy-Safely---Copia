@@ -1,9 +1,17 @@
 <html>
   <head>
-    <script src="/js/darkmode.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ajuda | Healthy Safely</title>
+    <meta property="og:title" content="Ajuda | Healthy Safely" />
+    <meta
+      property="og:description"
+      content="Encontre respostas e suporte para usar o Healthy Safely com mais facilidade."
+    />
+    <meta property="og:image" content="/imagem/Logo repaginado 2.png" />
+    <meta property="og:url" content="https://healthysafely.com/ajuda" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Healthy Safely" />
     <link rel="icon" href="/imagem/Logo repaginado 2.png" />
     <link rel="stylesheet" href="/css/ajuda.css" />
     <link rel="stylesheet" href="/css/global.css" />
@@ -18,10 +26,16 @@
 
     <main class="ajuda-container">
       <aside class="ajuda-aside">
-        <%- include('../partials/botao-voltar.ejs') %>
+        <div class="botao-voltar-wrapper">
+          <%- include('../partials/botao-voltar.ejs') %>
+        </div>
         <h1>Ajuda</h1>
 
         <ul>
+          <li data-section="quem-somos">
+            <i class="fa-solid fa-users"></i>
+            <h2>Quem somos?</h2>
+          </li>
           <li data-section="comecando">
             <i class="fa-solid fa-rocket"></i>
             <h2>Primeiros passos</h2>
@@ -34,6 +48,14 @@
             <i class="fa-solid fa-screwdriver-wrench"></i>
             <h2>Problemas técnicos</h2>
           </li>
+          <li data-section="politica-privacidade">
+            <i class="fa-solid fa-shield-alt"></i>
+            <h2>Política de privacidade</h2>
+          </li>
+          <li data-section="termos-uso">
+            <i class="fa-solid fa-file-contract"></i>
+            <h2>Termos de Uso</h2>
+          </li>
           <li data-section="contato">
             <i class="fa-solid fa-envelope"></i>
             <h2>Suporte</h2>
@@ -43,6 +65,46 @@
 
       <main class="ajuda-conteudo">
         <!-- SEÇÃO 1 -->
+        <section id="quem-somos" class="secao" aria-labelledby="h-quem-somos">
+          <h2>Quem somos?</h2>
+
+          <article class="sobre-content">
+            <p>
+              O Healthy Safely é uma plataforma desenvolvida para auxiliar
+              pessoas na organização da rotina, no acompanhamento de hábitos e
+              na busca por uma vida mais saudável de forma prática e acessível.
+            </p>
+
+            <p>
+              Nosso objetivo é oferecer um ambiente simples e intuitivo onde
+              usuários possam acompanhar tarefas, participar de programas de
+              acompanhamento e receber orientações voltadas ao bem-estar e à
+              qualidade de vida.
+            </p>
+
+            <p>
+              Acreditamos que a construção de hábitos saudáveis acontece de
+              maneira gradual e consistente. Por isso, buscamos criar uma
+              experiência mais organizada, realista e fácil de utilizar no dia a
+              dia.
+            </p>
+
+            <p>
+              Além do acompanhamento pessoal, a plataforma também permite a
+              participação de profissionais que desenvolvem programas e
+              conteúdos para auxiliar os usuários em diferentes objetivos
+              relacionados à saúde e à rotina.
+            </p>
+
+            <p>
+              O Healthy Safely foi pensado para unir organização, acompanhamento
+              e suporte em um único sistema, tornando o cuidado com a rotina
+              mais simples e acessível.
+            </p>
+          </article>
+        </section>
+
+        <!-- SEÇÃO 2 -->
         <section
           id="comecando"
           class="secao ativa"
@@ -89,42 +151,58 @@
 
           <!-- SISTEMA -->
           <article class="accordion-item">
-            <button class="accordion-header">Como o sistema funciona</button>
+            <button class="accordion-header">
+              Como o Healthy Safely funciona
+            </button>
+
             <section class="accordion-content">
               <p>
-                O sistema transforma suas ações diárias em progresso visível,
-                incentivando consistência e evolução contínua.
+                O Healthy Safely foi desenvolvido para ajudar você a criar uma
+                rotina mais saudável de forma organizada, simples e consistente.
+              </p>
+
+              <p>
+                A plataforma reúne ferramentas de acompanhamento pessoal,
+                tarefas diárias e orientações criadas por profissionais para
+                auxiliar no seu desenvolvimento ao longo do tempo.
               </p>
 
               <ul>
                 <li>
-                  <strong> Tarefas:</strong> representam hábitos como beber
-                  água, se exercitar ou cuidar da saúde. Cada tarefa possui um
-                  nível de dificuldade (fácil, médio, difícil).
+                  <strong>Tarefas personalizadas:</strong>
+                  organize hábitos e atividades importantes da sua rotina
+                  diária.
                 </li>
 
                 <li>
-                  <strong> XP (Experiência):</strong> ao completar tarefas, você
-                  ganha pontos. Tarefas mais difíceis concedem mais XP.
+                  <strong>Programas de acompanhamento:</strong>
+                  participe de programas criados por profissionais com objetivos
+                  específicos de saúde e bem-estar.
                 </li>
 
                 <li>
-                  <strong> Níveis:</strong> conforme acumula XP, você sobe de
-                  nível. Isso representa sua evolução ao longo do tempo.
+                  <strong>Progresso contínuo:</strong>
+                  acompanhe sua evolução com base nas atividades realizadas e na
+                  sua frequência ao longo do tempo.
                 </li>
 
                 <li>
-                  <strong> Streak (Sequência):</strong> completar tarefas
-                  diariamente cria uma sequência de dias. Manter essa sequência
-                  é essencial para formar hábitos sólidos.
+                  <strong>Organização pessoal:</strong>
+                  mantenha uma rotina mais equilibrada utilizando lembretes,
+                  metas e acompanhamento diário.
                 </li>
 
                 <li>
-                  <strong> Medalhas:</strong> você desbloqueia conquistas ao
-                  atingir marcos importantes, como completar várias tarefas ou
-                  manter consistência por dias seguidos.
+                  <strong>Suporte profissional:</strong>
+                  tenha acesso a conteúdos e programas desenvolvidos por
+                  profissionais para orientar sua jornada.
                 </li>
               </ul>
+
+              <p>
+                O objetivo do Healthy Safely é ajudar você a construir hábitos
+                mais saudáveis de maneira prática, sustentável e realista.
+              </p>
             </section>
           </article>
 
@@ -133,22 +211,42 @@
             <button class="accordion-header">
               Como acompanhar seu progresso
             </button>
+
             <section class="accordion-content">
               <p>
-                Seu progresso é atualizado automaticamente conforme você
-                completa tarefas.
+                Seu progresso é atualizado conforme você realiza suas tarefas e
+                participa dos programas disponíveis na plataforma.
               </p>
 
               <ul>
-                <li>Seu XP total aumenta;</li>
-                <li>Seu nível evolui com o tempo;</li>
-                <li>Sua sequência diária é mantida ou reiniciada;</li>
-                <li>Novas medalhas são desbloqueadas;</li>
+                <li>As tarefas concluídas ficam registradas;</li>
+                <li>Seu histórico pode ser acompanhado ao longo do tempo;</li>
+                <li>Você consegue visualizar sua frequência e evolução;</li>
+                <li>Os programas ajudam na organização da rotina;</li>
               </ul>
 
               <p>
-                Acompanhar esses indicadores ajuda você a visualizar sua
-                evolução e manter a motivação.
+                O acompanhamento contínuo permite identificar sua evolução de
+                maneira prática e motivadora.
+              </p>
+            </section>
+          </article>
+
+          <article class="accordion-item">
+            <button class="accordion-header">
+              O que são programas de acompanhamento?
+            </button>
+
+            <section class="accordion-content">
+              <p>
+                Os programas são conjuntos de atividades e orientações
+                organizadas para ajudar você em objetivos específicos.
+              </p>
+
+              <p>
+                Cada programa pode conter tarefas, recomendações e
+                acompanhamentos desenvolvidos por profissionais da área da saúde
+                e bem-estar.
               </p>
             </section>
           </article>
@@ -198,7 +296,7 @@
           </article>
         </section>
 
-        <!-- SEÇÃO 2 -->
+        <!-- SEÇÃO 3 -->
         <section id="faq" class="secao" aria-labelledby="h-faq">
           <h2>Perguntas Frequentes</h2>
 
@@ -243,40 +341,33 @@
             <section class="accordion-content">
               <p>
                 Basta clicar no botão ou marcador ao lado da tarefa. Assim que
-                marcada, ela será registrada como concluída e você receberá o XP
-                correspondente.
+                marcada, ela será registrada como concluída.
               </p>
             </section>
           </article>
 
           <!-- PROGRESSO -->
           <article class="accordion-item">
-            <button class="accordion-header">Como funciona o progresso?</button>
+            <button class="accordion-header">
+              Como funciona o acompanhamento?
+            </button>
+
             <section class="accordion-content">
               <p>
-                Seu progresso é baseado no XP acumulado ao completar tarefas.
+                O Healthy Safely registra suas atividades e tarefas concluídas
+                para acompanhar sua evolução ao longo do tempo.
               </p>
 
               <ul>
-                <li>Você ganha XP ao concluir tarefas</li>
-                <li>Seu nível aumenta automaticamente</li>
-                <li>Medalhas são desbloqueadas ao atingir marcos</li>
+                <li>As tarefas realizadas ficam registradas no sistema</li>
+                <li>Você pode acompanhar sua frequência e consistência</li>
+                <li>Os programas ajudam na organização da rotina diária</li>
+                <li>Seu histórico permite visualizar sua evolução pessoal</li>
               </ul>
-            </section>
-          </article>
-
-          <!-- STREAK -->
-          <article class="accordion-item">
-            <button class="accordion-header">O que é streak?</button>
-            <section class="accordion-content">
-              <p>
-                Streak é a quantidade de dias consecutivos em que você completa
-                tarefas.
-              </p>
 
               <p>
-                Manter sua sequência ativa ajuda a criar consistência e
-                disciplina.
+                O objetivo é ajudar você a manter uma rotina mais organizada,
+                saudável e sustentável de forma simples e prática.
               </p>
             </section>
           </article>
@@ -284,32 +375,30 @@
           <!-- PERDER PROGRESSO -->
           <article class="accordion-item">
             <button class="accordion-header">
-              Perco progresso se não completar tarefas?
+              O que acontece se eu parar de realizar tarefas?
             </button>
-            <section class="accordion-content">
-              <p>Você não perde seu XP ou nível.</p>
 
+            <section class="accordion-content">
               <p>
-                Porém, sua sequência (streak) pode ser reiniciada caso você
-                fique um dia sem completar tarefas.
+                Seu histórico e suas informações permanecem salvos no sistema
+                mesmo que você fique um período sem realizar atividades.
               </p>
-            </section>
-          </article>
 
-          <!-- MEDALHAS -->
-          <article class="accordion-item">
-            <button class="accordion-header">Como ganho medalhas?</button>
-            <section class="accordion-content">
               <p>
-                Medalhas são conquistas desbloqueadas ao atingir objetivos
-                específicos, como completar tarefas, manter sequência ou atingir
-                certos marcos.
+                O Healthy Safely foi desenvolvido para acompanhar sua rotina de
+                forma flexível e gradual, respeitando seu tempo e sua evolução
+                pessoal.
+              </p>
+
+              <p>
+                Sempre que desejar, você poderá retomar suas tarefas e continuar
+                seu acompanhamento normalmente.
               </p>
             </section>
           </article>
         </section>
 
-        <!-- SEÇÃO 3 -->
+        <!-- SEÇÃO 4 -->
         <section id="problemas" class="secao" aria-labelledby="h-problemas">
           <h2>Problemas comuns</h2>
 
@@ -364,37 +453,6 @@
             </section>
           </article>
 
-          <!-- XP NÃO ATUALIZA -->
-          <article class="accordion-item">
-            <button class="accordion-header">Meu XP não atualizou</button>
-            <section class="accordion-content">
-              <p>O XP pode levar alguns segundos para atualizar.</p>
-
-              <ul>
-                <li>Aguarde alguns instantes</li>
-                <li>Atualize a página</li>
-                <li>Verifique se a tarefa foi realmente concluída</li>
-              </ul>
-            </section>
-          </article>
-
-          <!-- STREAK -->
-          <article class="accordion-item">
-            <button class="accordion-header">
-              Minha sequência (streak) sumiu
-            </button>
-            <section class="accordion-content">
-              <p>
-                A sequência é reiniciada caso você fique um dia sem completar
-                tarefas.
-              </p>
-
-              <p>
-                Para evitar isso, tente completar ao menos uma tarefa por dia.
-              </p>
-            </section>
-          </article>
-
           <!-- ERRO GERAL -->
           <article class="accordion-item">
             <button class="accordion-header">O sistema está com erro</button>
@@ -415,6 +473,100 @@
           </article>
         </section>
 
+        <!-- SEÇÃO 5 -->
+        <section
+          id="politica-privacidade"
+          class="secao"
+          aria-labelledby="h-politica-privacidade"
+        >
+          <h2>Política de Privacidade</h2>
+
+          <article class="sobre-content">
+            <p>
+              O Healthy Safely valoriza a privacidade e a segurança das
+              informações dos usuários. Nosso compromisso é garantir
+              transparência na coleta, utilização e proteção dos dados
+              utilizados na plataforma.
+            </p>
+
+            <p>
+              As informações fornecidas pelos usuários são utilizadas
+              exclusivamente para funcionamento do sistema, personalização da
+              experiência e melhorias dos serviços oferecidos.
+            </p>
+
+            <p>
+              Os dados cadastrados não são vendidos ou compartilhados com
+              terceiros sem autorização, exceto quando necessário para
+              funcionamento da plataforma ou cumprimento de obrigações legais.
+            </p>
+
+            <p>
+              O usuário é responsável por manter suas informações de acesso em
+              segurança, evitando o compartilhamento de senha e dados pessoais.
+            </p>
+
+            <p>
+              O Healthy Safely adota medidas de segurança para proteger os dados
+              armazenados e reduzir riscos de acessos não autorizados.
+            </p>
+
+            <p>
+              Ao utilizar a plataforma, o usuário concorda com os termos desta
+              política de privacidade e com o uso das informações conforme
+              descrito nesta seção.
+            </p>
+          </article>
+        </section>
+
+        <!-- SEÇÃO 6 -->
+        <section id="termos-uso" class="secao" aria-labelledby="h-termos-uso">
+          <h2>Termos de Uso</h2>
+
+          <article class="sobre-content">
+            <p>
+              Ao utilizar o Healthy Safely, o usuário concorda com as regras e
+              condições estabelecidas para uso da plataforma.
+            </p>
+
+            <p>
+              O Healthy Safely tem como objetivo auxiliar na organização de
+              rotinas, acompanhamento de hábitos e participação em programas
+              relacionados à saúde e bem-estar.
+            </p>
+
+            <p>
+              O usuário é responsável pelas informações fornecidas durante o
+              cadastro, devendo manter seus dados atualizados e protegidos.
+            </p>
+
+            <p>
+              Não é permitido utilizar a plataforma para práticas ilegais,
+              ofensivas, fraudulentas ou que possam comprometer o funcionamento
+              do sistema e a experiência de outros usuários.
+            </p>
+
+            <p>
+              Os conteúdos e programas disponibilizados por profissionais
+              possuem caráter informativo e de acompanhamento, não substituindo
+              atendimento médico, psicológico ou profissional especializado
+              quando necessário.
+            </p>
+
+            <p>
+              O Healthy Safely poderá realizar atualizações, alterações e
+              melhorias na plataforma visando aprimorar a experiência dos
+              usuários e a segurança do sistema.
+            </p>
+
+            <p>
+              Ao continuar utilizando a plataforma, o usuário declara estar
+              ciente e de acordo com os presentes Termos de Uso.
+            </p>
+          </article>
+        </section>
+
+        <!-- SEÇÃO 7 -->
         <section id="contato" class="secao" aria-labelledby="h-contato">
           <h2>Falar com suporte</h2>
 
@@ -466,61 +618,6 @@
 
     <%- include ('../partials/footer.ejs') %>
 
-    <script>
-      const items = document.querySelectorAll("ul li");
-      const secoes = document.querySelectorAll(".secao");
-
-      function ativar(secao) {
-        // troca seção
-        secoes.forEach((s) => s.classList.remove("ativa"));
-
-        const alvo = document.getElementById(secao);
-        if (alvo) {
-          alvo.classList.add("ativa");
-        }
-
-        // troca item ativo
-        items.forEach((i) => i.classList.remove("ativo"));
-
-        const itemAtivo = document.querySelector(`[data-section="${secao}"]`);
-        if (itemAtivo) {
-          itemAtivo.classList.add("ativo");
-        }
-      }
-
-      // clique no menu lateral
-      items.forEach((item) => {
-        item.addEventListener("click", () => {
-          const secao = item.getAttribute("data-section");
-
-          // muda URL sem recarregar
-          history.pushState(null, "", `?secao=${secao}`);
-
-          ativar(secao);
-        });
-      });
-
-      // abrir via URL (?secao=contato)
-      const params = new URLSearchParams(window.location.search);
-      const secaoInicial = params.get("secao") || "comecando";
-
-      ativar(secaoInicial);
-    </script>
-    <script>
-      document.addEventListener("click", (e) => {
-        const header = e.target.closest(".accordion-header");
-        if (!header) return;
-
-        const content = header.nextElementSibling;
-
-        // Fecha todos os outros
-        document.querySelectorAll(".accordion-content").forEach((c) => {
-          if (c !== content) c.classList.remove("ativo");
-        });
-
-        // Alterna o atual
-        content.classList.toggle("ativo");
-      });
-    </script>
+    <script src="/js/ajuda.js"></script>
   </body>
 </html>

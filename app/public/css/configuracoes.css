@@ -58,7 +58,7 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: var(--accent-color);
+  background: var(--botao);
   display: flex;
   align-items: center;
   justify-content: center;

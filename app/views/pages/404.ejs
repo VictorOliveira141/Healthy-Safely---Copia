@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 | Healthy Safely</title>
-  <link rel="stylesheet" href="/css/global.css" />
-  <style>
-    .err{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      text-align:center;padding:2rem;gap:1rem;}
-    .err-code{font-size:5rem;font-weight:900;color:#0c4f43;line-height:1;}
-    .err h1{font-size:1.4rem;font-weight:800;}
-    .err p{color:#5a7a70;max-width:380px;}
-    .err a{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.5rem;
-      background:#0c4f43;color:#fff;border-radius:12px;text-decoration:none;font-weight:700;margin-top:.5rem;}
-  </style>
-</head>
-<body>
-  <%- include('../partials/header.ejs') %>
-  <section class="err">
-    <p class="err-code">404</p>
-    <h1>Página não encontrada</h1>
-    <p>A página que você tentou acessar não existe.</p>
-    <a href="/">← Voltar ao início</a>
-  </section>
-  <%- include('../partials/footer.ejs') %>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 | Healthy Safely</title>
+    <meta property="og:title" content="404 | Healthy Safely" />
+    <meta
+      property="og:description"
+      content="Página não encontrada no Healthy Safely. Retorne à página inicial para continuar navegando."
+    />
+    <meta property="og:image" content="/imagem/Logo repaginado 2.png" />
+    <meta property="og:url" content="https://healthysafely.com/404" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Healthy Safely" />
+    <link rel="icon" href="/imagem/Logo repaginado 2.png" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <style>
+      .err {
+        min-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        gap: 1rem;
+      }
+      .err-code {
+        font-size: 5rem;
+        font-weight: 900;
+        color: #0c4f43;
+        line-height: 1;
+      }
+      .err h1 {
+        font-size: 1.4rem;
+        font-weight: 800;
+      }
+      .err p {
+        color: #5a7a70;
+        max-width: 380px;
+      }
+      .err a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.7rem 1.5rem;
+        background: #0c4f43;
+        color: #fff;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('../partials/header.ejs') %>
+    <section class="err">
+      <p class="err-code">404</p>
+      <h1>Página não encontrada</h1>
+      <p>A página que você tentou acessar não existe.</p>
+      <a href="/">← Voltar ao início</a>
+    </section>
+    <%- include('../partials/footer.ejs') %>
+  </body>
 </html>
