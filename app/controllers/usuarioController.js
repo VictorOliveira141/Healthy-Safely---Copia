@@ -241,8 +241,10 @@ const usuarioController = {
   login: async (req, res) => {
     const login = req.body["email-login"];
     const senha = req.body["senha-login"];
+    console.log("[DEBUG] login attempt:", { login });
     try {
       const usuario = await usuarioModel.buscarPorLogin(login);
+      console.log("[DEBUG] buscarPorLogin result:", usuario);
       if (!usuario) {
         return res.render("pages/login", {
           erro: "⚠️ Usuário ou senha incorretos.",
