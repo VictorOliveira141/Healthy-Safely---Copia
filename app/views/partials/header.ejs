@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="/css/header.css" />
 
-<%- include('../partials/menu-inferior.ejs') %> <!-- MENU INFERIOR-->
-
 <%
   const configHref = usuario && usuario.tipo === "profissional"
     ? "/profissional/configuracoes"
@@ -91,6 +89,8 @@
     </nav>
   </section>
   <script src="/js/darkmode.js"></script>
+  <script src="/js/header-scroll.js"></script>
 </header>
+<%- include('../partials/menu-inferior.ejs') %> <!-- MENU INFERIOR-->
 
 
